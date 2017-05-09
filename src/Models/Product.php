@@ -19,20 +19,13 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'category_id',
-        'user_id',
-        'name',
-        'description',
-        'price',
-        'stock',
-        'features',
         'barcode',
-        'condition',
-        'rate_val',
-        'rate_count',
-        'low_stock',
-        'status',
-        'parent_id',
+        'brand',
+        'category',
+        'description',
+        'name',
+        'weight',
+        'size',
     ];
 
     /**
