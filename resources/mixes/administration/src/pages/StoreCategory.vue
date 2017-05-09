@@ -27,7 +27,7 @@
                         title: '分类名称',
                         align: 'center',
                         render() {
-                            return '<i-input type="ghost" style="width: 268px;"></i-input>';
+                            return '<i-input type="ghost" style="width: 168px;"></i-input>';
                         },
                     },
                     {
