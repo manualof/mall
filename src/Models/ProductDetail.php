@@ -19,6 +19,9 @@ class ProductDetail extends Model
      * @var array
      */
     protected $fillable = [
+        'content_pc',
+        'content_mobile',
+        'product_id',
     ];
 
     /**

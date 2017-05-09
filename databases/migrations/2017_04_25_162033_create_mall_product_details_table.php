@@ -22,7 +22,9 @@ class CreateMallProductDetailsTable extends Migration
     {
         $this->schema->create('mall_product_details', function (Blueprint $table) {
             $table->increments('id');
-
+            $table->text('content_pc')->nullable();
+            $table->text('content_mobile')->nullable();
+            $table->integer('product_id');
             $table->timestamps();
         });
     }
