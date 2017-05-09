@@ -22,6 +22,10 @@ class CreateMallOrderRatesTable extends Migration
     {
         $this->schema->create('mall_order_rates', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('comment')->nullable();
+            $table->integer('order_id');
+            $table->tinyInteger('rate')->default(0);
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

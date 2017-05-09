@@ -19,6 +19,10 @@ class OrderRate extends Model
      * @var array
      */
     protected $fillable = [
+        'comment',
+        'order_id',
+        'rate',
+        'user_id',
     ];
 
     /**
