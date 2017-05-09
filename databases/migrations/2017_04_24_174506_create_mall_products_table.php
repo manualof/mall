@@ -23,8 +23,8 @@ class CreateMallProductsTable extends Migration
         $this->schema->create('mall_products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('barcode')->nullable();
-            $table->integer('brand');
-            $table->integer('category')->default(0);
+            $table->integer('brand_id')->default();
+            $table->integer('category_id')->default(0);
             $table->string('description')->nullable();
             $table->string('name');
             $table->string('weight')->nullable();

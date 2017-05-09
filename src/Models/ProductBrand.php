@@ -19,7 +19,7 @@ class ProductBrand extends Model
      * @var array
      */
     protected $fillable = [
-        'category',
+        'category_id',
         'logo',
         'name',
         'order',
