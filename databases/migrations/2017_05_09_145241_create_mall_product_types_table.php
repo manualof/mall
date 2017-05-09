@@ -22,6 +22,8 @@ class CreateMallProductTypesTable extends Migration
     {
         $this->schema->create('mall_product_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('identification');
+            $table->string('name');
             $table->timestamps();
         });
     }

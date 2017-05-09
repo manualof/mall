@@ -19,6 +19,8 @@ class ProductType extends Model
      * @var array
      */
     protected $fillable = [
+        'identification',
+        'name',
     ];
 
     /**
