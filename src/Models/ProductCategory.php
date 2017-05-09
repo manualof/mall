@@ -20,12 +20,12 @@ class ProductCategory extends Model
      */
     protected $fillable = [
         'commission',
+        'commission_inherit',
         'identification',
         'name',
         'order',
         'parent_id',
         'show',
-        'show_inherit',
     ];
 
     /**

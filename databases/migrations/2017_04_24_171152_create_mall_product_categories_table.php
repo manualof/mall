@@ -26,8 +26,6 @@ class CreateMallProductCategoriesTable extends Migration
             $table->string('identification');
             $table->string('name');
             $table->integer('parent_id')->default(0);
-            $table->enum('show', ['sku', 'spu'])->default('sku');
-            $table->tinyInteger('show_inherit')->default(0);
             $table->tinyInteger('order')->default(0);
             $table->timestamps();
         });
