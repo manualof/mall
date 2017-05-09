@@ -4,27 +4,32 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, iBenchu.org
- * @datetime 2017-05-09 14:56
+ * @datetime 2017-05-09 15:48
  */
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
 
 /**
- * Class ProductType.
+ * Class ProductCategory.
  */
-class ProductType extends Model
+class ProductCategory extends Model
 {
     /**
      * @var array
      */
     protected $fillable = [
+        'commission',
+        'commission_inherit',
         'identification',
         'name',
+        'order',
+        'parent_id',
+        'show',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_product_types';
+    protected $table = 'mall_product_categories';
 }

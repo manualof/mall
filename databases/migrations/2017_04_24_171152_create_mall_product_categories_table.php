@@ -21,14 +21,12 @@ class CreateMallProductCategoriesTable extends Migration
     {
         $this->schema->create('mall_product_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id')->unsigned()->nullable();
-            $table->string('name', 60);
-            $table->string('description', 100);
-            $table->string('icon', 60)->nullable();
-            $table->string('image', 100)->nullable();
-            $table->boolean('status')->default(1);
-            $table->enum('type', ['group', 'store'])->default('store');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->tinyInteger('commission')->default(0);
+            $table->tinyInteger('commission_inherit')->default(0);
+            $table->string('identification');
+            $table->string('name');
+            $table->integer('parent_id')->default(0);
+            $table->tinyInteger('order')->default(0);
             $table->timestamps();
         });
     }
