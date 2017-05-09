@@ -22,6 +22,12 @@ class CreateMallProductBrandsTable extends Migration
     {
         $this->schema->create('mall_product_brands', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('category_id');
+            $table->string('logo')->nullable();
+            $table->string('name');
+            $table->tinyInteger('order')->default(0);
+            $table->tinyInteger('recommend')->default(0);
+            $table->enum('show', ['image', 'text'])->default('text');
             $table->timestamps();
         });
     }

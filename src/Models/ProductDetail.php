@@ -4,29 +4,28 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, iBenchu.org
- * @datetime 2017-05-09 15:09
+ * @datetime 2017-05-09 20:00
  */
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
 
 /**
- * Class OrderRate.
+ * Class ProductDetail.
  */
-class OrderRate extends Model
+class ProductDetail extends Model
 {
     /**
      * @var array
      */
     protected $fillable = [
-        'comment',
-        'order_id',
-        'rate',
-        'user_id',
+        'content_pc',
+        'content_mobile',
+        'product_id',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_order_rates';
+    protected $table = 'mall_product_details';
 }
