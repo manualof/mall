@@ -4,72 +4,54 @@
     export default {
         data() {
             return {
-                btnStatus: true,
+                switch1: true,
                 typeColumns: [
                     {
-                        title: '账单编号',
-                        key: 'number',
+                        title: '用户名',
+                        key: 'userName',
                         width: 150,
                         align: 'center',
                         fixed: 'left',
                     },
                     {
-                        title: '订单金额（含运费）',
-                        key: 'orderMoney',
+                        title: '真实姓名',
+                        key: 'reallyName',
                         width: 150,
                         align: 'center',
                     },
                     {
-                        title: '运费',
-                        key: 'freight',
+                        title: '服务站名称',
+                        key: 'serviceName',
                         width: 150,
                         align: 'center',
                     },
                     {
-                        title: '收取佣金',
-                        key: 'commission',
+                        title: '所在地区',
+                        key: 'area',
                         width: 150,
                         align: 'center',
                     },
                     {
-                        title: '退单金额',
-                        key: 'refund',
-                        width: 150,
+                        title: '详细地址',
+                        key: 'address',
+                        width: 300,
                         align: 'center',
                     },
                     {
-                        title: '店铺费用',
-                        key: 'shopCosts',
-                        width: 150,
-                        align: 'center',
-                    },
-                    {
-                        title: '分销佣金',
-                        key: 'distribution',
-                        width: 150,
-                        align: 'center',
-                    },
-                    {
-                        title: '本期应结',
-                        key: 'settlement',
-                        width: 150,
-                        align: 'center',
-                    },
-                    {
-                        title: '出账日期',
-                        key: 'accountData',
-                        width: 150,
-                        align: 'center',
-                    },
-                    {
-                        title: '帐单状态',
+                        title: '状态',
                         key: 'status',
                         width: 150,
                         align: 'center',
+                        render(row) {
+                            return `<i-switch size="large" v-model="row.status">
+                                    <span slot="open">开启</span>
+                                    <span slot="close">关闭</span>
+                                    </i-switch>`;
+                        },
                     },
                     {
-                        title: '商家名称',
-                        key: 'businessName',
+                        title: '申请时间',
+                        key: 'applicationTime',
                         width: 150,
                         align: 'center',
                     },
@@ -77,68 +59,52 @@
                         title: '操作',
                         key: 'action',
                         fixed: 'right',
-                        width: 150,
+                        width: 200,
                         align: 'center',
                         render(row, column, index) {
-                            return `<i-button type="ghost" class="delete-ad" v-if="btnStatus === true"
-                                    @click.native="handel(${index})">处理</i-button>
-                                    <i-button type="ghost" class="delete-ad" v-if="btnStatus === false"
-                                    @click.native="look(${index})">查看</i-button>`;
+                            return `<i-button type="ghost" class="delete-ad"
+                                    @click.native="edit(${index})">编辑</i-button>
+                                    <i-button type="ghost" class="delete-ad"
+                                    @click.native="look(${index})">查看订单</i-button>`;
                         },
                     },
                 ],
                 typeData: [
                     {
-                        number: '01',
-                        orderMoney: '999.00',
-                        freight: '12.00',
-                        commission: '37.00',
-                        refund: '0.00',
-                        shopCosts: '30.00',
-                        distribution: '10.00',
-                        settlement: '865.00',
-                        accountData: '2017-5-9',
-                        status: '已出账',
-                        businessName: 'Rey旗舰店',
+                        userName: '克罗地亚',
+                        reallyName: '王琦铭',
+                        serviceName: '财富中心自提点',
+                        area: '陕西省西安市',
+                        address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
+                        applicationTime: '2017-2-3',
+                        status: true,
                     },
                     {
-                        number: '02',
-                        orderMoney: '999.00',
-                        freight: '12.00',
-                        commission: '37.00',
-                        refund: '0.00',
-                        shopCosts: '30.00',
-                        distribution: '10.00',
-                        settlement: '865.00',
-                        accountData: '2017-5-9',
-                        status: '已出账',
-                        businessName: 'Rey旗舰店',
+                        userName: '克罗地亚',
+                        reallyName: '王琦铭',
+                        serviceName: '财富中心自提点',
+                        area: '陕西省西安市',
+                        address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
+                        applicationTime: '2017-2-3',
+                        status: true,
                     },
                     {
-                        number: '03',
-                        orderMoney: '999.00',
-                        freight: '12.00',
-                        commission: '37.00',
-                        refund: '0.00',
-                        shopCosts: '30.00',
-                        distribution: '10.00',
-                        settlement: '865.00',
-                        accountData: '2017-5-9',
-                        status: '已出账',
-                        businessName: 'Rey旗舰店',
+                        userName: '克罗地亚',
+                        reallyName: '王琦铭',
+                        serviceName: '财富中心自提点',
+                        area: '陕西省西安市',
+                        address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
+                        applicationTime: '2017-2-3',
+                        status: false,
                     },
                     {
-                        number: '04',
-                        orderMoney: '999.00',
-                        freight: '12.00',
-                        commission: '37.00',
-                        refund: '0.00',
-                        shopCosts: '30.00',
-                        distribution: '10.00',
-                        settlement: '865.00',
-                        accountData: '2017-5-9',
-                        status: '已出账',
-                        businessName: 'Rey旗舰店',
+                        userName: '克罗地亚',
+                        reallyName: '王琦铭',
+                        serviceName: '财富中心自提点',
+                        area: '陕西省西安市',
+                        address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
+                        applicationTime: '2017-2-3',
+                        status: true,
                     },
                 ],
                 searchList: [
@@ -165,17 +131,17 @@
             });
         },
         methods: {
-            remove(index) {
-                this.typeData.splice(index, 1);
-            },
-            handel() {
+            edit() {
                 const self = this;
                 self.$router.push({
-                    path: 'operation/settlement',
+                    path: 'delivery/edit',
                 });
             },
             look() {
-
+                const self = this;
+                self.$router.push({
+                    path: 'delivery/look',
+                });
             },
         },
     };
