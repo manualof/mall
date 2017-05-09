@@ -1,20 +1,21 @@
 <script>
     import injection from '../helpers/injection';
+    import image from '../assets/images/adv.jpg';
 
     export default {
         data() {
             return {
                 action: `${window.api}/mall/upload`,
                 typeData: {
-                    name: '',
-                    realName: '',
+                    name: '财富中心自提点',
+                    realName: '王思冉',
                     phone: '',
                     seatNumber: '',
                     deliveryName: '',
-                    province: '',
+                    province: ['陕西省', '西安市'],
                     address: '',
-                    idNum: '',
-                    cardPicture: '',
+                    idNum: '6622542456855141',
+                    cardPicture: image,
                     status: true,
                 },
                 styleData: [
@@ -86,41 +87,6 @@
                 const self = this;
                 self.$router.go(-1);
             },
-            removeLogo() {
-                this.typeData.cardPicture = '';
-            },
-            uploadBefore() {
-                injection.loading.start();
-            },
-            uploadError(error, data) {
-                const self = this;
-                injection.loading.error();
-                if (typeof data.message === 'object') {
-                    for (const p in data.message) {
-                        self.$notice.error({
-                            title: data.message[p],
-                        });
-                    }
-                } else {
-                    self.$notice.error({
-                        title: data.message,
-                    });
-                }
-            },
-            uploadFormatError(file) {
-                this.$notice.warning({
-                    title: '文件格式不正确',
-                    desc: `文件 ${file.name} 格式不正确`,
-                });
-            },
-            uploadSuccess(data) {
-                const self = this;
-                injection.loading.finish();
-                self.$notice.open({
-                    title: data.message,
-                });
-                self.typeData.cardPicture = data.data.path;
-            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -140,7 +106,7 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="operation-delivery-add">
+        <div class="operation-delivery-edit">
             <div class="edit-link-title">
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
@@ -152,14 +118,14 @@
                     <row>
                         <i-col span="12">
                             <form-item label="自提点用户名">
-                                <i-input v-model="typeData.name"></i-input>
+                                {{ typeData.name }}
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="真实姓名">
-                                <i-input v-model="typeData.realName"></i-input>
+                                {{ typeData.realName }}
                             </form-item>
                         </i-col>
                     </row>
@@ -201,31 +167,14 @@
                     <row>
                         <i-col span="12">
                             <form-item label="身份证号码">
-                                <i-input v-model="typeData.idNum"></i-input>
+                                {{ typeData.idNum }}
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
-                            <form-item label="身份证正面" prop="cardPicture">
-                                <div class="image-preview" v-if="typeData.cardPicture">
-                                    <img :src="typeData.cardPicture">
-                                    <icon type="close" @click.native="removeLogo"></icon>
-                                </div>
-                                <upload :action="action"
-                                        :before-upload="uploadBefore"
-                                        :format="['jpg','jpeg','png']"
-                                        :headers="{
-                                            Authorization: `Bearer ${$store.state.token.access_token}`
-                                        }"
-                                        :max-size="2048"
-                                        :on-error="uploadError"
-                                        :on-format-error="uploadFormatError"
-                                        :on-success="uploadSuccess"
-                                        ref="upload"
-                                        :show-upload-list="false"
-                                        v-if="typeData.cardPicture === '' || typeData.cardPicture === null">
-                                </upload>
+                            <form-item label="身份证正面">
+                                <img :src="typeData.cardPicture" alt="">
                             </form-item>
                         </i-col>
                     </row>
