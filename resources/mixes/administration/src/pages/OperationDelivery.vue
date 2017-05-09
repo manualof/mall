@@ -42,7 +42,7 @@
                         key: 'status',
                         width: 150,
                         align: 'center',
-                        render(row) {
+                        render() {
                             return `<i-switch size="large" v-model="row.status">
                                     <span slot="open">开启</span>
                                     <span slot="close">关闭</span>
@@ -131,6 +131,12 @@
             });
         },
         methods: {
+            addData() {
+                const self = this;
+                self.$router.push({
+                    path: 'delivery/add',
+                });
+            },
             edit() {
                 const self = this;
                 self.$router.push({
@@ -157,7 +163,7 @@
                             物流自提服务站关闭后，被用户选择设置成收货地址的记录会被删除，请谨慎操作</p>
                     </div>
                     <div class="album-action">
-                        <i-button class="add-data" type="ghost" @click.native="addtData">+新增数据</i-button>
+                        <i-button class="add-data" type="ghost" @click.native="addData">+新增数据</i-button>
                         <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                         <div class="goods-body-header-right">
                             <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">

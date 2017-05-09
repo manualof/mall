@@ -93,6 +93,10 @@
                     filename: '订单列表数据',
                 });
             },
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
         },
     };
 </script>

@@ -100,7 +100,7 @@
                                     <div class="tip">
                                         <p>在商品列表页的展示方式</p>
                                         <p>"颜色"：每个SPU只展示不同个颜色SKU，同一颜色多个SKU只展示一个SKU</p>
-                                        <p>"SPU"：每个SUP只展示一个SKU</p>
+                                        <p>"SPU"：每个SPU只展示一个SKU</p>
                                     </div>
                                     <checkbox v-model="editDetail.interestStyle" class="tip"
                                               style="text-align: inherit; color: inherit">关联到子分类</checkbox>
