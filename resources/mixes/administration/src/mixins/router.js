@@ -40,6 +40,10 @@ import OrderRejectedLook from '../pages/OrderRejectedLook.vue';
 import OrderRejectedHandel from '../pages/OrderRejectedHandel.vue';
 import Operation from '../pages/Operation.vue';
 import OperationSettlement from '../pages/OperationSettlement.vue';
+import OperationDelivery from '../pages/OperationDelivery.vue';
+import OperationDeliveryLook from '../pages/OperationDeliveryLook.vue';
+import OperationDeliveryEdit from '../pages/OperationDeliveryEdit.vue';
+import OperationDeliveryAdd from '../pages/OperationDeliveryAdd.vue';
 import Statistics from '../pages/Statistics.vue';
 import StatisticsAftersales from '../pages/StatisticsAftersales.vue';
 import StatisticsAnalysis from '../pages/StatisticsAnalysis.vue';
@@ -269,6 +273,26 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: OperationSettlement,
                     path: 'operation/settlement',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OperationDelivery,
+                    path: 'operation/delivery',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OperationDeliveryAdd,
+                    path: 'operation/delivery/add',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OperationDeliveryLook,
+                    path: 'operation/delivery/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OperationDeliveryEdit,
+                    path: 'operation/delivery/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
