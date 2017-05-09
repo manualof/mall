@@ -57,6 +57,7 @@ import StoreCategory from '../pages/StoreCategory.vue';
 import StoreCategorySet from '../pages/StoreCategorySet.vue';
 import StoreDynamics from '../pages/StoreDynamics.vue';
 import StoreLevel from '../pages/StoreLevel.vue';
+import StoreLevelAdd from '../pages/StoreLevelAdd.vue';
 import StorePostal from '../pages/StorePostal.vue';
 import SalesSpike from '../pages/SalesSpike.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
@@ -359,6 +360,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StoreLevel,
                     path: 'store/level',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StoreLevelAdd,
+                    path: 'store/level/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
