@@ -89,7 +89,7 @@ export default function (injection) {
                     title: '结算管理',
                 },
                 {
-                    path: '/mall/delivery',
+                    path: '/mall/operation/delivery',
                     title: '自提点',
                 },
             ],

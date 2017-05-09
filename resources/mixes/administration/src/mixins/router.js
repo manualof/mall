@@ -40,6 +40,7 @@ import OrderRejectedLook from '../pages/OrderRejectedLook.vue';
 import OrderRejectedHandel from '../pages/OrderRejectedHandel.vue';
 import Operation from '../pages/Operation.vue';
 import OperationSettlement from '../pages/OperationSettlement.vue';
+import OperationDelivery from '../pages/OperationDelivery.vue';
 import Statistics from '../pages/Statistics.vue';
 import StatisticsAftersales from '../pages/StatisticsAftersales.vue';
 import StatisticsAnalysis from '../pages/StatisticsAnalysis.vue';
@@ -269,6 +270,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: OperationSettlement,
                     path: 'operation/settlement',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OperationDelivery,
+                    path: 'operation/delivery',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
