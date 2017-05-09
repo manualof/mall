@@ -11,6 +11,17 @@
                     PayMoney: ' 0.00 = 0.00 (订单金额) - 0.00 (佣金金额) - 0.00 (退单金额) + 0.00 (退还佣金) - 0.00 (店铺促销费用)',
                     settlementStatus: '已出帐',
                 },
+                payModal: {
+                    billNum: '213624925721571',
+                    billInformation: '',
+                    startDate: '2016-12-22',
+                    endDate: '2016-12-22',
+                },
+                payValidate: {
+                    startDate: [
+                        { required: true, message: '日期不能为空', trigger: 'blur' },
+                    ],
+                },
                 typeColumns: [
                     {
                         title: '账单编号',
@@ -289,6 +300,8 @@
                 self: this,
                 refundSearchData: '',
                 managementSearch: '',
+                modal: false,
+                loading: false,
             };
         },
         beforeRouteEnter(to, from, next) {
@@ -310,6 +323,23 @@
             goBack() {
                 const self = this;
                 self.$router.go(-1);
+            },
+            pay() {
+                this.modal = true;
+            },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.payModal.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
         },
     };
@@ -367,7 +397,8 @@
                                 <i-col span="18">
                                     <form-item label="">
                                         <i-button type="primary" v-if="settlementStatus === 0">审核</i-button>
-                                        <i-button type="primary" v-if="settlementStatus === 1">付款完成</i-button>
+                                        <i-button type="primary" v-if="settlementStatus === 1"
+                                            @click.native="pay">付款完成</i-button>
                                         <i-button type="primary" v-if="settlementStatus === 2">打印</i-button>
                                     </form-item>
                                 </i-col>
@@ -412,6 +443,54 @@
                     </tab-pane>
                 </tabs>
             </card>
+            <modal
+                    v-model="modal"
+                    title="付款信息" class="refund-attribute-modal">
+                <div>
+                    <i-form ref="payModal" :model="payModal" :rules="payValidate" :label-width="100">
+                        <row>
+                            <i-col span="18">
+                                <form-item label="账单编号" prop="billNum">
+                                    {{ payModal.billNum }}
+                                </form-item>
+                            </i-col>
+                        </row>
+                        <form-item label="起止日期" prop="startDate">
+                            <row>
+                                <i-col span="8">
+                                    <date-picker type="date" placeholder="选择日期"
+                                                 v-model="payModal.startDate"></date-picker>
+                                </i-col>
+                                <i-col span="2" style="text-align: center">-</i-col>
+                                <i-col span="8">
+                                    <date-picker type="date" placeholder="选择日期"
+                                                 v-model="payModal.endDate"></date-picker>
+                                </i-col>
+                            </row>
+                        </form-item>
+                        <row>
+                            <i-col span="20">
+                                <form-item label="出账信息" prop="">
+                                    <i-input type="textarea" v-model="payModal.billInformation"></i-input>
+                                    <p class="tip">
+                                        请输入汇款单号、支付方式等付款凭证
+                                    </p>
+                                </form-item>
+                            </i-col>
+                        </row>
+                        <row>
+                            <i-col span="20" class="submit-modal">
+                                <form-item>
+                                    <i-button :loading="loading" type="primary" @click.native="submit">
+                                        <span v-if="!loading">确认提交</span>
+                                        <span v-else>正在提交…</span>
+                                    </i-button>
+                                </form-item>
+                            </i-col>
+                        </row>
+                    </i-form>
+                </div>
+            </modal>
         </div>
     </div>
 </template>
