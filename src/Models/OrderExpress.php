@@ -30,4 +30,20 @@ class OrderExpress extends Model
      * @var string
      */
     protected $table = 'mall_order_expresses';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'id', 'address_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function order()
+    {
+        return $this->hasOne(Order::class, 'id', 'order_id');
+    }
 }
