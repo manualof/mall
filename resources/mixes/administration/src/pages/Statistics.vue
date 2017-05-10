@@ -70,6 +70,14 @@
                         price: '0',
                     },
                 ],
+                goods: {
+                    startPrice: '',
+                    endPrice: '',
+                },
+                orders: {
+                    startPrice: '',
+                    endPrice: '',
+                },
                 goodsColumns: [
                     {
                         title: '序号',
@@ -159,11 +167,40 @@
                     },
                 ],
                 self: this,
+                loading: false,
             };
         },
         methods: {
             lookShop() {},
             lookGoods() {},
+            priceSubmit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.goods.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            orderSubmit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.orders.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
         },
         beforeRouteEnter(to, from, next) {
             next(() => {
@@ -231,6 +268,51 @@
                             <p>设置价格区间的几点建议：一、建议设置的第一价格区间起始额为0：二、价格区间应该设置完整，
                                 不要缺少任何一个起始额和结束额：三、价格区间数值应该连贯，例：0~100，101~200</p>
                         </div>
+                        <div class="goods-price-area">
+                            <i-form ref="goods" :model="goods" :rules="ruleValidate" :label-width="180">
+                                <form-item>
+                                    <row>
+                                        <i-col span="2" class="price-width">起始额</i-col>
+                                        <i-col span="2" class="input-width">
+                                            <i-input v-model="startPrice"></i-input>
+                                        </i-col>
+                                        <i-col span="1">元</i-col>
+                                        <i-col span="2" class="price-width">结束额</i-col>
+                                        <i-col span="2" class="input-width">
+                                            <i-input v-model="endPrice"></i-input>
+                                        </i-col>
+                                        <i-col span="1">元</i-col>
+                                        <i-col span="14">
+                                            <i-button type="ghost" @click.native="deleteArea" class="delete-color">刪除</i-button>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="2" class="price-width">起始额</i-col>
+                                        <i-col span="2" class="input-width">
+                                            <i-input v-model="goods.startPrice"></i-input>
+                                        </i-col>
+                                        <i-col span="1">元</i-col>
+                                        <i-col span="2" class="price-width">结束额</i-col>
+                                        <i-col span="2" class="input-width">
+                                            <i-input v-model="goods.endPrice"></i-input>
+                                        </i-col>
+                                        <i-col span="1">元</i-col>
+                                        <i-col span="14">
+                                            <i-button type="ghost" @click.native="deleteArea" class="delete-color">刪除</i-button>
+                                        </i-col>
+                                    </row>
+                                </form-item>
+                                <form-item>
+                                    <i-button type="ghost" @click.native="addArea" class="button-style">+添加区间</i-button>
+                                </form-item>
+                                <form-item>
+                                    <i-button :loading="loading" type="primary" @click.native="priceSubmit" class="button-style">
+                                        <span v-if="!loading">确认提交</span>
+                                        <span v-else>正在提交…</span>
+                                    </i-button>
+                                </form-item>
+                            </i-form>
+                        </div>
                     </card>
                 </tab-pane>
                 <tab-pane label="订单金额区间" name="name3">
@@ -240,6 +322,51 @@
                             <p>设置订单金额区间，当对订单金额进行相关统计时按照以下设置的价格区间进行统计和显示</p>
                             <p>设置价格区间的几点建议：一、建议设置的第一价格区间起始额为0：二、价格区间应该设置完整，
                                 不要缺少任何一个起始额和结束额：三、价格区间数值应该连贯，例：0~100，101~200</p>
+                        </div>
+                        <div class="goods-price-area">
+                            <i-form ref="orders" :model="orders" :rules="ruleValidate" :label-width="180">
+                                <form-item>
+                                    <row>
+                                        <i-col span="2" class="price-width">起始额</i-col>
+                                        <i-col span="2" class="input-width">
+                                            <i-input v-model="startPrice"></i-input>
+                                        </i-col>
+                                        <i-col span="1">元</i-col>
+                                        <i-col span="2" class="price-width">结束额</i-col>
+                                        <i-col span="2" class="input-width">
+                                            <i-input v-model="endPrice"></i-input>
+                                        </i-col>
+                                        <i-col span="1">元</i-col>
+                                        <i-col span="14">
+                                            <i-button type="ghost" @click.native="deleteArea" class="delete-color">刪除</i-button>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="2" class="price-width">起始额</i-col>
+                                        <i-col span="2" class="input-width">
+                                            <i-input v-model="orders.startPrice"></i-input>
+                                        </i-col>
+                                        <i-col span="1">元</i-col>
+                                        <i-col span="2" class="price-width">结束额</i-col>
+                                        <i-col span="2" class="input-width">
+                                            <i-input v-model="orders.endPrice"></i-input>
+                                        </i-col>
+                                        <i-col span="1">元</i-col>
+                                        <i-col span="14">
+                                            <i-button type="ghost" @click.native="deleteArea" class="delete-color">刪除</i-button>
+                                        </i-col>
+                                    </row>
+                                </form-item>
+                                <form-item>
+                                    <i-button type="ghost" @click.native="addArea" class="button-style">+添加区间</i-button>
+                                </form-item>
+                                <form-item>
+                                    <i-button :loading="loading" type="primary" @click.native="orderSubmit" class="button-style">
+                                        <span v-if="!loading">确认提交</span>
+                                        <span v-else>正在提交…</span>
+                                    </i-button>
+                                </form-item>
+                            </i-form>
                         </div>
                     </card>
                 </tab-pane>
