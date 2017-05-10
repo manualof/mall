@@ -19,6 +19,94 @@
                         label: '商品2',
                     },
                 ],
+                goodsColumns: [
+                    {
+                        title: '序号',
+                        key: 'num',
+                    },
+                    {
+                        title: '商品名称',
+                        key: 'goodsName',
+                    },
+                    {
+                        title: '下单商品数',
+                        key: 'amount',
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                goodsData: [
+                    {
+                        num: 1,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 2,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 3,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 4,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                ],
+                shopsColumns: [
+                    {
+                        title: '序号',
+                        key: 'num',
+                    },
+                    {
+                        title: '商品名称',
+                        key: 'goodsName',
+                    },
+                    {
+                        title: '下单商品数',
+                        key: 'amount',
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                shopsData: [
+                    {
+                        num: 1,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 2,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 3,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 4,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                ],
                 timeList: [
                     {
                         value: '1',
@@ -96,6 +184,70 @@
                             <p>提示</p>
                             <p>在“提示”下可以选择不同的商品分类和时间查询数据</p>
                             <p>统计某行业在不同时间段下单量前50名商品和前30名店铺</p>
+                        </div>
+                        <div class="analysis-content">
+                            <h5 v-if="!isPriceArea">行业商品TOP50</h5>
+                            <div class="order-money-content">
+                                <div class="select-content" style="top: -10px">
+                                    <ul>
+                                        <li>
+                                            商品分类
+                                            <i-select v-model="model2" style="width:124px">
+                                                <i-option v-for="item in goodsList" :value="item.value"
+                                                          :key="item">{{ item.label }}</i-option>
+                                            </i-select>
+                                        </li>
+                                        <li>
+                                            时间周期
+                                            <i-select v-model="model2" style="width:124px">
+                                                <i-option v-for="item in timeList" :value="item.value"
+                                                          :key="item">{{ item.label }}</i-option>
+                                            </i-select>
+                                        </li>
+                                        <li>
+                                            <date-picker type="date" placeholder="选择日期"></date-picker>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div style="height: 350px">
+
+                                </div>
+                                <i-table :columns="goodsColumns" :context="self" :data="goodsData"></i-table>
+                                <div class="page">
+                                    <page :total="100" show-elevator></page>
+                                </div>
+                            </div>
+                            <h5 v-if="!isPriceArea">行业店铺TOP50</h5>
+                            <div class="order-money-content">
+                                <div class="select-content" style="top: -10px">
+                                    <ul>
+                                        <li>
+                                            商品分类
+                                            <i-select v-model="model2" style="width:124px">
+                                                <i-option v-for="item in goodsList" :value="item.value"
+                                                          :key="item">{{ item.label }}</i-option>
+                                            </i-select>
+                                        </li>
+                                        <li>
+                                            时间周期
+                                            <i-select v-model="model2" style="width:124px">
+                                                <i-option v-for="item in timeList" :value="item.value"
+                                                          :key="item">{{ item.label }}</i-option>
+                                            </i-select>
+                                        </li>
+                                        <li>
+                                            <date-picker type="date" placeholder="选择日期"></date-picker>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div style="height: 350px">
+
+                                </div>
+                                <i-table :columns="shopsColumns" :context="self" :data="shopsData"></i-table>
+                                <div class="page">
+                                    <page :total="100" show-elevator></page>
+                                </div>
+                            </div>
                         </div>
                     </card>
                 </tab-pane>
