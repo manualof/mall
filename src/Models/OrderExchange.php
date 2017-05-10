@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
+use Notadd\Member\Models\Member;
 
 /**
  * Class OrderExchange.
@@ -29,11 +30,26 @@ class OrderExchange extends Model
         'remark',
         'response',
         'user_id',
-        'shop_id',
     ];
 
     /**
      * @var string
      */
     protected $table = 'mall_order_exchanges';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function order()
+    {
+        return $this->hasOne(Order::class, 'id', 'order_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne(Member::class, 'id', 'user_id');
+    }
 }
