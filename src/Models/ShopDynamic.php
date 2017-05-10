@@ -19,6 +19,11 @@ class ShopDynamic extends Model
      * @var array
      */
     protected $fillable = [
+        'content',
+        'shop_id',
+        'show',
+        'title',
+        'user_id',
     ];
 
     /**

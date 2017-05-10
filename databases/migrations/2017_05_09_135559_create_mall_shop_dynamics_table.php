@@ -22,6 +22,11 @@ class CreateMallShopDynamicsTable extends Migration
     {
         $this->schema->create('mall_shop_dynamics', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('content')->nullable();
+            $table->integer('shop_id');
+            $table->tinyInteger('show')->default(0);
+            $table->string('title');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
