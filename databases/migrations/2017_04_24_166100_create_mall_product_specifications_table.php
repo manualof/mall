@@ -23,6 +23,7 @@ class CreateMallProductSpecificationsTable extends Migration
         $this->schema->create('mall_product_specifications', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -26,6 +26,7 @@ class CreateMallOrderProcessesTable extends Migration
             $table->enum('status', ['payment', 'delivery', 'receive', 'done', 'canceled'])->default('payment');
             $table->integer('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

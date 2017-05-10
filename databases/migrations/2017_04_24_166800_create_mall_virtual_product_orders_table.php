@@ -29,6 +29,7 @@ class CreateMallVirtualProductOrdersTable extends Migration
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('virtual_product_id')->references('id')->on('virtual_products');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

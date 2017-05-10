@@ -28,6 +28,7 @@ class CreateMallOrderInvoicesTable extends Migration
             $table->enum('type', ['normal', 'vat'])->default('normal');
             $table->integer('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

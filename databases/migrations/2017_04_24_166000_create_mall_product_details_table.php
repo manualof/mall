@@ -26,6 +26,7 @@ class CreateMallProductDetailsTable extends Migration
             $table->text('content_mobile')->nullable();
             $table->integer('product_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

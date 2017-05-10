@@ -28,6 +28,7 @@ class CreateMallOrderExpressesTable extends Migration
             $table->integer('order_id');
             $table->integer('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -35,6 +35,7 @@ class CreateMallShopsTable extends Migration
             $table->timestamp('open_at')->nullable();
             $table->enum('status', ['review', 'opening', 'closed', 'banned'])->default('review');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

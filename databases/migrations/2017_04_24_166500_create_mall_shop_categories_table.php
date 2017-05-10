@@ -27,6 +27,7 @@ class CreateMallShopCategoriesTable extends Migration
             $table->integer('parent_id')->default(0);
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

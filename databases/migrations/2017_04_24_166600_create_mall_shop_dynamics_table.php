@@ -28,6 +28,7 @@ class CreateMallShopDynamicsTable extends Migration
             $table->string('title');
             $table->integer('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

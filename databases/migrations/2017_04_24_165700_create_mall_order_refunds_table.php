@@ -34,6 +34,7 @@ class CreateMallOrderRefundsTable extends Migration
             $table->json('response');
             $table->integer('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

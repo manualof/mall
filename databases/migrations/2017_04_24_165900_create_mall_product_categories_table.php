@@ -28,6 +28,7 @@ class CreateMallProductCategoriesTable extends Migration
             $table->integer('parent_id')->default(0);
             $table->tinyInteger('order')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

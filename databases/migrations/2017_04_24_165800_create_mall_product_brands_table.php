@@ -29,6 +29,7 @@ class CreateMallProductBrandsTable extends Migration
             $table->tinyInteger('recommend')->default(0);
             $table->enum('show', ['image', 'text'])->default('text');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
