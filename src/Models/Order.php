@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
+use Notadd\Member\Models\Member;
 
 /**
  * Class Order.
@@ -19,17 +20,41 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
         'address_id',
-        'status',
-        'type',
         'description',
         'end_date',
-        'seller_id',
+        'shop_id',
+        'status',
+        'type',
+        'user_id',
     ];
 
     /**
      * @var string
      */
     protected $table = 'mall_orders';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne(Member::class, 'id', 'user_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'id', 'address_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function shop()
+    {
+        return $this->hasOne(Shop::class, 'id', 'shop_id');
+    }
 }
