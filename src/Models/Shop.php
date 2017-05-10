@@ -19,6 +19,17 @@ class Shop extends Model
      * @var array
      */
     protected $fillable = [
+        'address',
+        'avatar',
+        'company',
+        'end_at',
+        'identification',
+        'level',
+        'location',
+        'logo',
+        'name',
+        'open_at',
+        'status',
     ];
 
     /**
