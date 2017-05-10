@@ -24,7 +24,6 @@ class CreateMallOrderInvoicesTable extends Migration
             $table->increments('id');
             $table->string('content')->nullable();
             $table->integer('order_id');
-            $table->integer('shop_id');
             $table->string('title');
             $table->enum('type', ['normal', 'vat'])->default('normal');
             $table->integer('user_id');
