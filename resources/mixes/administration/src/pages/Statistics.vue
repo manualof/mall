@@ -1,14 +1,169 @@
 <script>
+    import iEcharts from 'vue-echarts-v3';
     import injection from '../helpers/injection';
 
     export default {
+        components: {
+            iEcharts,
+        },
         data() {
             return {
-
+                informationList: [
+                    {
+                        title: '下单金额',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                    {
+                        title: '下单会员数',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                    {
+                        title: '下单量',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                    {
+                        title: '下单商品数',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                    {
+                        title: '平均价格',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                    {
+                        title: '平均客单价',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                    {
+                        title: '新增会员',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                    {
+                        title: '会员数量',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                    {
+                        title: '新增店铺',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                    {
+                        title: '店铺数量',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                    {
+                        title: '新增商品',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                    {
+                        title: '商品数量',
+                        intro: '有效订单的总金额（元）',
+                        price: '0',
+                    },
+                ],
+                goodsColumns: [
+                    {
+                        title: '序号',
+                        key: 'num',
+                    },
+                    {
+                        title: '商品名称',
+                        key: 'goodsName',
+                    },
+                    {
+                        title: '销量',
+                        key: 'amount',
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                goodsData: [
+                    {
+                        num: 1,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 2,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 3,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 4,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                ],
+                shopColumns: [
+                    {
+                        title: '序号',
+                        key: 'num',
+                    },
+                    {
+                        title: '店铺名称',
+                        key: 'shopName',
+                    },
+                    {
+                        title: '下单金额',
+                        key: 'orderAmount',
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                shopData: [
+                    {
+                        num: 1,
+                        shopName: 'xxx旗舰店',
+                        orderAmount: '￥99.00',
+                    },
+                    {
+                        num: 2,
+                        shopName: 'xxx旗舰店',
+                        orderAmount: '￥99.00',
+                    },
+                    {
+                        num: 3,
+                        shopName: 'xxx旗舰店',
+                        orderAmount: '￥99.00',
+                    },
+                    {
+                        num: 4,
+                        shopName: 'xxx旗舰店',
+                        orderAmount: '￥99.00',
+                    },
+                ],
+                self: this,
             };
         },
         methods: {
-
+            lookShop() {},
+            lookGoods() {},
         },
         beforeRouteEnter(to, from, next) {
             next(() => {
@@ -27,6 +182,44 @@
                             <p>提示</p>
                             <p>符合以下任何一种条件的订单即为有效订单：1.采用在线支付方式并且已付款：
                                 2.采用货到付款方式并且交易已完成</p>
+                        </div>
+                        <div class="statistics-information">
+                            <h5>2017-03-11 基本情况</h5>
+                            <div class="information-content">
+                                <row>
+                                    <i-col span="6" v-for="item in informationList">
+                                        <h5>{{ item.title }}</h5>
+                                        <div>
+                                            <span class="intro">{{ item.intro }}</span>
+                                            <span class="price">{{ item.price }}</span>
+                                        </div>
+                                    </i-col>
+                                </row>
+                            </div>
+                        </div>
+                        <div class="statistics-information">
+                            <h5>2017-03-11 销售走势</h5>
+                            <div class="information-statistics">
+
+                            </div>
+                        </div>
+                        <div class="table-information">
+                            <row :gutter="16">
+                                <i-col span="12">
+                                    <h5>7日内店铺销售TOP30</h5>
+                                    <i-table :columns="shopColumns" :context="self" :data="shopData"></i-table>
+                                    <div class="page">
+                                        <page :total="100" show-elevator></page>
+                                    </div>
+                                </i-col>
+                                <i-col span="12">
+                                    <h5>7日内商品销售TOP30</h5>
+                                    <i-table :columns="goodsColumns" :context="self" :data="goodsData"></i-table>
+                                    <div class="page">
+                                        <page :total="100" show-elevator></page>
+                                    </div>
+                                </i-col>
+                            </row>
                         </div>
                     </card>
                 </tab-pane>
