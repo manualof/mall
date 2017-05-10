@@ -19,6 +19,18 @@ class OrderRefund extends Model
      * @var array
      */
     protected $fillable = [
+        'amount',
+        'address_for_take',
+        'address_for_exchange',
+        'express_id_for_receive',
+        'express_id_for_exchange',
+        'order_id',
+        'pay',
+        'reason',
+        'remark',
+        'response',
+        'user_id',
+        'shop_id',
     ];
 
     /**
