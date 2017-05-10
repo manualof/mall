@@ -19,6 +19,12 @@ class OrderInvoice extends Model
      * @var array
      */
     protected $fillable = [
+        'content',
+        'order_id',
+        'shop_id',
+        'title',
+        'type',
+        'user_id',
     ];
 
     /**
