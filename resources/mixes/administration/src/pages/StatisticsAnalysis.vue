@@ -8,6 +8,7 @@
         },
         data() {
             return {
+                isPriceArea: false,
                 goodsList: [
                     {
                         value: '1',
@@ -106,6 +107,37 @@
                                 2、采用货到付款方式支付并且交易已完成</p>
                             <p>点击“设置价格区间”进入设置价格区间页面，下方统计图将根据您设置的价格区间进行统计</p>
                             <p>统计图展示符合搜索条件的有效订单中商品的单价所在价格区间中的总销售额和总下单商品数量走势</p>
+                        </div>
+                        <div class="analysis-content">
+                            <i-button type="ghost">设置价格区间</i-button>
+                            <h5>行业价格分布图</h5>
+                            <div class="order-money-content">
+                                <h5 v-if="!isPriceArea">下单金额</h5>
+                                <div class="select-content" style="top: -10px">
+                                    <ul>
+                                        <li>
+                                            商品分类
+                                            <i-select v-model="model2" style="width:124px">
+                                                <i-option v-for="item in goodsList" :value="item.value"
+                                                          :key="item">{{ item.label }}</i-option>
+                                            </i-select>
+                                        </li>
+                                        <li>
+                                            时间周期
+                                            <i-select v-model="model2" style="width:124px">
+                                                <i-option v-for="item in timeList" :value="item.value"
+                                                          :key="item">{{ item.label }}</i-option>
+                                            </i-select>
+                                        </li>
+                                        <li>
+                                            <date-picker type="date" placeholder="选择日期"></date-picker>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div v-if="isPriceArea" class="set-price-area">
+                                    <p>看行业价格分布情况前，请先设置价格区间</p>
+                                </div>
+                            </div>
                         </div>
                     </card>
                 </tab-pane>

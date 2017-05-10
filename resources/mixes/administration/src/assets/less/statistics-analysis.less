@@ -17,9 +17,21 @@
             padding-left: 0;
             overflow: visible;
         }
+        > h5 {
+            height: 40px;
+            line-height: 40px;
+            background-color: #f5f7f9;
+            padding: 0 20px;
+            font-size: 14px;
+            margin: 20px 0;
+        }
         .order-money-content {
             position: relative;
-            height: 890px;
+            min-height: 600px;
+            h5 {
+                position: absolute;
+                left: 20px;
+            }
             .select-content {
                 position: absolute;
                 right: 10px;
@@ -35,6 +47,11 @@
                         }
                     }
                 }
+            }
+
+            .set-price-area {
+                padding-top: 260px;
+                text-align: center;
             }
         }
     }
