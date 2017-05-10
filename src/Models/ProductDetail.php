@@ -28,4 +28,12 @@ class ProductDetail extends Model
      * @var string
      */
     protected $table = 'mall_product_details';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function product()
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
 }
