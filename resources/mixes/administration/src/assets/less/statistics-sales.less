@@ -17,18 +17,54 @@
     .ivu-table:after {
         width: 0;
     }
+
+    .information-content {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        > div {
+            width: 20%;
+            border-right: 1px dashed #ddd;
+            padding: 4px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &:last-child {
+                border-right: 0;
+            }
+            .title {
+                font-weight: bold;
+            }
+            .price {
+                i {
+                    color: #3399ff;
+                    font-size: 20px;
+                    font-style: normal;
+                }
+            }
+        }
+    }
+    .order-information-content {
+        display: flex;
+        align-items: center;
+        justify-content: inherit;
+    }
     .analysis-content {
         .ivu-tabs-nav-scroll {
             padding-left: 0;
             overflow: visible;
         }
-        > h5 {
-            height: 40px;
-            line-height: 40px;
-            background-color: #f5f7f9;
-            padding: 0 20px;
-            font-size: 14px;
-            margin: 20px 0;
+        .select-order-content {
+            position: relative;
+            .select-content {
+                position: absolute;
+                right: 20px;
+            }
+        }
+        .export-btn {
+            margin: 10px 0;
         }
         .order-money-content {
             min-height: 600px;
@@ -40,39 +76,7 @@
                 font-weight: bold;
                 margin: 10px 0;
             }
-            .information-content {
-                padding-top: 20px;
-                padding-bottom: 12px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                > div {
-                    width: 20%;
-                    border-right: 1px dashed #ddd;
-                    padding: 4px 20px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    &:last-child {
-                        border-right: 0;
-                    }
-                    .title {
-                        font-weight: bold;
-                    }
-                    .price {
-                        i {
-                            color: #3399ff;
-                            font-size: 20px;
-                            font-style: normal;
-                        }
-                    }
-                }
-            }
-            .order-information-content {
-                display: flex;
-                align-items: center;
-                justify-content: inherit;
-            }
+
             .select-content {
                 display: flex;
                 justify-content: space-between;

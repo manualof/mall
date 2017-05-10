@@ -9,51 +9,6 @@
         data() {
             return {
                 applicationWord: '',
-                isPriceArea: false,
-                provinceColumns: [
-                    {
-                        title: '序号',
-                        key: 'num',
-                    },
-                    {
-                        title: '省份',
-                        key: 'province',
-                    },
-                    {
-                        title: '该地区店铺数量',
-                        key: 'shopNum',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                provinceData: [
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                ],
                 shopsColumns: [
                     {
                         title: '店铺名称',
@@ -106,108 +61,64 @@
                         shopMoney: '100.00',
                     },
                 ],
-                sortColumns: [
+                orderColumns: [
                     {
-                        title: '序号',
-                        key: 'num',
+                        title: '订单编号',
+                        key: 'orderNum',
+                    },
+                    {
+                        title: '买家名称',
+                        key: 'buyer',
                     },
                     {
                         title: '店铺名称',
                         key: 'shopName',
                     },
                     {
-                        title: '下单金额',
-                        key: 'amount',
+                        title: '下单时间',
+                        key: 'orderTime',
                     },
                     {
-                        title: '升降幅度',
-                        key: 'rate',
+                        title: '订单总额（元）',
+                        key: 'account',
                     },
                     {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
+                        title: '订单状态',
+                        key: 'status',
                     },
                 ],
-                sortData: [
+                orderData: [
                     {
-                        num: 333,
-                        shopName: 4,
-                        amount: 22,
-                        rate: '',
+                        orderNum: 111111111,
+                        buyer: 111,
+                        shopName: '店铺111',
+                        orderTime: '2017-2-2',
+                        account: '99.00',
+                        status: '已完成',
                     },
                     {
-                        num: 333,
-                        shopName: 4,
-                        amount: 22,
-                        rate: '',
+                        orderNum: 111111111,
+                        buyer: 111,
+                        shopName: '店铺111',
+                        orderTime: '2017-2-2',
+                        account: '99.00',
+                        status: '已完成',
                     },
                     {
-                        num: 333,
-                        shopName: 4,
-                        amount: 22,
-                        rate: '',
+                        orderNum: 111111111,
+                        buyer: 111,
+                        shopName: '店铺111',
+                        orderTime: '2017-2-2',
+                        account: '99.00',
+                        status: '已完成',
                     },
                     {
-                        num: 333,
-                        shopName: 4,
-                        amount: 22,
-                        rate: '',
-                    },
-                ],
-                salesColumns: [
-                    {
-                        title: '店铺名称',
-                        key: 'shopName',
-                    },
-                    {
-                        title: '下单会员数',
-                        key: 'memberNum',
-                    },
-                    {
-                        title: '下单量',
-                        key: 'amount',
-                    },
-                    {
-                        title: '下单金额（元）',
-                        key: 'money',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                salesData: [
-                    {
-                        shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
-                        amount: 20,
-                    },
-                    {
-                        shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
-                        amount: 20,
-                    },
-                    {
-                        shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
-                        amount: 20,
-                    },
-                    {
-                        shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
-                        amount: 20,
+                        orderNum: 111111111,
+                        buyer: 111,
+                        shopName: '店铺111',
+                        orderTime: '2017-2-2',
+                        account: '99.00',
+                        status: '已完成',
                     },
                 ],
                 goodsList: [
@@ -282,9 +193,9 @@
                     filename: '收入统计数据',
                 });
             },
-            exportProvinceData() {
-                this.$refs.provinceList.exportCsv({
-                    filename: '地区分析数据',
+            exportOrderData() {
+                this.$refs.orderList.exportCsv({
+                    filename: '订单统计数据',
                 });
             },
         },
@@ -346,42 +257,47 @@
                                 前一个时间段的趋势对比</p>
                             <p>统计表显示了符合搜索条件的全部有效订单记录并可以点击“导出数据”将订单记录导出为Excel文件</p>
                         </div>
+                        <div class="information-content order-information-content">
+                            <div v-for="item in orderStatistics">
+                                <span class="title">{{ item.title }}</span>
+                                <span class="price"> <i>{{ item.price }}</i> 元</span>
+                            </div>
+                        </div>
                         <div class="analysis-content">
                             <tabs type="card">
                                 <tab-pane label="下单量">
                                     <div class="order-money-content">
-                                        <div class="information-content order-information-content">
-                                            <div v-for="item in orderStatistics">
-                                                <span class="title">{{ item.title }}</span>
-                                                <span class="price"> <i>{{ item.price }}</i> 元</span>
+                                        <div class="select-order-content">
+                                            <div class="select-content">
+                                                <ul>
+                                                    <li>
+                                                        商品分类
+                                                        <i-select v-model="model2" style="width:124px">
+                                                            <i-option v-for="item in goodsList" :value="item.value"
+                                                                      :key="item">{{ item.label }}</i-option>
+                                                        </i-select>
+                                                    </li>
+                                                    <li>
+                                                        时间周期
+                                                        <i-select v-model="model2" style="width:124px">
+                                                            <i-option v-for="item in timeList" :value="item.value"
+                                                                      :key="item">{{ item.label }}</i-option>
+                                                        </i-select>
+                                                    </li>
+                                                    <li>
+                                                        <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                    </li>
+                                                </ul>
                                             </div>
+                                            <div style="height: 250px"></div>
                                         </div>
-                                        <div class="select-content">
-                                            <ul>
-                                                <li>
-                                                    商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    时间周期
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in timeList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!--<i-table :columns="orderColumns" :context="self"
+                                        <i-button type="ghost" class="export-btn "
+                                                  @click="exportOrderData">导出数据</i-button>
+                                        <i-table :columns="orderColumns" :context="self"
                                                  :data="orderData" ref="orderList"></i-table>
                                         <div class="page">
                                             <page :total="100" show-elevator></page>
-                                        </div>-->
+                                        </div>
                                     </div>
                                 </tab-pane>
                                 <tab-pane label="下单金额">标签二的内容</tab-pane>
