@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
+use Notadd\Member\Models\Member;
 
 /**
  * Class OrderProcess.
@@ -28,4 +29,20 @@ class OrderProcess extends Model
      * @var string
      */
     protected $table = 'mall_order_processes';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function order()
+    {
+        return $this->hasOne(Order::class, 'id', 'order_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne(Member::class, 'id', 'user_id');
+    }
 }
