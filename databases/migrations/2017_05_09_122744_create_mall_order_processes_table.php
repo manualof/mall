@@ -22,6 +22,9 @@ class CreateMallOrderProcessesTable extends Migration
     {
         $this->schema->create('mall_order_processes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('order_id');
+            $table->enum('status', ['payment', 'delivery', 'receive', 'done', 'canceled'])->default('payment');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

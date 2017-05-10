@@ -19,6 +19,9 @@ class OrderProcess extends Model
      * @var array
      */
     protected $fillable = [
+        'order_id',
+        'status',
+        'user_id',
     ];
 
     /**
