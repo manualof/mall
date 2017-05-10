@@ -8,7 +8,6 @@
         },
         data() {
             return {
-                applicationWord: '',
                 isPriceArea: false,
                 provinceColumns: [
                     {
@@ -405,11 +404,6 @@
                                         </li>
                                         <li>
                                             <date-picker type="date" placeholder="选择日期"></date-picker>
-                                        </li>
-                                        <li class="store-body-header-right">
-                                            <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-button slot="append" type="primary">搜索</i-button>
-                                            </i-input>
                                         </li>
                                     </ul>
                                 </div>

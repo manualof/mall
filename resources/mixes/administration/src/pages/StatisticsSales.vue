@@ -262,6 +262,16 @@
                         price: '4444',
                     },
                 ],
+                orderStatistics: [
+                    {
+                        title: '总销售额',
+                        price: '4444',
+                    },
+                    {
+                        title: '总订单量',
+                        price: '4444',
+                    },
+                ],
                 self: this,
                 loading: false,
             };
@@ -328,39 +338,54 @@
                 </tab-pane>
                 <tab-pane label="订单统计" name="name2">
                     <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>符合以下任何一种条件的订单即为有效订单：1、采用在线支付方式支付并且已付款；
+                                2、采用货到付款方式支付并且交易已完成</p>
+                            <p>统计图展示了符合搜索条件的有效订单中的下单总金额和下单数量在时间段内的走势情况及与
+                                前一个时间段的趋势对比</p>
+                            <p>统计表显示了符合搜索条件的全部有效订单记录并可以点击“导出数据”将订单记录导出为Excel文件</p>
+                        </div>
                         <div class="analysis-content">
-                            <div class="order-money-content">
-                                <div class="select-content">
-                                    <ul>
-                                        <li>
-                                            商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            时间周期
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in timeList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            <date-picker type="date" placeholder="选择日期"></date-picker>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div style="height: 350px">
-
-                                </div>
-                                <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
-                                <i-table :columns="shopColumns" :context="self"
-                                         :data="shopData" ref="shopList"></i-table>
-                                <div class="page">
-                                    <page :total="100" show-elevator></page>
-                                </div>
-                            </div>
+                            <tabs type="card">
+                                <tab-pane label="下单量">
+                                    <div class="order-money-content">
+                                        <div class="information-content order-information-content">
+                                            <div v-for="item in orderStatistics">
+                                                <span class="title">{{ item.title }}</span>
+                                                <span class="price"> <i>{{ item.price }}</i> 元</span>
+                                            </div>
+                                        </div>
+                                        <div class="select-content">
+                                            <ul>
+                                                <li>
+                                                    商品分类
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in goodsList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    时间周期
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in timeList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--<i-table :columns="orderColumns" :context="self"
+                                                 :data="orderData" ref="orderList"></i-table>
+                                        <div class="page">
+                                            <page :total="100" show-elevator></page>
+                                        </div>-->
+                                    </div>
+                                </tab-pane>
+                                <tab-pane label="下单金额">标签二的内容</tab-pane>
+                            </tabs>
                         </div>
                     </card>
                 </tab-pane>
