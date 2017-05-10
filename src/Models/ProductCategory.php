@@ -32,4 +32,12 @@ class ProductCategory extends Model
      * @var string
      */
     protected $table = 'mall_product_categories';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function parent()
+    {
+        return $this->hasOne(ProductCategory::class, 'id', 'category_id');
+    }
 }
