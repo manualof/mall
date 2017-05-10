@@ -31,4 +31,12 @@ class ProductBrand extends Model
      * @var string
      */
     protected $table = 'mall_product_brands';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function category()
+    {
+        return $this->hasOne(ProductCategory::class, 'id', 'category_id');
+    }
 }
