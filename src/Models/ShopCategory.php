@@ -19,6 +19,10 @@ class ShopCategory extends Model
      * @var array
      */
     protected $fillable = [
+        'amount_of_deposit',
+        'order',
+        'parent_id',
+        'name',
     ];
 
     /**

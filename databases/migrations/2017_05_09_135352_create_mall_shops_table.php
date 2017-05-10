@@ -22,6 +22,7 @@ class CreateMallShopsTable extends Migration
     {
         $this->schema->create('mall_shops', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('category_id')->default(0);
             $table->string('address')->nullable();
             $table->string('avatar')->nullable();
             $table->string('company')->nullable();

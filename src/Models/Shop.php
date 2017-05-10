@@ -21,6 +21,7 @@ class Shop extends Model
     protected $fillable = [
         'address',
         'avatar',
+        'category_id',
         'company',
         'end_at',
         'identification',
