@@ -1,7 +1,40 @@
 <script>
+    import iEcharts from 'vue-echarts-v3';
     import injection from '../helpers/injection';
 
     export default {
+        components: {
+            iEcharts,
+        },
+        data() {
+            return {
+                goodsList: [
+                    {
+                        value: '1',
+                        label: '商品1',
+                    },
+                    {
+                        value: '2',
+                        label: '商品2',
+                    },
+                ],
+                timeList: [
+                    {
+                        value: '1',
+                        label: '按照月统计',
+                    },
+                    {
+                        value: '2',
+                        label: '按照周统计',
+                    },
+                ],
+                self: this,
+                loading: false,
+            };
+        },
+        methods: {
+
+        },
         beforeRouteEnter(to, from, next) {
             next(() => {
                 injection.sidebar.active('mall');
@@ -10,5 +43,73 @@
     };
 </script>
 <template>
+    <div class="mall-wrap">
+        <div class="statistics-analysis">
+            <tabs value="name1">
+                <tab-pane label="概况总览" name="name1">
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>在“提示”下可以选择不同的商品分类和时间查询数据</p>
+                            <p>统计某行业子分类在不同时间段的下单金额、下单商品数、下单量，为分析行业销量提供依据</p>
+                        </div>
+                        <div class="analysis-content">
+                            <tabs type="card">
+                                <tab-pane label="下单金额">
+                                    <div class="order-money-content">
+                                        <div class="select-content">
+                                            <ul>
+                                                <li>
+                                                    商品分类
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in goodsList" :value="item.value"
+                                                                :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    时间周期
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in timeList" :value="item.value"
+                                                                :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
 
+                                        </div>
+                                    </div>
+                                </tab-pane>
+                                <tab-pane label="下单商品数">标签二的内容</tab-pane>
+                                <tab-pane label="下单量">标签三的内容</tab-pane>
+                            </tabs>
+                        </div>
+                    </card>
+                </tab-pane>
+                <tab-pane label="行业排行" name="name2">
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>在“提示”下可以选择不同的商品分类和时间查询数据</p>
+                            <p>统计某行业在不同时间段下单量前50名商品和前30名店铺</p>
+                        </div>
+                    </card>
+                </tab-pane>
+                <tab-pane label="价格分析" name="name3">
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>符合以下任何一种条件的订单即为有效订单：1、采用在线支付方式支付并且已付款；
+                                2、采用货到付款方式支付并且交易已完成</p>
+                            <p>点击“设置价格区间”进入设置价格区间页面，下方统计图将根据您设置的价格区间进行统计</p>
+                            <p>统计图展示符合搜索条件的有效订单中商品的单价所在价格区间中的总销售额和总下单商品数量走势</p>
+                        </div>
+                    </card>
+                </tab-pane>
+            </tabs>
+        </div>
+    </div>
 </template>
