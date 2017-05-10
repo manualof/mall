@@ -171,6 +171,9 @@
             };
         },
         methods: {
+            deleteArea(e) {
+                console.log(e);
+            },
             lookShop() {},
             lookGoods() {},
             priceSubmit() {
@@ -283,7 +286,7 @@
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="14">
-                                            <i-button type="ghost" @click.native="deleteArea" class="delete-color">刪除</i-button>
+                                            <i-button type="ghost" @click.native="deleteArea($event)" class="delete-color">刪除</i-button>
                                         </i-col>
                                     </row>
                                     <row>
