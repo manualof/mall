@@ -19,10 +19,15 @@ class OrderExpress extends Model
      * @var array
      */
     protected $fillable = [
+        'address_id',
+        'courier_number',
+        'express_company',
+        'order_id',
+        'user_id',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_order_rates';
+    protected $table = 'mall_order_expresses';
 }

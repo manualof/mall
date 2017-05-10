@@ -22,6 +22,11 @@ class CreateMallOrderExpressesTable extends Migration
     {
         $this->schema->create('mall_order_expresses', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('address_id');
+            $table->integer('courier_number');
+            $table->string('express_company');
+            $table->integer('order_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
