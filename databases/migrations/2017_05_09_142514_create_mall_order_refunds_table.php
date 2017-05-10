@@ -33,7 +33,6 @@ class CreateMallOrderRefundsTable extends Migration
             $table->string('remark')->nullable();
             $table->json('response');
             $table->integer('user_id');
-            $table->integer('shop_id');
             $table->timestamps();
         });
     }
