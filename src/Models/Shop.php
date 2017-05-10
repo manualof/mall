@@ -37,4 +37,12 @@ class Shop extends Model
      * @var string
      */
     protected $table = 'mall_shops';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function category()
+    {
+        return $this->hasOne(ShopCategory::class, 'id', 'category_id');
+    }
 }
