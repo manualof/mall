@@ -22,7 +22,13 @@ class CreateMallOrderInvoicesTable extends Migration
     {
         $this->schema->create('mall_order_invoices', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('content')->nullable();
+            $table->integer('order_id');
+            $table->string('title');
+            $table->enum('type', ['normal', 'vat'])->default('normal');
+            $table->integer('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -22,7 +22,12 @@ class CreateMallShopCategoriesTable extends Migration
     {
         $this->schema->create('mall_shop_categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('amount_of_deposit')->default(0);
+            $table->tinyInteger('order')->default(0);
+            $table->integer('parent_id')->default(0);
+            $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

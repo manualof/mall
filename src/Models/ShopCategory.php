@@ -19,10 +19,22 @@ class ShopCategory extends Model
      * @var array
      */
     protected $fillable = [
+        'amount_of_deposit',
+        'order',
+        'parent_id',
+        'name',
     ];
 
     /**
      * @var string
      */
     protected $table = 'mall_shop_categories';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function parent()
+    {
+        return $this->hasOne(ShopCategory::class, 'id', 'parent_id');
+    }
 }

@@ -2,16 +2,16 @@
 /**
  * This file is part of Notadd.
  *
- * @datetime 2017-05-09 12:31:57
+ * @datetime 2017-05-09 13:55:59
  */
 
 use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
 /**
- * Class CreateMallOrderRatesTable.
+ * Class CreateMallShopDynamicsTable.
  */
-class CreateMallOrderRatesTable extends Migration
+class CreateMallShopDynamicsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,13 +20,15 @@ class CreateMallOrderRatesTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('mall_order_rates', function (Blueprint $table) {
+        $this->schema->create('mall_shop_dynamics', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('comment')->nullable();
-            $table->integer('order_id');
-            $table->tinyInteger('rate')->default(0);
+            $table->text('content')->nullable();
+            $table->integer('shop_id');
+            $table->tinyInteger('show')->default(0);
+            $table->string('title');
             $table->integer('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -37,6 +39,6 @@ class CreateMallOrderRatesTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('mall_order_rates');
+        $this->schema->drop('mall_shop_dynamics');
     }
 }

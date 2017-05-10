@@ -2,16 +2,16 @@
 /**
  * This file is part of Notadd.
  *
- * @datetime 2017-04-25 16:20:33
+ * @datetime 2017-05-09 14:01:48
  */
 
 use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
 /**
- * Class CreateMallProductDetailsTable.
+ * Class CreateMallProductSpecificationsTable.
  */
-class CreateMallProductDetailsTable extends Migration
+class CreateMallProductSpecificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,12 +20,10 @@ class CreateMallProductDetailsTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('mall_product_details', function (Blueprint $table) {
+        $this->schema->create('mall_product_specifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('content_pc')->nullable();
-            $table->text('content_mobile')->nullable();
-            $table->integer('product_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -36,6 +34,6 @@ class CreateMallProductDetailsTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('mall_product_details');
+        $this->schema->drop('mall_product_specifications');
     }
 }

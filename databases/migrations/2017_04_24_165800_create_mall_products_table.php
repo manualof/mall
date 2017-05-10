@@ -30,6 +30,7 @@ class CreateMallProductsTable extends Migration
             $table->string('weight')->nullable();
             $table->string('size');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

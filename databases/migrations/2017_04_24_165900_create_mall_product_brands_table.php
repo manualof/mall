@@ -2,15 +2,16 @@
 /**
  * This file is part of Notadd.
  *
- * @datetime 2017-04-24 17:11:52
+ * @datetime 2017-05-09 18:16:54
  */
+
 use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
 /**
- * Class CreateMallCategoriesTable.
+ * Class CreateMallProductBrandsTable.
  */
-class CreateMallProductCategoriesTable extends Migration
+class CreateMallProductBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,15 +20,16 @@ class CreateMallProductCategoriesTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('mall_product_categories', function (Blueprint $table) {
+        $this->schema->create('mall_product_brands', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('commission')->default(0);
-            $table->tinyInteger('commission_inherit')->default(0);
-            $table->string('identification');
+            $table->integer('category_id');
+            $table->string('logo')->nullable();
             $table->string('name');
-            $table->integer('parent_id')->default(0);
             $table->tinyInteger('order')->default(0);
+            $table->tinyInteger('recommend')->default(0);
+            $table->enum('show', ['image', 'text'])->default('text');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -38,6 +40,6 @@ class CreateMallProductCategoriesTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('mall_product_categories');
+        $this->schema->drop('mall_product_brands');
     }
 }

@@ -22,7 +22,20 @@ class CreateMallShopsTable extends Migration
     {
         $this->schema->create('mall_shops', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('category_id')->default(0);
+            $table->string('address')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('company')->nullable();
+            $table->timestamp('end_at')->nullable();
+            $table->string('identification');
+            $table->tinyInteger('level')->default(0);
+            $table->string('location')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('name');
+            $table->timestamp('open_at')->nullable();
+            $table->enum('status', ['review', 'opening', 'closed', 'banned'])->default('review');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

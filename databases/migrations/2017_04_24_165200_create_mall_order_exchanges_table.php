@@ -22,7 +22,18 @@ class CreateMallOrderExchangesTable extends Migration
     {
         $this->schema->create('mall_order_exchanges', function (Blueprint $table) {
             $table->increments('id');
+            $table->float('amount')->default(0.00);
+            $table->string('address_for_take');
+            $table->string('address_for_exchange');
+            $table->integer('express_id_for_receive');
+            $table->integer('express_id_for_exchange');
+            $table->integer('order_id');
+            $table->json('reason');
+            $table->string('remark')->nullable();
+            $table->json('response');
+            $table->integer('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
