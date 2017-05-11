@@ -4,7 +4,6 @@
     export default {
         data() {
             return {
-                isPriceArea: false,
                 orderColumns: [
                     {
                         title: '序号',
@@ -43,12 +42,20 @@
                 ],
                 salesColumns: [
                     {
+                        title: '商品名称',
+                        key: 'goodName',
+                    },
+                    {
                         title: '店铺名称',
                         key: 'shopName',
                     },
                     {
-                        title: '下单会员数',
-                        key: 'memberNum',
+                        title: 'SPU',
+                        key: 'spu',
+                    },
+                    {
+                        title: '下单商品件数',
+                        key: 'amountNum',
                     },
                     {
                         title: '下单量',
@@ -69,28 +76,36 @@
                 ],
                 salesData: [
                     {
+                        goodName: '洗护套装买二送一',
                         shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
+                        spu: 4,
+                        amountNum: 222,
                         amount: 20,
+                        money: 444,
                     },
                     {
+                        goodName: '洗护套装买二送一',
                         shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
+                        spu: 4,
+                        amountNum: 222,
                         amount: 20,
+                        money: 444,
                     },
                     {
+                        goodName: '洗护套装买二送一',
                         shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
+                        spu: 4,
+                        amountNum: 222,
                         amount: 20,
+                        money: 444,
                     },
                     {
+                        goodName: '洗护套装买二送一',
                         shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
+                        spu: 4,
+                        amountNum: 222,
                         amount: 20,
+                        money: 444,
                     },
                 ],
                 goodsList: [
@@ -128,19 +143,9 @@
             };
         },
         methods: {
-            exportData() {
-                this.$refs.shopList.exportCsv({
-                    filename: '新增店铺数据',
-                });
-            },
             exportSalesData() {
                 this.$refs.salesList.exportCsv({
-                    filename: '销售统计数据',
-                });
-            },
-            exportProvinceData() {
-                this.$refs.provinceList.exportCsv({
-                    filename: '地区分析数据',
+                    filename: '商品销售明细数据',
                 });
             },
         },
@@ -201,8 +206,7 @@
                             <p>提示</p>
                             <p>符合以下任何一种条件的订单即为有效订单：1、采用在线支付方式支付并且已付款；
                                 2、采用货到付款方式支付并且交易已完成</p>
-                            <p>"店铺热卖TOP榜"展示了时间段内店铺有效订单的订单数量和订单总金额高的前15名店铺</p>
-                            <p>"店铺热卖飙升榜"展示了时间段内店铺有效订单的订单数量和订单总金额增长率高的前15名店铺</p>
+                            <p>图表展示了符合搜索条件的有效订单中的下单总金额和下单量排名前50位的商品</p>
                         </div>
                         <div class="analysis-content">
                             <tabs type="card">
@@ -250,10 +254,8 @@
                             <p>提示</p>
                             <p>符合以下任何一种条件的订单即为有效订单：1、采用在线支付方式支付并且已付款；
                                 2、采用货到付款方式支付并且交易已完成</p>
-                            <p>点击“设置价格区间”进入设置价格区间页面，下方统计图将根据您设置的价格区间进行统计</p>
-                            <p>列表展示了店铺在搜索时间段内的有效订单总金额、订单量和下单会员数，并可以点击列表上方的"导出数据"
-                                将列表数据导出为Excel文件</p>
-                            <p>默认按照"下单会员数"降序排列</p>
+                            <p>以下列表为符合搜索条件的有效订单中所有商品数据，及时间段内的销量、下单量、下单总金额</p>
+                            <p>默认按照"下单商品件数"降序排列</p>
                         </div>
                         <div class="analysis-content">
                             <div class="order-money-content">
@@ -277,6 +279,11 @@
                                         </li>
                                         <li>
                                             <date-picker type="date" placeholder="选择日期"></date-picker>
+                                        </li>
+                                        <li class="store-body-header-right">
+                                            <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
+                                                <i-button slot="append" type="primary">搜索</i-button>
+                                            </i-input>
                                         </li>
                                     </ul>
                                 </div>
