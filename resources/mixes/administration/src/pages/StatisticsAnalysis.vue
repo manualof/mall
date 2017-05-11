@@ -112,13 +112,55 @@
                         value: '2',
                         label: '按照周统计',
                     },
+                    {
+                        value: '3',
+                        label: '按照天统计',
+                    },
                 ],
                 self: this,
-                loading: false,
+                orderBar: {
+                    legend: {
+                        data: ['昨天', '今天'],
+                        bottom: 'auto',
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true,
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                    series: [
+                        {
+                            name: '今天',
+                            type: 'line',
+                            stack: '下单金额',
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                        },
+                        {
+                            name: '昨天',
+                            type: 'line',
+                            stack: '下单金额',
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                        },
+                    ],
+                },
             };
         },
         methods: {
-
+            onReady(instance) {
+                console.log(instance);
+            },
         },
         beforeRouteEnter(to, from, next) {
             next(() => {
@@ -163,9 +205,9 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div>
-
-                                        </div>
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="orderBar" @ready="onReady" @click="onClick"></i-echarts>
                                     </div>
                                 </tab-pane>
                                 <tab-pane label="下单商品数">标签二的内容</tab-pane>
@@ -205,13 +247,13 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div style="height: 350px">
-
-                                </div>
-                                <i-table :columns="goodsColumns" :context="self" :data="goodsData"></i-table>
-                                <div class="page">
-                                    <page :total="100" show-elevator></page>
-                                </div>
+                            </div>
+                            <div class="echarts">
+                                <i-echarts :option="orderBar" @ready="onReady" @click="onClick"></i-echarts>
+                            </div>
+                            <i-table :columns="goodsColumns" :context="self" :data="goodsData"></i-table>
+                            <div class="page">
+                                <page :total="100" show-elevator></page>
                             </div>
                             <h5 v-if="!isPriceArea">行业店铺TOP50</h5>
                             <div class="order-money-content">
@@ -236,13 +278,13 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div style="height: 350px">
-
-                                </div>
-                                <i-table :columns="shopsColumns" :context="self" :data="shopsData"></i-table>
-                                <div class="page">
-                                    <page :total="100" show-elevator></page>
-                                </div>
+                            </div>
+                            <div class="echarts">
+                                <i-echarts :option="orderBar" @ready="onReady" @click="onClick"></i-echarts>
+                            </div>
+                            <i-table :columns="shopsColumns" :context="self" :data="shopsData"></i-table>
+                            <div class="page">
+                                <page :total="100" show-elevator></page>
                             </div>
                         </div>
                     </card>
@@ -285,6 +327,10 @@
                                 <div v-if="isPriceArea" class="set-price-area">
                                     <p>看行业价格分布情况前，请先设置价格区间</p>
                                 </div>
+                            </div>
+
+                            <div class="echarts">
+                                <i-echarts :option="orderBar" @ready="onReady" @click="onClick"></i-echarts>
                             </div>
                         </div>
                     </card>
