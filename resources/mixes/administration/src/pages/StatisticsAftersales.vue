@@ -4,119 +4,30 @@
     export default {
         data() {
             return {
-                isPriceArea: false,
-                provinceColumns: [
+                refundColumns: [
                     {
-                        title: '序号',
-                        key: 'num',
+                        title: '订单编号',
+                        key: 'orderNum',
                     },
                     {
-                        title: '省份',
-                        key: 'province',
-                    },
-                    {
-                        title: '该地区店铺数量',
-                        key: 'shopNum',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                provinceData: [
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                ],
-                shopColumns: [
-                    {
-                        title: '日期',
-                        key: 'data',
-                    },
-                    {
-                        title: '上月',
-                        key: 'lastMonth',
-                    },
-                    {
-                        title: '本月',
-                        key: 'month',
-                    },
-                    {
-                        title: '同比',
-                        key: 'rate',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                shopData: [
-                    {
-                        data: 1,
-                        lastMonth: 0,
-                        month: 2,
-                        rate: 2,
-                    },
-                    {
-                        data: 1,
-                        lastMonth: 0,
-                        month: 2,
-                        rate: 2,
-                    },
-                    {
-                        data: 1,
-                        lastMonth: 0,
-                        month: 2,
-                        rate: 2,
-                    },
-                    {
-                        data: 1,
-                        lastMonth: 0,
-                        month: 2,
-                        rate: 2,
-                    },
-                ],
-                sortColumns: [
-                    {
-                        title: '序号',
-                        key: 'num',
+                        title: '退款编号',
+                        key: 'refundNum',
                     },
                     {
                         title: '店铺名称',
                         key: 'shopName',
                     },
                     {
-                        title: '下单金额',
-                        key: 'amount',
+                        title: '商品名称',
+                        key: 'goodName',
                     },
                     {
-                        title: '升降幅度',
-                        key: 'rate',
+                        title: '申请时间',
+                        key: 'time',
+                    },
+                    {
+                        title: '退款金额',
+                        key: 'refundMoney',
                     },
                     {
                         title: '操作',
@@ -127,48 +38,64 @@
                         },
                     },
                 ],
-                sortData: [
+                refundData: [
                     {
-                        num: 333,
-                        shopName: 4,
-                        amount: 22,
-                        rate: '',
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
                     },
                     {
-                        num: 333,
-                        shopName: 4,
-                        amount: 22,
-                        rate: '',
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
                     },
                     {
-                        num: 333,
-                        shopName: 4,
-                        amount: 22,
-                        rate: '',
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
                     },
                     {
-                        num: 333,
-                        shopName: 4,
-                        amount: 22,
-                        rate: '',
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
                     },
                 ],
-                salesColumns: [
+                goodsColumns: [
+                    {
+                        title: '订单编号',
+                        key: 'orderNum',
+                    },
+                    {
+                        title: '退款编号',
+                        key: 'refundNum',
+                    },
                     {
                         title: '店铺名称',
                         key: 'shopName',
                     },
                     {
-                        title: '下单会员数',
-                        key: 'memberNum',
+                        title: '商品名称',
+                        key: 'goodName',
                     },
                     {
-                        title: '下单量',
-                        key: 'amount',
+                        title: '申请时间',
+                        key: 'time',
                     },
                     {
-                        title: '下单金额（元）',
-                        key: 'money',
+                        title: '退款金额',
+                        key: 'refundMoney',
                     },
                     {
                         title: '操作',
@@ -179,30 +106,38 @@
                         },
                     },
                 ],
-                salesData: [
+                goodsData: [
                     {
-                        shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
-                        amount: 20,
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
                     },
                     {
-                        shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
-                        amount: 20,
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
                     },
                     {
-                        shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
-                        amount: 20,
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
                     },
                     {
-                        shopName: 'shop',
-                        memberNum: 4,
-                        money: 222,
-                        amount: 20,
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
                     },
                 ],
                 goodsList: [
@@ -241,18 +176,13 @@
         },
         methods: {
             exportData() {
-                this.$refs.shopList.exportCsv({
+                this.$refs.refundList.exportCsv({
                     filename: '新增店铺数据',
                 });
             },
-            exportSalesData() {
-                this.$refs.salesList.exportCsv({
-                    filename: '销售统计数据',
-                });
-            },
-            exportProvinceData() {
-                this.$refs.provinceList.exportCsv({
-                    filename: '地区分析数据',
+            exportGoodsData() {
+                this.$refs.goodsList.exportCsv({
+                    filename: '退货统计数据',
                 });
             },
         },
@@ -271,22 +201,14 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>统计图展示了时间段内新增会员数的走势和与前一时间段的对比</p>
-                            <p>统计表展示了时间段内新增会员数值和与前一时间段的同比数值，点击每条记录后的"查看"，
-                                了解新增会员的详细信息</p>
-                            <p>点击列表上方的“导出数据”，将列表数据导出为Excel文件</p>
+                            <p>统计图展现了时间段内退款金额的走势情况</p>
+                            <p>统计图列表展现了时间段内退款记录的详细信息，并可以点击列表上方的"导出数据"
+                                将列表数据导出为Excel文件</p>
                         </div>
                         <div class="analysis-content">
                             <div class="order-money-content">
                                 <div class="select-content">
                                     <ul>
-                                        <li>
-                                            商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
                                         <li>
                                             时间周期
                                             <i-select v-model="model2" style="width:124px">
@@ -303,8 +225,8 @@
 
                                 </div>
                                 <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
-                                <i-table :columns="shopColumns" :context="self"
-                                         :data="shopData" ref="shopList"></i-table>
+                                <i-table :columns="refundColumns" :context="self"
+                                         :data="refundData" ref="refundList"></i-table>
                                 <div class="page">
                                     <page :total="100" show-elevator></page>
                                 </div>
@@ -326,13 +248,6 @@
                                 <div class="select-content">
                                     <ul>
                                         <li>
-                                            商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
                                             时间周期
                                             <i-select v-model="model2" style="width:124px">
                                                 <i-option v-for="item in timeList" :value="item.value"
@@ -347,9 +262,9 @@
                                 <div style="height: 350px">
 
                                 </div>
-                                <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
-                                <i-table :columns="shopColumns" :context="self"
-                                         :data="shopData" ref="shopList"></i-table>
+                                <i-button type="ghost" class="export-btn" @click="exportGoodsData">导出数据</i-button>
+                                <i-table :columns="goodsColumns" :context="self"
+                                         :data="goodsData" ref="goodsList"></i-table>
                                 <div class="page">
                                     <page :total="100" show-elevator></page>
                                 </div>
