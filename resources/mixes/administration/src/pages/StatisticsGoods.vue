@@ -5,152 +5,40 @@
         data() {
             return {
                 isPriceArea: false,
-                provinceColumns: [
+                orderColumns: [
                     {
                         title: '序号',
                         key: 'num',
                     },
                     {
-                        title: '省份',
-                        key: 'province',
+                        title: '商品名称',
+                        key: 'goodName',
                     },
                     {
-                        title: '该地区店铺数量',
-                        key: 'shopNum',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                provinceData: [
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                    {
-                        province: '陕西',
-                        num: 4,
-                        shopNum: 222,
-                    },
-                ],
-                shopColumns: [
-                    {
-                        title: '日期',
-                        key: 'data',
-                    },
-                    {
-                        title: '上月',
-                        key: 'lastMonth',
-                    },
-                    {
-                        title: '本月',
-                        key: 'month',
-                    },
-                    {
-                        title: '同比',
-                        key: 'rate',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                shopData: [
-                    {
-                        data: 1,
-                        lastMonth: 0,
-                        month: 2,
-                        rate: 2,
-                    },
-                    {
-                        data: 1,
-                        lastMonth: 0,
-                        month: 2,
-                        rate: 2,
-                    },
-                    {
-                        data: 1,
-                        lastMonth: 0,
-                        month: 2,
-                        rate: 2,
-                    },
-                    {
-                        data: 1,
-                        lastMonth: 0,
-                        month: 2,
-                        rate: 2,
-                    },
-                ],
-                sortColumns: [
-                    {
-                        title: '序号',
-                        key: 'num',
-                    },
-                    {
-                        title: '店铺名称',
-                        key: 'shopName',
-                    },
-                    {
-                        title: '下单金额',
+                        title: '下单金额(元)',
                         key: 'amount',
                     },
-                    {
-                        title: '升降幅度',
-                        key: 'rate',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
                 ],
-                sortData: [
+                orderData: [
                     {
                         num: 333,
-                        shopName: 4,
+                        goodName: 4,
                         amount: 22,
-                        rate: '',
                     },
                     {
                         num: 333,
-                        shopName: 4,
+                        goodName: 4,
                         amount: 22,
-                        rate: '',
                     },
                     {
                         num: 333,
-                        shopName: 4,
+                        goodName: 4,
                         amount: 22,
-                        rate: '',
                     },
                     {
                         num: 333,
-                        shopName: 4,
+                        goodName: 4,
                         amount: 22,
-                        rate: '',
                     },
                 ],
                 salesColumns: [
@@ -271,14 +159,15 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>统计图展示了时间段内新增会员数的走势和与前一时间段的对比</p>
-                            <p>统计表展示了时间段内新增会员数值和与前一时间段的同比数值，点击每条记录后的"查看"，
-                                了解新增会员的详细信息</p>
-                            <p>点击列表上方的“导出数据”，将列表数据导出为Excel文件</p>
+                            <p>符合以下任何一种条件的订单即为有效订单：1、采用在线支付方式支付并且已付款；
+                                2、采用货到付款方式支付并且交易已完成</p>
+                            <p>点击"设置价格区间"进入设置价格区间页面，下方统计图将根据您设置的价格区间进行统计</p>
+                            <p>统计图展示了符合搜索条件的有效订单中的商品单价，在所设置的价格区间的分布情况</p>
                         </div>
                         <div class="analysis-content">
                             <div class="order-money-content">
                                 <div class="select-content">
+                                    <i-button type="ghost" class="export-btn">设置价格区间</i-button>
                                     <ul>
                                         <li>
                                             商品分类
@@ -302,12 +191,6 @@
                                 <div style="height: 350px">
 
                                 </div>
-                                <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
-                                <i-table :columns="shopColumns" :context="self"
-                                         :data="shopData" ref="shopList"></i-table>
-                                <div class="page">
-                                    <page :total="100" show-elevator></page>
-                                </div>
                             </div>
                         </div>
                     </card>
@@ -325,7 +208,7 @@
                             <tabs type="card">
                                 <tab-pane label="下单量">
                                     <div class="order-money-content">
-                                        <div class="select-content">
+                                        <div class="select-content hot-sales-goods">
                                             <ul>
                                                 <li>
                                                     商品分类
@@ -346,18 +229,10 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                        <div style="height: 250px"></div>
                                         <div class="order-module-content">
-                                            <p>店铺热卖TOP榜</p>
-                                            <i-table :columns="sortColumns" :context="self"
-                                                     :data="sortData" ref="sortList"></i-table>
-                                            <div class="page">
-                                                <page :total="100" show-elevator></page>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p>店铺热卖飙升榜</p>
-                                            <i-table :columns="sortColumns" :context="self"
-                                                     :data="sortData" ref="sortList"></i-table>
+                                            <i-table :columns="orderColumns" :context="self"
+                                                     :data="orderData" ref="orderList"></i-table>
                                             <div class="page">
                                                 <page :total="100" show-elevator></page>
                                             </div>
@@ -383,6 +258,8 @@
                         <div class="analysis-content">
                             <div class="order-money-content">
                                 <div class="select-content">
+                                    <i-button type="ghost" class="export-btn export-sales-btn"
+                                              @click="exportSalesData">导出数据</i-button>
                                     <ul>
                                         <li>
                                             商品分类
@@ -403,8 +280,6 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <i-button type="ghost" class="export-btn export-sales-btn"
-                                          @click="exportSalesData">导出数据</i-button>
                                 <i-table :columns="salesColumns" :context="self"
                                          :data="salesData" ref="salesList"></i-table>
                                 <div class="page">
