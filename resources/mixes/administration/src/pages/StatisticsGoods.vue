@@ -1,11 +1,7 @@
 <script>
-    import iEcharts from 'vue-echarts-v3';
     import injection from '../helpers/injection';
 
     export default {
-        components: {
-            iEcharts,
-        },
         data() {
             return {
                 isPriceArea: false,
