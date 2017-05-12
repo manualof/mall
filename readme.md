@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/notadd/mall.svg?branch=master)](https://travis-ci.org/notadd/mall)
 ![Packagist](https://img.shields.io/packagist/v/notadd/mall.svg) 
 ![Downloads](https://img.shields.io/packagist/dt/notadd/mall.svg)
 
