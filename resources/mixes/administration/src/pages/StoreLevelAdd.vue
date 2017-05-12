@@ -16,16 +16,32 @@
                 },
                 ruleValidate: {
                     levelName: [
-                        { required: true, message: '等级名称不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '等级名称不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     charges: [
-                        { required: true, message: '收费标准不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '收费标准不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     apply: [
-                        { required: true, message: '申请说明不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '申请说明不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     level: [
-                        { required: true, message: '级别不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '级别不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
                 self: this,

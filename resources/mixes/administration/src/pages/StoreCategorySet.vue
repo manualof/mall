@@ -70,10 +70,18 @@
                 },
                 ruleValidate: {
                     name: [
-                        { required: true, message: '分类名称不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '分类名称不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     number: [
-                        { required: true, message: '保证金额数不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '保证金额数不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
             };

@@ -10,7 +10,5 @@
     };
 </script>
 <template>
-    <div>
-       促销满减
-    </div>
+
 </template>

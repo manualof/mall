@@ -10,10 +10,18 @@
                 },
                 ruleValidate: {
                     refundReason: [
-                        { required: true, message: '原因不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '原因不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     refundSort: [
-                        { required: true, message: '排序不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '排序不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
                 loading: false,

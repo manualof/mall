@@ -32,8 +32,9 @@
                         title: '是否推荐品牌',
                         key: 'isshow',
                         render(row) {
-                            return `<span v-if="${row.status} === true" class="status-check"><icon type="checkmark-circled"></icon>是</span>
-                                <span v-if="${row.status} === false"><icon type="close-circled"></icon>否</span>`;
+                            return `<span v-if="${row.status} === true" class="status-check">
+                                    <icon type="checkmark-circled"></icon>是</span>
+                                    <span v-if="${row.status} === false"><icon type="close-circled"></icon>否</span>`;
                         },
                     },
                     {

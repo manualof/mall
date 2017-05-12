@@ -8,7 +8,8 @@
                     settlementNum: '75 (原结算单号：20150115)',
                     startData: '2015-01-01  至  2015-01-31',
                     accountData: '2015-02-01',
-                    PayMoney: ' 0.00 = 0.00 (订单金额) - 0.00 (佣金金额) - 0.00 (退单金额) + 0.00 (退还佣金) - 0.00 (店铺促销费用)',
+                    PayMoney: ' 0.00 = 0.00 (订单金额) - 0.00 (佣金金额) - 0.00 (退单金额) + 0.00 (退还佣金) ' +
+                    '- 0.00 (店铺促销费用)',
                     settlementStatus: '已出帐',
                 },
                 payModal: {
@@ -19,7 +20,11 @@
                 },
                 payValidate: {
                     startDate: [
-                        { required: true, message: '日期不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '日期不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
                 typeColumns: [

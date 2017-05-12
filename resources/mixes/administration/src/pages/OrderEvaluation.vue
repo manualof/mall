@@ -43,7 +43,11 @@
                         width: 150,
                         align: 'center',
                         render() {
-                            return '<Icon type="star" style="color:#f7d55f;"></Icon><Icon type="star" style="color:#f7d55f;"></Icon><Icon type="star" style="color:#f7d55f;"></Icon><Icon type="star" style="color:#f7d55f;"></Icon><Icon type="star" style="color:#f7d55f;"></Icon>';
+                            return `<icon type="star" style="color:#f7d55f;"></icon>
+                                    <icon type="star" style="color:#f7d55f;"></icon>
+                                    <icon type="star" style="color:#f7d55f;"></icon>
+                                    <icon type="star" style="color:#f7d55f;"></icon>
+                                    <icon type="star" style="color:#f7d55f;"></icon>`;
                         },
                     },
                     {
@@ -58,7 +62,7 @@
                         width: 300,
                         align: 'center',
                         render() {
-                            return '<Icon type="image"></Icon>';
+                            return '<icon type="image"></icon>';
                         },
                     },
                     {

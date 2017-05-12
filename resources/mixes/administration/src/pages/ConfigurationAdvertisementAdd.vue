@@ -41,7 +41,7 @@
                         {
                             message: '广告位不能为空',
                             required: true,
-                            trigger: 'blur'
+                            trigger: 'blur',
                         },
                     ],
                     logo: [
@@ -133,8 +133,7 @@
                         <i-col span="12">
                             <form-item label="选择广告位">
                                 <i-select placeholder="请选择" v-model="addAdPosition.position">
-                                    <i-option v-for="item in position" :value="item.value" :key="item">{{ item.label
-                                        }}
+                                    <i-option v-for="item in position" :value="item.value" :key="item">{{ item.label}}
                                     </i-option>
                                 </i-select>
                             </form-item>

@@ -48,7 +48,8 @@
                         align: 'center',
                         width: '140',
                         render() {
-                            return '<i-button type="ghost" class="editor-btn" size="small" @click.native="toEdit">编辑</i-button>';
+                            return '<i-button type="ghost" class="editor-btn" size="small" ' +
+                                    '@click.native="toEdit">编辑</i-button>';
                         },
                     },
                 ],
@@ -122,7 +123,8 @@
                         align: 'center',
                         width: 140,
                         render(row, column, index) {
-                            return `<i-button type="ghost" class="editor-btn" size="small" @click="remove(${index})">编辑</i-button>`;
+                            return `<i-button type="ghost" class="editor-btn" size="small"
+                                    @click="remove(${index})">编辑</i-button>`;
                         },
                     },
                 ],

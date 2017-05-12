@@ -47,7 +47,8 @@
                         width: 180,
                         align: 'center',
                         render(row, column, index) {
-                            return `<i-button type="ghost" class="first-btn" size="small" @click="remove(${index})">删除</i-button><i-button type="ghost" size="small">查看</i-button>`;
+                            return `<i-button type="ghost" class="first-btn" size="small" @click="remove(${index})">
+                                    删除</i-button><i-button type="ghost" size="small">查看</i-button>`;
                         },
                     },
                 ],

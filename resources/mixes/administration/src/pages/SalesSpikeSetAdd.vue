@@ -37,16 +37,28 @@
                     },
                 ],
                 sales: [
-                    { content: '  iphone8 plus星空蓝全新发布 信用卡12期分期免息' },
-                    { content: '  iphone8 plus星空蓝全新发布' },
-                    { content: '  iphone8 plus星空蓝全新发布分期免息' },
-                    { content: '  iphone8 plus星空蓝全新发布12期分期免息' },
+                    {
+                        content: 'iphone8 plus星空蓝全新发布 信用卡12期分期免息',
+                    },
+                    {
+                        content: 'iphone8 plus星空蓝全新发布',
+                    },
+                    {
+                        content: 'iphone8 plus星空蓝全新发布分期免息',
+                    },
+                    {
+                        content: 'iphone8 plus星空蓝全新发布12期分期免息',
+                    },
                 ],
                 indeterminate: true,
                 checkAll: false,
                 ruleValidate: {
                     remarks: [
-                        { required: true, message: '信息不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '信息不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
             };

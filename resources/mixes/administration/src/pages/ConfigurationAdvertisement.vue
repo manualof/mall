@@ -51,7 +51,8 @@
                         key: 'isshow',
                         width: 200,
                         render(row) {
-                            return `<span v-if="${row.status} === true" class="status-check"><icon type="checkmark-circled"></icon>开启</span>
+                            return `<span v-if="${row.status} === true" class="status-check">
+                                <icon type="checkmark-circled"></icon>开启</span>
                                 <span v-if="${row.status} === false"><icon type="close-circled"></icon>关闭</span>`;
                         },
                     },
@@ -63,7 +64,9 @@
                         fixed: 'right',
                         render(row, column, index) {
                             return `<dropdown><i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
-                                <dropdown-menu slot="list"><dropdown-item>设置设置</dropdown-item></dropdown-menu></dropdown>
+                                <dropdown-menu slot="list">
+                                <dropdown-item>设置设置</dropdown-item>
+                                </dropdown-menu></dropdown>
                                 <i-button type="ghost" class="delete-ad" @click.native="removeAd(${index})">删除</i-button>`;
                         },
                     },
