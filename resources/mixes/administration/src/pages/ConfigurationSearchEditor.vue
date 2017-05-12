@@ -77,10 +77,18 @@
                 },
                 ruleValidate: {
                     search: [
-                        { required: true, message: '搜索默认词不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '搜索默认词不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     show: [
-                        { required: true, message: '显示词不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '显示词不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
             };

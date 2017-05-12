@@ -17,7 +17,11 @@
                 },
                 ruleValidate: {
                     brandName: [
-                        { required: true, message: '名称不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '名称不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
                 styleData: [

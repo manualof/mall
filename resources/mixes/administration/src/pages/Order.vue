@@ -75,7 +75,8 @@
                         width: 180,
                         align: 'center',
                         render() {
-                            return '<i-button type="ghost" @click.native="toView" class="first-btn" size="small">查看</i-button><i-button type="ghost" size="small">设置</i-button>';
+                            return `<i-button type="ghost" @click.native="toView" class="first-btn"
+                                    size="small">查看</i-button><i-button type="ghost" size="small">设置</i-button>`;
                         },
                     },
                 ],

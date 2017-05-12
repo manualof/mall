@@ -29,7 +29,11 @@
                 },
                 ruleValidate: {
                     storeName: [
-                        { required: true, message: '名称不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '名称不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
                 options2: {

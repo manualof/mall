@@ -31,13 +31,25 @@
                 ],
                 ruleValidate: {
                     adname: [
-                        { required: true, message: '广告名称不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '广告名称不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     position: [
-                        { required: true, message: '广告位不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '广告位不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     logo: [
-                        { required: true, message: '图片上传不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '图片上传不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
             };

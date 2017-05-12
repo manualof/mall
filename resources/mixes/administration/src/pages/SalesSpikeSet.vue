@@ -81,15 +81,15 @@
         },
         methods: {
             addGoods() {},
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
             toEdit() {
                 const self = this;
                 self.$router.push({
                     path: 'set/add',
                 });
-            },
-            goBack() {
-                const self = this;
-                self.$router.go(-1);
             },
         },
     };

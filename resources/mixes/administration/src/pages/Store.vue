@@ -96,7 +96,8 @@
                         width: 180,
                         align: 'center',
                         render(row, column, index) {
-                            return `<i-button class="first-btn" @click.native="remove(${index})" type="ghost" size="small">删除</i-button>
+                            return `<i-button class="first-btn" @click.native="remove(${index})" type="ghost"
+                                    size="small">删除</i-button>
                                     <i-button @click.native="toEdit" type="ghost" size="small">编辑</i-button>`;
                         },
                     },

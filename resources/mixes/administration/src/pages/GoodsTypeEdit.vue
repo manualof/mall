@@ -6,10 +6,18 @@
             return {
                 attributeValidate: {
                     name: [
-                        { required: true, message: '属性名称不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '属性名称不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     sort: [
-                        { required: true, message: '排序不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '排序不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
                 editDetail: {

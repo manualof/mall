@@ -114,7 +114,11 @@
                 loading: false,
                 ruleValidate: {
                     type: [
-                        { required: true, message: '规格不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '规格不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
             };

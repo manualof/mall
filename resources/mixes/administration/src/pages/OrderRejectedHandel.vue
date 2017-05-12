@@ -21,7 +21,11 @@
                 },
                 ruleValidate: {
                     remarks: [
-                        { required: true, message: '信息不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '信息不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
                 loading: false,

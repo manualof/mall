@@ -147,7 +147,11 @@
                 loading: false,
                 ruleValidate: {
                     typeName: [
-                        { required: true, message: '名称名称不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '名称名称不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
             };
