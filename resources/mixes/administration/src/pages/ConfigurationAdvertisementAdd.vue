@@ -41,7 +41,7 @@
                         {
                             message: '广告位不能为空',
                             required: true,
-                            trigger: 'blur'
+                            trigger: 'blur',
                         },
                     ],
                     logo: [
