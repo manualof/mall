@@ -3,30 +3,24 @@
     import goods from '../assets/images/adv.jpg';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
-                steps: [
-                    {
-                        content: '2016-12-23  13:41:59',
-                        title: '生成订单',
+                buyerData: {
+                    buyerName: '昵称',
+                    buyerPhone: '029-66458124',
+                    address: '某人，陕西 西安 雁塔区 高新二路与光泰路口陕西国土资源大厦2304',
+                    invoiceData: {
+                        type: '普通发票',
+                        title: 'sgs',
+                        content: '闽西',
                     },
-                    {
-                        content: '2016-12-23  13:41:59',
-                        title: '完成付款',
-                    },
-                    {
-                        content: '2016-12-23  13:41:59',
-                        title: '商家发货',
-                    },
-                    {
-                        content: '2016-12-23  13:41:59',
-                        title: '收货确认',
-                    },
-                    {
-                        content: '2016-12-23  13:41:59',
-                        title: '完成评价',
-                    },
-                ],
+                    buyerMessage: '包装仔细',
+                },
                 orderColumns: [
                     {
                         title: '商品',
@@ -71,17 +65,28 @@
                     payMethod: '在线支付',
                     payTime: '2015-06-12 10:42:40',
                 },
-                buyerData: {
-                    buyerName: '昵称',
-                    buyerPhone: '029-66458124',
-                    address: '某人，陕西 西安 雁塔区 高新二路与光泰路口陕西国土资源大厦2304',
-                    invoiceData: {
-                        type: '普通发票',
-                        title: 'sgs',
-                        content: '闽西',
+                steps: [
+                    {
+                        content: '2016-12-23  13:41:59',
+                        title: '生成订单',
                     },
-                    buyerMessage: '包装仔细',
-                },
+                    {
+                        content: '2016-12-23  13:41:59',
+                        title: '完成付款',
+                    },
+                    {
+                        content: '2016-12-23  13:41:59',
+                        title: '商家发货',
+                    },
+                    {
+                        content: '2016-12-23  13:41:59',
+                        title: '收货确认',
+                    },
+                    {
+                        content: '2016-12-23  13:41:59',
+                        title: '完成评价',
+                    },
+                ],
                 sellersData: {
                     shopName: '以瓷换米',
                     owner: 'fwef',
@@ -98,11 +103,6 @@
                     remarks: '不合适',
                 },
             };
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
     };
 </script>

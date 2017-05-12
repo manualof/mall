@@ -2,8 +2,61 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
+                goods: {
+                    startPrice: '',
+                    endPrice: '',
+                },
+                goodsColumns: [
+                    {
+                        title: '序号',
+                        key: 'num',
+                    },
+                    {
+                        title: '商品名称',
+                        key: 'goodsName',
+                    },
+                    {
+                        title: '销量',
+                        key: 'amount',
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                goodsData: [
+                    {
+                        num: 1,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 2,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 3,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 4,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                ],
                 informationList: [
                     {
                         title: '下单金额',
@@ -66,58 +119,10 @@
                         price: '0',
                     },
                 ],
-                goods: {
-                    startPrice: '',
-                    endPrice: '',
-                },
                 orders: {
                     startPrice: '',
                     endPrice: '',
                 },
-                goodsColumns: [
-                    {
-                        title: '序号',
-                        key: 'num',
-                    },
-                    {
-                        title: '商品名称',
-                        key: 'goodsName',
-                    },
-                    {
-                        title: '销量',
-                        key: 'amount',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                goodsData: [
-                    {
-                        num: 1,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
-                    },
-                    {
-                        num: 2,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
-                    },
-                    {
-                        num: 3,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
-                    },
-                    {
-                        num: 4,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
-                    },
-                ],
                 shopColumns: [
                     {
                         title: '序号',
@@ -200,11 +205,6 @@
                     }
                 });
             },
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
     };
 </script>

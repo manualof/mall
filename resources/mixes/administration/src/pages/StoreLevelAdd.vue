@@ -2,18 +2,15 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 action: `${window.api}/mall/upload`,
-                typeData: {
-                    levelName: '',
-                    releaseNum: '',
-                    uploadNum: '',
-                    charges: '',
-                    useType: [],
-                    apply: '',
-                    level: '',
-                },
+                loading: false,
                 ruleValidate: {
                     levelName: [
                         {
@@ -45,13 +42,16 @@
                     ],
                 },
                 self: this,
-                loading: false,
+                typeData: {
+                    levelName: '',
+                    releaseNum: '',
+                    uploadNum: '',
+                    charges: '',
+                    useType: [],
+                    apply: '',
+                    level: '',
+                },
             };
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
         methods: {
             goBack() {

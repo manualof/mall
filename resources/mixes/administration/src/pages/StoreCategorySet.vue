@@ -1,3 +1,69 @@
+<script>
+    export default {
+        data() {
+            return {
+                formValidate: {
+                    name: '',
+                    number: '',
+                    rank: '',
+                },
+                loading: false,
+                ruleValidate: {
+                    name: [
+                        {
+                            required: true,
+                            message: '分类名称不能为空',
+                            trigger: 'blur',
+                        },
+                    ],
+                    number: [
+                        {
+                            required: true,
+                            message: '保证金额数不能为空',
+                            trigger: 'blur',
+                        },
+                    ],
+                },
+                validate: {
+                    name: [
+                        {
+                            required: true,
+                            message: '分类名称不能为空',
+                            trigger: 'blur',
+                        },
+                    ],
+                    number: [
+                        {
+                            required: true,
+                            message: '保证金额数不能为空',
+                            trigger: 'blur',
+                        },
+                    ],
+                },
+            };
+        },
+        methods: {
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.activityValidate.validate(valid => {
+                    if (valid) {
+                        self.$Message.success('提交成功!');
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
+        },
+    };
+</script>
 <template>
     <div class="mall-wrap">
         <div class="store-category-set">
@@ -42,69 +108,3 @@
         </div>
     </div>
 </template>
-<script>
-    export default {
-        data() {
-            return {
-                loading: false,
-                formValidate: {
-                    name: '',
-                    number: '',
-                    rank: '',
-                },
-                validate: {
-                    name: [
-                        {
-                            required: true,
-                            message: '分类名称不能为空',
-                            trigger: 'blur',
-                        },
-                    ],
-                    number: [
-                        {
-                            required: true,
-                            message: '保证金额数不能为空',
-                            trigger: 'blur',
-                        },
-                    ],
-                },
-                ruleValidate: {
-                    name: [
-                        {
-                            required: true,
-                            message: '分类名称不能为空',
-                            trigger: 'blur',
-                        },
-                    ],
-                    number: [
-                        {
-                            required: true,
-                            message: '保证金额数不能为空',
-                            trigger: 'blur',
-                        },
-                    ],
-                },
-            };
-        },
-        methods: {
-            submit() {
-                const self = this;
-                self.loading = true;
-                self.$refs.activityValidate.validate(valid => {
-                    if (valid) {
-                        self.$Message.success('提交成功!');
-                    } else {
-                        self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
-                    }
-                });
-            },
-            goBack() {
-                const self = this;
-                self.$router.go(-1);
-            },
-        },
-    };
-</script>

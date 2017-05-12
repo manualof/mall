@@ -2,76 +2,13 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
-                refundColumns: [
-                    {
-                        title: '订单编号',
-                        key: 'orderNum',
-                    },
-                    {
-                        title: '退款编号',
-                        key: 'refundNum',
-                    },
-                    {
-                        title: '店铺名称',
-                        key: 'shopName',
-                    },
-                    {
-                        title: '商品名称',
-                        key: 'goodName',
-                    },
-                    {
-                        title: '申请时间',
-                        key: 'time',
-                    },
-                    {
-                        title: '退款金额',
-                        key: 'refundMoney',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                refundData: [
-                    {
-                        orderNum: '36589554555',
-                        refundNum: '36589554555',
-                        shopName: '旗舰店',
-                        goodName: '用户套装买二送一',
-                        time: '2017-04-01',
-                        refundMoney: '99.00',
-                    },
-                    {
-                        orderNum: '36589554555',
-                        refundNum: '36589554555',
-                        shopName: '旗舰店',
-                        goodName: '用户套装买二送一',
-                        time: '2017-04-01',
-                        refundMoney: '99.00',
-                    },
-                    {
-                        orderNum: '36589554555',
-                        refundNum: '36589554555',
-                        shopName: '旗舰店',
-                        goodName: '用户套装买二送一',
-                        time: '2017-04-01',
-                        refundMoney: '99.00',
-                    },
-                    {
-                        orderNum: '36589554555',
-                        refundNum: '36589554555',
-                        shopName: '旗舰店',
-                        goodName: '用户套装买二送一',
-                        time: '2017-04-01',
-                        refundMoney: '99.00',
-                    },
-                ],
                 goodsColumns: [
                     {
                         title: '订单编号',
@@ -150,6 +87,74 @@
                         value: '2',
                     },
                 ],
+                refundColumns: [
+                    {
+                        title: '订单编号',
+                        key: 'orderNum',
+                    },
+                    {
+                        title: '退款编号',
+                        key: 'refundNum',
+                    },
+                    {
+                        title: '店铺名称',
+                        key: 'shopName',
+                    },
+                    {
+                        title: '商品名称',
+                        key: 'goodName',
+                    },
+                    {
+                        title: '申请时间',
+                        key: 'time',
+                    },
+                    {
+                        title: '退款金额',
+                        key: 'refundMoney',
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                refundData: [
+                    {
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
+                    },
+                    {
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
+                    },
+                    {
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
+                    },
+                    {
+                        orderNum: '36589554555',
+                        refundNum: '36589554555',
+                        shopName: '旗舰店',
+                        goodName: '用户套装买二送一',
+                        time: '2017-04-01',
+                        refundMoney: '99.00',
+                    },
+                ],
                 shopsList: [
                     {
                         label: '商品1',
@@ -185,11 +190,6 @@
                     filename: '退货统计数据',
                 });
             },
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
     };
 </script>

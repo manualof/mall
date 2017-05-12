@@ -2,10 +2,18 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
+        computed: {
+            getStartTime() {
+                return Date.parse(this.activityData.startTime);
+            },
+        },
         data() {
             return {
-                self: this,
-                loading: false,
                 activityData: {
                     title: '',
                     startTime: '',
@@ -21,22 +29,19 @@
                         },
                     ],
                 },
-                startOptions: {
-                    disabledDate(date) {
-                        return date && date.valueOf() < Date.now() - 86400000;
-                    },
-                },
                 endOptions: {
                     disabledDate(date) {
                         return date && date.valueOf() < this.getStartTime;
                     },
                 },
+                self: this,
+                loading: false,
+                startOptions: {
+                    disabledDate(date) {
+                        return date && date.valueOf() < Date.now() - 86400000;
+                    },
+                },
             };
-        },
-        computed: {
-            getStartTime() {
-                return Date.parse(this.activityData.startTime);
-            },
         },
         methods: {
             shuchu() {
@@ -56,11 +61,6 @@
                     }
                 });
             },
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
     };
 </script>

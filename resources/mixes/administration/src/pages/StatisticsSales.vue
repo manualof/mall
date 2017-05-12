@@ -2,61 +2,25 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 applicationWord: '',
-                shopsColumns: [
+                goodsList: [
                     {
-                        title: '店铺名称',
-                        key: 'shopName',
+                        label: '商品1',
+                        value: '1',
                     },
                     {
-                        title: '订单金额（元）',
-                        key: 'orderMoney',
-                    },
-                    {
-                        title: '退单金额（元）',
-                        key: 'refundMoney',
-                    },
-                    {
-                        title: '结算金额（元）',
-                        key: 'allMoney',
-                    },
-                    {
-                        title: '店铺费用（元）',
-                        key: 'shopMoney',
+                        label: '商品2',
+                        value: '2',
                     },
                 ],
-                shopsData: [
-                    {
-                        shopName: '艾派数码',
-                        orderMoney: '99.00',
-                        refundMoney: '33.00',
-                        allMoney: '22.00',
-                        shopMoney: '100.00',
-                    },
-                    {
-                        shopName: '艾派数码',
-                        orderMoney: '99.00',
-                        refundMoney: '33.00',
-                        allMoney: '22.00',
-                        shopMoney: '100.00',
-                    },
-                    {
-                        shopName: '艾派数码',
-                        orderMoney: '99.00',
-                        refundMoney: '33.00',
-                        allMoney: '22.00',
-                        shopMoney: '100.00',
-                    },
-                    {
-                        shopName: '艾派数码',
-                        orderMoney: '99.00',
-                        refundMoney: '33.00',
-                        allMoney: '22.00',
-                        shopMoney: '100.00',
-                    },
-                ],
+                loading: false,
                 orderColumns: [
                     {
                         title: '订单编号',
@@ -117,34 +81,14 @@
                         status: '已完成',
                     },
                 ],
-                goodsList: [
+                orderStatistics: [
                     {
-                        label: '商品1',
-                        value: '1',
+                        price: '4444',
+                        title: '总销售额',
                     },
                     {
-                        label: '商品2',
-                        value: '2',
-                    },
-                ],
-                shopsList: [
-                    {
-                        label: '商品1',
-                        value: '1',
-                    },
-                    {
-                        label: '商品2',
-                        value: '2',
-                    },
-                ],
-                timeList: [
-                    {
-                        label: '按照月统计',
-                        value: '1',
-                    },
-                    {
-                        label: '按照周统计',
-                        value: '2',
+                        price: '4444',
+                        title: '总订单量',
                     },
                 ],
                 informationList: [
@@ -169,18 +113,79 @@
                         title: '总收入',
                     },
                 ],
-                orderStatistics: [
+                shopsColumns: [
                     {
-                        price: '4444',
-                        title: '总销售额',
+                        title: '店铺名称',
+                        key: 'shopName',
                     },
                     {
-                        price: '4444',
-                        title: '总订单量',
+                        title: '订单金额（元）',
+                        key: 'orderMoney',
+                    },
+                    {
+                        title: '退单金额（元）',
+                        key: 'refundMoney',
+                    },
+                    {
+                        title: '结算金额（元）',
+                        key: 'allMoney',
+                    },
+                    {
+                        title: '店铺费用（元）',
+                        key: 'shopMoney',
+                    },
+                ],
+                shopsData: [
+                    {
+                        shopName: '艾派数码',
+                        orderMoney: '99.00',
+                        refundMoney: '33.00',
+                        allMoney: '22.00',
+                        shopMoney: '100.00',
+                    },
+                    {
+                        shopName: '艾派数码',
+                        orderMoney: '99.00',
+                        refundMoney: '33.00',
+                        allMoney: '22.00',
+                        shopMoney: '100.00',
+                    },
+                    {
+                        shopName: '艾派数码',
+                        orderMoney: '99.00',
+                        refundMoney: '33.00',
+                        allMoney: '22.00',
+                        shopMoney: '100.00',
+                    },
+                    {
+                        shopName: '艾派数码',
+                        orderMoney: '99.00',
+                        refundMoney: '33.00',
+                        allMoney: '22.00',
+                        shopMoney: '100.00',
+                    },
+                ],
+                shopsList: [
+                    {
+                        label: '商品1',
+                        value: '1',
+                    },
+                    {
+                        label: '商品2',
+                        value: '2',
                     },
                 ],
                 self: this,
-                loading: false,
+                timeList: [
+                    {
+                        label: '按照月统计',
+                        value: '1',
+                    },
+                    {
+                        label: '按照周统计',
+                        value: '2',
+                    },
+                ],
             };
         },
         methods: {
@@ -194,11 +199,6 @@
                     filename: '订单统计数据',
                 });
             },
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
     };
 </script>

@@ -2,9 +2,13 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
-                isPriceArea: false,
                 goodsList: [
                     {
                         label: '商品1',
@@ -59,6 +63,7 @@
                         amount: 99,
                     },
                 ],
+                isPriceArea: false,
                 shopsColumns: [
                     {
                         title: '序号',
@@ -161,11 +166,6 @@
             onReady(instance) {
                 console.log(instance);
             },
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
     };
 </script>

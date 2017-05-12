@@ -9,7 +9,9 @@
         },
         data() {
             return {
+                checkAll: false,
                 loading: false,
+                indeterminate: true,
                 searchCategory: '',
                 searchProduct: '',
                 searchLists: [
@@ -50,8 +52,6 @@
                         content: 'iphone8 plus星空蓝全新发布12期分期免息',
                     },
                 ],
-                indeterminate: true,
-                checkAll: false,
                 ruleValidate: {
                     remarks: [
                         {

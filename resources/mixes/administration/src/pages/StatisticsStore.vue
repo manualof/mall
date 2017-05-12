@@ -2,9 +2,25 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 isPriceArea: false,
+                goodsList: [
+                    {
+                        label: '商品1',
+                        value: '1',
+                    },
+                    {
+                        label: '商品2',
+                        value: '2',
+                    },
+                ],
+                loading: false,
                 provinceColumns: [
                     {
                         title: '序号',
@@ -205,16 +221,6 @@
                         amount: 20,
                     },
                 ],
-                goodsList: [
-                    {
-                        label: '商品1',
-                        value: '1',
-                    },
-                    {
-                        label: '商品2',
-                        value: '2',
-                    },
-                ],
                 shopsList: [
                     {
                         label: '商品1',
@@ -225,6 +231,7 @@
                         value: '2',
                     },
                 ],
+                self: this,
                 timeList: [
                     {
                         label: '按照月统计',
@@ -235,8 +242,6 @@
                         value: '2',
                     },
                 ],
-                self: this,
-                loading: false,
             };
         },
         methods: {
@@ -255,11 +260,6 @@
                     filename: '地区分析数据',
                 });
             },
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
     };
 </script>

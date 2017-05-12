@@ -2,8 +2,14 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
+                managementSearch: '',
                 typeColumns: [
                     {
                         type: 'selection',
@@ -85,30 +91,24 @@
                     },
                 ],
                 self: this,
-                managementSearch: '',
             };
         },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
-        },
         methods: {
-            remove(index) {
-                this.typeData.splice(index, 1);
-            },
             deleteData() {},
+            edit() {
+                const self = this;
+                self.$router.push({
+                    path: 'level/edit',
+                });
+            },
             newAddData() {
                 const self = this;
                 self.$router.push({
                     path: 'level/add',
                 });
             },
-            edit() {
-                const self = this;
-                self.$router.push({
-                    path: 'level/edit',
-                });
+            remove(index) {
+                this.typeData.splice(index, 1);
             },
         },
     };

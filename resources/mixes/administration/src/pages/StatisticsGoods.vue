@@ -2,8 +2,24 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
+                goodsList: [
+                    {
+                        label: '商品1',
+                        value: '1',
+                    },
+                    {
+                        label: '商品2',
+                        value: '2',
+                    },
+                ],
+                loading: false,
                 orderColumns: [
                     {
                         title: '序号',
@@ -108,16 +124,6 @@
                         money: 444,
                     },
                 ],
-                goodsList: [
-                    {
-                        label: '商品1',
-                        value: '1',
-                    },
-                    {
-                        label: '商品2',
-                        value: '2',
-                    },
-                ],
                 shopsList: [
                     {
                         label: '商品1',
@@ -128,6 +134,7 @@
                         value: '2',
                     },
                 ],
+                self: this,
                 timeList: [
                     {
                         label: '按照月统计',
@@ -138,8 +145,6 @@
                         value: '2',
                     },
                 ],
-                self: this,
-                loading: false,
             };
         },
         methods: {
@@ -148,11 +153,6 @@
                     filename: '商品销售明细数据',
                 });
             },
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
     };
 </script>

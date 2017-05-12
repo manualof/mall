@@ -2,218 +2,13 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
-                managementSearch: '',
-                managementWord: '',
-                applicationSearch: '',
-                applicationWord: '',
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '店铺名称',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
-                managementColumns: [
-                    {
-                        type: 'selection',
-                        width: 60,
-                        align: 'center',
-                        fixed: 'left',
-                    },
-                    {
-                        title: '店铺ID',
-                        key: 'shopID',
-                        width: 190,
-                        align: 'center',
-                    },
-                    {
-                        title: '店铺名称',
-                        key: 'shopName',
-                        width: 170,
-                        align: 'center',
-                    },
-                    {
-                        title: '店主账号',
-                        key: 'ownerId',
-                        width: 170,
-                        align: 'center',
-                    },
-                    {
-                        title: '商家账号',
-                        key: 'businessNumber',
-                        width: 170,
-                        align: 'center',
-                    },
-                    {
-                        title: '店铺头像',
-                        key: 'shopImg',
-                        width: 100,
-                        align: 'center',
-                        render() {
-                            return '<Icon type="image"></Icon>';
-                        },
-                    },
-                    {
-                        title: '店铺LOGO',
-                        key: 'shopLogo',
-                        width: 100,
-                        align: 'center',
-                        render() {
-                            return '<Icon type="image"></Icon>';
-                        },
-                    },
-                    {
-                        title: '店铺等级',
-                        key: 'shopLevel',
-                        width: 170,
-                        align: 'center',
-                    },
-                    {
-                        title: '开店时间',
-                        key: 'shopTime',
-                        width: 170,
-                        align: 'center',
-                    },
-                    {
-                        title: '到期时间',
-                        key: 'endTime',
-                        align: 'left',
-                        width: 170,
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        fixed: 'right',
-                        width: 180,
-                        align: 'center',
-                        render(row, column, index) {
-                            return `<i-button class="first-btn" @click.native="remove(${index})" type="ghost"
-                                    size="small">删除</i-button>
-                                    <i-button @click.native="toEdit" type="ghost" size="small">编辑</i-button>`;
-                        },
-                    },
-                ],
-                managementData: [
-                    {
-                        shopID: '65454654546',
-                        shopName: '默认',
-                        ownerId: '545464554',
-                        businessNumber: '爱拍数码',
-                        shopImg: '541',
-                        shopLogo: '454',
-                        shopLevel: '钻石店铺',
-                        shopTime: '2017-12-5',
-                        endTime: '2017-12-5',
-                    },
-                    {
-                        shopID: '65454654546',
-                        shopName: '默认',
-                        ownerId: '545464554',
-                        businessNumber: '爱拍数码',
-                        shopImg: '541',
-                        shopLogo: '454',
-                        shopLevel: '钻石店铺',
-                        shopTime: '2017-12-5',
-                        endTime: '2017-12-5',
-                    },
-                    {
-                        shopID: '65454654546',
-                        shopName: '默认',
-                        ownerId: '545464554',
-                        businessNumber: '爱拍数码',
-                        shopImg: '541',
-                        shopLogo: '454',
-                        shopLevel: '钻石店铺',
-                        shopTime: '2017-12-5',
-                        endTime: '2017-12-5',
-                    },
-                    {
-                        shopID: '65454654546',
-                        shopName: '默认',
-                        ownerId: '545464554',
-                        businessNumber: '爱拍数码',
-                        shopImg: '541',
-                        shopLogo: '454',
-                        shopLevel: '钻石店铺',
-                        shopTime: '2017-12-5',
-                        endTime: '2017-12-5',
-                    },
-                    {
-                        shopID: '65454654546',
-                        shopName: '默认',
-                        ownerId: '545464554',
-                        businessNumber: '爱拍数码',
-                        shopImg: '541',
-                        shopLogo: '454',
-                        shopLevel: '钻石店铺',
-                        shopTime: '2017-12-5',
-                        endTime: '2017-12-5',
-                    },
-                    {
-                        shopID: '65454654546',
-                        shopName: '默认',
-                        ownerId: '545464554',
-                        businessNumber: '爱拍数码',
-                        shopImg: '541',
-                        shopLogo: '454',
-                        shopLevel: '钻石店铺',
-                        shopTime: '2017-12-5',
-                        endTime: '2017-12-5',
-                    },
-                    {
-                        shopID: '65454654546',
-                        shopName: '默认',
-                        ownerId: '545464554',
-                        businessNumber: '爱拍数码',
-                        shopImg: '541',
-                        shopLogo: '454',
-                        shopLevel: '钻石店铺',
-                        shopTime: '2017-12-5',
-                        endTime: '2017-12-5',
-                    },
-                    {
-                        shopID: '65454654546',
-                        shopName: '默认',
-                        ownerId: '545464554',
-                        businessNumber: '爱拍数码',
-                        shopImg: '541',
-                        shopLogo: '454',
-                        shopLevel: '钻石店铺',
-                        shopTime: '2017-12-5',
-                        endTime: '2017-12-5',
-                    },
-                    {
-                        shopID: '65454654546',
-                        shopName: '默认',
-                        ownerId: '545464554',
-                        businessNumber: '爱拍数码',
-                        shopImg: '541',
-                        shopLogo: '454',
-                        shopLevel: '钻石店铺',
-                        shopTime: '2017-12-5',
-                        endTime: '2017-12-5',
-                    },
-                    {
-                        shopID: '65454654546',
-                        shopName: '默认',
-                        ownerId: '545464554',
-                        businessNumber: '爱拍数码',
-                        shopImg: '541',
-                        shopLogo: '454',
-                        shopLevel: '钻石店铺',
-                        shopTime: '2017-12-5',
-                        endTime: '2017-12-5',
-                    },
-                ],
                 applicationColumns: [
                     {
                         type: 'selection',
@@ -414,6 +209,216 @@
                         companyPhone: '029-5554544',
                     },
                 ],
+                applicationSearch: '',
+                applicationWord: '',
+                managementSearch: '',
+                managementWord: '',
+                managementColumns: [
+                    {
+                        type: 'selection',
+                        width: 60,
+                        align: 'center',
+                        fixed: 'left',
+                    },
+                    {
+                        title: '店铺ID',
+                        key: 'shopID',
+                        width: 190,
+                        align: 'center',
+                    },
+                    {
+                        title: '店铺名称',
+                        key: 'shopName',
+                        width: 170,
+                        align: 'center',
+                    },
+                    {
+                        title: '店主账号',
+                        key: 'ownerId',
+                        width: 170,
+                        align: 'center',
+                    },
+                    {
+                        title: '商家账号',
+                        key: 'businessNumber',
+                        width: 170,
+                        align: 'center',
+                    },
+                    {
+                        title: '店铺头像',
+                        key: 'shopImg',
+                        width: 100,
+                        align: 'center',
+                        render() {
+                            return '<Icon type="image"></Icon>';
+                        },
+                    },
+                    {
+                        title: '店铺LOGO',
+                        key: 'shopLogo',
+                        width: 100,
+                        align: 'center',
+                        render() {
+                            return '<Icon type="image"></Icon>';
+                        },
+                    },
+                    {
+                        title: '店铺等级',
+                        key: 'shopLevel',
+                        width: 170,
+                        align: 'center',
+                    },
+                    {
+                        title: '开店时间',
+                        key: 'shopTime',
+                        width: 170,
+                        align: 'center',
+                    },
+                    {
+                        title: '到期时间',
+                        key: 'endTime',
+                        align: 'left',
+                        width: 170,
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        fixed: 'right',
+                        width: 180,
+                        align: 'center',
+                        render(row, column, index) {
+                            return `<i-button class="first-btn" @click.native="remove(${index})" type="ghost"
+                                    size="small">删除</i-button>
+                                    <i-button @click.native="toEdit" type="ghost" size="small">编辑</i-button>`;
+                        },
+                    },
+                ],
+                managementData: [
+                    {
+                        shopID: '65454654546',
+                        shopName: '默认',
+                        ownerId: '545464554',
+                        businessNumber: '爱拍数码',
+                        shopImg: '541',
+                        shopLogo: '454',
+                        shopLevel: '钻石店铺',
+                        shopTime: '2017-12-5',
+                        endTime: '2017-12-5',
+                    },
+                    {
+                        shopID: '65454654546',
+                        shopName: '默认',
+                        ownerId: '545464554',
+                        businessNumber: '爱拍数码',
+                        shopImg: '541',
+                        shopLogo: '454',
+                        shopLevel: '钻石店铺',
+                        shopTime: '2017-12-5',
+                        endTime: '2017-12-5',
+                    },
+                    {
+                        shopID: '65454654546',
+                        shopName: '默认',
+                        ownerId: '545464554',
+                        businessNumber: '爱拍数码',
+                        shopImg: '541',
+                        shopLogo: '454',
+                        shopLevel: '钻石店铺',
+                        shopTime: '2017-12-5',
+                        endTime: '2017-12-5',
+                    },
+                    {
+                        shopID: '65454654546',
+                        shopName: '默认',
+                        ownerId: '545464554',
+                        businessNumber: '爱拍数码',
+                        shopImg: '541',
+                        shopLogo: '454',
+                        shopLevel: '钻石店铺',
+                        shopTime: '2017-12-5',
+                        endTime: '2017-12-5',
+                    },
+                    {
+                        shopID: '65454654546',
+                        shopName: '默认',
+                        ownerId: '545464554',
+                        businessNumber: '爱拍数码',
+                        shopImg: '541',
+                        shopLogo: '454',
+                        shopLevel: '钻石店铺',
+                        shopTime: '2017-12-5',
+                        endTime: '2017-12-5',
+                    },
+                    {
+                        shopID: '65454654546',
+                        shopName: '默认',
+                        ownerId: '545464554',
+                        businessNumber: '爱拍数码',
+                        shopImg: '541',
+                        shopLogo: '454',
+                        shopLevel: '钻石店铺',
+                        shopTime: '2017-12-5',
+                        endTime: '2017-12-5',
+                    },
+                    {
+                        shopID: '65454654546',
+                        shopName: '默认',
+                        ownerId: '545464554',
+                        businessNumber: '爱拍数码',
+                        shopImg: '541',
+                        shopLogo: '454',
+                        shopLevel: '钻石店铺',
+                        shopTime: '2017-12-5',
+                        endTime: '2017-12-5',
+                    },
+                    {
+                        shopID: '65454654546',
+                        shopName: '默认',
+                        ownerId: '545464554',
+                        businessNumber: '爱拍数码',
+                        shopImg: '541',
+                        shopLogo: '454',
+                        shopLevel: '钻石店铺',
+                        shopTime: '2017-12-5',
+                        endTime: '2017-12-5',
+                    },
+                    {
+                        shopID: '65454654546',
+                        shopName: '默认',
+                        ownerId: '545464554',
+                        businessNumber: '爱拍数码',
+                        shopImg: '541',
+                        shopLogo: '454',
+                        shopLevel: '钻石店铺',
+                        shopTime: '2017-12-5',
+                        endTime: '2017-12-5',
+                    },
+                    {
+                        shopID: '65454654546',
+                        shopName: '默认',
+                        ownerId: '545464554',
+                        businessNumber: '爱拍数码',
+                        shopImg: '541',
+                        shopLogo: '454',
+                        shopLevel: '钻石店铺',
+                        shopTime: '2017-12-5',
+                        endTime: '2017-12-5',
+                    },
+                ],
+                searchList: [
+                    {
+                        label: '店铺名称',
+                        value: '店铺名称',
+                    },
+                    {
+                        label: '商品名称',
+                        value: '商品名称',
+                    },
+                    {
+                        label: '商品分类',
+                        value: '商品分类',
+                    },
+                ],
                 self: this,
             };
         },
@@ -432,11 +437,6 @@
                     path: 'store/edit',
                 });
             },
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
     };
 </script>

@@ -2,9 +2,58 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
-                isPriceArea: false,
+                analysisColumns: [
+                    {
+                        title: '序号',
+                        key: 'num',
+                    },
+                    {
+                        title: '会员名称',
+                        key: 'memberName',
+                    },
+                    {
+                        title: '下单量',
+                        key: 'amount',
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                analysisData: [
+                    {
+                        num: 333,
+                        memberName: 4,
+                        amount: 22,
+                    },
+                    {
+                        num: 333,
+                        memberName: 4,
+                        amount: 22,
+                    },
+                    {
+                        num: 333,
+                        memberName: 4,
+                        amount: 22,
+                    },
+                    {
+                        num: 333,
+                        memberName: 4,
+                        amount: 22,
+                    },
+                ],
+                loading: false,
                 memberColumns: [
                     {
                         title: '小时',
@@ -55,50 +104,6 @@
                         yesterday: 0,
                         today: 2,
                         rate: 2,
-                    },
-                ],
-                analysisColumns: [
-                    {
-                        title: '序号',
-                        key: 'num',
-                    },
-                    {
-                        title: '会员名称',
-                        key: 'memberName',
-                    },
-                    {
-                        title: '下单量',
-                        key: 'amount',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                analysisData: [
-                    {
-                        num: 333,
-                        memberName: 4,
-                        amount: 22,
-                    },
-                    {
-                        num: 333,
-                        memberName: 4,
-                        amount: 22,
-                    },
-                    {
-                        num: 333,
-                        memberName: 4,
-                        amount: 22,
-                    },
-                    {
-                        num: 333,
-                        memberName: 4,
-                        amount: 22,
                     },
                 ],
                 provinceColumns: [
@@ -153,6 +158,7 @@
                         amount: 20,
                     },
                 ],
+                isPriceArea: false,
                 timeList: [
                     {
                         label: '按照月统计',
@@ -164,7 +170,6 @@
                     },
                 ],
                 self: this,
-                loading: false,
             };
         },
         methods: {
@@ -183,11 +188,6 @@
                     filename: '地区分析数据',
                 });
             },
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
     };
 </script>

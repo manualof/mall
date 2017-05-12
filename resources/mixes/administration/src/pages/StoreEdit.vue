@@ -2,10 +2,81 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 action: `${window.api}/mall/upload`,
+                companyPlace: [
+                    {
+                        label: '上海市',
+                        value: '1',
+                    },
+                    {
+                        label: '北京市',
+                        value: '2',
+                    },
+                ],
+                classification: [
+                    {
+                        label: '分类1',
+                        value: '1',
+                    },
+                    {
+                        label: '分类2',
+                        value: '2',
+                    },
+                ],
                 defaultList: [],
+                imgName: '',
+                loading: false,
+                level: [
+                    {
+                        label: '等级1',
+                        value: '1',
+                    },
+                    {
+                        label: '等级2',
+                        value: '2',
+                    },
+                ],
+                licensePlace: [
+                    {
+                        label: '上海市',
+                        value: '1',
+                    },
+                    {
+                        label: '北京市',
+                        value: '2',
+                    },
+                ],
+                options2: {
+                    disabledDate(date) {
+                        return date && date.valueOf() < Date.now();
+                    },
+                },
+                province: [
+                    {
+                        label: '上海市',
+                        value: '1',
+                    },
+                    {
+                        label: '北京市',
+                        value: '2',
+                    },
+                ],
+                ruleValidate: {
+                    storeName: [
+                        {
+                            message: '名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 storeDetail: {
                     account: 'hjhjkhjk',
                     companyPlace: '',
@@ -27,81 +98,10 @@
                     logo: '',
                     licensePlace: '',
                 },
-                ruleValidate: {
-                    storeName: [
-                        {
-                            message: '名称不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
-                },
-                options2: {
-                    disabledDate(date) {
-                        return date && date.valueOf() < Date.now();
-                    },
-                },
-                companyPlace: [
-                    {
-                        label: '上海市',
-                        value: '1',
-                    },
-                    {
-                        label: '北京市',
-                        value: '2',
-                    },
-                ],
-                classification: [
-                    {
-                        label: '分类1',
-                        value: '1',
-                    },
-                    {
-                        label: '分类2',
-                        value: '2',
-                    },
-                ],
-                province: [
-                    {
-                        label: '上海市',
-                        value: '1',
-                    },
-                    {
-                        label: '北京市',
-                        value: '2',
-                    },
-                ],
-                licensePlace: [
-                    {
-                        label: '上海市',
-                        value: '1',
-                    },
-                    {
-                        label: '北京市',
-                        value: '2',
-                    },
-                ],
-                imgName: '',
-                visible: false,
-                uploadList: [],
                 self: this,
-                loading: false,
-                level: [
-                    {
-                        label: '等级1',
-                        value: '1',
-                    },
-                    {
-                        label: '等级2',
-                        value: '2',
-                    },
-                ],
+                uploadList: [],
+                visible: false,
             };
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
         methods: {
             goBack() {
