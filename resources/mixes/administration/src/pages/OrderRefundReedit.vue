@@ -11,15 +11,15 @@
                 ruleValidate: {
                     refundReason: [
                         {
-                            required: true,
                             message: '原因不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
                     refundSort: [
                         {
-                            required: true,
                             message: '排序不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],

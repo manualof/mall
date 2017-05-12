@@ -16,8 +16,8 @@
                 rules: {
                     default: [
                         {
-                            message: '请输入默认关键词',
                             required: true,
+                            message: '请输入默认关键词',
                             trigger: 'change',
                             type: 'string',
                         },

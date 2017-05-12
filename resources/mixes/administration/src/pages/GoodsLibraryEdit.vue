@@ -19,52 +19,52 @@
                 },
                 goodStyle: [
                     {
-                        value: '1',
                         label: '华为',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '苹果',
+                        value: '2',
                     },
                 ],
                 distribution: [
                     {
-                        value: '1',
                         label: '333',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '444',
+                        value: '2',
                     },
                 ],
                 goodComment: [
                     {
-                        value: '1',
                         label: '好',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '一般',
+                        value: '2',
                     },
                 ],
                 goodOrigin: [
                     {
-                        value: '1',
                         label: '南',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '北',
+                        value: '2',
                     },
                 ],
                 priceList: [
                     {
-                        value: '1',
                         label: '100-200',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '400-600',
+                        value: '2',
                     },
                 ],
                 loading: false,
@@ -74,27 +74,27 @@
                 ruleValidate: {
                     remarks: [
                         {
-                            required: true,
                             message: '信息不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
                 },
                 requests: [
                     {
-                        name: '1.基本要求',
                         content: '（1）手机详情总体大小：图片+文字，图片不超过20张，文字不超过5000字；' +
                         '建议：所有图片都是本宝贝相关的图片',
+                        name: '1.基本要求',
                     },
                     {
-                        name: '2.图片大小要求',
                         content: '（1）建议使用宽度480~620像素、高度小于等于960像素的图片；' +
                         '（2）格式为：jpg、jepg、gif、png举例：可以上传一张宽度为480，高度为960像素，格式为jpg的图片',
+                        name: '2.图片大小要求',
                     },
                     {
-                        name: '3.文字要求',
                         content: '（1）每次插入文字不能超过500个字，标点、特殊字符按照一个字计算；' +
                         '（2）请手动输入文字，不要复制粘网页上的文字，防止出现乱码；',
+                        name: '3.文字要求',
                     },
                 ],
             };

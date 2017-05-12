@@ -22,29 +22,29 @@
                 ruleValidate: {
                     name: [
                         {
-                            required: true,
                             message: '名称不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
                     widthNum: [
                         {
-                            required: true,
                             message: '宽度不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
                     heightNum: [
                         {
-                            required: true,
                             message: '高度不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
                     logo: [
                         {
-                            required: true,
                             message: '广告位默认图片不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
@@ -52,12 +52,12 @@
                 loading: false,
                 province: [
                     {
-                        value: '1',
                         label: '图片',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '图片1',
+                        value: '2',
                     },
                 ],
             };

@@ -26,37 +26,37 @@
                 },
                 showStyle: [
                     {
-                        value: '1',
                         label: '颜色',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '类型',
+                        value: '2',
                     },
                 ],
                 location: [
                     {
-                        value: '1',
                         label: '颜色',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '类型',
+                        value: '2',
                     },
                 ],
                 loading: false,
                 ruleValidate: {
                     typeName: [
                         {
-                            required: true,
                             message: '名称名称不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
                     quotaRatio: [
                         {
-                            required: true,
                             message: '分佣比例不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],

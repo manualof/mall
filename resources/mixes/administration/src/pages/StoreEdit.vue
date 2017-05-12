@@ -30,8 +30,8 @@
                 ruleValidate: {
                     storeName: [
                         {
-                            required: true,
                             message: '名称不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
@@ -43,42 +43,42 @@
                 },
                 companyPlace: [
                     {
-                        value: '1',
                         label: '上海市',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '北京市',
+                        value: '2',
                     },
                 ],
                 classification: [
                     {
-                        value: '1',
                         label: '分类1',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '分类2',
+                        value: '2',
                     },
                 ],
                 province: [
                     {
-                        value: '1',
                         label: '上海市',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '北京市',
+                        value: '2',
                     },
                 ],
                 licensePlace: [
                     {
-                        value: '1',
                         label: '上海市',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '北京市',
+                        value: '2',
                     },
                 ],
                 imgName: '',
@@ -88,12 +88,12 @@
                 loading: false,
                 level: [
                     {
-                        value: '1',
                         label: '等级1',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '等级2',
+                        value: '2',
                     },
                 ],
             };

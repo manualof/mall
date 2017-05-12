@@ -18,8 +18,8 @@
                 ruleValidate: {
                     brandName: [
                         {
-                            required: true,
                             message: '名称不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],

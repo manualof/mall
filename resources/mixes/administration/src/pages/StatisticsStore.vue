@@ -207,32 +207,32 @@
                 ],
                 goodsList: [
                     {
-                        value: '1',
                         label: '商品1',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '商品2',
+                        value: '2',
                     },
                 ],
                 shopsList: [
                     {
-                        value: '1',
                         label: '商品1',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '商品2',
+                        value: '2',
                     },
                 ],
                 timeList: [
                     {
-                        value: '1',
                         label: '按照月统计',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '按照周统计',
+                        value: '2',
                     },
                 ],
                 self: this,

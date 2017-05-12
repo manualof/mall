@@ -15,8 +15,8 @@
                 activityValidate: {
                     title: [
                         {
-                            required: true,
                             message: '标题不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],

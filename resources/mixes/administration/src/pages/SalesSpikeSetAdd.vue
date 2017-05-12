@@ -14,26 +14,26 @@
                 searchProduct: '',
                 searchLists: [
                     {
-                        value: '北京',
                         label: '北京',
+                        value: '北京',
                     },
                     {
-                        value: '上海',
                         label: '上海',
+                        value: '上海',
                     },
                     {
-                        value: '西安',
                         label: '西安',
+                        value: '西安',
                     },
                 ],
                 searchProducts: [
                     {
-                        value: '苹果',
                         label: '苹果',
+                        value: '苹果',
                     },
                     {
-                        value: '香蕉',
                         label: '香蕉',
+                        value: '香蕉',
                     },
                 ],
                 sales: [
@@ -55,8 +55,8 @@
                 ruleValidate: {
                     remarks: [
                         {
-                            required: true,
                             message: '信息不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],

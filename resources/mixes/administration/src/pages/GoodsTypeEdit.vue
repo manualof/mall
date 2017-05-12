@@ -7,15 +7,15 @@
                 attributeValidate: {
                     name: [
                         {
-                            required: true,
                             message: '属性名称不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
                     sort: [
                         {
-                            required: true,
                             message: '排序不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
@@ -149,28 +149,32 @@
                 ],
                 showStyle: [
                     {
-                        value: '1',
                         label: '颜色',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '类型',
+                        value: '2',
                     },
                 ],
                 location: [
                     {
-                        value: '1',
                         label: '颜色',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '类型',
+                        value: '2',
                     },
                 ],
                 loading: false,
                 ruleValidate: {
                     typeName: [
-                        { required: true, message: '名称名称不能为空', trigger: 'blur' },
+                        {
+                            message: '名称名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
                     ],
                 },
             };

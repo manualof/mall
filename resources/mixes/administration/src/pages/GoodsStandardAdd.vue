@@ -115,8 +115,8 @@
                 ruleValidate: {
                     type: [
                         {
-                            required: true,
                             message: '规格不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],

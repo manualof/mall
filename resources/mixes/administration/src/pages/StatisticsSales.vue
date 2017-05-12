@@ -119,64 +119,64 @@
                 ],
                 goodsList: [
                     {
-                        value: '1',
                         label: '商品1',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '商品2',
+                        value: '2',
                     },
                 ],
                 shopsList: [
                     {
-                        value: '1',
                         label: '商品1',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '商品2',
+                        value: '2',
                     },
                 ],
                 timeList: [
                     {
-                        value: '1',
                         label: '按照月统计',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '按照周统计',
+                        value: '2',
                     },
                 ],
                 informationList: [
                     {
+                        price: '4444',
                         title: '收款金额',
-                        price: '4444',
                     },
                     {
+                        price: '4444',
                         title: '退款金额',
-                        price: '4444',
                     },
                     {
+                        price: '4444',
                         title: '实收金额',
-                        price: '4444',
                     },
                     {
+                        price: '4444',
                         title: '店铺费用',
-                        price: '4444',
                     },
                     {
-                        title: '总收入',
                         price: '4444',
+                        title: '总收入',
                     },
                 ],
                 orderStatistics: [
                     {
-                        title: '总销售额',
                         price: '4444',
+                        title: '总销售额',
                     },
                     {
-                        title: '总订单量',
                         price: '4444',
+                        title: '总订单量',
                     },
                 ],
                 self: this,

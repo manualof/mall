@@ -13,8 +13,8 @@
                 validate: {
                     name: [
                         {
-                            required: true,
                             message: '时段标题不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],

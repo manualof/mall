@@ -23,28 +23,28 @@
                 validate: {
                     imageType: [
                         {
-                            required: true,
                             message: '请选择图片存放类型',
+                            required: true,
                             trigger: 'change',
                         },
                     ],
                 },
                 radioList: [
                     {
-                        label: 'fileName',
                         content: '按照文件名存放（例：店铺ID/图片）',
+                        label: 'fileName',
                     },
                     {
-                        label: 'year',
                         content: '按照年份存放（例：店铺ID/年/图片）',
+                        label: 'year',
                     },
                     {
-                        label: 'yearMonth',
                         content: '按照年月存放（例：店铺ID/年/月/图片）',
+                        label: 'yearMonth',
                     },
                     {
-                        label: 'yearMonthDay',
                         content: '按照年月日存放（例：店铺ID/年/月/日/图片）',
+                        label: 'yearMonthDay',
                     },
                 ],
             };

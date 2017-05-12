@@ -7,12 +7,12 @@
                 isPriceArea: false,
                 goodsList: [
                     {
-                        value: '1',
                         label: '商品1',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '商品2',
+                        value: '2',
                     },
                 ],
                 goodsColumns: [
