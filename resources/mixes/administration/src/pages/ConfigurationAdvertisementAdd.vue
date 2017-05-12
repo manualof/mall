@@ -21,23 +21,35 @@
                 loading: false,
                 position: [
                     {
-                        value: '1',
                         label: '图片',
+                        value: '1',
                     },
                     {
-                        value: '2',
                         label: '图片1',
+                        value: '2',
                     },
                 ],
                 ruleValidate: {
                     adname: [
-                        { required: true, message: '广告名称不能为空', trigger: 'blur' },
+                        {
+                            message: '广告名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
                     ],
                     position: [
-                        { required: true, message: '广告位不能为空', trigger: 'blur' },
+                        {
+                            message: '广告位不能为空',
+                            required: true,
+                            trigger: 'blur'
+                        },
                     ],
                     logo: [
-                        { required: true, message: '图片上传不能为空', trigger: 'blur' },
+                        {
+                            message: '图片上传不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
                     ],
                 },
             };
@@ -121,7 +133,9 @@
                         <i-col span="12">
                             <form-item label="选择广告位">
                                 <i-select placeholder="请选择" v-model="addAdPosition.position">
-                                    <i-option v-for="item in position" :value="item.value" :key="item">{{ item.label }}</i-option>
+                                    <i-option v-for="item in position" :value="item.value" :key="item">{{ item.label
+                                        }}
+                                    </i-option>
                                 </i-select>
                             </form-item>
                         </i-col>
@@ -129,7 +143,8 @@
                     <row>
                         <i-col span="12">
                             <form-item label="开始时间" prop="starttime">
-                                <time-picker placeholder="选择时间" type="time" v-model="addAdPosition.starttime"></time-picker>
+                                <time-picker placeholder="选择时间" type="time"
+                                             v-model="addAdPosition.starttime"></time-picker>
                             </form-item>
                         </i-col>
                     </row>
@@ -137,7 +152,7 @@
                         <i-col span="12">
                             <form-item label="结束时间" prop="endtime">
                                 <time-picker type="time" placeholder="选择时间"
-                                             v-model="addAdPosition.endtime" ></time-picker>
+                                             v-model="addAdPosition.endtime"></time-picker>
                             </form-item>
                         </i-col>
                     </row>

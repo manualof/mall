@@ -2,6 +2,11 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 action: `${window.api}/mall/upload`,
@@ -16,16 +21,32 @@
                 },
                 ruleValidate: {
                     name: [
-                        { required: true, message: '名称不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '名称不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     widthNum: [
-                        { required: true, message: '宽度不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '宽度不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     heightNum: [
-                        { required: true, message: '高度不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '高度不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                     logo: [
-                        { required: true, message: '广告位默认图片不能为空', trigger: 'blur' },
+                        {
+                            required: true,
+                            message: '广告位默认图片不能为空',
+                            trigger: 'blur',
+                        },
                     ],
                 },
                 loading: false,
@@ -40,11 +61,6 @@
                     },
                 ],
             };
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
         methods: {
             removeLogo() {
