@@ -2,6 +2,11 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 advertisement: [
@@ -108,11 +113,6 @@
                 ],
                 self: this,
             };
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
         methods: {
             removeAd(index) {

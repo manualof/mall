@@ -2,9 +2,30 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
+                managementSearch: '',
                 switch1: true,
+                searchList: [
+                    {
+                        label: '店铺名称',
+                        value: '订单编号',
+                    },
+                    {
+                        label: '商品名称',
+                        value: '商品名称',
+                    },
+                    {
+                        label: '商品分类',
+                        value: '商品分类',
+                    },
+                ],
+                self: this,
                 typeColumns: [
                     {
                         title: '用户名',
@@ -107,28 +128,7 @@
                         status: true,
                     },
                 ],
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '订单编号',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
-                self: this,
-                managementSearch: '',
             };
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
         methods: {
             addData() {

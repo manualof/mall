@@ -2,8 +2,23 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
+                loading: false,
+                ruleValidate: {
+                    type: [
+                        {
+                            message: '规格不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 standardData: {
                     position: '',
                     type: '',
@@ -111,22 +126,7 @@
                         ],
                     },
                 ],
-                loading: false,
-                ruleValidate: {
-                    type: [
-                        {
-                            message: '规格不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
-                },
             };
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
         methods: {
             goBack() {
@@ -175,7 +175,8 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="快捷定位">
-                                    <cascader :data="styleData" trigger="hover" v-model="standardData.position"></cascader>
+                                    <cascader :data="styleData" trigger="hover"
+                                              v-model="standardData.position"></cascader>
                                     <p class="tip">选择分类，可关联到任意级分类 （只在后台快捷定位中起作用）</p>
                                 </form-item>
                             </i-col>

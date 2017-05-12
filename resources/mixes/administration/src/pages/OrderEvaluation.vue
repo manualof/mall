@@ -9,22 +9,6 @@
         },
         data() {
             return {
-                searchCategory: '',
-                searchWord: '',
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '店铺名称',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
                 evaluationListColumns: [
                     {
                         type: 'selection',
@@ -151,6 +135,22 @@
                         baskImage: '',
                         evaluationTime: '2016-12-23',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
+                    },
+                ],
+                searchCategory: '',
+                searchWord: '',
+                searchList: [
+                    {
+                        label: '店铺名称',
+                        value: '店铺名称',
+                    },
+                    {
+                        label: '商品名称',
+                        value: '商品名称',
+                    },
+                    {
+                        label: '商品分类',
+                        value: '商品分类',
                     },
                 ],
             };

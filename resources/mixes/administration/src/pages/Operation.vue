@@ -2,9 +2,15 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 btnStatus: true,
+                managementSearch: '',
                 typeColumns: [
                     {
                         title: '账单编号',
@@ -156,13 +162,7 @@
                     },
                 ],
                 self: this,
-                managementSearch: '',
             };
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
         methods: {
             exportData() {
@@ -170,14 +170,14 @@
                     filename: '结算管理数据',
                 });
             },
-            remove(index) {
-                this.typeData.splice(index, 1);
-            },
             handel() {
                 const self = this;
                 self.$router.push({
                     path: 'operation/settlement',
                 });
+            },
+            remove(index) {
+                this.typeData.splice(index, 1);
             },
             look() {
 

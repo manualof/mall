@@ -9,22 +9,6 @@
         },
         data() {
             return {
-                loading: false,
-                self: this,
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '店铺名称',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
                 goodsReview: {
                     switch1: true,
                 },
@@ -162,6 +146,23 @@
                         styleName: '运动健康>户外>鞋服',
                     },
                 ],
+                modal: false,
+                loading: false,
+                self: this,
+                searchList: [
+                    {
+                        label: '店铺名称',
+                        value: '店铺名称',
+                    },
+                    {
+                        label: '商品名称',
+                        value: '商品名称',
+                    },
+                    {
+                        label: '商品分类',
+                        value: '商品分类',
+                    },
+                ],
                 skuColumns: [
                     {
                         title: 'SKU编号',
@@ -198,7 +199,6 @@
                         skuPrice: 99.00,
                     },
                 ],
-                modal: false,
             };
         },
         methods: {

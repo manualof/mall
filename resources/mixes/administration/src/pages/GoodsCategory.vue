@@ -2,10 +2,35 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
-                searchCategory: '',
-                searchWord: '',
+                classificationData: [
+                    {
+                        typeStyle: '通用类型',
+                        commissionRate: '5%',
+                        goodShow: '颜色',
+                    },
+                    {
+                        typeStyle: '通用类型',
+                        commissionRate: '5%',
+                        goodShow: '颜色',
+                    },
+                    {
+                        typeStyle: '通用类型',
+                        commissionRate: '5%',
+                        goodShow: '颜色',
+                    },
+                    {
+                        typeStyle: '通用类型',
+                        commissionRate: '5%',
+                        goodShow: '颜色',
+                    },
+                ],
                 goodColumns: [
                     {
                         type: 'selection',
@@ -60,35 +85,10 @@
                         },
                     },
                 ],
-                classificationData: [
-                    {
-                        typeStyle: '通用类型',
-                        commissionRate: '5%',
-                        goodShow: '颜色',
-                    },
-                    {
-                        typeStyle: '通用类型',
-                        commissionRate: '5%',
-                        goodShow: '颜色',
-                    },
-                    {
-                        typeStyle: '通用类型',
-                        commissionRate: '5%',
-                        goodShow: '颜色',
-                    },
-                    {
-                        typeStyle: '通用类型',
-                        commissionRate: '5%',
-                        goodShow: '颜色',
-                    },
-                ],
+                searchCategory: '',
+                searchWord: '',
                 self: this,
             };
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
         methods: {
             editType() {

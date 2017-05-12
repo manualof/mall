@@ -2,14 +2,19 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
-                loading: false,
-                searchData: {
+                formValidate: {
                     search: '',
                     show: '',
                 },
-                validate: {
+                loading: false,
+                ruleValidate: {
                     search: [
                         {
                             message: '搜索默认词不能为空',
@@ -25,11 +30,11 @@
                         },
                     ],
                 },
-                formValidate: {
+                searchData: {
                     search: '',
                     show: '',
                 },
-                ruleValidate: {
+                validate: {
                     search: [
                         {
                             message: '搜索默认词不能为空',
@@ -68,11 +73,6 @@
                     path: ' ',
                 });
             },
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
         /*methods: {
          handleSubmit(name) {

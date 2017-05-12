@@ -2,6 +2,11 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 action: `${window.api}/mall/upload`,
@@ -10,8 +15,8 @@
                     brandName: '',
                     disabledGroup: '图片',
                     initials: '',
-                    switch1: true,
                     logo: '',
+                    switch1: true,
                     sort: '',
                 },
                 ruleValidate: {
@@ -128,11 +133,6 @@
                 self: this,
                 loading: false,
             };
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
         methods: {
             goBack() {

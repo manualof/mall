@@ -2,8 +2,14 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
+                managementSearch: '',
                 typeColumns: [
                     {
                         title: '规格排序',
@@ -73,17 +79,14 @@
                     },
                 ],
                 self: this,
-                managementSearch: '',
             };
         },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
-        },
         methods: {
-            remove(index) {
-                this.typeData.splice(index, 1);
+            edit() {
+                const self = this;
+                self.$router.push({
+                    path: 'standard/edit',
+                });
             },
             newAddData() {
                 const self = this;
@@ -91,11 +94,8 @@
                     path: 'standard/add',
                 });
             },
-            edit() {
-                const self = this;
-                self.$router.push({
-                    path: 'standard/edit',
-                });
+            remove(index) {
+                this.typeData.splice(index, 1);
             },
         },
     };

@@ -114,7 +114,8 @@
                                     <i-col span="12">
                                         <form-item label="默认搜索词">
                                             <i-input v-model="form.default" placeholder=""></i-input>
-                                            <span class="range">默认词设置将显示在前台搜索框下面，前台点击时直接作为关键词进行搜索，多个请用半角逗号","隔开</span>
+                                            <span class="range">默认词设置将显示在前台搜索框下面，
+                                                前台点击时直接作为关键词进行搜索，多个请用半角逗号","隔开</span>
                                         </form-item>
                                     </i-col>
                                 </row>
@@ -136,9 +137,11 @@
                     </div>
                     <div class="store-body">
                         <div class="store-body-header">
-                            <i-button class="export-btn" @click="exportData()" type="ghost" @click="exportData()" >导出数据</i-button>
+                            <i-button class="export-btn" @click="exportData()"
+                                      @click="exportData()" type="ghost" >导出数据</i-button>
                         </div>
-                        <i-table highlight-row ref="searchTable" class="shop-table" :columns="searchColumns" :data="searchData"></i-table>
+                        <i-table highlight-row ref="searchTable" class="shop-table"
+                                 :columns="searchColumns" :data="searchData"></i-table>
                     </div>
                 </tab-pane>
             </tabs>

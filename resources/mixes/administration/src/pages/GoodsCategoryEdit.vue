@@ -2,16 +2,21 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 editDetail: {
                     goodsSort: '',
                     quotaRatio: '',
-                    typeName: '',
-                    showStyle: '',
                     interestStyle: true,
                     interestRadio: true,
                     interestType: true,
+                    showStyle: '',
+                    typeName: '',
                 },
                 showStyle: [
                     {
@@ -51,11 +56,6 @@
                     ],
                 },
             };
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
         methods: {
             goBack() {
@@ -146,7 +146,9 @@
                                             功能中添加新的类型</p>
                                         <checkbox v-model="editDetail.interestType" class="tip"
                                                   style="text-align: inherit; color: inherit">关联到子分类</checkbox>
-                                        <p class="contact tip">勾选关联到子分类后，被绑定的商品展示方式也将继承到子分类中使用</p>
+                                        <p class="contact tip">
+                                            勾选关联到子分类后，被绑定的商品展示方式也将继承到子分类中使用
+                                        </p>
                                     </div>
                                 </form-item>
                             </i-col>

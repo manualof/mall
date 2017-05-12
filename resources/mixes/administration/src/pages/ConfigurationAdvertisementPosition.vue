@@ -11,12 +11,12 @@
             return {
                 action: `${window.api}/mall/upload`,
                 addAdPosition: {
+                    heightNum: '',
+                    logo: '',
                     name: '',
                     province: '',
                     widthNum: '',
-                    heightNum: '',
                     showStyle: 'style1',
-                    logo: '',
                     switchStatus: true,
                 },
                 ruleValidate: {

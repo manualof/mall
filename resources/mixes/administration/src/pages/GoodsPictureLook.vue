@@ -3,11 +3,16 @@
     import image from '../assets/images/adv.jpg';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
-                indeterminate: true,
                 checkAll: false,
                 checkAllGroup: [],
+                indeterminate: true,
                 pictureList: [
                     {
                         img: image,
@@ -48,12 +53,20 @@
                 ],
             };
         },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
-        },
         methods: {
+            checkAllGroupChange(data) {
+                if (data.length === this.pictureList.length) {
+                    this.indeterminate = false;
+                    this.checkAll = true;
+                } else if (data.length > 0) {
+                    this.indeterminate = true;
+                    this.checkAll = false;
+                } else {
+                    this.indeterminate = false;
+                    this.checkAll = false;
+                }
+            },
+            delete() {},
             goBack() {
                 const self = this;
                 self.$router.go(-1);
@@ -72,19 +85,6 @@
                     this.checkAllGroup = [];
                 }
             },
-            checkAllGroupChange(data) {
-                if (data.length === this.pictureList.length) {
-                    this.indeterminate = false;
-                    this.checkAll = true;
-                } else if (data.length > 0) {
-                    this.indeterminate = true;
-                    this.checkAll = false;
-                } else {
-                    this.indeterminate = false;
-                    this.checkAll = false;
-                }
-            },
-            delete() {},
         },
     };
 </script>

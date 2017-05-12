@@ -2,6 +2,11 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 editDetail: {
@@ -156,16 +161,7 @@
                 },
             };
         },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
-        },
         methods: {
-            goBack() {
-                const self = this;
-                self.$router.go(-1);
-            },
             addAttribute() {
 
             },
@@ -174,6 +170,10 @@
             },
             deleteCustomize() {
 
+            },
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
             },
             submit() {
                 const self = this;

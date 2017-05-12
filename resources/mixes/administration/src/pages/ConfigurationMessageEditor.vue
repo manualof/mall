@@ -2,12 +2,14 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 loading: false,
-                whetherGroup1: '否',
-                whetherGroup2: '否',
-                whetherGroup3: '否',
                 rejectedDetail: {
                     remarks: '',
                 },
@@ -20,14 +22,16 @@
                         },
                     ],
                 },
+                whetherGroup1: '否',
+                whetherGroup2: '否',
+                whetherGroup3: '否',
             };
         },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
-        },
         methods: {
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -41,10 +45,6 @@
                         });
                     }
                 });
-            },
-            goBack() {
-                const self = this;
-                self.$router.go(-1);
             },
         },
     };
@@ -135,8 +135,8 @@
                                                 <i-col span="18">
                                                     <form-item label="消息内容">
                                                         <form-item class="remark-input">
-                                                            <i-input v-model="rejectedDetail.remarks" type="textarea"
-                                                                     :autosize="{minRows: 3,maxRows: 5}"></i-input>
+                                                            <i-input :autosize="{minRows: 3,maxRows: 5}" type="textarea"
+                                                                     v-model="rejectedDetail.remarks"></i-input>
                                                         </form-item>
                                                     </form-item>
                                                 </i-col>

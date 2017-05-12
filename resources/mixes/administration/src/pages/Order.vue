@@ -2,24 +2,13 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
-                searchCategory: '',
-                searchWord: '',
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '订单编号',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
                 managementColumns: [
                     {
                         type: 'selection',
@@ -172,6 +161,22 @@
                         paymentMethod: '钻石店铺',
                     },
                 ],
+                searchCategory: '',
+                searchWord: '',
+                searchList: [
+                    {
+                        label: '店铺名称',
+                        value: '订单编号',
+                    },
+                    {
+                        label: '商品名称',
+                        value: '商品名称',
+                    },
+                    {
+                        label: '商品分类',
+                        value: '商品分类',
+                    },
+                ],
                 self: this,
             };
         },
@@ -189,11 +194,6 @@
                     },
                 );
             },
-        },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
         },
     };
 </script>

@@ -2,6 +2,11 @@
     import injection from '../helpers/injection';
 
     export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('mall');
+            });
+        },
         data() {
             return {
                 typeColumns: [
@@ -76,14 +81,12 @@
                 managementSearch: '',
             };
         },
-        beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
-            });
-        },
         methods: {
-            remove(index) {
-                this.typeData.splice(index, 1);
+            edit() {
+                const self = this;
+                self.$router.push({
+                    path: 'type/edit',
+                });
             },
             newAddData() {
                 const self = this;
@@ -91,11 +94,8 @@
                     path: 'type/add',
                 });
             },
-            edit() {
-                const self = this;
-                self.$router.push({
-                    path: 'type/edit',
-                });
+            remove(index) {
+                this.typeData.splice(index, 1);
             },
         },
     };

@@ -185,7 +185,10 @@
                         <p> 编辑完成后请清理“商家消息模板”缓存。</p>
                     </div>
                     <div class="store-body">
-                        <i-table class="shop-table" :columns="merchantColumns"  :context="self"  :data="merchantData" class="my-btn"></i-table>
+                        <i-table class="shop-table my-btn"
+                                 :columns="merchantColumns"
+                                 :context="self"
+                                 :data="merchantData"></i-table>
                     </div>
                 </tab-pane>
                 <tab-pane label="用户消息模板" name="name2">
