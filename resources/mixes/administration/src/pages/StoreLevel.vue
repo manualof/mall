@@ -95,12 +95,12 @@
         },
         methods: {
             deleteData() {},
-            edit() {
-                const self = this;
-                self.$router.push({
-                    path: 'level/edit',
-                });
-            },
+//            edit() {
+//                const self = this;
+//                self.$router.push({
+//                    path: 'level/edit',
+//                });
+//            },
             newAddData() {
                 const self = this;
                 self.$router.push({
