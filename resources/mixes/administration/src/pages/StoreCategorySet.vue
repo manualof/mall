@@ -73,7 +73,7 @@
                 </i-button>
                 <span>店铺名称—设置</span>
             </div>
-            <card>
+            <card :bordered="false">
                 <i-form :label-width="200" ref="activityValidate" :model="formValidate" :rules="validate">
                     <row>
                         <i-col span="12">

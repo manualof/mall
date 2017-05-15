@@ -44,6 +44,10 @@
             };
         },
         methods: {
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
             shuchu() {
                 console.log(Date.parse(this.activityData.startTime));
             },
@@ -69,7 +73,7 @@
         <div class="sales-spike-add">
                 <div class="add-title">
                     <card>
-                        <i-button type="text">
+                        <i-button type="text" @click.native="goBack">
                             <icon type="chevron-left"></icon>
                         </i-button>
                         <span>秒杀活动—添加秒杀活动</span>
