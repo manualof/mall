@@ -64,42 +64,140 @@
                     },
                 ],
                 isPriceArea: false,
-                orderBar: {
-                    legend: {
-                        data: ['昨天', '今天'],
-                        bottom: 'auto',
+                industryGoods: {
+                    color: ['#3398DB'],
+                    series: [
+                        {
+                            barWidth: '60%',
+                            data: [10, 52, 200, 334, 390, 330, 220],
+                            name: '直接访问',
+                            type: 'bar',
+                        },
+                    ],
+                    tooltip: {
+                        axisPointer: {
+                            type: 'line',
+                        },
+                        trigger: 'axis',
                     },
+                    xAxis: [
+                        {
+                            axisTick: {
+                                alignWithLabel: true,
+                            },
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            type: 'category',
+                        },
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                        },
+                    ],
+                },
+                industryShop: {
+                    color: ['#3398DB'],
+                    series: [
+                        {
+                            barWidth: '60%',
+                            data: [10, 52, 200, 334, 390, 330, 220],
+                            name: '直接访问',
+                            type: 'bar',
+                        },
+                    ],
+                    tooltip: {
+                        axisPointer: {
+                            type: 'line',
+                        },
+                        trigger: 'axis',
+                    },
+                    xAxis: [
+                        {
+                            axisTick: {
+                                alignWithLabel: true,
+                            },
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            type: 'category',
+                        },
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                        },
+                    ],
+                },
+                orderLine: {
+                    legend: {
+                        bottom: 'auto',
+                        data: ['昨天', '今天'],
+                    },
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '今天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                        {
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                            name: '昨天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
                     tooltip: {
                         trigger: 'axis',
                     },
-                    grid: {
-                        left: '3%',
-                        right: '4%',
-                        bottom: '3%',
-                        containLabel: true,
-                    },
                     xAxis: {
-                        type: 'category',
                         boundaryGap: false,
                         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
                     },
                     yAxis: {
                         type: 'value',
                     },
+                },
+                orderAccount: {
                     series: [
                         {
-                            name: '今天',
-                            type: 'line',
-                            stack: '下单金额',
                             data: [120, 132, 220, 250, 90, 230, 210],
-                        },
-                        {
-                            name: '昨天',
-                            type: 'line',
+                            name: '下单金额',
                             stack: '下单金额',
-                            data: [220, 182, 191, 234, 290, 330, 310],
+                            type: 'line',
                         },
                     ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
+                orderNumber: {
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '下单金额',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
                 },
                 self: this,
                 shopsColumns: [
@@ -162,11 +260,6 @@
                 ],
             };
         },
-        methods: {
-            onReady(instance) {
-                console.log(instance);
-            },
-        },
     };
 </script>
 <template>
@@ -207,7 +300,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderBar" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderLine" @ready="onReady" @click="onClick"></i-echarts>
                                     </div>
                                 </tab-pane>
                                 <tab-pane label="下单商品数">标签二的内容</tab-pane>
@@ -249,7 +342,7 @@
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="orderBar" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="industryGoods" @ready="onReady" @click="onClick"></i-echarts>
                             </div>
                             <i-table :columns="goodsColumns" :context="self" :data="goodsData"></i-table>
                             <div class="page">
@@ -280,7 +373,7 @@
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="orderBar" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="industryShop" @ready="onReady" @click="onClick"></i-echarts>
                             </div>
                             <i-table :columns="shopsColumns" :context="self" :data="shopsData"></i-table>
                             <div class="page">
@@ -328,9 +421,14 @@
                                     <p>看行业价格分布情况前，请先设置价格区间</p>
                                 </div>
                             </div>
-
                             <div class="echarts">
-                                <i-echarts :option="orderBar" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="orderAccount" @ready="onReady" @click="onClick"></i-echarts>
+                            </div>
+                            <div class="order-money-content">
+                                <h5 v-if="!isPriceArea">下单商品数</h5>
+                            </div>
+                            <div class="echarts">
+                                <i-echarts :option="orderNumber" @ready="onReady" @click="onClick"></i-echarts>
                             </div>
                         </div>
                     </card>
