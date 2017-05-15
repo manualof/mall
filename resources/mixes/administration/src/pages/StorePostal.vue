@@ -13,9 +13,7 @@
                 postalForm: {
                     shop: ['系统默认等级'],
                 },
-                ruleValidate: {
-
-                },
+                ruleValidate: {},
             };
         },
         methods: {

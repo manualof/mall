@@ -43,13 +43,13 @@
                 },
                 self: this,
                 typeData: {
+                    apply: '',
+                    charges: '',
+                    level: '',
                     levelName: '',
                     releaseNum: '',
                     uploadNum: '',
-                    charges: '',
                     useType: [],
-                    apply: '',
-                    level: '',
                 },
             };
         },

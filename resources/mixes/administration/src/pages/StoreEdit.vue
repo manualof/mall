@@ -93,9 +93,9 @@
                     logo: '',
                     licensePlace: '',
                     province: '',
+                    register_money: '',
                     storeName: '',
                     storeAddress: '',
-                    register_money: '',
                     switch1: true,
                 },
                 self: this,
@@ -110,6 +110,20 @@
             },
             removeLogo() {
                 this.storeDetail.logo = '';
+            },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.storeDetail.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
             uploadBefore() {
                 injection.loading.start();
@@ -142,20 +156,6 @@
                     title: data.message,
                 });
                 self.storeDetail.logo = data.data.path;
-            },
-            submit() {
-                const self = this;
-                self.loading = true;
-                self.$refs.storeDetail.validate(valid => {
-                    if (valid) {
-                        window.console.log(valid);
-                    } else {
-                        self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
-                    }
-                });
             },
         },
     };

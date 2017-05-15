@@ -33,24 +33,24 @@
                 ],
                 analysisData: [
                     {
-                        num: 333,
-                        memberName: 4,
                         amount: 22,
+                        memberName: 4,
+                        num: 333,
                     },
                     {
-                        num: 333,
-                        memberName: 4,
                         amount: 22,
+                        memberName: 4,
+                        num: 333,
                     },
                     {
-                        num: 333,
-                        memberName: 4,
                         amount: 22,
+                        memberName: 4,
+                        num: 333,
                     },
                     {
-                        num: 333,
-                        memberName: 4,
                         amount: 22,
+                        memberName: 4,
+                        num: 333,
                     },
                 ],
                 isPriceArea: false,
@@ -84,27 +84,27 @@
                 memberData: [
                     {
                         hour: 1,
-                        yesterday: 0,
-                        today: 2,
                         rate: 2,
+                        today: 2,
+                        yesterday: 0,
                     },
                     {
                         hour: 1,
-                        yesterday: 0,
-                        today: 2,
                         rate: 2,
+                        today: 2,
+                        yesterday: 0,
                     },
                     {
                         hour: 1,
-                        yesterday: 0,
-                        today: 2,
                         rate: 2,
+                        today: 2,
+                        yesterday: 0,
                     },
                     {
                         hour: 1,
-                        yesterday: 0,
-                        today: 2,
                         rate: 2,
+                        today: 2,
+                        yesterday: 0,
                     },
                 ],
                 provinceColumns: [
@@ -135,30 +135,31 @@
                 ],
                 provinceData: [
                     {
-                        province: '陕西',
+                        amount: 20,
                         memberNum: 4,
                         money: 222,
-                        amount: 20,
+                        province: '陕西',
                     },
                     {
-                        province: '陕西',
+                        amount: 20,
                         memberNum: 4,
                         money: 222,
-                        amount: 20,
+                        province: '陕西',
                     },
                     {
-                        province: '陕西',
+                        amount: 20,
                         memberNum: 4,
                         money: 222,
-                        amount: 20,
+                        province: '陕西',
                     },
                     {
-                        province: '陕西',
+                        amount: 20,
                         memberNum: 4,
                         money: 222,
-                        amount: 20,
+                        province: '陕西',
                     },
                 ],
+                self: this,
                 timeList: [
                     {
                         label: '按照月统计',
@@ -169,7 +170,6 @@
                         value: '2',
                     },
                 ],
-                self: this,
             };
         },
         methods: {

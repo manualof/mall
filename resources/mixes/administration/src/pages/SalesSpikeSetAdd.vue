@@ -64,6 +64,34 @@
             };
         },
         methods: {
+            checkAllGroupChange(data) {
+                if (data.length === 4) {
+                    this.indeterminate = false;
+                    this.checkAll = true;
+                } else if (data.length > 0) {
+                    this.indeterminate = true;
+                    this.checkAll = false;
+                } else {
+                    this.indeterminate = false;
+                    this.checkAll = false;
+                }
+            },
+            checkAllGroupChange2(data) {
+                if (data.length === 4) {
+                    this.indeterminate = false;
+                    this.checkAll = true;
+                } else if (data.length > 0) {
+                    this.indeterminate = true;
+                    this.checkAll = false;
+                } else {
+                    this.indeterminate = false;
+                    this.checkAll = false;
+                }
+            },
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
             handleCheckAll() {
                 if (this.indeterminate) {
                     this.checkAll = false;
@@ -76,18 +104,6 @@
                     this.checkAllGroup = 'iphone8 plus星空蓝全新发布 信用卡12期分期免息';
                 } else {
                     this.checkAllGroup = [];
-                }
-            },
-            checkAllGroupChange(data) {
-                if (data.length === 4) {
-                    this.indeterminate = false;
-                    this.checkAll = true;
-                } else if (data.length > 0) {
-                    this.indeterminate = true;
-                    this.checkAll = false;
-                } else {
-                    this.indeterminate = false;
-                    this.checkAll = false;
                 }
             },
             handleCheckAll2() {
@@ -104,18 +120,6 @@
                     this.checkAllGroup = [];
                 }
             },
-            checkAllGroupChange2(data) {
-                if (data.length === 4) {
-                    this.indeterminate = false;
-                    this.checkAll = true;
-                } else if (data.length > 0) {
-                    this.indeterminate = true;
-                    this.checkAll = false;
-                } else {
-                    this.indeterminate = false;
-                    this.checkAll = false;
-                }
-            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -129,10 +133,6 @@
                         });
                     }
                 });
-            },
-            goBack() {
-                const self = this;
-                self.$router.go(-1);
             },
         },
     };

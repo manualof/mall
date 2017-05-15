@@ -27,33 +27,33 @@
                 self: this,
                 typeColumns: [
                     {
+                        align: 'center',
                         type: 'selection',
                         width: 100,
-                        align: 'center',
                     },
                     {
-                        title: '级别',
                         key: 'level',
+                        title: '级别',
                     },
                     {
-                        title: '等级名称',
                         key: 'levelName',
+                        title: '等级名称',
                     },
                     {
-                        title: '可发布商品数',
                         key: 'goodsNum',
+                        title: '可发布商品数',
                     },
                     {
-                        title: '可上传图片数',
                         key: 'pictureNum',
+                        title: '可上传图片数',
                     },
                     {
-                        title: '收费标准',
                         key: 'charges',
+                        title: '收费标准',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 180,
                         render(row, column, index) {
                             return `<i-button type="ghost" class="delete-ad" @click.native="edit">编辑</i-button>

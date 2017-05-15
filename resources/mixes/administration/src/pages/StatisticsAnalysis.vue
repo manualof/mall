@@ -43,24 +43,24 @@
                 ],
                 goodsData: [
                     {
+                        amount: 99,
+                        goodsName: 'xxx旗舰店',
                         num: 1,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
                     },
                     {
+                        amount: 99,
+                        goodsName: 'xxx旗舰店',
                         num: 2,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
                     },
                     {
+                        amount: 99,
+                        goodsName: 'xxx旗舰店',
                         num: 3,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
                     },
                     {
-                        num: 4,
-                        goodsName: 'xxx旗舰店',
                         amount: 99,
+                        goodsName: 'xxx旗舰店',
+                        num: 4,
                     },
                 ],
                 isPriceArea: false,
@@ -126,24 +126,24 @@
                 ],
                 shopsData: [
                     {
+                        amount: 99,
+                        goodsName: 'xxx旗舰店',
                         num: 1,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
                     },
                     {
+                        amount: 99,
+                        goodsName: 'xxx旗舰店',
                         num: 2,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
                     },
                     {
+                        amount: 99,
+                        goodsName: 'xxx旗舰店',
                         num: 3,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
                     },
                     {
-                        num: 4,
-                        goodsName: 'xxx旗舰店',
                         amount: 99,
+                        goodsName: 'xxx旗舰店',
+                        num: 4,
                     },
                 ],
                 timeList: [
