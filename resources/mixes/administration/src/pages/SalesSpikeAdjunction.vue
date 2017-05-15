@@ -7,11 +7,11 @@
                 injection.sidebar.active('mall');
             });
         },
-        computed: {
-            getStartTime() {
-                return Date.parse(this.activityData.startTime);
-            },
-        },
+//        computed: {
+//            getStartTime() {
+//                return Date.parse(this.activityData.startTime);
+//            },
+//        },
         data() {
             return {
                 activityData: {
@@ -31,7 +31,7 @@
                 },
                 endOptions: {
                     disabledDate(date) {
-                        return date && date.valueOf() < this.getStartTime;
+                        return date && date.valueOf() < Date.now() - 86400000;
                     },
                 },
                 loading: false,
@@ -48,9 +48,9 @@
                 const self = this;
                 self.$router.go(-1);
             },
-            shuchu() {
-                console.log(Date.parse(this.activityData.startTime));
-            },
+//            shuchu() {
+//                console.log(Date.parse(this.activityData.startTime));
+//            },
             submit() {
                 const self = this;
                 self.loading = true;
