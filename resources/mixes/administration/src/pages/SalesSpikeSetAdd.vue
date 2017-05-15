@@ -146,7 +146,7 @@
                 </i-button>
                 <span>秒杀活动—设置商品-添加商品</span>
             </div>
-            <div class="store storeBox">
+            <card class="store storeBox">
                 <div class="prompt-box">
                     <h6>提示</h6>
                     <p>搜索完商品后请在下方添加商品数量、限购、价格。如未填写则默认为0</p>
@@ -280,7 +280,7 @@
                         </i-col>
                     </row>
                 </div>
-            </div>
+            </card>
         </div>
     </div>
 </template>

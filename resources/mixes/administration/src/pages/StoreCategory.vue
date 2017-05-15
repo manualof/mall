@@ -81,7 +81,7 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="storeClassifications">
+        <div class="store-category">
             <tabs value="name1">
                 <tab-pane label="店铺分类" name="name1">
                     <card :bordered="false">

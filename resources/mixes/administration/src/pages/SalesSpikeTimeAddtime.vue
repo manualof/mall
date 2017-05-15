@@ -29,9 +29,7 @@
         methods: {
             goback() {
                 const self = this;
-                self.$router.push({
-                    path: ' ',
-                });
+                self.$router.go(-1);
             },
             submit() {
                 const self = this;

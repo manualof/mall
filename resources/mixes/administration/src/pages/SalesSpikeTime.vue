@@ -84,7 +84,7 @@
             addSpikePeriod() {
                 const self = this;
                 self.$router.push({
-                    path: 'addtime',
+                    path: 'time/addtime',
                 });
             },
             goBack() {
