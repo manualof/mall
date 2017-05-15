@@ -29,9 +29,7 @@
         methods: {
             goback() {
                 const self = this;
-                self.$router.push({
-                    path: ' ',
-                });
+                self.$router.go(-1);
             },
             submit() {
                 const self = this;
@@ -54,14 +52,12 @@
     <div class="mall-wrap">
         <div class="sales-spike-time-add">
             <div class="time-add-title">
-                <card>
-                    <i-button type="text" @click.native="goback">
-                        <icon type="chevron-left"></icon>
-                    </i-button>
-                    <span>秒杀活动—时间段列表—添加时间段列表</span>
-                </card>
+                <i-button type="text" @click.native="goback">
+                    <icon type="chevron-left"></icon>
+                </i-button>
+                <span>秒杀活动—时间段列表—添加时间段列表</span>
             </div>
-            <card>
+            <card :bordered="false">
                 <div class="time-add-body">
                     <div class="prompt-box">
                         <h6>提示</h6>

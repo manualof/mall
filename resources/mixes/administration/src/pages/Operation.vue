@@ -190,31 +190,33 @@
         <div class="operation">
             <tabs value="name1">
                 <tab-pane label="结算管理" name="name1">
-                    <div class="prompt-box">
-                        <p>提示</p>
-                        <p>账单计算公式：订单金额（含运费）-佣金金额-退单金额+退还金额-店铺促销费用+订金订单中的未退定金+
-                            下单时使用的平台红包-全部退款时应扣除的平台红包-分销佣金</p>
-                        <p>账单处理流程为：系统出账>商家确认>平台审核>财务支付（完成结算）4个环节，其中平台审核和财务支付
-                            需要平台介入，请予以关注</p>
-                    </div>
-                    <div class="album-action">
-                        <i-button class="add-data" type="ghost" @click.native="exportData">导出数据</i-button>
-                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                        <div class="goods-body-header-right">
-                            <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                <i-select v-model="managementSearch" slot="prepend" style="width: 150px;">
-                                    <i-option v-for="item in searchList"
-                                              :value="item.value">{{ item.label }}</i-option>
-                                </i-select>
-                                <i-button slot="append" type="primary">搜索</i-button>
-                            </i-input>
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>账单计算公式：订单金额（含运费）-佣金金额-退单金额+退还金额-店铺促销费用+订金订单中的未退定金+
+                                下单时使用的平台红包-全部退款时应扣除的平台红包-分销佣金</p>
+                            <p>账单处理流程为：系统出账>商家确认>平台审核>财务支付（完成结算）4个环节，其中平台审核和财务支付
+                                需要平台介入，请予以关注</p>
                         </div>
-                    </div>
-                    <i-table highlight-row :columns="typeColumns" :context="self"
-                             :data="typeData" ref="managementTable"></i-table>
-                    <div class="page">
-                        <page :total="150" show-elevator></page>
-                    </div>
+                        <div class="album-action">
+                            <i-button class="add-data" type="ghost" @click.native="exportData">导出数据</i-button>
+                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                            <div class="goods-body-header-right">
+                                <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                    <i-select v-model="managementSearch" slot="prepend" style="width: 150px;">
+                                        <i-option v-for="item in searchList"
+                                                  :value="item.value">{{ item.label }}</i-option>
+                                    </i-select>
+                                    <i-button slot="append" type="primary">搜索</i-button>
+                                </i-input>
+                            </div>
+                        </div>
+                        <i-table highlight-row :columns="typeColumns" :context="self"
+                                 :data="typeData" ref="managementTable"></i-table>
+                        <div class="page">
+                            <page :total="150" show-elevator></page>
+                        </div>
+                    </card>
                 </tab-pane>
             </tabs>
         </div>

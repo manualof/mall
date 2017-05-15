@@ -7,11 +7,11 @@
                 injection.sidebar.active('mall');
             });
         },
-        computed: {
-            getStartTime() {
-                return Date.parse(this.activityData.startTime);
-            },
-        },
+//        computed: {
+//            getStartTime() {
+//                return Date.parse(this.activityData.startTime);
+//            },
+//        },
         data() {
             return {
                 activityData: {
@@ -31,7 +31,7 @@
                 },
                 endOptions: {
                     disabledDate(date) {
-                        return date && date.valueOf() < this.getStartTime;
+                        return date && date.valueOf() < Date.now() - 86400000;
                     },
                 },
                 loading: false,
@@ -44,9 +44,13 @@
             };
         },
         methods: {
-            shuchu() {
-                console.log(Date.parse(this.activityData.startTime));
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
             },
+//            shuchu() {
+//                console.log(Date.parse(this.activityData.startTime));
+//            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -69,13 +73,13 @@
         <div class="sales-spike-add">
                 <div class="add-title">
                     <card>
-                        <i-button type="text">
+                        <i-button type="text" @click.native="goBack">
                             <icon type="chevron-left"></icon>
                         </i-button>
                         <span>秒杀活动—添加秒杀活动</span>
                     </card>
                 </div>
-            <card>
+            <card :bordered="false">
                 <div class="add-body">
                     <div class="prompt-box">
                         <h6>提示</h6>

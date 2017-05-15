@@ -167,33 +167,35 @@
         <div class="order-evaluation">
             <tabs value="name1">
                 <tab-pane label="评价列表" name="name1">
-                    <div class="prompt-box">
-                        <h6>提示</h6>
-                        <p>买家可以在订单完成后对订单商品进行评价操作，评价信息将显示在对应的商品页面</p>
-                    </div>
-                    <div class="store-body">
-                        <div class="store-body-header">
-                            <i-button class="export-btn" type="ghost" @click="exportData">批量删除</i-button>
-                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                            <div class="store-body-header-right">
-                                <i-input v-model="searchWord">
-                                    <i-select v-model="searchCategory" slot="prepend" style="width: 100px">
-                                        <i-option v-for="item in searchList"
-                                                  :key="item"
-                                                  :value="item.value" >{{ item.label }}</i-option>
-                                    </i-select>
-                                    <i-button slot="append" type="primary">搜索</i-button>
-                                </i-input>
-                            </div>
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <h6>提示</h6>
+                            <p>买家可以在订单完成后对订单商品进行评价操作，评价信息将显示在对应的商品页面</p>
                         </div>
-                        <i-table class="shop-table"
-                                 :data="evaluationListData"
-                                 :columns="evaluationListColumns"
-                                 highlight-row ref="evaluationListTable" ></i-table>
-                    </div>
-                    <div class="page">
-                        <page :total="100" show-elevator></page>
-                    </div>
+                        <div class="store-body">
+                            <div class="store-body-header">
+                                <i-button class="export-btn" type="ghost" @click="exportData">批量删除</i-button>
+                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                                <div class="store-body-header-right">
+                                    <i-input v-model="searchWord">
+                                        <i-select v-model="searchCategory" slot="prepend" style="width: 100px">
+                                            <i-option v-for="item in searchList"
+                                                      :key="item"
+                                                      :value="item.value" >{{ item.label }}</i-option>
+                                        </i-select>
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </div>
+                            </div>
+                            <i-table class="shop-table"
+                                     :data="evaluationListData"
+                                     :columns="evaluationListColumns"
+                                     highlight-row ref="evaluationListTable" ></i-table>
+                        </div>
+                        <div class="page">
+                            <page :total="100" show-elevator></page>
+                        </div>
+                    </card>
                 </tab-pane>
             </tabs>
         </div>

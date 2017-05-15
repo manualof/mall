@@ -109,25 +109,27 @@
         <div class="goods-picture">
             <tabs value="name1">
                 <tab-pane label="图片空间" name="name1">
-                    <div class="prompt-box">
-                        <p>提示</p>
-                        <p>相册删除后，相册内全部图片都会删除，不能回复，请谨慎操作</p>
-                    </div>
-                    <div class="album-action">
-                        <i-button class="add-data" type="ghost" @click.native="lookData">全部图片</i-button>
-                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                        <div class="goods-body-header-right">
-                            <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                    <i-option v-for="item in searchList"
-                                              :value="item.value">{{ item.label }}</i-option>
-                                </i-select>
-                                <i-button slot="append" type="primary">搜索</i-button>
-                            </i-input>
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>相册删除后，相册内全部图片都会删除，不能回复，请谨慎操作</p>
                         </div>
-                    </div>
-                    <i-table highlight-row :columns="typeColumns" :context="self"
-                             :data="typeData"></i-table>
+                        <div class="album-action">
+                            <i-button class="add-data" type="ghost" @click.native="lookData">全部图片</i-button>
+                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                            <div class="goods-body-header-right">
+                                <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                    <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
+                                        <i-option v-for="item in searchList"
+                                                  :value="item.value">{{ item.label }}</i-option>
+                                    </i-select>
+                                    <i-button slot="append" type="primary">搜索</i-button>
+                                </i-input>
+                            </div>
+                        </div>
+                        <i-table highlight-row :columns="typeColumns" :context="self"
+                                 :data="typeData"></i-table>
+                    </card>
                 </tab-pane>
             </tabs>
         </div>

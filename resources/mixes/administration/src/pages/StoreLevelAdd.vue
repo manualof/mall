@@ -130,7 +130,7 @@
                         </i-col>
                     </row>
                     <row>
-                        <i-col span="18">
+                        <i-col span="12">
                             <form-item label="申请说明" prop="apply">
                                 <i-input v-model="typeData.apply" type="textarea"></i-input>
                                 <p class="tip">在会员开通或升级店铺时将显示在前台</p>

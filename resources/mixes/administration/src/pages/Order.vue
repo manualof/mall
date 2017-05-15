@@ -202,7 +202,7 @@
         <div class="store">
             <tabs value="name1">
                 <tab-pane label="商品订单" name="name1">
-                    <card>
+                    <card :bordered="false">
                         <div class="prompt-box">
                             <h6>提示</h6>
                             <p>点击查看操作将显示订单（包括订单物品）的详细信息</p>

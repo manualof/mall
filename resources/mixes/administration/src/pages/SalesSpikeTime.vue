@@ -103,7 +103,7 @@
                 </i-button>
                 <span>秒杀活动—时间段列表</span>
             </div>
-            <div class="store storeBox">
+            <card class="store storeBox" :bordered="false">
                 <div class="prompt-box">
                     <h6>提示</h6>
                     <p>建议设置四至五个时间段（前台显示）</p>
@@ -115,7 +115,7 @@
                     </div>
                     <i-table highlight-row class="shop-table" :columns="timeListColumns" :data="timeListData"></i-table>
                 </div>
-            </div>
+            </card>
         </div>
     </div>
 </template>

@@ -95,12 +95,12 @@
         },
         methods: {
             deleteData() {},
-            edit() {
-                const self = this;
-                self.$router.push({
-                    path: 'level/edit',
-                });
-            },
+//            edit() {
+//                const self = this;
+//                self.$router.push({
+//                    path: 'level/edit',
+//                });
+//            },
             newAddData() {
                 const self = this;
                 self.$router.push({
@@ -118,22 +118,24 @@
         <div class="store-level">
             <tabs value="name1">
                 <tab-pane label="店铺等级" name="name1">
-                    <div class="advertisement-action">
-                        <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
-                        <i-button class="add-data" type="ghost" @click.native="deleteData">批量删除</i-button>
-                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                        <div class="goods-body-header-right">
-                            <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                    <i-option v-for="item in searchList"
-                                              :value="item.value">{{ item.label }}</i-option>
-                                </i-select>
-                                <i-button slot="append" type="primary">搜索</i-button>
-                            </i-input>
+                    <card :bordered="false">
+                        <div class="advertisement-action">
+                            <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
+                            <i-button class="add-data" type="ghost" @click.native="deleteData">批量删除</i-button>
+                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                            <div class="goods-body-header-right">
+                                <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                    <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
+                                        <i-option v-for="item in searchList"
+                                                  :value="item.value">{{ item.label }}</i-option>
+                                    </i-select>
+                                    <i-button slot="append" type="primary">搜索</i-button>
+                                </i-input>
+                            </div>
                         </div>
-                    </div>
-                    <i-table highlight-row :columns="typeColumns" :context="self"
-                             :data="typeData"></i-table>
+                        <i-table highlight-row :columns="typeColumns" :context="self"
+                                 :data="typeData"></i-table>
+                    </card>
                 </tab-pane>
             </tabs>
         </div>

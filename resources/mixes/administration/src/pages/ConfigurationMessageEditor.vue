@@ -59,7 +59,7 @@
                 <span>商家消息模板—编辑</span>
             </div>
             <div class="store storeBox">
-                <card>
+                <card :bordered="false">
                     <div class="prompt-box">
                         <h6>提示</h6>
                         <p>平台可给商家提供站内信、短消息、邮件三种通知方式。平台可以选择开启一种或多种通知方式供商家选择。</p>
