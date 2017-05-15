@@ -12,9 +12,9 @@
                 action: `${window.api}/mall/upload`,
                 loading: false,
                 ruleValidate: {
-                    levelName: [
+                    apply: [
                         {
-                            message: '等级名称不能为空',
+                            message: '申请说明不能为空',
                             required: true,
                             trigger: 'blur',
                         },
@@ -26,16 +26,16 @@
                             trigger: 'blur',
                         },
                     ],
-                    apply: [
+                    level: [
                         {
-                            message: '申请说明不能为空',
+                            message: '级别不能为空',
                             required: true,
                             trigger: 'blur',
                         },
                     ],
-                    level: [
+                    levelName: [
                         {
-                            message: '级别不能为空',
+                            message: '等级名称不能为空',
                             required: true,
                             trigger: 'blur',
                         },

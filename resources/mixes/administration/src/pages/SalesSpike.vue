@@ -12,34 +12,34 @@
                 self: this,
                 spikeActivity: [
                     {
-                        type: 'selection',
-                        width: 60,
                         align: 'center',
                         fixed: 'left',
+                        type: 'selection',
+                        width: 60,
                     },
                     {
-                        title: '编号',
                         key: 'num',
+                        title: '编号',
                         width: 200,
                     },
                     {
-                        title: '活动标题',
                         key: 'title',
+                        title: '活动标题',
                         width: 400,
                     },
                     {
-                        title: '开始时间',
                         key: 'startTime',
+                        title: '开始时间',
                         width: 200,
                     },
                     {
-                        title: '结束时间',
                         key: 'endTime',
+                        title: '结束时间',
                         width: 200,
                     },
                     {
-                        title: '状态',
                         key: 'isstatus',
+                        title: '状态',
                         width: 500,
                         render(row) {
                             return `<span v-if="${row.status} === true" class="status-check">
@@ -48,10 +48,10 @@
                         },
                     },
                     {
-                        title: '操作',
-                        key: 'action',
-                        width: 200,
                         align: 'center',
+                        key: 'action',
+                        title: '操作',
+                        width: 200,
                         fixed: 'right',
                         render(row, column, index) {
                             return `<dropdown>
@@ -69,32 +69,32 @@
                 ],
                 spikeData: [
                     {
-                        num: '00333',
-                        title: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
-                        startTime: '2016-12-23',
                         endTime: '2016-12-23',
+                        num: '00333',
+                        startTime: '2016-12-23',
                         status: false,
+                        title: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                     },
                     {
-                        num: '00333',
-                        title: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
-                        startTime: '2016-12-23',
                         endTime: '2016-12-23',
+                        num: '00333',
+                        startTime: '2016-12-23',
                         status: false,
+                        title: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                     },
                     {
-                        num: '00333',
-                        title: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
-                        startTime: '2016-12-23',
                         endTime: '2016-12-23',
+                        num: '00333',
+                        startTime: '2016-12-23',
                         status: true,
+                        title: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                     },
                     {
-                        num: '00333',
-                        title: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
-                        startTime: '2016-12-23',
                         endTime: '2016-12-23',
+                        num: '00333',
+                        startTime: '2016-12-23',
                         status: false,
+                        title: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                     },
                 ],
             };

@@ -22,16 +22,16 @@
                 loading: false,
                 orderColumns: [
                     {
-                        title: '序号',
                         key: 'num',
+                        title: '序号',
                     },
                     {
-                        title: '商品名称',
                         key: 'goodName',
+                        title: '商品名称',
                     },
                     {
-                        title: '下单金额(元)',
                         key: 'amount',
+                        title: '下单金额(元)',
                     },
                 ],
                 orderData: [
@@ -58,32 +58,32 @@
                 ],
                 salesColumns: [
                     {
-                        title: '商品名称',
                         key: 'goodName',
+                        title: '商品名称',
                     },
                     {
-                        title: '店铺名称',
                         key: 'shopName',
+                        title: '店铺名称',
                     },
                     {
-                        title: 'SPU',
                         key: 'spu',
+                        title: 'SPU',
                     },
                     {
-                        title: '下单商品件数',
                         key: 'amountNum',
+                        title: '下单商品件数',
                     },
                     {
-                        title: '下单量',
                         key: 'amount',
+                        title: '下单量',
                     },
                     {
-                        title: '下单金额（元）',
                         key: 'money',
+                        title: '下单金额（元）',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';

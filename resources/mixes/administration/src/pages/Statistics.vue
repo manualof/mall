@@ -10,25 +10,25 @@
         data() {
             return {
                 goods: {
-                    startPrice: '',
                     endPrice: '',
+                    startPrice: '',
                 },
                 goodsColumns: [
                     {
-                        title: '序号',
                         key: 'num',
+                        title: '序号',
                     },
                     {
-                        title: '商品名称',
                         key: 'goodsName',
+                        title: '商品名称',
                     },
                     {
-                        title: '销量',
                         key: 'amount',
+                        title: '销量',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -119,26 +119,28 @@
                         price: '0',
                     },
                 ],
+                loading: false,
                 orders: {
-                    startPrice: '',
                     endPrice: '',
+                    startPrice: '',
                 },
+                self: this,
                 shopColumns: [
                     {
-                        title: '序号',
                         key: 'num',
+                        title: '序号',
                     },
                     {
-                        title: '店铺名称',
                         key: 'shopName',
+                        title: '店铺名称',
                     },
                     {
-                        title: '下单金额',
                         key: 'orderAmount',
+                        title: '下单金额',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -167,8 +169,6 @@
                         orderAmount: '￥99.00',
                     },
                 ],
-                self: this,
-                loading: false,
             };
         },
         methods: {

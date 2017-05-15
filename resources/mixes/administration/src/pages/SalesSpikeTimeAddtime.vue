@@ -27,6 +27,12 @@
             };
         },
         methods: {
+            goback() {
+                const self = this;
+                self.$router.push({
+                    path: ' ',
+                });
+            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -39,12 +45,6 @@
                             title: '请正确填写设置信息！',
                         });
                     }
-                });
-            },
-            goback() {
-                const self = this;
-                self.$router.push({
-                    path: ' ',
                 });
             },
         },

@@ -10,8 +10,8 @@
         data() {
             return {
                 checkAll: false,
-                loading: false,
                 indeterminate: true,
+                loading: false,
                 searchCategory: '',
                 searchProduct: '',
                 searchLists: [

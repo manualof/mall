@@ -11,15 +11,15 @@
                 ruleValidate: {
                     name: [
                         {
-                            required: true,
                             message: '分类名称不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
                     number: [
                         {
-                            required: true,
                             message: '保证金额数不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
@@ -27,15 +27,15 @@
                 validate: {
                     name: [
                         {
-                            required: true,
                             message: '分类名称不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
                     number: [
                         {
-                            required: true,
                             message: '保证金额数不能为空',
+                            required: true,
                             trigger: 'blur',
                         },
                     ],
@@ -43,6 +43,10 @@
             };
         },
         methods: {
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -56,10 +60,6 @@
                         });
                     }
                 });
-            },
-            goBack() {
-                const self = this;
-                self.$router.go(-1);
             },
         },
     };

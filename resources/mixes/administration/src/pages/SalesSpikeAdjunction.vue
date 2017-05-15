@@ -15,10 +15,10 @@
         data() {
             return {
                 activityData: {
-                    title: '',
-                    startTime: '',
                     endTime: '',
+                    startTime: '',
                     status: false,
+                    title: '',
                 },
                 activityValidate: {
                     title: [
@@ -34,8 +34,8 @@
                         return date && date.valueOf() < this.getStartTime;
                     },
                 },
-                self: this,
                 loading: false,
+                self: this,
                 startOptions: {
                     disabledDate(date) {
                         return date && date.valueOf() < Date.now() - 86400000;

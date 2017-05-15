@@ -10,6 +10,21 @@
         data() {
             return {
                 managementSearch: '',
+                searchList: [
+                    {
+                        label: '店铺名称',
+                        value: '订单编号',
+                    },
+                    {
+                        label: '商品名称',
+                        value: '商品名称',
+                    },
+                    {
+                        label: '商品分类',
+                        value: '商品分类',
+                    },
+                ],
+                self: this,
                 typeColumns: [
                     {
                         type: 'selection',
@@ -48,49 +63,34 @@
                 ],
                 typeData: [
                     {
+                        charges: 6666,
+                        goodsNum: 166,
                         level: 1,
                         levelName: '系统默认',
-                        goodsNum: 166,
                         pictureNum: 56,
-                        charges: 6666,
                     },
                     {
+                        charges: 6666,
+                        goodsNum: 166,
                         level: 1,
                         levelName: '白金店铺',
-                        goodsNum: 166,
                         pictureNum: 56,
-                        charges: 6666,
                     },
                     {
+                        charges: 6666,
+                        goodsNum: 166,
                         level: 1,
                         levelName: '黄金店铺',
-                        goodsNum: 166,
                         pictureNum: 56,
-                        charges: 6666,
                     },
                     {
+                        charges: 6666,
+                        goodsNum: 166,
                         level: 2,
                         levelName: '系统默认',
-                        goodsNum: 166,
                         pictureNum: 56,
-                        charges: 6666,
                     },
                 ],
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '订单编号',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
-                self: this,
             };
         },
         methods: {

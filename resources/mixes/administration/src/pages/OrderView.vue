@@ -11,50 +11,50 @@
         data() {
             return {
                 buyerData: {
+                    address: '某人，陕西 西安 雁塔区 高新二路与光泰路口陕西国土资源大厦2304',
                     buyerName: '昵称',
                     buyerPhone: '029-66458124',
-                    address: '某人，陕西 西安 雁塔区 高新二路与光泰路口陕西国土资源大厦2304',
-                    invoiceData: {
-                        type: '普通发票',
-                        title: 'sgs',
-                        content: '闽西',
-                    },
                     buyerMessage: '包装仔细',
+                    invoiceData: {
+                        content: '闽西',
+                        title: 'sgs',
+                        type: '普通发票',
+                    },
                 },
                 orderColumns: [
                     {
-                        title: '商品',
-                        key: 'orderName',
                         align: 'center',
+                        key: 'orderName',
+                        title: '商品',
                         width: 650,
                         render(row) {
                             return `<img class="orderImg" src="${row.img}"><span class="orderName">${row.orderName}</span>`;
                         },
                     },
                     {
-                        title: '单价',
+                        align: 'center',
                         key: 'orderPrice',
-                        align: 'center',
+                        title: '单价',
                     },
                     {
-                        title: '数量',
+                        align: 'center',
                         key: 'orderNumber',
-                        align: 'center',
+                        title: '数量',
                     },
                     {
-                        title: '总金额',
-                        key: 'totalAmount',
                         align: 'center',
+                        key: 'totalAmount',
+                        title: '总金额',
                     },
                 ],
                 orderInfo: [
                     {
+                        freight: 10.00,
+                        img: goods,
                         orderName: 'AIM 商务男包牛皮单肩包男手提包横款公文包休闲皮包斜挎男士包包',
                         orderPrice: 19.99,
                         orderNumber: 5,
                         totalAmount: '99.99',
-                        freight: 10.00,
-                        img: goods,
                     },
                 ],
                 orderData: {
@@ -64,6 +64,12 @@
                     payNumber: '541544524124245',
                     payMethod: '在线支付',
                     payTime: '2015-06-12 10:42:40',
+                },
+                refundsData: {
+                    money: '99.99',
+                    orderNumber: '5465454542',
+                    occurrenceTime: '2015-06-12 10:42:40',
+                    remarks: '不合适',
                 },
                 steps: [
                     {
@@ -88,19 +94,13 @@
                     },
                 ],
                 sellersData: {
-                    shopName: '以瓷换米',
+                    address: '某人，陕西 西安 雁塔区 高新二路与光泰路口陕西国土资源大厦2304',
+                    expressDelivery: '顺丰速递',
                     owner: 'fwef',
                     phone: '1234546546',
-                    address: '某人，陕西 西安 雁塔区 高新二路与光泰路口陕西国土资源大厦2304',
+                    shopName: '以瓷换米',
                     shipTime: '2016-12-24   03:06:47',
-                    expressDelivery: '顺丰速递',
                     shipmentNumber: '54654654545454786',
-                },
-                refundsData: {
-                    orderNumber: '5465454542',
-                    money: '99.99',
-                    occurrenceTime: '2015-06-12 10:42:40',
-                    remarks: '不合适',
                 },
             };
         },

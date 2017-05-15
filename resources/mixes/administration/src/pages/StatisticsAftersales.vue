@@ -11,32 +11,32 @@
             return {
                 goodsColumns: [
                     {
-                        title: '订单编号',
                         key: 'orderNum',
+                        title: '订单编号',
                     },
                     {
-                        title: '退款编号',
                         key: 'refundNum',
+                        title: '退款编号',
                     },
                     {
-                        title: '店铺名称',
                         key: 'shopName',
+                        title: '店铺名称',
                     },
                     {
-                        title: '商品名称',
                         key: 'goodName',
+                        title: '商品名称',
                     },
                     {
-                        title: '申请时间',
                         key: 'time',
+                        title: '申请时间',
                     },
                     {
-                        title: '退款金额',
                         key: 'refundMoney',
+                        title: '退款金额',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -87,34 +87,35 @@
                         value: '2',
                     },
                 ],
+                loading: false,
                 refundColumns: [
                     {
-                        title: '订单编号',
                         key: 'orderNum',
+                        title: '订单编号',
                     },
                     {
-                        title: '退款编号',
                         key: 'refundNum',
+                        title: '退款编号',
                     },
                     {
-                        title: '店铺名称',
                         key: 'shopName',
+                        title: '店铺名称',
                     },
                     {
-                        title: '商品名称',
                         key: 'goodName',
+                        title: '商品名称',
                     },
                     {
-                        title: '申请时间',
                         key: 'time',
+                        title: '申请时间',
                     },
                     {
-                        title: '退款金额',
                         key: 'refundMoney',
+                        title: '退款金额',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -155,6 +156,7 @@
                         refundMoney: '99.00',
                     },
                 ],
+                self: this,
                 shopsList: [
                     {
                         label: '商品1',
@@ -175,8 +177,6 @@
                         value: '2',
                     },
                 ],
-                self: this,
-                loading: false,
             };
         },
         methods: {

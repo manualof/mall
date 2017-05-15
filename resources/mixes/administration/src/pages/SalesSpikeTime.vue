@@ -11,35 +11,35 @@
             return {
                 timeListColumns: [
                     {
+                        align: 'center',
                         type: 'selection',
                         width: 60,
-                        align: 'center',
                     },
                     {
-                        title: '编号',
+                        align: 'center',
                         key: 'number',
-                        align: 'center',
+                        title: '编号',
                     },
                     {
-                        title: '秒杀时段名称',
+                        align: 'center',
                         key: 'name',
-                        align: 'center',
+                        title: '秒杀时段名称',
                     },
                     {
-                        title: '每日开始时间',
+                        align: 'center',
                         key: 'startTime',
-                        align: 'center',
+                        title: '每日开始时间',
                     },
                     {
-                        title: '每日结束时间',
+                        align: 'center',
                         key: 'finishTime',
-                        align: 'center',
+                        title: '每日结束时间',
                     },
                     {
-                        title: '操作',
-                        key: 'action',
-                        width: 180,
                         align: 'center',
+                        key: 'action',
+                        title: '操作',
+                        width: 180,
                         render(row, column, index) {
                             return `<i-button type="ghost" class="first-btn" size="small" @click="remove(${index})">
                                     编辑</i-button><i-button type="ghost" size="small">删除</i-button>`;

@@ -9,20 +9,21 @@
         },
         data() {
             return {
+                loading: false,
                 rejectedDetail: {
                     applyTime: '2016-12-21  10:31:59',
                     goodsname: '****',
+                    handelResult: '同意',
+                    handelText: 'jahwuiha',
+                    handelTime: '2016-12-21  10:31:59',
+                    linePay: '99.00',
+                    orderCounts: '99.00',
+                    payStyle: '在线支付',
+                    remarks: '',
                     refundMoney: '99.00',
                     refundReason: '不要',
                     refundDescription: 'mm',
                     refundImg: '',
-                    handelResult: '同意',
-                    handelText: 'jahwuiha',
-                    handelTime: '2016-12-21  10:31:59',
-                    payStyle: '在线支付',
-                    orderCounts: '99.00',
-                    linePay: '99.00',
-                    remarks: '',
                 },
                 ruleValidate: {
                     remarks: [
@@ -33,7 +34,6 @@
                         },
                     ],
                 },
-                loading: false,
             };
         },
         methods: {

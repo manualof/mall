@@ -20,31 +20,53 @@
                         value: '2',
                     },
                 ],
+                informationList: [
+                    {
+                        price: '4444',
+                        title: '收款金额',
+                    },
+                    {
+                        price: '4444',
+                        title: '退款金额',
+                    },
+                    {
+                        price: '4444',
+                        title: '实收金额',
+                    },
+                    {
+                        price: '4444',
+                        title: '店铺费用',
+                    },
+                    {
+                        price: '4444',
+                        title: '总收入',
+                    },
+                ],
                 loading: false,
                 orderColumns: [
                     {
-                        title: '订单编号',
                         key: 'orderNum',
+                        title: '订单编号',
                     },
                     {
-                        title: '买家名称',
                         key: 'buyer',
+                        title: '买家名称',
                     },
                     {
-                        title: '店铺名称',
                         key: 'shopName',
+                        title: '店铺名称',
                     },
                     {
-                        title: '下单时间',
                         key: 'orderTime',
+                        title: '下单时间',
                     },
                     {
-                        title: '订单总额（元）',
                         key: 'account',
+                        title: '订单总额（元）',
                     },
                     {
-                        title: '订单状态',
                         key: 'status',
+                        title: '订单状态',
                     },
                 ],
                 orderData: [
@@ -89,28 +111,6 @@
                     {
                         price: '4444',
                         title: '总订单量',
-                    },
-                ],
-                informationList: [
-                    {
-                        price: '4444',
-                        title: '收款金额',
-                    },
-                    {
-                        price: '4444',
-                        title: '退款金额',
-                    },
-                    {
-                        price: '4444',
-                        title: '实收金额',
-                    },
-                    {
-                        price: '4444',
-                        title: '店铺费用',
-                    },
-                    {
-                        price: '4444',
-                        title: '总收入',
                     },
                 ],
                 shopsColumns: [

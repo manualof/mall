@@ -9,13 +9,13 @@
         },
         data() {
             return {
+                loading: false,
                 postalForm: {
                     shop: ['系统默认等级'],
                 },
                 ruleValidate: {
 
                 },
-                loading: false,
             };
         },
         methods: {

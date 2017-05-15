@@ -9,6 +9,7 @@
         },
         data() {
             return {
+                loading: false,
                 refundEdit: {
                     refundReason: '',
                     refundSort: '',
@@ -29,7 +30,6 @@
                         },
                     ],
                 },
-                loading: false,
             };
         },
         methods: {

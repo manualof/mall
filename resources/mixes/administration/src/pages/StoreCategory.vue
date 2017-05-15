@@ -12,39 +12,39 @@
                 self: this,
                 storeCategoryColumns: [
                     {
+                        align: 'center',
                         type: 'selection',
                         width: 60,
-                        align: 'center',
                     },
                     {
-                        title: '排序',
                         align: 'center',
                         render() {
                             return '<i-input type="ghost" style="width: 48px;"></i-input>';
                         },
+                        title: '排序',
                     },
                     {
-                        title: '分类名称',
                         align: 'center',
                         render() {
                             return '<i-input type="ghost" style="width: 168px;"></i-input>';
                         },
+                        title: '分类名称',
                     },
                     {
-                        title: '保证金数额',
+                        align: 'center',
                         key: 'number',
-                        align: 'center',
+                        title: '保证金数额',
                     },
                     {
-                        title: '操作',
-                        key: 'action',
-                        width: 180,
                         align: 'center',
+                        key: 'action',
                         render(row, column, index) {
                             return `<i-button class="first-btn" @click.native="remove(${index})" type="ghost"
                                     size="small">删除</i-button>
                                     <i-button @click.native="toSet" type="ghost" size="small">设置</i-button>`;
                         },
+                        title: '操作',
+                        width: 180,
                     },
                 ],
                 storeCategoryData: [

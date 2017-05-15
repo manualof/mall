@@ -11,58 +11,58 @@
             return {
                 managementColumns: [
                     {
+                        align: 'center',
                         type: 'selection',
                         width: 60,
-                        align: 'center',
                     },
                     {
-                        title: '订单编号',
+                        align: 'center',
                         key: 'orderID',
-                        align: 'center',
+                        title: '订单编号',
                         width: 200,
                     },
                     {
-                        title: '订单来源',
+                        align: 'center',
                         key: 'orderSource',
+                        title: '订单来源',
                         width: 170,
-                        align: 'center',
                     },
                     {
-                        title: '下单时间',
+                        align: 'center',
                         key: 'ownerTime',
+                        title: '下单时间',
                         width: 200,
-                        align: 'center',
                     },
                     {
-                        title: '订单金额',
+                        align: 'center',
                         key: 'orderAmount',
+                        title: '订单金额',
                         width: 200,
-                        align: 'center',
                     },
                     {
-                        title: '订单状态',
+                        align: 'center',
                         key: 'orderStatus',
+                        title: '订单状态',
                         width: 150,
-                        align: 'center',
                     },
                     {
-                        title: '支付单号',
+                        align: 'center',
                         key: 'payNumber',
+                        title: '支付单号',
                         width: 250,
-                        align: 'center',
                     },
                     {
-                        title: '支付方式',
-                        key: 'paymentMethod',
                         align: 'left',
+                        key: 'paymentMethod',
+                        title: '支付方式',
                         width: 150,
                     },
                     {
-                        title: '操作',
-                        key: 'action',
-                        fixed: 'right',
-                        width: 180,
                         align: 'center',
+                        fixed: 'right',
+                        key: 'action',
+                        title: '操作',
+                        width: 180,
                         render() {
                             return `<i-button type="ghost" @click.native="toView" class="first-btn"
                                     size="small">查看</i-button><i-button type="ghost" size="small">设置</i-button>`;

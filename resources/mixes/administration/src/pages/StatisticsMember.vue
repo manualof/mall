@@ -11,20 +11,20 @@
             return {
                 analysisColumns: [
                     {
-                        title: '序号',
                         key: 'num',
+                        title: '序号',
                     },
                     {
-                        title: '会员名称',
                         key: 'memberName',
+                        title: '会员名称',
                     },
                     {
-                        title: '下单量',
                         key: 'amount',
+                        title: '下单量',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -53,27 +53,28 @@
                         amount: 22,
                     },
                 ],
+                isPriceArea: false,
                 loading: false,
                 memberColumns: [
                     {
-                        title: '小时',
                         key: 'hour',
+                        title: '小时',
                     },
                     {
-                        title: '昨天',
                         key: 'yesterday',
+                        title: '昨天',
                     },
                     {
-                        title: '今天',
                         key: 'today',
+                        title: '今天',
                     },
                     {
-                        title: '同比',
                         key: 'rate',
+                        title: '同比',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -108,24 +109,24 @@
                 ],
                 provinceColumns: [
                     {
-                        title: '省份',
                         key: 'province',
+                        title: '省份',
                     },
                     {
-                        title: '下单会员数',
                         key: 'memberNum',
+                        title: '下单会员数',
                     },
                     {
-                        title: '下单金额（元）',
                         key: 'money',
+                        title: '下单金额（元）',
                     },
                     {
-                        title: '下单量',
                         key: 'amount',
+                        title: '下单量',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -158,7 +159,6 @@
                         amount: 20,
                     },
                 ],
-                isPriceArea: false,
                 timeList: [
                     {
                         label: '按照月统计',

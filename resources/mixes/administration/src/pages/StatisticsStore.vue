@@ -23,20 +23,20 @@
                 loading: false,
                 provinceColumns: [
                     {
-                        title: '序号',
                         key: 'num',
+                        title: '序号',
                     },
                     {
-                        title: '省份',
                         key: 'province',
+                        title: '省份',
                     },
                     {
-                        title: '该地区店铺数量',
                         key: 'shopNum',
+                        title: '该地区店铺数量',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -45,46 +45,46 @@
                 ],
                 provinceData: [
                     {
-                        province: '陕西',
                         num: 4,
+                        province: '陕西',
                         shopNum: 222,
                     },
                     {
-                        province: '陕西',
                         num: 4,
+                        province: '陕西',
                         shopNum: 222,
                     },
                     {
-                        province: '陕西',
                         num: 4,
+                        province: '陕西',
                         shopNum: 222,
                     },
                     {
-                        province: '陕西',
                         num: 4,
+                        province: '陕西',
                         shopNum: 222,
                     },
                 ],
                 shopColumns: [
                     {
-                        title: '日期',
                         key: 'data',
+                        title: '日期',
                     },
                     {
-                        title: '上月',
                         key: 'lastMonth',
+                        title: '上月',
                     },
                     {
-                        title: '本月',
                         key: 'month',
+                        title: '本月',
                     },
                     {
-                        title: '同比',
                         key: 'rate',
+                        title: '同比',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -119,24 +119,24 @@
                 ],
                 sortColumns: [
                     {
-                        title: '序号',
                         key: 'num',
+                        title: '序号',
                     },
                     {
-                        title: '店铺名称',
                         key: 'shopName',
+                        title: '店铺名称',
                     },
                     {
-                        title: '下单金额',
                         key: 'amount',
+                        title: '下单金额',
                     },
                     {
-                        title: '升降幅度',
                         key: 'rate',
+                        title: '升降幅度',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -145,50 +145,50 @@
                 ],
                 sortData: [
                     {
+                        amount: 22,
                         num: 333,
                         shopName: 4,
-                        amount: 22,
                         rate: '',
                     },
                     {
+                        amount: 22,
                         num: 333,
                         shopName: 4,
-                        amount: 22,
                         rate: '',
                     },
                     {
+                        amount: 22,
                         num: 333,
                         shopName: 4,
-                        amount: 22,
                         rate: '',
                     },
                     {
+                        amount: 22,
                         num: 333,
                         shopName: 4,
-                        amount: 22,
                         rate: '',
                     },
                 ],
                 salesColumns: [
                     {
-                        title: '店铺名称',
                         key: 'shopName',
+                        title: '店铺名称',
                     },
                     {
-                        title: '下单会员数',
                         key: 'memberNum',
+                        title: '下单会员数',
                     },
                     {
-                        title: '下单量',
                         key: 'amount',
+                        title: '下单量',
                     },
                     {
-                        title: '下单金额（元）',
                         key: 'money',
+                        title: '下单金额（元）',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -197,28 +197,28 @@
                 ],
                 salesData: [
                     {
-                        shopName: 'shop',
+                        amount: 20,
                         memberNum: 4,
                         money: 222,
-                        amount: 20,
+                        shopName: 'shop',
                     },
                     {
-                        shopName: 'shop',
+                        amount: 20,
                         memberNum: 4,
                         money: 222,
-                        amount: 20,
+                        shopName: 'shop',
                     },
                     {
-                        shopName: 'shop',
+                        amount: 20,
                         memberNum: 4,
                         money: 222,
-                        amount: 20,
+                        shopName: 'shop',
                     },
                     {
-                        shopName: 'shop',
+                        amount: 20,
                         memberNum: 4,
                         money: 222,
-                        amount: 20,
+                        shopName: 'shop',
                     },
                 ],
                 shopsList: [

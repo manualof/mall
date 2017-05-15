@@ -21,20 +21,20 @@
                 ],
                 goodsColumns: [
                     {
-                        title: '序号',
                         key: 'num',
+                        title: '序号',
                     },
                     {
-                        title: '商品名称',
                         key: 'goodsName',
+                        title: '商品名称',
                     },
                     {
-                        title: '下单商品数',
                         key: 'amount',
+                        title: '下单商品数',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         width: 120,
                         render() {
                             return '<i-button type="ghost" size="small">查看</i-button>';
@@ -64,65 +64,6 @@
                     },
                 ],
                 isPriceArea: false,
-                shopsColumns: [
-                    {
-                        title: '序号',
-                        key: 'num',
-                    },
-                    {
-                        title: '商品名称',
-                        key: 'goodsName',
-                    },
-                    {
-                        title: '下单商品数',
-                        key: 'amount',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                shopsData: [
-                    {
-                        num: 1,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
-                    },
-                    {
-                        num: 2,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
-                    },
-                    {
-                        num: 3,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
-                    },
-                    {
-                        num: 4,
-                        goodsName: 'xxx旗舰店',
-                        amount: 99,
-                    },
-                ],
-                timeList: [
-                    {
-                        value: '1',
-                        label: '按照月统计',
-                    },
-                    {
-                        value: '2',
-                        label: '按照周统计',
-                    },
-                    {
-                        value: '3',
-                        label: '按照天统计',
-                    },
-                ],
-                self: this,
                 orderBar: {
                     legend: {
                         data: ['昨天', '今天'],
@@ -160,6 +101,65 @@
                         },
                     ],
                 },
+                self: this,
+                shopsColumns: [
+                    {
+                        key: 'num',
+                        title: '序号',
+                    },
+                    {
+                        key: 'goodsName',
+                        title: '商品名称',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单商品数',
+                    },
+                    {
+                        key: 'action',
+                        title: '操作',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                shopsData: [
+                    {
+                        num: 1,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 2,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 3,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                    {
+                        num: 4,
+                        goodsName: 'xxx旗舰店',
+                        amount: 99,
+                    },
+                ],
+                timeList: [
+                    {
+                        label: '按照月统计',
+                        value: '1',
+                    },
+                    {
+                        label: '按照周统计',
+                        value: '2',
+                    },
+                    {
+                        label: '按照天统计',
+                        value: '3',
+                    },
+                ],
             };
         },
         methods: {

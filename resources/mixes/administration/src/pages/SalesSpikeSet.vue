@@ -11,32 +11,32 @@
             return {
                 killColumns: [
                     {
+                        align: 'center',
                         type: 'selection',
                         width: 60,
-                        align: 'center',
                     },
                     {
-                        title: '编号',
+                        align: 'center',
                         key: 'num',
-                        align: 'center',
+                        title: '编号',
                     },
                     {
-                        title: '秒杀时段名称',
                         key: 'spike',
+                        title: '秒杀时段名称',
                     },
                     {
-                        title: '每日开始时间',
                         key: 'startTime',
+                        title: '每日开始时间',
                     },
                     {
-                        title: '每日结束时间',
                         key: 'endTime',
+                        title: '每日结束时间',
                     },
                     {
-                        title: '操作',
-                        key: 'action',
-                        width: 140,
                         align: 'center',
+                        key: 'action',
+                        title: '操作',
+                        width: 140,
                         render() {
                             return '<i-button  @click.native="toEdit"  type="ghost" size="small">+设置商品</i-button>';
                         },
@@ -44,35 +44,35 @@
                 ],
                 killDate: [
                     {
+                        action: '',
+                        endTime: '2017-12-27',
                         num: '001',
                         spike: '午夜场',
                         startTime: '2016-02-15',
-                        endTime: '2017-12-27',
-                        action: '',
                     },
                     {
+                        endTime: '2017-12-27',
                         num: '002',
                         spike: '午夜场',
                         startTime: '2016-02-15',
-                        endTime: '2017-12-27',
                     },
                     {
+                        endTime: '2017-12-27',
                         num: '003',
                         spike: '午夜场',
                         startTime: '2016-02-15',
-                        endTime: '2017-12-27',
                     },
                     {
+                        endTime: '2017-12-27',
                         num: '004',
                         spike: '午夜场',
                         startTime: '2016-02-15',
-                        endTime: '2017-12-27',
                     },
                     {
+                        endTime: '2017-12-27',
                         num: '005',
                         spike: '午夜场',
                         startTime: '2016-02-15',
-                        endTime: '2017-12-27',
                     },
 
                 ],
