@@ -379,10 +379,13 @@
                                     <div ref="box">
                                         <div class="flex-position">
                                             <i-input v-model="editDetail.attributeNum"></i-input>
-                                            <i-input v-model="editDetail.attributeName" placeholder="输入属性名称"></i-input>
-                                            <i-input v-model="editDetail.attributeSelect" placeholder="输入属性可选值"></i-input>
+                                            <i-input placeholder="输入属性名称"
+                                                     v-model="editDetail.attributeName"></i-input>
+                                            <i-input placeholder="输入属性可选值"
+                                                     v-model="editDetail.attributeSelect" ></i-input>
                                             <checkbox v-model="editDetail.attributeShow">显示</checkbox>
-                                            <i-button @click.native="editAttribute" type="ghost" class="edit-attribute">编辑</i-button>
+                                            <i-button class="edit-attribute" @click.native="editAttribute"
+                                                      type="ghost" >编辑</i-button>
                                             <i-button @click.native="deleteCustomize" type="ghost">删除</i-button>
                                         </div>
                                     </div>
@@ -465,7 +468,8 @@
                                     <div ref="box">
                                         <div class="flex-position">
                                             <i-input v-model="editDetail.attributeNum"></i-input>
-                                            <i-input v-model="editDetail.attributeSelect" placeholder="输入属性可选值"></i-input>
+                                            <i-input placeholder="输入属性可选值"
+                                                     v-model="editDetail.attributeSelect" ></i-input>
                                             <i-button @click.native="deleteCustomize" type="ghost">删除</i-button>
                                         </div>
                                     </div>

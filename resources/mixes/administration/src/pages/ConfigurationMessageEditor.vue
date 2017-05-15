@@ -98,8 +98,9 @@
                                                 <i-col span="18">
                                                     <form-item label="消息内容">
                                                         <form-item class="remark-input">
-                                                            <i-input v-model="rejectedDetail.remarks" type="textarea"
-                                                                     :autosize="{minRows: 3,maxRows: 5}"></i-input>
+                                                            <i-input :autosize="{minRows: 3,maxRows: 5}"
+                                                                     v-model="rejectedDetail.remarks"
+                                                                     type="textarea"></i-input>
                                                         </form-item>
                                                     </form-item>
                                                 </i-col>

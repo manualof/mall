@@ -332,11 +332,13 @@
                                                                         </i-col>
                                                                         <i-col span="6"></i-col>
                                                                     </row>
-                                                                    <i-button type="ghost" class="close-album"
-                                                                              @click.native="addAlbumPicture">插入相册图片</i-button>
+                                                                    <i-button class="close-album"
+                                                                              @click.native="addAlbumPicture"
+                                                                              type="ghost">插入相册图片</i-button>
                                                                     <div class="picture-edit-area" v-if="isPcPicture">
-                                                                        <i-button type="ghost" class="close-album"
-                                                                                  @click.native="closePcAlbum">关闭相册</i-button>
+                                                                        <i-button class="close-album"
+                                                                                  @click.native="closePcAlbum"
+                                                                                  type="ghost">关闭相册</i-button>
                                                                         <p>用户相册>全部图片</p>
                                                                         <div class="picture-content">
                                                                             <row>
@@ -355,23 +357,30 @@
                                                                         <i-col span="10" class="request-col-border">
                                                                             <div class="pro-des">
                                                                                 <div class="pro-bg">
-                                                                                    <span>图片总数不得超过20张，文字不得超过500字</span>
+                                                                                    <span>图片总数不得超过20张，
+                                                                                        文字不得超过500字</span>
                                                                                 </div>
                                                                                 <div class="pro-bg2">
-                                                                                    <i-button type="ghost" @click.native="addPicture">插入图片</i-button>
-                                                                                    <i-button type="ghost" @click.native="addText">添加文字</i-button>
+                                                                                    <i-button @click.native="addPicture"
+                                                                                              type="ghost">插入图片</i-button>
+                                                                                    <i-button @click.native="addText"
+                                                                                              type="ghost">添加文字</i-button>
                                                                                 </div>
                                                                                 <div class="pro-content"></div>
                                                                             </div>
                                                                             <div class="text-edit-area" v-if="isEditText">
                                                                                 <span>还可以输入500字</span><br>
-                                                                                <i-input v-model="goodsEdit.remarks" type="textarea"
+                                                                                <i-input  type="textarea"
+                                                                                          v-model="goodsEdit.remarks"
                                                                                          :rows="6"></i-input>
                                                                                 <i-button type="ghost">确认</i-button>
                                                                                 <i-button type="ghost">提交</i-button>
                                                                             </div>
-                                                                            <div class="picture-edit-area" v-if="isEditPicture">
-                                                                                <i-button type="ghost" class="close-album" @click.native="closeAlbum">关闭相册</i-button>
+                                                                            <div class="picture-edit-area"
+                                                                                 v-if="isEditPicture">
+                                                                                <i-button type="ghost" class="close-album"
+                                                                                          @click.native="closeAlbum">
+                                                                                    关闭相册</i-button>
                                                                                 <p>用户相册>全部图片</p>
                                                                                 <div class="picture-content">
                                                                                      <row>

@@ -273,7 +273,8 @@
                                             :show-upload-list="false"
                                             v-if="editDetail.adPicture1 === '' || editDetail.adPicture1 === null">
                                     </upload>
-                                    <i-input v-model="editDetail.adAddress1" placeholder="http://" class="input-address"></i-input>
+                                    <i-input class="input-address" placeholder="http://"
+                                             v-model="editDetail.adAddress1" ></i-input>
                                     <div class="tip-width">
                                         <p>
                                             广告图片将展示在推荐品牌下方，请使用宽度190像素，高度150像素的jpg、gif、
@@ -304,7 +305,8 @@
                                             :show-upload-list="false"
                                             v-if="editDetail.adPicture2 === '' || editDetail.adPicture2 === null">
                                     </upload>
-                                    <i-input v-model="editDetail.adAddress2" placeholder="http://" class="input-address"></i-input>
+                                    <i-input class="input-address" placeholder="http://"
+                                             v-model="editDetail.adAddress2"></i-input>
                                     <div class="tip-width">
                                         <p>
                                             广告图片将展示在推荐品牌下方，请使用宽度190像素，高度150像素的jpg、gif、

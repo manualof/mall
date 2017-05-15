@@ -172,13 +172,21 @@
                                 <div class="store-body-header-right">
                                     <i-input v-model="searchWord" placeholder="请输入关键词进行搜索">
                                         <i-select v-model="searchCategory" slot="prepend" style="width: 100px">
-                                            <i-option v-for="item in searchList" :value="item.value" :key="item">{{ item.label }}</i-option>
+                                            <i-option :value="item.value"
+                                                      :key="item"
+                                                      v-for="item in searchList" >{{ item.label }}</i-option>
                                         </i-select>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>
                                 </div>
                             </div>
-                            <i-table ref="orderTable" highlight-row :context="self" class="shop-table" :columns="libraryColumns" :data="libraryData"></i-table>
+                            <i-table class="shop-table"
+                                     :context="self"
+                                     :columns="libraryColumns"
+                                     :data="libraryData"
+                                     ref="orderTable"
+                                     highlight-row>
+                            </i-table>
                         </div>
                         <div class="page">
                             <page :total="100" show-elevator></page>

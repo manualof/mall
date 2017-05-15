@@ -72,7 +72,8 @@
                                 <dropdown-menu slot="list">
                                 <dropdown-item>设置设置</dropdown-item>
                                 </dropdown-menu></dropdown>
-                                <i-button type="ghost" class="delete-ad" @click.native="removeAd(${index})">删除</i-button>`;
+                                <i-button class="delete-ad" click.native="removeAd(${index})"
+                                type="ghost" >删除</i-button>`;
                         },
                     },
                 ],

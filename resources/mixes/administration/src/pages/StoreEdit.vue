@@ -283,9 +283,13 @@
                                                     <row>
                                                         <i-col span="12">
                                                             <form-item label="公司所在地">
-                                                                <i-select v-model="storeDetail.companyPlace" placeholder="请选择">
-                                                                    <i-option v-for="item in companyPlace" :value="item.value"
-                                                                              :key="item">{{ item.label }}</i-option>
+                                                                <i-select placeholder="请选择"
+                                                                          v-model="storeDetail.companyPlace">
+                                                                    <i-option :key="item"
+                                                                              :value="item.value"
+                                                                              v-for="item in companyPlace">
+                                                                        {{ item.label }}
+                                                                    </i-option>
                                                                 </i-select>
                                                             </form-item>
                                                         </i-col>
@@ -318,12 +322,14 @@
                                                     <row>
                                                         <i-col span="10">
                                                             <form-item label="员工总数">
-                                                                <i-input v-model="storeDetail.company_person_num" class="input-param"></i-input>
+                                                                <i-input v-model="storeDetail.company_person_num"
+                                                                         class="input-param"></i-input>
                                                             </form-item>
                                                         </i-col>
                                                         <i-col span="10">
                                                             <form-item label="注册资金">
-                                                                <i-input v-model="storeDetail.register_money"  class="input-param"></i-input>
+                                                                <i-input v-model="storeDetail.register_money"
+                                                                         class="input-param"></i-input>
                                                             </form-item>
                                                         </i-col>
                                                     </row>
@@ -364,9 +370,13 @@
                                                     <row>
                                                         <i-col span="12">
                                                             <form-item label="营业执照所在地">
-                                                                <i-select v-model="storeDetail.licensePlace" placeholder="请选择">
-                                                                    <i-option v-for="item in licensePlace" :value="item.value"
-                                                                              :key="item">{{ item.label }}</i-option>
+                                                                <i-select placeholder="请选择"
+                                                                          v-model="storeDetail.licensePlace">
+                                                                    <i-option :value="item.value"
+                                                                              :key="item"
+                                                                              v-for="item in licensePlace">
+                                                                        {{ item.label }}
+                                                                    </i-option>
                                                                 </i-select>
                                                             </form-item>
                                                         </i-col>

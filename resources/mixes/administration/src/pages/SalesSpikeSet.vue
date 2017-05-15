@@ -104,7 +104,7 @@
                 <span>秒杀活动—设置商品</span>
             </div>
            <card :bordered="false">
-               <i-table highlight-row :columns="killColumns"  :context="self"  :data="killDate"></i-table>
+               <i-table :columns="killColumns" :context="self" :data="killDate" highlight-row></i-table>
            </card>
         </div>
     </div>

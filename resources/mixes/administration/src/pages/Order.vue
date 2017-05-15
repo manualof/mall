@@ -207,7 +207,8 @@
                             <h6>提示</h6>
                             <p>点击查看操作将显示订单（包括订单物品）的详细信息</p>
                             <p>点击取消操作可以取消订单（在线支付但未付款的订单和货到付款但未发货的订单）</p>
-                            <p>如果平台已确认收到买家的付款，但系统支付状态并未变更，可以点击收到货款操作(仅限于下单后7日内可更改收款状态)，并填写相关信息后更改订单支付状态</p>
+                            <p>如果平台已确认收到买家的付款，但系统支付状态并未变更，可以点击收到货款操作
+                                (仅限于下单后7日内可更改收款状态)，并填写相关信息后更改订单支付状态</p>
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
@@ -215,13 +216,19 @@
                                 <div class="store-body-header-right">
                                     <i-input v-model="searchWord" placeholder="请输入关键词进行搜索">
                                         <i-select v-model="searchCategory" slot="prepend" style="width: 100px">
-                                            <i-option v-for="item in searchList" :value="item.value" :key="item">{{ item.label }}</i-option>
+                                            <i-option :key="item"
+                                                      :value="item.value"
+                                                      v-for="item in searchList">{{ item.label }}</i-option>
                                         </i-select>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>
                                 </div>
                             </div>
-                            <i-table ref="orderTable" highlight-row :context="self" class="shop-table" :columns="managementColumns" :data="managementData"></i-table>
+                            <i-table class="shop-table"
+                                     :context="self"
+                                     :columns="managementColumns"
+                                     :data="managementData"
+                                     ref="orderTable" highlight-row ></i-table>
                         </div>
                         <div class="page">
                             <page :total="100" show-elevator></page>

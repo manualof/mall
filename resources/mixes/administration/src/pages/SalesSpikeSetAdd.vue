@@ -159,14 +159,18 @@
                             <i-col span="5">
                                 <div class="p-change">
                                     <i-select v-model="searchCategory" placeholder="请选择分类">
-                                        <i-option v-for="item in searchLists" :value="item.value" :key="item">{{ item.label }}</i-option>
+                                        <i-option v-for="item in searchLists"
+                                                  :value="item.value"
+                                                  :key="item">{{ item.label }}</i-option>
                                     </i-select>
                                 </div>
                             </i-col>
                             <i-col span="3">
                                 <div class="p-change">
                                     <i-select v-model="searchProduct" placeholder="请选择品牌">
-                                        <i-option v-for="item in searchProducts" :value="item.value" :key="item">{{ item.label }}</i-option>
+                                        <i-option v-for="item in searchProducts"
+                                                  :value="item.value"
+                                                  :key="item">{{ item.label }}</i-option>
                                     </i-select>
                                 </div>
                             </i-col>
@@ -208,8 +212,10 @@
                                     <row>
                                         <i-col span="3">
                                             <div class="p-list">
-                                                <i-button type="ghost" style="width:64px" :indeterminate="indeterminate"
-                                                          :value="checkAll" @click.prevent.native="handleCheckAll">全选</i-button>
+                                                <i-button @click.prevent.native="handleCheckAll"
+                                                          :indeterminate="indeterminate"
+                                                          :value="checkAll"
+                                                          type="ghost" style="width:64px">全选</i-button>
                                             </div>
                                         </i-col>
                                         <i-col span="4">

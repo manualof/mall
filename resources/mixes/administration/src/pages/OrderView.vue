@@ -227,7 +227,9 @@
                         <i-form>
                             <h4>商品信息</h4>
                             <i-table highlight-row :columns="orderColumns" :data="orderInfo"></i-table>
-                            <p class="price">订单总额： <span class="totalAmount">￥{{ orderInfo[0].totalAmount }}</span></p>
+                            <p class="price">订单总额：
+                                <span class="totalAmount">￥{{ orderInfo[0].totalAmount }}</span>
+                            </p>
                             <p class="price">(含运费：￥{{ orderInfo[0].freight }})</p>
                         </i-form>
                     </tab-pane>

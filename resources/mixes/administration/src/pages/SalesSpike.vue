@@ -129,8 +129,10 @@
                         <p>秒杀截止时间内多个活动可同时进行</p>
                     </div>
                     <div class="advertisement-action">
-                        <i-button class="add-data" @click.native="toSaleSpikeAdjunction" type="ghost">+添加活动</i-button>
-                        <i-button class="delete-data" @click.native="toSalesSpikeTime" type="ghost">时间段列表</i-button>
+                        <i-button class="add-data" @click.native="toSaleSpikeAdjunction"
+                                  type="ghost">+添加活动</i-button>
+                        <i-button class="delete-data" @click.native="toSalesSpikeTime"
+                                  type="ghost">时间段列表</i-button>
                         <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                     </div>
                     <i-table highlight-row :columns="spikeActivity" :context="self" :data="spikeData"></i-table>

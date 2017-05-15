@@ -313,7 +313,8 @@
                     <card>
                         <div class="prompt-box">
                             <h6>提示</h6>
-                            <p>如果当前时间超过店铺有效期或店铺处于关闭状态，前台将不能继续浏览该店铺，但是店主仍然可以编辑该店铺</p>
+                            <p>如果当前时间超过店铺有效期或店铺处于关闭状态，前台将不能继续浏览该店铺，
+                                但是店主仍然可以编辑该店铺</p>
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
@@ -322,13 +323,15 @@
                                 <div class="store-body-header-right">
                                     <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
                                         <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                            <i-option v-for="item in searchList" :value="item.value">{{ item.label }}</i-option>
+                                            <i-option v-for="item in searchList"
+                                                      :value="item.value">{{ item.label }}</i-option>
                                         </i-select>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>
                                 </div>
                             </div>
-                            <i-table ref="managementTable" highlight-row class="shop-table" :columns="managementColumns" :context="self" :data="managementData"></i-table>
+                            <i-table ref="managementTable" highlight-row class="shop-table"
+                                     :columns="managementColumns" :context="self" :data="managementData"></i-table>
                         </div>
                         <div class="page">
                             <page :total="100" show-elevator></page>
@@ -339,14 +342,17 @@
                     <card>
                         <div class="prompt-box">
                             <h6>提示</h6>
-                            <p>如果当前时间超过店铺有效期或店铺处于关闭状态，前台将不能继续浏览该店铺，但是店主仍然可以编辑该店铺</p>
+                            <p>如果当前时间超过店铺有效期或店铺处于关闭状态，前台将不能继续浏览该店铺，
+                                但是店主仍然可以编辑该店铺</p>
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
                                 <div class="store-body-header-right">
                                     <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
                                         <i-select v-model="applicationSearch" slot="prepend" style="width: 100px;">
-                                            <i-option v-for="item in searchList" :value="item.value" :key="item">{{ item.label }}</i-option>
+                                            <i-option v-for="item in searchList"
+                                                      :value="item.value"
+                                                      :key="item">{{ item.label }}</i-option>
                                         </i-select>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>

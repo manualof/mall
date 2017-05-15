@@ -282,7 +282,8 @@
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="14">
-                                            <i-button type="ghost" @click.native="deleteArea($event)" class="delete-color">刪除</i-button>
+                                            <i-button @click.native="deleteArea($event)"
+                                                      class="delete-color" type="ghost">刪除</i-button>
                                         </i-col>
                                     </row>
                                     <row>
@@ -297,15 +298,18 @@
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="14">
-                                            <i-button type="ghost" @click.native="deleteArea" class="delete-color">刪除</i-button>
+                                            <i-button @click.native="deleteArea"
+                                                      class="delete-color" type="ghost">刪除</i-button>
                                         </i-col>
                                     </row>
                                 </form-item>
                                 <form-item>
-                                    <i-button type="ghost" @click.native="addArea" class="button-style">+添加区间</i-button>
+                                    <i-button @click.native="addArea"  class="button-style"
+                                              type="ghost">+添加区间</i-button>
                                 </form-item>
                                 <form-item>
-                                    <i-button :loading="loading" type="primary" @click.native="priceSubmit" class="button-style">
+                                    <i-button class="button-style" @click.native="priceSubmit"
+                                               :loading="loading" type="primary">
                                         <span v-if="!loading">确认提交</span>
                                         <span v-else>正在提交…</span>
                                     </i-button>
@@ -337,7 +341,8 @@
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="14">
-                                            <i-button type="ghost" @click.native="deleteArea" class="delete-color">刪除</i-button>
+                                            <i-button class="delete-color" @click.native="deleteArea"
+                                                      type="ghost">刪除</i-button>
                                         </i-col>
                                     </row>
                                     <row>
@@ -352,15 +357,18 @@
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="14">
-                                            <i-button type="ghost" @click.native="deleteArea" class="delete-color">刪除</i-button>
+                                            <i-button class="delete-color" @click.native="deleteArea"
+                                                      type="ghost">刪除</i-button>
                                         </i-col>
                                     </row>
                                 </form-item>
                                 <form-item>
-                                    <i-button type="ghost" @click.native="addArea" class="button-style">+添加区间</i-button>
+                                    <i-button class="button-style" @click.native="addArea"
+                                              type="ghost" >+添加区间</i-button>
                                 </form-item>
                                 <form-item>
-                                    <i-button :loading="loading" type="primary" @click.native="orderSubmit" class="button-style">
+                                    <i-button class="button-style"  @click.native="orderSubmit"
+                                              :loading="loading" type="primary">
                                         <span v-if="!loading">确认提交</span>
                                         <span v-else>正在提交…</span>
                                     </i-button>

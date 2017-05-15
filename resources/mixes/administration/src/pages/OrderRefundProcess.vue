@@ -169,7 +169,8 @@
                                                 <i-input v-model="refundDetail.remarks" type="textarea"
                                                      :autosize="{minRows: 3,maxRows: 5}"></i-input>
                                                 <span class="tip">
-                                                    系统默认退款到“站内余额”，如果“在线退款”到原支付账号，建议在备注里说明，方便核对。
+                                                    系统默认退款到"站内余额"，如果"在线退款"到原支付账号，
+                                                    建议在备注里说明，方便核对。
                                                 </span>
                                             </form-item>
                                             <p></p>
@@ -178,7 +179,8 @@
                                     <row>
                                         <i-col span="18">
                                             <form-item label="">
-                                                <i-button type="primary" @click="handleSubmit('refundDetail')">确认提交</i-button>
+                                                <i-button type="primary"
+                                                          @click="handleSubmit('refundDetail')">确认提交</i-button>
                                             </form-item>
                                         </i-col>
                                     </row>

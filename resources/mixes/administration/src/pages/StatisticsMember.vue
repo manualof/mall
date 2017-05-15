@@ -264,7 +264,8 @@
                                         <div style="height: 350px">
 
                                         </div>
-                                        <i-button type="ghost" class="export-btn" @click="exportMemberData">导出数据</i-button>
+                                        <i-button type="ghost" class="export-btn"
+                                                  @click="exportMemberData">导出数据</i-button>
                                         <i-table :columns="analysisColumns" :context="self"
                                                  :data="analysisData" ref="analysisList"></i-table>
                                         <div class="page">
@@ -308,7 +309,8 @@
                                         <div style="height: 350px">
 
                                         </div>
-                                        <i-button type="ghost" class="export-btn" @click="exportProvinceData">导出数据</i-button>
+                                        <i-button type="ghost" class="export-btn"
+                                                  @click="exportProvinceData">导出数据</i-button>
                                         <i-table :columns="provinceColumns" :context="self"
                                                  :data="provinceData" ref="provinceList"></i-table>
                                         <div class="page">
