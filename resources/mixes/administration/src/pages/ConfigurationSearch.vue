@@ -107,7 +107,7 @@
         <div class="configuration-search">
             <tabs value="defaultSearch">
                 <tab-pane label="默认搜索" name="defaultSearch">
-                    <card>
+                    <card :bordered="false">
                         <div class="store-body">
                             <i-form :label-width="200" ref="form" :model="form" :rules="rules">
                                 <row>
@@ -130,19 +130,21 @@
                     </card>
                 </tab-pane>
                 <tab-pane label="热门搜索" name="hot">
-                    <div class="prompt-box">
-                        <h6>提示</h6>
-                        <p>热门搜索词设置后，将显示在前台搜索框作为默认值随机出现，最多可设置10个热搜词</p>
-                        <p>每个热搜词包括搜索词和显示词两部分，搜索词参与搜索，显示词不参与搜索，只显示作用</p>
-                    </div>
-                    <div class="store-body">
-                        <div class="store-body-header">
-                            <i-button class="export-btn" @click="exportData()"
-                                      @click="exportData()" type="ghost" >导出数据</i-button>
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <h6>提示</h6>
+                            <p>热门搜索词设置后，将显示在前台搜索框作为默认值随机出现，最多可设置10个热搜词</p>
+                            <p>每个热搜词包括搜索词和显示词两部分，搜索词参与搜索，显示词不参与搜索，只显示作用</p>
                         </div>
-                        <i-table highlight-row ref="searchTable" class="shop-table"
-                                 :columns="searchColumns" :data="searchData"></i-table>
-                    </div>
+                        <div class="store-body">
+                            <div class="store-body-header">
+                                <i-button class="export-btn" @click="exportData()"
+                                          @click="exportData()" type="ghost" >导出数据</i-button>
+                            </div>
+                            <i-table highlight-row ref="searchTable" class="shop-table"
+                                     :columns="searchColumns" :data="searchData"></i-table>
+                        </div>
+                    </card>
                 </tab-pane>
             </tabs>
         </div>

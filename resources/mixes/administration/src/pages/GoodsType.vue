@@ -105,25 +105,27 @@
         <div class="goods-type">
             <tabs value="name1">
                 <tab-pane label="类型管理" name="name1">
-                    <div class="prompt-box">
-                        <p>提示</p>
-                        <p>当管理员添加商品分类时需选择类型。前台分类下商品列表页通过类型生成商品检索，方便用户搜索需要的商品</p>
-                    </div>
-                    <div class="advertisement-action">
-                        <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
-                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                        <div class="goods-body-header-right">
-                            <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                    <i-option v-for="item in searchList"
-                                              :value="item.value">{{ item.label }}</i-option>
-                                </i-select>
-                                <i-button slot="append" type="primary">搜索</i-button>
-                            </i-input>
-                        </div>
-                    </div>
-                    <i-table highlight-row :columns="typeColumns" :context="self"
-                             :data="typeData"></i-table>
+                   <card :bordered="false">
+                       <div class="prompt-box">
+                           <p>提示</p>
+                           <p>当管理员添加商品分类时需选择类型。前台分类下商品列表页通过类型生成商品检索，方便用户搜索需要的商品</p>
+                       </div>
+                       <div class="advertisement-action">
+                           <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
+                           <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                           <div class="goods-body-header-right">
+                               <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                   <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
+                                       <i-option v-for="item in searchList"
+                                                 :value="item.value">{{ item.label }}</i-option>
+                                   </i-select>
+                                   <i-button slot="append" type="primary">搜索</i-button>
+                               </i-input>
+                           </div>
+                       </div>
+                       <i-table highlight-row :columns="typeColumns" :context="self"
+                                :data="typeData"></i-table>
+                   </card>
                 </tab-pane>
             </tabs>
         </div>

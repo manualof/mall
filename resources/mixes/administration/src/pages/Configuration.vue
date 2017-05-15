@@ -121,7 +121,7 @@
         <div class="mall-configuration">
             <tabs value="default">
                 <tab-pane label="商城设置" name="default">
-                    <card>
+                    <card :bordered="false">
                         <i-form :label-width="200" :model="form" ref="form" :rules="rules">
                             <row>
                                 <i-col span="12">

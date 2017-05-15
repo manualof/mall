@@ -104,18 +104,24 @@
                 },
             };
         },
+        methods: {
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
+        },
     };
 </script>
 <template>
     <div class="mall-wrap">
         <div class="order-view">
             <div class="view-title">
-                <i-button type="text">
+                <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
                 <span>商品订单—查看</span>
             </div>
-            <div class="view-body">
+            <card class="view-body" :bordered="false">
                 <div class="view-step">
                     <steps :current="1">
                         <step v-for="step in steps" :title="step.title" :content="step.content"></step>
@@ -261,7 +267,7 @@
                         </i-form>
                     </tab-pane>
                 </tabs>
-            </div>
+            </card>
         </div>
     </div>
 </template>
