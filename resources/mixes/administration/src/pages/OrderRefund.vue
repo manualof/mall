@@ -328,7 +328,7 @@
         <div class="store">
             <tabs value="name1">
                 <tab-pane label="待处理" name="name1">
-                    <card>
+                    <card :bordered="false">
                         <div class="prompt-box">
                             <h6>提示</h6>
                             <p>卖家提交申请，商家同意并经平台确认后，退款金额以买家付款方式返回给买家</p>

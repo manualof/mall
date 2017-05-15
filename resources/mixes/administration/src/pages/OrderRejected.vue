@@ -367,53 +367,57 @@
       <div class="order-rejected">
           <tabs value="name1">
               <tab-pane label="待处理" name="name1">
-                  <div class="prompt-box">
-                      <h6>提示</h6>
-                      <p>如果当前时间超过店铺有效期或店铺处于关闭状态，前台将不能继续浏览该店铺，但是店主仍然可以编辑该店铺</p>
-                  </div>
-                  <div class="store-body">
-                      <div class="store-body-header">
-                          <i-button class="export-btn" type="ghost" @click="exportData">导出数据</i-button>
-                          <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                          <div class="store-body-header-right">
-                              <i-input v-model="searchWord">
-                                  <i-select v-model="searchCategory" slot="prepend" style="width: 100px">
-                                      <i-option v-for="item in searchList"
-                                                :key="item">
-                                                :value="item.value"{{ item.label }}</i-option>
-                                  </i-select>
-                                  <i-button slot="append" type="primary">搜索</i-button>
-                              </i-input>
-                          </div>
-                      </div>
-                      <i-table class="shop-table" :columns="pendingColumns" :data="pendingData"
-                               :context="self" highlight-row ref="pendingTable"></i-table>
-                  </div>
-                  <div class="page">
-                      <page :total="100" show-elevator></page>
-                  </div>
+                  <card :bordered="false">
+                     <div class="prompt-box">
+                         <h6>提示</h6>
+                         <p>如果当前时间超过店铺有效期或店铺处于关闭状态，前台将不能继续浏览该店铺，但是店主仍然可以编辑该店铺</p>
+                     </div>
+                     <div class="store-body">
+                         <div class="store-body-header">
+                             <i-button class="export-btn" type="ghost" @click="exportData">导出数据</i-button>
+                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                             <div class="store-body-header-right">
+                                 <i-input v-model="searchWord">
+                                     <i-select v-model="searchCategory" slot="prepend" style="width: 100px">
+                                         <i-option v-for="item in searchList"
+                                                   :key="item">
+                                             :value="item.value"{{ item.label }}</i-option>
+                                     </i-select>
+                                     <i-button slot="append" type="primary">搜索</i-button>
+                                 </i-input>
+                             </div>
+                         </div>
+                         <i-table class="shop-table" :columns="pendingColumns" :data="pendingData"
+                                  :context="self" highlight-row ref="pendingTable"></i-table>
+                     </div>
+                     <div class="page">
+                         <page :total="100" show-elevator></page>
+                     </div>
+                  </card>
               </tab-pane>
               <tab-pane label="所有记录" name="name2">
-                  <div class="store-body">
-                        <div class="store-body-header">
-                            <i-button class="export-btn" type="ghost"  @click="exportData" >导出数据</i-button>
-                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                            <div class="store-body-header-right">
-                                <i-input v-model="searchWord">
-                                    <i-select v-model="searchCategory" slot="prepend" style="width: 100px">
-                                        <i-option v-for="item in searchList" :value="item.value"
-                                                  :key="item">{{ item.label }}</i-option>
-                                    </i-select>
-                                <i-button slot="append" type="primary">搜索</i-button>
-                              </i-input>
-                            </div>
-                        </div>
-                        <i-table  ref="pendingTable"  highlight-row class="shop-table" :columns="allRecordsColumns"
-                                  :context="self" :data="allRecordsData"></i-table>
-                        <div class="page">
-                            <page :total="100" show-elevator></page>
-                        </div>
-                  </div>
+                  <card :bordered="false">
+                      <div class="store-body">
+                          <div class="store-body-header">
+                              <i-button class="export-btn" type="ghost"  @click="exportData" >导出数据</i-button>
+                              <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                              <div class="store-body-header-right">
+                                  <i-input v-model="searchWord">
+                                      <i-select v-model="searchCategory" slot="prepend" style="width: 100px">
+                                          <i-option v-for="item in searchList" :value="item.value"
+                                                    :key="item">{{ item.label }}</i-option>
+                                      </i-select>
+                                      <i-button slot="append" type="primary">搜索</i-button>
+                                  </i-input>
+                              </div>
+                          </div>
+                          <i-table  ref="pendingTable"  highlight-row class="shop-table" :columns="allRecordsColumns"
+                                    :context="self" :data="allRecordsData"></i-table>
+                          <div class="page">
+                              <page :total="100" show-elevator></page>
+                          </div>
+                      </div>
+                  </card>
               </tab-pane>
           </tabs>
     </div>

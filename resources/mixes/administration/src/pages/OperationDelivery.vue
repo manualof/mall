@@ -157,29 +157,31 @@
         <div class="operation-delivery">
             <tabs value="name1">
                 <tab-pane label="自提点管理" name="name1">
-                    <div class="prompt-box">
-                        <p>提示</p>
-                        <p>提示
-                            物流自提服务站关闭后，被用户选择设置成收货地址的记录会被删除，请谨慎操作</p>
-                    </div>
-                    <div class="album-action">
-                        <i-button class="add-data" type="ghost" @click.native="addData">+新增数据</i-button>
-                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                        <div class="goods-body-header-right">
-                            <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                <i-select v-model="managementSearch" slot="prepend" style="width: 150px;">
-                                    <i-option v-for="item in searchList"
-                                              :value="item.value">{{ item.label }}</i-option>
-                                </i-select>
-                                <i-button slot="append" type="primary">搜索</i-button>
-                            </i-input>
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>提示
+                                物流自提服务站关闭后，被用户选择设置成收货地址的记录会被删除，请谨慎操作</p>
                         </div>
-                    </div>
-                    <i-table highlight-row :columns="typeColumns" :context="self"
-                             :data="typeData" ref="managementTable"></i-table>
-                    <div class="page">
-                        <page :total="150" show-elevator></page>
-                    </div>
+                        <div class="album-action">
+                            <i-button class="add-data" type="ghost" @click.native="addData">+新增数据</i-button>
+                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                            <div class="goods-body-header-right">
+                                <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                    <i-select v-model="managementSearch" slot="prepend" style="width: 150px;">
+                                        <i-option v-for="item in searchList"
+                                                  :value="item.value">{{ item.label }}</i-option>
+                                    </i-select>
+                                    <i-button slot="append" type="primary">搜索</i-button>
+                                </i-input>
+                            </div>
+                        </div>
+                        <i-table highlight-row :columns="typeColumns" :context="self"
+                                 :data="typeData" ref="managementTable"></i-table>
+                        <div class="page">
+                            <page :total="150" show-elevator></page>
+                        </div>
+                    </card>
                 </tab-pane>
             </tabs>
         </div>

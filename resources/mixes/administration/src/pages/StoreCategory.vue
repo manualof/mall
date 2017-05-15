@@ -84,24 +84,26 @@
         <div class="storeClassifications">
             <tabs value="name1">
                 <tab-pane label="店铺分类" name="name1">
-                    <div class="prompt-box">
-                        <h6>提示</h6>
-                        <p>商家入驻时可指定此处设置店铺分类</p>
-                        <p>对分类作任何更改后，都需要到 设置 -> 清理缓存 清理店铺分类，新的设置才会生效</p>
-                    </div>
-                    <div class="store-body">
-                        <div class="store-body-header">
-                            <i-button class="export-btn" type="ghost" @click="exportData">新增数据</i-button>
-                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <h6>提示</h6>
+                            <p>商家入驻时可指定此处设置店铺分类</p>
+                            <p>对分类作任何更改后，都需要到 设置 -> 清理缓存 清理店铺分类，新的设置才会生效</p>
                         </div>
-                        <i-table class="shop-table"
-                                 :columns="storeCategoryColumns"
-                                 :data="storeCategoryData"
-                                 :context="self"
-                                 highlight-row
-                                 ref="storeCategoryTable">
-                        </i-table>
-                    </div>
+                        <div class="store-body">
+                            <div class="store-body-header">
+                                <i-button class="export-btn" type="ghost" @click="exportData">新增数据</i-button>
+                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                            </div>
+                            <i-table class="shop-table"
+                                     :columns="storeCategoryColumns"
+                                     :data="storeCategoryData"
+                                     :context="self"
+                                     highlight-row
+                                     ref="storeCategoryTable">
+                            </i-table>
+                        </div>
+                    </card>
                 </tab-pane>
             </tabs>
         </div>

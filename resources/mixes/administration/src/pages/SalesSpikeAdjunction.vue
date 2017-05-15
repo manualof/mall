@@ -75,7 +75,7 @@
                         <span>秒杀活动—添加秒杀活动</span>
                     </card>
                 </div>
-            <card>
+            <card :bordered="false">
                 <div class="add-body">
                     <div class="prompt-box">
                         <h6>提示</h6>
