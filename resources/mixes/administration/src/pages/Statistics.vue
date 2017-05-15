@@ -124,6 +124,37 @@
                     endPrice: '',
                     startPrice: '',
                 },
+                salesTrend: {
+                    legend: {
+                        bottom: 'auto',
+                        data: ['昨天', '今天'],
+                    },
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '今天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                        {
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                            name: '昨天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
                 self: this,
                 shopColumns: [
                     {
@@ -235,8 +266,8 @@
                         </div>
                         <div class="statistics-information">
                             <h5>2017-03-11 销售走势</h5>
-                            <div class="information-statistics">
-
+                            <div class="echarts">
+                                <i-echarts :option="salesTrend" @ready="onReady" @click="onClick"></i-echarts>
                             </div>
                         </div>
                         <div class="table-information">
