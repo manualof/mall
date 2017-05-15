@@ -19,21 +19,18 @@
                     showStyle: 'style1',
                     switchStatus: true,
                 },
+                loading: false,
+                province: [
+                    {
+                        label: '图片',
+                        value: '1',
+                    },
+                    {
+                        label: '图片1',
+                        value: '2',
+                    },
+                ],
                 ruleValidate: {
-                    name: [
-                        {
-                            message: '名称不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
-                    widthNum: [
-                        {
-                            message: '宽度不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
                     heightNum: [
                         {
                             message: '高度不能为空',
@@ -48,23 +45,40 @@
                             trigger: 'blur',
                         },
                     ],
+                    name: [
+                        {
+                            message: '名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    widthNum: [
+                        {
+                            message: '宽度不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
                 },
-                loading: false,
-                province: [
-                    {
-                        label: '图片',
-                        value: '1',
-                    },
-                    {
-                        label: '图片1',
-                        value: '2',
-                    },
-                ],
             };
         },
         methods: {
             removeLogo() {
                 this.addAdPosition.logo = '';
+            },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.addAdPosition.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
             uploadBefore() {
                 injection.loading.start();
@@ -97,20 +111,6 @@
                     title: data.message,
                 });
                 self.addAdPosition.logo = data.data.path;
-            },
-            submit() {
-                const self = this;
-                self.loading = true;
-                self.$refs.addAdPosition.validate(valid => {
-                    if (valid) {
-                        window.console.log(valid);
-                    } else {
-                        self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
-                    }
-                });
             },
         },
     };

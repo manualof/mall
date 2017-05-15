@@ -11,23 +11,13 @@
             return {
                 editDetail: {
                     goodsSort: '',
-                    quotaRatio: '',
                     interestStyle: true,
                     interestRadio: true,
                     interestType: true,
+                    quotaRatio: '',
                     showStyle: '',
                     typeName: '',
                 },
-                showStyle: [
-                    {
-                        label: '颜色',
-                        value: '1',
-                    },
-                    {
-                        label: '类型',
-                        value: '2',
-                    },
-                ],
                 location: [
                     {
                         label: '颜色',
@@ -40,13 +30,6 @@
                 ],
                 loading: false,
                 ruleValidate: {
-                    typeName: [
-                        {
-                            message: '名称名称不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
                     quotaRatio: [
                         {
                             message: '分佣比例不能为空',
@@ -54,7 +37,24 @@
                             trigger: 'blur',
                         },
                     ],
+                    typeName: [
+                        {
+                            message: '名称名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
                 },
+                showStyle: [
+                    {
+                        label: '颜色',
+                        value: '1',
+                    },
+                    {
+                        label: '类型',
+                        value: '2',
+                    },
+                ],
             };
         },
         methods: {

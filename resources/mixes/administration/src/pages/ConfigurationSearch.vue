@@ -9,15 +9,15 @@
         },
         data() {
             return {
-                loading: false,
                 form: {
-                    default: '',
+                    defaultSearch: '',
                 },
+                loading: false,
                 rules: {
-                    default: [
+                    defaultSearch: [
                         {
-                            required: true,
                             message: '请输入默认关键词',
+                            required: true,
                             trigger: 'change',
                             type: 'string',
                         },
@@ -25,27 +25,27 @@
                 },
                 searchColumns: [
                     {
+                        align: 'center',
                         type: 'selection',
                         width: 60,
-                        align: 'center',
                     },
                     {
-                        title: '搜索词',
+                        align: 'center',
                         key: 'searchTerms',
+                        title: '搜索词',
                         width: 200,
-                        align: 'center',
                     },
                     {
-                        title: '显示词',
-                        key: 'showTerms',
-                        width: 1098,
                         align: 'left',
+                        key: 'showTerms',
+                        title: '显示词',
+                        width: 1098,
                     },
                     {
-                        title: '操作',
-                        key: 'action',
-                        width: 180,
                         align: 'center',
+                        key: 'action',
+                        title: '操作',
+                        width: 180,
                         render(row, column, index) {
                             return `<i-button type="ghost" class="first-btn" size="small" @click="remove(${index})">
                                     删除</i-button><i-button type="ghost" size="small">查看</i-button>`;
@@ -82,9 +82,6 @@
                     filename: '搜索数据',
                 });
             },
-            remove(index) {
-                this.searchData.splice(index, 1);
-            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -99,21 +96,24 @@
                     }
                 });
             },
+            remove(index) {
+                this.searchData.splice(index, 1);
+            },
         },
     };
 </script>
 <template>
     <div class="mall-wrap">
         <div class="configuration-search">
-            <tabs value="default">
-                <tab-pane label="默认搜索" name="default">
+            <tabs value="defaultSearch">
+                <tab-pane label="默认搜索" name="defaultSearch">
                     <card>
                         <div class="store-body">
                             <i-form :label-width="200" ref="form" :model="form" :rules="rules">
                                 <row>
                                     <i-col span="12">
                                         <form-item label="默认搜索词">
-                                            <i-input v-model="form.default" placeholder=""></i-input>
+                                            <i-input v-model="form.defaultSearch" placeholder=""></i-input>
                                             <span class="range">默认词设置将显示在前台搜索框下面，
                                                 前台点击时直接作为关键词进行搜索，多个请用半角逗号","隔开</span>
                                         </form-item>

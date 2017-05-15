@@ -9,8 +9,6 @@
         },
         data() {
             return {
-                self: this,
-                switch1: true,
                 plugin: true,
                 payColumns: [
                     {
@@ -18,13 +16,13 @@
                         width: 150,
                     },
                     {
-                        title: '支付方式',
                         key: 'style',
+                        title: '支付方式',
                         width: 300,
                     },
                     {
-                        title: '当前状态',
                         key: 'status',
+                        title: '当前状态',
                         render() {
                             return `<i-switch size="large" v-model="switch1">
                                         <span slot="open">开启</span>
@@ -33,10 +31,10 @@
                         },
                     },
                     {
-                        title: '操作',
-                        key: 'action',
-                        width: 150,
                         align: 'center',
+                        key: 'action',
+                        title: '操作',
+                        width: 150,
                         render() {
                             return '<i-button type="ghost">编辑</i-button>';
                         },
@@ -56,6 +54,8 @@
                         style: '银联',
                     },
                 ],
+                self: this,
+                switch1: true,
             };
         },
         methods: {

@@ -10,17 +10,27 @@
         data() {
             return {
                 action: `${window.api}/mall/upload`,
+                distribution: [
+                    {
+                        label: '333',
+                        value: '1',
+                    },
+                    {
+                        label: '444',
+                        value: '2',
+                    },
+                ],
                 goodsEdit: {
                     barCode: '',
                     distribution: '',
-                    type: '数码办公>时尚影音>智能设备',
-                    name: '',
                     goodStyle: '',
                     goodComment: '',
                     goodOrigin: '',
+                    logo: '',
+                    name: '',
                     price: '',
                     sellPoint: '',
-                    logo: '',
+                    type: '数码办公>时尚影音>智能设备',
                 },
                 goodStyle: [
                     {
@@ -29,16 +39,6 @@
                     },
                     {
                         label: '苹果',
-                        value: '2',
-                    },
-                ],
-                distribution: [
-                    {
-                        label: '333',
-                        value: '1',
-                    },
-                    {
-                        label: '444',
                         value: '2',
                     },
                 ],
@@ -62,6 +62,10 @@
                         value: '2',
                     },
                 ],
+                isEditText: false,
+                isEditPicture: false,
+                isPcPicture: false,
+                loading: false,
                 priceList: [
                     {
                         label: '100-200',
@@ -72,10 +76,6 @@
                         value: '2',
                     },
                 ],
-                loading: false,
-                isEditText: false,
-                isEditPicture: false,
-                isPcPicture: false,
                 ruleValidate: {
                     remarks: [
                         {

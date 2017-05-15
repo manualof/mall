@@ -10,60 +10,6 @@
         data() {
             return {
                 managementSearch: '',
-                typeColumns: [
-                    {
-                        title: '规格排序',
-                        key: 'sort',
-                    },
-                    {
-                        title: '规格ID',
-                        key: 'typeId',
-                    },
-                    {
-                        title: '规格名称',
-                        key: 'typeName',
-                    },
-                    {
-                        title: '快捷定位ID',
-                        key: 'positionId',
-                    },
-                    {
-                        title: '快捷定位名称',
-                        key: 'positionName',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 180,
-                        render(row, column, index) {
-                            return `<i-button type="ghost" class="delete-ad" @click.native="edit">编辑</i-button>
-                                <i-button type="ghost" class="delete-ad" @click.native="remove(${index})">删除</i-button>`;
-                        },
-                    },
-                ],
-                typeData: [
-                    {
-                        typeId: '0001',
-                        typeName: '迪卡侬',
-                        sort: '6',
-                        positionId: '22',
-                        positionName: '液晶电视',
-                    },
-                    {
-                        typeId: '0001',
-                        typeName: '迪卡侬',
-                        sort: '6',
-                        positionId: '22',
-                        positionName: '液晶电视',
-                    },
-                    {
-                        typeId: '0001',
-                        typeName: '迪卡侬',
-                        sort: '6',
-                        positionId: '22',
-                        positionName: '液晶电视',
-                    },
-                ],
                 searchList: [
                     {
                         label: '店铺名称',
@@ -79,6 +25,60 @@
                     },
                 ],
                 self: this,
+                typeColumns: [
+                    {
+                        key: 'sort',
+                        title: '规格排序',
+                    },
+                    {
+                        key: 'typeId',
+                        title: '规格ID',
+                    },
+                    {
+                        key: 'typeName',
+                        title: '规格名称',
+                    },
+                    {
+                        key: 'positionId',
+                        title: '快捷定位ID',
+                    },
+                    {
+                        key: 'positionName',
+                        title: '快捷定位名称',
+                    },
+                    {
+                        key: 'action',
+                        title: '操作',
+                        width: 180,
+                        render(row, column, index) {
+                            return `<i-button type="ghost" class="delete-ad" @click.native="edit">编辑</i-button>
+                                <i-button type="ghost" class="delete-ad" @click.native="remove(${index})">删除</i-button>`;
+                        },
+                    },
+                ],
+                typeData: [
+                    {
+                        positionId: '22',
+                        positionName: '液晶电视',
+                        sort: '6',
+                        typeId: '0001',
+                        typeName: '迪卡侬',
+                    },
+                    {
+                        positionId: '22',
+                        positionName: '液晶电视',
+                        sort: '6',
+                        typeId: '0001',
+                        typeName: '迪卡侬',
+                    },
+                    {
+                        positionId: '22',
+                        positionName: '液晶电视',
+                        sort: '6',
+                        typeId: '0001',
+                        typeName: '迪卡侬',
+                    },
+                ],
             };
         },
         methods: {

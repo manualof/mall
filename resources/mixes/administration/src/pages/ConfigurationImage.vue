@@ -10,24 +10,15 @@
         data() {
             return {
                 action: `${window.api}/mall/upload`,
-                loading: false,
-                imageLoading: false,
-                parameter: {
-                    imageType: '',
-                },
                 defaultImage: {
                     goodsImage: '',
                     shopLogo: '',
                     shopImage: '',
                 },
-                validate: {
-                    imageType: [
-                        {
-                            message: '请选择图片存放类型',
-                            required: true,
-                            trigger: 'change',
-                        },
-                    ],
+                imageLoading: false,
+                loading: false,
+                parameter: {
+                    imageType: '',
                 },
                 radioList: [
                     {
@@ -47,9 +38,27 @@
                         label: 'yearMonthDay',
                     },
                 ],
+                validate: {
+                    imageType: [
+                        {
+                            message: '请选择图片存放类型',
+                            required: true,
+                            trigger: 'change',
+                        },
+                    ],
+                },
             };
         },
         methods: {
+            removeGoodsImage() {
+                this.defaultImage.goodsImage = '';
+            },
+            removeShopLogo() {
+                this.defaultImage.shopLogo = '';
+            },
+            removeShopImage() {
+                this.defaultImage.shopImage = '';
+            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -75,15 +84,6 @@
 //                        title: '请正确填写设置信息！',
 //                    });
 //                }
-            },
-            removeGoodsImage() {
-                this.defaultImage.goodsImage = '';
-            },
-            removeShopLogo() {
-                this.defaultImage.shopLogo = '';
-            },
-            removeShopImage() {
-                this.defaultImage.shopImage = '';
             },
             uploadBefore() {
                 injection.loading.start();

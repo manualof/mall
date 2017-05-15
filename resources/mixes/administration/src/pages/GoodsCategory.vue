@@ -11,67 +11,67 @@
             return {
                 classificationData: [
                     {
-                        typeStyle: '通用类型',
                         commissionRate: '5%',
                         goodShow: '颜色',
+                        typeStyle: '通用类型',
                     },
                     {
-                        typeStyle: '通用类型',
                         commissionRate: '5%',
                         goodShow: '颜色',
+                        typeStyle: '通用类型',
                     },
                     {
-                        typeStyle: '通用类型',
                         commissionRate: '5%',
                         goodShow: '颜色',
+                        typeStyle: '通用类型',
                     },
                     {
-                        typeStyle: '通用类型',
                         commissionRate: '5%',
                         goodShow: '颜色',
+                        typeStyle: '通用类型',
                     },
                 ],
                 goodColumns: [
                     {
+                        align: 'center',
                         type: 'selection',
                         width: 60,
-                        align: 'center',
                     },
                     {
-                        title: '排序',
                         key: 'sort',
+                        title: '排序',
                         width: 150,
                         render() {
                             return '<i-input type="ghost" style="width: 64px;"></i-input>';
                         },
                     },
                     {
-                        title: '分类名称',
                         key: 'typeName',
+                        title: '分类名称',
                         width: 200,
                         render() {
                             return '<i-input type="ghost" style="width: 128px;"></i-input>';
                         },
                     },
                     {
-                        title: '类型',
                         key: 'typeStyle',
+                        title: '类型',
                         width: 150,
                     },
                     {
-                        title: '分拥比例',
                         key: 'commissionRate',
+                        title: '分拥比例',
                         width: 150,
                     },
                     {
-                        title: '商品展示',
                         key: 'goodShow',
+                        title: '商品展示',
                     },
                     {
-                        title: '操作',
-                        key: 'action',
-                        width: 200,
                         align: 'center',
+                        key: 'action',
+                        title: '操作',
+                        width: 200,
                         render(row, column, index) {
                             return `<dropdown><i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
                                 <dropdown-menu slot="list">

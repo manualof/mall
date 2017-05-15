@@ -37,16 +37,16 @@
                             trigger: 'blur',
                         },
                     ],
-                    position: [
+                    logo: [
                         {
-                            message: '广告位不能为空',
+                            message: '图片上传不能为空',
                             required: true,
                             trigger: 'blur',
                         },
                     ],
-                    logo: [
+                    position: [
                         {
-                            message: '图片上传不能为空',
+                            message: '广告位不能为空',
                             required: true,
                             trigger: 'blur',
                         },
@@ -61,6 +61,20 @@
             },
             removeLogo() {
                 this.addAdPosition.logo = '';
+            },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.addAdPosition.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
             uploadBefore() {
                 injection.loading.start();
@@ -93,20 +107,6 @@
                     title: data.message,
                 });
                 self.addAdPosition.logo = data.data.path;
-            },
-            submit() {
-                const self = this;
-                self.loading = true;
-                self.$refs.addAdPosition.validate(valid => {
-                    if (valid) {
-                        window.console.log(valid);
-                    } else {
-                        self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
-                    }
-                });
             },
         },
     };

@@ -11,31 +11,31 @@
             return {
                 brandColumns: [
                     {
-                        title: '品牌ID',
                         key: 'brandId',
+                        title: '品牌ID',
                     },
                     {
-                        title: '品牌名称',
                         key: 'name',
+                        title: '品牌名称',
                     },
                     {
-                        title: '首字母',
                         key: 'initials',
+                        title: '首字母',
                     },
                     {
-                        title: '品牌图片',
                         key: 'brandPicture',
+                        title: '品牌图片',
                         render() {
                             return '<icon type="image"></icon>';
                         },
                     },
                     {
-                        title: '品牌排序',
                         key: 'sort',
+                        title: '品牌排序',
                     },
                     {
-                        title: '是否推荐品牌',
                         key: 'isshow',
+                        title: '是否推荐品牌',
                         render(row) {
                             return `<span v-if="${row.status} === true" class="status-check">
                                     <icon type="checkmark-circled"></icon>是</span>
@@ -43,12 +43,12 @@
                         },
                     },
                     {
-                        title: '展示形式',
                         key: 'showStyle',
+                        title: '展示形式',
                     },
                     {
-                        title: '操作',
                         key: 'action',
+                        title: '操作',
                         render() {
                             return '<i-button type="ghost" @click.native="edit">编辑</i-button>';
                         },
@@ -57,28 +57,28 @@
                 brandData: [
                     {
                         brandId: '001',
-                        name: '迪卡侬',
                         initials: 'Y',
-                        sort: 4,
                         isshow: '是',
+                        name: '迪卡侬',
+                        sort: 4,
                         status: true,
                         showStyle: '图片',
                     },
                     {
                         brandId: '001',
-                        name: '迪卡侬',
                         initials: 'Y',
+                        isshow: '是',
+                        name: '迪卡侬',
                         sort: 4,
-                        isshow: '否',
                         status: false,
                         showStyle: '图片',
                     },
                     {
                         brandId: '001',
-                        name: '迪卡侬',
                         initials: 'Y',
-                        sort: 4,
                         isshow: '是',
+                        name: '迪卡侬',
+                        sort: 4,
                         status: true,
                         showStyle: '图片',
                     },
@@ -87,6 +87,12 @@
             };
         },
         methods: {
+            edit() {
+                const self = this;
+                self.$router.push({
+                    path: 'brand/edit',
+                });
+            },
             exportData() {
                 this.$refs.brand.exportCsv({
                     filename: '品牌管理数据',
@@ -96,12 +102,6 @@
                 const self = this;
                 self.$router.push({
                     path: 'brand/add',
-                });
-            },
-            edit() {
-                const self = this;
-                self.$router.push({
-                    path: 'brand/edit',
                 });
             },
         },

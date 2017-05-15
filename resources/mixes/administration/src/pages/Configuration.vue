@@ -60,6 +60,26 @@
                 self.form.logo = '';
                 self.$refs.form.validateField('logo');
             },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.form.validate(valid => {
+                    if (valid) {
+                        self.$http.post(`${window.api}/mall/configuration/set`, self.form).then(() => {
+                            self.$notice.open({
+                                title: '更新商城配置成功！',
+                            });
+                        }).finally(() => {
+                            self.loading = false;
+                        });
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
             uploadBefore() {
                 injection.loading.start();
             },
@@ -92,26 +112,6 @@
                 });
                 self.form.logo = data.data.path;
                 self.$refs.form.validateField('logo');
-            },
-            submit() {
-                const self = this;
-                self.loading = true;
-                self.$refs.form.validate(valid => {
-                    if (valid) {
-                        self.$http.post(`${window.api}/mall/configuration/set`, self.form).then(() => {
-                            self.$notice.open({
-                                title: '更新商城配置成功！',
-                            });
-                        }).finally(() => {
-                            self.loading = false;
-                        });
-                    } else {
-                        self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
-                    }
-                });
             },
         },
     };

@@ -9,43 +9,42 @@
         },
         data() {
             return {
-                self: this,
                 merchantColumns: [
                     {
+                        align: 'center',
                         type: 'selection',
                         width: 60,
-                        align: 'center',
                     },
                     {
-                        title: '模板描述',
-                        key: 'describe',
                         align: 'left',
+                        key: 'describe',
+                        title: '模板描述',
                     },
                     {
+                        align: 'center',
                         title: '站内信',
-                        align: 'center',
                         render() {
                             return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
                         },
                     },
                     {
+                        align: 'center',
                         title: '手机短信',
-                        align: 'center',
                         render() {
                             return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
                         },
                     },
                     {
+                        align: 'center',
                         title: '邮件',
-                        align: 'center',
                         render() {
                             return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
                         },
                     },
                     {
-                        title: '操作',
-                        key: 'action',
                         align: 'center',
+                        key: 'action',
+                        title: '操作',
                         width: '140',
                         render() {
                             return '<i-button type="ghost" class="editor-btn" size="small" ' +
@@ -85,42 +84,43 @@
                         describe: '结算单已付款提醒',
                     },
                 ],
+                self: this,
                 userColumns: [
                     {
+                        width: 60,
                         type: 'selection',
                         align: 'center',
-                        width: 60,
                     },
                     {
-                        title: '模板描述',
-                        key: 'describe',
                         align: 'left',
+                        key: 'describe',
+                        title: '模板描述',
                     },
                     {
+                        align: 'center',
                         title: '站内信',
-                        align: 'center',
                         render() {
                             return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
                         },
                     },
                     {
+                        align: 'center',
                         title: '手机短信',
-                        align: 'center',
                         render() {
                             return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
                         },
                     },
                     {
+                        align: 'center',
                         title: '邮件',
-                        align: 'center',
                         render() {
                             return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
                         },
                     },
                     {
-                        title: '操作',
-                        key: 'action',
                         align: 'center',
+                        key: 'action',
+                        title: '操作',
                         width: 140,
                         render(row, column, index) {
                             return `<i-button type="ghost" class="editor-btn" size="small"

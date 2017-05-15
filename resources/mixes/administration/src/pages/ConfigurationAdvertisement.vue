@@ -11,49 +11,49 @@
             return {
                 advertisement: [
                     {
-                        type: 'selection',
-                        width: 60,
                         align: 'center',
                         fixed: 'left',
+                        type: 'selection',
+                        width: 60,
                     },
                     {
-                        title: '名称',
                         key: 'name',
+                        title: '名称',
                         width: 200,
                     },
                     {
-                        title: '类型',
                         key: 'type',
+                        title: '类型',
                         width: 100,
                     },
                     {
-                        title: '展示方式',
                         key: 'showStyle',
+                        title: '展示方式',
                         width: 200,
                     },
                     {
-                        title: '宽度/字数',
                         key: 'wordNum',
+                        title: '宽度/字数',
                         width: 150,
                     },
                     {
-                        title: '高度',
                         key: 'heightNum',
+                        title: '高度',
                         width: 150,
                     },
                     {
-                        title: '广告数',
                         key: 'adverNum',
+                        title: '广告数',
                         width: 150,
                     },
                     {
-                        title: '正在展示',
                         key: 'showNum',
+                        title: '正在展示',
                         width: 150,
                     },
                     {
-                        title: '是否启用',
                         key: 'isshow',
+                        title: '是否启用',
                         width: 200,
                         render(row) {
                             return `<span v-if="${row.status} === true" class="status-check">
@@ -62,11 +62,11 @@
                         },
                     },
                     {
-                        title: '操作',
-                        key: 'action',
-                        width: 200,
                         align: 'center',
                         fixed: 'right',
+                        key: 'action',
+                        title: '操作',
+                        width: 200,
                         render(row, column, index) {
                             return `<dropdown><i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
                                 <dropdown-menu slot="list">
@@ -78,51 +78,51 @@
                 ],
                 advertisementData: [
                     {
-                        name: '商品列表左侧广告位',
-                        type: '图片',
-                        showStyle: '多广告展示',
-                        wordNum: 206,
-                        heightNum: 206,
                         adverNum: 0,
-                        showNum: 4,
+                        heightNum: 206,
                         isshow: '是',
+                        name: '商品列表左侧广告位',
+                        showStyle: '多广告展示',
+                        showNum: 4,
                         status: true,
+                        type: '图片',
+                        wordNum: 206,
                     },
                     {
-                        name: '商品列表左侧广告位',
-                        type: '图片',
-                        showStyle: '多广告展示',
-                        wordNum: 206,
-                        heightNum: 206,
                         adverNum: 0,
-                        showNum: 4,
+                        heightNum: 206,
                         isshow: '是',
+                        name: '商品列表左侧广告位',
+                        showStyle: '多广告展示',
+                        showNum: 4,
                         status: true,
+                        type: '图片',
+                        wordNum: 206,
                     },
                     {
-                        name: '商品列表左侧广告位',
-                        type: '图片',
-                        showStyle: '多广告展示',
-                        wordNum: 206,
-                        heightNum: 206,
                         adverNum: 0,
-                        showNum: 4,
+                        heightNum: 206,
                         isshow: '是',
-                        status: false,
+                        name: '商品列表左侧广告位',
+                        showStyle: '多广告展示',
+                        showNum: 4,
+                        status: true,
+                        type: '图片',
+                        wordNum: 206,
                     },
                 ],
                 self: this,
             };
         },
         methods: {
-            removeAd(index) {
-                this.advertisementData.splice(index, 1);
-            },
             newAddData() {
                 const self = this;
                 self.$router.push({
                     path: 'advertisement/add',
                 });
+            },
+            removeAd(index) {
+                this.advertisementData.splice(index, 1);
             },
         },
     };

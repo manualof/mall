@@ -9,113 +9,6 @@
         },
         data() {
             return {
-                standardData: {
-                    position: '平板电视',
-                    type: '',
-                    sort: '',
-                },
-                styleData: [
-                    {
-                        value: '个护化妆',
-                        label: '个护化妆',
-                        children: [
-                            {
-                                value: '童车童床',
-                                label: '童车童床',
-                                children: [
-                                    {
-                                        value: '婴儿推车',
-                                        label: '婴儿推车',
-                                    },
-                                    {
-                                        value: '自行车',
-                                        label: '自行车',
-                                    },
-                                    {
-                                        value: '婴儿推车',
-                                        label: '婴儿推车',
-                                    },
-                                    {
-                                        value: '电动车',
-                                        label: '电动车',
-                                    },
-                                    {
-                                        value: '安全座椅',
-                                        label: '安全座椅',
-                                    },
-                                ],
-                            },
-                            {
-                                value: '营养辅食',
-                                label: '营养辅食',
-                            },
-                            {
-                                value: '尿裤湿巾',
-                                label: '尿裤湿巾',
-                            },
-                        ],
-                    },
-                    {
-                        value: '家用电器',
-                        label: '家用电器',
-                        children: [
-                            {
-                                value: '服饰寝居',
-                                label: '服饰寝居',
-                                children: [
-                                    {
-                                        value: '婴儿推车1',
-                                        label: '婴儿推车1',
-                                    },
-                                    {
-                                        value: '自行车2',
-                                        label: '自行车2',
-                                    },
-                                    {
-                                        value: '婴儿推车3',
-                                        label: '婴儿推车3',
-                                    },
-                                    {
-                                        value: '电动车',
-                                        label: '电动车',
-                                    },
-                                    {
-                                        value: '安全座椅4',
-                                        label: '安全座椅4',
-                                    },
-                                ],
-                            },
-                            {
-                                value: '营养辅食',
-                                label: '营养辅食',
-                                children: [
-                                    {
-                                        value: '婴儿推车1',
-                                        label: '婴儿推车1',
-                                    },
-                                    {
-                                        value: '自行车2',
-                                        label: '自行车2',
-                                    },
-                                ],
-                            },
-                            {
-                                value: '尿裤湿巾',
-                                label: '尿裤湿巾',
-                                children: [
-                                    {
-                                        value: '车1',
-                                        label: '车1',
-                                    },
-                                    {
-                                        value: '自行车2',
-                                        label: '自行车2',
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                ],
                 loading: false,
                 ruleValidate: {
                     type: [
@@ -126,6 +19,113 @@
                         },
                     ],
                 },
+                standardData: {
+                    position: '平板电视',
+                    sort: '',
+                    type: '',
+                },
+                styleData: [
+                    {
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '自行车',
+                                        value: '自行车',
+                                    },
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅',
+                                        value: '安全座椅',
+                                    },
+                                ],
+                                label: '童车童床',
+                                value: '童车童床',
+                            },
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '个护化妆',
+                        value: '个护化妆',
+                    },
+                    {
+                        children: [
+                            {
+                                value: '服饰寝居',
+                                label: '服饰寝居',
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                    {
+                                        label: '婴儿推车3',
+                                        value: '婴儿推车3',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅4',
+                                        value: '安全座椅4',
+                                    },
+                                ],
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '车1',
+                                        value: '车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '家用电器',
+                        value: '家用电器',
+                    },
+                ],
             };
         },
         methods: {

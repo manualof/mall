@@ -11,75 +11,75 @@
         data() {
             return {
                 action: `${window.api}/mall/upload`,
-                typeData: {
-                    name: '财富中心自提点',
-                    realName: '王思冉',
-                    phone: '',
-                    seatNumber: '',
-                    deliveryName: '',
-                    province: ['陕西省', '西安市'],
-                    address: '',
-                    idNum: '6622542456855141',
-                    cardPicture: image,
-                    status: true,
-                },
+                loading: false,
+                ruleValidate: {},
                 styleData: [
                     {
-                        value: 'beijing',
-                        label: '北京',
                         children: [
                             {
-                                value: 'gugong',
                                 label: '故宫',
+                                value: 'gugong',
                             },
                             {
-                                value: 'tiantan',
                                 label: '天坛',
+                                value: 'tiantan',
                             },
                             {
-                                value: 'wangfujing',
                                 label: '王府井',
+                                value: 'wangfujing',
                             },
                         ],
+                        label: '北京',
+                        value: 'beijing',
                     },
                     {
-                        value: 'jiangsu',
-                        label: '江苏',
                         children: [
                             {
-                                value: 'suzhou',
-                                label: '苏州',
                                 children: [
                                     {
-                                        value: 'zhuozhengyuan',
                                         label: '拙政园',
+                                        value: 'zhuozhengyuan',
                                     },
                                     {
-                                        value: 'shizilin',
                                         label: '狮子林',
+                                        value: 'shizilin',
                                     },
                                 ],
+                                label: '苏州',
+                                value: 'suzhou',
                             },
                             {
-                                value: 'zhuozhengyuan',
-                                label: '拙政园1',
                                 children: [
                                     {
-                                        value: 'zhuozhengyuan',
                                         label: '拙政园1',
+                                        value: 'zhuozhengyuan',
                                     },
                                     {
-                                        value: 'shizilin',
                                         label: '狮子林1',
+                                        value: 'shizilin',
                                     },
                                 ],
+                                label: '拙政园1',
+                                value: 'zhuozhengyuan',
                             },
                         ],
+                        label: '江苏',
+                        value: 'jiangsu',
                     },
                 ],
-                ruleValidate: {},
                 self: this,
-                loading: false,
+                typeData: {
+                    address: '',
+                    cardPicture: image,
+                    deliveryName: '',
+                    idNum: '6622542456855141',
+                    name: '财富中心自提点',
+                    phone: '',
+                    province: ['陕西省', '西安市'],
+                    realName: '王思冉',
+                    seatNumber: '',
+                    status: true,
+                },
             };
         },
         methods: {

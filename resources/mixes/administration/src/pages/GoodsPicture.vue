@@ -9,67 +9,7 @@
         },
         data() {
             return {
-                typeColumns: [
-                    {
-                        title: '相册ID',
-                        key: 'albumId',
-                    },
-                    {
-                        title: '相册名称',
-                        key: 'albumName',
-                    },
-                    {
-                        title: '店铺ID',
-                        key: 'shopId',
-                    },
-                    {
-                        title: '店铺名称',
-                        key: 'shopName',
-                    },
-                    {
-                        title: '封面图片',
-                        key: 'coverImg',
-                        render() {
-                            return '<icon type="image"></icon>';
-                        },
-                    },
-                    {
-                        title: '图片数量',
-                        key: 'albumNum',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        width: 180,
-                        render(row, column, index) {
-                            return `<i-button type="ghost" class="delete-ad" @click.native="look">查看</i-button>
-                                <i-button type="ghost" class="delete-ad" @click.native="remove(${index})">删除</i-button>`;
-                        },
-                    },
-                ],
-                typeData: [
-                    {
-                        albumId: '01',
-                        albumName: '默认相册',
-                        shopId: '336',
-                        shopName: 'Rey吕官方旗舰店',
-                        albumNum: 50,
-                    },
-                    {
-                        albumId: '01',
-                        albumName: '默认相册',
-                        shopId: '336',
-                        shopName: 'Rey吕官方旗舰店',
-                        albumNum: 50,
-                    },
-                    {
-                        albumId: '01',
-                        albumName: '默认相册',
-                        shopId: '336',
-                        shopName: 'Rey吕官方旗舰店',
-                        albumNum: 50,
-                    },
-                ],
+                managementSearch: '',
                 searchList: [
                     {
                         label: '店铺名称',
@@ -85,13 +25,70 @@
                     },
                 ],
                 self: this,
-                managementSearch: '',
+                typeColumns: [
+                    {
+                        key: 'albumId',
+                        title: '相册ID',
+                    },
+                    {
+                        key: 'albumName',
+                        title: '相册名称',
+                    },
+                    {
+                        key: 'shopId',
+                        title: '店铺ID',
+                    },
+                    {
+                        key: 'shopName',
+                        title: '店铺名称',
+                    },
+                    {
+                        key: 'coverImg',
+                        title: '封面图片',
+                        render() {
+                            return '<icon type="image"></icon>';
+                        },
+                    },
+                    {
+                        key: 'albumNum',
+                        title: '图片数量',
+                    },
+                    {
+                        key: 'action',
+                        title: '操作',
+                        width: 180,
+                        render(row, column, index) {
+                            return `<i-button type="ghost" class="delete-ad" @click.native="look">查看</i-button>
+                                <i-button type="ghost" class="delete-ad" @click.native="remove(${index})">删除</i-button>`;
+                        },
+                    },
+                ],
+                typeData: [
+                    {
+                        albumId: '01',
+                        albumName: '默认相册',
+                        albumNum: 50,
+                        shopId: '336',
+                        shopName: 'Rey吕官方旗舰店',
+                    },
+                    {
+                        albumId: '01',
+                        albumName: '默认相册',
+                        albumNum: 50,
+                        shopId: '336',
+                        shopName: 'Rey吕官方旗舰店',
+                    },
+                    {
+                        albumId: '01',
+                        albumName: '默认相册',
+                        albumNum: 50,
+                        shopId: '336',
+                        shopName: 'Rey吕官方旗舰店',
+                    },
+                ],
             };
         },
         methods: {
-            remove(index) {
-                this.typeData.splice(index, 1);
-            },
             lookData() {
                 const self = this;
                 self.$router.push({
@@ -100,6 +97,9 @@
             },
             look() {
 
+            },
+            remove(index) {
+                this.typeData.splice(index, 1);
             },
         },
     };

@@ -10,7 +10,6 @@
         data() {
             return {
                 action: `${window.api}/mall/upload`,
-                defaultList: [],
                 addData: {
                     brandName: '',
                     disabledGroup: '图片',
@@ -19,6 +18,8 @@
                     switch1: true,
                     sort: '',
                 },
+                defaultList: [],
+                loading: false,
                 ruleValidate: {
                     brandName: [
                         {
@@ -30,108 +31,107 @@
                 },
                 styleData: [
                     {
-                        value: '个护化妆',
-                        label: '个护化妆',
                         children: [
                             {
                                 value: '童车童床',
                                 label: '童车童床',
                                 children: [
                                     {
-                                        value: '婴儿推车',
                                         label: '婴儿推车',
+                                        value: '婴儿推车',
                                     },
                                     {
-                                        value: '自行车',
                                         label: '自行车',
+                                        value: '自行车',
                                     },
                                     {
-                                        value: '婴儿推车',
                                         label: '婴儿推车',
+                                        value: '婴儿推车',
                                     },
                                     {
-                                        value: '电动车',
                                         label: '电动车',
+                                        value: '电动车',
                                     },
                                     {
-                                        value: '安全座椅',
                                         label: '安全座椅',
+                                        value: '安全座椅',
                                     },
                                 ],
                             },
                             {
-                                value: '营养辅食',
                                 label: '营养辅食',
+                                value: '营养辅食',
                             },
                             {
-                                value: '尿裤湿巾',
                                 label: '尿裤湿巾',
+                                value: '尿裤湿巾',
                             },
                         ],
+                        label: '个护化妆',
+                        value: '个护化妆',
                     },
                     {
-                        value: '家用电器',
-                        label: '家用电器',
                         children: [
                             {
-                                value: '服饰寝居',
-                                label: '服饰寝居',
                                 children: [
                                     {
-                                        value: '婴儿推车1',
                                         label: '婴儿推车1',
+                                        value: '婴儿推车1',
                                     },
                                     {
-                                        value: '自行车2',
                                         label: '自行车2',
+                                        value: '自行车2',
                                     },
                                     {
-                                        value: '婴儿推车3',
                                         label: '婴儿推车3',
+                                        value: '婴儿推车3',
                                     },
                                     {
-                                        value: '电动车',
                                         label: '电动车',
+                                        value: '电动车',
                                     },
                                     {
-                                        value: '安全座椅4',
                                         label: '安全座椅4',
+                                        value: '安全座椅4',
                                     },
                                 ],
+                                label: '服饰寝居',
+                                value: '服饰寝居',
                             },
                             {
-                                value: '营养辅食',
-                                label: '营养辅食',
                                 children: [
                                     {
-                                        value: '婴儿推车1',
                                         label: '婴儿推车1',
+                                        value: '婴儿推车1',
                                     },
                                     {
-                                        value: '自行车2',
                                         label: '自行车2',
+                                        value: '自行车2',
                                     },
                                 ],
+                                label: '营养辅食',
+                                value: '营养辅食',
                             },
                             {
-                                value: '尿裤湿巾',
-                                label: '尿裤湿巾',
                                 children: [
                                     {
-                                        value: '车1',
                                         label: '车1',
+                                        value: '车1',
                                     },
                                     {
-                                        value: '自行车2',
                                         label: '自行车2',
+                                        value: '自行车2',
                                     },
                                 ],
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
                             },
                         ],
+                        label: '家用电器',
+                        value: '家用电器',
                     },
                 ],
                 self: this,
-                loading: false,
             };
         },
         methods: {
@@ -141,6 +141,20 @@
             },
             removeLogo() {
                 this.addData.logo = '';
+            },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.addData.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
             uploadBefore() {
                 injection.loading.start();
@@ -173,20 +187,6 @@
                     title: data.message,
                 });
                 self.addData.logo = data.data.path;
-            },
-            submit() {
-                const self = this;
-                self.loading = true;
-                self.$refs.addData.validate(valid => {
-                    if (valid) {
-                        window.console.log(valid);
-                    } else {
-                        self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
-                    }
-                });
             },
         },
     };
