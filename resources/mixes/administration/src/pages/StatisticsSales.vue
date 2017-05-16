@@ -113,6 +113,37 @@
                         title: '总订单量',
                     },
                 ],
+                orderAmount: {
+                    legend: {
+                        bottom: 'auto',
+                        data: ['昨天', '今天'],
+                    },
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '今天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                        {
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                            name: '昨天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
                 shopsColumns: [
                     {
                         key: 'shopName',
@@ -262,7 +293,7 @@
                         <div class="analysis-content">
                             <tabs type="card">
                                 <tab-pane label="下单量">
-                                    <div class="order-money-content">
+                                    <div class="order-money-content search-select-item">
                                         <div class="select-order-content">
                                             <div class="select-content">
                                                 <ul>
@@ -285,15 +316,17 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div style="height: 250px"></div>
                                         </div>
-                                        <i-button type="ghost" class="export-btn "
-                                                  @click="exportOrderData">导出数据</i-button>
-                                        <i-table :columns="orderColumns" :context="self"
-                                                 :data="orderData" ref="orderList"></i-table>
-                                        <div class="page">
-                                            <page :total="100" show-elevator></page>
-                                        </div>
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="orderAmount" @ready="onReady" @click="onClick"></i-echarts>
+                                    </div>
+                                    <i-button type="ghost" class="export-btn "
+                                              @click="exportOrderData">导出数据</i-button>
+                                    <i-table :columns="orderColumns" :context="self"
+                                             :data="orderData" ref="orderList"></i-table>
+                                    <div class="page">
+                                        <page :total="100" show-elevator></page>
                                     </div>
                                 </tab-pane>
                                 <tab-pane label="下单金额">标签二的内容</tab-pane>
