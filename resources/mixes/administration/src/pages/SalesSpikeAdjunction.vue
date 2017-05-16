@@ -82,7 +82,7 @@
             <card :bordered="false">
                 <div class="add-body">
                     <div class="prompt-box">
-                        <h6>提示</h6>
+                        <p>提示</p>
                         <p>秒杀活动仅设置结束时间，截止时间内多个活动可同时进行，建议标题以分类区分便于管理</p>
                     </div>
                     <i-form :label-width="200" ref="activityValidate" :model="activityData" :rules="activityValidate">

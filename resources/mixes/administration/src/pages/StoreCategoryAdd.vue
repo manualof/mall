@@ -66,12 +66,12 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="store-category-set">
+        <div class="store-category-add">
             <div class="edit-link-title">
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
-                <span>店铺分类—设置</span>
+                <span>店铺分类—新增</span>
             </div>
             <card :bordered="false">
                 <i-form :label-width="200" ref="activityValidate" :model="formValidate" :rules="validate">
@@ -92,7 +92,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="排序">
-                                <i-input v-model="formValidate.rank" placeholder=""></i-input><br>
+                                <i-input v-model="formValidate.rank" placeholder=""></i-input>
                                 <p class="tip">数字范围为0~255，数字越小越靠前</p>
                             </form-item>
                         </i-col>
@@ -108,3 +108,4 @@
         </div>
     </div>
 </template>
+

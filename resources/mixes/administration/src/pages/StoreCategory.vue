@@ -67,6 +67,12 @@
             };
         },
         methods: {
+            addData() {
+                const self = this;
+                self.$router.push({
+                    path: 'category/add',
+                });
+            },
             remove(index) {
                 this.storeCategoryData.splice(index, 1);
             },
@@ -92,7 +98,7 @@
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
-                                <i-button class="export-btn" type="ghost" @click="exportData">新增数据</i-button>
+                                <i-button class="export-btn" type="ghost" @click="addData">新增数据</i-button>
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                             </div>
                             <i-table class="shop-table"
