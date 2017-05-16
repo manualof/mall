@@ -256,7 +256,7 @@
                                                         :show-upload-list="false"
                                                         v-if="goodsEdit.logo === '' || goodsEdit.logo === null">
                                                 </upload>
-                                                <p>第一张图片为默认主图，图片支持JPG、gif、png格式上传或从图片空间中选择，
+                                                <p class="tip">第一张图片为默认主图，图片支持JPG、gif、png格式上传或从图片空间中选择，
                                                     建议使用尺寸800*800像素以上，大小不超过4M的正方形图片，单击选中图片，
                                                     可进行上传，替换和删除
                                                 </p>

@@ -8,6 +8,7 @@ import ConfigurationMessageEditor from '../pages/ConfigurationMessageEditor.vue'
 import ConfigurationPay from '../pages/ConfigurationPay.vue';
 import ConfigurationSearch from '../pages/ConfigurationSearch.vue';
 import ConfigurationSearchEditor from '../pages/ConfigurationSearchEditor.vue';
+import ConfigurationSearchAdd from '../pages/ConfigurationSearchAdd.vue';
 import Dashboard from '../pages/Dashboard.vue';
 import Goods from '../pages/Goods.vue';
 import GoodsBrand from '../pages/GoodsBrand.vue';
@@ -122,6 +123,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ConfigurationSearch,
                     path: 'configuration/search',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ConfigurationSearchAdd,
+                    path: 'configuration/search/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

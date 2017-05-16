@@ -48,9 +48,9 @@
                         title: '操作',
                         width: 180,
                         render(row, column, index) {
-                            return `<i-button type="ghost" class="first-btn" size="small"
-                                    @click.native="remove(${index})">
-                                    删除</i-button><i-button type="ghost" size="small">查看</i-button>`;
+                            return `<i-button class="first-btn" @click.native="searchEdit" type="ghost"
+                                    size="small">编辑</i-button><i-button @click.native="remove(${index})"
+                                    type="ghost"  size="small">删除</i-button>`;
                         },
                     },
                 ],
@@ -79,9 +79,16 @@
             };
         },
         methods: {
-            exportData() {
-                this.$refs.searchTable.exportCsv({
-                    filename: '搜索数据',
+            addData() {
+                const self = this;
+                self.$router.push({
+                    path: 'search/add',
+                });
+            },
+            searchEdit() {
+                const self = this;
+                self.$router.push({
+                    path: 'search/editor',
                 });
             },
             submit() {
@@ -136,12 +143,12 @@
                         <div class="prompt-box">
                             <p>提示</p>
                             <p>热门搜索词设置后，将显示在前台搜索框作为默认值随机出现，最多可设置10个热搜词</p>
-                            <p>每个热搜词包括搜索词和显示词两部分，搜索词参与搜索，显示词不参与搜索，只显示作用</p>
+                            <p>10个热搜词包括搜索词和显示词两部分，搜索词参与搜索，显示此不参与搜索，只显示作用</p>
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
-                                <i-button class="export-btn" @click="exportData()"
-                                          @click="exportData()" type="ghost" >导出数据</i-button>
+                                <i-button class="export-btn" @click.native="addData"
+                                          type="ghost" >+新增搜索词</i-button>
                             </div>
                             <i-table highlight-row ref="searchTable" class="shop-table"
                                      :columns="searchColumns" :context="self" :data="searchData"></i-table>
