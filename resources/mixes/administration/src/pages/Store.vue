@@ -312,7 +312,7 @@
                 <tab-pane label="店铺管理" name="name1">
                     <card :bordered="false">
                         <div class="prompt-box">
-                            <h6>提示</h6>
+                            <p>提示</p>
                             <p>如果当前时间超过店铺有效期或店铺处于关闭状态，前台将不能继续浏览该店铺，
                                 但是店主仍然可以编辑该店铺</p>
                         </div>
@@ -341,7 +341,7 @@
                 <tab-pane label="开店申请" name="name2">
                     <card :bordered="false">
                         <div class="prompt-box">
-                            <h6>提示</h6>
+                            <p>提示</p>
                             <p>如果当前时间超过店铺有效期或店铺处于关闭状态，前台将不能继续浏览该店铺，
                                 但是店主仍然可以编辑该店铺</p>
                         </div>
