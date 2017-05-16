@@ -156,6 +156,68 @@
                         time: '2017-04-01',
                     },
                 ],
+                refundStatistics: {
+                    legend: {
+                        bottom: 'auto',
+                        data: ['昨天', '今天'],
+                    },
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '今天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                        {
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                            name: '昨天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
+                returnStatistics: {
+                    legend: {
+                        bottom: 'auto',
+                        data: ['昨天', '今天'],
+                    },
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '今天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                        {
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                            name: '昨天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
                 self: this,
                 shopsList: [
                     {
@@ -206,7 +268,7 @@
                                 将列表数据导出为Excel文件</p>
                         </div>
                         <div class="analysis-content">
-                            <div class="order-money-content">
+                            <div class="order-money-content search-select-item">
                                 <div class="select-content">
                                     <ul>
                                         <li>
@@ -221,15 +283,15 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div style="height: 350px">
-
-                                </div>
-                                <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
-                                <i-table :columns="refundColumns" :context="self"
-                                         :data="refundData" ref="refundList"></i-table>
-                                <div class="page">
-                                    <page :total="100" show-elevator></page>
-                                </div>
+                            </div>
+                            <div class="echarts">
+                                <i-echarts :option="refundStatistics" @ready="onReady" @click="onClick"></i-echarts>
+                            </div>
+                            <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
+                            <i-table :columns="refundColumns" :context="self"
+                                     :data="refundData" ref="refundList"></i-table>
+                            <div class="page">
+                                <page :total="100" show-elevator></page>
                             </div>
                         </div>
                     </card>
@@ -244,7 +306,7 @@
                             <p>点击列表上方的“导出数据”，将列表数据导出为Excel文件</p>
                         </div>
                         <div class="analysis-content">
-                            <div class="order-money-content">
+                            <div class="order-money-content search-select-item">
                                 <div class="select-content">
                                     <ul>
                                         <li>
@@ -259,15 +321,15 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div style="height: 350px">
-
-                                </div>
-                                <i-button type="ghost" class="export-btn" @click="exportGoodsData">导出数据</i-button>
-                                <i-table :columns="goodsColumns" :context="self"
-                                         :data="goodsData" ref="goodsList"></i-table>
-                                <div class="page">
-                                    <page :total="100" show-elevator></page>
-                                </div>
+                            </div>
+                            <div class="echarts">
+                                <i-echarts :option="returnStatistics" @ready="onReady" @click="onClick"></i-echarts>
+                            </div>
+                            <i-button type="ghost" class="export-btn" @click="exportGoodsData">导出数据</i-button>
+                            <i-table :columns="goodsColumns" :context="self"
+                                     :data="goodsData" ref="goodsList"></i-table>
+                            <div class="page">
+                                <page :total="100" show-elevator></page>
                             </div>
                         </div>
                     </card>
