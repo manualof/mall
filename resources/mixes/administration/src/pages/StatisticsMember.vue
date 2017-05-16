@@ -232,9 +232,239 @@
                         value: '2',
                     },
                 ],
+                orderMoneyProvince: {
+                    tooltip: {},
+                    visualMap: {
+                        min: 0,
+                        max: 1500,
+                        left: 'left',
+                        top: 'bottom',
+                        text: ['High', 'Low'],
+                        seriesIndex: [1],
+                        inRange: {
+                            color: ['#e0ffff', '#006edd'],
+                        },
+                        calculable: true,
+                    },
+                    geo: {
+                        map: 'china',
+                        roam: true,
+                        label: {
+                            normal: {
+                                show: true,
+                                textStyle: {
+                                    color: 'rgba(0,0,0,0.4)',
+                                },
+                            },
+                        },
+                        itemStyle: {
+                            normal: {
+                                borderColor: 'rgba(0, 0, 0, 0.2)',
+                            },
+                            emphasis: {
+                                areaColor: null,
+                                shadowOffsetX: 0,
+                                shadowOffsetY: 0,
+                                shadowBlur: 20,
+                                borderWidth: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)',
+                            },
+                        },
+                    },
+                    series: [
+                        {
+                            type: 'scatter',
+                            coordinateSystem: 'geo',
+                            data: this.convertData(),
+                            symbolSize: 20,
+                            symbol: 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.' +
+                            '629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,' +
+                            '221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,' +
+                            '42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,' +
+                            '1318.313z',
+                            symbolRotate: 35,
+                            label: {
+                                normal: {
+                                    formatter: '{b}',
+                                    position: 'right',
+                                    show: false,
+                                },
+                                emphasis: {
+                                    show: true,
+                                },
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: '#F06C00',
+                                },
+                            },
+                        },
+                        {
+                            name: '销量',
+                            type: 'map',
+                            geoIndex: 0,
+                            data: [
+                                {
+                                    name: '北京',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '天津',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '上海',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '重庆',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '河北',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '河南',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '云南',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '辽宁',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '黑龙江',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '湖南',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '安徽',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '山东',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '新疆',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '江苏',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '浙江',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '江西',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '湖北',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '广西',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '甘肃',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '山西',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '内蒙古',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '陕西',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '吉林',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '福建',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '贵州',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '广东',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '青海',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '西藏',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '四川',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '宁夏',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '海南',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '台湾',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '香港',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '澳门',
+                                    value: this.randomValue(),
+                                },
+                            ],
+                        },
+                    ],
+                },
             };
         },
         methods: {
+            randomValue() {
+                return Math.round(Math.random() * 1000);
+            },
+            convertData() {
+                const provinceData = [];
+                const res = [];
+                const geoCoordMap = {};
+                for (let i = 0; i < provinceData.length; i += 1) {
+                    const geoCoord = geoCoordMap[provinceData[i].name];
+                    if (geoCoord) {
+                        res.push({
+                            name: provinceData[i].name,
+                            value: geoCoord.concat(provinceData[i].value),
+                        });
+                    }
+                }
+                return res;
+            },
             exportData() {
                 this.$refs.memberList.exportCsv({
                     filename: '新增会员数据',
@@ -372,7 +602,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderMoneyProvince" @ready="onReady" @click="onClick"></i-echarts>
                                     </div>
                                     <i-button type="ghost" class="export-btn"
                                               @click="exportProvinceData">导出数据</i-button>

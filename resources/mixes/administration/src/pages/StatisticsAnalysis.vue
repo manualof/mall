@@ -126,7 +126,69 @@
                         },
                     ],
                 },
-                orderLine: {
+                profileOrderMoney: {
+                    legend: {
+                        bottom: 'auto',
+                        data: ['昨天', '今天'],
+                    },
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '今天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                        {
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                            name: '昨天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
+                profileOrderGoods: {
+                    legend: {
+                        bottom: 'auto',
+                        data: ['昨天', '今天'],
+                    },
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '今天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                        {
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                            name: '昨天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
+                profileOrderNum: {
                     legend: {
                         bottom: 'auto',
                         data: ['昨天', '今天'],
@@ -300,11 +362,65 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderLine" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="profileOrderMoney" @ready="onReady" @click="onClick"></i-echarts>
                                     </div>
                                 </tab-pane>
-                                <tab-pane label="下单商品数">标签二的内容</tab-pane>
-                                <tab-pane label="下单量">标签三的内容</tab-pane>
+                                <tab-pane label="下单商品数">
+                                    <div class="order-money-content">
+                                        <div class="select-content">
+                                            <ul>
+                                                <li>
+                                                    商品分类
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in goodsList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    时间周期
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in timeList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="profileOrderGoods" @ready="onReady" @click="onClick"></i-echarts>
+                                    </div>
+                                </tab-pane>
+                                <tab-pane label="下单量">
+                                    <div class="order-money-content">
+                                        <div class="select-content">
+                                            <ul>
+                                                <li>
+                                                    商品分类
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in goodsList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    时间周期
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in timeList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="profileOrderNum" @ready="onReady" @click="onClick"></i-echarts>
+                                    </div>
+                                </tab-pane>
                             </tabs>
                         </div>
                     </card>
