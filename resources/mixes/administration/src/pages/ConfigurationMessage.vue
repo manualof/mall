@@ -24,21 +24,24 @@
                         align: 'center',
                         title: '站内信',
                         render() {
-                            return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
+                            return `<i-switch size="large"><span slot="open">开启</span>
+                                    <span slot="close">关闭</span> </i-switch>`;
                         },
                     },
                     {
                         align: 'center',
                         title: '手机短信',
                         render() {
-                            return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
+                            return `<i-switch size="large"><span slot="open">开启</span>
+                                    <span slot="close">关闭</span> </i-switch>`;
                         },
                     },
                     {
                         align: 'center',
                         title: '邮件',
                         render() {
-                            return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
+                            return `<i-switch size="large"><span slot="open">开启</span>
+                                    <span slot="close">关闭</span> </i-switch>`;
                         },
                     },
                     {
@@ -100,21 +103,24 @@
                         align: 'center',
                         title: '站内信',
                         render() {
-                            return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
+                            return `<i-switch size="large"><span slot="open">开启</span>
+                                    <span slot="close">关闭</span> </i-switch>`;
                         },
                     },
                     {
                         align: 'center',
                         title: '手机短信',
                         render() {
-                            return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
+                            return `<i-switch size="large"><span slot="open">开启</span>
+                                    <span slot="close">关闭</span> </i-switch>`;
                         },
                     },
                     {
                         align: 'center',
                         title: '邮件',
                         render() {
-                            return '<i-switch><span slot="open">开启</span> <span slot="close">关闭</span> </i-switch>';
+                            return `<i-switch size="large"><span slot="open">开启</span>
+                                    <span slot="close">关闭</span> </i-switch>`;
                         },
                     },
                     {

@@ -21,5 +21,19 @@
     }
     .store-body {
         margin-top: 20px;
+        .ivu-table-wrapper {
+            border: 0 none;
+            .ivu-table:after,
+            .ivu-table:before {
+                background-color: inherit;
+            }
+            .ivu-table-fixed-body {
+                overflow: inherit;
+            }
+            .ivu-table-fixed-right:before,
+            .ivu-table-fixed:before {
+                height: 0;
+            }
+        }
     }
 }

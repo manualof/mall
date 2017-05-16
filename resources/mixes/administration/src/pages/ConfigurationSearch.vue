@@ -23,31 +23,33 @@
                         },
                     ],
                 },
+                self: this,
                 searchColumns: [
                     {
                         align: 'center',
                         type: 'selection',
-                        width: 60,
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'searchTerms',
                         title: '搜索词',
-                        width: 200,
+                        width: 300,
                     },
                     {
                         align: 'left',
                         key: 'showTerms',
                         title: '显示词',
-                        width: 1098,
                     },
                     {
                         align: 'center',
+                        fixed: 'right',
                         key: 'action',
                         title: '操作',
                         width: 180,
                         render(row, column, index) {
-                            return `<i-button type="ghost" class="first-btn" size="small" @click="remove(${index})">
+                            return `<i-button type="ghost" class="first-btn" size="small"
+                                    @click.native="remove(${index})">
                                     删除</i-button><i-button type="ghost" size="small">查看</i-button>`;
                         },
                     },
@@ -114,8 +116,8 @@
                                     <i-col span="12">
                                         <form-item label="默认搜索词">
                                             <i-input v-model="form.defaultSearch" placeholder=""></i-input>
-                                            <span class="range">默认词设置将显示在前台搜索框下面，
-                                                前台点击时直接作为关键词进行搜索，多个请用半角逗号","隔开</span>
+                                            <p class="tip">默认词设置将显示在前台搜索框下面，
+                                                前台点击时直接作为关键词进行搜索，多个请用半角逗号","隔开</p>
                                         </form-item>
                                     </i-col>
                                 </row>
@@ -132,7 +134,7 @@
                 <tab-pane label="热门搜索" name="hot">
                     <card :bordered="false">
                         <div class="prompt-box">
-                            <h6>提示</h6>
+                            <p>提示</p>
                             <p>热门搜索词设置后，将显示在前台搜索框作为默认值随机出现，最多可设置10个热搜词</p>
                             <p>每个热搜词包括搜索词和显示词两部分，搜索词参与搜索，显示词不参与搜索，只显示作用</p>
                         </div>
@@ -142,7 +144,7 @@
                                           @click="exportData()" type="ghost" >导出数据</i-button>
                             </div>
                             <i-table highlight-row ref="searchTable" class="shop-table"
-                                     :columns="searchColumns" :data="searchData"></i-table>
+                                     :columns="searchColumns" :context="self" :data="searchData"></i-table>
                         </div>
                     </card>
                 </tab-pane>
