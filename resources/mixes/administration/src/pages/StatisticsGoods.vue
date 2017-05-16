@@ -19,6 +19,27 @@
                         value: '2',
                     },
                 ],
+                hotGoods: {
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '下单金额',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
                 loading: false,
                 orderColumns: [
                     {
@@ -56,6 +77,37 @@
                         amount: 22,
                     },
                 ],
+                priceAmount: {
+                    legend: {
+                        bottom: 'auto',
+                        data: ['昨天', '今天'],
+                    },
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '今天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                        {
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                            name: '昨天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
                 salesColumns: [
                     {
                         key: 'goodName',
@@ -170,7 +222,7 @@
                             <p>统计图展示了符合搜索条件的有效订单中的商品单价，在所设置的价格区间的分布情况</p>
                         </div>
                         <div class="analysis-content">
-                            <div class="order-money-content">
+                            <div class="order-money-content search-select-item">
                                 <div class="select-content">
                                     <i-button type="ghost" class="export-btn">设置价格区间</i-button>
                                     <ul>
@@ -193,9 +245,9 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div style="height: 350px">
-
-                                </div>
+                            </div>
+                            <div class="echarts">
+                                <i-echarts :option="priceAmount" @ready="onReady" @click="onClick"></i-echarts>
                             </div>
                         </div>
                     </card>
@@ -233,13 +285,15 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div style="height: 250px"></div>
-                                        <div class="order-module-content">
-                                            <i-table :columns="orderColumns" :context="self"
-                                                     :data="orderData" ref="orderList"></i-table>
-                                            <div class="page">
-                                                <page :total="100" show-elevator></page>
-                                            </div>
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="hotGoods" @ready="onReady" @click="onClick"></i-echarts>
+                                    </div>
+                                    <div class="order-module-content">
+                                        <i-table :columns="orderColumns" :context="self"
+                                                 :data="orderData" ref="orderList"></i-table>
+                                        <div class="page">
+                                            <page :total="100" show-elevator></page>
                                         </div>
                                     </div>
                                 </tab-pane>
