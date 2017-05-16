@@ -148,7 +148,7 @@
                         rate: 2,
                     },
                 ],
-                sortColumns: [
+                sortTopColumns: [
                     {
                         key: 'num',
                         title: '序号',
@@ -159,7 +159,7 @@
                     },
                     {
                         key: 'amount',
-                        title: '下单金额',
+                        title: '下单量',
                     },
                     {
                         key: 'rate',
@@ -174,7 +174,163 @@
                         },
                     },
                 ],
-                sortData: [
+                sortTopData: [
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                ],
+                sortHotColumns: [
+                    {
+                        key: 'num',
+                        title: '序号',
+                    },
+                    {
+                        key: 'shopName',
+                        title: '店铺名称',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单量',
+                    },
+                    {
+                        key: 'rate',
+                        title: '升降幅度',
+                    },
+                    {
+                        key: 'action',
+                        title: '操作',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                sortHotData: [
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                ],
+                sortMoneyTopColumns: [
+                    {
+                        key: 'num',
+                        title: '序号',
+                    },
+                    {
+                        key: 'shopName',
+                        title: '店铺名称',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单量',
+                    },
+                    {
+                        key: 'rate',
+                        title: '升降幅度',
+                    },
+                    {
+                        key: 'action',
+                        title: '操作',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                sortMoneyTopData: [
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                ],
+                sortMoneyHotColumns: [
+                    {
+                        key: 'num',
+                        title: '序号',
+                    },
+                    {
+                        key: 'shopName',
+                        title: '店铺名称',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单量',
+                    },
+                    {
+                        key: 'rate',
+                        title: '升降幅度',
+                    },
+                    {
+                        key: 'action',
+                        title: '操作',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                sortMoneyHotData: [
                     {
                         amount: 22,
                         num: 333,
@@ -379,23 +535,63 @@
                                         </div>
                                         <div class="order-module-content">
                                             <p>店铺热卖TOP榜</p>
-                                            <i-table :columns="sortColumns" :context="self"
-                                                     :data="sortData" ref="sortList"></i-table>
+                                            <i-table :columns="sortTopColumns" :context="self"
+                                                     :data="sortTopData" ref="sortTopList"></i-table>
                                             <div class="page">
                                                 <page :total="100" show-elevator></page>
                                             </div>
                                         </div>
                                         <div>
                                             <p>店铺热卖飙升榜</p>
-                                            <i-table :columns="sortColumns" :context="self"
-                                                     :data="sortData" ref="sortList"></i-table>
+                                            <i-table :columns="sortHotColumns" :context="self"
+                                                     :data="sortHotData" ref="sortHotList"></i-table>
                                             <div class="page">
                                                 <page :total="100" show-elevator></page>
                                             </div>
                                         </div>
                                     </div>
                                 </tab-pane>
-                                <tab-pane label="下单金额">标签二的内容</tab-pane>
+                                <tab-pane label="下单金额">
+                                    <div class="order-money-content">
+                                        <div class="select-content">
+                                            <ul>
+                                                <li>
+                                                    商品分类
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in goodsList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    时间周期
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in timeList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="order-module-content">
+                                            <p>店铺热卖TOP榜</p>
+                                            <i-table :columns="sortMoneyTopColumns" :context="self"
+                                                     :data="sortMoneyTopData" ref="sortList"></i-table>
+                                            <div class="page">
+                                                <page :total="100" show-elevator></page>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p>店铺热卖飙升榜</p>
+                                            <i-table :columns="sortMoneyHotColumns" :context="self"
+                                                     :data="sortMoneyHotData" ref="sortList"></i-table>
+                                            <div class="page">
+                                                <page :total="100" show-elevator></page>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab-pane>
                             </tabs>
                         </div>
                     </card>
