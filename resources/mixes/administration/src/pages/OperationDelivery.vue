@@ -44,13 +44,13 @@
                         align: 'center',
                         key: 'serviceName',
                         title: '服务站名称',
-                        width: 150,
+                        width: 200,
                     },
                     {
                         align: 'center',
                         key: 'area',
                         title: '所在地区',
-                        width: 150,
+                        width: 200,
                     },
                     {
                         align: 'center',
@@ -74,7 +74,7 @@
                         align: 'center',
                         key: 'applicationTime',
                         title: '申请时间',
-                        width: 150,
+                        width: 250,
                     },
                     {
                         align: 'center',
