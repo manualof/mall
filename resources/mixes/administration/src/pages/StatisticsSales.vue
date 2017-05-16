@@ -62,7 +62,7 @@
                     },
                     {
                         key: 'account',
-                        title: '订单总额（元）',
+                        title: '下单量',
                     },
                     {
                         key: 'status',
@@ -70,6 +70,66 @@
                     },
                 ],
                 orderData: [
+                    {
+                        account: '99.00',
+                        buyer: 111,
+                        orderNum: 111111111,
+                        orderTime: '2017-2-2',
+                        shopName: '店铺111',
+                        status: '已完成',
+                    },
+                    {
+                        account: '99.00',
+                        buyer: 111,
+                        orderNum: 111111111,
+                        orderTime: '2017-2-2',
+                        shopName: '店铺111',
+                        status: '已完成',
+                    },
+                    {
+                        account: '99.00',
+                        buyer: 111,
+                        orderNum: 111111111,
+                        orderTime: '2017-2-2',
+                        shopName: '店铺111',
+                        status: '已完成',
+                    },
+                    {
+                        account: '99.00',
+                        buyer: 111,
+                        orderNum: 111111111,
+                        orderTime: '2017-2-2',
+                        shopName: '店铺111',
+                        status: '已完成',
+                    },
+                ],
+                orderMoneyColumns: [
+                    {
+                        key: 'orderNum',
+                        title: '订单编号',
+                    },
+                    {
+                        key: 'buyer',
+                        title: '买家名称',
+                    },
+                    {
+                        key: 'shopName',
+                        title: '店铺名称',
+                    },
+                    {
+                        key: 'orderTime',
+                        title: '下单时间',
+                    },
+                    {
+                        key: 'account',
+                        title: '订单总额（元）',
+                    },
+                    {
+                        key: 'status',
+                        title: '订单状态',
+                    },
+                ],
+                orderMoneyData: [
                     {
                         account: '99.00',
                         buyer: 111,
@@ -114,6 +174,37 @@
                     },
                 ],
                 orderAmount: {
+                    legend: {
+                        bottom: 'auto',
+                        data: ['昨天', '今天'],
+                    },
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '今天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                        {
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                            name: '昨天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
+                orderMoney: {
                     legend: {
                         bottom: 'auto',
                         data: ['昨天', '今天'],
@@ -227,7 +318,12 @@
             },
             exportOrderData() {
                 this.$refs.orderList.exportCsv({
-                    filename: '订单统计数据',
+                    filename: '下单量统计数据',
+                });
+            },
+            exportOrderMoneyData() {
+                this.$refs.orderMoneyList.exportCsv({
+                    filename: '下单金额统计数据',
                 });
             },
         },
@@ -329,7 +425,43 @@
                                         <page :total="100" show-elevator></page>
                                     </div>
                                 </tab-pane>
-                                <tab-pane label="下单金额">标签二的内容</tab-pane>
+                                <tab-pane label="下单金额">
+                                    <div class="order-money-content search-select-item">
+                                        <div class="select-order-content">
+                                            <div class="select-content">
+                                                <ul>
+                                                    <li>
+                                                        商品分类
+                                                        <i-select v-model="model2" style="width:124px">
+                                                            <i-option v-for="item in goodsList" :value="item.value"
+                                                                      :key="item">{{ item.label }}</i-option>
+                                                        </i-select>
+                                                    </li>
+                                                    <li>
+                                                        时间周期
+                                                        <i-select v-model="model2" style="width:124px">
+                                                            <i-option v-for="item in timeList" :value="item.value"
+                                                                      :key="item">{{ item.label }}</i-option>
+                                                        </i-select>
+                                                    </li>
+                                                    <li>
+                                                        <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                    </div>
+                                    <i-button type="ghost" class="export-btn "
+                                              @click="exportOrderMoneyData">导出数据</i-button>
+                                    <i-table :columns="orderMoneyColumns" :context="self"
+                                             :data="orderMoneyData" ref="orderMoneyList"></i-table>
+                                    <div class="page">
+                                        <page :total="100" show-elevator></page>
+                                    </div>
+                                </tab-pane>
                             </tabs>
                         </div>
                     </card>
