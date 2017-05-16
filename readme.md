@@ -10,3 +10,14 @@ Notadd Framework 的商城模块。
 
 * 一个完整的商城
 * 依赖 Notadd 用户中心模块
+
+## 安装
+
+安装前，请确保 **[Notadd](https://github.com/notadd/notadd)** 已经完成安装。
+
+```bash
+cd notadd/modules
+git clone https://github.com/notadd/mall.git
+cd content
+composer install --no-dev
+```
