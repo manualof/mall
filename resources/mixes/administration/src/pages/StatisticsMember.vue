@@ -107,6 +107,68 @@
                         yesterday: 0,
                     },
                 ],
+                newAddMember: {
+                    legend: {
+                        bottom: 'auto',
+                        data: ['昨天', '今天'],
+                    },
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '今天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                        {
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                            name: '昨天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
+                orderMoney: {
+                    legend: {
+                        bottom: 'auto',
+                        data: ['昨天', '今天'],
+                    },
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '今天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                        {
+                            data: [220, 182, 191, 234, 290, 330, 310],
+                            name: '昨天',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
                 provinceColumns: [
                     {
                         key: 'province',
@@ -220,15 +282,16 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div style="height: 350px">
+                            </div>
+                            <div class="echarts">
+                                <i-echarts :option="newAddMember" @ready="onReady" @click="onClick"></i-echarts>
+                            </div>
 
-                                </div>
-                                <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
-                                <i-table :columns="memberColumns" :context="self"
-                                         :data="memberData" ref="memberList"></i-table>
-                                <div class="page">
-                                    <page :total="100" show-elevator></page>
-                                </div>
+                            <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
+                            <i-table :columns="memberColumns" :context="self"
+                                     :data="memberData" ref="memberList"></i-table>
+                            <div class="page">
+                                <page :total="100" show-elevator></page>
                             </div>
                         </div>
                     </card>
@@ -261,16 +324,17 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div style="height: 350px">
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                    </div>
 
-                                        </div>
-                                        <i-button type="ghost" class="export-btn"
-                                                  @click="exportMemberData">导出数据</i-button>
-                                        <i-table :columns="analysisColumns" :context="self"
-                                                 :data="analysisData" ref="analysisList"></i-table>
-                                        <div class="page">
-                                            <page :total="100" show-elevator></page>
-                                        </div>
+                                    <i-button type="ghost" class="export-btn"
+                                              @click="exportMemberData">导出数据</i-button>
+                                    <i-table :columns="analysisColumns" :context="self"
+                                             :data="analysisData" ref="analysisList"></i-table>
+                                    <div class="page">
+                                        <page :total="100" show-elevator></page>
                                     </div>
                                 </tab-pane>
                                 <tab-pane label="下单商品数">标签二的内容</tab-pane>
@@ -306,16 +370,16 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div style="height: 350px">
-
-                                        </div>
-                                        <i-button type="ghost" class="export-btn"
-                                                  @click="exportProvinceData">导出数据</i-button>
-                                        <i-table :columns="provinceColumns" :context="self"
-                                                 :data="provinceData" ref="provinceList"></i-table>
-                                        <div class="page">
-                                            <page :total="100" show-elevator></page>
-                                        </div>
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                    </div>
+                                    <i-button type="ghost" class="export-btn"
+                                              @click="exportProvinceData">导出数据</i-button>
+                                    <i-table :columns="provinceColumns" :context="self"
+                                             :data="provinceData" ref="provinceList"></i-table>
+                                    <div class="page">
+                                        <page :total="100" show-elevator></page>
                                     </div>
                                 </tab-pane>
                                 <tab-pane label="下单商品数">标签二的内容</tab-pane>
