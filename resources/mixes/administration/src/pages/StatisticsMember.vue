@@ -9,7 +9,95 @@
         },
         data() {
             return {
-                analysisColumns: [
+                analysisMoneyColumns: [
+                    {
+                        key: 'num',
+                        title: '序号',
+                    },
+                    {
+                        key: 'memberName',
+                        title: '会员名称',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单金额',
+                    },
+                    {
+                        key: 'action',
+                        title: '操作',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                analysisMoneyData: [
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                ],
+                analysisNumberColumns: [
+                    {
+                        key: 'num',
+                        title: '序号',
+                    },
+                    {
+                        key: 'memberName',
+                        title: '会员名称',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单商品数',
+                    },
+                    {
+                        key: 'action',
+                        title: '操作',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                analysisNumberData: [
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                ],
+                analysisCountColumns: [
                     {
                         key: 'num',
                         title: '序号',
@@ -31,7 +119,7 @@
                         },
                     },
                 ],
-                analysisData: [
+                analysisCountData: [
                     {
                         amount: 22,
                         memberName: 4,
@@ -169,69 +257,6 @@
                         type: 'value',
                     },
                 },
-                provinceColumns: [
-                    {
-                        key: 'province',
-                        title: '省份',
-                    },
-                    {
-                        key: 'memberNum',
-                        title: '下单会员数',
-                    },
-                    {
-                        key: 'money',
-                        title: '下单金额（元）',
-                    },
-                    {
-                        key: 'amount',
-                        title: '下单量',
-                    },
-                    {
-                        key: 'action',
-                        title: '操作',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                provinceData: [
-                    {
-                        amount: 20,
-                        memberNum: 4,
-                        money: 222,
-                        province: '陕西',
-                    },
-                    {
-                        amount: 20,
-                        memberNum: 4,
-                        money: 222,
-                        province: '陕西',
-                    },
-                    {
-                        amount: 20,
-                        memberNum: 4,
-                        money: 222,
-                        province: '陕西',
-                    },
-                    {
-                        amount: 20,
-                        memberNum: 4,
-                        money: 222,
-                        province: '陕西',
-                    },
-                ],
-                self: this,
-                timeList: [
-                    {
-                        label: '按照月统计',
-                        value: '1',
-                    },
-                    {
-                        label: '按照周统计',
-                        value: '2',
-                    },
-                ],
                 orderMoneyProvince: {
                     tooltip: {},
                     visualMap: {
@@ -444,6 +469,69 @@
                         },
                     ],
                 },
+                provinceColumns: [
+                    {
+                        key: 'province',
+                        title: '省份',
+                    },
+                    {
+                        key: 'memberNum',
+                        title: '下单会员数',
+                    },
+                    {
+                        key: 'money',
+                        title: '下单金额（元）',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单量',
+                    },
+                    {
+                        key: 'action',
+                        title: '操作',
+                        width: 120,
+                        render() {
+                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        },
+                    },
+                ],
+                provinceData: [
+                    {
+                        amount: 20,
+                        memberNum: 4,
+                        money: 222,
+                        province: '陕西',
+                    },
+                    {
+                        amount: 20,
+                        memberNum: 4,
+                        money: 222,
+                        province: '陕西',
+                    },
+                    {
+                        amount: 20,
+                        memberNum: 4,
+                        money: 222,
+                        province: '陕西',
+                    },
+                    {
+                        amount: 20,
+                        memberNum: 4,
+                        money: 222,
+                        province: '陕西',
+                    },
+                ],
+                self: this,
+                timeList: [
+                    {
+                        label: '按照月统计',
+                        value: '1',
+                    },
+                    {
+                        label: '按照周统计',
+                        value: '2',
+                    },
+                ],
             };
         },
         methods: {
@@ -470,9 +558,19 @@
                     filename: '新增会员数据',
                 });
             },
-            exportMemberData() {
-                this.$refs.analysisList.exportCsv({
-                    filename: '会员分析数据',
+            exportMemberMoneyData() {
+                this.$refs.analysisMoneyList.exportCsv({
+                    filename: '会员分析下单金额数据',
+                });
+            },
+            exportMemberNumberData() {
+                this.$refs.analysisNumberList.exportCsv({
+                    filename: '会员分析下单商品数数据',
+                });
+            },
+            exportMemberCountData() {
+                this.$refs.analysisCountList.exportCsv({
+                    filename: '会员分析下单量数据',
                 });
             },
             exportProvinceData() {
@@ -560,15 +658,73 @@
                                     </div>
 
                                     <i-button type="ghost" class="export-btn"
-                                              @click="exportMemberData">导出数据</i-button>
-                                    <i-table :columns="analysisColumns" :context="self"
-                                             :data="analysisData" ref="analysisList"></i-table>
+                                              @click="exportMemberMoneyData">导出数据</i-button>
+                                    <i-table :columns="analysisMoneyColumns" :context="self"
+                                             :data="analysisMoneyData" ref="analysisMoneyList"></i-table>
                                     <div class="page">
                                         <page :total="100" show-elevator></page>
                                     </div>
                                 </tab-pane>
-                                <tab-pane label="下单商品数">标签二的内容</tab-pane>
-                                <tab-pane label="下单量">标签三的内容</tab-pane>
+                                <tab-pane label="下单商品数">
+                                    <div class="order-money-content">
+                                        <h5>买家排行榜TOP15</h5>
+                                        <div class="select-content">
+                                            <ul>
+                                                <li>
+                                                    时间周期
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in timeList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                    </div>
+
+                                    <i-button type="ghost" class="export-btn"
+                                              @click="exportMemberNumberData">导出数据</i-button>
+                                    <i-table :columns="analysisNumberColumns" :context="self"
+                                             :data="analysisNumberData" ref="analysisNumberList"></i-table>
+                                    <div class="page">
+                                        <page :total="100" show-elevator></page>
+                                    </div>
+                                </tab-pane>
+                                <tab-pane label="下单量">
+                                    <div class="order-money-content">
+                                        <h5>买家排行榜TOP15</h5>
+                                        <div class="select-content">
+                                            <ul>
+                                                <li>
+                                                    时间周期
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in timeList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                    </div>
+
+                                    <i-button type="ghost" class="export-btn"
+                                              @click="exportMemberCountData">导出数据</i-button>
+                                    <i-table :columns="analysisCountColumns" :context="self"
+                                             :data="analysisCountData" ref="analysisCountList"></i-table>
+                                    <div class="page">
+                                        <page :total="100" show-elevator></page>
+                                    </div>
+                                </tab-pane>
                             </tabs>
                         </div>
                     </card>
