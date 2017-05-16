@@ -40,8 +40,65 @@
                         type: 'value',
                     },
                 },
+                hotGoodsMoney: {
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '下单金额',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
                 loading: false,
                 orderColumns: [
+                    {
+                        key: 'num',
+                        title: '序号',
+                    },
+                    {
+                        key: 'goodName',
+                        title: '商品名称',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单量',
+                    },
+                ],
+                orderData: [
+                    {
+                        num: 333,
+                        goodName: 4,
+                        amount: 22,
+                    },
+                    {
+                        num: 333,
+                        goodName: 4,
+                        amount: 22,
+                    },
+                    {
+                        num: 333,
+                        goodName: 4,
+                        amount: 22,
+                    },
+                    {
+                        num: 333,
+                        goodName: 4,
+                        amount: 22,
+                    },
+                ],
+                orderMoneyColumns: [
                     {
                         key: 'num',
                         title: '序号',
@@ -55,7 +112,7 @@
                         title: '下单金额(元)',
                     },
                 ],
-                orderData: [
+                orderMoneyData: [
                     {
                         num: 333,
                         goodName: 4,
@@ -297,7 +354,41 @@
                                         </div>
                                     </div>
                                 </tab-pane>
-                                <tab-pane label="下单金额">标签二的内容</tab-pane>
+                                <tab-pane label="下单金额">
+                                    <div class="order-money-content">
+                                        <div class="select-content hot-sales-goods">
+                                            <ul>
+                                                <li>
+                                                    商品分类
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in goodsList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    时间周期
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in timeList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="hotGoodsMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                    </div>
+                                    <div class="order-module-content">
+                                        <i-table :columns="orderMoneyColumns" :context="self"
+                                                 :data="orderMoneyData" ref="orderMoneyList"></i-table>
+                                        <div class="page">
+                                            <page :total="100" show-elevator></page>
+                                        </div>
+                                    </div>
+                                </tab-pane>
                             </tabs>
                         </div>
                     </card>
