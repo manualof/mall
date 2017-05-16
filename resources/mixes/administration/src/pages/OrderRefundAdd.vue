@@ -56,12 +56,12 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="order-refund-reason-edit">
+        <div class="order-refund-reason-add">
             <div class="edit-link-title">
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
-                <span>原因设定—编辑</span>
+                <span>原因设定—添加</span>
             </div>
             <card :bordered="false">
                 <i-form ref="refundEdit" :model="refundEdit" :rules="ruleValidate" :label-width="200">

@@ -9,6 +9,7 @@
         },
         data() {
             return {
+                loading: false,
                 refundDetail: {
                     applyTime: '2016-12-21  10:31:59',
                     goodsname: '****',
@@ -36,12 +37,21 @@
             };
         },
         methods: {
-            handleSubmit(name) {
-                this.$refs[name].validate(valid => {
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.refundDetail.validate(valid => {
                     if (valid) {
-                        this.$Message.success('提交成功!');
+                        window.console.log(valid);
                     } else {
-                        this.$Message.error('表单验证失败!');
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
                     }
                 });
             },
@@ -53,7 +63,7 @@
         <div class="order-refund-process">
             <div class="store-refund-process">
                 <div class="edit-link-title">
-                    <i-button type="text">
+                    <i-button type="text" @click.native="goBack">
                         <icon type="chevron-left"></icon>
                     </i-button>
                     <span>退款管理—处理</span>
@@ -164,7 +174,7 @@
                                 <h5>平台退款审核</h5>
                                 <div class="review-content refund-module">
                                     <row>
-                                        <i-col span="20">
+                                        <i-col span="18">
                                             <form-item label="备注信息" prop="remarks" class="remark-input">
                                                 <i-input v-model="refundDetail.remarks" type="textarea"
                                                      :autosize="{minRows: 3,maxRows: 5}"></i-input>
@@ -179,8 +189,10 @@
                                     <row>
                                         <i-col span="18">
                                             <form-item label="">
-                                                <i-button type="primary"
-                                                          @click="handleSubmit('refundDetail')">确认提交</i-button>
+                                                <i-button :loading="loading" type="primary" @click.native="submit">
+                                                    <span v-if="!loading">确认提交</span>
+                                                    <span v-else>正在提交…</span>
+                                                </i-button>
                                             </form-item>
                                         </i-col>
                                     </row>
