@@ -105,7 +105,7 @@
             </div>
             <card class="store storeBox" :bordered="false">
                 <div class="prompt-box">
-                    <h6>提示</h6>
+                    <p>提示</p>
                     <p>建议设置四至五个时间段（前台显示）</p>
                 </div>
                 <div class="store-body">

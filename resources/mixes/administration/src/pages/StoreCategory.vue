@@ -92,7 +92,7 @@
                 <tab-pane label="店铺分类" name="name1">
                     <card :bordered="false">
                         <div class="prompt-box">
-                            <h6>提示</h6>
+                            <p>提示</p>
                             <p>商家入驻时可指定此处设置店铺分类</p>
                             <p>对分类作任何更改后，都需要到 设置 -> 清理缓存 清理店铺分类，新的设置才会生效</p>
                         </div>

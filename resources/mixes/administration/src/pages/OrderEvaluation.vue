@@ -169,7 +169,7 @@
                 <tab-pane label="评价列表" name="name1">
                     <card :bordered="false">
                         <div class="prompt-box">
-                            <h6>提示</h6>
+                            <p>提示</p>
                             <p>买家可以在订单完成后对订单商品进行评价操作，评价信息将显示在对应的商品页面</p>
                         </div>
                         <div class="store-body">
