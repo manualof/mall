@@ -8,9 +8,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
 /**
- * Class CreateAddressesTable.
+ * Class CreateMallAddressesTable.
  */
-class CreateAddressesTable extends Migration
+class CreateMallAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -31,7 +31,6 @@ class CreateAddressesTable extends Migration
             $table->string('country', 100);
             $table->string('state', 100);
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
         });
     }

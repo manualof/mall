@@ -27,7 +27,7 @@ class CreateMallVirtualProductsTable extends Migration
             $table->string('url')->nullable();
             $table->integer('amount')->nullable();
             $table->dateTime('expiration_date')->nullable();
-            $table->enum('status', array_keys(trans('globals.order_status')));
+            $table->enum('status', ['pay', 'express'])->default('pay');
             $table->timestamps();
             $table->softDeletes();
         });
