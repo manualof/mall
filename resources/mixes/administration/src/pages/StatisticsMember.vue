@@ -539,15 +539,15 @@
                 return Math.round(Math.random() * 1000);
             },
             convertData() {
-                const provinceData = [];
+                const data = [];
                 const res = [];
                 const geoCoordMap = {};
-                for (let i = 0; i < provinceData.length; i += 1) {
-                    const geoCoord = geoCoordMap[provinceData[i].name];
+                for (let i = 0; i < data.length; i += 1) {
+                    const geoCoord = geoCoordMap[data[i].name];
                     if (geoCoord) {
                         res.push({
-                            name: provinceData[i].name,
-                            value: geoCoord.concat(provinceData[i].value),
+                            name: data[i].name,
+                            value: geoCoord.concat(data[i].value),
                         });
                     }
                 }
