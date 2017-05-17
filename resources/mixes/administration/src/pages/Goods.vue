@@ -84,13 +84,13 @@
                         width: 180,
                         render(row, column, index) {
                             return `<dropdown><i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
-                                <dropdown-menu slot="list">
+                                    <dropdown-menu slot="list">
                                     <dropdown-item>查看商品详情</dropdown-item>
                                     <dropdown-item name="goodSku" @click.native="lookGoodsSku">查看商品SKU</dropdown-item>
                                     <dropdown-item>加入商品库</dropdown-item>
-                                </dropdown-menu></dropdown>
-                                <i-button type="ghost" class="delete-ad"
-                                @click.native="remove(${index})">删除</i-button>`;
+                                    </dropdown-menu></dropdown>
+                                    <i-button type="ghost" class="delete-ad"
+                                    @click.native="remove(${index})">删除</i-button>`;
                         },
                     },
                 ],
@@ -165,30 +165,30 @@
                 ],
                 skuColumns: [
                     {
-                        title: 'SKU编号',
-                        key: 'skuId',
                         align: 'center',
+                        key: 'skuId',
+                        title: 'SKU编号',
                         width: 185,
                     },
                     {
-                        title: '商品图片',
-                        key: 'goodsImg',
                         align: 'center',
-                        width: 185,
+                        key: 'goodsImg',
                         render() {
                             return '<icon type="image"></icon>';
                         },
-                    },
-                    {
-                        title: 'SKU库存',
-                        key: 'skuStock',
-                        align: 'center',
+                        title: '商品图片',
                         width: 185,
                     },
                     {
-                        title: 'SKU价格(元)',
-                        key: 'skuPrice',
                         align: 'center',
+                        key: 'skuStock',
+                        title: 'SKU库存',
+                        width: 185,
+                    },
+                    {
+                        align: 'center',
+                        key: 'skuPrice',
+                        title: 'SKU价格(元)',
                         width: 185,
                     },
                 ],
