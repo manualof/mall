@@ -181,8 +181,11 @@
                                 <form-item label="快捷定位">
                                     <div class="flex-module">
                                         {{ standardData.position }}
-                                        <cascader :data="styleData" trigger="hover" @on-change="handleChange"
-                                                  v-model="standardData.position"></cascader>
+                                        <cascader :data="styleData"
+                                                  @on-change="handleChange"
+                                                  trigger="hover"
+                                                  v-model="standardData.position">
+                                        </cascader>
                                     </div>
                                     <p class="tip">选择分类，可关联到任意级分类 （只在后台快捷定位中起作用）</p>
                                 </form-item>

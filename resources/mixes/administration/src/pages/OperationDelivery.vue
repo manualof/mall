@@ -61,14 +61,14 @@
                     {
                         key: 'status',
                         align: 'center',
-                        title: '状态',
-                        width: 150,
                         render() {
                             return `<i-switch size="large" v-model="row.status">
                                     <span slot="open">开启</span>
                                     <span slot="close">关闭</span>
                                     </i-switch>`;
                         },
+                        title: '状态',
+                        width: 150,
                     },
                     {
                         align: 'center',
@@ -80,14 +80,14 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
+                        render(row, column, index) {
+                            return `<i-button class="delete-ad" @click.native="edit(${index})"
+                                    type="ghost">编辑</i-button>
+                                    <i-button class="delete-ad" @click.native="look(${index})"
+                                     type="ghost">查看订单</i-button>`;
+                        },
                         title: '操作',
                         width: 200,
-                        render(row, column, index) {
-                            return `<i-button type="ghost" class="delete-ad"
-                                    @click.native="edit(${index})">编辑</i-button>
-                                    <i-button type="ghost" class="delete-ad"
-                                    @click.native="look(${index})">查看订单</i-button>`;
-                        },
                     },
                 ],
                 typeData: [
@@ -176,8 +176,12 @@
                                 </i-input>
                             </div>
                         </div>
-                        <i-table highlight-row :columns="typeColumns" :context="self"
-                                 :data="typeData" ref="managementTable"></i-table>
+                        <i-table :columns="typeColumns"
+                                 :context="self"
+                                 :data="typeData"
+                                 highlight-row
+                                 ref="managementTable">
+                        </i-table>
                         <div class="page">
                             <page :total="150" show-elevator></page>
                         </div>

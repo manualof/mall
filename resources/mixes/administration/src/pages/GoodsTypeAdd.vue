@@ -19,13 +19,13 @@
                     checkbox2: [],
                     checkbox3: [],
                     goodsSort: '',
-                    location: '',
-                    typeName: '',
-                    showStyle: '',
-                    sort: '',
                     interestStyle: '',
                     interestRadio: '',
                     interestType: true,
+                    location: '',
+                    showStyle: '',
+                    sort: '',
+                    typeName: '',
                 },
                 location: [
                     {

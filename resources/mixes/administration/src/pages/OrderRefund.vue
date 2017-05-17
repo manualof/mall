@@ -150,11 +150,11 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
+                        render() {
+                            return '<i-button @click.native="refundHandel" size="small" type="ghost">处理</i-button>';
+                        },
                         title: '操作',
                         width: 140,
-                        render() {
-                            return '<i-button @click.native="refundHandel" type="ghost" size="small">处理</i-button>';
-                        },
                     },
                 ],
                 pendingData: [
@@ -264,11 +264,11 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
+                        render() {
+                            return '<i-button @click.native="reasonEdit" size="small" type="ghost">编辑</i-button>';
+                        },
                         title: '操作',
                         width: 140,
-                        render() {
-                            return '<i-button type="ghost" size="small" @click.native="reasonEdit">编辑</i-button>';
-                        },
                     },
                 ],
                 reasonData: [

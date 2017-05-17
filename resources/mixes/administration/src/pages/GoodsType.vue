@@ -51,8 +51,9 @@
                         title: '操作',
                         width: 180,
                         render(row, column, index) {
-                            return `<i-button type="ghost" class="delete-ad" @click.native="edit">编辑</i-button>
-                                <i-button type="ghost" class="delete-ad" @click.native="remove(${index})">删除</i-button>`;
+                            return `<i-button class="delete-ad" @click.native="edit" type="ghost">编辑</i-button>
+                                    <i-button class="delete-ad" @click.native="remove(${index})"
+                                    type="ghost">删除</i-button>`;
                         },
                     },
                 ],
@@ -108,7 +109,8 @@
                    <card :bordered="false">
                        <div class="prompt-box">
                            <p>提示</p>
-                           <p>当管理员添加商品分类时需选择类型。前台分类下商品列表页通过类型生成商品检索，方便用户搜索需要的商品</p>
+                           <p>当管理员添加商品分类时需选择类型。前台分类下商品列表页通过类型生成商品检索，
+                               方便用户搜索需要的商品</p>
                        </div>
                        <div class="advertisement-action">
                            <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
@@ -123,8 +125,7 @@
                                </i-input>
                            </div>
                        </div>
-                       <i-table highlight-row :columns="typeColumns" :context="self"
-                                :data="typeData"></i-table>
+                       <i-table :columns="typeColumns" :context="self" :data="typeData" highlight-row></i-table>
                    </card>
                 </tab-pane>
             </tabs>

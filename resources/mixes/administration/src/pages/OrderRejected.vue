@@ -110,11 +110,11 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
+                        render() {
+                            return '<i-button @click.native="recordLook" size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 140,
-                        render() {
-                            return '<i-button @click.native="recordLook" type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 allRecordsData: [
@@ -262,11 +262,11 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
+                        render() {
+                            return '<i-button @click.native="recordHandel" size="small" type="ghost">处理</i-button>';
+                        },
                         title: '操作',
                         width: 140,
-                        render() {
-                            return '<i-button type="ghost" size="small" @click.native="recordHandel">处理</i-button>';
-                        },
                     },
                 ],
                 pendingData: [

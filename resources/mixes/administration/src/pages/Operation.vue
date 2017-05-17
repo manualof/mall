@@ -98,14 +98,14 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
+                        render(row, column, index) {
+                            return `<i-button class="delete-ad" @click.native="handel(${index})"
+                                    type="ghost" v-if="btnStatus === true">处理</i-button>
+                                    <i-button class="delete-ad" @click.native="look(${index})"
+                                    type="ghost" v-if="btnStatus === false">查看</i-button>`;
+                        },
                         title: '操作',
                         width: 150,
-                        render(row, column, index) {
-                            return `<i-button type="ghost" class="delete-ad" v-if="btnStatus === true"
-                                    @click.native="handel(${index})">处理</i-button>
-                                    <i-button type="ghost" class="delete-ad" v-if="btnStatus === false"
-                                    @click.native="look(${index})">查看</i-button>`;
-                        },
                     },
                 ],
                 typeData: [

@@ -24,8 +24,6 @@
                     },
                     {
                         align: 'center',
-                        title: '评分',
-                        width: 150,
                         render() {
                             return `<icon type="star" style="color:#f7d55f;"></icon>
                                     <icon type="star" style="color:#f7d55f;"></icon>
@@ -33,6 +31,8 @@
                                     <icon type="star" style="color:#f7d55f;"></icon>
                                     <icon type="star" style="color:#f7d55f;"></icon>`;
                         },
+                        title: '评分',
+                        width: 150,
                     },
                     {
                         align: 'center',
@@ -43,11 +43,11 @@
                     {
                         align: 'center',
                         key: 'baskImage',
-                        title: '晒单图片',
-                        width: 300,
                         render() {
                             return '<icon type="image"></icon>';
                         },
+                        title: '晒单图片',
+                        width: 300,
                     },
                     {
                         align: 'center',
@@ -65,11 +65,11 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">删除</i-button>';
+                        },
                         title: '操作',
                         width: 150,
-                        render() {
-                            return '<i-button type="ghost" size="small">删除</i-button>';
-                        },
                     },
                 ],
                 evaluationListData: [

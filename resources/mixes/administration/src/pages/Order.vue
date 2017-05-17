@@ -61,12 +61,13 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        title: '操作',
-                        width: 180,
                         render() {
                             return `<i-button type="ghost" @click.native="toView" class="first-btn"
-                                    size="small">查看</i-button><i-button type="ghost" size="small">设置</i-button>`;
+                                    size="small">查看</i-button>
+                                    <i-button size="small" type="ghost">设置</i-button>`;
                         },
+                        title: '操作',
+                        width: 180,
                     },
                 ],
                 managementData: [
