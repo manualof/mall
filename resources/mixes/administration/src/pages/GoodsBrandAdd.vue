@@ -214,8 +214,11 @@
                             <i-col span="12">
                                 <form-item label="名称首字母">
                                     <i-select placeholder="请选择" v-model="addData.initials">
-                                        <i-option v-for="item in initials" :value="item.value"
-                                                  :key="item">{{ item.label }}</i-option>
+                                        <i-option v-for="item in initials"
+                                                  :value="item.value"
+                                                  :key="item">
+                                            {{ item.label }}
+                                        </i-option>
                                     </i-select>
                                 </form-item>
                             </i-col>

@@ -15,9 +15,9 @@
                     logo: '',
                     name: '',
                     province: '',
-                    widthNum: '',
                     showStyle: 'style1',
                     switchStatus: true,
+                    widthNum: '',
                 },
                 loading: false,
                 province: [
@@ -137,7 +137,10 @@
                         <i-col span="12">
                             <form-item label="类别">
                                 <i-select v-model="addAdPosition.province" placeholder="请选择">
-                                    <i-option v-for="item in province" :value="item.value" :key="item">{{ item.label }}
+                                    <i-option :key="item"
+                                              :value="item.value"
+                                              v-for="item in province">
+                                        {{ item.label }}
                                     </i-option>
                                 </i-select>
                             </form-item>

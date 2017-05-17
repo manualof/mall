@@ -22,22 +22,22 @@
                     },
                     {
                         key: 'status',
-                        title: '当前状态',
                         render() {
                             return `<i-switch size="large" v-model="switch1">
                                         <span slot="open">开启</span>
                                         <span slot="close">关闭</span>
                                     </i-switch>`;
                         },
+                        title: '当前状态',
                     },
                     {
                         align: 'center',
                         key: 'action',
-                        title: '操作',
-                        width: 150,
                         render() {
                             return '<i-button type="ghost">编辑</i-button>';
                         },
+                        title: '操作',
+                        width: 150,
                     },
                 ],
                 payStyle: [
@@ -81,7 +81,7 @@
                             <p>此处列出了系统支持的支付方式，点击“编辑”按钮可以编辑支付参数及开关状态</p>
                         </div>
                         <div class="store-body">
-                            <i-table ref="payStyle" :context="self"  :columns="payColumns" :data="payStyle"></i-table>
+                            <i-table :context="self"  :columns="payColumns" :data="payStyle" ref="payStyle"></i-table>
                         </div>
                     </card>
                     <card :bordered="false" v-if="!plugin">

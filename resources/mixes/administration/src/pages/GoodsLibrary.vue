@@ -24,11 +24,11 @@
                     {
                         align: 'center',
                         key: 'pic',
-                        title: '商品图片',
-                        width: 170,
                         render() {
                             return '<icon type="image"></icon>';
                         },
+                        title: '商品图片',
+                        width: 170,
                     },
                     {
                         align: 'left',
@@ -70,14 +70,14 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        title: '操作',
-                        width: 180,
                         render(row, column, index) {
-                            return `<i-button  class="first-btn"  @click.native="toEdit"
+                            return `<i-button class="first-btn" @click.native="toEdit"
                                     type="ghost" size="small">编辑</i-button>
                                     <i-button class="first-btn" @click.native="remove(${index})"
-                                    type="ghost" size="small">删除</i-button>`;
+                                    size="small" type="ghost">删除</i-button>`;
                         },
+                        title: '操作',
+                        width: 180,
                     },
                 ],
                 libraryData: [

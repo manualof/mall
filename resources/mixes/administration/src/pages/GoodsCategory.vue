@@ -39,19 +39,19 @@
                     },
                     {
                         key: 'sort',
-                        title: '排序',
-                        width: 150,
                         render() {
                             return '<i-input type="ghost" style="width: 64px;"></i-input>';
                         },
+                        title: '排序',
+                        width: 150,
                     },
                     {
                         key: 'typeName',
-                        title: '分类名称',
-                        width: 200,
                         render() {
                             return '<i-input type="ghost" style="width: 128px;"></i-input>';
                         },
+                        title: '分类名称',
+                        width: 200,
                     },
                     {
                         key: 'typeStyle',
@@ -70,19 +70,21 @@
                     {
                         align: 'center',
                         key: 'action',
-                        title: '操作',
-                        width: 200,
                         render(row, column, index) {
-                            return `<dropdown><i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
-                                <dropdown-menu slot="list">
+                            return `<dropdown>
+                                    <i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
+                                    <dropdown-menu slot="list">
                                     <dropdown-item @click.native="editType">编辑分类信息</dropdown-item>
                                     <dropdown-item>新增下级分类</dropdown-item>
                                     <dropdown-item>查看下级分类</dropdown-item>
                                     <dropdown-item @click.native="editTypeNav">编辑分类导航</dropdown-item>
-                                </dropdown-menu></dropdown>
-                                <i-button type="ghost" class="delete-ad"
-                                @click.native="remove(${index})">删除</i-button>`;
+                                    </dropdown-menu>
+                                    </dropdown>
+                                    <i-button class="delete-ad" @click.native="remove(${index})"
+                                    type="ghost">删除</i-button>`;
                         },
+                        title: '操作',
+                        width: 200,
                     },
                 ],
                 searchCategory: '',

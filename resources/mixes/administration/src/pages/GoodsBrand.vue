@@ -24,10 +24,10 @@
                     },
                     {
                         key: 'brandPicture',
-                        title: '品牌图片',
                         render() {
                             return '<icon type="image"></icon>';
                         },
+                        title: '品牌图片',
                     },
                     {
                         key: 'sort',
@@ -35,12 +35,13 @@
                     },
                     {
                         key: 'isshow',
-                        title: '是否推荐品牌',
                         render(row) {
                             return `<span v-if="${row.status} === true" class="status-check">
                                     <icon type="checkmark-circled"></icon>是</span>
-                                    <span v-if="${row.status} === false"><icon type="close-circled"></icon>否</span>`;
+                                    <span v-if="${row.status} === false">
+                                    <icon type="close-circled"></icon>否</span>`;
                         },
+                        title: '是否推荐品牌',
                     },
                     {
                         key: 'showStyle',
@@ -48,10 +49,10 @@
                     },
                     {
                         key: 'action',
-                        title: '操作',
                         render() {
                             return '<i-button type="ghost" @click.native="edit">编辑</i-button>';
                         },
+                        title: '操作',
                     },
                 ],
                 brandData: [
@@ -125,8 +126,11 @@
                             <i-button class="export-btn" @click="exportData" type="ghost">导出数据</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                         </div>
-                        <i-table highlight-row :columns="brandColumns" :context="self"
-                                 :data="brandData" ref="brand"></i-table>
+                        <i-table :columns="brandColumns"
+                                 :context="self"
+                                 :data="brandData"
+                                 highlight-rowref="brand">
+                        </i-table>
                     </card>
                 </tab-pane>
                 <tab-pane label="待审核" name="name2">

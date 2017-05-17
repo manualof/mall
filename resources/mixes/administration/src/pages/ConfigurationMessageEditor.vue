@@ -171,7 +171,6 @@
                                         <row>
                                             <i-col span="12">
                                                 <form-item label="邮件标题">
-                                                    <!--￥{{rejectedDetail.refundMoney}}-->
                                                     <i-input></i-input>
                                                 </form-item>
                                             </i-col>

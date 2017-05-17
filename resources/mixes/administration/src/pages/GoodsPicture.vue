@@ -29,37 +29,45 @@
                     {
                         key: 'albumId',
                         title: '相册ID',
+                        width: 100,
                     },
                     {
+                        align: 'center',
                         key: 'albumName',
                         title: '相册名称',
                     },
                     {
+                        align: 'center',
                         key: 'shopId',
                         title: '店铺ID',
                     },
                     {
+                        align: 'center',
                         key: 'shopName',
                         title: '店铺名称',
                     },
                     {
+                        align: 'center',
                         key: 'coverImg',
-                        title: '封面图片',
                         render() {
                             return '<icon type="image"></icon>';
                         },
+                        title: '封面图片',
                     },
                     {
+                        align: 'center',
                         key: 'albumNum',
                         title: '图片数量',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         title: '操作',
                         width: 180,
                         render(row, column, index) {
-                            return `<i-button type="ghost" class="delete-ad" @click.native="look">查看</i-button>
-                                <i-button type="ghost" class="delete-ad" @click.native="remove(${index})">删除</i-button>`;
+                            return `<i-button class="delete-ad" @click.native="look" type="ghost">查看</i-button>
+                                    <i-button class="delete-ad" @click.native="remove(${index})"
+                                    type="ghost">删除</i-button>`;
                         },
                     },
                 ],

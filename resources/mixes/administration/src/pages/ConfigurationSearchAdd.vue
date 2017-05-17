@@ -88,7 +88,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="搜索默认词" prop="search">
-                                <i-input v-model="searchData.search" placeholder=""></i-input>
+                                <i-input placeholder="" v-model="searchData.search"></i-input>
                                 <p class="range">搜索词参与搜索，列：童装</p>
                             </form-item>
                         </i-col>
@@ -96,7 +96,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="显示词" prop="show">
-                                <i-input v-model="searchData.show" placeholder=""></i-input>
+                                <i-input placeholder="" v-model="searchData.show"></i-input>
                                 <p class="range">显示词不参与搜索，只起显示作用，例：61儿童节，童装五折狂欢</p>
                             </form-item>
                         </i-col>

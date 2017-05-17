@@ -45,13 +45,13 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
+                        render(row, column, index) {
+                            return `<i-button class="first-btn" @click.native="searchEdit" size="small" type="ghost">
+                                    编辑</i-button><i-button @click.native="remove(${index})"
+                                    size="small" type="ghost">删除</i-button>`;
+                        },
                         title: '操作',
                         width: 180,
-                        render(row, column, index) {
-                            return `<i-button class="first-btn" @click.native="searchEdit" type="ghost"
-                                    size="small">编辑</i-button><i-button @click.native="remove(${index})"
-                                    type="ghost"  size="small">删除</i-button>`;
-                        },
                     },
                 ],
                 searchData: [
@@ -85,6 +85,9 @@
                     path: 'search/add',
                 });
             },
+            remove(index) {
+                this.searchData.splice(index, 1);
+            },
             searchEdit() {
                 const self = this;
                 self.$router.push({
@@ -105,9 +108,6 @@
                     }
                 });
             },
-            remove(index) {
-                this.searchData.splice(index, 1);
-            },
         },
     };
 </script>
@@ -122,7 +122,7 @@
                                 <row>
                                     <i-col span="12">
                                         <form-item label="默认搜索词">
-                                            <i-input v-model="form.defaultSearch" placeholder=""></i-input>
+                                            <i-input placeholder="" v-model="form.defaultSearch"></i-input>
                                             <p class="tip">默认词设置将显示在前台搜索框下面，
                                                 前台点击时直接作为关键词进行搜索，多个请用半角逗号","隔开</p>
                                         </form-item>
@@ -150,8 +150,13 @@
                                 <i-button class="export-btn" @click.native="addData"
                                           type="ghost" >+新增搜索词</i-button>
                             </div>
-                            <i-table highlight-row ref="searchTable" class="shop-table"
-                                     :columns="searchColumns" :context="self" :data="searchData"></i-table>
+                            <i-table class="shop-table"
+                                     :columns="searchColumns"
+                                     :context="self"
+                                     :data="searchData"
+                                     highlight-row
+                                     ref="searchTable">
+                            </i-table>
                         </div>
                     </card>
                 </tab-pane>

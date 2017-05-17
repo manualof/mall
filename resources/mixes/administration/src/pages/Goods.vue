@@ -52,11 +52,11 @@
                     {
                         align: 'center',
                         key: 'goodsImg',
-                        title: '商品图片',
-                        width: 100,
                         render() {
                             return '<icon type="image"></icon>';
                         },
+                        title: '商品图片',
+                        width: 100,
                     },
                     {
                         align: 'center',
@@ -80,68 +80,69 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        title: '操作',
-                        width: 180,
                         render(row, column, index) {
-                            return `<dropdown><i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
+                            return `<dropdown>
+                                    <i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
                                     <dropdown-menu slot="list">
                                     <dropdown-item>查看商品详情</dropdown-item>
                                     <dropdown-item name="goodSku" @click.native="lookGoodsSku">查看商品SKU</dropdown-item>
                                     <dropdown-item>加入商品库</dropdown-item>
                                     </dropdown-menu></dropdown>
-                                    <i-button type="ghost" class="delete-ad"
-                                    @click.native="remove(${index})">删除</i-button>`;
+                                    <i-button @click.native="remove(${index})" class="delete-ad"
+                                     type="ghost">删除</i-button>`;
                         },
+                        title: '操作',
+                        width: 180,
                     },
                 ],
                 goodsData: [
                     {
+                        adWord: '纯棉易用七天',
                         goodsName: '太阳镜眼睛放蓝光紫外线',
+                        goodsPrice: '99.00',
+                        goodsStatus: '出售中',
+                        reviewStatus: '通过',
                         spu: '001',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        adWord: '纯棉易用七天',
                         styleId: 30,
                         styleName: '运动健康>户外>鞋服',
                     },
                     {
+                        adWord: '纯棉易用七天',
                         goodsName: '太阳镜眼睛放蓝光紫外线',
-                        spu: '002',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
                         reviewStatus: '通过',
-                        adWord: '纯棉易用七天',
+                        spu: '001',
                         styleId: 30,
                         styleName: '运动健康>户外>鞋服',
                     },
                     {
+                        adWord: '纯棉易用七天',
                         goodsName: '太阳镜眼睛放蓝光紫外线',
-                        spu: '003',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
                         reviewStatus: '通过',
-                        adWord: '纯棉易用七天',
+                        spu: '001',
                         styleId: 30,
                         styleName: '运动健康>户外>鞋服',
                     },
                     {
+                        adWord: '纯棉易用七天',
                         goodsName: '太阳镜眼睛放蓝光紫外线',
-                        spu: '004',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
                         reviewStatus: '通过',
-                        adWord: '纯棉易用七天',
+                        spu: '001',
                         styleId: 30,
                         styleName: '运动健康>户外>鞋服',
                     },
                     {
+                        adWord: '纯棉易用七天',
                         goodsName: '太阳镜眼睛放蓝光紫外线',
-                        spu: '005',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
                         reviewStatus: '通过',
-                        adWord: '纯棉易用七天',
+                        spu: '001',
                         styleId: 30,
                         styleName: '运动健康>户外>鞋服',
                     },
@@ -258,8 +259,13 @@
                                     </i-input>
                                 </div>
                             </div>
-                            <i-table ref="goodsList" highlight-row class="goods-table" :columns="goodsColumns"
-                                     :context="self" :data="goodsData"></i-table>
+                            <i-table class="goods-table"
+                                     :columns="goodsColumns"
+                                     :context="self"
+                                     :data="goodsData"
+                                     ref="goodsList"
+                                     highlight-row>
+                            </i-table>
                         </div>
                         <modal value="goodSku"
                             v-model="modal"

@@ -22,37 +22,40 @@
                     },
                     {
                         align: 'center',
+                        render() {
+                            return `<i-switch size="large">
+                                    <span slot="open">开启</span>
+                                    <span slot="close">关闭</span></i-switch>`;
+                        },
                         title: '站内信',
-                        render() {
-                            return `<i-switch size="large"><span slot="open">开启</span>
-                                    <span slot="close">关闭</span> </i-switch>`;
-                        },
                     },
                     {
                         align: 'center',
+                        render() {
+                            return `<i-switch size="large">
+                                    <span slot="open">开启</span>
+                                    <span slot="close">关闭</span> </i-switch>`;
+                        },
                         title: '手机短信',
-                        render() {
-                            return `<i-switch size="large"><span slot="open">开启</span>
-                                    <span slot="close">关闭</span> </i-switch>`;
-                        },
                     },
                     {
                         align: 'center',
-                        title: '邮件',
                         render() {
-                            return `<i-switch size="large"><span slot="open">开启</span>
+                            return `<i-switch size="large">
+                                    <span slot="open">开启</span>
                                     <span slot="close">关闭</span> </i-switch>`;
                         },
+                        title: '邮件',
                     },
                     {
                         align: 'center',
                         key: 'action',
+                        render() {
+                            return `<i-button class="editor-btn" @click.native="toEdit"
+                                    size="small"  type="ghost">编辑</i-button>`;
+                        },
                         title: '操作',
                         width: '140',
-                        render() {
-                            return '<i-button type="ghost" class="editor-btn" size="small" ' +
-                                    '@click.native="toEdit">编辑</i-button>';
-                        },
                     },
                 ],
                 merchantData: [
@@ -90,9 +93,9 @@
                 self: this,
                 userColumns: [
                     {
-                        width: 60,
-                        type: 'selection',
                         align: 'center',
+                        type: 'selection',
+                        width: 60,
                     },
                     {
                         align: 'left',
@@ -101,37 +104,40 @@
                     },
                     {
                         align: 'center',
+                        render() {
+                            return `<i-switch size="large">
+                                    <span slot="open">开启</span>
+                                    <span slot="close">关闭</span> </i-switch>`;
+                        },
                         title: '站内信',
-                        render() {
-                            return `<i-switch size="large"><span slot="open">开启</span>
-                                    <span slot="close">关闭</span> </i-switch>`;
-                        },
                     },
                     {
                         align: 'center',
+                        render() {
+                            return `<i-switch size="large">
+                                    <span slot="open">开启</span>
+                                    <span slot="close">关闭</span> </i-switch>`;
+                        },
                         title: '手机短信',
-                        render() {
-                            return `<i-switch size="large"><span slot="open">开启</span>
-                                    <span slot="close">关闭</span> </i-switch>`;
-                        },
                     },
                     {
                         align: 'center',
-                        title: '邮件',
                         render() {
-                            return `<i-switch size="large"><span slot="open">开启</span>
+                            return `<i-switch size="large">
+                                    <span slot="open">开启</span>
                                     <span slot="close">关闭</span> </i-switch>`;
                         },
+                        title: '邮件',
                     },
                     {
                         align: 'center',
                         key: 'action',
+                        render(row, column, index) {
+                            return `<i-button class="editor-btn" @click="remove(${index})"
+                                    size="small" type="ghost">编辑</i-button>`;
+                        },
                         title: '操作',
                         width: 140,
-                        render(row, column, index) {
-                            return `<i-button type="ghost" class="editor-btn" size="small"
-                                    @click="remove(${index})">编辑</i-button>`;
-                        },
                     },
                 ],
                 userData: [
