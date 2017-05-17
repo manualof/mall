@@ -55,7 +55,6 @@
         },
         methods: {
             checkAllGroupChange(data) {
-                console.log(data);
                 if (data.length === this.pictureList.length) {
                     this.indeterminate = false;
                     this.checkAll = true;
@@ -106,16 +105,12 @@
                     <i-button type="ghost" @click.native="delete">删除</i-button>
                 </div>
                 <checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
-                    <row class="picture-list">
-                        <i-col v-for="(item, index) in pictureList">
-                            <checkbox>
-                                <img :src="item.img" alt="">
-                                <p>{{ item.name}}</p>
-                                <p class="tip">{{ item.uploadTime}}</p>
-                                <p class="tip">{{ item.size}}</p>
-                            </checkbox>
-                        </i-col>
-                    </row>
+                    <checkbox :label="item" v-for="(item, index) in pictureList">
+                        <img :src="item.img" alt="">
+                        <p>{{ item.name}}</p>
+                        <p class="tip">{{ item.uploadTime}}</p>
+                        <p class="tip">{{ item.size}}</p>
+                    </checkbox>
                 </checkbox-group>
                 <div class="page">
                     <page :total="100" show-elevator></page>
