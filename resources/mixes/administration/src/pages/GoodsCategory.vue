@@ -91,6 +91,12 @@
             };
         },
         methods: {
+            addData() {
+                const self = this;
+                self.$router.push({
+                    path: 'category/add',
+                });
+            },
             editType() {
                 const self = this;
                 self.$router.push({
@@ -133,7 +139,7 @@
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
-                                <i-button @click="addData" type="ghost">+新增数据</i-button>
+                                <i-button @click.native="addData" type="ghost">+新增数据</i-button>
                                 <i-button @click="exportData" type="ghost">导出数据</i-button>
                                 <i-button @click="deleteData" type="ghost">批量删除</i-button>
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>

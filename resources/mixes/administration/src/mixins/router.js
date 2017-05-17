@@ -16,6 +16,7 @@ import GoodsBrandAdd from '../pages/GoodsBrandAdd.vue';
 import GoodsBrandEdit from '../pages/GoodsBrandEdit.vue';
 import GoodsCategory from '../pages/GoodsCategory.vue';
 import GoodsCategoryEdit from '../pages/GoodsCategoryEdit.vue';
+import GoodsCategoryAdd from '../pages/GoodsCategoryAdd.vue';
 import GoodsCategoryEditNav from '../pages/GoodsCategoryEditNav.vue';
 import GoodsLibrary from '../pages/GoodsLibrary.vue';
 import GoodsLibraryEdit from '../pages/GoodsLibraryEdit.vue';
@@ -178,6 +179,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: GoodsCategoryEdit,
                     path: 'goods/category/edit',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsCategoryAdd,
+                    path: 'goods/category/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
