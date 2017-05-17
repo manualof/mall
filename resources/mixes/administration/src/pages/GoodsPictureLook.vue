@@ -16,37 +16,37 @@
                 pictureList: [
                     {
                         img: image,
-                        name: '商品rey的主图',
+                        name: '商品rey的主图1',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
-                        name: '商品rey的主图',
+                        name: '商品rey的主图2',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
-                        name: '商品rey的主图',
+                        name: '商品rey的主图3',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
-                        name: '商品rey的主图',
+                        name: '商品rey的主图4',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
-                        name: '商品rey的主图',
+                        name: '商品rey的主图5',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
-                        name: '商品rey的主图',
+                        name: '商品rey的主图6',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
                         size: '原图尺寸：400*400',
                     },
@@ -55,6 +55,7 @@
         },
         methods: {
             checkAllGroupChange(data) {
+                console.log(data);
                 if (data.length === this.pictureList.length) {
                     this.indeterminate = false;
                     this.checkAll = true;
@@ -78,7 +79,6 @@
                     this.checkAll = !this.checkAll;
                 }
                 this.indeterminate = false;
-
                 if (this.checkAll) {
                     this.checkAllGroup = this.pictureList;
                 } else {
@@ -108,7 +108,7 @@
                 <checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
                     <row class="picture-list">
                         <i-col v-for="(item, index) in pictureList">
-                            <checkbox v-model="picture1">
+                            <checkbox>
                                 <img :src="item.img" alt="">
                                 <p>{{ item.name}}</p>
                                 <p class="tip">{{ item.uploadTime}}</p>
