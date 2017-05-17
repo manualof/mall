@@ -80,10 +80,10 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        title: '操作',
                         render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
+                            return '<i-button size="small" type="ghost">查看</i-button>';
                         },
+                        title: '操作',
                         width: 90,
                     },
                 ],
@@ -178,20 +178,20 @@
                     {
                         align: 'center',
                         key: 'shopImg',
-                        title: '店铺头像',
-                        width: 100,
                         render() {
                             return '<icon type="image"></icon>';
                         },
+                        title: '店铺头像',
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'shopLogo',
-                        title: '店铺LOGO',
-                        width: 100,
                         render() {
                             return '<icon type="image"></icon>';
                         },
+                        title: '店铺LOGO',
+                        width: 100,
                     },
                     {
                         align: 'center',
@@ -215,13 +215,13 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        title: '操作',
-                        width: 180,
                         render(row, column, index) {
-                            return `<i-button class="first-btn" @click.native="remove(${index})" type="ghost"
-                                    size="small">删除</i-button>
+                            return `<i-button class="first-btn" @click.native="remove(${index})"
+                                    type="ghost" size="small">删除</i-button>
                                     <i-button @click.native="toEdit" type="ghost" size="small">编辑</i-button>`;
                         },
+                        title: '操作',
+                        width: 180,
                     },
                 ],
                 managementData: [

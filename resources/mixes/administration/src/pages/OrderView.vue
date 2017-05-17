@@ -25,11 +25,12 @@
                     {
                         align: 'center',
                         key: 'orderName',
+                        render(row) {
+                            return `<img class="orderImg" src="${row.img}">
+                                    <span class="orderName">${row.orderName}</span>`;
+                        },
                         title: '商品',
                         width: 650,
-                        render(row) {
-                            return `<img class="orderImg" src="${row.img}"><span class="orderName">${row.orderName}</span>`;
-                        },
                     },
                     {
                         align: 'center',

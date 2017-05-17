@@ -24,11 +24,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 analysisMoneyData: [
@@ -68,11 +68,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 analysisNumberData: [
@@ -112,11 +112,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 analysisCountData: [
@@ -162,11 +162,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 memberData: [
@@ -488,11 +488,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 provinceData: [
@@ -535,9 +535,6 @@
             };
         },
         methods: {
-            randomValue() {
-                return Math.round(Math.random() * 1000);
-            },
             convertData() {
                 const data = [];
                 const res = [];
@@ -577,6 +574,9 @@
                 this.$refs.provinceList.exportCsv({
                     filename: '地区分析数据',
                 });
+            },
+            randomValue() {
+                return Math.round(Math.random() * 1000);
             },
         },
     };

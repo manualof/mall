@@ -9,7 +9,6 @@
         },
         data() {
             return {
-                isPriceArea: false,
                 goodsList: [
                     {
                         label: '商品1',
@@ -20,6 +19,7 @@
                         value: '2',
                     },
                 ],
+                isPriceArea: false,
                 loading: false,
                 newAddShop: {
                     legend: {
@@ -67,11 +67,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 provinceData: [
@@ -115,11 +115,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 shopData: [
@@ -167,11 +167,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 sortTopData: [
@@ -219,11 +219,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 sortHotData: [
@@ -271,11 +271,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 sortMoneyTopData: [
@@ -323,11 +323,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 sortMoneyHotData: [
