@@ -18,10 +18,10 @@
                     linePay: '99.00',
                     orderCounts: '99.00',
                     payStyle: '在线支付',
-                    refundMoney: '99.00',
-                    refundReason: '不要',
                     refundDescription: 'mm',
                     refundImg: '',
+                    refundMoney: '99.00',
+                    refundReason: '不要',
                     remarks: '',
                 },
                 ruleValidate: {

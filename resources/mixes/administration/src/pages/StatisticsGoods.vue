@@ -78,24 +78,24 @@
                 ],
                 orderData: [
                     {
-                        num: 333,
-                        goodName: 4,
                         amount: 22,
+                        goodName: 4,
+                        num: 333,
                     },
                     {
-                        num: 333,
-                        goodName: 4,
                         amount: 22,
+                        goodName: 4,
+                        num: 333,
                     },
                     {
-                        num: 333,
-                        goodName: 4,
                         amount: 22,
+                        goodName: 4,
+                        num: 333,
                     },
                     {
-                        num: 333,
-                        goodName: 4,
                         amount: 22,
+                        goodName: 4,
+                        num: 333,
                     },
                 ],
                 orderMoneyColumns: [
@@ -114,24 +114,24 @@
                 ],
                 orderMoneyData: [
                     {
-                        num: 333,
-                        goodName: 4,
                         amount: 22,
+                        goodName: 4,
+                        num: 333,
                     },
                     {
-                        num: 333,
-                        goodName: 4,
                         amount: 22,
+                        goodName: 4,
+                        num: 333,
                     },
                     {
-                        num: 333,
-                        goodName: 4,
                         amount: 22,
+                        goodName: 4,
+                        num: 333,
                     },
                     {
-                        num: 333,
-                        goodName: 4,
                         amount: 22,
+                        goodName: 4,
+                        num: 333,
                     },
                 ],
                 priceAmount: {
@@ -233,6 +233,7 @@
                         spu: 4,
                     },
                 ],
+                self: this,
                 shopsList: [
                     {
                         label: '商品1',
@@ -243,7 +244,6 @@
                         value: '2',
                     },
                 ],
-                self: this,
                 timeList: [
                     {
                         label: '按照月统计',

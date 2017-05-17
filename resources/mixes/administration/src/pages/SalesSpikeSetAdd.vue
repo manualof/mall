@@ -12,8 +12,21 @@
                 checkAll: false,
                 indeterminate: true,
                 loading: false,
+                sales: [
+                    {
+                        content: 'iphone8 plus星空蓝全新发布 信用卡12期分期免息',
+                    },
+                    {
+                        content: 'iphone8 plus星空蓝全新发布',
+                    },
+                    {
+                        content: 'iphone8 plus星空蓝全新发布分期免息',
+                    },
+                    {
+                        content: 'iphone8 plus星空蓝全新发布12期分期免息',
+                    },
+                ],
                 searchCategory: '',
-                searchProduct: '',
                 searchLists: [
                     {
                         label: '北京',
@@ -28,6 +41,7 @@
                         value: '西安',
                     },
                 ],
+                searchProduct: '',
                 searchProducts: [
                     {
                         label: '苹果',
@@ -36,20 +50,6 @@
                     {
                         label: '香蕉',
                         value: '香蕉',
-                    },
-                ],
-                sales: [
-                    {
-                        content: 'iphone8 plus星空蓝全新发布 信用卡12期分期免息',
-                    },
-                    {
-                        content: 'iphone8 plus星空蓝全新发布',
-                    },
-                    {
-                        content: 'iphone8 plus星空蓝全新发布分期免息',
-                    },
-                    {
-                        content: 'iphone8 plus星空蓝全新发布12期分期免息',
                     },
                 ],
                 ruleValidate: {

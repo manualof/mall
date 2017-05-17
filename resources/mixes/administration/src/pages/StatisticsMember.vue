@@ -9,6 +9,50 @@
         },
         data() {
             return {
+                analysisCountColumns: [
+                    {
+                        key: 'num',
+                        title: '序号',
+                    },
+                    {
+                        key: 'memberName',
+                        title: '会员名称',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单量',
+                    },
+                    {
+                        key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
+                        title: '操作',
+                        width: 120,
+                    },
+                ],
+                analysisCountData: [
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                ],
                 analysisMoneyColumns: [
                     {
                         key: 'num',
@@ -76,50 +120,6 @@
                     },
                 ],
                 analysisNumberData: [
-                    {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
-                    },
-                    {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
-                    },
-                    {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
-                    },
-                    {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
-                    },
-                ],
-                analysisCountColumns: [
-                    {
-                        key: 'num',
-                        title: '序号',
-                    },
-                    {
-                        key: 'memberName',
-                        title: '会员名称',
-                    },
-                    {
-                        key: 'amount',
-                        title: '下单量',
-                    },
-                    {
-                        key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
-                        },
-                        title: '操作',
-                        width: 120,
-                    },
-                ],
-                analysisCountData: [
                     {
                         amount: 22,
                         memberName: 4,

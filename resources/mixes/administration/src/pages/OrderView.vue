@@ -12,9 +12,9 @@
             return {
                 buyerData: {
                     address: '某人，陕西 西安 雁塔区 高新二路与光泰路口陕西国土资源大厦2304',
+                    buyerMessage: '包装仔细',
                     buyerName: '昵称',
                     buyerPhone: '029-66458124',
-                    buyerMessage: '包装仔细',
                     invoiceData: {
                         content: '闽西',
                         title: 'sgs',
@@ -48,29 +48,38 @@
                         title: '总金额',
                     },
                 ],
+                orderData: {
+                    orderNumber: '565454424',
+                    orderSource: 'PC端',
+                    orderTime: '2015-06-12 10:42:40',
+                    payMethod: '在线支付',
+                    payNumber: '541544524124245',
+                    payTime: '2015-06-12 10:42:40',
+                },
                 orderInfo: [
                     {
                         freight: 10.00,
                         img: goods,
                         orderName: 'AIM 商务男包牛皮单肩包男手提包横款公文包休闲皮包斜挎男士包包',
-                        orderPrice: 19.99,
                         orderNumber: 5,
+                        orderPrice: 19.99,
                         totalAmount: '99.99',
                     },
                 ],
-                orderData: {
-                    orderNumber: '565454424',
-                    orderSource: 'PC端',
-                    orderTime: '2015-06-12 10:42:40',
-                    payNumber: '541544524124245',
-                    payMethod: '在线支付',
-                    payTime: '2015-06-12 10:42:40',
-                },
                 refundsData: {
                     money: '99.99',
-                    orderNumber: '5465454542',
                     occurrenceTime: '2015-06-12 10:42:40',
+                    orderNumber: '5465454542',
                     remarks: '不合适',
+                },
+                sellersData: {
+                    address: '某人，陕西 西安 雁塔区 高新二路与光泰路口陕西国土资源大厦2304',
+                    expressDelivery: '顺丰速递',
+                    owner: 'fwef',
+                    phone: '1234546546',
+                    shipmentNumber: '54654654545454786',
+                    shipTime: '2016-12-24   03:06:47',
+                    shopName: '以瓷换米',
                 },
                 steps: [
                     {
@@ -94,15 +103,6 @@
                         title: '完成评价',
                     },
                 ],
-                sellersData: {
-                    address: '某人，陕西 西安 雁塔区 高新二路与光泰路口陕西国土资源大厦2304',
-                    expressDelivery: '顺丰速递',
-                    owner: 'fwef',
-                    phone: '1234546546',
-                    shopName: '以瓷换米',
-                    shipTime: '2016-12-24   03:06:47',
-                    shipmentNumber: '54654654545454786',
-                },
             };
         },
         methods: {

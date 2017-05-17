@@ -9,16 +9,6 @@
         },
         data() {
             return {
-                goodsList: [
-                    {
-                        label: '商品1',
-                        value: '1',
-                    },
-                    {
-                        label: '商品2',
-                        value: '2',
-                    },
-                ],
                 goodsColumns: [
                     {
                         key: 'num',
@@ -63,7 +53,16 @@
                         num: 4,
                     },
                 ],
-                isPriceArea: false,
+                goodsList: [
+                    {
+                        label: '商品1',
+                        value: '1',
+                    },
+                    {
+                        label: '商品2',
+                        value: '2',
+                    },
+                ],
                 industryGoods: {
                     color: ['#3398DB'],
                     series: [
@@ -126,7 +125,8 @@
                         },
                     ],
                 },
-                profileOrderMoney: {
+                isPriceArea: false,
+                profileOrderGoods: {
                     legend: {
                         bottom: 'auto',
                         data: ['昨天', '今天'],
@@ -157,7 +157,7 @@
                         type: 'value',
                     },
                 },
-                profileOrderGoods: {
+                profileOrderMoney: {
                     legend: {
                         bottom: 'auto',
                         data: ['昨天', '今天'],

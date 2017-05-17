@@ -10,16 +10,6 @@
         data() {
             return {
                 action: `${window.api}/mall/upload`,
-                companyPlace: [
-                    {
-                        label: '上海市',
-                        value: '1',
-                    },
-                    {
-                        label: '北京市',
-                        value: '2',
-                    },
-                ],
                 classification: [
                     {
                         label: '分类1',
@@ -30,9 +20,18 @@
                         value: '2',
                     },
                 ],
+                companyPlace: [
+                    {
+                        label: '上海市',
+                        value: '1',
+                    },
+                    {
+                        label: '北京市',
+                        value: '2',
+                    },
+                ],
                 defaultList: [],
                 imgName: '',
-                loading: false,
                 level: [
                     {
                         label: '等级1',
@@ -53,6 +52,7 @@
                         value: '2',
                     },
                 ],
+                loading: false,
                 options2: {
                     disabledDate(date) {
                         return date && date.valueOf() < Date.now();
@@ -77,28 +77,28 @@
                         },
                     ],
                 },
+                self: this,
                 storeDetail: {
                     account: 'hjhjkhjk',
-                    companyPlace: '',
-                    companyName: '',
                     classification: '',
-                    createTime: '2016-12-23',
+                    companyName: '',
+                    companyPlace: '',
                     company_detail_name: '',
-                    company_phone: '',
-                    company_person_num: '',
                     company_email: '',
+                    company_person_num: '',
+                    company_phone: '',
                     contact_name: '',
                     contact_phone: '',
+                    createTime: '2016-12-23',
                     level: '',
-                    logo: '',
                     licensePlace: '',
+                    logo: '',
                     province: '',
                     register_money: '',
-                    storeName: '',
                     storeAddress: '',
+                    storeName: '',
                     switch1: true,
                 },
-                self: this,
                 uploadList: [],
                 visible: false,
             };

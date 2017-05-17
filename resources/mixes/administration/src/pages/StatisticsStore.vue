@@ -148,58 +148,6 @@
                         rate: 2,
                     },
                 ],
-                sortTopColumns: [
-                    {
-                        key: 'num',
-                        title: '序号',
-                    },
-                    {
-                        key: 'shopName',
-                        title: '店铺名称',
-                    },
-                    {
-                        key: 'amount',
-                        title: '下单量',
-                    },
-                    {
-                        key: 'rate',
-                        title: '升降幅度',
-                    },
-                    {
-                        key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
-                        },
-                        title: '操作',
-                        width: 120,
-                    },
-                ],
-                sortTopData: [
-                    {
-                        amount: 22,
-                        num: 333,
-                        shopName: 4,
-                        rate: '',
-                    },
-                    {
-                        amount: 22,
-                        num: 333,
-                        shopName: 4,
-                        rate: '',
-                    },
-                    {
-                        amount: 22,
-                        num: 333,
-                        shopName: 4,
-                        rate: '',
-                    },
-                    {
-                        amount: 22,
-                        num: 333,
-                        shopName: 4,
-                        rate: '',
-                    },
-                ],
                 sortHotColumns: [
                     {
                         key: 'num',
@@ -227,58 +175,6 @@
                     },
                 ],
                 sortHotData: [
-                    {
-                        amount: 22,
-                        num: 333,
-                        shopName: 4,
-                        rate: '',
-                    },
-                    {
-                        amount: 22,
-                        num: 333,
-                        shopName: 4,
-                        rate: '',
-                    },
-                    {
-                        amount: 22,
-                        num: 333,
-                        shopName: 4,
-                        rate: '',
-                    },
-                    {
-                        amount: 22,
-                        num: 333,
-                        shopName: 4,
-                        rate: '',
-                    },
-                ],
-                sortMoneyTopColumns: [
-                    {
-                        key: 'num',
-                        title: '序号',
-                    },
-                    {
-                        key: 'shopName',
-                        title: '店铺名称',
-                    },
-                    {
-                        key: 'amount',
-                        title: '下单量',
-                    },
-                    {
-                        key: 'rate',
-                        title: '升降幅度',
-                    },
-                    {
-                        key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
-                        },
-                        title: '操作',
-                        width: 120,
-                    },
-                ],
-                sortMoneyTopData: [
                     {
                         amount: 22,
                         num: 333,
@@ -356,6 +252,110 @@
                         rate: '',
                     },
                 ],
+                sortMoneyTopColumns: [
+                    {
+                        key: 'num',
+                        title: '序号',
+                    },
+                    {
+                        key: 'shopName',
+                        title: '店铺名称',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单量',
+                    },
+                    {
+                        key: 'rate',
+                        title: '升降幅度',
+                    },
+                    {
+                        key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
+                        title: '操作',
+                        width: 120,
+                    },
+                ],
+                sortMoneyTopData: [
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                ],
+                sortTopColumns: [
+                    {
+                        key: 'num',
+                        title: '序号',
+                    },
+                    {
+                        key: 'shopName',
+                        title: '店铺名称',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单量',
+                    },
+                    {
+                        key: 'rate',
+                        title: '升降幅度',
+                    },
+                    {
+                        key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
+                        title: '操作',
+                        width: 120,
+                    },
+                ],
+                sortTopData: [
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                    {
+                        amount: 22,
+                        num: 333,
+                        shopName: 4,
+                        rate: '',
+                    },
+                ],
                 salesColumns: [
                     {
                         key: 'shopName',
@@ -408,6 +408,7 @@
                         shopName: 'shop',
                     },
                 ],
+                self: this,
                 shopsList: [
                     {
                         label: '商品1',
@@ -418,7 +419,6 @@
                         value: '2',
                     },
                 ],
-                self: this,
                 timeList: [
                     {
                         label: '按照月统计',
