@@ -55,6 +55,129 @@
                         value: '2',
                     },
                 ],
+                styleData: [
+                    {
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '自行车',
+                                        value: '自行车',
+                                    },
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅',
+                                        value: '安全座椅',
+                                    },
+                                ],
+                                label: '童车童床',
+                                value: '童车童床',
+                            },
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '个护化妆',
+                        value: '个护化妆',
+                    },
+                    {
+                        children: [
+                            {
+                                value: '服饰寝居',
+                                label: '服饰寝居',
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                    {
+                                        label: '婴儿推车3',
+                                        value: '婴儿推车3',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅4',
+                                        value: '安全座椅4',
+                                    },
+                                ],
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '车1',
+                                        value: '车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '家用电器',
+                        value: '家用电器',
+                    },
+                ],
+                styleClassification: [
+                    {
+                        title: '运动品牌',
+                    },
+                    {
+                        title: '运动品牌1',
+                    },
+                    {
+                        title: '运动品牌2',
+                    },
+                    {
+                        title: '运动品牌3',
+                    },
+                    {
+                        title: '运动品牌4',
+                    },
+                    {
+                        title: '运动品牌5',
+                    },
+                ],
+                vertical: 'apple',
             };
         },
         methods: {
@@ -135,11 +258,20 @@
                                 <form-item label="类型" class="quike-position">
                                     <div class="flex-position">
                                         <span class="title">快捷定位</span>
-                                        <i-select placeholder="请选择" v-model="editDetail.location">
-                                            <i-option v-for="item in location" :value="item.value"
-                                                      :key="item">{{ item.label }}</i-option>
-                                        </i-select>
+                                        <cascader :data="styleData" trigger="hover" @on-change="handleChange"
+                                                  ></cascader>
                                         <span class="intro">分类下的商品类型</span>
+                                    </div>
+                                    <div class="goods-style-classification">
+                                        <radio-group v-model="vertical" vertical>
+                                            <radio label="无类型">
+                                                <span>无类型</span>
+                                            </radio>
+                                            <p>默认</p>
+                                            <radio :label="item.title" v-for="item in styleClassification">
+                                                <span>{{ item.title }}</span>
+                                            </radio>
+                                        </radio-group>
                                     </div>
                                     <div>
                                         <p class="tip">如果当前下拉选项中没有适合的类型，可以去<a href="">类型管理</a>
