@@ -110,7 +110,7 @@
                 this.$router.push('spike/adjunction');
             },
             toGoodsSet() {
-                this.router.push({
+                this.$router.push({
                     path: 'spike/set',
                 });
             },

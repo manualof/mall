@@ -144,11 +144,11 @@
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
-                <span>秒杀活动—设置商品-添加商品</span>
+                <span>秒杀活动—设置商品—添加商品</span>
             </div>
-            <card class="store storeBox">
+            <card class="store storeBox" :bordered="false">
                 <div class="prompt-box">
-                    <h6>提示</h6>
+                    <p>提示</p>
                     <p>搜索完商品后请在下方添加商品数量、限购、价格。如未填写则默认为0</p>
                     <p>可批量添加商品（仅相同数量、限购、价格）</p>
                 </div>
@@ -210,45 +210,41 @@
                                 <!--全选模块-->
                                 <div class="all-select">
                                     <row>
-                                        <i-col span="3">
+                                        <i-col span="4">
                                             <div class="p-list">
                                                 <i-button @click.prevent.native="handleCheckAll"
                                                           :indeterminate="indeterminate"
                                                           :value="checkAll"
-                                                          type="ghost" style="width:64px">全选</i-button>
+                                                          type="ghost">全选</i-button>
                                             </div>
                                         </i-col>
-                                        <i-col span="4">
+                                        <i-col span="6">
                                             <div class="p-list">
-                                                数量:<i-input style="width:64px;height: 26px"></i-input>件
+                                                数量: <i-input style="width:64px"></i-input> 件
                                             </div>
                                         </i-col>
-                                        <i-col span="4">
+                                        <i-col span="6">
                                             <div class="p-list">
-                                                限购:<i-input style="width:64px;height: 26px"></i-input>件
+                                                限购: <i-input style="width:64px"></i-input> 件
                                             </div>
                                         </i-col>
-                                        <i-col span="4">
+                                        <i-col span="8">
                                             <div class="p-list">
-                                                价格:<i-input style="width:64px;height: 26px"></i-input>元
+                                                价格: <i-input style="width:64px"></i-input> 元
                                             </div>
                                         </i-col>
                                     </row>
                                 </div>
                             </div>
                         </i-col>
-                        <i-col span="2" class="sales-list">
+                        <i-col span="3" class="sales-list btn-sales-span">
                             <div>
-                                <i-button slot="append" type="primary" size="small" class="my-btn">添加至秒杀列表
+                                <i-button slot="append" type="primary" class="my-btn">添加至秒杀列表
                                     <icon type="chevron-right"></icon>
-                                </i-button>
-                                <i-button @click.native="submit" type="primary" size="small" class="my-submit">
-                                    <span v-if="!loading">确认提交</span>
-                                    <span v-else>正在提交…</span>
                                 </i-button>
                             </div>
                         </i-col>
-                        <i-col span="11" class="sales-list">
+                        <i-col span="10" class="sales-list">
                             <div>
                                 <p>参与秒杀商品</p>
                                 <div class="my-card">
@@ -265,13 +261,13 @@
                                 </div>
                                 <div class="all-select">
                                     <row>
-                                        <i-col span="3">
+                                        <i-col span="4">
                                             <div class="p-list">
                                                 <i-button type="ghost" style="width:64px" :indeterminate="indeterminate"
                                                           :value="checkAll" @click.prevent.native="handleCheckAll2">全选</i-button>
                                             </div>
                                         </i-col>
-                                        <i-col span="3">
+                                        <i-col span="4">
                                             <div class="p-list remove"><i-button type="ghost" style="width: 64px">移除</i-button></div>
                                         </i-col>
                                     </row>
@@ -279,6 +275,12 @@
                             </div>
                         </i-col>
                     </row>
+                </div>
+                <div class="submit-btn">
+                    <i-button @click.native="submit" type="primary" class="my-submit">
+                        <span v-if="!loading">确认提交</span>
+                        <span v-else>正在提交…</span>
+                    </i-button>
                 </div>
             </card>
         </div>
