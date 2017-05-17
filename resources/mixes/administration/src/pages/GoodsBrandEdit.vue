@@ -16,8 +16,8 @@
                     initials: '',
                     logo: '',
                     selectStyle: '母婴用品',
-                    switch1: true,
                     sort: '',
+                    switch1: true,
                 },
                 defaultList: [],
                 loading: false,
@@ -30,6 +30,7 @@
                         },
                     ],
                 },
+                self: this,
                 styleData: [
                     {
                         children: [
@@ -132,7 +133,6 @@
                         value: '家用电器',
                     },
                 ],
-                self: this,
             };
         },
         methods: {

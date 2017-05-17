@@ -9,9 +9,6 @@
         },
         data() {
             return {
-                goodsReview: {
-                    switch1: true,
-                },
                 goodsColumns: [
                     {
                         align: 'center',
@@ -147,9 +144,11 @@
                         styleName: '运动健康>户外>鞋服',
                     },
                 ],
+                goodsReview: {
+                    switch1: true,
+                },
                 loading: false,
                 modal: false,
-                self: this,
                 searchList: [
                     {
                         label: '店铺名称',
@@ -164,6 +163,7 @@
                         value: '商品分类',
                     },
                 ],
+                self: this,
                 skuColumns: [
                     {
                         align: 'center',
@@ -196,8 +196,8 @@
                 skuData: [
                     {
                         skuId: 133026,
-                        skuStock: 334455,
                         skuPrice: 99.00,
+                        skuStock: 334455,
                     },
                 ],
             };

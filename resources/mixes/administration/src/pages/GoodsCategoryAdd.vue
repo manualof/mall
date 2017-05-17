@@ -16,6 +16,7 @@
                     subHeadings: '',
                     typeName: '',
                 },
+                loading: false,
                 location: [
                     {
                         label: '颜色',
@@ -26,7 +27,6 @@
                         value: '2',
                     },
                 ],
-                loading: false,
                 ruleValidate: {
                     quotaRatio: [
                         {
@@ -51,6 +51,26 @@
                     {
                         label: '类型',
                         value: '2',
+                    },
+                ],
+                styleClassification: [
+                    {
+                        title: '运动品牌',
+                    },
+                    {
+                        title: '运动品牌1',
+                    },
+                    {
+                        title: '运动品牌2',
+                    },
+                    {
+                        title: '运动品牌3',
+                    },
+                    {
+                        title: '运动品牌4',
+                    },
+                    {
+                        title: '运动品牌5',
                     },
                 ],
                 styleData: [
@@ -255,26 +275,6 @@
                         ],
                         label: '家用电器',
                         value: '家用电器',
-                    },
-                ],
-                styleClassification: [
-                    {
-                        title: '运动品牌',
-                    },
-                    {
-                        title: '运动品牌1',
-                    },
-                    {
-                        title: '运动品牌2',
-                    },
-                    {
-                        title: '运动品牌3',
-                    },
-                    {
-                        title: '运动品牌4',
-                    },
-                    {
-                        title: '运动品牌5',
                     },
                 ],
                 vertical: 'apple',

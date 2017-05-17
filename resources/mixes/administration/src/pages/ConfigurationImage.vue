@@ -12,8 +12,8 @@
                 action: `${window.api}/mall/upload`,
                 defaultImage: {
                     goodsImage: '',
-                    shopLogo: '',
                     shopImage: '',
+                    shopLogo: '',
                 },
                 imageLoading: false,
                 loading: false,

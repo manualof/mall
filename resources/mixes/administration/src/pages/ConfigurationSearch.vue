@@ -23,7 +23,6 @@
                         },
                     ],
                 },
-                self: this,
                 searchColumns: [
                     {
                         align: 'center',
@@ -76,6 +75,7 @@
                         showTerms: 'iphone全新发布，星空蓝',
                     },
                 ],
+                self: this,
             };
         },
         methods: {
