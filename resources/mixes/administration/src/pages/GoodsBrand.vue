@@ -121,12 +121,15 @@
                         </div>
                         <div class="brand-management">
                             <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
-
                             <i-button class="export-btn" @click="exportData" type="ghost">导出数据</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                         </div>
-                        <i-table highlight-row :columns="brandColumns" :context="self"
-                                 :data="brandData" ref="brand"></i-table>
+                        <i-table :columns="brandColumns"
+                                 :context="self"
+                                 :data="brandData"
+                                 highlight-row
+                                 ref="brand">
+                        </i-table>
                     </card>
                 </tab-pane>
                 <tab-pane label="待审核" name="name2">
