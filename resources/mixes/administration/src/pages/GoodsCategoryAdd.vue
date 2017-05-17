@@ -11,9 +11,6 @@
             return {
                 editDetail: {
                     goodsSort: '',
-                    interestStyle: true,
-                    interestRadio: true,
-                    interestType: true,
                     quotaRatio: '',
                     showStyle: '',
                     subHeadings: '',
@@ -336,9 +333,6 @@
                                         <p>"颜色"：每个SPU只展示不同个颜色SKU，同一颜色多个SKU只展示一个SKU</p>
                                         <p>"SPU"：每个SPU只展示一个SKU</p>
                                     </div>
-                                    <checkbox v-model="editDetail.interestStyle" class="tip"
-                                              style="text-align: inherit; color: inherit">关联到子分类</checkbox>
-                                    <p class="contact tip">勾选关联到子分类后，被绑定的商品展示方式也将继承到子分类中使用</p>
                                 </form-item>
                             </i-col>
                         </row>
@@ -349,9 +343,6 @@
                                     <div class="tip">
                                         <p>分佣比例必须为0-100的整数</p>
                                     </div>
-                                    <checkbox v-model="editDetail.interestRadio" class="tip"
-                                              style="text-align: inherit; color: inherit">关联到子分类</checkbox>
-                                    <p class="contact tip">勾选关联到子分类后，被绑定的商品展示方式也将继承到子分类中使用</p>
                                 </form-item>
                             </i-col>
                             <i-col span="1" class="inline-symbol">%</i-col>
@@ -389,11 +380,6 @@
                                     <div>
                                         <p class="tip">如果当前下拉选项中没有适合的类型，可以去<a href="">类型管理</a>
                                             功能中添加新的类型</p>
-                                        <checkbox v-model="editDetail.interestType" class="tip"
-                                                  style="text-align: inherit; color: inherit">关联到子分类</checkbox>
-                                        <p class="contact tip">
-                                            勾选关联到子分类后，被绑定的商品展示方式也将继承到子分类中使用
-                                        </p>
                                     </div>
                                 </form-item>
                             </i-col>
