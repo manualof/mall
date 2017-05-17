@@ -286,9 +286,7 @@
                             <i-col span="12">
                                 <form-item label="排序" prop="sort">
                                     <i-input v-model="addData.sort"></i-input>
-                                    <p class="tip">
-                                        数字范围为0~255，数字越小越靠前
-                                    </p>
+                                    <p class="tip">数字范围为0~255，数字越小越靠前</p>
                                 </form-item>
                             </i-col>
                         </row>
