@@ -10,7 +10,6 @@
         data() {
             return {
                 managementSearch: '',
-                self: this,
                 searchList: [
                     {
                         label: '店铺名称',
@@ -25,6 +24,7 @@
                         value: '商品分类',
                     },
                 ],
+                self: this,
                 typeColumns: [
                     {
                         key: 'typeId',

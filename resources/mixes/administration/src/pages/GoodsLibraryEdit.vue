@@ -23,9 +23,9 @@
                 goodsEdit: {
                     barCode: '',
                     distribution: '',
-                    goodStyle: '',
                     goodComment: '',
                     goodOrigin: '',
+                    goodStyle: '',
                     logo: '',
                     name: '',
                     price: '',
@@ -62,8 +62,8 @@
                         value: '2',
                     },
                 ],
-                isEditText: false,
                 isEditPicture: false,
+                isEditText: false,
                 isPcPicture: false,
                 loading: false,
                 priceList: [
@@ -76,15 +76,6 @@
                         value: '2',
                     },
                 ],
-                ruleValidate: {
-                    remarks: [
-                        {
-                            message: '信息不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
-                },
                 requests: [
                     {
                         content: '（1）手机详情总体大小：图片+文字，图片不超过20张，文字不超过5000字；' +
@@ -102,6 +93,15 @@
                         name: '3.文字要求',
                     },
                 ],
+                ruleValidate: {
+                    remarks: [
+                        {
+                            message: '信息不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
             };
         },
         methods: {

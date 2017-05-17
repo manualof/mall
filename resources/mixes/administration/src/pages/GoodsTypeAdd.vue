@@ -10,17 +10,17 @@
         data() {
             return {
                 editDetail: {
-                    attributeNum: 0,
                     attributeName: '',
+                    attributeNum: 0,
                     attributeSelect: '',
                     attributeShow: false,
-                    customize: '',
                     checkbox1: [],
                     checkbox2: [],
                     checkbox3: [],
+                    customize: '',
                     goodsSort: '',
-                    interestStyle: '',
                     interestRadio: '',
+                    interestStyle: '',
                     interestType: true,
                     location: '',
                     showStyle: '',
@@ -47,6 +47,16 @@
                         },
                     ],
                 },
+                showStyle: [
+                    {
+                        label: '颜色',
+                        value: '1',
+                    },
+                    {
+                        label: '类型',
+                        value: '2',
+                    },
+                ],
                 styleData: [
                     {
                         children: [
@@ -147,16 +157,6 @@
                         ],
                         label: '家用电器',
                         value: '家用电器',
-                    },
-                ],
-                showStyle: [
-                    {
-                        label: '颜色',
-                        value: '1',
-                    },
-                    {
-                        label: '类型',
-                        value: '2',
                     },
                 ],
             };

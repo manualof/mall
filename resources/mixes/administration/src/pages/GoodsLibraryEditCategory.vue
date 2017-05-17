@@ -14,6 +14,8 @@
                     selectStyle: '',
                 },
                 loading: false,
+                self: this,
+                style: false,
                 styleData: [
                     {
                         children: [
@@ -116,8 +118,6 @@
                         value: '家用电器',
                     },
                 ],
-                self: this,
-                style: false,
             };
         },
         methods: {

@@ -10,7 +10,6 @@
         data() {
             return {
                 managementSearch: '',
-                switch1: true,
                 searchList: [
                     {
                         label: '店铺名称',
@@ -26,6 +25,7 @@
                     },
                 ],
                 self: this,
+                switch1: true,
                 typeColumns: [
                     {
                         align: 'center',
@@ -92,36 +92,36 @@
                 ],
                 typeData: [
                     {
-                        area: '陕西省西安市',
                         address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
                         applicationTime: '2017-2-3',
+                        area: '陕西省西安市',
                         reallyName: '王琦铭',
                         serviceName: '财富中心自提点',
                         status: true,
                         userName: '克罗地亚',
                     },
                     {
-                        area: '陕西省西安市',
                         address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
                         applicationTime: '2017-2-3',
+                        area: '陕西省西安市',
                         reallyName: '王琦铭',
                         serviceName: '财富中心自提点',
                         status: true,
                         userName: '克罗地亚',
                     },
                     {
-                        area: '陕西省西安市',
                         address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
                         applicationTime: '2017-2-3',
+                        area: '陕西省西安市',
                         reallyName: '王琦铭',
                         serviceName: '财富中心自提点',
                         status: true,
                         userName: '克罗地亚',
                     },
                     {
-                        area: '陕西省西安市',
                         address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
                         applicationTime: '2017-2-3',
+                        area: '陕西省西安市',
                         reallyName: '王琦铭',
                         serviceName: '财富中心自提点',
                         status: true,
