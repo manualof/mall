@@ -11,6 +11,7 @@
             return {
                 checkAll: false,
                 checkAllGroup: [],
+                checkSpikeGroup: [],
                 indeterminate: true,
                 loading: false,
                 searchCategory: '',
@@ -44,6 +45,11 @@
                     'iphone8 plus星空蓝全新发布 信用',
                     'iphone8 plus星空蓝全新发布 信用卡12期',
                     'iphone8 plus星空'],
+                spikeList: [
+                    'iphone8 plus星空蓝全新发布 信用卡12期分期',
+                    'iphone8 plus星空蓝全新发布 信',
+                    'iphone8 plus星空蓝全新发布 信用卡12',
+                    'iphone8 plus星空全新发'],
                 ruleValidate: {
                     remarks: [
                         {
@@ -68,8 +74,8 @@
                     this.checkAll = false;
                 }
             },
-            checkAllGroupChange2(data) {
-                if (data.length === 4) {
+            checkSpikeGroupChange(data) {
+                if (data.length === this.spikeList.length) {
                     this.indeterminate = false;
                     this.checkAll = true;
                 } else if (data.length > 0) {
@@ -98,7 +104,7 @@
                     this.checkAllGroup = [];
                 }
             },
-            handleCheckAll2() {
+            handleCheckAllSpike() {
                 if (this.indeterminate) {
                     this.checkAll = false;
                 } else {
@@ -107,9 +113,9 @@
                 this.indeterminate = false;
 
                 if (this.checkAll) {
-                    this.checkAllGroup = 'iphone8 plus星空蓝全新发布 信用卡12期分期免息';
+                    this.checkSpikeGroup = this.spikeList;
                 } else {
-                    this.checkAllGroup = [];
+                    this.checkSpikeGroup = [];
                 }
             },
             submit() {
@@ -236,23 +242,19 @@
                                 <p>参与秒杀商品</p>
                                 <div class="my-card">
                                     <card>
-                                        <ul>
-                                           <!-- <li v-for="sale in sales">
-                                                <checkbox-group v-model="checkAllGroup2" @on-change="checkAllGroupChange2">
-                                                    <checkbox label="iphone8 plus星空蓝全新发布 信用卡12期分期免息"></checkbox>
-                                                </checkbox-group>
-                                                <hr>
-                                            </li>-->
-                                        </ul>
+                                        <checkbox-group v-model="checkSpikeGroup" @on-change="checkSpikeGroupChange">
+                                            <checkbox :label="item" v-for="item in spikeList"></checkbox>
+                                        </checkbox-group>
                                     </card>
                                 </div>
                                 <div class="all-select">
                                     <row>
                                         <i-col span="4">
-                                           <!-- <div class="p-list">
-                                                <i-button type="ghost" style="width:64px" :indeterminate="indeterminate"
-                                                          :value="checkAll" @click.prevent.native="handleCheckAll2">全选</i-button>
-                                            </div>-->
+                                            <div class="p-list">
+                                                <i-button :indeterminate="indeterminate"
+                                                          :value="checkAll" @click.prevent.native="handleCheckAllSpike"
+                                                          type="ghost" style="width:64px" >全选</i-button>
+                                            </div>
                                         </i-col>
                                         <i-col span="4">
                                             <div class="p-list remove"><i-button type="ghost" style="width: 64px">移除</i-button></div>
