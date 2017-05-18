@@ -115,7 +115,7 @@
                         area: '陕西省西安市',
                         reallyName: '王琦铭',
                         serviceName: '财富中心自提点',
-                        status: true,
+                        status: false,
                         userName: '克罗地亚',
                     },
                     {

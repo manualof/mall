@@ -59,14 +59,15 @@
                         align: 'center',
                         key: 'evaluationProduct',
                         title: '被评商品',
-                        width: 200,
+                        width: 300,
                     },
                     {
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">删除</i-button>';
+                        render(row, column, index) {
+                            return `<i-button @click.native="remove(${index})" size="small"
+                                    type="ghost" >删除</i-button>`;
                         },
                         title: '操作',
                         width: 150,
@@ -153,6 +154,7 @@
                     },
                 ],
                 searchWord: '',
+                self: this,
             };
         },
         methods: {
@@ -174,7 +176,7 @@
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
-                                <i-button class="export-btn" type="ghost" @click="exportData">批量删除</i-button>
+                                <i-button class="export-btn" type="ghost" @click="deleteData">批量删除</i-button>
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                                 <div class="store-body-header-right">
                                     <i-input v-model="searchWord">
@@ -188,6 +190,7 @@
                                 </div>
                             </div>
                             <i-table class="shop-table"
+                                     :context="self"
                                      :data="evaluationListData"
                                      :columns="evaluationListColumns"
                                      highlight-row ref="evaluationListTable" ></i-table>
