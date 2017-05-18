@@ -16,12 +16,12 @@
                         width: 100,
                     },
                     {
-                        align: 'center',
                         key: 'describe',
                         title: '模板描述',
                     },
                     {
                         align: 'center',
+                        key: 'stationLetter',
                         render() {
                             return `<i-switch size="large" v-model="row.stationLetter">
                                     <span slot="open">开启</span>
@@ -31,6 +31,7 @@
                     },
                     {
                         align: 'center',
+                        key: 'smsStatus',
                         render() {
                             return `<i-switch size="large" v-model="row.smsStatus">
                                     <span slot="open">开启</span>
@@ -40,6 +41,7 @@
                     },
                     {
                         align: 'center',
+                        key: 'mailStatus',
                         render() {
                             return `<i-switch size="large" v-model="row.mailStatus">
                                     <span slot="open">开启</span>
@@ -110,6 +112,7 @@
                     },
                     {
                         align: 'center',
+                        key: 'stationLetter',
                         render() {
                             return `<i-switch size="large" v-model="row.stationLetter">
                                     <span slot="open">开启</span>
@@ -119,8 +122,9 @@
                     },
                     {
                         align: 'center',
+                        key: 'smsStatus',
                         render() {
-                            return `<i-switch size="large" v-model="row.mailStatus">
+                            return `<i-switch size="large" v-model="row.smsStatus">
                                     <span slot="open">开启</span>
                                     <span slot="close">关闭</span> </i-switch>`;
                         },
@@ -128,6 +132,7 @@
                     },
                     {
                         align: 'center',
+                        key: 'mailStatus',
                         render() {
                             return `<i-switch size="large" v-model="row.mailStatus">
                                     <span slot="open">开启</span>

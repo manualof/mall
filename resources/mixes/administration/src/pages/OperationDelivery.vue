@@ -25,7 +25,6 @@
                     },
                 ],
                 self: this,
-                switch1: true,
                 typeColumns: [
                     {
                         align: 'center',
@@ -59,8 +58,8 @@
                         width: 300,
                     },
                     {
-                        key: 'status',
                         align: 'center',
+                        key: 'status',
                         render() {
                             return `<i-switch size="large" v-model="row.status">
                                     <span slot="open">开启</span>
