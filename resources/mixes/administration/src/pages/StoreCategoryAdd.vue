@@ -90,7 +90,7 @@
                         </i-col>
                     </row>
                     <row>
-                        <i-col span="12" prop="number">
+                        <i-col span="12">
                             <form-item  label="保证金额数" prop="number">
                                 <i-input v-model="formValidate.number" placeholder=""></i-input>
                             </form-item>
@@ -115,4 +115,3 @@
         </div>
     </div>
 </template>
-

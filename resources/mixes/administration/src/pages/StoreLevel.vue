@@ -134,8 +134,7 @@
                                 </i-input>
                             </div>
                         </div>
-                        <i-table highlight-row :columns="typeColumns" :context="self"
-                                 :data="typeData"></i-table>
+                        <i-table highlight-row :columns="typeColumns" :context="self" :data="typeData"></i-table>
                     </card>
                 </tab-pane>
             </tabs>
