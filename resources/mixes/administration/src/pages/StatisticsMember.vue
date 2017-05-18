@@ -576,6 +576,10 @@
                     filename: '地区分析数据',
                 });
             },
+            onMapReady(a, echarts) {
+                echarts.registerMap('china', JSON.parse(mapData));
+                window.console.log(echarts.getMap('china'));
+            },
             randomValue() {
                 return Math.round(Math.random() * 1000);
             },
@@ -685,7 +689,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoney" ref="echarts" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
                                     </div>
 
                                     <i-button type="ghost" class="export-btn"
@@ -759,7 +763,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts @click="onClick" :option="orderMoneyProvince"></i-echarts>
+                                        <i-echarts @click="onClick" :option="orderMoneyProvince" ref="echarts" @ready="onMapReady"></i-echarts>
                                     </div>
                                     <i-button type="ghost" class="export-btn"
                                               @click="exportProvinceData">导出数据</i-button>
