@@ -577,8 +577,7 @@
                 });
             },
             onMapReady(a, echarts) {
-                echarts.registerMap('china', JSON.parse(mapData));
-                window.console.log(echarts.getMap('china'));
+                echarts.registerMap('china', mapData);
             },
             randomValue() {
                 return Math.round(Math.random() * 1000);
