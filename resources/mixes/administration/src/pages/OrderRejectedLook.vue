@@ -36,6 +36,10 @@
             };
         },
         methods: {
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
             handleSubmit(name) {
                 this.$refs[name].validate(valid => {
                     if (valid) {
@@ -53,7 +57,7 @@
         <div class="order-rejected-look">
             <div class="store-refund-process">
                 <div class="edit-link-title">
-                    <i-button type="text">
+                    <i-button type="text" @click.native="goBack">
                         <icon type="chevron-left"></icon>
                     </i-button>
                     <span>所有记录—查看</span>

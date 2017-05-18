@@ -199,7 +199,7 @@
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
-                <span>类型管理—编辑"平板电视"</span>
+                <span>类型管理—新增</span>
             </div>
             <card :bordered="false">
                 <div class="prompt-box">

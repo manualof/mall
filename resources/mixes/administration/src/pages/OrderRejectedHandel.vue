@@ -37,6 +37,10 @@
             };
         },
         methods: {
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -59,7 +63,7 @@
         <div class="order-rejected-handel">
             <div class="store-refund-process">
                 <div class="edit-link-title">
-                    <i-button type="text">
+                    <i-button type="text" @click.native="goBack">
                         <icon type="chevron-left"></icon>
                     </i-button>
                     <span>所有记录—处理</span>
