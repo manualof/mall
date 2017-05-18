@@ -13,17 +13,17 @@
                     {
                         align: 'center',
                         type: 'selection',
-                        width: 60,
+                        width: 100,
                     },
                     {
-                        align: 'left',
+                        align: 'center',
                         key: 'describe',
                         title: '模板描述',
                     },
                     {
                         align: 'center',
                         render() {
-                            return `<i-switch size="large">
+                            return `<i-switch size="large" v-model="row.stationLetter">
                                     <span slot="open">开启</span>
                                     <span slot="close">关闭</span></i-switch>`;
                         },
@@ -32,7 +32,7 @@
                     {
                         align: 'center',
                         render() {
-                            return `<i-switch size="large">
+                            return `<i-switch size="large" v-model="row.smsStatus">
                                     <span slot="open">开启</span>
                                     <span slot="close">关闭</span> </i-switch>`;
                         },
@@ -41,7 +41,7 @@
                     {
                         align: 'center',
                         render() {
-                            return `<i-switch size="large">
+                            return `<i-switch size="large" v-model="row.mailStatus">
                                     <span slot="open">开启</span>
                                     <span slot="close">关闭</span> </i-switch>`;
                         },
@@ -61,33 +61,39 @@
                 merchantData: [
                     {
                         describe: '商品库存预警',
+                        mailStatus: true,
+                        smsStatus: true,
+                        stationLetter: false,
                     },
                     {
                         describe: '商品被投诉提醒',
+                        mailStatus: false,
+                        smsStatus: true,
+                        stationLetter: true,
                     },
                     {
                         describe: '商品审核失败提醒',
+                        mailStatus: true,
+                        smsStatus: true,
+                        stationLetter: false,
                     },
                     {
                         describe: '商品违规被下架',
+                        mailStatus: false,
+                        smsStatus: true,
+                        stationLetter: false,
                     },
                     {
                         describe: '新订单提醒',
+                        mailStatus: true,
+                        smsStatus: false,
+                        stationLetter: false,
                     },
                     {
                         describe: '退款提醒',
-                    },
-                    {
-                        describe: '退款自动处理提醒',
-                    },
-                    {
-                        describe: '退款自动处理提醒',
-                    },
-                    {
-                        describe: '结算单等待确认提醒',
-                    },
-                    {
-                        describe: '结算单已付款提醒',
+                        mailStatus: true,
+                        smsStatus: false,
+                        stationLetter: false,
                     },
                 ],
                 self: this,
@@ -105,7 +111,7 @@
                     {
                         align: 'center',
                         render() {
-                            return `<i-switch size="large">
+                            return `<i-switch size="large" v-model="row.stationLetter">
                                     <span slot="open">开启</span>
                                     <span slot="close">关闭</span> </i-switch>`;
                         },
@@ -114,7 +120,7 @@
                     {
                         align: 'center',
                         render() {
-                            return `<i-switch size="large">
+                            return `<i-switch size="large" v-model="row.mailStatus">
                                     <span slot="open">开启</span>
                                     <span slot="close">关闭</span> </i-switch>`;
                         },
@@ -123,7 +129,7 @@
                     {
                         align: 'center',
                         render() {
-                            return `<i-switch size="large">
+                            return `<i-switch size="large" v-model="row.mailStatus">
                                     <span slot="open">开启</span>
                                     <span slot="close">关闭</span> </i-switch>`;
                         },
@@ -143,33 +149,45 @@
                 userData: [
                     {
                         describe: '到货通知提醒',
+                        mailStatus: true,
+                        smsStatus: true,
+                        stationLetter: false,
                     },
                     {
                         describe: '商品咨询回复提醒',
+                        mailStatus: true,
+                        smsStatus: true,
+                        stationLetter: false,
                     },
                     {
                         describe: '平台客服回复提醒',
+                        mailStatus: true,
+                        smsStatus: true,
+                        stationLetter: true,
                     },
                     {
                         describe: '预定订单尾款支付提醒',
+                        mailStatus: true,
+                        smsStatus: true,
+                        stationLetter: true,
                     },
                     {
                         describe: '付款成功提醒',
+                        mailStatus: false,
+                        smsStatus: true,
+                        stationLetter: true,
                     },
                     {
                         describe: '余额变动提醒',
+                        mailStatus: false,
+                        smsStatus: true,
+                        stationLetter: false,
                     },
                     {
                         describe: '充值卡余额变动提醒',
-                    },
-                    {
-                        describe: '退款退货提醒',
-                    },
-                    {
-                        describe: '红包使用提醒',
-                    },
-                    {
-                        describe: '代金券使用提醒',
+                        mailStatus: true,
+                        smsStatus: false,
+                        stationLetter: false,
                     },
                 ],
             };
