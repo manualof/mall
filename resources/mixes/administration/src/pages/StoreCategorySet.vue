@@ -1,4 +1,6 @@
 <script>
+    import injection from '../helpers/injection';
+
     export default {
         beforeRouteEnter(to, from, next) {
             next(() => {
