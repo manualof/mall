@@ -103,10 +103,9 @@
                     {
                         align: 'center',
                         type: 'selection',
-                        width: 60,
+                        width: 100,
                     },
                     {
-                        align: 'left',
                         key: 'describe',
                         title: '模板描述',
                     },
@@ -221,9 +220,9 @@
                            <p> 编辑完成后请清理“商家消息模板”缓存。</p>
                        </div>
                        <div class="store-body">
-                           <i-table class="shop-table my-btn"
-                                    :columns="merchantColumns"
+                           <i-table class="shop-table"
                                     :context="self"
+                                    :columns="merchantColumns"
                                     :data="merchantData"></i-table>
                        </div>
                    </card>
