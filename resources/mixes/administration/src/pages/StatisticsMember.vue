@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import mapData from '../maps/china';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -579,6 +580,10 @@
                 });
             },
         },
+        mounted() {
+            window.console.log(JSON.parse(mapData));
+            this.$refs.echarts.registerMap('china', JSON.parse(mapData));
+        },
     };
 </script>
 <template>
@@ -684,7 +689,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderMoney" ref="echarts" @ready="onReady" @click="onClick"></i-echarts>
                                     </div>
 
                                     <i-button type="ghost" class="export-btn"
