@@ -12,6 +12,7 @@
                 action: `${window.api}/mall/upload`,
                 loading: false,
                 ruleValidate: {},
+                self: this,
                 styleData: [
                     {
                         children: [
@@ -66,7 +67,6 @@
                         value: 'jiangsu',
                     },
                 ],
-                self: this,
                 typeData: {
                     address: '',
                     cardPicture: '',

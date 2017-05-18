@@ -123,7 +123,6 @@
                     },
                 ],
                 searchCategory: '',
-                searchWord: '',
                 searchList: [
                     {
                         label: '店铺名称',
@@ -138,6 +137,7 @@
                         value: '商品分类',
                     },
                 ],
+                searchWord: '',
                 self: this,
             };
         },

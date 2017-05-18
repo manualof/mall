@@ -9,16 +9,6 @@
         },
         data() {
             return {
-                goodsList: [
-                    {
-                        label: '商品1',
-                        value: '1',
-                    },
-                    {
-                        label: '商品2',
-                        value: '2',
-                    },
-                ],
                 goodsColumns: [
                     {
                         key: 'num',
@@ -34,11 +24,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 goodsData: [
@@ -63,7 +53,16 @@
                         num: 4,
                     },
                 ],
-                isPriceArea: false,
+                goodsList: [
+                    {
+                        label: '商品1',
+                        value: '1',
+                    },
+                    {
+                        label: '商品2',
+                        value: '2',
+                    },
+                ],
                 industryGoods: {
                     color: ['#3398DB'],
                     series: [
@@ -126,7 +125,8 @@
                         },
                     ],
                 },
-                profileOrderMoney: {
+                isPriceArea: false,
+                profileOrderGoods: {
                     legend: {
                         bottom: 'auto',
                         data: ['昨天', '今天'],
@@ -157,7 +157,7 @@
                         type: 'value',
                     },
                 },
-                profileOrderGoods: {
+                profileOrderMoney: {
                     legend: {
                         bottom: 'auto',
                         data: ['昨天', '今天'],

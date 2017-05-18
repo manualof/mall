@@ -80,70 +80,65 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        title: '操作',
                         render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
+                            return '<i-button size="small" type="ghost">查看</i-button>';
                         },
+                        title: '操作',
                         width: 90,
                     },
                 ],
                 applicationData: [
                     {
                         applicationStatus: '等待审核',
+                        companyAddress: '陕西西安',
+                        companyName: '本初网络',
+                        companyPhone: '029-5554544',
+                        contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
-                        contactEmail: '105454354@qq.com',
-                        companyName: '本初网络',
-                        companyAddress: '陕西西安',
-                        companyPhone: '029-5554544',
-                        memberID: '65454654546',
                         memberAccount: '465465445',
+                        memberID: '65454654546',
                         shopLength: '3年',
                     },
-
                     {
                         applicationStatus: '等待审核',
+                        companyAddress: '陕西西安',
+                        companyName: '本初网络',
+                        companyPhone: '029-5554544',
+                        contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
-                        contactEmail: '105454354@qq.com',
-                        companyName: '本初网络',
-                        companyAddress: '陕西西安',
-                        companyPhone: '029-5554544',
-                        memberID: '65454654546',
                         memberAccount: '465465445',
+                        memberID: '65454654546',
                         shopLength: '3年',
                     },
-
                     {
                         applicationStatus: '等待审核',
+                        companyAddress: '陕西西安',
+                        companyName: '本初网络',
+                        companyPhone: '029-5554544',
+                        contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
-                        contactEmail: '105454354@qq.com',
-                        companyName: '本初网络',
-                        companyAddress: '陕西西安',
-                        companyPhone: '029-5554544',
-                        memberID: '65454654546',
                         memberAccount: '465465445',
+                        memberID: '65454654546',
                         shopLength: '3年',
                     },
-
                     {
                         applicationStatus: '等待审核',
+                        companyAddress: '陕西西安',
+                        companyName: '本初网络',
+                        companyPhone: '029-5554544',
+                        contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
-                        contactEmail: '105454354@qq.com',
-                        companyName: '本初网络',
-                        companyAddress: '陕西西安',
-                        companyPhone: '029-5554544',
-                        memberID: '65454654546',
                         memberAccount: '465465445',
+                        memberID: '65454654546',
                         shopLength: '3年',
                     },
                 ],
                 applicationSearch: '',
                 applicationWord: '',
-                managementSearch: '',
-                managementWord: '',
                 managementColumns: [
                     {
                         align: 'center',
@@ -178,20 +173,20 @@
                     {
                         align: 'center',
                         key: 'shopImg',
-                        title: '店铺头像',
-                        width: 100,
                         render() {
                             return '<icon type="image"></icon>';
                         },
+                        title: '店铺头像',
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'shopLogo',
-                        title: '店铺LOGO',
-                        width: 100,
                         render() {
                             return '<icon type="image"></icon>';
                         },
+                        title: '店铺LOGO',
+                        width: 100,
                     },
                     {
                         align: 'center',
@@ -215,13 +210,13 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        title: '操作',
-                        width: 180,
                         render(row, column, index) {
-                            return `<i-button class="first-btn" @click.native="remove(${index})" type="ghost"
-                                    size="small">删除</i-button>
+                            return `<i-button class="first-btn" @click.native="remove(${index})"
+                                    type="ghost" size="small">删除</i-button>
                                     <i-button @click.native="toEdit" type="ghost" size="small">编辑</i-button>`;
                         },
+                        title: '操作',
+                        width: 180,
                     },
                 ],
                 managementData: [
@@ -230,10 +225,10 @@
                         endTime: '2017-12-5',
                         ownerId: '545464554',
                         shopID: '65454654546',
-                        shopName: '默认',
                         shopImg: '541',
-                        shopLogo: '454',
                         shopLevel: '钻石店铺',
+                        shopLogo: '454',
+                        shopName: '默认',
                         shopTime: '2017-12-5',
                     },
                     {
@@ -241,10 +236,10 @@
                         endTime: '2017-12-5',
                         ownerId: '545464554',
                         shopID: '65454654546',
-                        shopName: '默认',
                         shopImg: '541',
-                        shopLogo: '454',
                         shopLevel: '钻石店铺',
+                        shopLogo: '454',
+                        shopName: '默认',
                         shopTime: '2017-12-5',
                     },
                     {
@@ -252,10 +247,10 @@
                         endTime: '2017-12-5',
                         ownerId: '545464554',
                         shopID: '65454654546',
-                        shopName: '默认',
                         shopImg: '541',
-                        shopLogo: '454',
                         shopLevel: '钻石店铺',
+                        shopLogo: '454',
+                        shopName: '默认',
                         shopTime: '2017-12-5',
                     },
                     {
@@ -263,13 +258,15 @@
                         endTime: '2017-12-5',
                         ownerId: '545464554',
                         shopID: '65454654546',
-                        shopName: '默认',
                         shopImg: '541',
-                        shopLogo: '454',
                         shopLevel: '钻石店铺',
+                        shopLogo: '454',
+                        shopName: '默认',
                         shopTime: '2017-12-5',
                     },
                 ],
+                managementWord: '',
+                managementSearch: '',
                 searchList: [
                     {
                         label: '店铺名称',
@@ -350,9 +347,10 @@
                                 <div class="store-body-header-right">
                                     <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
                                         <i-select v-model="applicationSearch" slot="prepend" style="width: 100px;">
-                                            <i-option v-for="item in searchList"
+                                            <i-option :key="item"
                                                       :value="item.value"
-                                                      :key="item">{{ item.label }}</i-option>
+                                                      v-for="item in searchList">
+                                                {{ item.label }}</i-option>
                                         </i-select>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>

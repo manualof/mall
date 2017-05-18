@@ -12,8 +12,8 @@
                 action: `${window.api}/mall/upload`,
                 defaultImage: {
                     goodsImage: '',
-                    shopLogo: '',
                     shopImage: '',
+                    shopLogo: '',
                 },
                 imageLoading: false,
                 loading: false,
@@ -53,11 +53,11 @@
             removeGoodsImage() {
                 this.defaultImage.goodsImage = '';
             },
-            removeShopLogo() {
-                this.defaultImage.shopLogo = '';
-            },
             removeShopImage() {
                 this.defaultImage.shopImage = '';
+            },
+            removeShopLogo() {
+                this.defaultImage.shopLogo = '';
             },
             submit() {
                 const self = this;

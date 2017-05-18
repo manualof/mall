@@ -9,7 +9,6 @@
         },
         data() {
             return {
-                plugin: true,
                 payColumns: [
                     {
                         type: 'selection',
@@ -54,6 +53,7 @@
                         style: '银联',
                     },
                 ],
+                plugin: true,
                 self: this,
                 switch1: true,
             };

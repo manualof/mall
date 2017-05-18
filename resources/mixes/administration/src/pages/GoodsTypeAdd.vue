@@ -10,17 +10,17 @@
         data() {
             return {
                 editDetail: {
-                    attributeNum: 0,
                     attributeName: '',
+                    attributeNum: 0,
                     attributeSelect: '',
                     attributeShow: false,
-                    customize: '',
                     checkbox1: [],
                     checkbox2: [],
                     checkbox3: [],
+                    customize: '',
                     goodsSort: '',
-                    interestStyle: '',
                     interestRadio: '',
+                    interestStyle: '',
                     interestType: true,
                     location: '',
                     showStyle: '',
@@ -47,6 +47,16 @@
                         },
                     ],
                 },
+                showStyle: [
+                    {
+                        label: '颜色',
+                        value: '1',
+                    },
+                    {
+                        label: '类型',
+                        value: '2',
+                    },
+                ],
                 styleData: [
                     {
                         children: [
@@ -149,16 +159,6 @@
                         value: '家用电器',
                     },
                 ],
-                showStyle: [
-                    {
-                        label: '颜色',
-                        value: '1',
-                    },
-                    {
-                        label: '类型',
-                        value: '2',
-                    },
-                ],
             };
         },
         methods: {
@@ -199,7 +199,7 @@
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
-                <span>类型管理—编辑"平板电视"</span>
+                <span>类型管理—新增</span>
             </div>
             <card :bordered="false">
                 <div class="prompt-box">

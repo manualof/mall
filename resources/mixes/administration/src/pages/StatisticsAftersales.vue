@@ -36,43 +36,43 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 goodsData: [
                     {
                         goodName: '用户套装买二送一',
                         orderNum: '36589554555',
-                        refundNum: '36589554555',
                         refundMoney: '99.00',
+                        refundNum: '36589554555',
                         shopName: '旗舰店',
                         time: '2017-04-01',
                     },
                     {
                         goodName: '用户套装买二送一',
                         orderNum: '36589554555',
-                        refundNum: '36589554555',
                         refundMoney: '99.00',
+                        refundNum: '36589554555',
                         shopName: '旗舰店',
                         time: '2017-04-01',
                     },
                     {
                         goodName: '用户套装买二送一',
                         orderNum: '36589554555',
-                        refundNum: '36589554555',
                         refundMoney: '99.00',
+                        refundNum: '36589554555',
                         shopName: '旗舰店',
                         time: '2017-04-01',
                     },
                     {
                         goodName: '用户套装买二送一',
                         orderNum: '36589554555',
-                        refundNum: '36589554555',
                         refundMoney: '99.00',
+                        refundNum: '36589554555',
                         shopName: '旗舰店',
                         time: '2017-04-01',
                     },
@@ -115,43 +115,43 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 refundData: [
                     {
                         goodName: '用户套装买二送一',
                         orderNum: '36589554555',
-                        refundNum: '36589554555',
                         refundMoney: '99.00',
+                        refundNum: '36589554555',
                         shopName: '旗舰店',
                         time: '2017-04-01',
                     },
                     {
                         goodName: '用户套装买二送一',
                         orderNum: '36589554555',
-                        refundNum: '36589554555',
                         refundMoney: '99.00',
+                        refundNum: '36589554555',
                         shopName: '旗舰店',
                         time: '2017-04-01',
                     },
                     {
                         goodName: '用户套装买二送一',
                         orderNum: '36589554555',
-                        refundNum: '36589554555',
                         refundMoney: '99.00',
+                        refundNum: '36589554555',
                         shopName: '旗舰店',
                         time: '2017-04-01',
                     },
                     {
                         goodName: '用户套装买二送一',
                         orderNum: '36589554555',
-                        refundNum: '36589554555',
                         refundMoney: '99.00',
+                        refundNum: '36589554555',
                         shopName: '旗舰店',
                         time: '2017-04-01',
                     },

@@ -28,11 +28,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 goodsData: [
@@ -171,11 +171,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 shopData: [
@@ -206,12 +206,12 @@
             deleteArea(e) {
                 console.log(e);
             },
-            lookShop() {},
             lookGoods() {},
-            priceSubmit() {
+            lookShop() {},
+            orderSubmit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.goods.validate(valid => {
+                self.$refs.orders.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -222,10 +222,10 @@
                     }
                 });
             },
-            orderSubmit() {
+            priceSubmit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.orders.validate(valid => {
+                self.$refs.goods.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {

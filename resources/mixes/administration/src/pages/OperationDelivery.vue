@@ -10,7 +10,6 @@
         data() {
             return {
                 managementSearch: '',
-                switch1: true,
                 searchList: [
                     {
                         label: '店铺名称',
@@ -59,8 +58,8 @@
                         width: 300,
                     },
                     {
-                        key: 'status',
                         align: 'center',
+                        key: 'status',
                         render() {
                             return `<i-switch size="large" v-model="row.status">
                                     <span slot="open">开启</span>
@@ -92,36 +91,36 @@
                 ],
                 typeData: [
                     {
-                        area: '陕西省西安市',
                         address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
                         applicationTime: '2017-2-3',
+                        area: '陕西省西安市',
                         reallyName: '王琦铭',
                         serviceName: '财富中心自提点',
                         status: true,
                         userName: '克罗地亚',
                     },
                     {
-                        area: '陕西省西安市',
                         address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
                         applicationTime: '2017-2-3',
+                        area: '陕西省西安市',
                         reallyName: '王琦铭',
                         serviceName: '财富中心自提点',
                         status: true,
                         userName: '克罗地亚',
                     },
                     {
-                        area: '陕西省西安市',
                         address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
                         applicationTime: '2017-2-3',
+                        area: '陕西省西安市',
                         reallyName: '王琦铭',
                         serviceName: '财富中心自提点',
-                        status: true,
+                        status: false,
                         userName: '克罗地亚',
                     },
                     {
-                        area: '陕西省西安市',
                         address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
                         applicationTime: '2017-2-3',
+                        area: '陕西省西安市',
                         reallyName: '王琦铭',
                         serviceName: '财富中心自提点',
                         status: true,

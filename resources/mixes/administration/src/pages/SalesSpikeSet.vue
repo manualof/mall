@@ -35,11 +35,11 @@
                     {
                         align: 'center',
                         key: 'action',
+                        render() {
+                            return '<i-button @click.native="toEdit" size="small" type="ghost">+设置商品</i-button>';
+                        },
                         title: '操作',
                         width: 140,
-                        render() {
-                            return '<i-button  @click.native="toEdit"  type="ghost" size="small">+设置商品</i-button>';
-                        },
                     },
                 ],
                 killDate: [

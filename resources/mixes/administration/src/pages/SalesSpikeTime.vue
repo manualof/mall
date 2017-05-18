@@ -38,12 +38,13 @@
                     {
                         align: 'center',
                         key: 'action',
+                        render(row, column, index) {
+                            return `<i-button class="first-btn" @click="remove(${index})"
+                                    size="small" type="ghost">编辑</i-button>
+                                    <i-button type="ghost" size="small">删除</i-button>`;
+                        },
                         title: '操作',
                         width: 180,
-                        render(row, column, index) {
-                            return `<i-button type="ghost" class="first-btn" size="small" @click="remove(${index})">
-                                    编辑</i-button><i-button type="ghost" size="small">删除</i-button>`;
-                        },
                     },
                 ],
                 timeListData: [
@@ -110,10 +111,15 @@
                 </div>
                 <div class="store-body">
                     <div class="store-body-header">
-                        <i-button class="export-btn" @click.natice="addSpikePeriod" type="ghost">+添加秒杀时段</i-button>
+                        <i-button class="export-btn" @click.natice="addSpikePeriod"
+                                  type="ghost">+添加秒杀时段</i-button>
                         <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                     </div>
-                    <i-table highlight-row class="shop-table" :columns="timeListColumns" :data="timeListData"></i-table>
+                    <i-table class="shop-table"
+                             :columns="timeListColumns"
+                             :data="timeListData"
+                             highlight-row>
+                    </i-table>
                 </div>
             </card>
         </div>

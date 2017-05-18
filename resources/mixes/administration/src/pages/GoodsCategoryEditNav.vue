@@ -11,18 +11,18 @@
             return {
                 action: `${window.api}/mall/upload`,
                 editDetail: {
-                    adPicture1: '',
-                    adPicture2: '',
                     adAddress1: '',
                     adAddress2: '',
+                    adPicture1: '',
+                    adPicture2: '',
                     checkbox1: [],
                     checkbox2: [],
                     checkbox3: [],
-                    checkboxDefault: [],
                     checkboxAllBrand: [],
+                    checkboxDefault: [],
                     goodsSort: '',
-                    interestStyle: '',
                     interestRadio: '',
+                    interestStyle: '',
                     interestType: true,
                     logo: '',
                     quotaRatio: '',
@@ -178,6 +178,20 @@
             removeLogo() {
                 this.editDetail.logo = '';
             },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.editDetail.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
             uploadBefore() {
                 injection.loading.start();
             },
@@ -209,20 +223,6 @@
                     title: data.message,
                 });
                 self.editDetail.logo = data.data.path;
-            },
-            submit() {
-                const self = this;
-                self.loading = true;
-                self.$refs.editDetail.validate(valid => {
-                    if (valid) {
-                        window.console.log(valid);
-                    } else {
-                        self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
-                    }
-                });
             },
         },
     };

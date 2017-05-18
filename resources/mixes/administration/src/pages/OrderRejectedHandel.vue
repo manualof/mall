@@ -19,11 +19,11 @@
                     linePay: '99.00',
                     orderCounts: '99.00',
                     payStyle: '在线支付',
-                    remarks: '',
-                    refundMoney: '99.00',
-                    refundReason: '不要',
                     refundDescription: 'mm',
                     refundImg: '',
+                    refundMoney: '99.00',
+                    refundReason: '不要',
+                    remarks: '',
                 },
                 ruleValidate: {
                     remarks: [
@@ -37,6 +37,10 @@
             };
         },
         methods: {
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -59,7 +63,7 @@
         <div class="order-rejected-handel">
             <div class="store-refund-process">
                 <div class="edit-link-title">
-                    <i-button type="text">
+                    <i-button type="text" @click.native="goBack">
                         <icon type="chevron-left"></icon>
                     </i-button>
                     <span>所有记录—处理</span>

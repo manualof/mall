@@ -10,6 +10,50 @@
         },
         data() {
             return {
+                analysisCountColumns: [
+                    {
+                        key: 'num',
+                        title: '序号',
+                    },
+                    {
+                        key: 'memberName',
+                        title: '会员名称',
+                    },
+                    {
+                        key: 'amount',
+                        title: '下单量',
+                    },
+                    {
+                        key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
+                        title: '操作',
+                        width: 120,
+                    },
+                ],
+                analysisCountData: [
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                    {
+                        amount: 22,
+                        memberName: 4,
+                        num: 333,
+                    },
+                ],
                 analysisMoneyColumns: [
                     {
                         key: 'num',
@@ -25,11 +69,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 analysisMoneyData: [
@@ -69,58 +113,14 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 analysisNumberData: [
-                    {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
-                    },
-                    {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
-                    },
-                    {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
-                    },
-                    {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
-                    },
-                ],
-                analysisCountColumns: [
-                    {
-                        key: 'num',
-                        title: '序号',
-                    },
-                    {
-                        key: 'memberName',
-                        title: '会员名称',
-                    },
-                    {
-                        key: 'amount',
-                        title: '下单量',
-                    },
-                    {
-                        key: 'action',
-                        title: '操作',
-                        width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
-                    },
-                ],
-                analysisCountData: [
                     {
                         amount: 22,
                         memberName: 4,
@@ -163,11 +163,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 memberData: [
@@ -489,11 +489,11 @@
                     },
                     {
                         key: 'action',
+                        render() {
+                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        },
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
-                        },
                     },
                 ],
                 provinceData: [
@@ -536,9 +536,6 @@
             };
         },
         methods: {
-            randomValue() {
-                return Math.round(Math.random() * 1000);
-            },
             convertData() {
                 const data = [];
                 const res = [];
@@ -559,6 +556,11 @@
                     filename: '新增会员数据',
                 });
             },
+            exportMemberCountData() {
+                this.$refs.analysisCountList.exportCsv({
+                    filename: '会员分析下单量数据',
+                });
+            },
             exportMemberMoneyData() {
                 this.$refs.analysisMoneyList.exportCsv({
                     filename: '会员分析下单金额数据',
@@ -569,15 +571,13 @@
                     filename: '会员分析下单商品数数据',
                 });
             },
-            exportMemberCountData() {
-                this.$refs.analysisCountList.exportCsv({
-                    filename: '会员分析下单量数据',
-                });
-            },
             exportProvinceData() {
                 this.$refs.provinceList.exportCsv({
                     filename: '地区分析数据',
                 });
+            },
+            randomValue() {
+                return Math.round(Math.random() * 1000);
             },
         },
         mounted() {
@@ -763,7 +763,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoneyProvince" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts @click="onClick" :option="orderMoneyProvince"></i-echarts>
                                     </div>
                                     <i-button type="ghost" class="export-btn"
                                               @click="exportProvinceData">导出数据</i-button>
