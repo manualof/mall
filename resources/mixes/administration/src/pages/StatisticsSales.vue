@@ -311,11 +311,6 @@
             };
         },
         methods: {
-            exportShopsData() {
-                this.$refs.shopsList.exportCsv({
-                    filename: '收入统计数据',
-                });
-            },
             exportOrderData() {
                 this.$refs.orderList.exportCsv({
                     filename: '下单量统计数据',
@@ -324,6 +319,11 @@
             exportOrderMoneyData() {
                 this.$refs.orderMoneyList.exportCsv({
                     filename: '下单金额统计数据',
+                });
+            },
+            exportShopsData() {
+                this.$refs.shopsList.exportCsv({
+                    filename: '收入统计数据',
                 });
             },
         },

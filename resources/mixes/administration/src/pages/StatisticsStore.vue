@@ -437,14 +437,14 @@
                     filename: '新增店铺数据',
                 });
             },
-            exportSalesData() {
-                this.$refs.salesList.exportCsv({
-                    filename: '销售统计数据',
-                });
-            },
             exportProvinceData() {
                 this.$refs.provinceList.exportCsv({
                     filename: '地区分析数据',
+                });
+            },
+            exportSalesData() {
+                this.$refs.salesList.exportCsv({
+                    filename: '销售统计数据',
                 });
             },
         },

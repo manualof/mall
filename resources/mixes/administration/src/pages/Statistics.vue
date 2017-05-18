@@ -206,8 +206,8 @@
             deleteArea(e) {
                 console.log(e);
             },
-            lookShop() {},
             lookGoods() {},
+            lookShop() {},
             orderSubmit() {
                 const self = this;
                 self.loading = true;

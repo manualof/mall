@@ -178,6 +178,20 @@
             removeLogo() {
                 this.editDetail.logo = '';
             },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.editDetail.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
             uploadBefore() {
                 injection.loading.start();
             },
@@ -209,20 +223,6 @@
                     title: data.message,
                 });
                 self.editDetail.logo = data.data.path;
-            },
-            submit() {
-                const self = this;
-                self.loading = true;
-                self.$refs.editDetail.validate(valid => {
-                    if (valid) {
-                        window.console.log(valid);
-                    } else {
-                        self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
-                    }
-                });
             },
         },
     };

@@ -105,16 +105,16 @@
             removeAd(index) {
                 this.spikeData.splice(index, 1);
             },
+            toGoodsSet() {
+                this.$router.push({
+                    path: 'spike/set',
+                });
+            },
             toSalesSpikeTime() {
                 this.$router.push('spike/time');
             },
             toSaleSpikeAdjunction() {
                 this.$router.push('spike/adjunction');
-            },
-            toGoodsSet() {
-                this.$router.push({
-                    path: 'spike/set',
-                });
             },
         },
     };

@@ -86,6 +86,12 @@
                     this.checkAll = false;
                 }
             },
+            deleteSpikeGoods() {
+//                console.log(this.checkSpikeGroup.length);
+//                console.log(this.checkSpikeGroup);
+//                if (this.checkSpikeGroup.length > 0) {
+//                }
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
@@ -257,7 +263,9 @@
                                             </div>
                                         </i-col>
                                         <i-col span="4">
-                                            <div class="p-list remove"><i-button type="ghost" style="width: 64px">移除</i-button></div>
+                                            <div class="p-list remove">
+                                                <i-button @click.native="deleteSpikeGoods" type="ghost" style="width: 64px">移除</i-button>
+                                            </div>
                                         </i-col>
                                     </row>
                                 </div>

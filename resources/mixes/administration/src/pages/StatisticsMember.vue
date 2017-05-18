@@ -555,6 +555,11 @@
                     filename: '新增会员数据',
                 });
             },
+            exportMemberCountData() {
+                this.$refs.analysisCountList.exportCsv({
+                    filename: '会员分析下单量数据',
+                });
+            },
             exportMemberMoneyData() {
                 this.$refs.analysisMoneyList.exportCsv({
                     filename: '会员分析下单金额数据',
@@ -563,11 +568,6 @@
             exportMemberNumberData() {
                 this.$refs.analysisNumberList.exportCsv({
                     filename: '会员分析下单商品数数据',
-                });
-            },
-            exportMemberCountData() {
-                this.$refs.analysisCountList.exportCsv({
-                    filename: '会员分析下单量数据',
                 });
             },
             exportProvinceData() {

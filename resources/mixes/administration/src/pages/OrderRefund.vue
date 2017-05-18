@@ -322,16 +322,16 @@
                     });
                 }
             },
-            refundHandel() {
-                const self = this;
-                self.$router.push({
-                    path: 'refund/process',
-                });
-            },
             reasonEdit() {
                 const self = this;
                 self.$router.push({
                     path: 'refund/reedit',
+                });
+            },
+            refundHandel() {
+                const self = this;
+                self.$router.push({
+                    path: 'refund/process',
                 });
             },
         },

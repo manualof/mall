@@ -344,9 +344,6 @@
                     filename: '退货管理数据',
                 });
             },
-            remove(index) {
-                this.pendingData.splice(index, 1);
-            },
             recordHandel() {
                 const self = this;
                 self.$router.push({
@@ -358,6 +355,9 @@
                 self.$router.push({
                     path: 'rejected/look',
                 });
+            },
+            remove(index) {
+                this.pendingData.splice(index, 1);
             },
         },
     };

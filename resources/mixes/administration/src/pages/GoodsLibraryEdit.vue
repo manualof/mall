@@ -105,17 +105,17 @@
             };
         },
         methods: {
-            addText() {
+            addAlbumPicture() {
                 const self = this;
-                self.isEditText = !self.isEditText;
+                self.isPcPicture = !self.isPcPicture;
             },
             addPicture() {
                 const self = this;
                 self.isEditPicture = !self.isEditPicture;
             },
-            addAlbumPicture() {
+            addText() {
                 const self = this;
-                self.isPcPicture = !self.isPcPicture;
+                self.isEditText = !self.isEditText;
             },
             closeAlbum() {
                 const self = this;
