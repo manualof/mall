@@ -10,22 +10,9 @@
         data() {
             return {
                 checkAll: false,
+                checkAllGroup: [],
                 indeterminate: true,
                 loading: false,
-                sales: [
-                    {
-                        content: 'iphone8 plus星空蓝全新发布 信用卡12期分期免息',
-                    },
-                    {
-                        content: 'iphone8 plus星空蓝全新发布',
-                    },
-                    {
-                        content: 'iphone8 plus星空蓝全新发布分期免息',
-                    },
-                    {
-                        content: 'iphone8 plus星空蓝全新发布12期分期免息',
-                    },
-                ],
                 searchCategory: '',
                 searchLists: [
                     {
@@ -52,6 +39,11 @@
                         value: '香蕉',
                     },
                 ],
+                selectList: [
+                    'iphone8 plus星空蓝全新发布 信用卡12期分期免息',
+                    'iphone8 plus星空蓝全新发布 信用',
+                    'iphone8 plus星空蓝全新发布 信用卡12期',
+                    'iphone8 plus星空'],
                 ruleValidate: {
                     remarks: [
                         {
@@ -65,7 +57,7 @@
         },
         methods: {
             checkAllGroupChange(data) {
-                if (data.length === 4) {
+                if (data.length === this.selectList.length) {
                     this.indeterminate = false;
                     this.checkAll = true;
                 } else if (data.length > 0) {
@@ -101,7 +93,7 @@
                 this.indeterminate = false;
 
                 if (this.checkAll) {
-                    this.checkAllGroup = 'iphone8 plus星空蓝全新发布 信用卡12期分期免息';
+                    this.checkAllGroup = this.selectList;
                 } else {
                     this.checkAllGroup = [];
                 }
@@ -197,14 +189,9 @@
                                 <p>可选商品</p>
                                 <div class="my-card">
                                     <card>
-                                        <ul>
-                                            <li v-for="sale in sales">
-                                                <checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
-                                                    <checkbox :label="sale.content"></checkbox>
-                                                </checkbox-group>
-                                                <hr>
-                                            </li>
-                                        </ul>
+                                        <checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
+                                            <checkbox :label="item" v-for="item in selectList"></checkbox>
+                                        </checkbox-group>
                                     </card>
                                 </div>
                                 <!--全选模块-->
@@ -250,22 +237,22 @@
                                 <div class="my-card">
                                     <card>
                                         <ul>
-                                            <li v-for="sale in sales">
+                                           <!-- <li v-for="sale in sales">
                                                 <checkbox-group v-model="checkAllGroup2" @on-change="checkAllGroupChange2">
                                                     <checkbox label="iphone8 plus星空蓝全新发布 信用卡12期分期免息"></checkbox>
                                                 </checkbox-group>
                                                 <hr>
-                                            </li>
+                                            </li>-->
                                         </ul>
                                     </card>
                                 </div>
                                 <div class="all-select">
                                     <row>
                                         <i-col span="4">
-                                            <div class="p-list">
+                                           <!-- <div class="p-list">
                                                 <i-button type="ghost" style="width:64px" :indeterminate="indeterminate"
                                                           :value="checkAll" @click.prevent.native="handleCheckAll2">全选</i-button>
-                                            </div>
+                                            </div>-->
                                         </i-col>
                                         <i-col span="4">
                                             <div class="p-list remove"><i-button type="ghost" style="width: 64px">移除</i-button></div>
