@@ -264,7 +264,8 @@
                                         </i-col>
                                         <i-col span="4">
                                             <div class="p-list remove">
-                                                <i-button @click.native="deleteSpikeGoods" type="ghost" style="width: 64px">移除</i-button>
+                                                <i-button @click.native="deleteSpikeGoods" type="ghost"
+                                                          style="width: 64px">移除</i-button>
                                             </div>
                                         </i-col>
                                     </row>

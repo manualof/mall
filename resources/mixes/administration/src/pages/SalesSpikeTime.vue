@@ -111,10 +111,15 @@
                 </div>
                 <div class="store-body">
                     <div class="store-body-header">
-                        <i-button class="export-btn" @click.natice="addSpikePeriod" type="ghost">+添加秒杀时段</i-button>
+                        <i-button class="export-btn" @click.natice="addSpikePeriod"
+                                  type="ghost">+添加秒杀时段</i-button>
                         <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                     </div>
-                    <i-table highlight-row class="shop-table" :columns="timeListColumns" :data="timeListData"></i-table>
+                    <i-table class="shop-table"
+                             :columns="timeListColumns"
+                             :data="timeListData"
+                             highlight-row>
+                    </i-table>
                 </div>
             </card>
         </div>

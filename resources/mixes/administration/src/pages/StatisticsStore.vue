@@ -669,8 +669,11 @@
 
                                 </div>
                                 <i-button type="ghost" class="export-btn" @click="exportProvinceData">导出数据</i-button>
-                                <i-table :columns="provinceColumns" :context="self"
-                                         :data="provinceData" ref="provinceList"></i-table>
+                                <i-table :columns="provinceColumns"
+                                         :context="self"
+                                         :data="provinceData"
+                                         ref="provinceList">
+                                </i-table>
                                 <div class="page">
                                     <page :total="100" show-elevator></page>
                                 </div>

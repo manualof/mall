@@ -758,7 +758,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoneyProvince" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts @click="onClick" :option="orderMoneyProvince"></i-echarts>
                                     </div>
                                     <i-button type="ghost" class="export-btn"
                                               @click="exportProvinceData">导出数据</i-button>

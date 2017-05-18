@@ -347,9 +347,10 @@
                                 <div class="store-body-header-right">
                                     <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
                                         <i-select v-model="applicationSearch" slot="prepend" style="width: 100px;">
-                                            <i-option v-for="item in searchList"
+                                            <i-option :key="item"
                                                       :value="item.value"
-                                                      :key="item">{{ item.label }}</i-option>
+                                                      v-for="item in searchList">
+                                                {{ item.label }}</i-option>
                                         </i-select>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>
