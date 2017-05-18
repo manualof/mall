@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import mapData from '../maps/china';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -148,6 +149,220 @@
                         rate: 2,
                     },
                 ],
+                shopNumberProvince: {
+                    tooltip: {},
+                    visualMap: {
+                        calculable: true,
+                        inRange: {
+                            color: ['#e0ffff', '#006edd'],
+                        },
+                        left: 'left',
+                        max: 1500,
+                        min: 0,
+                        seriesIndex: [1],
+                        text: ['High', 'Low'],
+                        top: 'bottom',
+                    },
+                    geo: {
+                        itemStyle: {
+                            emphasis: {
+                                areaColor: null,
+                                borderWidth: 0,
+                                shadowBlur: 20,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)',
+                                shadowOffsetX: 0,
+                                shadowOffsetY: 0,
+                            },
+                            normal: {
+                                borderColor: 'rgba(0, 0, 0, 0.2)',
+                            },
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                textStyle: {
+                                    color: 'rgba(0,0,0,0.4)',
+                                },
+                            },
+                        },
+                        layoutCenter: ['50%', '50%'],
+                        layoutSize: 520,
+                        map: 'china',
+                        roam: true,
+                    },
+                    series: [
+                        {
+                            coordinateSystem: 'geo',
+                            data: this.convertData(),
+                            itemStyle: {
+                                normal: {
+                                    color: '#F06C00',
+                                },
+                            },
+                            label: {
+                                emphasis: {
+                                    show: true,
+                                },
+                                normal: {
+                                    formatter: '{b}',
+                                    position: 'right',
+                                    show: false,
+                                },
+                            },
+                            symbol: 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.' +
+                            '629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,' +
+                            '221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,' +
+                            '42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,' +
+                            '1318.313z',
+                            symbolRotate: 35,
+                            symbolSize: 80,
+                            type: 'scatter',
+                        },
+                        {
+                            data: [
+                                {
+                                    name: '北京',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '天津',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '上海',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '重庆',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '河北',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '河南',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '云南',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '辽宁',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '黑龙江',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '湖南',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '安徽',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '山东',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '新疆',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '江苏',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '浙江',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '江西',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '湖北',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '广西',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '甘肃',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '山西',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '内蒙古',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '陕西',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '吉林',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '福建',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '贵州',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '广东',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '青海',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '西藏',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '四川',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '宁夏',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '海南',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '台湾',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '香港',
+                                    value: this.randomValue(),
+                                },
+                                {
+                                    name: '澳门',
+                                    value: this.randomValue(),
+                                },
+                            ],
+                            geoIndex: 0,
+                            name: '下单金额',
+                            type: 'map',
+                        },
+                    ],
+                },
                 sortHotColumns: [
                     {
                         key: 'num',
@@ -432,6 +647,21 @@
             };
         },
         methods: {
+            convertData() {
+                const data = [];
+                const res = [];
+                const geoCoordMap = {};
+                for (let i = 0; i < data.length; i += 1) {
+                    const geoCoord = geoCoordMap[data[i].name];
+                    if (geoCoord) {
+                        res.push({
+                            name: data[i].name,
+                            value: geoCoord.concat(data[i].value),
+                        });
+                    }
+                }
+                return res;
+            },
             exportData() {
                 this.$refs.shopList.exportCsv({
                     filename: '新增店铺数据',
@@ -446,6 +676,12 @@
                 this.$refs.salesList.exportCsv({
                     filename: '销售统计数据',
                 });
+            },
+            onMapReady(a, echarts) {
+                echarts.registerMap('china', mapData);
+            },
+            randomValue() {
+                return Math.round(Math.random() * 1000);
             },
         },
     };
@@ -511,7 +747,7 @@
                         <div class="analysis-content">
                             <tabs type="card">
                                 <tab-pane label="下单量">
-                                    <div class="order-money-content">
+                                    <div class="order-money-content ">
                                         <div class="select-content">
                                             <ul>
                                                 <li>
@@ -651,7 +887,7 @@
                                 并可以点击列表上方的"导出数据"，将列表数据导出为Excel文件</p>
                         </div>
                         <div class="analysis-content">
-                            <div class="order-money-content">
+                            <div class="order-money-content search-select-item">
                                 <div class="select-content">
                                     <ul>
                                         <li>
@@ -665,18 +901,19 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div style="height: 350px">
-
-                                </div>
-                                <i-button type="ghost" class="export-btn" @click="exportProvinceData">导出数据</i-button>
-                                <i-table :columns="provinceColumns"
-                                         :context="self"
-                                         :data="provinceData"
-                                         ref="provinceList">
-                                </i-table>
-                                <div class="page">
-                                    <page :total="100" show-elevator></page>
-                                </div>
+                            </div>
+                            <div class="echarts">
+                                <i-echarts @click="onClick" :option="shopNumberProvince" ref="echarts"
+                                           @ready="onMapReady"></i-echarts>
+                            </div>
+                            <i-button type="ghost" class="export-btn" @click="exportProvinceData">导出数据</i-button>
+                            <i-table :columns="provinceColumns"
+                                     :context="self"
+                                     :data="provinceData"
+                                     ref="provinceList">
+                            </i-table>
+                            <div class="page">
+                                <page :total="100" show-elevator></page>
                             </div>
                         </div>
                     </card>
