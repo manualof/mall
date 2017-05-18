@@ -580,10 +580,6 @@
                 return Math.round(Math.random() * 1000);
             },
         },
-        mounted() {
-            window.console.log(JSON.parse(mapData));
-            this.$refs.echarts.registerMap('china', JSON.parse(mapData));
-        },
     };
 </script>
 <template>
