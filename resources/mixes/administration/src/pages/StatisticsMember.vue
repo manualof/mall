@@ -1057,6 +1057,7 @@
                     },
                 ],
                 self: this,
+                style: 'height: 400px;',
                 timeList: [
                     {
                         label: '按照月统计',
@@ -1160,7 +1161,7 @@
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="newAddMember" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="newAddMember" :style="style" @ready="onReady" @click="onClick"></i-echarts>
                             </div>
 
                             <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
@@ -1202,7 +1203,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderMoney" :style="style" @ready="onReady" @click="onClick"></i-echarts>
                                     </div>
 
                                     <i-button type="ghost" class="export-btn"
@@ -1232,7 +1233,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderMoney" :style="style" @ready="onReady" @click="onClick"></i-echarts>
                                     </div>
 
                                     <i-button type="ghost" class="export-btn"
@@ -1262,7 +1263,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderMoney" :style="style" @ready="onReady" @click="onClick"></i-echarts>
                                     </div>
 
                                     <i-button type="ghost" class="export-btn"
@@ -1306,7 +1307,10 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts @click="onClick" :option="orderMoneyProvince" ref="echarts"
+                                        <i-echarts :option="orderMoneyProvince"
+                                                   ref="echarts"
+                                                   :style="style"
+                                                   @click="onClick"
                                                    @ready="onMapReady"></i-echarts>
                                     </div>
                                     <i-button type="ghost" class="export-btn"
@@ -1335,7 +1339,9 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts @click="onClick" :option="orderNumberProvince" ref="echarts"
+                                        <i-echarts :option="orderNumberProvince"
+                                                   ref="echarts"
+                                                   @click="onClick"
                                                    @ready="onMapReady"></i-echarts>
                                     </div>
                                     <i-button type="ghost" class="export-btn"
@@ -1364,7 +1370,9 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts @click="onClick" :option="orderCountProvince" ref="echarts"
+                                        <i-echarts :option="orderCountProvince"
+                                                   ref="echarts"
+                                                   @click="onClick"
                                                    @ready="onMapReady"></i-echarts>
                                     </div>
                                     <i-button type="ghost" class="export-btn"
