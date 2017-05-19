@@ -52,8 +52,8 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render() {
-                            return `<i-button class="editor-btn" @click.native="toEdit"
+                        render(row, column, index) {
+                            return `<i-button class="editor-btn" @click.native="toEdit(${index})"
                                     size="small"  type="ghost">编辑</i-button>`;
                         },
                         title: '操作',
@@ -223,7 +223,8 @@
                            <i-table class="shop-table"
                                     :context="self"
                                     :columns="merchantColumns"
-                                    :data="merchantData"></i-table>
+                                    :data="merchantData"
+                                    highlight-row></i-table>
                        </div>
                    </card>
                 </tab-pane>
