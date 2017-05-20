@@ -907,9 +907,9 @@
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts ref="echarts"
-                                           :option="shopNumberProvince"
+                                <i-echarts :option="shopNumberProvince"
                                            :style="style"
+                                           ref="echarts"
                                            @click="onClick"
                                            @ready="onMapReady"></i-echarts>
                             </div>
