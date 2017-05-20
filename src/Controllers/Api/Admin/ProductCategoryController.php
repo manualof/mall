@@ -4,22 +4,24 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-03 15:32
+ * @datetime 2017-04-25 16:39
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
-use Notadd\Mall\Handlers\Configuration\Message\CreateHandler;
-use Notadd\Mall\Handlers\Configuration\Message\EditHandler;
-use Notadd\Mall\Handlers\Configuration\Message\ListHandler;
-use Notadd\Mall\Handlers\Configuration\Message\RemoveHandler;
+use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Product\Category\CreateHandler;
+use Notadd\Mall\Handlers\Product\Category\EditHandler;
+use Notadd\Mall\Handlers\Product\Category\ListHandler;
+use Notadd\Mall\Handlers\Product\Category\RemoveHandler;
+use Notadd\Mall\Handlers\Product\Category\RestoreHandler;
 
 /**
- * Class ConfigurationMessageController.
+ * Class CategoryController.
  */
-class ConfigurationMessageController
+class ProductCategoryController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Message\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Product\Category\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -30,7 +32,7 @@ class ConfigurationMessageController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Message\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Product\Category\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -41,7 +43,7 @@ class ConfigurationMessageController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Message\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Product\Category\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -52,12 +54,23 @@ class ConfigurationMessageController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Message\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Product\Category\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
     public function remove(RemoveHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Product\Category\RestoreHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function restore(RestoreHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

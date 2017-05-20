@@ -4,20 +4,21 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-03 12:23
+ * @datetime 2017-05-08 17:39
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
-use Notadd\Mall\Handlers\Configuration\Image\GetHandler;
-use Notadd\Mall\Handlers\Configuration\Image\SetHandler;
+use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Configuration\Express\GetHandler;
+use Notadd\Mall\Handlers\Configuration\Express\SetHandler;
 
 /**
- * Class ConfigurationImageController.
+ * Class ConfigurationExpressController.
  */
-class ConfigurationImageController
+class ConfigurationExpressController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Image\GetHandler $handler
+     * @param \Notadd\Mall\Handlers\Configuration\Express\GetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -28,7 +29,7 @@ class ConfigurationImageController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Image\SetHandler $handler
+     * @param \Notadd\Mall\Handlers\Configuration\Express\SetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

@@ -4,24 +4,24 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-08 17:53
+ * @datetime 2017-05-03 16:13
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Order\Invoice\CreateHandler;
-use Notadd\Mall\Handlers\Order\Invoice\EditHandler;
-use Notadd\Mall\Handlers\Order\Invoice\InvoiceHandler;
-use Notadd\Mall\Handlers\Order\Invoice\ListHandler;
-use Notadd\Mall\Handlers\Order\Invoice\RemoveHandler;
+use Notadd\Mall\Handlers\Shop\CreateHandler;
+use Notadd\Mall\Handlers\Shop\EditHandler;
+use Notadd\Mall\Handlers\Shop\ListHandler;
+use Notadd\Mall\Handlers\Shop\RemoveHandler;
+use Notadd\Mall\Handlers\Shop\RestoreHandler;
 
 /**
- * Class OrderInvoiceController.
+ * Class StoreController.
  */
-class OrderInvoiceController extends Controller
+class ShopController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Order\Invoice\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -32,7 +32,7 @@ class OrderInvoiceController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Invoice\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -41,20 +41,9 @@ class OrderInvoiceController extends Controller
     {
         return $handler->toResponse()->generateHttpResponse();
     }
-
+    
     /**
-     * @param \Notadd\Mall\Handlers\Order\Invoice\InvoiceHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function invoice(InvoiceHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
-     * @param \Notadd\Mall\Handlers\Order\Invoice\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,12 +54,23 @@ class OrderInvoiceController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Invoice\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
     public function remove(RemoveHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Shop\RestoreHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function restore(RestoreHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

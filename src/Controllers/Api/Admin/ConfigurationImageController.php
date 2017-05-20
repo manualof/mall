@@ -4,21 +4,21 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-03 12:28
+ * @datetime 2017-05-03 12:23
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Configuration\Image\DefaultImage\GetHandler;
-use Notadd\Mall\Handlers\Configuration\Image\DefaultImage\SetHandler;
+use Notadd\Mall\Handlers\Configuration\Image\GetHandler;
+use Notadd\Mall\Handlers\Configuration\Image\SetHandler;
 
 /**
- * Class ConfigurationImageDefaultController.
+ * Class ConfigurationImageController.
  */
-class ConfigurationImageDefaultController extends Controller
+class ConfigurationImageController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Image\DefaultImage\GetHandler $handler
+     * @param \Notadd\Mall\Handlers\Configuration\Image\GetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -29,7 +29,7 @@ class ConfigurationImageDefaultController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Image\DefaultImage\SetHandler $handler
+     * @param \Notadd\Mall\Handlers\Configuration\Image\SetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

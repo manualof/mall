@@ -4,22 +4,24 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-08 15:34
+ * @datetime 2017-04-26 14:39
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
-use Notadd\Mall\Handlers\Order\Rate\CreateHandler;
-use Notadd\Mall\Handlers\Order\Rate\EditHandler;
-use Notadd\Mall\Handlers\Order\Rate\ListHandler;
-use Notadd\Mall\Handlers\Order\Rate\RateHandler;
+use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\VirtualOrder\CreateHandler;
+use Notadd\Mall\Handlers\VirtualOrder\EditHandler;
+use Notadd\Mall\Handlers\VirtualOrder\ListHandler;
+use Notadd\Mall\Handlers\VirtualOrder\RemoveHandler;
+use Notadd\Mall\Handlers\VirtualOrder\RestoreHandler;
 
 /**
- * Class OrderRateController.
+ * Class VirtualOrderController.
  */
-class OrderRateController
+class VirtualOrderController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Order\Rate\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\VirtualOrder\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -30,7 +32,7 @@ class OrderRateController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Rate\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\VirtualOrder\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -41,7 +43,7 @@ class OrderRateController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Rate\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\VirtualOrder\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -52,12 +54,23 @@ class OrderRateController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Rate\RateHandler $handler
+     * @param \Notadd\Mall\Handlers\VirtualOrder\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function rate(RateHandler $handler)
+    public function remove(RemoveHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\VirtualOrder\RestoreHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function restore(RestoreHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

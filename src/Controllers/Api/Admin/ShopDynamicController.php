@@ -4,23 +4,24 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-03 11:53
+ * @datetime 2017-05-09 12:16
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Configuration\Advertisement\CreateHandler;
-use Notadd\Mall\Handlers\Configuration\Advertisement\EditHandler;
-use Notadd\Mall\Handlers\Configuration\Advertisement\ListHandler;
-use Notadd\Mall\Handlers\Configuration\Advertisement\RemoveHandler;
+use Notadd\Mall\Handlers\Shop\Dynamic\CreateHandler;
+use Notadd\Mall\Handlers\Shop\Dynamic\DynamicHandler;
+use Notadd\Mall\Handlers\Shop\Dynamic\EditHandler;
+use Notadd\Mall\Handlers\Shop\Dynamic\ListHandler;
+use Notadd\Mall\Handlers\Shop\Dynamic\RemoveHandler;
 
 /**
- * Class ConfigurationAdvertisementController.
+ * Class ShopDynamicController.
  */
-class ConfigurationAdvertisementController extends Controller
+class ShopDynamicController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Advertisement\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\Dynamic\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -31,7 +32,18 @@ class ConfigurationAdvertisementController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Advertisement\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\Dynamic\DynamicHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function dynamic(DynamicHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Shop\Dynamic\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -42,7 +54,7 @@ class ConfigurationAdvertisementController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Advertisement\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\Dynamic\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -53,7 +65,7 @@ class ConfigurationAdvertisementController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Advertisement\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\Dynamic\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

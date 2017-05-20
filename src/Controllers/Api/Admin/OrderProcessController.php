@@ -4,36 +4,35 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 11:57
+ * @datetime 2017-05-08 15:07
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Shop\Category\CategoryHandler;
-use Notadd\Mall\Handlers\Shop\Category\CreateHandler;
-use Notadd\Mall\Handlers\Shop\Category\EditHandler;
-use Notadd\Mall\Handlers\Shop\Category\ListHandler;
-use Notadd\Mall\Handlers\Shop\Category\RemoveHandler;
-use Notadd\Mall\Handlers\Shop\Category\RestoreHandler;
+use Notadd\Mall\Handlers\Order\Process\ConfirmHandler;
+use Notadd\Mall\Handlers\Order\Process\CreateHandler;
+use Notadd\Mall\Handlers\Order\Process\FinishHandler;
+use Notadd\Mall\Handlers\Order\Process\PayHandler;
+use Notadd\Mall\Handlers\Order\Process\SendHandler;
 
 /**
- * Class ShopCategoryController.
+ * Class OrderProcessController.
  */
-class ShopCategoryController extends Controller
+class OrderProcessController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\CategoryHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\Process\ConfirmHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function category(CategoryHandler $handler)
+    public function confirm(ConfirmHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
-
+    
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\Process\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -44,45 +43,34 @@ class ShopCategoryController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\Process\FinishHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function edit(EditHandler $handler)
+    public function finish(FinishHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\Process\PayHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function list(ListHandler $handler)
+    public function pay(PayHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\Process\SendHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function remove(RemoveHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\RestoreHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function restore(RestoreHandler $handler)
+    public function send(SendHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

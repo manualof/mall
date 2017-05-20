@@ -4,24 +4,36 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-04-25 16:39
+ * @datetime 2017-05-09 11:57
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Product\Category\CreateHandler;
-use Notadd\Mall\Handlers\Product\Category\EditHandler;
-use Notadd\Mall\Handlers\Product\Category\ListHandler;
-use Notadd\Mall\Handlers\Product\Category\RemoveHandler;
-use Notadd\Mall\Handlers\Product\Category\RestoreHandler;
+use Notadd\Mall\Handlers\Shop\Category\CategoryHandler;
+use Notadd\Mall\Handlers\Shop\Category\CreateHandler;
+use Notadd\Mall\Handlers\Shop\Category\EditHandler;
+use Notadd\Mall\Handlers\Shop\Category\ListHandler;
+use Notadd\Mall\Handlers\Shop\Category\RemoveHandler;
+use Notadd\Mall\Handlers\Shop\Category\RestoreHandler;
 
 /**
- * Class CategoryController.
+ * Class ShopCategoryController.
  */
-class ProductCategoryController extends Controller
+class ShopCategoryController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Product\Category\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\Category\CategoryHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function category(CategoryHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Shop\Category\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -32,7 +44,7 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Product\Category\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\Category\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -43,7 +55,7 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Product\Category\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\Category\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -54,7 +66,7 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Product\Category\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\Category\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,7 +77,7 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Product\Category\RestoreHandler $handler
+     * @param \Notadd\Mall\Handlers\Shop\Category\RestoreHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

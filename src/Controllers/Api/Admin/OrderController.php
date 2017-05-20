@@ -4,24 +4,24 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-04-26 14:32
+ * @datetime 2017-04-25 16:40
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\VirtualProduct\CreateHandler;
-use Notadd\Mall\Handlers\VirtualProduct\EditHandler;
-use Notadd\Mall\Handlers\VirtualProduct\ListHandler;
-use Notadd\Mall\Handlers\VirtualProduct\RemoveHandler;
-use Notadd\Mall\Handlers\VirtualProduct\RestoreHandler;
+use Notadd\Mall\Handlers\Order\CreateHandler;
+use Notadd\Mall\Handlers\Order\EditHandler;
+use Notadd\Mall\Handlers\Order\ListHandler;
+use Notadd\Mall\Handlers\Order\RemoveHandler;
+use Notadd\Mall\Handlers\Order\RestoreHandler;
 
 /**
- * Class VirtualProductController.
+ * Class OrderController.
  */
-class VirtualProductController extends Controller
+class OrderController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\VirtualProduct\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -32,7 +32,7 @@ class VirtualProductController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\VirtualProduct\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -43,7 +43,7 @@ class VirtualProductController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\VirtualProduct\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -54,7 +54,7 @@ class VirtualProductController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\VirtualProduct\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,7 +65,7 @@ class VirtualProductController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\VirtualProduct\RestoreHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\RestoreHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

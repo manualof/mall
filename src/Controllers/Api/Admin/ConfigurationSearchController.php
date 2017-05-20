@@ -4,21 +4,21 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-03 16:07
+ * @datetime 2017-04-24 14:05
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Configuration\Pay\GetHandler;
-use Notadd\Mall\Handlers\Configuration\Pay\SetHandler;
+use Notadd\Mall\Handlers\Configuration\Search\GetHandler;
+use Notadd\Mall\Handlers\Configuration\Search\SetHandler;
 
 /**
- * Class ConfigurationPayController.
+ * Class SearchController.
  */
-class ConfigurationPayController extends Controller
+class ConfigurationSearchController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Pay\GetHandler $handler
+     * @param \Notadd\Mall\Handlers\Configuration\Search\GetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -29,7 +29,7 @@ class ConfigurationPayController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Pay\SetHandler $handler
+     * @param \Notadd\Mall\Handlers\Configuration\Search\SetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

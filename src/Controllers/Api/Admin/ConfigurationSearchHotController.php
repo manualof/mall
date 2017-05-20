@@ -4,57 +4,45 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-08 15:23
+ * @datetime 2017-05-03 11:41
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Order\Refund\AskHandler;
-use Notadd\Mall\Handlers\Order\Refund\ConfirmHandler;
-use Notadd\Mall\Handlers\Order\Refund\FinishHandler;
-use Notadd\Mall\Handlers\Order\Refund\ListHandler;
-use Notadd\Mall\Handlers\Order\Refund\SendHandler;
+use Notadd\Mall\Handlers\Configuration\Search\Hot\CreateHandler;
+use Notadd\Mall\Handlers\Configuration\Search\Hot\EditHandler;
+use Notadd\Mall\Handlers\Configuration\Search\Hot\ListHandler;
+use Notadd\Mall\Handlers\Configuration\Search\Hot\RemoveHandler;
 
 /**
- * Class OrderRefundController.
+ * Class ConfigurationSearchHotController.
  */
-class OrderRefundController extends Controller
+class ConfigurationSearchHotController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Order\Refund\AskHandler $handler
+     * @param \Notadd\Mall\Handlers\Configuration\Search\Hot\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function ask(AskHandler $handler)
+    public function create(CreateHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Refund\ConfirmHandler $handler
+     * @param \Notadd\Mall\Handlers\Configuration\Search\Hot\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function confirm(ConfirmHandler $handler)
+    public function edit(EditHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Refund\FinishHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function finish(FinishHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
-     * @param \Notadd\Mall\Handlers\Order\Refund\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Configuration\Search\Hot\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,12 +53,12 @@ class OrderRefundController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Refund\SendHandler $handler
+     * @param \Notadd\Mall\Handlers\Configuration\Search\Hot\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function send(SendHandler $handler)
+    public function remove(RemoveHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

@@ -4,57 +4,57 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 12:16
+ * @datetime 2017-05-08 17:03
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Shop\Dynamic\CreateHandler;
-use Notadd\Mall\Handlers\Shop\Dynamic\DynamicHandler;
-use Notadd\Mall\Handlers\Shop\Dynamic\EditHandler;
-use Notadd\Mall\Handlers\Shop\Dynamic\ListHandler;
-use Notadd\Mall\Handlers\Shop\Dynamic\RemoveHandler;
+use Notadd\Mall\Handlers\Order\Exchange\AskHandler;
+use Notadd\Mall\Handlers\Order\Exchange\ConfirmHandler;
+use Notadd\Mall\Handlers\Order\Exchange\FinishHandler;
+use Notadd\Mall\Handlers\Order\Exchange\ListHandler;
+use Notadd\Mall\Handlers\Order\Exchange\SendHandler;
 
 /**
- * Class ShopDynamicController.
+ * Class OrderExchangeController.
  */
-class ShopDynamicController extends Controller
+class OrderExchangeController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Dynamic\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\Exchange\AskHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function create(CreateHandler $handler)
+    public function ask(AskHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Dynamic\DynamicHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\Exchange\ConfirmHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function dynamic(DynamicHandler $handler)
+    public function confirm(ConfirmHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Dynamic\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\Exchange\FinishHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function edit(EditHandler $handler)
+    public function finish(FinishHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Dynamic\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\Exchange\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,12 +65,12 @@ class ShopDynamicController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Dynamic\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Order\Exchange\SendHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function remove(RemoveHandler $handler)
+    public function send(SendHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

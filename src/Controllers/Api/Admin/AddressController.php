@@ -4,49 +4,49 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-08 16:48
+ * @datetime 2017-04-25 16:39
  */
-namespace Notadd\Mall\Controllers\Api;
+namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Order\Express\ListHandler;
-use Notadd\Mall\Handlers\Order\Express\TraceHandler;
-use Notadd\Mall\Handlers\Order\Express\TypingHandler;
+use Notadd\Mall\Handlers\Address\AddressHandler;
+use Notadd\Mall\Handlers\Address\EditHandler;
+use Notadd\Mall\Handlers\Address\ListHandler;
 
 /**
- * Class OrderExpressController.
+ * Class AddressController.
  */
-class OrderExpressController extends Controller
+class AddressController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Order\Express\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Address\AddressHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function address(AddressHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Address\EditHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function edit(EditHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Address\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
     public function list(ListHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
-     * @param \Notadd\Mall\Handlers\Order\Express\TraceHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function trace(TraceHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
-     * @param \Notadd\Mall\Handlers\Order\Express\TypingHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function typing(TypingHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
