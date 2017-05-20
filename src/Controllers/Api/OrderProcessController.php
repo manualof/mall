@@ -24,6 +24,7 @@ class OrderProcessController extends Controller
      * @param \Notadd\Mall\Handlers\Order\Process\ConfirmHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function confirm(ConfirmHandler $handler)
     {
@@ -34,6 +35,7 @@ class OrderProcessController extends Controller
      * @param \Notadd\Mall\Handlers\Order\Process\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function create(CreateHandler $handler)
     {
@@ -44,6 +46,7 @@ class OrderProcessController extends Controller
      * @param \Notadd\Mall\Handlers\Order\Process\FinishHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function finish(FinishHandler $handler)
     {
@@ -54,6 +57,7 @@ class OrderProcessController extends Controller
      * @param \Notadd\Mall\Handlers\Order\Process\PayHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function pay(PayHandler $handler)
     {
@@ -64,6 +68,7 @@ class OrderProcessController extends Controller
      * @param \Notadd\Mall\Handlers\Order\Process\SendHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function send(SendHandler $handler)
     {

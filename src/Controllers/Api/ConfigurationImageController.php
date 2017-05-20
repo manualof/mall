@@ -20,6 +20,7 @@ class ConfigurationImageController
      * @param \Notadd\Mall\Handlers\Configuration\Image\GetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function get(GetHandler $handler)
     {
@@ -30,6 +31,7 @@ class ConfigurationImageController
      * @param \Notadd\Mall\Handlers\Configuration\Image\SetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function set(SetHandler $handler)
     {

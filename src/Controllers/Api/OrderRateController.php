@@ -22,6 +22,7 @@ class OrderRateController
      * @param \Notadd\Mall\Handlers\Order\Rate\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function create(CreateHandler $handler)
     {
@@ -32,6 +33,7 @@ class OrderRateController
      * @param \Notadd\Mall\Handlers\Order\Rate\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function edit(EditHandler $handler)
     {
@@ -42,6 +44,7 @@ class OrderRateController
      * @param \Notadd\Mall\Handlers\Order\Rate\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function list(ListHandler $handler)
     {
@@ -52,6 +55,7 @@ class OrderRateController
      * @param \Notadd\Mall\Handlers\Order\Rate\RateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function rate(RateHandler $handler)
     {

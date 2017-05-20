@@ -24,6 +24,7 @@ class VirtualProductController extends Controller
      * @param \Notadd\Mall\Handlers\VirtualProduct\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function create(CreateHandler $handler)
     {
@@ -34,6 +35,7 @@ class VirtualProductController extends Controller
      * @param \Notadd\Mall\Handlers\VirtualProduct\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function edit(EditHandler $handler)
     {
@@ -44,6 +46,7 @@ class VirtualProductController extends Controller
      * @param \Notadd\Mall\Handlers\VirtualProduct\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function list(ListHandler $handler)
     {
@@ -54,6 +57,7 @@ class VirtualProductController extends Controller
      * @param \Notadd\Mall\Handlers\VirtualProduct\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function remove(RemoveHandler $handler)
     {
@@ -64,6 +68,7 @@ class VirtualProductController extends Controller
      * @param \Notadd\Mall\Handlers\VirtualProduct\RestoreHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function restore(RestoreHandler $handler)
     {

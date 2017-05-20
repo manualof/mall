@@ -25,6 +25,7 @@ class ShopCategoryController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Category\CategoryHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function category(CategoryHandler $handler)
     {
@@ -35,6 +36,7 @@ class ShopCategoryController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Category\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function create(CreateHandler $handler)
     {
@@ -45,6 +47,7 @@ class ShopCategoryController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Category\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function edit(EditHandler $handler)
     {
@@ -55,6 +58,7 @@ class ShopCategoryController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Category\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function list(ListHandler $handler)
     {
@@ -65,6 +69,7 @@ class ShopCategoryController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Category\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function remove(RemoveHandler $handler)
     {
@@ -75,6 +80,7 @@ class ShopCategoryController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Category\RestoreHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function restore(RestoreHandler $handler)
     {

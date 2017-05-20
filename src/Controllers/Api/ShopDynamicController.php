@@ -24,6 +24,7 @@ class ShopDynamicController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Dynamic\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function create(CreateHandler $handler)
     {
@@ -34,6 +35,7 @@ class ShopDynamicController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Dynamic\DynamicHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function dynamic(DynamicHandler $handler)
     {
@@ -44,6 +46,7 @@ class ShopDynamicController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Dynamic\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function edit(EditHandler $handler)
     {
@@ -54,6 +57,7 @@ class ShopDynamicController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Dynamic\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function list(ListHandler $handler)
     {
@@ -64,6 +68,7 @@ class ShopDynamicController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Dynamic\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function remove(RemoveHandler $handler)
     {

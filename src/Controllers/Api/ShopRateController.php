@@ -23,6 +23,7 @@ class ShopRateController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Rate\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function create(CreateHandler $handler)
     {
@@ -33,6 +34,7 @@ class ShopRateController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Rate\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function edit(EditHandler $handler)
     {
@@ -43,6 +45,7 @@ class ShopRateController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Rate\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function list(ListHandler $handler)
     {
@@ -53,6 +56,7 @@ class ShopRateController extends Controller
      * @param \Notadd\Mall\Handlers\Shop\Rate\RateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function rate(RateHandler $handler)
     {

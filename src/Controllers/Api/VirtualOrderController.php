@@ -23,6 +23,7 @@ class VirtualOrderController
      * @param \Notadd\Mall\Handlers\VirtualOrder\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function create(CreateHandler $handler)
     {
@@ -33,6 +34,7 @@ class VirtualOrderController
      * @param \Notadd\Mall\Handlers\VirtualOrder\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function edit(EditHandler $handler)
     {
@@ -43,6 +45,7 @@ class VirtualOrderController
      * @param \Notadd\Mall\Handlers\VirtualOrder\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function list(ListHandler $handler)
     {
@@ -53,6 +56,7 @@ class VirtualOrderController
      * @param \Notadd\Mall\Handlers\VirtualOrder\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function remove(RemoveHandler $handler)
     {
@@ -63,6 +67,7 @@ class VirtualOrderController
      * @param \Notadd\Mall\Handlers\VirtualOrder\RestoreHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function restore(RestoreHandler $handler)
     {

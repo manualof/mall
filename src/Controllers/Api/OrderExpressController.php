@@ -22,6 +22,7 @@ class OrderExpressController extends Controller
      * @param \Notadd\Mall\Handlers\Order\Express\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function list(ListHandler $handler)
     {
@@ -32,6 +33,7 @@ class OrderExpressController extends Controller
      * @param \Notadd\Mall\Handlers\Order\Express\TraceHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function trace(TraceHandler $handler)
     {
@@ -42,6 +44,7 @@ class OrderExpressController extends Controller
      * @param \Notadd\Mall\Handlers\Order\Express\TypingHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
      */
     public function typing(TypingHandler $handler)
     {
