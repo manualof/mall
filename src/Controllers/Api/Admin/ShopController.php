@@ -10,10 +10,10 @@ namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Shop\CreateHandler;
-use Notadd\Mall\Handlers\Shop\EditHandler;
-use Notadd\Mall\Handlers\Shop\ListHandler;
-use Notadd\Mall\Handlers\Shop\RemoveHandler;
-use Notadd\Mall\Handlers\Shop\RestoreHandler;
+use Notadd\Mall\Handlers\Admin\Shop\EditHandler;
+use Notadd\Mall\Handlers\Admin\Shop\ListHandler;
+use Notadd\Mall\Handlers\Admin\Shop\RemoveHandler;
+use Notadd\Mall\Handlers\Admin\Shop\RestoreHandler;
 
 /**
  * Class StoreController.
@@ -32,7 +32,7 @@ class ShopController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -43,7 +43,7 @@ class ShopController extends Controller
     }
     
     /**
-     * @param \Notadd\Mall\Handlers\Shop\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -54,7 +54,7 @@ class ShopController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,7 +65,7 @@ class ShopController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\RestoreHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\RestoreHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

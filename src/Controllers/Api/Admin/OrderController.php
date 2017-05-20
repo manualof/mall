@@ -9,11 +9,11 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Order\CreateHandler;
-use Notadd\Mall\Handlers\Order\EditHandler;
-use Notadd\Mall\Handlers\Order\ListHandler;
-use Notadd\Mall\Handlers\Order\RemoveHandler;
-use Notadd\Mall\Handlers\Order\RestoreHandler;
+use Notadd\Mall\Handlers\Admin\Order\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Order\EditHandler;
+use Notadd\Mall\Handlers\Admin\Order\ListHandler;
+use Notadd\Mall\Handlers\Admin\Order\RemoveHandler;
+use Notadd\Mall\Handlers\Admin\Order\RestoreHandler;
 
 /**
  * Class OrderController.
@@ -21,7 +21,7 @@ use Notadd\Mall\Handlers\Order\RestoreHandler;
 class OrderController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Order\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -32,7 +32,7 @@ class OrderController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -43,7 +43,7 @@ class OrderController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -54,7 +54,7 @@ class OrderController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,7 +65,7 @@ class OrderController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\RestoreHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\RestoreHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

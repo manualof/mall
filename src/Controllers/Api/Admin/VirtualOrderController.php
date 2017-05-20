@@ -9,11 +9,11 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\VirtualOrder\CreateHandler;
-use Notadd\Mall\Handlers\VirtualOrder\EditHandler;
-use Notadd\Mall\Handlers\VirtualOrder\ListHandler;
-use Notadd\Mall\Handlers\VirtualOrder\RemoveHandler;
-use Notadd\Mall\Handlers\VirtualOrder\RestoreHandler;
+use Notadd\Mall\Handlers\Admin\VirtualOrder\CreateHandler;
+use Notadd\Mall\Handlers\Admin\VirtualOrder\EditHandler;
+use Notadd\Mall\Handlers\Admin\VirtualOrder\ListHandler;
+use Notadd\Mall\Handlers\Admin\VirtualOrder\RemoveHandler;
+use Notadd\Mall\Handlers\Admin\VirtualOrder\RestoreHandler;
 
 /**
  * Class VirtualOrderController.
@@ -21,7 +21,7 @@ use Notadd\Mall\Handlers\VirtualOrder\RestoreHandler;
 class VirtualOrderController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\VirtualOrder\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\VirtualOrder\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -32,7 +32,7 @@ class VirtualOrderController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\VirtualOrder\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\VirtualOrder\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -43,7 +43,7 @@ class VirtualOrderController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\VirtualOrder\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\VirtualOrder\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -54,7 +54,7 @@ class VirtualOrderController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\VirtualOrder\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\VirtualOrder\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,7 +65,7 @@ class VirtualOrderController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\VirtualOrder\RestoreHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\VirtualOrder\RestoreHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

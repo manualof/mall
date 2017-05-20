@@ -9,11 +9,11 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Order\Process\ConfirmHandler;
-use Notadd\Mall\Handlers\Order\Process\CreateHandler;
-use Notadd\Mall\Handlers\Order\Process\FinishHandler;
-use Notadd\Mall\Handlers\Order\Process\PayHandler;
-use Notadd\Mall\Handlers\Order\Process\SendHandler;
+use Notadd\Mall\Handlers\Admin\Order\Process\ConfirmHandler;
+use Notadd\Mall\Handlers\Admin\Order\Process\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Order\Process\FinishHandler;
+use Notadd\Mall\Handlers\Admin\Order\Process\PayHandler;
+use Notadd\Mall\Handlers\Admin\Order\Process\SendHandler;
 
 /**
  * Class OrderProcessController.
@@ -21,7 +21,7 @@ use Notadd\Mall\Handlers\Order\Process\SendHandler;
 class OrderProcessController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Order\Process\ConfirmHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Process\ConfirmHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -32,7 +32,7 @@ class OrderProcessController extends Controller
     }
     
     /**
-     * @param \Notadd\Mall\Handlers\Order\Process\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Process\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -43,7 +43,7 @@ class OrderProcessController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Process\FinishHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Process\FinishHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -54,7 +54,7 @@ class OrderProcessController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Process\PayHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Process\PayHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,7 +65,7 @@ class OrderProcessController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Process\SendHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Process\SendHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

@@ -9,10 +9,10 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Configuration\Search\Hot\CreateHandler;
-use Notadd\Mall\Handlers\Configuration\Search\Hot\EditHandler;
-use Notadd\Mall\Handlers\Configuration\Search\Hot\ListHandler;
-use Notadd\Mall\Handlers\Configuration\Search\Hot\RemoveHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Search\Hot\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Search\Hot\EditHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Search\Hot\ListHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Search\Hot\RemoveHandler;
 
 /**
  * Class ConfigurationSearchHotController.
@@ -20,7 +20,7 @@ use Notadd\Mall\Handlers\Configuration\Search\Hot\RemoveHandler;
 class ConfigurationSearchHotController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Search\Hot\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Search\Hot\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -31,7 +31,7 @@ class ConfigurationSearchHotController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Search\Hot\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Search\Hot\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -42,7 +42,7 @@ class ConfigurationSearchHotController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Search\Hot\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Search\Hot\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -53,7 +53,7 @@ class ConfigurationSearchHotController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Search\Hot\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Search\Hot\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

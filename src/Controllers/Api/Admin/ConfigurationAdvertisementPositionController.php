@@ -9,10 +9,10 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Configuration\Advertisement\Position\CreateHandler;
-use Notadd\Mall\Handlers\Configuration\Advertisement\Position\EditHandler;
-use Notadd\Mall\Handlers\Configuration\Advertisement\Position\ListHandler;
-use Notadd\Mall\Handlers\Configuration\Advertisement\Position\RemoveHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Advertisement\Position\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Advertisement\Position\EditHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Advertisement\Position\ListHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Advertisement\Position\RemoveHandler;
 
 /**
  * Class ConfigurationAdvertisementPositionController.
@@ -20,7 +20,7 @@ use Notadd\Mall\Handlers\Configuration\Advertisement\Position\RemoveHandler;
 class ConfigurationAdvertisementPositionController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Advertisement\Position\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Advertisement\Position\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -31,7 +31,7 @@ class ConfigurationAdvertisementPositionController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Advertisement\Position\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Advertisement\Position\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -42,7 +42,7 @@ class ConfigurationAdvertisementPositionController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Advertisement\Position\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Advertisement\Position\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -53,7 +53,7 @@ class ConfigurationAdvertisementPositionController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Advertisement\Position\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Advertisement\Position\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

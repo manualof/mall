@@ -9,8 +9,8 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Configuration\Express\GetHandler;
-use Notadd\Mall\Handlers\Configuration\Express\SetHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Express\GetHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Express\SetHandler;
 
 /**
  * Class ConfigurationExpressController.
@@ -18,7 +18,7 @@ use Notadd\Mall\Handlers\Configuration\Express\SetHandler;
 class ConfigurationExpressController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Express\GetHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Express\GetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -29,7 +29,7 @@ class ConfigurationExpressController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Express\SetHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Express\SetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

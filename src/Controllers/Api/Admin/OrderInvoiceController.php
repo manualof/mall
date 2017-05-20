@@ -9,11 +9,11 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Order\Invoice\CreateHandler;
-use Notadd\Mall\Handlers\Order\Invoice\EditHandler;
-use Notadd\Mall\Handlers\Order\Invoice\InvoiceHandler;
-use Notadd\Mall\Handlers\Order\Invoice\ListHandler;
-use Notadd\Mall\Handlers\Order\Invoice\RemoveHandler;
+use Notadd\Mall\Handlers\Admin\Order\Invoice\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Order\Invoice\EditHandler;
+use Notadd\Mall\Handlers\Admin\Order\Invoice\InvoiceHandler;
+use Notadd\Mall\Handlers\Admin\Order\Invoice\ListHandler;
+use Notadd\Mall\Handlers\Admin\Order\Invoice\RemoveHandler;
 
 /**
  * Class OrderInvoiceController.
@@ -21,7 +21,7 @@ use Notadd\Mall\Handlers\Order\Invoice\RemoveHandler;
 class OrderInvoiceController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Order\Invoice\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Invoice\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -32,7 +32,7 @@ class OrderInvoiceController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Invoice\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Invoice\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -43,7 +43,7 @@ class OrderInvoiceController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Invoice\InvoiceHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Invoice\InvoiceHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -54,7 +54,7 @@ class OrderInvoiceController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Invoice\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Invoice\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,7 +65,7 @@ class OrderInvoiceController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Invoice\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Invoice\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

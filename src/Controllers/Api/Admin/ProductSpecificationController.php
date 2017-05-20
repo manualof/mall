@@ -9,10 +9,10 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Product\Specification\CreateHandler;
-use Notadd\Mall\Handlers\Product\Specification\EditHandler;
-use Notadd\Mall\Handlers\Product\Specification\ListHandler;
-use Notadd\Mall\Handlers\Product\Specification\RemoveHandler;
+use Notadd\Mall\Handlers\Admin\Product\Specification\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Product\Specification\EditHandler;
+use Notadd\Mall\Handlers\Admin\Product\Specification\ListHandler;
+use Notadd\Mall\Handlers\Admin\Product\Specification\RemoveHandler;
 
 /**
  * Class SpecificationController.
@@ -20,7 +20,7 @@ use Notadd\Mall\Handlers\Product\Specification\RemoveHandler;
 class ProductSpecificationController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Product\Specification\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Product\Specification\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -31,7 +31,7 @@ class ProductSpecificationController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Product\Specification\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Product\Specification\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -42,7 +42,7 @@ class ProductSpecificationController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Product\Specification\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Product\Specification\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -53,7 +53,7 @@ class ProductSpecificationController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Product\Specification\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Product\Specification\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

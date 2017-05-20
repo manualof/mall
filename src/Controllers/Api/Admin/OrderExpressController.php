@@ -9,9 +9,9 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Order\Express\ListHandler;
-use Notadd\Mall\Handlers\Order\Express\TraceHandler;
-use Notadd\Mall\Handlers\Order\Express\TypingHandler;
+use Notadd\Mall\Handlers\Admin\Order\Express\ListHandler;
+use Notadd\Mall\Handlers\Admin\Order\Express\TraceHandler;
+use Notadd\Mall\Handlers\Admin\Order\Express\TypingHandler;
 
 /**
  * Class OrderExpressController.
@@ -19,7 +19,7 @@ use Notadd\Mall\Handlers\Order\Express\TypingHandler;
 class OrderExpressController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Order\Express\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Express\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -30,7 +30,7 @@ class OrderExpressController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Express\TraceHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Express\TraceHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -41,7 +41,7 @@ class OrderExpressController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Express\TypingHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Express\TypingHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

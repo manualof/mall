@@ -9,10 +9,10 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Configuration\Message\CreateHandler;
-use Notadd\Mall\Handlers\Configuration\Message\EditHandler;
-use Notadd\Mall\Handlers\Configuration\Message\ListHandler;
-use Notadd\Mall\Handlers\Configuration\Message\RemoveHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Message\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Message\EditHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Message\ListHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Message\RemoveHandler;
 
 /**
  * Class ConfigurationMessageController.
@@ -20,7 +20,7 @@ use Notadd\Mall\Handlers\Configuration\Message\RemoveHandler;
 class ConfigurationMessageController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Message\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Message\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -31,7 +31,7 @@ class ConfigurationMessageController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Message\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Message\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -42,7 +42,7 @@ class ConfigurationMessageController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Message\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Message\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -53,7 +53,7 @@ class ConfigurationMessageController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Message\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Message\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

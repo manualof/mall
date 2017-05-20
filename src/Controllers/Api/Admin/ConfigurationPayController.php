@@ -9,8 +9,8 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Configuration\Pay\GetHandler;
-use Notadd\Mall\Handlers\Configuration\Pay\SetHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Pay\GetHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Pay\SetHandler;
 
 /**
  * Class ConfigurationPayController.
@@ -18,7 +18,7 @@ use Notadd\Mall\Handlers\Configuration\Pay\SetHandler;
 class ConfigurationPayController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Pay\GetHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Pay\GetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -29,7 +29,7 @@ class ConfigurationPayController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Pay\SetHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Pay\SetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

@@ -9,11 +9,11 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Product\CreateHandler;
-use Notadd\Mall\Handlers\Product\EditHandler;
-use Notadd\Mall\Handlers\Product\ListHandler;
-use Notadd\Mall\Handlers\Product\RemoveHandler;
-use Notadd\Mall\Handlers\Product\RestoreHandler;
+use Notadd\Mall\Handlers\Admin\Product\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Product\EditHandler;
+use Notadd\Mall\Handlers\Admin\Product\ListHandler;
+use Notadd\Mall\Handlers\Admin\Product\RemoveHandler;
+use Notadd\Mall\Handlers\Admin\Product\RestoreHandler;
 
 /**
  * Class ProductController.
@@ -21,7 +21,7 @@ use Notadd\Mall\Handlers\Product\RestoreHandler;
 class ProductController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Product\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Product\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -32,7 +32,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Product\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Product\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -43,7 +43,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Product\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Product\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -54,7 +54,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Product\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Product\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,7 +65,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Product\RestoreHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Product\RestoreHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

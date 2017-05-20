@@ -9,11 +9,11 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Order\Exchange\AskHandler;
-use Notadd\Mall\Handlers\Order\Exchange\ConfirmHandler;
-use Notadd\Mall\Handlers\Order\Exchange\FinishHandler;
-use Notadd\Mall\Handlers\Order\Exchange\ListHandler;
-use Notadd\Mall\Handlers\Order\Exchange\SendHandler;
+use Notadd\Mall\Handlers\Admin\Order\Exchange\AskHandler;
+use Notadd\Mall\Handlers\Admin\Order\Exchange\ConfirmHandler;
+use Notadd\Mall\Handlers\Admin\Order\Exchange\FinishHandler;
+use Notadd\Mall\Handlers\Admin\Order\Exchange\ListHandler;
+use Notadd\Mall\Handlers\Admin\Order\Exchange\SendHandler;
 
 /**
  * Class OrderExchangeController.
@@ -21,7 +21,7 @@ use Notadd\Mall\Handlers\Order\Exchange\SendHandler;
 class OrderExchangeController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Order\Exchange\AskHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Exchange\AskHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -32,7 +32,7 @@ class OrderExchangeController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Exchange\ConfirmHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Exchange\ConfirmHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -43,7 +43,7 @@ class OrderExchangeController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Exchange\FinishHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Exchange\FinishHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -54,7 +54,7 @@ class OrderExchangeController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Exchange\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Exchange\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,7 +65,7 @@ class OrderExchangeController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Exchange\SendHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Exchange\SendHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

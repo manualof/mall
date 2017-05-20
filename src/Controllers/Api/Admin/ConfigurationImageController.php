@@ -9,8 +9,8 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Configuration\Image\GetHandler;
-use Notadd\Mall\Handlers\Configuration\Image\SetHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Image\GetHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Image\SetHandler;
 
 /**
  * Class ConfigurationImageController.
@@ -18,7 +18,7 @@ use Notadd\Mall\Handlers\Configuration\Image\SetHandler;
 class ConfigurationImageController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Image\GetHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Image\GetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -29,7 +29,7 @@ class ConfigurationImageController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Image\SetHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Image\SetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

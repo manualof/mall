@@ -9,8 +9,8 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Configuration\Search\GetHandler;
-use Notadd\Mall\Handlers\Configuration\Search\SetHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Search\GetHandler;
+use Notadd\Mall\Handlers\Admin\Configuration\Search\SetHandler;
 
 /**
  * Class SearchController.
@@ -18,7 +18,7 @@ use Notadd\Mall\Handlers\Configuration\Search\SetHandler;
 class ConfigurationSearchController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Search\GetHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Search\GetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -29,7 +29,7 @@ class ConfigurationSearchController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Configuration\Search\SetHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Configuration\Search\SetHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

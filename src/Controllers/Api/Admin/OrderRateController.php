@@ -8,10 +8,10 @@
  */
 namespace Notadd\Mall\Controllers\Api\Admin;
 
-use Notadd\Mall\Handlers\Order\Rate\CreateHandler;
-use Notadd\Mall\Handlers\Order\Rate\EditHandler;
-use Notadd\Mall\Handlers\Order\Rate\ListHandler;
-use Notadd\Mall\Handlers\Order\Rate\RateHandler;
+use Notadd\Mall\Handlers\Admin\Order\Rate\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Order\Rate\EditHandler;
+use Notadd\Mall\Handlers\Admin\Order\Rate\ListHandler;
+use Notadd\Mall\Handlers\Admin\Order\Rate\RateHandler;
 
 /**
  * Class OrderRateController.
@@ -19,7 +19,7 @@ use Notadd\Mall\Handlers\Order\Rate\RateHandler;
 class OrderRateController
 {
     /**
-     * @param \Notadd\Mall\Handlers\Order\Rate\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Rate\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -30,7 +30,7 @@ class OrderRateController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Rate\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Rate\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -41,7 +41,7 @@ class OrderRateController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Rate\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Rate\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -52,7 +52,7 @@ class OrderRateController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Order\Rate\RateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Order\Rate\RateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

@@ -9,9 +9,9 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Address\AddressHandler;
-use Notadd\Mall\Handlers\Address\EditHandler;
-use Notadd\Mall\Handlers\Address\ListHandler;
+use Notadd\Mall\Handlers\Admin\Address\AddressHandler;
+use Notadd\Mall\Handlers\Admin\Address\EditHandler;
+use Notadd\Mall\Handlers\Admin\Address\ListHandler;
 
 /**
  * Class AddressController.
@@ -19,7 +19,7 @@ use Notadd\Mall\Handlers\Address\ListHandler;
 class AddressController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Address\AddressHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Address\AddressHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -30,7 +30,7 @@ class AddressController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Address\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Address\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -41,7 +41,7 @@ class AddressController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Address\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Address\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

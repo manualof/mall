@@ -9,10 +9,10 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Shop\Rate\CreateHandler;
-use Notadd\Mall\Handlers\Shop\Rate\EditHandler;
-use Notadd\Mall\Handlers\Shop\Rate\ListHandler;
-use Notadd\Mall\Handlers\Shop\Rate\RateHandler;
+use Notadd\Mall\Handlers\Admin\Shop\Rate\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Shop\Rate\EditHandler;
+use Notadd\Mall\Handlers\Admin\Shop\Rate\ListHandler;
+use Notadd\Mall\Handlers\Admin\Shop\Rate\RateHandler;
 
 /**
  * Class ShopRateController.
@@ -20,7 +20,7 @@ use Notadd\Mall\Handlers\Shop\Rate\RateHandler;
 class ShopRateController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Rate\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\Rate\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -31,7 +31,7 @@ class ShopRateController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Rate\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\Rate\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -42,7 +42,7 @@ class ShopRateController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Rate\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\Rate\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -53,7 +53,7 @@ class ShopRateController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Rate\RateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\Rate\RateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

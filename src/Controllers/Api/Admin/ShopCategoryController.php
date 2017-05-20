@@ -9,12 +9,12 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Shop\Category\CategoryHandler;
-use Notadd\Mall\Handlers\Shop\Category\CreateHandler;
-use Notadd\Mall\Handlers\Shop\Category\EditHandler;
-use Notadd\Mall\Handlers\Shop\Category\ListHandler;
-use Notadd\Mall\Handlers\Shop\Category\RemoveHandler;
-use Notadd\Mall\Handlers\Shop\Category\RestoreHandler;
+use Notadd\Mall\Handlers\Admin\Shop\Category\CategoryHandler;
+use Notadd\Mall\Handlers\Admin\Shop\Category\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Shop\Category\EditHandler;
+use Notadd\Mall\Handlers\Admin\Shop\Category\ListHandler;
+use Notadd\Mall\Handlers\Admin\Shop\Category\RemoveHandler;
+use Notadd\Mall\Handlers\Admin\Shop\Category\RestoreHandler;
 
 /**
  * Class ShopCategoryController.
@@ -22,7 +22,7 @@ use Notadd\Mall\Handlers\Shop\Category\RestoreHandler;
 class ShopCategoryController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\CategoryHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\Category\CategoryHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -33,7 +33,7 @@ class ShopCategoryController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\Category\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -44,7 +44,7 @@ class ShopCategoryController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\Category\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -55,7 +55,7 @@ class ShopCategoryController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\Category\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -66,7 +66,7 @@ class ShopCategoryController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\Category\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -77,7 +77,7 @@ class ShopCategoryController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Shop\Category\RestoreHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Shop\Category\RestoreHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
