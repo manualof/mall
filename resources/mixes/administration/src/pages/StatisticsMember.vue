@@ -1341,6 +1341,7 @@
                                     <div class="echarts">
                                         <i-echarts :option="orderNumberProvince"
                                                    ref="echarts"
+                                                   :style="style"
                                                    @click="onClick"
                                                    @ready="onMapReady"></i-echarts>
                                     </div>
@@ -1372,6 +1373,7 @@
                                     <div class="echarts">
                                         <i-echarts :option="orderCountProvince"
                                                    ref="echarts"
+                                                   :style="style"
                                                    @click="onClick"
                                                    @ready="onMapReady"></i-echarts>
                                     </div>
