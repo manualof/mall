@@ -39,8 +39,9 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render() {
-                            return `<i-button class="delete-ad" type="ghost">查看</i-button>
+                        render(row, column, index) {
+                            return `<i-button class="delete-ad" @click.native="look(${index})"
+                                    type="ghost">查看</i-button>
                                     <i-button class="delete-ad" type="ghost">屏蔽</i-button>`;
                         },
                         title: '操作',
@@ -186,6 +187,12 @@
             exportGoodsData() {
                 this.$refs.goodsList.exportCsv({
                     filename: '活动商品列表数据',
+                });
+            },
+            look() {
+                const self = this;
+                self.$router.push({
+                    path: 'spikes/look',
                 });
             },
         },

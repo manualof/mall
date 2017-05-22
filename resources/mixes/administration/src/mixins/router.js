@@ -65,6 +65,7 @@ import StoreLevel from '../pages/StoreLevel.vue';
 import StoreLevelAdd from '../pages/StoreLevelAdd.vue';
 import StorePostal from '../pages/StorePostal.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
+import SalesSpikesLook from '../pages/SalesSpikesLook.vue';
 import SalesSpike from '../pages/SalesSpike.vue';
 import SalesSpikeAdjunction from '../pages/SalesSpikeAdjunction.vue';
 import SalesSpikeSetAdd from '../pages/SalesSpikeSetAdd.vue';
@@ -405,6 +406,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: SalesSpikes,
                     path: 'sales/spikes',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesLook,
+                    path: 'sales/spikes/look',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
