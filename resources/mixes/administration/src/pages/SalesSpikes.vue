@@ -12,39 +12,9 @@
                 goodsColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
-                        type: 'selection',
-                        width: 60,
-                    },
-                    {
-                        align: 'center',
                         key: 'goodsName',
                         title: '商品名称',
-                        width: 190,
-                    },
-                    {
-                        align: 'center',
-                        key: 'spu',
-                        title: 'spu',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsPrice',
-                        title: '商品价格',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsStatus',
-                        title: '商品状态',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'reviewStatus',
-                        title: '审核状态',
-                        width: 150,
+                        width: 240,
                     },
                     {
                         align: 'center',
@@ -53,40 +23,50 @@
                             return '<icon type="image"></icon>';
                         },
                         title: '商品图片',
-                        width: 100,
+                        width: 180,
                     },
                     {
                         align: 'center',
-                        key: 'adWord',
-                        title: '广告词',
-                        width: 150,
+                        key: 'goodsPrice',
+                        title: '活动价格',
+                        width: 180,
                     },
                     {
                         align: 'center',
-                        key: 'styleId',
-                        title: '分类ID',
-                        width: 150,
+                        key: 'prePrice',
+                        title: '原价',
+                        width: 180,
                     },
                     {
                         align: 'center',
-                        key: 'styleName',
-                        title: '分类名称',
-                        width: 200,
+                        key: 'startTime',
+                        title: '开始时间',
+                        width: 180,
+                    },
+                    {
+                        align: 'center',
+                        key: 'endTime',
+                        title: '结束时间',
+                        width: 180,
+                    },
+                    {
+                        align: 'center',
+                        key: 'status',
+                        render() {
+                            return `<i-switch size="large" v-model="row.status">
+                                    <span slot="open">开启</span>
+                                    <span slot="close">关闭</span>
+                                    </i-switch>`;
+                        },
+                        title: '状态',
+                        width: 240,
                     },
                     {
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<dropdown>
-                                    <i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
-                                    <dropdown-menu slot="list">
-                                    <dropdown-item>查看商品详情</dropdown-item>
-                                    <dropdown-item name="goodSku" @click.native="lookGoodsSku">查看商品SKU</dropdown-item>
-                                    <dropdown-item>加入商品库</dropdown-item>
-                                    </dropdown-menu></dropdown>
-                                    <i-button @click.native="remove(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                        render() {
+                            return '<i-button class="delete-ad" type="ghost">屏蔽</i-button>';
                         },
                         title: '操作',
                         width: 180,
@@ -94,54 +74,36 @@
                 ],
                 goodsData: [
                     {
-                        adWord: '纯棉易用七天',
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
+                        endTime: '2017-2-02',
+                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
                         goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
+                        prePrice: '199.00',
+                        startTime: '2017-2-02',
+                        status: true,
                     },
                     {
-                        adWord: '纯棉易用七天',
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
+                        endTime: '2017-2-02',
+                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
                         goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
+                        prePrice: '199.00',
+                        startTime: '2017-2-02',
+                        status: true,
                     },
                     {
-                        adWord: '纯棉易用七天',
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
+                        endTime: '2017-2-02',
+                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
                         goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
+                        prePrice: '199.00',
+                        startTime: '2017-2-02',
+                        status: true,
                     },
                     {
-                        adWord: '纯棉易用七天',
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
+                        endTime: '2017-2-02',
+                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
                         goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
-                    },
-                    {
-                        adWord: '纯棉易用七天',
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
+                        prePrice: '199.00',
+                        startTime: '2017-2-02',
+                        status: true,
                     },
                 ],
                 self: this,
@@ -150,7 +112,7 @@
         methods: {
             exportData() {
                 this.$refs.goodsList.exportCsv({
-                    filename: '商品管理数据',
+                    filename: '活动商品列表数据',
                 });
             },
         },
