@@ -26,4 +26,9 @@ class StatisticsAnalysisController extends Controller
     {
         return $handler->toResponse()->generateHttpResponse();
     }
+
+    public function industry()
+    {
+        
+    }
 }
