@@ -10,6 +10,7 @@ namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Admin\Statistics\Member\MemberHandler;
+use Notadd\Mall\Handlers\Admin\Statistics\Member\NewlyHandler;
 
 /**
  * Class StatisticsMemberController.
@@ -23,6 +24,17 @@ class StatisticsMemberController extends Controller
      * @throws \Exception
      */
     public function member(MemberHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Statistics\Member\NewlyHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function newly(NewlyHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
