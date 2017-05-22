@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Admin\Statistics\Store\HotsHandler;
 use Notadd\Mall\Handlers\Admin\Statistics\Store\NewlyHandler;
 use Notadd\Mall\Handlers\Admin\Statistics\Store\SalesHandler;
 
@@ -17,6 +18,17 @@ use Notadd\Mall\Handlers\Admin\Statistics\Store\SalesHandler;
  */
 class StatisticsStoreController extends Controller
 {
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Statistics\Store\HotsHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function hots(HotsHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\Admin\Statistics\Store\NewlyHandler $handler
      *

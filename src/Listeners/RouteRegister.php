@@ -158,6 +158,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('statistics/member', StatisticsMemberController::class . '@member');
             $this->router->post('statistics/member/area', StatisticsMemberController::class . '@area');
             $this->router->post('statistics/member/newly', StatisticsMemberController::class . '@newly');
+            $this->router->post('statistics/store/hots', StatisticsStoreController::class . '@hots');
             $this->router->post('statistics/store/newly', StatisticsStoreController::class . '@newly');
             $this->router->post('statistics/store/sales', StatisticsStoreController::class . '@sales');
             $this->router->post('upload', UploadController::class . '@handle');
