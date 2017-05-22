@@ -155,6 +155,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('statistics/analysis/industry', StatisticsAnalysisController::class . '@industry');
             $this->router->post('statistics/analysis/price', StatisticsAnalysisController::class . '@price');
             $this->router->post('statistics/member', StatisticsMemberController::class . '@member');
+            $this->router->post('statistics/member/area', StatisticsMemberController::class . '@area');
             $this->router->post('statistics/member/newly', StatisticsMemberController::class . '@newly');
             $this->router->post('upload', UploadController::class . '@handle');
             $this->router->post('virtual-order/create', VirtualOrderController::class . '@create');

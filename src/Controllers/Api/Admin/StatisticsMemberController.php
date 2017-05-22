@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Admin\Statistics\Member\AreaHandler;
 use Notadd\Mall\Handlers\Admin\Statistics\Member\MemberHandler;
 use Notadd\Mall\Handlers\Admin\Statistics\Member\NewlyHandler;
 
@@ -17,6 +18,17 @@ use Notadd\Mall\Handlers\Admin\Statistics\Member\NewlyHandler;
  */
 class StatisticsMemberController extends Controller
 {
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Statistics\Member\AreaHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function area(AreaHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\Admin\Statistics\Member\MemberHandler $handler
      *
