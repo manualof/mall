@@ -175,6 +175,20 @@
                         status: true,
                     },
                 ],
+                searchList: [
+                    {
+                        label: '店铺名称',
+                        value: '店铺名称',
+                    },
+                    {
+                        label: '商品名称',
+                        value: '商品名称',
+                    },
+                    {
+                        label: '商品分类',
+                        value: '商品分类',
+                    },
+                ],
                 self: this,
             };
         },

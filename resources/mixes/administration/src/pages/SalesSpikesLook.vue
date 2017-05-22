@@ -9,7 +9,118 @@
         },
         data() {
             return {
-
+                goodsColumns: [
+                    {
+                        align: 'center',
+                        key: 'goodsName',
+                        title: '商品名称',
+                        width: 240,
+                    },
+                    {
+                        align: 'center',
+                        key: 'goodsImg',
+                        render() {
+                            return '<icon type="image"></icon>';
+                        },
+                        title: '商品图片',
+                        width: 180,
+                    },
+                    {
+                        align: 'center',
+                        key: 'goodsPrice',
+                        title: '活动价格',
+                        width: 180,
+                    },
+                    {
+                        align: 'center',
+                        key: 'prePrice',
+                        title: '原价',
+                        width: 180,
+                    },
+                    {
+                        align: 'center',
+                        key: 'startTime',
+                        title: '开始时间',
+                        width: 180,
+                    },
+                    {
+                        align: 'center',
+                        key: 'endTime',
+                        title: '结束时间',
+                        width: 180,
+                    },
+                    {
+                        align: 'center',
+                        key: 'status',
+                        render() {
+                            return `<i-switch size="large" v-model="row.status">
+                                    <span slot="open">开启</span>
+                                    <span slot="close">关闭</span>
+                                    </i-switch>`;
+                        },
+                        title: '状态',
+                        width: 240,
+                    },
+                    {
+                        align: 'center',
+                        fixed: 'right',
+                        key: 'action',
+                        render() {
+                            return '<i-button class="delete-ad" type="ghost">屏蔽</i-button>';
+                        },
+                        title: '操作',
+                        width: 180,
+                    },
+                ],
+                goodsData: [
+                    {
+                        endTime: '2017-2-02',
+                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
+                        goodsPrice: '99.00',
+                        prePrice: '199.00',
+                        startTime: '2017-2-02',
+                        status: true,
+                    },
+                    {
+                        endTime: '2017-2-02',
+                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
+                        goodsPrice: '99.00',
+                        prePrice: '199.00',
+                        startTime: '2017-2-02',
+                        status: true,
+                    },
+                    {
+                        endTime: '2017-2-02',
+                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
+                        goodsPrice: '99.00',
+                        prePrice: '199.00',
+                        startTime: '2017-2-02',
+                        status: true,
+                    },
+                    {
+                        endTime: '2017-2-02',
+                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
+                        goodsPrice: '99.00',
+                        prePrice: '199.00',
+                        startTime: '2017-2-02',
+                        status: true,
+                    },
+                ],
+                managementSearch: '',
+                searchList: [
+                    {
+                        label: '店铺名称',
+                        value: '店铺名称',
+                    },
+                    {
+                        label: '商品名称',
+                        value: '商品名称',
+                    },
+                    {
+                        label: '商品分类',
+                        value: '商品分类',
+                    },
+                ],
             };
         },
         methods: {
@@ -37,8 +148,6 @@
                         <p>默认商品列表前五件商品在商城前台首页显示</p>
                     </div>
                     <div class="goods-body-header">
-                        <i-button class="export-btn" @click="exportGoodsData" type="ghost">导出数据</i-button>
-                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                         <div class="goods-body-header-right">
                             <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
                                 <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
