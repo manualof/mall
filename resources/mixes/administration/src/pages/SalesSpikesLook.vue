@@ -160,7 +160,6 @@
                     </div>
                     <i-table class="goods-table"
                              :columns="goodsColumns"
-                             :context="self"
                              :data="goodsData"
                              ref="goodsList">
                     </i-table>
