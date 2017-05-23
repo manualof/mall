@@ -12,6 +12,7 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Store\Category\CreateHandler;
 use Notadd\Mall\Handlers\Seller\Store\Category\EditHandler;
 use Notadd\Mall\Handlers\Seller\Store\Category\ListHandler;
+use Notadd\Mall\Handlers\Seller\Store\Category\RemoveHandler;
 
 /**
  * Class StoreCategoryController.
@@ -47,6 +48,17 @@ class StoreCategoryController extends Controller
      * @throws \Exception
      */
     public function list(ListHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Category\RemoveHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function remove(RemoveHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
