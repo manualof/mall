@@ -11,6 +11,7 @@ namespace Notadd\Mall\Controllers\Api\Seller;
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Service\Refund\ListHandler;
 use Notadd\Mall\Handlers\Seller\Service\Refund\ProcessHandler;
+use Notadd\Mall\Handlers\Seller\Service\Refund\RefundHandler;
 
 /**
  * Class ServiceRefundController.
@@ -35,6 +36,17 @@ class ServiceRefundController extends Controller
      * @throws \Exception
      */
     public function process(ProcessHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Service\Refund\RefundHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function refund(RefundHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
