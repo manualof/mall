@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Seller;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Seller\Store\Dynamic\ConfigurationHandler;
 use Notadd\Mall\Handlers\Seller\Store\Dynamic\CreateHandler;
 use Notadd\Mall\Handlers\Seller\Store\Dynamic\DynamicHandler;
 use Notadd\Mall\Handlers\Seller\Store\Dynamic\EditHandler;
@@ -20,6 +21,17 @@ use Notadd\Mall\Handlers\Seller\Store\Dynamic\RemoveHandler;
  */
 class StoreDynamicController extends Controller
 {
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Dynamic\ConfigurationHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function configuration(ConfigurationHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\Seller\Store\Dynamic\CreateHandler $handler
      *
