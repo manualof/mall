@@ -137,7 +137,7 @@ export default function (injection) {
         {
             children: [
                 {
-                    path: '/mall/sales/spike',
+                    path: '/mall/sales/spikes',
                     title: '秒杀活动',
                 },
                 {
