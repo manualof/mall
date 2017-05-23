@@ -10,6 +10,7 @@ namespace Notadd\Mall\Controllers\Api\Seller;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Store\Brand\ApplyHandler;
+use Notadd\Mall\Handlers\Seller\Store\Brand\EditHandler;
 use Notadd\Mall\Handlers\Seller\Store\Brand\ListHandler;
 
 /**
@@ -24,6 +25,17 @@ class StoreBrandController extends Controller
      * @throws \Exception
      */
     public function apply(ApplyHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Brand\EditHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function edit(EditHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
