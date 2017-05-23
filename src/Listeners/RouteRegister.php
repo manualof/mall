@@ -197,6 +197,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/dynamic/create', StoreDynamicController::class . '@create');
             $this->router->post('store/dynamic/edit', StoreDynamicController::class . '@edit');
             $this->router->post('store/dynamic/list', StoreDynamicController::class . '@list');
+            $this->router->post('store/dynamic/remove', StoreDynamicController::class . '@remove');
         });
     }
 }
