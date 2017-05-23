@@ -234,6 +234,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/product/specifications/create', ProductSpecificationsController::class . '@create');
             $this->router->post('store/product/specifications/edit', ProductSpecificationsController::class . '@edit');
             $this->router->post('store/product/specifications/list', ProductSpecificationsController::class . '@list');
+            $this->router->post('store/product/specifications/remove', ProductSpecificationsController::class . '@remove');
         });
     }
 }
