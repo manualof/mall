@@ -52,7 +52,7 @@ class RouteRegister extends AbstractRouteRegister
      */
     public function handle()
     {
-        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall'], function () {
+        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/admin'], function () {
             $this->router->post('address', AddressController::class . '@address');
             $this->router->post('address/edit', AddressController::class . '@edit');
             $this->router->post('address/list', AddressController::class . '@list');
