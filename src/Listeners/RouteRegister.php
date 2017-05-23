@@ -44,6 +44,7 @@ use Notadd\Mall\Controllers\Api\Admin\VirtualProductController;
 use Notadd\Mall\Controllers\Api\Seller\OrderController as SellerOrderController;
 use Notadd\Mall\Controllers\Api\Seller\ServiceController;
 use Notadd\Mall\Controllers\Api\Seller\ServiceRefundController;
+use Notadd\Mall\Controllers\Api\Seller\StoreController;
 
 /**
  * Class RouteRegister.
@@ -189,6 +190,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('service/refund', ServiceRefundController::class . '@refund');
             $this->router->post('service/refund/list', ServiceRefundController::class . '@list');
             $this->router->post('service/refund/process', ServiceRefundController::class . '@process');
+            $this->router->post('store', StoreController::class . '@store');
         });
     }
 }
