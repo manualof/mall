@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Seller;
 
 use Notadd\Mall\Handlers\Seller\Product\Specifications\CreateHandler;
+use Notadd\Mall\Handlers\Seller\Product\Specifications\EditHandler;
 use Notadd\Mall\Handlers\Seller\Product\Specifications\ListHandler;
 
 /**
@@ -23,6 +24,17 @@ class ProductSpecificationsController
      * @throws \Exception
      */
     public function create(CreateHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Product\Specifications\EditHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function edit(EditHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
