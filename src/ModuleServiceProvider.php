@@ -30,6 +30,7 @@ class ModuleServiceProvider extends Module
         $this->loadMigrationsFrom(realpath(__DIR__ . '/../databases/migrations'));
         $this->publishes([
             realpath(__DIR__ . '/../resources/mixes/administration/dist/assets/mall/administration') => public_path('assets/mall/administration'),
+            realpath(__DIR__ . '/../resources/mixes/administration/dist/assets/mall/seller') => public_path('assets/mall/seller'),
         ], 'public');
     }
 
@@ -38,6 +39,17 @@ class ModuleServiceProvider extends Module
      */
     public function register()
     {
+    }
+
+    /**
+     * @return array
+     */
+    public static function alias()
+    {
+        return [
+            'notadd/mall',
+            'notadd/seller',
+        ];
     }
 
     /**
@@ -93,12 +105,15 @@ class ModuleServiceProvider extends Module
     /**
      * Get script of extension.
      *
-     * @return string
+     * @return string|array
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public static function script()
     {
-        return asset('assets/mall/administration/js/module.min.js');
+        return [
+            asset('assets/mall/administration/js/module.min.js'),
+            asset('assets/mall/seller/js/module.min.js'),
+        ];
     }
 
     /**
@@ -111,6 +126,7 @@ class ModuleServiceProvider extends Module
     {
         return [
             asset('assets/mall/administration/css/module.min.css'),
+            asset('assets/mall/seller/css/module.min.css'),
         ];
     }
 }
