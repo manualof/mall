@@ -12,6 +12,7 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Store\Brand\ApplyHandler;
 use Notadd\Mall\Handlers\Seller\Store\Brand\EditHandler;
 use Notadd\Mall\Handlers\Seller\Store\Brand\ListHandler;
+use Notadd\Mall\Handlers\Seller\Store\Brand\RevokeHandler;
 
 /**
  * Class StoreBrandController.
@@ -47,6 +48,17 @@ class StoreBrandController extends Controller
      * @throws \Exception
      */
     public function list(ListHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Brand\RevokeHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function revoke(RevokeHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
