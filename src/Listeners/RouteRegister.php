@@ -42,6 +42,7 @@ use Notadd\Mall\Controllers\Api\Admin\UploadController;
 use Notadd\Mall\Controllers\Api\Admin\VirtualOrderController;
 use Notadd\Mall\Controllers\Api\Admin\VirtualProductController;
 use Notadd\Mall\Controllers\Api\Seller\ServiceController;
+use Notadd\Mall\Controllers\Api\Seller\ServiceRefundController;
 
 /**
  * Class RouteRegister.
@@ -181,6 +182,7 @@ class RouteRegister extends AbstractRouteRegister
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/seller'], function () {
             $this->router->post('service', ServiceController::class . '@list');
             $this->router->post('service/remove', ServiceController::class . '@remove');
+            $this->router->post('service/refund', ServiceRefundController::class . '@list');
         });
     }
 }
