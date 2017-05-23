@@ -46,6 +46,7 @@ use Notadd\Mall\Controllers\Api\Seller\ServiceController;
 use Notadd\Mall\Controllers\Api\Seller\ServiceRefundController;
 use Notadd\Mall\Controllers\Api\Seller\StoreController;
 use Notadd\Mall\Controllers\Api\Seller\StoreDynamicController;
+use Notadd\Mall\Controllers\Api\Seller\StoreNavigationController;
 
 /**
  * Class RouteRegister.
@@ -199,6 +200,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/dynamic/edit', StoreDynamicController::class . '@edit');
             $this->router->post('store/dynamic/list', StoreDynamicController::class . '@list');
             $this->router->post('store/dynamic/remove', StoreDynamicController::class . '@remove');
+            $this->router->post('store/navigation/list', StoreNavigationController::class . '@list');
         });
     }
 }
