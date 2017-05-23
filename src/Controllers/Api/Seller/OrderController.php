@@ -11,6 +11,7 @@ namespace Notadd\Mall\Controllers\Api\Seller;
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Order\ListHandler;
 use Notadd\Mall\Handlers\Seller\Order\OrderHandler;
+use Notadd\Mall\Handlers\Seller\Order\ProcessHandler;
 
 /**
  * Class OrderController.
@@ -35,6 +36,17 @@ class OrderController extends Controller
      * @throws \Exception
      */
     public function order(OrderHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Order\ProcessHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function process(ProcessHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
