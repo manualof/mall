@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Seller;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Seller\Store\RenewHandler;
 use Notadd\Mall\Handlers\Seller\Store\StoreHandler;
 
 /**
@@ -16,6 +17,17 @@ use Notadd\Mall\Handlers\Seller\Store\StoreHandler;
  */
 class StoreController extends Controller
 {
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\RenewHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function renew(RenewHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\Seller\Store\StoreHandler $handler
      *
