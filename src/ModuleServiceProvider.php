@@ -30,7 +30,7 @@ class ModuleServiceProvider extends Module
         $this->loadMigrationsFrom(realpath(__DIR__ . '/../databases/migrations'));
         $this->publishes([
             realpath(__DIR__ . '/../resources/mixes/administration/dist/assets/mall/administration') => public_path('assets/mall/administration'),
-            realpath(__DIR__ . '/../resources/mixes/administration/dist/assets/mall/seller') => public_path('assets/mall/seller'),
+            realpath(__DIR__ . '/../resources/mixes/seller/dist/assets/mall/seller') => public_path('assets/mall/seller'),
         ], 'public');
     }
 
