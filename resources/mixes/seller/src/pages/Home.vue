@@ -67,12 +67,29 @@
                                                 <h5>店铺及商品提示</h5>
                                                 <span class="tip distance"> 店铺信息及待处理事项</span>
                                             </div>
-                                            <div>
+                                            <div class="trading-tips">
                                                 <span>商品发布情况：{{ tipDetail.goodTip.num }}/不限</span>
                                                 <span>图片空间使用：
                                                     {{ tipDetail.goodTip.imgNum }}/{{ tipDetail.goodTip.imgAll }}</span>
                                             </div>
-                                            <ul>
+                                            <ul class="clearfix">
+                                                <li>出售中 <span>{{ tipDetail.goodTip.sellNum }}</span></li>
+                                                <li>违规下架 <span>{{ tipDetail.goodTip.violationNum }}</span></li>
+                                                <li>仓库中已审核 <span>{{ tipDetail.goodTip.reviewNum }}</span></li>
+                                                <li>待回复咨询 <span>{{ tipDetail.goodTip.replyNum }}</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <h5>交易提示</h5>
+                                                <span class="tip distance"> 需要处理的交易订单</span>
+                                            </div>
+                                            <div class="trading-tips">
+                                                <span>商品发布情况：{{ tipDetail.goodTip.num }}/不限</span>
+                                                <span>图片空间使用：
+                                                    {{ tipDetail.goodTip.imgNum }}/{{ tipDetail.goodTip.imgAll }}</span>
+                                            </div>
+                                            <ul class="clearfix">
                                                 <li>出售中 <span>{{ tipDetail.goodTip.sellNum }}</span></li>
                                                 <li>违规下架 <span>{{ tipDetail.goodTip.violationNum }}</span></li>
                                                 <li>仓库中已审核 <span>{{ tipDetail.goodTip.reviewNum }}</span></li>
