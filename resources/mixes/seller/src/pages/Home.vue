@@ -26,7 +26,11 @@
                         violationNum: 7,
                     },
                     transaction: {
-
+                        ensure: 22,
+                        pay: 138,
+                        refund: 23,
+                        returnGoods: 20,
+                        ship: 120,
                     },
                 },
                 user: {
@@ -84,16 +88,12 @@
                                                 <h5>交易提示</h5>
                                                 <span class="tip distance"> 需要处理的交易订单</span>
                                             </div>
-                                            <div class="trading-tips">
-                                                <span>商品发布情况：{{ tipDetail.goodTip.num }}/不限</span>
-                                                <span>图片空间使用：
-                                                    {{ tipDetail.goodTip.imgNum }}/{{ tipDetail.goodTip.imgAll }}</span>
-                                            </div>
                                             <ul class="clearfix">
-                                                <li>出售中 <span>{{ tipDetail.goodTip.sellNum }}</span></li>
-                                                <li>违规下架 <span>{{ tipDetail.goodTip.violationNum }}</span></li>
-                                                <li>仓库中已审核 <span>{{ tipDetail.goodTip.reviewNum }}</span></li>
-                                                <li>待回复咨询 <span>{{ tipDetail.goodTip.replyNum }}</span></li>
+                                                <li>待付款 <span>{{ tipDetail.transaction.pay }}</span></li>
+                                                <li>待发货 <span>{{ tipDetail.transaction.ship }}</span></li>
+                                                <li>待确认账单 <span>{{ tipDetail.transaction.ensure }}</span></li>
+                                                <li>退款 <span>{{ tipDetail.transaction.refund }}</span></li>
+                                                <li>退货 <span>{{ tipDetail.transaction.returnGoods }}</span></li>
                                             </ul>
                                         </li>
                                     </ul>
