@@ -10,6 +10,7 @@ namespace Notadd\Mall\Controllers\Api\Seller;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Store\Configuration\ConfigurationHandler;
+use Notadd\Mall\Handlers\Seller\Store\Configuration\SettingHandler;
 
 /**
  * Class StoreConfigurationController.
@@ -23,6 +24,17 @@ class StoreConfigurationController extends Controller
      * @throws \Exception
      */
     public function configuration(ConfigurationHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Configuration\SettingHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function setting(SettingHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
