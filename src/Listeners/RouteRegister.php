@@ -42,8 +42,17 @@ use Notadd\Mall\Controllers\Api\Admin\UploadController;
 use Notadd\Mall\Controllers\Api\Admin\VirtualOrderController;
 use Notadd\Mall\Controllers\Api\Admin\VirtualProductController;
 use Notadd\Mall\Controllers\Api\Seller\OrderController as SellerOrderController;
+use Notadd\Mall\Controllers\Api\Seller\ProductController as SellerProductController;
+use Notadd\Mall\Controllers\Api\Seller\ProductSpecificationsController;
+use Notadd\Mall\Controllers\Api\Seller\ProductSubscribeController;
 use Notadd\Mall\Controllers\Api\Seller\ServiceController;
 use Notadd\Mall\Controllers\Api\Seller\ServiceRefundController;
+use Notadd\Mall\Controllers\Api\Seller\StoreBrandController;
+use Notadd\Mall\Controllers\Api\Seller\StoreCategoryController;
+use Notadd\Mall\Controllers\Api\Seller\StoreConfigurationController;
+use Notadd\Mall\Controllers\Api\Seller\StoreController;
+use Notadd\Mall\Controllers\Api\Seller\StoreDynamicController;
+use Notadd\Mall\Controllers\Api\Seller\StoreNavigationController;
 
 /**
  * Class RouteRegister.
@@ -189,6 +198,44 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('service/refund', ServiceRefundController::class . '@refund');
             $this->router->post('service/refund/list', ServiceRefundController::class . '@list');
             $this->router->post('service/refund/process', ServiceRefundController::class . '@process');
+            $this->router->post('store', StoreController::class . '@store');
+            $this->router->post('store/renew', StoreController::class . '@renew');
+            $this->router->post('store/brand', StoreBrandController::class . '@brand');
+            $this->router->post('store/brand/apply', StoreBrandController::class . '@apply');
+            $this->router->post('store/brand/edit', StoreBrandController::class . '@edit');
+            $this->router->post('store/brand/list', StoreBrandController::class . '@list');
+            $this->router->post('store/brand/revoke', StoreBrandController::class . '@revoke');
+            $this->router->post('store/category', StoreCategoryController::class . '@category');
+            $this->router->post('store/category/create', StoreCategoryController::class . '@create');
+            $this->router->post('store/category/edit', StoreCategoryController::class . '@edit');
+            $this->router->post('store/category/list', StoreCategoryController::class . '@list');
+            $this->router->post('store/category/remove', StoreCategoryController::class . '@remove');
+            $this->router->post('store/configuration', StoreConfigurationController::class . '@configuration');
+            $this->router->post('store/configuration/carousel', StoreConfigurationController::class . '@carousel');
+            $this->router->post('store/configuration/setting', StoreConfigurationController::class . '@setting');
+            $this->router->post('store/dynamic', StoreDynamicController::class . '@dynamic');
+            $this->router->post('store/dynamic/configuration', StoreDynamicController::class . '@configuration');
+            $this->router->post('store/dynamic/create', StoreDynamicController::class . '@create');
+            $this->router->post('store/dynamic/edit', StoreDynamicController::class . '@edit');
+            $this->router->post('store/dynamic/list', StoreDynamicController::class . '@list');
+            $this->router->post('store/dynamic/remove', StoreDynamicController::class . '@remove');
+            $this->router->post('store/navigation', StoreNavigationController::class . '@navigation');
+            $this->router->post('store/navigation/create', StoreNavigationController::class . '@create');
+            $this->router->post('store/navigation/edit', StoreNavigationController::class . '@edit');
+            $this->router->post('store/navigation/list', StoreNavigationController::class . '@list');
+            $this->router->post('store/navigation/remove', StoreNavigationController::class . '@remove');
+            $this->router->post('store/product', SellerProductController::class . '@product');
+            $this->router->post('store/product/create', SellerProductController::class . '@create');
+            $this->router->post('store/product/edit', SellerProductController::class . '@edit');
+            $this->router->post('store/product/list', SellerProductController::class . '@list');
+            $this->router->post('store/product/remove', SellerProductController::class . '@remove');
+            $this->router->post('store/product/subscribe/list', ProductSubscribeController::class . '@list');
+            $this->router->post('store/product/subscribe/remove', ProductSubscribeController::class . '@remove');
+            $this->router->post('store/product/specifications', ProductSpecificationsController::class . '@specifications');
+            $this->router->post('store/product/specifications/create', ProductSpecificationsController::class . '@create');
+            $this->router->post('store/product/specifications/edit', ProductSpecificationsController::class . '@edit');
+            $this->router->post('store/product/specifications/list', ProductSpecificationsController::class . '@list');
+            $this->router->post('store/product/specifications/remove', ProductSpecificationsController::class . '@remove');
         });
     }
 }
