@@ -101,9 +101,39 @@
                                                 <h5>店铺运营推广</h5>
                                                 <span class="tip distance"> 合理参加促销活动可以有效提升商品销量</span>
                                             </div>
-                                            <ul class="clearfix">
+                                            <ul class="clearfix operation-module">
                                                 <li>
-
+                                                    <div class="clearfix">
+                                                        <div class="img">
+                                                            <img src="" alt="">
+                                                        </div>
+                                                        <div class="img-text">
+                                                            <p>限时秒杀</p>
+                                                            <p>已开通</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="clearfix">
+                                                        <div class="img">
+                                                            <img src="" alt="">
+                                                        </div>
+                                                        <div class="img-text">
+                                                            <p>限时秒杀</p>
+                                                            <p>已开通</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="clearfix">
+                                                        <div class="img">
+                                                            <img src="" alt="">
+                                                        </div>
+                                                        <div class="img-text">
+                                                            <p>限时秒杀</p>
+                                                            <p>已开通</p>
+                                                        </div>
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </li>
