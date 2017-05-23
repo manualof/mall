@@ -193,6 +193,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('service/refund/process', ServiceRefundController::class . '@process');
             $this->router->post('store', StoreController::class . '@store');
             $this->router->post('store/renew', StoreController::class . '@renew');
+            $this->router->post('store/dynamic', StoreDynamicController::class . '@dynamic');
             $this->router->post('store/dynamic/list', StoreDynamicController::class . '@list');
         });
     }
