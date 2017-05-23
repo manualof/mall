@@ -76,7 +76,7 @@
                                                 <span>图片空间使用：
                                                     {{ tipDetail.goodTip.imgNum }}/{{ tipDetail.goodTip.imgAll }}</span>
                                             </div>
-                                            <ul class="clearfix">
+                                            <ul class="border-module clearfix">
                                                 <li>出售中 <span>{{ tipDetail.goodTip.sellNum }}</span></li>
                                                 <li>违规下架 <span>{{ tipDetail.goodTip.violationNum }}</span></li>
                                                 <li>仓库中已审核 <span>{{ tipDetail.goodTip.reviewNum }}</span></li>
@@ -88,12 +88,23 @@
                                                 <h5>交易提示</h5>
                                                 <span class="tip distance"> 需要处理的交易订单</span>
                                             </div>
-                                            <ul class="clearfix">
+                                            <ul class="border-module clearfix">
                                                 <li>待付款 <span>{{ tipDetail.transaction.pay }}</span></li>
                                                 <li>待发货 <span>{{ tipDetail.transaction.ship }}</span></li>
                                                 <li>待确认账单 <span>{{ tipDetail.transaction.ensure }}</span></li>
                                                 <li>退款 <span>{{ tipDetail.transaction.refund }}</span></li>
                                                 <li>退货 <span>{{ tipDetail.transaction.returnGoods }}</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <h5>店铺运营推广</h5>
+                                                <span class="tip distance"> 合理参加促销活动可以有效提升商品销量</span>
+                                            </div>
+                                            <ul class="clearfix">
+                                                <li>
+
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
