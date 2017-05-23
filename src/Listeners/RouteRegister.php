@@ -42,6 +42,7 @@ use Notadd\Mall\Controllers\Api\Admin\UploadController;
 use Notadd\Mall\Controllers\Api\Admin\VirtualOrderController;
 use Notadd\Mall\Controllers\Api\Admin\VirtualProductController;
 use Notadd\Mall\Controllers\Api\Seller\OrderController as SellerOrderController;
+use Notadd\Mall\Controllers\Api\Seller\ProductController as SellerProductController;
 use Notadd\Mall\Controllers\Api\Seller\ServiceController;
 use Notadd\Mall\Controllers\Api\Seller\ServiceRefundController;
 use Notadd\Mall\Controllers\Api\Seller\StoreBrandController;
@@ -221,6 +222,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/navigation/edit', StoreNavigationController::class . '@edit');
             $this->router->post('store/navigation/list', StoreNavigationController::class . '@list');
             $this->router->post('store/navigation/remove', StoreNavigationController::class . '@remove');
+            $this->router->post('store/product/list', SellerProductController::class . '@list');
         });
     }
 }
