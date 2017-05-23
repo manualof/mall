@@ -10,6 +10,7 @@ namespace Notadd\Mall\Controllers\Api\Seller;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Store\Navigation\CreateHandler;
+use Notadd\Mall\Handlers\Seller\Store\Navigation\EditHandler;
 use Notadd\Mall\Handlers\Seller\Store\Navigation\ListHandler;
 
 /**
@@ -24,6 +25,17 @@ class StoreNavigationController extends Controller
      * @throws \Exception
      */
     public function create(CreateHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Navigation\EditHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function edit(EditHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
