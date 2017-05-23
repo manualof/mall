@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Seller;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Seller\Store\Configuration\CarouselHandler;
 use Notadd\Mall\Handlers\Seller\Store\Configuration\ConfigurationHandler;
 use Notadd\Mall\Handlers\Seller\Store\Configuration\SettingHandler;
 
@@ -17,6 +18,17 @@ use Notadd\Mall\Handlers\Seller\Store\Configuration\SettingHandler;
  */
 class StoreConfigurationController extends Controller
 {
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Configuration\CarouselHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function carousel(CarouselHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\Seller\Store\Configuration\ConfigurationHandler $handler
      *
