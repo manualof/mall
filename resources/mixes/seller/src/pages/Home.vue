@@ -15,6 +15,20 @@
                     name: '西部母婴用品店',
                     valid: '2020年5月10日',
                 },
+                tipDetail: {
+                    goodTip: {
+                        imgAll: 500,
+                        imgNum: 399,
+                        num: 102,
+                        replyNum: 27,
+                        reviewNum: 0,
+                        sellNum: 138,
+                        violationNum: 7,
+                    },
+                    transaction: {
+
+                    },
+                },
                 user: {
                     name: 'nwaijhf',
                 },
@@ -45,7 +59,32 @@
                             </i-col>
                         </row>
                         <div class="bottom-shop-tip">
-                            
+                            <row>
+                                <i-col span="12" class="border-line">
+                                    <ul class="shop-goods-module">
+                                        <li>
+                                            <div>
+                                                <h5>店铺及商品提示</h5>
+                                                <span class="tip distance"> 店铺信息及待处理事项</span>
+                                            </div>
+                                            <div>
+                                                <span>商品发布情况：{{ tipDetail.goodTip.num }}/不限</span>
+                                                <span>图片空间使用：
+                                                    {{ tipDetail.goodTip.imgNum }}/{{ tipDetail.goodTip.imgAll }}</span>
+                                            </div>
+                                            <ul>
+                                                <li>出售中 <span>{{ tipDetail.goodTip.sellNum }}</span></li>
+                                                <li>违规下架 <span>{{ tipDetail.goodTip.violationNum }}</span></li>
+                                                <li>仓库中已审核 <span>{{ tipDetail.goodTip.reviewNum }}</span></li>
+                                                <li>待回复咨询 <span>{{ tipDetail.goodTip.replyNum }}</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </i-col>
+                                <i-col span="12">
+
+                                </i-col>
+                            </row>
                         </div>
                     </card>
                 </tab-pane>
