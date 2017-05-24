@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\User;
 
 use Notadd\Mall\Abstracts\UserController as AbstractUserController;
+use Notadd\Mall\Handlers\User\Order\CancelHandler;
 use Notadd\Mall\Handlers\User\Order\EditHandler;
 use Notadd\Mall\Handlers\User\Order\ListHandler;
 
@@ -17,6 +18,17 @@ use Notadd\Mall\Handlers\User\Order\ListHandler;
  */
 class OrderController extends AbstractUserController
 {
+    /**
+     * @param \Notadd\Mall\Handlers\User\Order\CancelHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function cancel(CancelHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\User\Order\EditHandler $handler
      *
