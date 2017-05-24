@@ -12,6 +12,7 @@ use Notadd\Mall\Abstracts\UserController as AbstractUserController;
 use Notadd\Mall\Handlers\User\Order\CancelHandler;
 use Notadd\Mall\Handlers\User\Order\EditHandler;
 use Notadd\Mall\Handlers\User\Order\ListHandler;
+use Notadd\Mall\Handlers\User\Order\OrderHandler;
 use Notadd\Mall\Handlers\User\Order\RemoveHandler;
 
 /**
@@ -48,6 +49,17 @@ class OrderController extends AbstractUserController
      * @throws \Exception
      */
     public function list(ListHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\User\Order\OrderHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function order(OrderHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
