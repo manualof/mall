@@ -9,10 +9,21 @@
 namespace Notadd\Mall\Controllers\Api\Store;
 
 use Notadd\Mall\Abstracts\StoreController as AbstractStoreController;
+use Notadd\Mall\Handlers\Store\ListHandler;
 
 /**
  * Class StoreController.
  */
 class StoreController extends AbstractStoreController
 {
+    /**
+     * @param \Notadd\Mall\Handlers\Store\ListHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function list(ListHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
 }

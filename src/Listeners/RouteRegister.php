@@ -53,6 +53,7 @@ use Notadd\Mall\Controllers\Api\Seller\StoreConfigurationController;
 use Notadd\Mall\Controllers\Api\Seller\StoreController;
 use Notadd\Mall\Controllers\Api\Seller\StoreDynamicController;
 use Notadd\Mall\Controllers\Api\Seller\StoreNavigationController;
+use Notadd\Mall\Controllers\Api\Store\StoreController as StoreStoreController;
 use Notadd\Mall\Controllers\Api\User\CardController;
 use Notadd\Mall\Controllers\Api\User\CouponController;
 use Notadd\Mall\Controllers\Api\User\OrderController as UserOrderController;
@@ -240,6 +241,10 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/product/specifications/edit', ProductSpecificationsController::class . '@edit');
             $this->router->post('store/product/specifications/list', ProductSpecificationsController::class . '@list');
             $this->router->post('store/product/specifications/remove', ProductSpecificationsController::class . '@remove');
+        });
+
+        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/store'], function () {
+            $this->router->post('list', StoreStoreController::class . '@list');
         });
 
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/user'], function () {
