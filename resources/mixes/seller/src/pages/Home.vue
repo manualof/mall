@@ -9,6 +9,66 @@
         },
         data() {
             return {
+                sellColumns: [
+                    {
+                        align: 'center',
+                        title: '序号',
+                        type: 'index',
+                        width: 120,
+                    },
+                    {
+                        key: 'goodsName',
+                        title: '商品名称',
+                    },
+                    {
+                        align: 'center',
+                        key: 'sales',
+                        title: '销量',
+                        width: 120,
+                    },
+                ],
+                sellData: [
+                    {
+                        goodsName: 'rey四合一套装 周末大促销',
+                        sales: 3256,
+                    },
+                    {
+                        goodsName: 'rey四合一套装 周末大促销',
+                        sales: 3256,
+                    },
+                    {
+                        goodsName: 'rey四合一套装 周末大促销',
+                        sales: 3256,
+                    },
+                    {
+                        goodsName: 'rey四合一套装 周末大促销',
+                        sales: 3256,
+                    },
+                    {
+                        goodsName: 'rey四合一套装 周末大促销',
+                        sales: 3256,
+                    },
+                    {
+                        goodsName: 'rey四合一套装 周末大促销',
+                        sales: 3256,
+                    },
+                    {
+                        goodsName: 'rey四合一套装 周末大促销',
+                        sales: 3256,
+                    },
+                    {
+                        goodsName: 'rey四合一套装 周末大促销',
+                        sales: 3256,
+                    },
+                    {
+                        goodsName: 'rey四合一套装 周末大促销',
+                        sales: 3256,
+                    },
+                    {
+                        goodsName: 'rey四合一套装 周末大促销',
+                        sales: 3256,
+                    },
+                ],
                 shop: {
                     level: '白金店铺',
                     manage: '管理员',
@@ -24,6 +84,11 @@
                         reviewNum: 0,
                         sellNum: 138,
                         violationNum: 7,
+                    },
+                    order: {
+                        totalAmount: 543578,
+                        totalNum: 543,
+                        totalPrice: '99.00',
                     },
                     transaction: {
                         ensure: 22,
@@ -139,8 +204,43 @@
                                         </li>
                                     </ul>
                                 </i-col>
-                                <i-col span="12">
-
+                                <i-col span="12" class="sell-statistics border-line">
+                                    <div class="statistics-information">
+                                        <div>
+                                            <h5>销售情况统计</h5>
+                                            <span class="tip distance"> 需要处理的交易订单</span>
+                                        </div>
+                                        <ul class="clearfix">
+                                            <li>
+                                                <p>下单金额</p>
+                                                <div class="clearfix">
+                                                    <span class="tip">有效订单的总金额(元)</span>
+                                                    <span>{{ tipDetail.order.totalAmount }}</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p>下单量</p>
+                                                <div class="clearfix">
+                                                    <span class="tip">有效订单的总数量</span>
+                                                    <span>{{ tipDetail.order.totalNum }}</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p>平均客单价</p>
+                                                <div class="clearfix">
+                                                    <span class="tip">有效订单的平均每单的金额(元)</span>
+                                                    <span>{{ tipDetail.order.totalPrice }}</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="sort-table-module">
+                                            <h5>单品销售排名TOP10</h5>
+                                            <i-table :context="self"
+                                                     :columns="sellColumns"
+                                                     :data="sellData"
+                                                     ref="sells"></i-table>
+                                        </div>
+                                    </div>
                                 </i-col>
                             </row>
                         </div>
