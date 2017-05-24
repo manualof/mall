@@ -60,6 +60,7 @@ use Notadd\Mall\Controllers\Api\Store\StoreController as StoreStoreController;
 use Notadd\Mall\Controllers\Api\User\CardController;
 use Notadd\Mall\Controllers\Api\User\CouponController;
 use Notadd\Mall\Controllers\Api\User\OrderController as UserOrderController;
+use Notadd\Mall\Controllers\Api\User\UserController;
 use Notadd\Mall\Controllers\Api\User\UserFollowController;
 
 /**
@@ -259,6 +260,7 @@ class RouteRegister extends AbstractRouteRegister
         });
 
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/user'], function () {
+            $this->router->post('/', UserController::class . '@user');
             $this->router->post('card', CardController::class . '@card');
             $this->router->post('card/add', CardController::class . '@add');
             $this->router->post('card/empty', CardController::class . '@empty');
