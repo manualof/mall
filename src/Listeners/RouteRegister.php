@@ -251,6 +251,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('coupon/list', CouponController::class . '@list');
             $this->router->post('coupon/remove', CouponController::class . '@remove');
             $this->router->post('follow/create', UserFollowController::class . '@create');
+            $this->router->post('follow/edit', UserFollowController::class . '@edit');
             $this->router->post('follow/list', UserFollowController::class . '@list');
             $this->router->post('order', UserOrderController::class . '@order');
             $this->router->post('order/cancel', UserOrderController::class . '@cancel');
