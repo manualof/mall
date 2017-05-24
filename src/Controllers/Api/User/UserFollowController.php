@@ -12,6 +12,7 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\User\Follow\CreateHandler;
 use Notadd\Mall\Handlers\User\Follow\EditHandler;
 use Notadd\Mall\Handlers\User\Follow\ListHandler;
+use Notadd\Mall\Handlers\User\Follow\RemoveHandler;
 
 /**
  * Class UserFollowController.
@@ -47,6 +48,17 @@ class UserFollowController extends Controller
      * @throws \Exception
      */
     public function list(ListHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\User\Follow\RemoveHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function remove(RemoveHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
