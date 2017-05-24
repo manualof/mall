@@ -3,8 +3,19 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.all([
+                injection.http.post(`${window.api}/mall/admin/configuration/search/get`),
+                injection.http.post(`${window.api}/mall/admin/configuration/search/hot/list`),
+            ]).then(injection.http.spread((defaultData, searchDate) => {
+                next(vm => {
+                    vm.form.defaultSearch = defaultData.data.data.default;
+                    vm.searchData = searchDate.data.data;
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            })).catch(() => {
+                injection.loading.error();
             });
         },
         data() {
@@ -42,7 +53,6 @@
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button class="first-btn" @click.native="searchEdit" size="small" type="ghost">
@@ -53,28 +63,7 @@
                         width: 180,
                     },
                 ],
-                searchData: [
-                    {
-                        searchTerms: '手机',
-                        showTerms: 'iphone全新发布，星空蓝',
-                    },
-                    {
-                        searchTerms: '手机',
-                        showTerms: 'iphone全新发布，星空蓝',
-                    },
-                    {
-                        searchTerms: '手机',
-                        showTerms: 'iphone全新发布，星空蓝',
-                    },
-                    {
-                        searchTerms: '手机',
-                        showTerms: 'iphone全新发布，星空蓝',
-                    },
-                    {
-                        searchTerms: '手机',
-                        showTerms: 'iphone全新发布，星空蓝',
-                    },
-                ],
+                searchData: [],
                 self: this,
             };
         },
@@ -99,7 +88,13 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        self.$Message.success('提交成功!');
+                        self.$http.post(`${window.api}/mall/admin/configuration/search/set`, self.form).then(() => {
+                            self.$notice.open({
+                                title: '设置默认搜索词成功！',
+                            });
+                        }).finally(() => {
+                            self.loading = false;
+                        });
                     } else {
                         self.loading = false;
                         self.$notice.error({
@@ -121,15 +116,14 @@
                             <i-form :label-width="200" ref="form" :model="form" :rules="rules">
                                 <row>
                                     <i-col span="12">
-                                        <form-item label="默认搜索词">
-                                            <i-input placeholder="" v-model="form.defaultSearch"></i-input>
-                                            <p class="tip">默认词设置将显示在前台搜索框下面，
-                                                前台点击时直接作为关键词进行搜索，多个请用半角逗号","隔开</p>
+                                        <form-item label="默认搜索词" prop="defaultSearch">
+                                            <i-input placeholder="请输入默认搜索词" v-model="form.defaultSearch"></i-input>
+                                            <p class="tip">默认词设置将显示在前台搜索框下面，前台点击时直接作为关键词进行搜索，多个请用半角逗号","隔开</p>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <form-item>
-                                    <i-button type="primary" @click.native="submit">
+                                    <i-button :loading="loading" type="primary" @click.native="submit">
                                         <span v-if="!loading">确认提交</span>
                                         <span v-else>正在提交…</span>
                                     </i-button>

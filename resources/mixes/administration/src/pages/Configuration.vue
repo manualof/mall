@@ -37,10 +37,10 @@
                     ],
                     logo: [
                         {
-                            required: true,
-                            type: 'string',
                             message: '请上传网站 Logo',
+                            required: true,
                             trigger: 'change',
+                            type: 'string',
                         },
                     ],
                     phone: [
