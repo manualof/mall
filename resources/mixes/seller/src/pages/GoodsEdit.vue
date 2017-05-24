@@ -22,12 +22,16 @@
                 ],
                 goodsEdit: {
                     barCode: '',
+                    commodityRelease: '',
                     costPrice: '',
                     distribution: '',
+                    freightMoney: '',
+                    freightStyle: '',
                     goodComment: '',
                     goodDiscount: '',
                     goodInventory: '',
                     goodOrigin: '',
+                    goodPlace: [],
                     goodPrice: '',
                     goodStyle: '',
                     logo: '',
@@ -37,7 +41,9 @@
                     sellerNum: '',
                     sellPoint: '原价258 特价9元F码抢购！仅限10个！全球首款净化空气的台灯，上班看书的同时释放负离子，' +
                     '远离城市喧嚣，仿佛置身于大自然的感觉，让你身心健康',
+                    shopStyle: '',
                     type: '数码办公>时尚影音>智能设备',
+                    vatInvoice: '',
                     warnValue: '',
                 },
                 goodStyle: [
@@ -68,6 +74,108 @@
                     {
                         label: '北',
                         value: '2',
+                    },
+                ],
+                goodPlace: [
+                    {
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '自行车',
+                                        value: '自行车',
+                                    },
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅',
+                                        value: '安全座椅',
+                                    },
+                                ],
+                                label: '童车童床',
+                                value: '童车童床',
+                            },
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '个护化妆',
+                        value: '个护化妆',
+                    },
+                    {
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                    {
+                                        label: '婴儿推车3',
+                                        value: '婴儿推车3',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅4',
+                                        value: '安全座椅4',
+                                    },
+                                ],
+                                label: '服饰寝居',
+                                value: '服饰寝居',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '车1',
+                                        value: '车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '家用电器',
+                        value: '家用电器',
                     },
                 ],
                 isEditPicture: false,
@@ -110,6 +218,16 @@
                         },
                     ],
                 },
+                shopStyle: [
+                    {
+                        label: '新增分类1',
+                        value: '1',
+                    },
+                    {
+                        label: '新增分类2',
+                        value: '2',
+                    },
+                ],
             };
         },
         methods: {
@@ -235,74 +353,109 @@
                                             </form-item>
                                         </i-col>
                                     </row>
-                                    <row>
+                                    <row class="freight-style-module">
                                         <i-col span="16">
                                             <form-item label="商品价格">
-                                                <i-input v-model="goodsEdit.goodPrice"></i-input>
+                                                <row class="freight-style">
+                                                    <i-col span="4">
+                                                        <i-input v-model="goodsEdit.goodPrice"></i-input>
+                                                    </i-col>
+                                                    <i-col span="2">元</i-col>
+                                                </row>
                                                 <p class="tip">价格必须是大于等于0.01的数字，且不能高于市场价，
                                                     此价格为商品实际销售价格，如果存在规格，该价格显示最低价格</p>
                                             </form-item>
                                         </i-col>
                                     </row>
-                                    <row>
+                                    <row class="freight-style-module">
                                         <i-col span="16">
                                             <form-item label="市场价格">
-                                                <i-input v-model="goodsEdit.marketPrice"></i-input>
+                                                <row class="freight-style">
+                                                    <i-col span="4">
+                                                        <i-input v-model="goodsEdit.marketPrice"></i-input>
+                                                    </i-col>
+                                                    <i-col span="2">元</i-col>
+                                                </row>
                                                 <p class="tip">价格必须是大于等于0.01的数字，此价格仅为市场参考售价，
                                                     请根据实际情况认真填写</p>
                                             </form-item>
                                         </i-col>
                                     </row>
-                                    <row>
+                                    <row class="freight-style-module">
                                         <i-col span="16">
                                             <form-item label="成本价格">
-                                                <i-input v-model="goodsEdit.costPrice"></i-input>
+                                                <row class="freight-style">
+                                                    <i-col span="4">
+                                                        <i-input v-model="goodsEdit.costPrice"></i-input>
+                                                    </i-col>
+                                                    <i-col span="2">元</i-col>
+                                                </row>
                                                 <p class="tip">价格必须是大于等于0.01的数字，此价格为商户对所销售的商品实际
                                                     成本价格进行备注记录，不会在前台销售页面中显示</p>
                                             </form-item>
                                         </i-col>
                                     </row>
-                                    <row>
+                                    <row class="freight-style-module">
                                         <i-col span="16">
                                             <form-item label="折扣">
-                                                <i-input v-model="goodsEdit.goodDiscount"></i-input>
+                                                <row class="freight-style">
+                                                    <i-col span="4">
+                                                        <i-input v-model="goodsEdit.goodDiscount"></i-input>
+                                                    </i-col>
+                                                    <i-col span="2">%</i-col>
+                                                </row>
                                                 <p class="tip">价格必须是大于等于0.01的数字，此价格为商户对所销售的商品实
                                                     际成本价格进行备注记录，不会在前台销售页面中显示</p>
                                             </form-item>
                                         </i-col>
                                     </row>
-                                    <row>
+                                    <row class="freight-style-module">
                                         <i-col span="16">
                                             <form-item label="商品库存">
-                                                <i-input v-model="goodsEdit.goodInventory"></i-input>
+                                                <row class="freight-style">
+                                                    <i-col span="4">
+                                                        <i-input v-model="goodsEdit.goodInventory"></i-input>
+                                                    </i-col>
+                                                </row>
                                                 <p class="tip">商品库存数量必须为0~999999999之间的整数，若启用了库存配置，
                                                     则系统自动计算商品的总数，此处无需买家填写</p>
                                             </form-item>
                                         </i-col>
                                     </row>
-                                    <row>
+                                    <row class="freight-style-module">
                                         <i-col span="16">
                                             <form-item label="库存预警值">
-                                                <i-input v-model="goodsEdit.warnValue"></i-input>
+                                                <row class="freight-style">
+                                                    <i-col span="4">
+                                                        <i-input v-model="goodsEdit.warnValue"></i-input>
+                                                    </i-col>
+                                                </row>
                                                 <p class="tip">设置最低库存预警值。当库存低于预警值时商家中心商品列表页库
                                                     存列红字提醒，请填写0~255的数字，0为不预警</p>
                                             </form-item>
                                         </i-col>
                                     </row>
-                                    <row>
+                                    <row class="freight-style-module">
                                         <i-col span="16">
                                             <form-item label="商家货号">
-                                                <i-input v-model="goodsEdit.sellerNum"></i-input>
+                                                <row class="freight-style">
+                                                    <i-col span="4">
+                                                        <i-input v-model="goodsEdit.sellerNum"></i-input>
+                                                    </i-col>
+                                                </row>
                                                 <p class="tip">商家货号是指商家管理商品的编号，买家不可见，最多可输入20个字符，
                                                     支持输入中文、字母、数字、_、/、-和小数点</p>
                                             </form-item>
                                         </i-col>
                                     </row>
-                                    <row>
+                                    <row class="freight-style-module">
                                         <i-col span="16">
                                             <form-item label="商品条形码">
-                                                <i-input v-model="goodsEdit.barCode"></i-input>
-                                                <p class="tip">请填写商品条形码下方数字</p>
+                                                <row class="freight-style">
+                                                    <i-col span="4">
+                                                        <i-input v-model="goodsEdit.barCode"></i-input>
+                                                    </i-col>
+                                                </row>
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -491,19 +644,67 @@
                                 </div>
                             </div>
                             <div class="library-application">
-                                <h5>商品基本信息</h5>
+                                <h5>商品物流信息</h5>
                                 <div class="application-content refund-module">
                                     <row>
                                         <i-col span="12">
-                                            <form-item label="商品重量">
-                                                <i-input></i-input>
+                                            <form-item label="所在地">
+                                                <cascader :data="goodPlace" trigger="hover"
+                                                          v-model="goodsEdit.goodPlace"></Cascader>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row class="freight-style-module">
+                                        <i-col span="16">
+                                            <form-item label="运费">
+                                                <radio-group v-model="goodsEdit.freightStyle">
+                                                    <radio label="固定运费"></radio>
+                                                    <radio label="选择售卖区域"></radio>
+                                                </radio-group>
+                                                <row class="freight-style">
+                                                    <i-col span="4">
+                                                        <i-input v-model="goodsEdit.freightMoney"></i-input>
+                                                    </i-col>
+                                                    <i-col span="2">元</i-col>
+                                                </row>
+                                                <p class="tip">运费设置为0元，前台商品将显示为免运费</p>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                </div>
+                            </div>
+                            <div class="library-application">
+                                <h5>发票信息</h5>
+                                <div class="application-content refund-module">
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="是否开增值税发票">
+                                                <radio-group v-model="goodsEdit.vatInvoice">
+                                                    <radio label="是"></radio>
+                                                    <radio label="否"></radio>
+                                                </radio-group>
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="12">
-                                            <form-item label="商品体积">
-                                                <i-input></i-input>
+                                            <form-item label="本店分类">
+                                                <i-select v-model="goodsEdit.shopStyle">
+                                                    <i-option v-for="item in shopStyle" :value="item.value"
+                                                              :key="item">{{ item.label }}</i-option>
+                                                </i-select>
+                                                <p class="tip">商品可以从属于店铺的多个分类下，店铺分类可以由“商家中心>店铺>
+                                                    店铺分类”中自定义</p>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="商品发布">
+                                                <radio-group v-model="goodsEdit.commodityRelease">
+                                                    <radio label="是"></radio>
+                                                    <radio label="否"></radio>
+                                                </radio-group>
                                             </form-item>
                                         </i-col>
                                     </row>
