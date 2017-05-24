@@ -549,6 +549,14 @@
             };
         },
         methods: {
+            editGoods() {
+                const self = this;
+                self.$router.push(
+                    {
+                        path: 'goods/edit',
+                    },
+                );
+            },
             removeGoods(index) {
                 this.goodsData.splice(index, 1);
             },
