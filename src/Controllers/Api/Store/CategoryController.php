@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Store;
 
 use Notadd\Mall\Abstracts\StoreController as AbstractStoreController;
+use Notadd\Mall\Handlers\Store\Category\CategoryHandler;
 use Notadd\Mall\Handlers\Store\Category\ListHandler;
 
 /**
@@ -16,6 +17,17 @@ use Notadd\Mall\Handlers\Store\Category\ListHandler;
  */
 class CategoryController extends AbstractStoreController
 {
+    /**
+     * @param \Notadd\Mall\Handlers\Store\Category\CategoryHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function category(CategoryHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\Store\Category\ListHandler $handler
      *
