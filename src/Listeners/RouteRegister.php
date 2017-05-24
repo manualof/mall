@@ -92,7 +92,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('configuration/message/remove', ConfigurationMessageController::class . '@remove');
             $this->router->post('configuration/pay/get', ConfigurationPayController::class . '@get');
             $this->router->post('configuration/pay/set', ConfigurationPayController::class . '@set');
-            $this->router->post('configuration/search/get', ConfigurationSearchController::class . '@set');
+            $this->router->post('configuration/search/get', ConfigurationSearchController::class . '@get');
             $this->router->post('configuration/search/set', ConfigurationSearchController::class . '@set');
             $this->router->post('configuration/search/hot/create', ConfigurationSearchHotController::class . '@create');
             $this->router->post('configuration/search/hot/edit', ConfigurationSearchHotController::class . '@edit');
