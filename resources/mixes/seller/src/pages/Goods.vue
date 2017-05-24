@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -18,6 +19,16 @@
                     },
                     {
                         key: 'goodsName',
+                        render() {
+                            return `<img :src="row.goodsImg" alt="">
+                                    <div class="right-text">
+                                        <p>{{ row.goodsName }}</p>
+                                        <div>
+                                            <span class="left-num">商家货号：{{ row.sellNum }}</span>
+                                            <span>SPU：{{ row.sellSpu }}</span>
+                                        </div>
+                                    </div>`;
+                        },
                         title: '商品名称',
                         width: 650,
                     },
@@ -49,7 +60,7 @@
                         align: 'center',
                         key: 'reviewStatus',
                         title: '审核',
-                        width: 150,
+                        width: 200,
                     },
                     {
                         align: 'center',
@@ -66,11 +77,54 @@
                 ],
                 goodsData: [
                     {
+                        goodsImg: image1,
                         goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
                         goodsPrice: '￥4826.07',
                         goodsStock: '54',
                         reviewStatus: '已通过',
+                        sellNum: 54277777777,
+                        sellSpu: 324356,
                         status: true,
+                    },
+                    {
+                        goodsImg: image1,
+                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
+                        goodsPrice: '￥4826.07',
+                        goodsStock: '54',
+                        reviewStatus: '未通过',
+                        sellNum: 54277777777,
+                        sellSpu: 324356,
+                        status: false,
+                    },
+                    {
+                        goodsImg: image1,
+                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
+                        goodsPrice: '￥4826.07',
+                        goodsStock: '54',
+                        reviewStatus: '未通过',
+                        sellNum: 54277777777,
+                        sellSpu: 324356,
+                        status: false,
+                    },
+                    {
+                        goodsImg: image1,
+                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
+                        goodsPrice: '￥4826.07',
+                        goodsStock: '54',
+                        reviewStatus: '未通过',
+                        sellNum: 54277777777,
+                        sellSpu: 324356,
+                        status: false,
+                    },
+                    {
+                        goodsImg: image1,
+                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
+                        goodsPrice: '￥4826.07',
+                        goodsStock: '54',
+                        reviewStatus: '未通过',
+                        sellNum: 54277777777,
+                        sellSpu: 324356,
+                        status: false,
                     },
                 ],
                 loading: false,
@@ -92,15 +146,7 @@
             };
         },
         methods: {
-            exportData() {
-                this.$refs.goodsList.exportCsv({
-                    filename: '商品管理数据',
-                });
-            },
-            lookGoodsSku() {
-                this.modal = true;
-            },
-            remove(index) {
+            removeGoods(index) {
                 this.goodsData.splice(index, 1);
             },
             submit() {
@@ -124,7 +170,7 @@
     <div class="seller-wrap">
         <div class="goods-wrap">
             <tabs value="name1">
-                <tab-pane label="商品列表" name="name1" class="all-goods">
+                <tab-pane label="商品列表" name="name1">
                     <card :bordered="false">
                         <div class="goods-list">
                             <div class="goods-body-header">
