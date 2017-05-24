@@ -9,7 +9,7 @@
         },
         data() {
             return {
-                action: `${window.api}/mall/upload`,
+                action: `${window.api}/mall/admin/upload`,
                 distribution: [
                     {
                         label: '333',
@@ -22,15 +22,23 @@
                 ],
                 goodsEdit: {
                     barCode: '',
+                    costPrice: '',
                     distribution: '',
                     goodComment: '',
+                    goodDiscount: '',
+                    goodInventory: '',
                     goodOrigin: '',
+                    goodPrice: '',
                     goodStyle: '',
                     logo: '',
-                    name: '',
+                    marketPrice: '',
+                    name: '蘑菇空气净化器台灯创意USB充电小台灯学生护眼灯可爱卧室床头灯',
                     price: '',
-                    sellPoint: '',
+                    sellerNum: '',
+                    sellPoint: '原价258 特价9元F码抢购！仅限10个！全球首款净化空气的台灯，上班看书的同时释放负离子，' +
+                    '远离城市喧嚣，仿佛置身于大自然的感觉，让你身心健康',
                     type: '数码办公>时尚影音>智能设备',
+                    warnValue: '',
                 },
                 goodStyle: [
                     {
@@ -189,13 +197,13 @@
 </script>
 <template>
     <div class="seller-wrap">
-        <div class="goods-edit ">
+        <div class="goods-edit">
             <div class="store-refund-process">
                 <div class="edit-link-title">
                     <i-button type="text" @click.native="goBack">
                         <icon type="chevron-left"></icon>
                     </i-button>
-                    <span>商品库管理—编辑</span>
+                    <span>商品列表-编辑商品</span>
                 </div>
                 <div>
                     <card :bordered="false">
@@ -204,7 +212,7 @@
                                 <h5>商品基本信息</h5>
                                 <div class="application-content refund-module">
                                     <row>
-                                        <i-col span="12">
+                                        <i-col span="16">
                                             <form-item label="商品分类">
                                                 {{ goodsEdit.type }}&nbsp; &nbsp;&nbsp;
                                                 <i-button type="ghost" @click.native="editInformation">编辑</i-button>
@@ -223,15 +231,78 @@
                                             <form-item label="商品卖点">
                                                 <i-input v-model="goodsEdit.sellPoint" type="textarea"
                                                          :autosize="{minRows: 3,maxRows: 5}"></i-input>
-                                                <p>商品卖点最长不超过140个汉字</p>
+                                                <p class="tip">商品卖点最长不超过140个汉字</p>
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
-                                        <i-col span="10">
+                                        <i-col span="16">
+                                            <form-item label="商品价格">
+                                                <i-input v-model="goodsEdit.goodPrice"></i-input>
+                                                <p class="tip">价格必须是大于等于0.01的数字，且不能高于市场价，
+                                                    此价格为商品实际销售价格，如果存在规格，该价格显示最低价格</p>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="市场价格">
+                                                <i-input v-model="goodsEdit.marketPrice"></i-input>
+                                                <p class="tip">价格必须是大于等于0.01的数字，此价格仅为市场参考售价，
+                                                    请根据实际情况认真填写</p>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="成本价格">
+                                                <i-input v-model="goodsEdit.costPrice"></i-input>
+                                                <p class="tip">价格必须是大于等于0.01的数字，此价格为商户对所销售的商品实际
+                                                    成本价格进行备注记录，不会在前台销售页面中显示</p>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="折扣">
+                                                <i-input v-model="goodsEdit.goodDiscount"></i-input>
+                                                <p class="tip">价格必须是大于等于0.01的数字，此价格为商户对所销售的商品实
+                                                    际成本价格进行备注记录，不会在前台销售页面中显示</p>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="商品库存">
+                                                <i-input v-model="goodsEdit.goodInventory"></i-input>
+                                                <p class="tip">商品库存数量必须为0~999999999之间的整数，若启用了库存配置，
+                                                    则系统自动计算商品的总数，此处无需买家填写</p>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="库存预警值">
+                                                <i-input v-model="goodsEdit.warnValue"></i-input>
+                                                <p class="tip">设置最低库存预警值。当库存低于预警值时商家中心商品列表页库
+                                                    存列红字提醒，请填写0~255的数字，0为不预警</p>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="商家货号">
+                                                <i-input v-model="goodsEdit.sellerNum"></i-input>
+                                                <p class="tip">商家货号是指商家管理商品的编号，买家不可见，最多可输入20个字符，
+                                                    支持输入中文、字母、数字、_、/、-和小数点</p>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
                                             <form-item label="商品条形码">
                                                 <i-input v-model="goodsEdit.barCode"></i-input>
-                                                <p>请填写商品条形码下方数字</p>
+                                                <p class="tip">请填写商品条形码下方数字</p>
                                             </form-item>
                                         </i-col>
                                     </row>
