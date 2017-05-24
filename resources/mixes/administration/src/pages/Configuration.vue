@@ -4,7 +4,7 @@
     export default {
         beforeRouteEnter(to, from, next) {
             injection.loading.start();
-            injection.http.post(`${window.api}/mall/configuration/get`).then(response => {
+            injection.http.post(`${window.api}/mall/admin/configuration/get`).then(response => {
                 const data = response.data.data;
                 next(vm => {
                     injection.loading.finish();
@@ -19,7 +19,7 @@
         },
         data() {
             return {
-                action: `${window.api}/mall/upload`,
+                action: `${window.api}/mall/admin/upload`,
                 form: {
                     email: '',
                     logo: '',
@@ -65,7 +65,7 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        self.$http.post(`${window.api}/mall/configuration/set`, self.form).then(() => {
+                        self.$http.post(`${window.api}/mall/admin/configuration/set`, self.form).then(() => {
                             self.$notice.open({
                                 title: '更新商城配置成功！',
                             });
