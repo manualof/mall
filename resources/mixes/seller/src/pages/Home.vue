@@ -85,6 +85,11 @@
                         sellNum: 138,
                         violationNum: 7,
                     },
+                    operation: {
+                        spike: true,
+                        sell: true,
+                        fullDown: false,
+                    },
                     order: {
                         totalAmount: 543578,
                         totalNum: 543,
@@ -114,7 +119,7 @@
                     <card :bordered="false">
                         <row class="top-shop-intro">
                             <i-col class="img" span="2">
-                                <img src="" alt="">
+                                <img src="../assets/images/img_logo.png" alt="">
                             </i-col>
                             <i-col span="22">
                                 <h4>{{ shop.name }}
@@ -170,33 +175,51 @@
                                                 <li>
                                                     <div class="clearfix">
                                                         <div class="img">
-                                                            <img src="" alt="">
+                                                            <img src="../assets/images/img_spike.png"
+                                                            v-if="tipDetail.operation.spike">
+                                                            <img src="../assets/images/img_spike01.png"
+                                                                 v-if="!tipDetail.operation.spike">
                                                         </div>
                                                         <div class="img-text">
                                                             <p>限时秒杀</p>
-                                                            <p>已开通</p>
+                                                            <p v-if="tipDetail.operation.spike">
+                                                                <icon type="checkmark-circled"></icon>已开通</p>
+                                                            <p v-if="!tipDetail.operation.spike">
+                                                                <icon type="close-circled"></icon>未开通</p>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="clearfix">
                                                         <div class="img">
-                                                            <img src="" alt="">
+                                                            <img src="../assets/images/img_sell.png"
+                                                                 v-if="tipDetail.operation.sell">
+                                                            <img src="../assets/images/img_sell01.png"
+                                                                 v-if="!tipDetail.operation.sell">
                                                         </div>
                                                         <div class="img-text">
-                                                            <p>限时秒杀</p>
-                                                            <p>已开通</p>
+                                                            <p>商品预售</p>
+                                                            <p v-if="tipDetail.operation.sell">
+                                                                <icon type="checkmark-circled"></icon>已开通</p>
+                                                            <p v-if="!tipDetail.operation.sell">
+                                                                <icon type="close-circled"></icon>未开通</p>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="clearfix">
                                                         <div class="img">
-                                                            <img src="" alt="">
+                                                            <img src="../assets/images/img_fulldown.png"
+                                                                 v-if="tipDetail.operation.fullDown">
+                                                            <img src="../assets/images/img_fulldown01.png"
+                                                                 v-if="!tipDetail.operation.fullDown">
                                                         </div>
                                                         <div class="img-text">
-                                                            <p>限时秒杀</p>
-                                                            <p>已开通</p>
+                                                            <p>商品满减</p>
+                                                            <p v-if="tipDetail.operation.fullDown">
+                                                                <icon type="checkmark-circled"></icon>已开通</p>
+                                                            <p v-if="!tipDetail.operation.fullDown">
+                                                                <icon type="close-circled"></icon>未开通</p>
                                                         </div>
                                                     </div>
                                                 </li>
