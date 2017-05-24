@@ -63,6 +63,7 @@ use Notadd\Mall\Controllers\Api\User\OrderController as UserOrderController;
 use Notadd\Mall\Controllers\Api\User\RateController;
 use Notadd\Mall\Controllers\Api\User\UserController;
 use Notadd\Mall\Controllers\Api\User\FollowController;
+use Notadd\Mall\Controllers\Api\User\VipController;
 
 /**
  * Class RouteRegister.
@@ -281,6 +282,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('rate/edit', RateController::class . '@edit');
             $this->router->post('rate/list', RateController::class . '@list');
             $this->router->post('rate/remove', RateController::class . '@remove');
+            $this->router->post('vip', VipController::class . '@vip');
         });
     }
 }
