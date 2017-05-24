@@ -26,9 +26,10 @@
                     costPrice: '',
                     distribution: '',
                     freightMoney: '',
-                    freightStyle: '',
+                    freightStyle: '固定运费',
                     goodComment: '',
                     goodDiscount: '',
+                    goodFeatured: '',
                     goodInventory: '',
                     goodOrigin: '',
                     goodPlace: [],
@@ -38,24 +39,16 @@
                     marketPrice: '',
                     name: '蘑菇空气净化器台灯创意USB充电小台灯学生护眼灯可爱卧室床头灯',
                     price: '',
+                    remarks: '',
                     sellerNum: '',
                     sellPoint: '原价258 特价9元F码抢购！仅限10个！全球首款净化空气的台灯，上班看书的同时释放负离子，' +
                     '远离城市喧嚣，仿佛置身于大自然的感觉，让你身心健康',
                     shopStyle: '',
+                    supplier: '',
                     type: '数码办公>时尚影音>智能设备',
                     vatInvoice: '',
                     warnValue: '',
                 },
-                goodStyle: [
-                    {
-                        label: '华为',
-                        value: '1',
-                    },
-                    {
-                        label: '苹果',
-                        value: '2',
-                    },
-                ],
                 goodComment: [
                     {
                         label: '好',
@@ -178,6 +171,26 @@
                         value: '家用电器',
                     },
                 ],
+                goodStyle: [
+                    {
+                        label: '华为',
+                        value: '1',
+                    },
+                    {
+                        label: '苹果',
+                        value: '2',
+                    },
+                ],
+                goodSupplier: [
+                    {
+                        label: '新增分类1',
+                        value: '1',
+                    },
+                    {
+                        label: '新增分类2',
+                        value: '2',
+                    },
+                ],
                 isEditPicture: false,
                 isEditText: false,
                 isPcPicture: false,
@@ -205,19 +218,11 @@
                     },
                     {
                         content: '（1）每次插入文字不能超过500个字，标点、特殊字符按照一个字计算；' +
-                        '（2）请手动输入文字，不要复制粘网页上的文字，防止出现乱码；',
+                        '（2）请手动输入文字，不要复制粘网页上的文字，防止出现乱码；' +
+                        '（3）以下特殊字符"<",">,"/",""等会被替换为空 ',
                         name: '3.文字要求',
                     },
                 ],
-                ruleValidate: {
-                    remarks: [
-                        {
-                            message: '信息不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
-                },
                 shopStyle: [
                     {
                         label: '新增分类1',
@@ -267,7 +272,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.activityValidate.validate(valid => {
+                self.$refs.goodsEdit.validate(valid => {
                     if (valid) {
                         self.$Message.success('提交成功!');
                     } else {
@@ -661,13 +666,18 @@
                                                     <radio label="固定运费"></radio>
                                                     <radio label="选择售卖区域"></radio>
                                                 </radio-group>
-                                                <row class="freight-style">
-                                                    <i-col span="4">
-                                                        <i-input v-model="goodsEdit.freightMoney"></i-input>
-                                                    </i-col>
-                                                    <i-col span="2">元</i-col>
-                                                </row>
-                                                <p class="tip">运费设置为0元，前台商品将显示为免运费</p>
+                                                <div v-if="goodsEdit.freightStyle === '固定运费'">
+                                                    <row class="freight-style">
+                                                        <i-col span="4">
+                                                            <i-input v-model="goodsEdit.freightMoney"></i-input>
+                                                        </i-col>
+                                                        <i-col span="2">元</i-col>
+                                                    </row>
+                                                    <p class="tip">运费设置为0元，前台商品将显示为免运费</p>
+                                                </div>
+                                                <div v-if="goodsEdit.freightStyle === '选择售卖区域'">
+                                                    <i-button type="ghost">选择售卖区域</i-button>
+                                                </div>
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -698,13 +708,42 @@
                                             </form-item>
                                         </i-col>
                                     </row>
-                                    <row>
+                                    <row class="data-picker-module">
                                         <i-col span="16">
                                             <form-item label="商品发布">
                                                 <radio-group v-model="goodsEdit.commodityRelease">
+                                                    <radio label="fabu">
+                                                        <span>立即发布</span>
+                                                    </radio>
+                                                    <radio label="time">
+                                                        <span>发布时间</span>
+                                                        <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                    </radio>
+                                                    <radio label="nofabu">
+                                                        <span>暂不发布</span>
+                                                    </radio>
+                                                </radio-group>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="商品推荐">
+                                                <radio-group v-model="goodsEdit.goodFeatured">
                                                     <radio label="是"></radio>
                                                     <radio label="否"></radio>
                                                 </radio-group>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="12">
+                                            <form-item label="供货商">
+                                                <i-select v-model="goodsEdit.supplier">
+                                                    <i-option v-for="item in goodSupplier" :value="item.value"
+                                                              :key="item">{{ item.label }}</i-option>
+                                                </i-select>
+                                                <p class="tip">可以选择商品的供货商</p>
                                             </form-item>
                                         </i-col>
                                     </row>
