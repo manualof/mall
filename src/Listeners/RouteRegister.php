@@ -54,6 +54,7 @@ use Notadd\Mall\Controllers\Api\Seller\StoreController;
 use Notadd\Mall\Controllers\Api\Seller\StoreDynamicController;
 use Notadd\Mall\Controllers\Api\Seller\StoreNavigationController;
 use Notadd\Mall\Controllers\Api\User\CardController;
+use Notadd\Mall\Controllers\Api\User\CouponController;
 use Notadd\Mall\Controllers\Api\User\OrderController as UserOrderController;
 
 /**
@@ -245,6 +246,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('card/add', CardController::class . '@add');
             $this->router->post('card/empty', CardController::class . '@empty');
             $this->router->post('card/remove', CardController::class . '@remove');
+            $this->router->post('coupon/list', CouponController::class . '@list');
             $this->router->post('order', UserOrderController::class . '@order');
             $this->router->post('order/cancel', UserOrderController::class . '@cancel');
             $this->router->post('order/edit', UserOrderController::class . '@edit');
