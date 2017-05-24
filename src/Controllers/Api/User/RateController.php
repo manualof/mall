@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\User;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\User\Rate\EditHandler;
 use Notadd\Mall\Handlers\User\Rate\ListHandler;
 
 /**
@@ -16,6 +17,17 @@ use Notadd\Mall\Handlers\User\Rate\ListHandler;
  */
 class RateController extends Controller
 {
+    /**
+     * @param \Notadd\Mall\Handlers\User\Rate\EditHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function edit(EditHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\User\Rate\ListHandler $handler
      *
