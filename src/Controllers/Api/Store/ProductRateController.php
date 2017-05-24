@@ -12,6 +12,7 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Store\Product\Rate\CreateHandler;
 use Notadd\Mall\Handlers\Store\Product\Rate\ListHandler;
 use Notadd\Mall\Handlers\Store\Product\Rate\RateHandler;
+use Notadd\Mall\Handlers\Store\Product\Rate\RemoveHandler;
 
 /**
  * Class ProductRateController.
@@ -47,6 +48,17 @@ class ProductRateController extends Controller
      * @throws \Exception
      */
     public function rate(RateHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Store\Product\Rate\RemoveHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function remove(RemoveHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
