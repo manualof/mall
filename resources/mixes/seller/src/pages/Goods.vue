@@ -127,6 +127,91 @@
                         status: false,
                     },
                 ],
+                goodsRecoverColumns: [
+                    {
+                        align: 'center',
+                        type: 'selection',
+                        width: 60,
+                    },
+                    {
+                        key: 'goodsName',
+                        render() {
+                            return `<img :src="row.goodsImg" alt="">
+                                    <div class="right-text">
+                                        <p>{{ row.goodsName }}</p>
+                                        <div>
+                                            <span class="left-num">商家货号：{{ row.sellNum }}</span>
+                                            <span>SPU：{{ row.sellSpu }}</span>
+                                        </div>
+                                    </div>`;
+                        },
+                        title: '商品名称',
+                        width: 650,
+                    },
+                    {
+                        align: 'center',
+                        key: 'goodsPrice',
+                        title: '价格',
+                    },
+                    {
+                        align: 'center',
+                        key: 'goodsStock',
+                        title: '库存',
+                    },
+                    {
+                        align: 'center',
+                        key: 'action',
+                        render(row, column, index) {
+                            return `<i-button type="ghost">还原</i-button>
+                                    <i-button @click.native="removeRecoverGoods(${index})" class="delete-ad"
+                                     type="ghost">删除</i-button>`;
+                        },
+                        title: '操作',
+                        width: 180,
+                    },
+                ],
+                goodsRecoverData: [
+                    {
+                        goodsImg: image1,
+                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
+                        goodsPrice: '￥4826.07',
+                        goodsStock: '54',
+                        sellNum: 54277777777,
+                        sellSpu: 324356,
+                    },
+                    {
+                        goodsImg: image1,
+                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
+                        goodsPrice: '￥4826.07',
+                        goodsStock: '54',
+                        sellNum: 54277777777,
+                        sellSpu: 324356,
+                    },
+                    {
+                        goodsImg: image1,
+                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
+                        goodsPrice: '￥4826.07',
+                        goodsStock: '54',
+                        sellNum: 54277777777,
+                        sellSpu: 324356,
+                    },
+                    {
+                        goodsImg: image1,
+                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
+                        goodsPrice: '￥4826.07',
+                        goodsStock: '54',
+                        sellNum: 54277777777,
+                        sellSpu: 324356,
+                    },
+                    {
+                        goodsImg: image1,
+                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
+                        goodsPrice: '￥4826.07',
+                        goodsStock: '54',
+                        sellNum: 54277777777,
+                        sellSpu: 324356,
+                    },
+                ],
                 loading: false,
                 searchList: [
                     {
@@ -148,6 +233,9 @@
         methods: {
             removeGoods(index) {
                 this.goodsData.splice(index, 1);
+            },
+            removeRecoverGoods(index) {
+                this.goodsRecoverData.splice(index, 1);
             },
             submit() {
                 const self = this;
@@ -210,7 +298,34 @@
 
                 </tab-pane>
                 <tab-pane label="商品回收站" name="name5">
-
+                    <card :bordered="false">
+                        <div class="goods-list">
+                            <div class="goods-body-header">
+                                <i-button type="ghost" class="first-btn">批量还原</i-button>
+                                <i-button type="ghost">批量删除</i-button>
+                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                                <div class="goods-body-header-right">
+                                    <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                        <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
+                                            <i-option v-for="item in searchList"
+                                                      :value="item.value">{{ item.label }}</i-option>
+                                        </i-select>
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </div>
+                            </div>
+                            <i-table class="goods-table"
+                                     :columns="goodsRecoverColumns"
+                                     :context="self"
+                                     :data="goodsRecoverData"
+                                     ref="goodsRecoverList"
+                                     highlight-row>
+                            </i-table>
+                        </div>
+                        <div class="page">
+                            <page :total="100" show-elevator></page>
+                        </div>
+                    </card>
                 </tab-pane>
             </tabs>
         </div>
