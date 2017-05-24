@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\User;
 
 use Notadd\Mall\Abstracts\UserController as AbstractUserController;
+use Notadd\Mall\Handlers\User\Coupon\CouponHandler;
 use Notadd\Mall\Handlers\User\Coupon\ListHandler;
 use Notadd\Mall\Handlers\User\Coupon\RemoveHandler;
 
@@ -17,6 +18,17 @@ use Notadd\Mall\Handlers\User\Coupon\RemoveHandler;
  */
 class CouponController extends AbstractUserController
 {
+    /**
+     * @param \Notadd\Mall\Handlers\User\Coupon\CouponHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function coupon(CouponHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\User\Coupon\ListHandler $handler
      *
