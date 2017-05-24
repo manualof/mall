@@ -9,7 +9,7 @@
         },
         data() {
             return {
-                action: `${window.api}/mall/upload`,
+                action: `${window.api}/mall/admin/upload`,
                 addData: {
                     brandName: '',
                     disabledGroup: '图片',

@@ -42,7 +42,7 @@ class SetHandler extends AbstractSetHandler
      */
     public function execute()
     {
-        $this->settings->set('mall.configuration.search.default', $this->request->input('default'));
+        $this->settings->set('mall.configuration.search.default', $this->request->input('defaultSearch'));
 
         return true;
     }

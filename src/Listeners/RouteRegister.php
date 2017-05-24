@@ -53,6 +53,17 @@ use Notadd\Mall\Controllers\Api\Seller\StoreConfigurationController;
 use Notadd\Mall\Controllers\Api\Seller\StoreController;
 use Notadd\Mall\Controllers\Api\Seller\StoreDynamicController;
 use Notadd\Mall\Controllers\Api\Seller\StoreNavigationController;
+use Notadd\Mall\Controllers\Api\Store\CategoryController;
+use Notadd\Mall\Controllers\Api\Store\ProductController as StoreProductController;
+use Notadd\Mall\Controllers\Api\Store\ProductRateController;
+use Notadd\Mall\Controllers\Api\Store\StoreController as StoreStoreController;
+use Notadd\Mall\Controllers\Api\User\CardController;
+use Notadd\Mall\Controllers\Api\User\CouponController;
+use Notadd\Mall\Controllers\Api\User\OrderController as UserOrderController;
+use Notadd\Mall\Controllers\Api\User\RateController;
+use Notadd\Mall\Controllers\Api\User\UserController;
+use Notadd\Mall\Controllers\Api\User\FollowController;
+use Notadd\Mall\Controllers\Api\User\VipController;
 
 /**
  * Class RouteRegister.
@@ -90,7 +101,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('configuration/message/remove', ConfigurationMessageController::class . '@remove');
             $this->router->post('configuration/pay/get', ConfigurationPayController::class . '@get');
             $this->router->post('configuration/pay/set', ConfigurationPayController::class . '@set');
-            $this->router->post('configuration/search/get', ConfigurationSearchController::class . '@set');
+            $this->router->post('configuration/search/get', ConfigurationSearchController::class . '@get');
             $this->router->post('configuration/search/set', ConfigurationSearchController::class . '@set');
             $this->router->post('configuration/search/hot/create', ConfigurationSearchHotController::class . '@create');
             $this->router->post('configuration/search/hot/edit', ConfigurationSearchHotController::class . '@edit');
@@ -236,6 +247,44 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/product/specifications/edit', ProductSpecificationsController::class . '@edit');
             $this->router->post('store/product/specifications/list', ProductSpecificationsController::class . '@list');
             $this->router->post('store/product/specifications/remove', ProductSpecificationsController::class . '@remove');
+        });
+
+        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/store'], function () {
+            $this->router->post('/', StoreStoreController::class . '@store');
+            $this->router->post('list', StoreStoreController::class . '@list');
+            $this->router->post('category', CategoryController::class . '@category');
+            $this->router->post('category/list', CategoryController::class . '@list');
+            $this->router->post('product', StoreProductController::class . '@product');
+            $this->router->post('product/rate', ProductRateController::class . '@rate');
+            $this->router->post('product/rate/create', ProductRateController::class . '@create');
+            $this->router->post('product/rate/list', ProductRateController::class . '@list');
+            $this->router->post('product/rate/remove', ProductRateController::class . '@remove');
+        });
+
+        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/user'], function () {
+            $this->router->post('/', UserController::class . '@user');
+            $this->router->post('card', CardController::class . '@card');
+            $this->router->post('card/add', CardController::class . '@add');
+            $this->router->post('card/empty', CardController::class . '@empty');
+            $this->router->post('card/remove', CardController::class . '@remove');
+            $this->router->post('coupon', CouponController::class . '@coupon');
+            $this->router->post('coupon/list', CouponController::class . '@list');
+            $this->router->post('coupon/remove', CouponController::class . '@remove');
+            $this->router->post('follow/create', FollowController::class . '@create');
+            $this->router->post('follow/edit', FollowController::class . '@edit');
+            $this->router->post('follow/list', FollowController::class . '@list');
+            $this->router->post('follow/remove', FollowController::class . '@remove');
+            $this->router->post('footprint/list', UserOrderController::class . '@list');
+            $this->router->post('footprint/remove', UserOrderController::class . '@remove');
+            $this->router->post('order', UserOrderController::class . '@order');
+            $this->router->post('order/cancel', UserOrderController::class . '@cancel');
+            $this->router->post('order/edit', UserOrderController::class . '@edit');
+            $this->router->post('order/list', UserOrderController::class . '@list');
+            $this->router->post('order/remove', UserOrderController::class . '@remove');
+            $this->router->post('rate/edit', RateController::class . '@edit');
+            $this->router->post('rate/list', RateController::class . '@list');
+            $this->router->post('rate/remove', RateController::class . '@remove');
+            $this->router->post('vip', VipController::class . '@vip');
         });
     }
 }
