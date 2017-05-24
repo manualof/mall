@@ -60,8 +60,9 @@ use Notadd\Mall\Controllers\Api\Store\StoreController as StoreStoreController;
 use Notadd\Mall\Controllers\Api\User\CardController;
 use Notadd\Mall\Controllers\Api\User\CouponController;
 use Notadd\Mall\Controllers\Api\User\OrderController as UserOrderController;
+use Notadd\Mall\Controllers\Api\User\RateController;
 use Notadd\Mall\Controllers\Api\User\UserController;
-use Notadd\Mall\Controllers\Api\User\UserFollowController;
+use Notadd\Mall\Controllers\Api\User\FollowController;
 
 /**
  * Class RouteRegister.
@@ -268,15 +269,16 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('coupon', CouponController::class . '@coupon');
             $this->router->post('coupon/list', CouponController::class . '@list');
             $this->router->post('coupon/remove', CouponController::class . '@remove');
-            $this->router->post('follow/create', UserFollowController::class . '@create');
-            $this->router->post('follow/edit', UserFollowController::class . '@edit');
-            $this->router->post('follow/list', UserFollowController::class . '@list');
-            $this->router->post('follow/remove', UserFollowController::class . '@remove');
+            $this->router->post('follow/create', FollowController::class . '@create');
+            $this->router->post('follow/edit', FollowController::class . '@edit');
+            $this->router->post('follow/list', FollowController::class . '@list');
+            $this->router->post('follow/remove', FollowController::class . '@remove');
             $this->router->post('order', UserOrderController::class . '@order');
             $this->router->post('order/cancel', UserOrderController::class . '@cancel');
             $this->router->post('order/edit', UserOrderController::class . '@edit');
             $this->router->post('order/list', UserOrderController::class . '@list');
             $this->router->post('order/remove', UserOrderController::class . '@remove');
+            $this->router->post('rate/list', RateController::class . '@remove');
         });
     }
 }

@@ -17,7 +17,7 @@ use Notadd\Mall\Handlers\User\Follow\RemoveHandler;
 /**
  * Class UserFollowController.
  */
-class UserFollowController extends Controller
+class FollowController extends Controller
 {
     /**
      * @param \Notadd\Mall\Handlers\User\Follow\CreateHandler $handler
