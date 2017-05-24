@@ -8,11 +8,11 @@
  */
 namespace Notadd\Mall\Controllers\Api\User;
 
-use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Abstracts\UserController as AbstractUserController;
 
 /**
  * Class UserController.
  */
-class UserController extends Controller
+class UserController extends AbstractUserController
 {
 }

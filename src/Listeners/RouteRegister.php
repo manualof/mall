@@ -34,9 +34,27 @@ use Notadd\Mall\Controllers\Api\Admin\ShopController;
 use Notadd\Mall\Controllers\Api\Admin\ShopDynamicController;
 use Notadd\Mall\Controllers\Api\Admin\ShopRateController;
 use Notadd\Mall\Controllers\Api\Admin\ProductSpecificationController;
+use Notadd\Mall\Controllers\Api\Admin\StatisticsAnalysisController;
+use Notadd\Mall\Controllers\Api\Admin\StatisticsController;
+use Notadd\Mall\Controllers\Api\Admin\StatisticsMemberController;
+use Notadd\Mall\Controllers\Api\Admin\StatisticsStoreController;
 use Notadd\Mall\Controllers\Api\Admin\UploadController;
 use Notadd\Mall\Controllers\Api\Admin\VirtualOrderController;
 use Notadd\Mall\Controllers\Api\Admin\VirtualProductController;
+use Notadd\Mall\Controllers\Api\Seller\OrderController as SellerOrderController;
+use Notadd\Mall\Controllers\Api\Seller\ProductController as SellerProductController;
+use Notadd\Mall\Controllers\Api\Seller\ProductSpecificationsController;
+use Notadd\Mall\Controllers\Api\Seller\ProductSubscribeController;
+use Notadd\Mall\Controllers\Api\Seller\ServiceController;
+use Notadd\Mall\Controllers\Api\Seller\ServiceRefundController;
+use Notadd\Mall\Controllers\Api\Seller\StoreBrandController;
+use Notadd\Mall\Controllers\Api\Seller\StoreCategoryController;
+use Notadd\Mall\Controllers\Api\Seller\StoreConfigurationController;
+use Notadd\Mall\Controllers\Api\Seller\StoreController;
+use Notadd\Mall\Controllers\Api\Seller\StoreDynamicController;
+use Notadd\Mall\Controllers\Api\Seller\StoreNavigationController;
+use Notadd\Mall\Controllers\Api\User\CardController;
+use Notadd\Mall\Controllers\Api\User\OrderController as UserOrderController;
 
 /**
  * Class RouteRegister.
@@ -48,7 +66,7 @@ class RouteRegister extends AbstractRouteRegister
      */
     public function handle()
     {
-        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall'], function () {
+        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/admin'], function () {
             $this->router->post('address', AddressController::class . '@address');
             $this->router->post('address/edit', AddressController::class . '@edit');
             $this->router->post('address/list', AddressController::class . '@list');
@@ -74,7 +92,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('configuration/message/remove', ConfigurationMessageController::class . '@remove');
             $this->router->post('configuration/pay/get', ConfigurationPayController::class . '@get');
             $this->router->post('configuration/pay/set', ConfigurationPayController::class . '@set');
-            $this->router->post('configuration/search/get', ConfigurationSearchController::class . '@set');
+            $this->router->post('configuration/search/get', ConfigurationSearchController::class . '@get');
             $this->router->post('configuration/search/set', ConfigurationSearchController::class . '@set');
             $this->router->post('configuration/search/hot/create', ConfigurationSearchHotController::class . '@create');
             $this->router->post('configuration/search/hot/edit', ConfigurationSearchHotController::class . '@edit');
@@ -146,6 +164,20 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('specification/edit', ProductSpecificationController::class . '@edit');
             $this->router->post('specification/list', ProductSpecificationController::class . '@list');
             $this->router->post('specification/remove', ProductSpecificationController::class . '@remove');
+            $this->router->post('statistics', StatisticsController::class . '@get');
+            $this->router->post('statistics/analysis', StatisticsAnalysisController::class . '@dashboard');
+            $this->router->post('statistics/analysis', StatisticsAnalysisController::class . '@dashboard');
+            $this->router->post('statistics/analysis/industry', StatisticsAnalysisController::class . '@industry');
+            $this->router->post('statistics/analysis/price', StatisticsAnalysisController::class . '@price');
+            $this->router->post('statistics/member', StatisticsMemberController::class . '@member');
+            $this->router->post('statistics/member/area', StatisticsMemberController::class . '@area');
+            $this->router->post('statistics/member/newly', StatisticsMemberController::class . '@newly');
+            $this->router->post('statistics/sales', StatisticsStoreController::class . '@income');
+            $this->router->post('statistics/sales/order', StatisticsStoreController::class . '@order');
+            $this->router->post('statistics/store/area', StatisticsStoreController::class . '@area');
+            $this->router->post('statistics/store/hots', StatisticsStoreController::class . '@hots');
+            $this->router->post('statistics/store/newly', StatisticsStoreController::class . '@newly');
+            $this->router->post('statistics/store/sales', StatisticsStoreController::class . '@sales');
             $this->router->post('upload', UploadController::class . '@handle');
             $this->router->post('virtual-order/create', VirtualOrderController::class . '@create');
             $this->router->post('virtual-order/edit', VirtualOrderController::class . '@edit');
@@ -157,6 +189,67 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('virtual-product/list', VirtualProductController::class . '@list');
             $this->router->post('virtual-product/remove', VirtualProductController::class . '@remove');
             $this->router->post('virtual-product/restore', VirtualProductController::class . '@restore');
+        });
+
+        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/seller'], function () {
+            $this->router->post('order', SellerOrderController::class . '@order');
+            $this->router->post('order/list', SellerOrderController::class . '@list');
+            $this->router->post('order/process', SellerOrderController::class . '@process');
+            $this->router->post('service', ServiceController::class . '@list');
+            $this->router->post('service/remove', ServiceController::class . '@remove');
+            $this->router->post('service/refund', ServiceRefundController::class . '@refund');
+            $this->router->post('service/refund/list', ServiceRefundController::class . '@list');
+            $this->router->post('service/refund/process', ServiceRefundController::class . '@process');
+            $this->router->post('store', StoreController::class . '@store');
+            $this->router->post('store/renew', StoreController::class . '@renew');
+            $this->router->post('store/brand', StoreBrandController::class . '@brand');
+            $this->router->post('store/brand/apply', StoreBrandController::class . '@apply');
+            $this->router->post('store/brand/edit', StoreBrandController::class . '@edit');
+            $this->router->post('store/brand/list', StoreBrandController::class . '@list');
+            $this->router->post('store/brand/revoke', StoreBrandController::class . '@revoke');
+            $this->router->post('store/category', StoreCategoryController::class . '@category');
+            $this->router->post('store/category/create', StoreCategoryController::class . '@create');
+            $this->router->post('store/category/edit', StoreCategoryController::class . '@edit');
+            $this->router->post('store/category/list', StoreCategoryController::class . '@list');
+            $this->router->post('store/category/remove', StoreCategoryController::class . '@remove');
+            $this->router->post('store/configuration', StoreConfigurationController::class . '@configuration');
+            $this->router->post('store/configuration/carousel', StoreConfigurationController::class . '@carousel');
+            $this->router->post('store/configuration/setting', StoreConfigurationController::class . '@setting');
+            $this->router->post('store/dynamic', StoreDynamicController::class . '@dynamic');
+            $this->router->post('store/dynamic/configuration', StoreDynamicController::class . '@configuration');
+            $this->router->post('store/dynamic/create', StoreDynamicController::class . '@create');
+            $this->router->post('store/dynamic/edit', StoreDynamicController::class . '@edit');
+            $this->router->post('store/dynamic/list', StoreDynamicController::class . '@list');
+            $this->router->post('store/dynamic/remove', StoreDynamicController::class . '@remove');
+            $this->router->post('store/navigation', StoreNavigationController::class . '@navigation');
+            $this->router->post('store/navigation/create', StoreNavigationController::class . '@create');
+            $this->router->post('store/navigation/edit', StoreNavigationController::class . '@edit');
+            $this->router->post('store/navigation/list', StoreNavigationController::class . '@list');
+            $this->router->post('store/navigation/remove', StoreNavigationController::class . '@remove');
+            $this->router->post('store/product', SellerProductController::class . '@product');
+            $this->router->post('store/product/create', SellerProductController::class . '@create');
+            $this->router->post('store/product/edit', SellerProductController::class . '@edit');
+            $this->router->post('store/product/list', SellerProductController::class . '@list');
+            $this->router->post('store/product/remove', SellerProductController::class . '@remove');
+            $this->router->post('store/product/subscribe/list', ProductSubscribeController::class . '@list');
+            $this->router->post('store/product/subscribe/remove', ProductSubscribeController::class . '@remove');
+            $this->router->post('store/product/specifications', ProductSpecificationsController::class . '@specifications');
+            $this->router->post('store/product/specifications/create', ProductSpecificationsController::class . '@create');
+            $this->router->post('store/product/specifications/edit', ProductSpecificationsController::class . '@edit');
+            $this->router->post('store/product/specifications/list', ProductSpecificationsController::class . '@list');
+            $this->router->post('store/product/specifications/remove', ProductSpecificationsController::class . '@remove');
+        });
+
+        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/user'], function () {
+            $this->router->post('card', CardController::class . '@card');
+            $this->router->post('card/add', CardController::class . '@add');
+            $this->router->post('card/empty', CardController::class . '@empty');
+            $this->router->post('card/remove', CardController::class . '@remove');
+            $this->router->post('order', UserOrderController::class . '@order');
+            $this->router->post('order/cancel', UserOrderController::class . '@cancel');
+            $this->router->post('order/edit', UserOrderController::class . '@edit');
+            $this->router->post('order/list', UserOrderController::class . '@list');
+            $this->router->post('order/remove', UserOrderController::class . '@remove');
         });
     }
 }
