@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Upload\UploadHandler;
+use Notadd\Mall\Handlers\Admin\Upload\UploadHandler;
 
 /**
  * Class UploadController.
@@ -17,7 +17,7 @@ use Notadd\Mall\Handlers\Upload\UploadHandler;
 class UploadController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Upload\UploadHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Upload\UploadHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
