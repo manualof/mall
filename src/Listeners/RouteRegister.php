@@ -242,6 +242,7 @@ class RouteRegister extends AbstractRouteRegister
 
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/user'], function () {
             $this->router->post('card/add', CardController::class . '@add');
+            $this->router->post('card/remove', CardController::class . '@remove');
             $this->router->post('order', UserOrderController::class . '@order');
             $this->router->post('order/cancel', UserOrderController::class . '@cancel');
             $this->router->post('order/edit', UserOrderController::class . '@edit');
