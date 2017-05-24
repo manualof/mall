@@ -11,6 +11,7 @@ namespace Notadd\Mall\Controllers\Api\User;
 use Notadd\Mall\Abstracts\UserController as AbstractUserController;
 use Notadd\Mall\Handlers\User\Card\AddHandler;
 use Notadd\Mall\Handlers\User\Card\CardHandler;
+use Notadd\Mall\Handlers\User\Card\EmptyHandler;
 use Notadd\Mall\Handlers\User\Card\RemoveHandler;
 
 /**
@@ -36,6 +37,17 @@ class CardController extends AbstractUserController
      * @throws \Exception
      */
     public function card(CardHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\User\Card\EmptyHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function empty(EmptyHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
