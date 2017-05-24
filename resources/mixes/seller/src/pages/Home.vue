@@ -147,10 +147,26 @@
                                                     {{ tipDetail.goodTip.imgNum }}/{{ tipDetail.goodTip.imgAll }}</span>
                                             </div>
                                             <ul class="border-module clearfix">
-                                                <li>出售中 <span>{{ tipDetail.goodTip.sellNum }}</span></li>
-                                                <li>违规下架 <span>{{ tipDetail.goodTip.violationNum }}</span></li>
-                                                <li>仓库中已审核 <span>{{ tipDetail.goodTip.reviewNum }}</span></li>
-                                                <li>待回复咨询 <span>{{ tipDetail.goodTip.replyNum }}</span></li>
+                                                <li>
+                                                    <router-link to="/">
+                                                        出售中 <span>{{ tipDetail.goodTip.sellNum }}</span>
+                                                    </router-link>
+                                                </li>
+                                                <li>
+                                                    <router-link to="/">
+                                                        违规下架 <span>{{ tipDetail.goodTip.violationNum }}</span>
+                                                    </router-link>
+                                                </li>
+                                                <li>
+                                                    <router-link to="/">
+                                                        仓库中已审核 <span>{{ tipDetail.goodTip.reviewNum }}</span>
+                                                    </router-link>
+                                                </li>
+                                                <li>
+                                                    <router-link to="/">
+                                                        待回复咨询 <span>{{ tipDetail.goodTip.replyNum }}</span>
+                                                    </router-link>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li>
@@ -159,11 +175,31 @@
                                                 <span class="tip distance"> 需要处理的交易订单</span>
                                             </div>
                                             <ul class="border-module clearfix">
-                                                <li>待付款 <span>{{ tipDetail.transaction.pay }}</span></li>
-                                                <li>待发货 <span>{{ tipDetail.transaction.ship }}</span></li>
-                                                <li>待确认账单 <span>{{ tipDetail.transaction.ensure }}</span></li>
-                                                <li>退款 <span>{{ tipDetail.transaction.refund }}</span></li>
-                                                <li>退货 <span>{{ tipDetail.transaction.returnGoods }}</span></li>
+                                                <li>
+                                                    <router-link to="/">
+                                                        待付款 <span>{{ tipDetail.transaction.pay }}</span>
+                                                    </router-link>
+                                                </li>
+                                                <li>
+                                                    <router-link to="/">
+                                                        待发货 <span>{{ tipDetail.transaction.ship }}</span>
+                                                    </router-link>
+                                                </li>
+                                                <li>
+                                                    <router-link to="/">
+                                                        待确认账单 <span>{{ tipDetail.transaction.ensure }}</span>
+                                                    </router-link>
+                                                </li>
+                                                <li>
+                                                    <router-link to="/">
+                                                        退款 <span>{{ tipDetail.transaction.refund }}</span>
+                                                    </router-link>
+                                                </li>
+                                                <li>
+                                                    <router-link to="/">
+                                                        退货 <span>{{ tipDetail.transaction.returnGoods }}</span>
+                                                    </router-link>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li>
