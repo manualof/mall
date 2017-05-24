@@ -2,6 +2,7 @@ import Layout from '../layouts/Layout.vue';
 import Dashboard from '../pages/Dashboard.vue';
 import Home from '../pages/Home.vue';
 import Goods from '../pages/Goods.vue';
+import GoodsAdd from '../pages/GoodsAdd.vue';
 import GoodsEdit from '../pages/GoodsEdit.vue';
 import GoodsEditCategory from '../pages/GoodsEditCategory.vue';
 
@@ -23,6 +24,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: Goods,
                     path: 'goods',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsAdd,
+                    path: 'goods/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

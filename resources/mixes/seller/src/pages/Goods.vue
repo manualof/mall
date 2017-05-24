@@ -549,6 +549,14 @@
             };
         },
         methods: {
+            addGoods() {
+                const self = this;
+                self.$router.push(
+                    {
+                        path: 'goods/add',
+                    },
+                );
+            },
             editGoods() {
                 const self = this;
                 self.$router.push(
@@ -583,7 +591,7 @@
                     <card :bordered="false">
                         <div class="goods-list">
                             <div class="goods-body-header">
-                                <i-button type="ghost" class="first-btn">发布新商品</i-button>
+                                <i-button type="ghost" class="first-btn" @click.native="addGoods">发布新商品</i-button>
                                 <i-button type="ghost">批量删除</i-button>
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                                 <div class="goods-body-header-right">
