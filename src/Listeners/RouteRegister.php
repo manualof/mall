@@ -64,6 +64,9 @@ use Notadd\Mall\Controllers\Api\User\RateController;
 use Notadd\Mall\Controllers\Api\User\UserController;
 use Notadd\Mall\Controllers\Api\User\FollowController;
 use Notadd\Mall\Controllers\Api\User\VipController;
+use Notadd\Mall\Controllers\MallController;
+use Notadd\Mall\Controllers\StoreController as ForegroundStoreController;
+use Notadd\Mall\Controllers\UserController as ForegroundUserController;
 
 /**
  * Class RouteRegister.
@@ -285,6 +288,12 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('rate/list', RateController::class . '@list');
             $this->router->post('rate/remove', RateController::class . '@remove');
             $this->router->post('vip', VipController::class . '@vip');
+        });
+
+        $this->router->group(['middleware' => ['web'], 'prefix' => 'mall'], function () {
+            $this->router->get('mall*', MallController::class . '@handle');
+            $this->router->get('store*', ForegroundStoreController::class . '@handle');
+            $this->router->get('user*', ForegroundUserController::class . '@handle');
         });
     }
 }

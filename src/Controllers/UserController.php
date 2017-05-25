@@ -15,4 +15,11 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
  */
 class UserController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function handle()
+    {
+        return $this->view('');
+    }
 }
