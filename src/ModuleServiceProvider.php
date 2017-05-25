@@ -11,6 +11,7 @@ namespace Notadd\Mall;
 use Illuminate\Events\Dispatcher;
 use Notadd\Mall\Injections\Installer;
 use Notadd\Mall\Injections\Uninstaller;
+use Notadd\Mall\Listeners\PermissionTypeRegister;
 use Notadd\Mall\Listeners\RouteRegister;
 use Notadd\Mall\Listeners\CsrfTokenRegister;
 use Notadd\Foundation\Module\Abstracts\Module;
@@ -26,6 +27,7 @@ class ModuleServiceProvider extends Module
     public function boot()
     {
         $this->app->make(Dispatcher::class)->subscribe(CsrfTokenRegister::class);
+        $this->app->make(Dispatcher::class)->subscribe(PermissionTypeRegister::class);
         $this->app->make(Dispatcher::class)->subscribe(RouteRegister::class);
         $this->loadMigrationsFrom(realpath(__DIR__ . '/../databases/migrations'));
         $this->loadTranslationsFrom(realpath(__DIR__ . '/../resources/translations'), 'mall');
