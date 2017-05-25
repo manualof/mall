@@ -38,7 +38,7 @@
                 self.loading = true;
                 self.$refs.navigate.validate(valid => {
                     if (valid) {
-                        self.$Message.success('提交成功!');
+                        window.console.log(valid);
                     } else {
                         self.loading = false;
                         self.$notice.error({

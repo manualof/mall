@@ -66,7 +66,7 @@
             };
         },
         methods: {
-            addGoods() {
+            addNavigate() {
                 const self = this;
                 self.$router.push(
                     {
