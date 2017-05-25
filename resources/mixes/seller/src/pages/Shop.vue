@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image from '../assets/images/img_banner.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -12,6 +13,13 @@
                 action: `${window.api}/mall/admin/upload`,
                 loading: false,
                 self: this,
+                setting: {
+                    autoplay: false,
+                    autoplaySpeed: 2000,
+                    dots: 'inside',
+                    trigger: 'click',
+                    arrow: 'hover',
+                },
                 shop: {
                     image: '',
                     level: '白金店铺',
@@ -28,6 +36,18 @@
                         },
                     ],
                 },
+                slideImg: {
+                    img: 0,
+                    list: [image, image, image, image],
+                    picture1: '',
+                    picture2: '',
+                    picture3: '',
+                    picture4: '',
+                    pictureLink1: '',
+                    pictureLink2: '',
+                    pictureLink3: '',
+                    pictureLink4: '',
+                },
             };
         },
         methods: {
@@ -37,10 +57,36 @@
             removeLogo() {
                 this.shop.logo = '';
             },
+            removePicture1() {
+                this.slideImg.picture1 = '';
+            },
+            removePicture2() {
+                this.slideImg.picture2 = '';
+            },
+            removePicture3() {
+                this.slideImg.picture3 = '';
+            },
+            removePicture4() {
+                this.slideImg.picture4 = '';
+            },
             submit() {
                 const self = this;
                 self.loading = true;
                 self.$refs.shop.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            submitImage() {
+                const self = this;
+                self.loading = true;
+                self.$refs.slideImg.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -90,6 +136,14 @@
                     title: data.message,
                 });
                 self.shop.image = data.data.path;
+            },
+            uploadSuccessSlide1(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.slideImg.picture1 = data.data.path;
             },
         },
     };
@@ -186,9 +240,135 @@
                         </i-form>
                     </card>
                 </tab-pane>
-                <tab-pane label="轮播图设置" name="name2">
+                <tab-pane label="轮播图设置" name="name2" class="slide-module">
                     <card :bordered="false">
-
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>1.最多可上传4张图片</p>
+                            <p>2.支持JPG，JPEG，GIF，PNG格式上传，建议图片宽度990像素，高度在300像素至400像素之间，
+                                大小4MB以内的图片。提交的2〜4张图片可以进行轮播，一张图片没有轮播效果</p>
+                        </div>
+                        <i-form ref="slideImg" :model="slideImg" :rules="SlideValidate" :label-width="180">
+                            <carousel
+                                    v-model="slideImg.img"
+                                    :autoplay="setting.autoplay"
+                                    :autoplay-speed="setting.autoplaySpeed"
+                                    :dots="setting.dots"
+                                    :trigger="setting.trigger"
+                                    :arrow="setting.arrow">
+                                <carousel-item v-for="item in slideImg.list">
+                                    <div class="demo-carousel">
+                                        <img :src="item" alt="">
+                                    </div>
+                                </carousel-item>
+                            </carousel>
+                            <div class="row-link">
+                                <row :gutter="16">
+                                    <i-col span="6">
+                                        <div class="image-preview" v-if="slideImg.picture1">
+                                            <img :src="slideImg.picture1">
+                                            <icon type="close" @click.native="removePicture1"></icon>
+                                        </div>
+                                        <upload :action="action"
+                                                :before-upload="uploadBefore"
+                                                :format="['jpg','jpeg','png']"
+                                                :headers="{
+                                                    Authorization: `Bearer ${$store.state.token.access_token}`
+                                                }"
+                                                :max-size="2048"
+                                                :on-error="uploadError"
+                                                :on-format-error="uploadFormatError"
+                                                :on-success="uploadSuccessSlide1"
+                                                ref="upload"
+                                                :show-upload-list="false"
+                                                v-if="slideImg.picture1 === '' || slideImg.picture1 === null">
+                                        </upload>
+                                        <p>跳转链接</p>
+                                        <i-input v-model="slideImg.pictureLink1">
+                                            <span slot="prepend">http://</span>
+                                        </i-input>
+                                    </i-col>
+                                    <i-col span="6">
+                                        <div class="image-preview" v-if="slideImg.picture2">
+                                            <img :src="slideImg.picture2">
+                                            <icon type="close" @click.native="removePicture2"></icon>
+                                        </div>
+                                        <upload :action="action"
+                                                :before-upload="uploadBefore"
+                                                :format="['jpg','jpeg','png']"
+                                                :headers="{
+                                                    Authorization: `Bearer ${$store.state.token.access_token}`
+                                                }"
+                                                :max-size="2048"
+                                                :on-error="uploadError"
+                                                :on-format-error="uploadFormatError"
+                                                :on-success="uploadSuccessSlide2"
+                                                ref="upload"
+                                                :show-upload-list="false"
+                                                v-if="slideImg.picture2 === '' || slideImg.picture2 === null">
+                                        </upload>
+                                        <p>跳转链接</p>
+                                        <i-input v-model="slideImg.pictureLink2">
+                                            <span slot="prepend">http://</span>
+                                        </i-input>
+                                    </i-col>
+                                    <i-col span="6">
+                                        <div class="image-preview" v-if="slideImg.picture3">
+                                            <img :src="slideImg.picture3">
+                                            <icon type="close" @click.native="removePicture3"></icon>
+                                        </div>
+                                        <upload :action="action"
+                                                :before-upload="uploadBefore"
+                                                :format="['jpg','jpeg','png']"
+                                                :headers="{
+                                                    Authorization: `Bearer ${$store.state.token.access_token}`
+                                                }"
+                                                :max-size="2048"
+                                                :on-error="uploadError"
+                                                :on-format-error="uploadFormatError"
+                                                :on-success="uploadSuccessSlide3"
+                                                ref="upload"
+                                                :show-upload-list="false"
+                                                v-if="slideImg.picture3 === '' || slideImg.picture3 === null">
+                                        </upload>
+                                        <p>跳转链接</p>
+                                        <i-input v-model="slideImg.pictureLink3">
+                                            <span slot="prepend">http://</span>
+                                        </i-input>
+                                    </i-col>
+                                    <i-col span="6">
+                                        <div class="image-preview" v-if="slideImg.picture4">
+                                            <img :src="slideImg.picture4">
+                                            <icon type="close" @click.native="removePicture4"></icon>
+                                        </div>
+                                        <upload :action="action"
+                                                :before-upload="uploadBefore"
+                                                :format="['jpg','jpeg','png']"
+                                                :headers="{
+                                                    Authorization: `Bearer ${$store.state.token.access_token}`
+                                                }"
+                                                :max-size="2048"
+                                                :on-error="uploadError"
+                                                :on-format-error="uploadFormatError"
+                                                :on-success="uploadSuccessSlide4"
+                                                ref="upload"
+                                                :show-upload-list="false"
+                                                v-if="slideImg.picture4 === '' || slideImg.picture4 === null">
+                                        </upload>
+                                        <p>跳转链接</p>
+                                        <i-input v-model="slideImg.pictureLink4">
+                                            <span slot="prepend">http://</span>
+                                        </i-input>
+                                    </i-col>
+                                </row>
+                            </div>
+                            <div class="submit-btn">
+                                <i-button :loading="loading" type="primary" @click.native="submitImage">
+                                    <span v-if="!loading">确认提交</span>
+                                    <span v-else>正在提交…</span>
+                                </i-button>
+                            </div>
+                        </i-form>
                     </card>
                 </tab-pane>
             </tabs>
