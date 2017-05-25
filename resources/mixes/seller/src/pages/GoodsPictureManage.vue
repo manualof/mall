@@ -218,7 +218,7 @@
                         </row>
                         <row>
                             <i-col span="20">
-                                <form-item label="营业执照电子版" prop="logo">
+                                <form-item label="选择图片" prop="logo">
                                     <div class="image-preview" v-if="album.logo">
                                         <img :src="album.logo">
                                         <icon type="close" @click.native="removeLogo"></icon>
