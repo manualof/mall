@@ -25,11 +25,16 @@
                         value: '2',
                     },
                 ],
+                createAlbum: {
+                    albumIntro: '',
+                    albumName: '',
+                    albumSort: '',
+                },
+                createModal: false,
                 goodsPicture: {
                     sortType: '',
                 },
                 loading: false,
-                modal: false,
                 pictureList: [
                     {
                         img: image,
@@ -77,9 +82,13 @@
                         value: '2',
                     },
                 ],
+                uploadModal: false,
             };
         },
         methods: {
+            createAlbumModal() {
+                this.createModal = true;
+            },
             pictureManage() {
                 console.log('11');
                 const self = this;
@@ -97,6 +106,20 @@
                 const self = this;
                 self.loading = true;
                 self.$refs.album.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            submitCreateAlbum() {
+                const self = this;
+                self.loading = true;
+                self.$refs.createAlbum.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -132,7 +155,7 @@
                 });
             },
             uploadPicture() {
-                this.modal = true;
+                this.uploadModal = true;
             },
             uploadSuccess(data) {
                 const self = this;
@@ -153,7 +176,7 @@
                     <card :bordered="false">
                         <div class="goods-list">
                             <div class="btn-group">
-                                <i-button class="first-btn" type="ghost">创建相册</i-button>
+                                <i-button class="first-btn" type="ghost" @click.native="createAlbumModal">创建相册</i-button>
                                 <i-button type="ghost" @click.native="uploadPicture">上传图片</i-button>
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                                 <row class="float-right">
@@ -191,7 +214,7 @@
                         </div>
                     </card>
                     <modal
-                            v-model="modal"
+                            v-model="uploadModal"
                             title="上传图片" class="upload-picture-modal">
                         <div>
                             <i-form ref="album" :model="album" :rules="pictureValidate" :label-width="100">
@@ -235,6 +258,46 @@
                                     <i-col span="20">
                                         <form-item>
                                             <i-button :loading="loading" type="primary" @click.native="submit">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
+                    <modal
+                            v-model="createModal"
+                            title="创建相册" class="upload-picture-modal">
+                        <div>
+                            <i-form ref="createAlbum" :model="createAlbum" :rules="createValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="相册名称">
+                                            <i-input v-model="createAlbum.albumName"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="排序">
+                                            <i-input v-model="createAlbum.albumSort"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item label="描述">
+                                            <i-input type="textarea" v-model="createAlbum.albumIntro"
+                                                     :autosize="{minRows: 3,maxRows: 5}"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submitCreateAlbum">
                                                 <span v-if="!loading">确认提交</span>
                                                 <span v-else>正在提交…</span>
                                             </i-button>
