@@ -9,6 +9,7 @@ import GoodsNotice from '../pages/GoodsNotice.vue';
 import GoodsStandard from '../pages/GoodsStandard.vue';
 import GoodsPicture from '../pages/GoodsPicture.vue';
 import GoodsPictureManage from '../pages/GoodsPictureManage.vue';
+import Shop from '../pages/Shop.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -63,6 +64,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: GoodsPictureManage,
                     path: 'goods/picture/manage',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: Shop,
+                    path: 'shop',
                 },
             ],
             component: Layout,
