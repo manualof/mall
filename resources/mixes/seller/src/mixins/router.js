@@ -7,6 +7,7 @@ import GoodsEdit from '../pages/GoodsEdit.vue';
 import GoodsEditCategory from '../pages/GoodsEditCategory.vue';
 import GoodsNotice from '../pages/GoodsNotice.vue';
 import GoodsStandard from '../pages/GoodsStandard.vue';
+import GoodsPicture from '../pages/GoodsPicture.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -51,6 +52,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: GoodsStandard,
                     path: 'goods/standard',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsPicture,
+                    path: 'goods/picture',
                 },
             ],
             component: Layout,
