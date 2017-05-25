@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image from '../assets/images/adv.jpg';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -12,6 +13,43 @@
                 goodsPicture: {
                     sortType: '',
                 },
+                pictureList: [
+                    {
+                        img: image,
+                        name: '相册名称1',
+                        num: '455',
+                    },
+                    {
+                        img: image,
+                        name: '相册名称2',
+                        num: '455',
+                    },
+                    {
+                        img: image,
+                        name: '相册名称3',
+                        num: '455',
+                    },
+                    {
+                        img: image,
+                        name: '相册名称4',
+                        num: '455',
+                    },
+                    {
+                        img: image,
+                        name: '相册名称5',
+                        num: '455',
+                    },
+                    {
+                        img: image,
+                        name: '相册名称6',
+                        num: '455',
+                    },
+                    {
+                        img: image,
+                        name: '相册名称7',
+                        num: '455',
+                    },
+                ],
                 sortType: [
                     {
                         label: '从小到大',
@@ -25,8 +63,8 @@
             };
         },
         methods: {
-            removeGoods(index) {
-                this.goodsData.splice(index, 1);
+            removeImage(index) {
+                this.pictureList.splice(index, 1);
             },
         },
     };
@@ -51,6 +89,25 @@
                                         </i-select>
                                     </i-col>
                                 </row>
+                            </div>
+                            <div class="picture-group">
+                                <ul class="clearfix">
+                                    <li v-for="item in pictureList">
+                                        <div class="img">
+                                            <img :src="item.img" alt="">
+                                            <i-button type="text" @click.native="removeImage">
+                                                <icon type="trash-a"></icon>
+                                            </i-button>
+                                        </div>
+                                        <div class="img-intro">
+                                            <span>{{ item.name }}</span>
+                                            <i-button type="text" @click.native="editImage">
+                                                <icon type="edit"></icon>
+                                            </i-button>
+                                        </div>
+                                        <p class="tip">共{{ item.num }}张</p>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="page">
