@@ -5,6 +5,7 @@ import Goods from '../pages/Goods.vue';
 import GoodsAdd from '../pages/GoodsAdd.vue';
 import GoodsEdit from '../pages/GoodsEdit.vue';
 import GoodsEditCategory from '../pages/GoodsEditCategory.vue';
+import GoodsNotice from '../pages/GoodsNotice.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -39,6 +40,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: GoodsEditCategory,
                     path: 'goods/edit/category',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsNotice,
+                    path: 'goods/notice',
                 },
             ],
             component: Layout,

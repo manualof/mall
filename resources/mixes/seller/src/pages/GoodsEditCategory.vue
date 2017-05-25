@@ -11,11 +11,10 @@
             return {
                 goodsCategory: {
                     goodsStyle: '',
-                    selectStyle: '',
+                    selectStyle: ['家用电器', '营养辅食', '婴儿推车1'],
                 },
                 loading: false,
                 self: this,
-                style: false,
                 styleData: [
                     {
                         children: [
@@ -126,7 +125,6 @@
                 self.$router.go(-1);
             },
             handleChange(value, selectedData) {
-                this.style = true;
                 this.goodsCategory.selectStyle = selectedData.map(o => o.label).join('>');
             },
             submit() {
@@ -153,7 +151,7 @@
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
-                <span>商品库管理—编辑—商品分类</span>
+                <span>商品列表-编辑商品-分类</span>
             </div>
             <card :bordered="false">
                 <i-form ref="goodsCategory" :model="goodsCategory" :rules="ruleValidate" :label-width="280">
@@ -165,10 +163,10 @@
                             </form-item>
                         </i-col>
                     </row>
-                    <div class="select-style" v-if="style">
+                    <div class="select-style">
                         您当前选择的商品类别是： {{ goodsCategory.selectStyle }}
                     </div>
-                    <div class="submit-btn" v-if="style">
+                    <div class="submit-btn">
                         <i-button :loading="loading" type="primary" @click.native="submit">
                             <span v-if="!loading">确认提交</span>
                             <span v-else>正在提交…</span>
