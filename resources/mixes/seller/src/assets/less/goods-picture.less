@@ -32,6 +32,7 @@
                         margin-right: 20px;
                         margin-bottom: 20px;
                         &:hover .img{
+                            cursor: pointer;
                             button {
                                 display: block;
                             }
@@ -55,6 +56,7 @@
                                 border-radius: 50%;
                                 background: rgba(0, 0, 0, .3);
                                 color: #fff;
+                                z-index: 100;
                                 i {
                                     font-size: 18px;
                                 }
@@ -62,6 +64,9 @@
                         }
                         .img-intro {
                             padding-top: 15px;
+                            span {
+                                cursor: pointer;
+                            }
                             button {
                                 float: right;
                                 padding: 0 0 0 15px;
@@ -78,29 +83,6 @@
                         }
                     }
                 }
-            }
-        }
-        .goods-table{
-            margin-top: 14px;
-            border: 0 none;
-            .ivu-table:after,
-            .ivu-table:before {
-                background-color: inherit;
-            }
-            .ivu-table-fixed-body {
-                overflow: inherit;
-            }
-            .ivu-table-fixed-right:before,
-            .ivu-table-fixed:before {
-                height: 0;
-            }
-            .ivu-btn-small {
-                padding: 3px 19px;
-                border-radius: 4px;
-            }
-            .ivu-table-cell {
-                padding-left: 0;
-                padding-right: 0;
             }
         }
     }

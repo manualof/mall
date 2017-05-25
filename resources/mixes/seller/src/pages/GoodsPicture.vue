@@ -63,6 +63,13 @@
             };
         },
         methods: {
+            pictureManage() {
+                console.log('11');
+                const self = this;
+                self.$router.push({
+                    path: 'picture/manage',
+                });
+            },
             removeImage(index) {
                 this.pictureList.splice(index, 1);
             },
@@ -93,14 +100,14 @@
                             <div class="picture-group">
                                 <ul class="clearfix">
                                     <li v-for="item in pictureList">
-                                        <div class="img">
+                                        <div class="img" @click="pictureManage">
                                             <img :src="item.img" alt="">
                                             <i-button type="text" @click.native="removeImage">
                                                 <icon type="trash-a"></icon>
                                             </i-button>
                                         </div>
                                         <div class="img-intro">
-                                            <span>{{ item.name }}</span>
+                                            <span @click="pictureManage">{{ item.name }}</span>
                                             <i-button type="text" @click.native="editImage">
                                                 <icon type="edit"></icon>
                                             </i-button>
