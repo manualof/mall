@@ -22,7 +22,7 @@ class PermissionTypeRegister extends AbstractPermissionTypeRegister
     {
         $this->manager->extend('mall', [
             'description' => '商城权限。',
-            'identification' => 'global',
+            'identification' => 'mall',
             'name' => '商城',
         ]);
     }
