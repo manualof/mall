@@ -11,6 +11,8 @@ import GoodsPicture from '../pages/GoodsPicture.vue';
 import GoodsPictureManage from '../pages/GoodsPictureManage.vue';
 import Shop from '../pages/Shop.vue';
 import ShopNavigate from '../pages/ShopNavigate.vue';
+import ShopNavigateEdit from '../pages/ShopNavigateEdit.vue';
+import ShopNavigateAdd from '../pages/ShopNavigateAdd.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -75,6 +77,16 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ShopNavigate,
                     path: 'shop/navigate',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ShopNavigateEdit,
+                    path: 'shop/navigate/edit',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ShopNavigateAdd,
+                    path: 'shop/navigate/add',
                 },
             ],
             component: Layout,
