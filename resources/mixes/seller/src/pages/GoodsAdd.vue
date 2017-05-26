@@ -38,8 +38,10 @@
                     logo: '',
                     marketPrice: '',
                     name: '',
+                    packageType: [],
                     price: '',
                     remarks: '',
+                    selectVersion: [],
                     sellerNum: '',
                     sellPoint: '',
                     shopStyle: '',
@@ -292,10 +294,102 @@
                         value: '家用电器',
                     },
                 ],
+                inventoryColumns: [
+                    {
+                        align: 'center',
+                        fixed: 'left',
+                        key: 'type',
+                        title: '套餐类型',
+                        width: 100,
+                    },
+                    {
+                        align: 'center',
+                        key: 'version',
+                        title: '选择版本',
+                        width: 150,
+                    },
+                    {
+                        align: 'center',
+                        key: 'goodPrice',
+                        render() {
+                            return '<i-input style="width: 64px"></i-input>';
+                        },
+                        title: '商品价格（元）',
+                        width: 150,
+                    },
+                    {
+                        align: 'center',
+                        key: 'marketPrice',
+                        render() {
+                            return '<i-input style="width: 64px"></i-input>';
+                        },
+                        title: '市场价（元）',
+                        width: 150,
+                    },
+                    {
+                        align: 'center',
+                        key: 'stock',
+                        render() {
+                            return '<i-input style="width: 64px"></i-input>';
+                        },
+                        title: '库存',
+                        width: 150,
+                    },
+                    {
+                        align: 'center',
+                        key: 'warnValue',
+                        render() {
+                            return '<i-input style="width: 64px"></i-input>';
+                        },
+                        title: '预警值',
+                        width: 150,
+                    },
+                    {
+                        align: 'center',
+                        key: 'sellNumber',
+                        render() {
+                            return '<i-input style="width: 124px"></i-input>';
+                        },
+                        title: '商家货号',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        key: 'barCode',
+                        render() {
+                            return '<i-input style="width: 124px"></i-input>';
+                        },
+                        title: '商品条形码',
+                        width: 300,
+                    },
+                ],
+                inventoryData: [
+                    {
+                        type: '官方标配',
+                        version: '256G',
+                    },
+                    {
+                        type: '官方标配',
+                        version: '256G',
+                    },
+                    {
+                        type: '官方标配',
+                        version: '256G',
+                    },
+                    {
+                        type: '官方标配',
+                        version: '256G',
+                    },
+                    {
+                        type: '官方标配',
+                        version: '256G',
+                    },
+                ],
                 isEditPicture: false,
                 isEditText: false,
                 isPcPicture: false,
                 loading: false,
+                packageType: ['官方标配', '官方标配2', '套餐'],
                 priceList: [
                     {
                         label: '100-200',
@@ -324,6 +418,7 @@
                         name: '3.文字要求',
                     },
                 ],
+                selectVersion: ['256GB', '128GB', '64GB', '32GB'],
                 shopStyle: [
                     {
                         label: '新增分类1',
@@ -506,6 +601,42 @@
                                                 </row>
                                                 <p class="tip">价格必须是大于等于0.01的数字，此价格为商户对所销售的商品实
                                                     际成本价格进行备注记录，不会在前台销售页面中显示</p>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="24">
+                                            <form-item label="套餐类型">
+                                                <checkbox-group v-model="goodsEdit.packageType">
+                                                    <checkbox :label="item" v-for="item in packageType">
+                                                        <span class="type-style">{{ item }}</span>
+                                                    </checkbox>
+                                                    <i-button class="add-type-btn">添加规格值</i-button>
+                                                </checkbox-group>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="24">
+                                            <form-item label="选择版本">
+                                                <checkbox-group v-model="goodsEdit.selectVersion">
+                                                    <checkbox :label="item" v-for="item in selectVersion">
+                                                        <span class="type-style">{{ item }}</span>
+                                                    </checkbox>
+                                                    <i-button class="add-type-btn">添加规格值</i-button>
+                                                </checkbox-group>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="24">
+                                            <form-item label="库存配置">
+                                                <i-table class="goods-table"
+                                                         :columns="inventoryColumns"
+                                                         :context="self"
+                                                         :data="inventoryData"
+                                                         highlight-row>
+                                                </i-table>
                                             </form-item>
                                         </i-col>
                                     </row>

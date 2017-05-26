@@ -13,6 +13,8 @@ import Shop from '../pages/Shop.vue';
 import ShopNavigate from '../pages/ShopNavigate.vue';
 import ShopNavigateEdit from '../pages/ShopNavigateEdit.vue';
 import ShopNavigateAdd from '../pages/ShopNavigateAdd.vue';
+import ShopTrend from '../pages/ShopTrend.vue';
+import ShopMessage from '../pages/ShopMessage.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -87,6 +89,16 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ShopNavigateAdd,
                     path: 'shop/navigate/add',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ShopTrend,
+                    path: 'shop/trend',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ShopMessage,
+                    path: 'shop/message',
                 },
             ],
             component: Layout,
