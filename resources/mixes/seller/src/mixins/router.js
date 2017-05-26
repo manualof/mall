@@ -15,6 +15,7 @@ import ShopNavigateEdit from '../pages/ShopNavigateEdit.vue';
 import ShopNavigateAdd from '../pages/ShopNavigateAdd.vue';
 import ShopTrend from '../pages/ShopTrend.vue';
 import ShopMessage from '../pages/ShopMessage.vue';
+import ShopCategory from '../pages/ShopCategory.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -99,6 +100,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ShopMessage,
                     path: 'shop/message',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ShopCategory,
+                    path: 'shop/category',
                 },
             ],
             component: Layout,
