@@ -18,7 +18,29 @@
                     {
                         key: 'categoryName',
                         render() {
-                            return '<tree :data="row.baseData" show-checkbox></tree>';
+                            return `<collapse accordion>
+                                        <panel name="1">
+                                            {{ row.title }}
+                                            <div slot="content">
+                                                <div class="table-item" v-for="item in row.list">
+                                                    <span style="width: 27%">{{ item.title }}</span>
+                                                    <span style="width: 19%">{{ item.sort }}</span>
+                                                    <span style="width: 30%">
+                                                        <i-switch size="large" v-model="item.status">
+                                                            <span slot="open">开启</span>
+                                                            <span slot="close">关闭</span>
+                                                        </i-switch>
+                                                    </span>
+                                                        <span style="width: 16%" class="action">
+                                                        <i-button class="first-btn"
+                                                                  type="ghost">编辑</i-button>
+                                                        <i-button
+                                                                class="delete-ad" type="ghost">删除</i-button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </panel>
+                                    </collapse>`;
                         },
                         title: '分类名称',
                     },
@@ -52,28 +74,16 @@
                 ],
                 categoryData: [
                     {
-                        baseData: [
+                        list: [
                             {
-                                expand: true,
-                                title: '海外代购',
-                                children: [
-                                    {
-                                        title: '鞋子',
-                                        disabled: true,
-                                    },
-                                    {
-                                        title: '短袖/polo/衬衫',
-                                        disabled: true,
-                                    },
-                                    {
-                                        title: '外套/夹克/长袖/卫衣',
-                                        disabled: true,
-                                    },
-                                ],
+                                sort: '45',
+                                status: true,
+                                title: '海外代购1',
                             },
                         ],
                         sort: '45',
                         status: true,
+                        title: '海外代购',
                     },
                     {
                         sort: '456',
@@ -176,7 +186,7 @@
                             <i-button class="first-btn" type="ghost" @click.native="addCategory">+新增分类</i-button>
                             <i-button type="ghost">批量删除</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                            <div class="category-table">
+                            <!--<div class="category-table">
                                 <div class="top-title">
                                     <checkbox
                                             :indeterminate="indeterminate"
@@ -233,7 +243,13 @@
                                         </div>
                                     </checkbox>
                                 </checkbox-group>
-                            </div>
+                            </div>-->
+                            <i-table :columns="categoryColumns"
+                                     :context="self"
+                                     :data="categoryData"
+                                     ref="categoryList"
+                                     highlight-row>
+                            </i-table>
                         </div>
                         <div class="page">
                             <page :total="100" show-elevator></page>
