@@ -12,17 +12,23 @@
                 categoryColumns: [
                     {
                         align: 'center',
-                        title: '排序',
-                        type: 'index',
-                        width: 100,
+                        type: 'selection',
+                        width: 60,
+                    },
+                    {
+                        key: 'categoryName',
+                        render() {
+                            return '<tree :data="row.baseData" show-checkbox></tree>';
+                        },
+                        title: '分类名称',
                     },
                     {
                         align: 'center',
-                        key: 'navigateName',
-                        title: '导航名称',
-                        width: 300,
+                        key: 'sort',
+                        title: '排序',
                     },
                     {
+                        align: 'center',
                         key: 'shelves',
                         render() {
                             return `<i-switch size="large" v-model="row.status">
@@ -46,19 +52,31 @@
                 ],
                 categoryData: [
                     {
-                        navigateName: '首页',
+                        baseData: [
+                            {
+                                expand: true,
+                                title: '海外代购',
+                                children: [
+                                    {
+                                        title: '鞋子',
+                                        disabled: true,
+                                    },
+                                    {
+                                        title: '短袖/polo/衬衫',
+                                        disabled: true,
+                                    },
+                                    {
+                                        title: '外套/夹克/长袖/卫衣',
+                                        disabled: true,
+                                    },
+                                ],
+                            },
+                        ],
+                        sort: '45',
                         status: true,
                     },
                     {
-                        navigateName: '首页',
-                        status: true,
-                    },
-                    {
-                        navigateName: '首页',
-                        status: true,
-                    },
-                    {
-                        navigateName: '首页',
+                        sort: '456',
                         status: true,
                     },
                 ],
@@ -66,22 +84,8 @@
             };
         },
         methods: {
-            addNavigate() {
-                const self = this;
-                self.$router.push(
-                    {
-                        path: 'category/add',
-                    },
-                );
-            },
-            edit() {
-                const self = this;
-                self.$router.push(
-                    {
-                        path: 'category/edit',
-                    },
-                );
-            },
+            addCategory() {},
+            edit() {},
             remove(index) {
                 this.categoryData.splice(index, 1);
             },
