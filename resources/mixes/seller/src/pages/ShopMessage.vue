@@ -10,6 +10,7 @@
         },
         data() {
             return {
+                action: `${window.api}/mall/admin/upload`,
                 applyColumns: [
                     {
                         align: 'center',
@@ -71,6 +72,7 @@
                         voucher: image,
                     },
                 ],
+                isShow: false,
                 levelList: [
                     {
                         label: '钻石店铺  100.00元/年',
@@ -104,7 +106,9 @@
                     registered: '10w',
                 },
                 shopRenewal: {
+                    image: '',
                     money: '100.00',
+                    remarks: '',
                 },
                 timeList: [
                     {
@@ -122,12 +126,17 @@
             remove(index) {
                 this.applyData.splice(index, 1);
             },
+            removeImage() {
+                this.shopRenewal.image = '';
+            },
             submit() {
                 const self = this;
                 self.loading = true;
                 self.$refs.shopApply.validate(valid => {
                     if (valid) {
                         self.$Message.success('提交成功!');
+                        this.$refs.shopApply.style.display = 'none';
+                        this.isShow = true;
                     } else {
                         self.loading = false;
                         self.$notice.error({
@@ -135,6 +144,53 @@
                         });
                     }
                 });
+            },
+            submitRenewal() {
+                const self = this;
+                self.loading = true;
+                self.$refs.shopRenewal.validate(valid => {
+                    if (valid) {
+                        self.$Message.success('提交成功!');
+                        this.isShow = false;
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            uploadBefore() {
+                injection.loading.start();
+            },
+            uploadError(error, data) {
+                const self = this;
+                injection.loading.error();
+                if (typeof data.message === 'object') {
+                    for (const p in data.message) {
+                        self.$notice.error({
+                            title: data.message[p],
+                        });
+                    }
+                } else {
+                    self.$notice.error({
+                        title: data.message,
+                    });
+                }
+            },
+            uploadFormatError(file) {
+                this.$notice.warning({
+                    title: '文件格式不正确',
+                    desc: `文件 ${file.name} 格式不正确`,
+                });
+            },
+            uploadSuccess(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.shopRenewal.image = data.data.path;
             },
         },
     };
@@ -299,7 +355,7 @@
                             </div>
                         </i-form>
                         <i-form ref="shopRenewal" :model="shopRenewal" :rules="ruleValidate"
-                                :label-width="200" v-show="this.applyData.length === 0">
+                                :label-width="200" v-if="isShow">
                             <div class="apply-renewal">
                                 <row>
                                     <i-col  span="12">
@@ -311,21 +367,39 @@
                                 <row>
                                     <i-col  span="12">
                                         <form-item label="上传付款凭证">
-
+                                            <div class="image-preview" v-if="shopRenewal.image">
+                                                <img :src="shopRenewal.image">
+                                                <icon type="close" @click.native="removeImage"></icon>
+                                            </div>
+                                            <upload :action="action"
+                                                    :before-upload="uploadBefore"
+                                                    :format="['jpg','jpeg','png']"
+                                                    :headers="{
+                                                        Authorization: `Bearer ${$store.state.token.access_token}`
+                                                    }"
+                                                    :max-size="2048"
+                                                    :on-error="uploadError"
+                                                    :on-format-error="uploadFormatError"
+                                                    :on-success="uploadSuccess"
+                                                    ref="upload"
+                                                    :show-upload-list="false"
+                                                    v-if="shopRenewal.image === '' || shopRenewal.image === null">
+                                            </upload>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col  span="12">
                                         <form-item label="备注">
-
+                                            <i-input type="textarea" v-model="shopRenewal.remarks"
+                                                     :autosize="{minRows: 3,maxRows: 5}"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col span="12">
                                         <form-item label="">
-                                            <i-button @click.native="submit" type="primary">
+                                            <i-button @click.native="submitRenewal" type="primary">
                                                 <span v-if="!loading">确认提交</span>
                                                 <span v-else>正在提交…</span>
                                             </i-button>
