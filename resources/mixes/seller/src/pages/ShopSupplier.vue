@@ -165,7 +165,7 @@
                     </card>
                     <modal
                             v-model="goodsApplication"
-                            title="品牌申请" class="upload-picture-modal">
+                            title="新增供货商" class="upload-picture-modal">
                         <div>
                             <i-form ref="goods" :model="goods" :rules="pictureValidate" :label-width="100">
                                 <row>
@@ -211,7 +211,7 @@
                     </modal>
                     <modal
                             v-model="modify"
-                            title="品牌修改" class="upload-picture-modal">
+                            title="编辑供货商" class="upload-picture-modal">
                         <div>
                             <i-form ref="goodsModify" :model="goodsModify" :rules="ruleValidate" :label-width="100">
                                 <row>
