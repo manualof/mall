@@ -12,6 +12,52 @@
                 action: `${window.api}/mall/admin/upload`,
                 loading: false,
                 self: this,
+                settingColumns: [
+                    {
+                        align: 'center',
+                        title: '自动',
+                        type: 'selection',
+                        width: 100,
+                    },
+                    {
+                        key: 'introText',
+                        render() {
+                            return `<p>{{ row.type }}</p>
+                                     <i-input v-model="row.text" type="textarea"
+                                     :autosize="{minRows: 3,maxRows: 5}"></i-input>`;
+                        },
+                        title: '文字内容',
+                    },
+                    {
+                        key: 'defaultStatus',
+                        title: '系统默认状态',
+                    },
+                ],
+                settingData: [
+                    {
+                        defaultStatus: '亲，我家又上新宝贝了<br>' +
+                        '亲，为您推荐一款本店新上宝贝<br>' +
+                        '亲，我家又上新宝贝了！快来逛逛看更多吧',
+                        text: '',
+                        type: '新品发布',
+                    },
+                    {
+                        defaultStatus: '省心又省钱，活动促销中<br>' +
+                        '限时折扣，玩得就是心跳<br>' +
+                        '只买对的，不买贵的，宝贝限时折扣中<br>' +
+                        '宝贝限时折扣中，性价比超高哟<br>' +
+                        '折扣限时，不买不死心哇〜',
+                        text: '',
+                        type: '限时秒杀',
+                    },
+                    {
+                        defaultStatus: '亲，我家又上新宝贝了<br>' +
+                        '亲，为您推荐一款本店新上宝贝<br>' +
+                        '亲，我家又上新宝贝了！快来逛逛看更多吧',
+                        text: '',
+                        type: '满减活动',
+                    },
+                ],
                 shop: {
                     intro: '',
                     logo: '',
@@ -138,7 +184,29 @@
                 </tab-pane>
                 <tab-pane label="动态设置" name="name2">
                     <card :bordered="false">
-
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>1.系统默认自动发布动态内容;去掉勾选，系统将不再自动发送相应的动态</p>
+                            <p>2.可自行编辑修改各类型动态的消息，留空为系统默认设定的动态消息文字</p>
+                        </div>
+                        <i-form ref="setting" :model="setting" :rules="ruleValidate" :label-width="120">
+                            <i-table :columns="settingColumns"
+                                     :context="self"
+                                     :data="settingData"
+                                     highlight-row>
+                            </i-table>
+                            <row>
+                                <i-col span="14">
+                                    <form-item>
+                                        <i-button :loading="loading" type="primary" class="setting-btn"
+                                                  @click.native="submitSetting">
+                                            <span v-if="!loading">确认提交</span>
+                                            <span v-else>正在提交…</span>
+                                        </i-button>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                        </i-form>
                     </card>
                 </tab-pane>
             </tabs>
