@@ -8,11 +8,11 @@
  */
 namespace Notadd\Mall\Handlers\Store\Product\Rate;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\DataHandler;
 
 /**
  * Class RateHandler.
  */
-class RateHandler extends SetHandler
+class RateHandler extends DataHandler
 {
 }

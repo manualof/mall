@@ -8,11 +8,11 @@
  */
 namespace Notadd\Mall\Handlers\User\Order;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\DataHandler;
 
 /**
  * Class OrderHandler.
  */
-class OrderHandler extends SetHandler
+class OrderHandler extends DataHandler
 {
 }

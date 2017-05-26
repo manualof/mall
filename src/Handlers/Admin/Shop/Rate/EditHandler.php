@@ -8,11 +8,21 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Shop\Rate;
 
-use Notadd\Mall\Handlers\Admin\Configuration\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\SetHandler;
 
 /**
  * Class EditHandler.
  */
 class EditHandler extends SetHandler
 {
+    /**
+     * Execute Handler.
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

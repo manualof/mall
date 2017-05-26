@@ -15,4 +15,14 @@ use Notadd\Foundation\Passport\Abstracts\SetHandler;
  */
 class SendHandler extends SetHandler
 {
+    /**
+     * Execute Handler.
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }
