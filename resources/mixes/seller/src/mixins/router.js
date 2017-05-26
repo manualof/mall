@@ -13,6 +13,7 @@ import Shop from '../pages/Shop.vue';
 import ShopNavigate from '../pages/ShopNavigate.vue';
 import ShopNavigateEdit from '../pages/ShopNavigateEdit.vue';
 import ShopNavigateAdd from '../pages/ShopNavigateAdd.vue';
+import ShopTrend from '../pages/ShopTrend.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -87,6 +88,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ShopNavigateAdd,
                     path: 'shop/navigate/add',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ShopTrend,
+                    path: 'shop/trend',
                 },
             ],
             component: Layout,
