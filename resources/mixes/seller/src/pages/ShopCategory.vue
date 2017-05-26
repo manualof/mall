@@ -82,9 +82,48 @@
                 ],
                 categoryList: [
                     {
+                        list: [
+                            {
+                                sort: 22,
+                                status: true,
+                                title: '鞋子',
+                            },
+                            {
+                                sort: 15,
+                                status: true,
+                                title: '短袖/polo/衬衫',
+                            },
+                            {
+                                sort: 2,
+                                status: true,
+                                title: '外套/夹克/长袖/卫衣',
+                            },
+                        ],
                         sort: 300,
                         status: true,
                         title: '海外代购',
+                    },
+                    {
+                        list: [
+                            {
+                                sort: 22,
+                                status: true,
+                                title: '鞋子',
+                            },
+                            {
+                                sort: 15,
+                                status: true,
+                                title: '短袖/polo/衬衫',
+                            },
+                            {
+                                sort: 2,
+                                status: true,
+                                title: '外套/夹克/长袖/卫衣',
+                            },
+                        ],
+                        sort: 300,
+                        status: true,
+                        title: '海外代购1',
                     },
                 ],
                 checkAll: false,
@@ -171,7 +210,24 @@
                                                                       class="delete-ad" type="ghost">删除</i-button>
                                                         </span>
                                                     </div>
-                                                    <div slot="content">史蒂夫·</div>
+                                                    <div slot="content">
+                                                        <div class="table-item" v-for="item in item.list">
+                                                            <span style="width: 27%">{{ item.title }}</span>
+                                                            <span style="width: 19%">{{ item.sort }}</span>
+                                                            <span style="width: 30%">
+                                                                <i-switch size="large" v-model="item.status">
+                                                                    <span slot="open">开启</span>
+                                                                    <span slot="close">关闭</span>
+                                                                </i-switch>
+                                                            </span>
+                                                                <span style="width: 16%" class="action">
+                                                                <i-button class="first-btn"
+                                                                          type="ghost">编辑</i-button>
+                                                                <i-button
+                                                                        class="delete-ad" type="ghost">删除</i-button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                 </panel>
                                             </collapse>
                                         </div>
