@@ -8,11 +8,20 @@
  */
 namespace Notadd\Mall\Handlers\User\Card;
 
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class CardHandler.
  */
-class CardHandler extends DataHandler
+class CardHandler extends Handler
 {
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    protected function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

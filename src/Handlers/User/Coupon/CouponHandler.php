@@ -8,11 +8,20 @@
  */
 namespace Notadd\Mall\Handlers\User\Coupon;
 
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class CouponHandler.
  */
-class CouponHandler extends DataHandler
+class CouponHandler extends Handler
 {
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    protected function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

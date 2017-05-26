@@ -8,11 +8,20 @@
  */
 namespace Notadd\Mall\Handlers\User\Vip;
 
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class VipHandler.
  */
-class VipHandler extends DataHandler
+class VipHandler extends Handler
 {
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    protected function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

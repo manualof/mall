@@ -9,13 +9,13 @@
 namespace Notadd\Mall\Handlers\Admin\Configuration;
 
 use Illuminate\Container\Container;
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 use Notadd\Foundation\Setting\Contracts\SettingsRepository;
 
 /**
  * Class GetHandler.
  */
-class GetHandler extends DataHandler
+class GetHandler extends Handler
 {
     /**
      * @var \Notadd\Foundation\Setting\Contracts\SettingsRepository
@@ -35,16 +35,16 @@ class GetHandler extends DataHandler
     }
 
     /**
-     * Data for handler.
+     * Execute Handler.
      *
-     * @return array
+     * @throws \Exception
      */
-    public function data()
+    protected function execute()
     {
-        return [
+        $this->success()->withData([
             'email' => $this->settings->get('mall.configuration.service.email', ''),
             'logo' => $this->settings->get('mall.configuration.logo', ''),
             'phone' => $this->settings->get('mall.configuration.service.phone', ''),
-        ];
+        ])->withMessage('获取配置成功！');
     }
 }

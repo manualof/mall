@@ -8,11 +8,20 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Configuration\Image\DefaultImage;
 
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class WatchHandler.
  */
-class GetHandler extends DataHandler
+class GetHandler extends Handler
 {
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    protected function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }
