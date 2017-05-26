@@ -79,7 +79,14 @@
                         status: '审核通过',
                     },
                 ],
+                goodsModify: {
+                    initials: '',
+                    logo: '',
+                    name: '',
+                    type: [],
+                },
                 loading: false,
+                modify: false,
                 searchList: [
                     {
                         label: '店铺名称',
@@ -203,7 +210,9 @@
             addGoods() {
                 this.goodsApplication = true;
             },
-            edit() {},
+            edit() {
+                this.modify = true;
+            },
             remove(index) {
                 this.goodsData.splice(index, 1);
             },
@@ -258,6 +267,14 @@
                     title: data.message,
                 });
                 self.goods.logo = data.data.path;
+            },
+            uploadModifySuccess(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.goodsModify.logo = data.data.path;
             },
         },
     };
@@ -340,6 +357,73 @@
                                                     ref="upload"
                                                     :show-upload-list="false"
                                                     v-if="goods.logo === '' || goods.logo === null">
+                                            </upload>
+                                            <p class="tip">建议上传大小为150*50的品牌图片</p>
+                                            <p class="tip">申请品牌的目的是方便买家通过品牌索引页查找商品，
+                                                申请时请填写品牌所属的类别，方便平台归类</p>
+                                            <p class="tip">在平台审核前，您可以编辑或撤销申请</p>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submit">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
+                    <modal
+                            v-model="modify"
+                            title="品牌修改" class="upload-picture-modal">
+                        <div>
+                            <i-form ref="goodsModify" :model="goodsModify" :rules="ruleValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="品牌名称">
+                                            <i-input v-model="goodsModify.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="名称首字母">
+                                            <i-input v-model="goodsModify.initials"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="品牌类别">
+                                            <cascader :data="styleData" trigger="hover" v-model="goodsModify.type"></cascader>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item label="品牌LOGO" prop="logo">
+                                            <div class="image-preview" v-if="goodsModify.logo">
+                                                <img :src="goodsModify.logo">
+                                                <icon type="close" @click.native="removeLogo"></icon>
+                                            </div>
+                                            <upload :action="action"
+                                                    :before-upload="uploadBefore"
+                                                    :format="['jpg','jpeg','png']"
+                                                    :headers="{
+                                                        Authorization: `Bearer ${$store.state.token.access_token}`
+                                                    }"
+                                                    :max-size="2048"
+                                                    :on-error="uploadError"
+                                                    :on-format-error="uploadFormatError"
+                                                    :on-success="uploadModifySuccess"
+                                                    ref="upload"
+                                                    :show-upload-list="false"
+                                                    v-if="goodsModify.logo === '' || goodsModify.logo === null">
                                             </upload>
                                             <p class="tip">建议上传大小为150*50的品牌图片</p>
                                             <p class="tip">申请品牌的目的是方便买家通过品牌索引页查找商品，
