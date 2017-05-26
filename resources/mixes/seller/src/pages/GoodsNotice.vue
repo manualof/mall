@@ -12,7 +12,6 @@
                 goodsColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         type: 'selection',
                         width: 60,
                     },
@@ -20,26 +19,23 @@
                         align: 'center',
                         key: 'goodsSku',
                         title: '商品SKU',
-                        width: 150,
                     },
                     {
                         key: 'goodsName',
                         title: '商品名称',
-                        width: 600,
-                    },
-                    {
-                        key: 'memberName',
-                        title: '会员名称',
-                        width: 150,
-                    },
-                    {
-                        key: 'createdAt',
-                        title: '添加时间',
-                        width: 500,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
+                        key: 'memberName',
+                        title: '会员名称',
+                    },
+                    {
+                        align: 'center',
+                        key: 'createdAt',
+                        title: '添加时间',
+                    },
+                    {
+                        align: 'center',
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button @click.native="removeGoods(${index})" class="delete-ad"
