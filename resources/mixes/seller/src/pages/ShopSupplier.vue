@@ -1,0 +1,453 @@
+<script>
+    import injection from '../helpers/injection';
+
+    export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('seller');
+            });
+        },
+        data() {
+            return {
+                action: `${window.api}/mall/admin/upload`,
+                goods: {
+                    initials: '',
+                    logo: '',
+                    name: '',
+                    type: [],
+                },
+                goodsApplication: false,
+                goodsColumns: [
+                    {
+                        align: 'center',
+                        key: 'supplier',
+                        title: '供货商',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        key: 'contactPerson',
+                        title: '联系人',
+                    },
+                    {
+                        align: 'center',
+                        key: 'contactPhone',
+                        title: '联系电话',
+                    },
+                    {
+                        align: 'center',
+                        key: 'remarks',
+                        title: '备注',
+                    },
+                    {
+                        align: 'center',
+                        key: 'action',
+                        render(row, column, index) {
+                            return `<i-button @click.native="edit(${index})" type="ghost">编辑</i-button>
+                                    <i-button @click.native="remove(${index})" type="ghost">删除</i-button>`;
+                        },
+                        title: '操作',
+                        width: 180,
+                    },
+                ],
+                goodsData: [
+                    {
+                        contactPerson: '王某',
+                        contactPhone: '13777777777',
+                        remarks: '合作伙伴',
+                        supplier: '本处科级',
+                    },
+                    {
+                        contactPerson: '王某',
+                        contactPhone: '13777777777',
+                        remarks: '合作伙伴',
+                        supplier: '本处科级',
+                    },
+                    {
+                        contactPerson: '王某',
+                        contactPhone: '13777777777',
+                        remarks: '合作伙伴',
+                        supplier: '本处科级',
+                    },
+                    {
+                        contactPerson: '王某',
+                        contactPhone: '13777777777',
+                        remarks: '合作伙伴',
+                        supplier: '本处科级',
+                    },
+                ],
+                goodsModify: {
+                    initials: '',
+                    logo: '',
+                    name: '',
+                    type: [],
+                },
+                loading: false,
+                modify: false,
+                searchList: [
+                    {
+                        label: '店铺名称',
+                        value: '店铺名称',
+                    },
+                    {
+                        label: '商品名称',
+                        value: '商品名称',
+                    },
+                    {
+                        label: '商品分类',
+                        value: '商品分类',
+                    },
+                ],
+                self: this,
+                styleData: [
+                    {
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '自行车',
+                                        value: '自行车',
+                                    },
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅',
+                                        value: '安全座椅',
+                                    },
+                                ],
+                                label: '童车童床',
+                                value: '童车童床',
+                            },
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '个护化妆',
+                        value: '个护化妆',
+                    },
+                    {
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                    {
+                                        label: '婴儿推车3',
+                                        value: '婴儿推车3',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅4',
+                                        value: '安全座椅4',
+                                    },
+                                ],
+                                label: '服饰寝居',
+                                value: '服饰寝居',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '车1',
+                                        value: '车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '家用电器',
+                        value: '家用电器',
+                    },
+                ],
+            };
+        },
+        methods: {
+            addGoods() {
+                this.goodsApplication = true;
+            },
+            edit() {
+                this.modify = true;
+            },
+            remove(index) {
+                this.goodsData.splice(index, 1);
+            },
+            removeLogo() {
+                this.goods.logo = '';
+            },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.goods.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            uploadBefore() {
+                injection.loading.start();
+            },
+            uploadError(error, data) {
+                const self = this;
+                injection.loading.error();
+                if (typeof data.message === 'object') {
+                    for (const p in data.message) {
+                        self.$notice.error({
+                            title: data.message[p],
+                        });
+                    }
+                } else {
+                    self.$notice.error({
+                        title: data.message,
+                    });
+                }
+            },
+            uploadFormatError(file) {
+                this.$notice.warning({
+                    title: '文件格式不正确',
+                    desc: `文件 ${file.name} 格式不正确`,
+                });
+            },
+            uploadPicture() {
+                this.uploadModal = true;
+            },
+            uploadSuccess(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.goods.logo = data.data.path;
+            },
+            uploadModifySuccess(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.goodsModify.logo = data.data.path;
+            },
+        },
+    };
+</script>
+<template>
+    <div class="seller-wrap">
+        <div class="goods-supplier">
+            <tabs value="name1">
+                <tab-pane label="供货商" name="name1">
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>供货商信息可以与商品关联，商品发布/编辑时可选择供货商，商品列表支持根据供货商快速查找</p>
+                        </div>
+                        <div class="goods-list">
+                            <div class="goods-body-header">
+                                <i-button type="ghost" @click.native="addGoods">+新增供货商</i-button>
+                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                                <div class="goods-body-header-right">
+                                    <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                        <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
+                                            <i-option v-for="item in searchList"
+                                                      :value="item.value">{{ item.label }}</i-option>
+                                        </i-select>
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </div>
+                            </div>
+                            <i-table class="goods-table"
+                                     :columns="goodsColumns"
+                                     :context="self"
+                                     :data="goodsData"
+                                     ref="goodsList"
+                                     highlight-row>
+                            </i-table>
+                        </div>
+                        <div class="page">
+                            <page :total="100" show-elevator></page>
+                        </div>
+                    </card>
+                    <modal
+                            v-model="goodsApplication"
+                            title="品牌申请" class="upload-picture-modal">
+                        <div>
+                            <i-form ref="goods" :model="goods" :rules="pictureValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="品牌名称">
+                                            <i-input v-model="goods.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="名称首字母">
+                                            <i-input v-model="goods.initials"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="品牌类别">
+                                            <cascader :data="styleData" trigger="hover" v-model="goods.type"></cascader>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item label="品牌LOGO" prop="logo">
+                                            <div class="image-preview" v-if="goods.logo">
+                                                <img :src="goods.logo">
+                                                <icon type="close" @click.native="removeLogo"></icon>
+                                            </div>
+                                            <upload :action="action"
+                                                    :before-upload="uploadBefore"
+                                                    :format="['jpg','jpeg','png']"
+                                                    :headers="{
+                                                        Authorization: `Bearer ${$store.state.token.access_token}`
+                                                    }"
+                                                    :max-size="2048"
+                                                    :on-error="uploadError"
+                                                    :on-format-error="uploadFormatError"
+                                                    :on-success="uploadSuccess"
+                                                    ref="upload"
+                                                    :show-upload-list="false"
+                                                    v-if="goods.logo === '' || goods.logo === null">
+                                            </upload>
+                                            <p class="tip">建议上传大小为150*50的品牌图片</p>
+                                            <p class="tip">申请品牌的目的是方便买家通过品牌索引页查找商品，
+                                                申请时请填写品牌所属的类别，方便平台归类</p>
+                                            <p class="tip">在平台审核前，您可以编辑或撤销申请</p>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submit">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
+                    <modal
+                            v-model="modify"
+                            title="品牌修改" class="upload-picture-modal">
+                        <div>
+                            <i-form ref="goodsModify" :model="goodsModify" :rules="ruleValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="品牌名称">
+                                            <i-input v-model="goodsModify.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="名称首字母">
+                                            <i-input v-model="goodsModify.initials"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="品牌类别">
+                                            <cascader :data="styleData" trigger="hover" v-model="goodsModify.type"></cascader>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item label="品牌LOGO" prop="logo">
+                                            <div class="image-preview" v-if="goodsModify.logo">
+                                                <img :src="goodsModify.logo">
+                                                <icon type="close" @click.native="removeLogo"></icon>
+                                            </div>
+                                            <upload :action="action"
+                                                    :before-upload="uploadBefore"
+                                                    :format="['jpg','jpeg','png']"
+                                                    :headers="{
+                                                        Authorization: `Bearer ${$store.state.token.access_token}`
+                                                    }"
+                                                    :max-size="2048"
+                                                    :on-error="uploadError"
+                                                    :on-format-error="uploadFormatError"
+                                                    :on-success="uploadModifySuccess"
+                                                    ref="upload"
+                                                    :show-upload-list="false"
+                                                    v-if="goodsModify.logo === '' || goodsModify.logo === null">
+                                            </upload>
+                                            <p class="tip">建议上传大小为150*50的品牌图片</p>
+                                            <p class="tip">申请品牌的目的是方便买家通过品牌索引页查找商品，
+                                                申请时请填写品牌所属的类别，方便平台归类</p>
+                                            <p class="tip">在平台审核前，您可以编辑或撤销申请</p>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submit">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
+                </tab-pane>
+            </tabs>
+        </div>
+    </div>
+</template>
