@@ -8,11 +8,20 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Brand;
 
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class BrandHandler.
  */
-class BrandHandler extends DataHandler
+class BrandHandler extends Handler
 {
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    protected function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

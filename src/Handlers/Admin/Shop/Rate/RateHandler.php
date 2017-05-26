@@ -8,11 +8,20 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Shop\Rate;
 
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class RateHandler.
  */
-class RateHandler extends DataHandler
+class RateHandler extends Handler
 {
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    protected function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

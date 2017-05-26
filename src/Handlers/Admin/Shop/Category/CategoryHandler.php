@@ -8,11 +8,20 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Shop\Category;
 
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class CategoryHandler.
  */
-class CategoryHandler extends DataHandler
+class CategoryHandler extends Handler
 {
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    protected function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

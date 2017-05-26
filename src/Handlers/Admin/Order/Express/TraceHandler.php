@@ -8,11 +8,20 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Order\Express;
 
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class TraceHandler.
  */
-class TraceHandler extends DataHandler
+class TraceHandler extends Handler
 {
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    protected function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

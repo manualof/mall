@@ -8,12 +8,20 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Statistics\Analysis;
 
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class DashBoardHandler.
  */
-class DashBoardHandler extends DataHandler
+class DashBoardHandler extends Handler
 {
-
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    protected function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

@@ -8,11 +8,20 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Specifications;
 
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class SpecificationsHandler.
  */
-class SpecificationsHandler extends DataHandler
+class SpecificationsHandler extends Handler
 {
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    protected function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }
