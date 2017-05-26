@@ -74,7 +74,7 @@ use Notadd\Mall\Controllers\UserController as ForegroundUserController;
 class RouteRegister extends AbstractRouteRegister
 {
     /**
-     * Handle Route Registrar.
+     * Handle Route Register.
      */
     public function handle()
     {

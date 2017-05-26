@@ -16,7 +16,7 @@ use Notadd\Foundation\Permission\Abstracts\PermissionTypeRegister as AbstractPer
 class PermissionTypeRegister extends AbstractPermissionTypeRegister
 {
     /**
-     * Handle Permission Registrar.
+     * Handle Permission Register.
      */
     public function handle()
     {
