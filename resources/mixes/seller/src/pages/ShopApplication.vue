@@ -23,8 +23,11 @@
                         align: 'center',
                         key: 'goodsLogo',
                         render() {
-                            return `<icon type="image"></icon>
-                                    <img :src="row.goodsLogo" style="display: none">`;
+                            return `<tooltip placement="right-end">
+                                    <icon type="image"></icon>
+                                    <div slot="content">
+                                    <img :src="row.goodsLogo">
+                                    </tooltip>`;
                         },
                         title: '品牌图标',
                         width: 150,

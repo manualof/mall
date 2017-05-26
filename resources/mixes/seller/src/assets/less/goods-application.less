@@ -54,9 +54,13 @@
             }
             .ivu-table-tbody {
                 > tr {
-                    > td:hover {
-                        img {
-                            display: block !important;
+                    > td {
+                        .ivu-tooltip-inner {
+                            padding: 0;
+                            background-color: transparent;
+                            img {
+                                width: 64px;
+                            }
                         }
                     }
                 }
