@@ -72,7 +72,7 @@
     <div class="mall-wrap">
         <div class="sales-spike-add">
                 <div class="add-title">
-                    <card>
+                    <card :bordered="false">
                         <i-button type="text" @click.native="goBack">
                             <icon type="chevron-left"></icon>
                         </i-button>
