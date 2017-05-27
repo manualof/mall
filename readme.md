@@ -18,7 +18,7 @@ Notadd Framework 的商城模块。
 ```bash
 cd notadd/modules
 git clone https://github.com/notadd/mall.git
-cd content
+cd mall
 composer install --no-dev
 ```
 
