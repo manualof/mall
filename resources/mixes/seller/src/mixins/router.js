@@ -18,6 +18,7 @@ import ShopMessage from '../pages/ShopMessage.vue';
 import ShopCategory from '../pages/ShopCategory.vue';
 import ShopApplication from '../pages/ShopApplication.vue';
 import ShopSupplier from '../pages/ShopSupplier.vue';
+import ShopStore from '../pages/ShopStore.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -117,6 +118,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ShopSupplier,
                     path: 'shop/supplier',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ShopStore,
+                    path: 'shop/store',
                 },
             ],
             component: Layout,
