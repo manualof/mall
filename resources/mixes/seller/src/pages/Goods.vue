@@ -13,36 +13,35 @@
                 goodsColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         type: 'selection',
                         width: 60,
                     },
                     {
                         key: 'goodsName',
                         render() {
-                            return `<img :src="row.goodsImg" alt="">
+                            return `<div class="goods-name-row">
+                                    <div class="img"><img :src="row.goodsImg" alt=""></div>
                                     <div class="right-text">
                                         <p>{{ row.goodsName }}</p>
                                         <div>
                                             <span class="left-num">商家货号：{{ row.sellNum }}</span>
                                             <span>SPU：{{ row.sellSpu }}</span>
                                         </div>
-                                    </div>`;
+                                    </div><div class="clear"></div></div>`;
                         },
                         title: '商品名称',
-                        width: 650,
                     },
                     {
                         align: 'center',
                         key: 'goodsPrice',
                         title: '价格',
-                        width: 150,
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'goodsStock',
                         title: '库存',
-                        width: 150,
+                        width: 100,
                     },
                     {
                         align: 'center',
@@ -54,17 +53,16 @@
                                     </i-switch>`;
                         },
                         title: '上架',
-                        width: 150,
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'reviewStatus',
                         title: '审核',
-                        width: 200,
+                        width: 100,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button @click.native="editGoods(${index})" type="ghost">编辑</i-button>
@@ -136,27 +134,29 @@
                     {
                         key: 'goodsName',
                         render() {
-                            return `<img :src="row.goodsImg" alt="">
+                            return `<div class="goods-name-row">
+                                    <div class="img"><img :src="row.goodsImg" alt=""></div>
                                     <div class="right-text">
                                         <p>{{ row.goodsName }}</p>
                                         <div>
                                             <span class="left-num">商家货号：{{ row.sellNum }}</span>
                                             <span>SPU：{{ row.sellSpu }}</span>
                                         </div>
-                                    </div>`;
+                                    </div><div class="clear"></div></div>`;
                         },
                         title: '商品名称',
-                        width: 650,
                     },
                     {
                         align: 'center',
                         key: 'goodsPrice',
                         title: '价格',
+                        width: 180,
                     },
                     {
                         align: 'center',
                         key: 'goodsStock',
                         title: '库存',
+                        width: 180,
                     },
                     {
                         align: 'center',
@@ -215,36 +215,35 @@
                 goodsReviewColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         type: 'selection',
                         width: 60,
                     },
                     {
                         key: 'goodsName',
                         render() {
-                            return `<img :src="row.goodsImg" alt="">
+                            return `<div class="goods-name-row">
+                                    <div class="img"><img :src="row.goodsImg" alt=""></div>
                                     <div class="right-text">
                                         <p>{{ row.goodsName }}</p>
                                         <div>
                                             <span class="left-num">商家货号：{{ row.sellNum }}</span>
                                             <span>SPU：{{ row.sellSpu }}</span>
                                         </div>
-                                    </div>`;
+                                    </div><div class="clear"></div></div>`;
                         },
                         title: '商品名称',
-                        width: 650,
                     },
                     {
                         align: 'center',
                         key: 'goodsPrice',
                         title: '价格',
-                        width: 150,
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'goodsStock',
                         title: '库存',
-                        width: 150,
+                        width: 100,
                     },
                     {
                         align: 'center',
@@ -256,17 +255,16 @@
                                     </i-switch>`;
                         },
                         title: '上架',
-                        width: 150,
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'reviewStatus',
                         title: '审核',
-                        width: 200,
+                        width: 100,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button @click.native="editGoods(${index})" type="ghost">编辑</i-button>
@@ -332,36 +330,35 @@
                 goodsSellerColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         type: 'selection',
                         width: 60,
                     },
                     {
                         key: 'goodsName',
                         render() {
-                            return `<img :src="row.goodsImg" alt="">
+                            return `<div class="goods-name-row">
+                                    <div class="img"><img :src="row.goodsImg" alt=""></div>
                                     <div class="right-text">
                                         <p>{{ row.goodsName }}</p>
                                         <div>
                                             <span class="left-num">商家货号：{{ row.sellNum }}</span>
                                             <span>SPU：{{ row.sellSpu }}</span>
                                         </div>
-                                    </div>`;
+                                    </div><div class="clear"></div></div>`;
                         },
                         title: '商品名称',
-                        width: 650,
                     },
                     {
                         align: 'center',
                         key: 'goodsPrice',
                         title: '价格',
-                        width: 150,
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'goodsStock',
                         title: '库存',
-                        width: 150,
+                        width: 100,
                     },
                     {
                         align: 'center',
@@ -373,17 +370,16 @@
                                     </i-switch>`;
                         },
                         title: '上架',
-                        width: 150,
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'reviewStatus',
                         title: '审核',
-                        width: 200,
+                        width: 100,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button @click.native="editGoods(${index})" type="ghost">编辑</i-button>
@@ -455,27 +451,30 @@
                     {
                         key: 'goodsName',
                         render() {
-                            return `<img :src="row.goodsImg" alt="">
+                            return `<div class="goods-name-row">
+                                    <div class="img"><img :src="row.goodsImg" alt=""></div>
                                     <div class="right-text">
                                         <p>{{ row.goodsName }}</p>
                                         <div>
                                             <span class="left-num">商家货号：{{ row.sellNum }}</span>
                                             <span>SPU：{{ row.sellSpu }}</span>
                                         </div>
-                                    </div>`;
+                                    </div><div class="clear"></div></div>`;
                         },
                         title: '商品名称',
-                        width: 600,
                     },
                     {
                         align: 'center',
                         key: 'goodsReason',
                         title: '违规原因',
+                        width: 180,
+
                     },
                     {
                         align: 'center',
                         key: 'goodsPrice',
                         title: '价格',
+                        width: 180,
                     },
                     {
                         align: 'center',
