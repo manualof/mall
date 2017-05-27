@@ -129,7 +129,7 @@
 </script>
 <template>
     <div class="seller-wrap">
-        <div class="goods-supplier">
+        <div class="shop-supplier">
             <tabs value="name1">
                 <tab-pane label="供货商" name="name1">
                     <card :bordered="false">

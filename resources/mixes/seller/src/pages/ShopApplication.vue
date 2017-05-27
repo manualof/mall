@@ -284,7 +284,7 @@
 </script>
 <template>
     <div class="seller-wrap">
-        <div class="goods-application">
+        <div class="shop-application">
             <tabs value="name1">
                 <tab-pane label="品牌申请" name="name1">
                     <card :bordered="false">
