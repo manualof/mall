@@ -20,10 +20,10 @@ class PermissionTypeRegister extends AbstractPermissionTypeRegister
      */
     public function handle()
     {
-        $this->manager->extend('mall', [
-            'description' => '商城权限。',
-            'identification' => 'mall',
-            'name' => '商城',
+        $this->manager->extend([
+            'description' => '商家权限。',
+            'identification' => 'seller',
+            'name' => '商家',
         ]);
     }
 }
