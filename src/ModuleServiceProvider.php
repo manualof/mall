@@ -12,6 +12,7 @@ use Illuminate\Events\Dispatcher;
 use Notadd\Mall\Injections\Installer;
 use Notadd\Mall\Injections\Uninstaller;
 use Notadd\Mall\Listeners\PermissionGroupRegister;
+use Notadd\Mall\Listeners\PermissionModuleRegister;
 use Notadd\Mall\Listeners\PermissionTypeRegister;
 use Notadd\Mall\Listeners\RouteRegister;
 use Notadd\Mall\Listeners\CsrfTokenRegister;
@@ -29,6 +30,7 @@ class ModuleServiceProvider extends Module
     {
         $this->app->make(Dispatcher::class)->subscribe(CsrfTokenRegister::class);
         $this->app->make(Dispatcher::class)->subscribe(PermissionGroupRegister::class);
+        $this->app->make(Dispatcher::class)->subscribe(PermissionModuleRegister::class);
         $this->app->make(Dispatcher::class)->subscribe(PermissionTypeRegister::class);
         $this->app->make(Dispatcher::class)->subscribe(RouteRegister::class);
         $this->loadMigrationsFrom(realpath(__DIR__ . '/../databases/migrations'));

@@ -20,10 +20,29 @@ class PermissionGroupRegister extends AbstractPermissionGroupRegister
      */
     public function handle()
     {
-        $this->manager->group([
-            'description'    => '商城权限定义。',
-            'identification' => 'mall',
-            'name'           => '商城权限',
+        $this->manager->extend([
+            'description'    => '全局权限定义。',
+            'identification' => 'global',
+            'module'         => 'mall',
+            'name'           => '全局权限',
+        ]);
+        $this->manager->extend([
+            'description'    => '商品权限定义。',
+            'identification' => 'product',
+            'module'         => 'mall',
+            'name'           => '商品权限',
+        ]);
+        $this->manager->extend([
+            'description'    => '商店权限定义。',
+            'identification' => 'store',
+            'module'         => 'mall',
+            'name'           => '商店权限',
+        ]);
+        $this->manager->extend([
+            'description'    => '商家权限定义。',
+            'identification' => 'seller',
+            'module'         => 'mall',
+            'name'           => '商家权限',
         ]);
     }
 }
