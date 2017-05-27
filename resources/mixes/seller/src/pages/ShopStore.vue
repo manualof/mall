@@ -219,6 +219,20 @@
                     }
                 });
             },
+            submitEdit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.editStore.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
         },
     };
 </script>
@@ -253,7 +267,8 @@
                                 <row>
                                     <i-col span="14">
                                         <form-item label="门店名称">
-                                            <i-input v-model="goods.name"></i-input>
+                                            <i-input v-model="addStore.name"></i-input>
+                                            <p class="tip">不同地址建议使用不同名称以示区别，如“本初科技（钟楼店）”</p>
                                         </form-item>
                                     </i-col>
                                 </row>
@@ -309,6 +324,7 @@
                                     <i-col span="14">
                                         <form-item label="门店名称">
                                             <i-input v-model="editStore.name"></i-input>
+                                            <p class="tip">不同地址建议使用不同名称以示区别，如“本初科技（钟楼店）”</p>
                                         </form-item>
                                     </i-col>
                                 </row>
@@ -345,7 +361,7 @@
                                 <row>
                                     <i-col span="20">
                                         <form-item>
-                                            <i-button :loading="loading" type="primary" @click.native="submit">
+                                            <i-button :loading="loading" type="primary" @click.native="submitEdit">
                                                 <span v-if="!loading">确认提交</span>
                                                 <span v-else>正在提交…</span>
                                             </i-button>

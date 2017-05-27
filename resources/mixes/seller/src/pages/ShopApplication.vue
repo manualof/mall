@@ -236,6 +236,20 @@
                     }
                 });
             },
+            submitModify() {
+                const self = this;
+                self.loading = true;
+                self.$refs.goodsModify.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
             uploadBefore() {
                 injection.loading.start();
             },
@@ -438,7 +452,7 @@
                                 <row>
                                     <i-col span="20">
                                         <form-item>
-                                            <i-button :loading="loading" type="primary" @click.native="submit">
+                                            <i-button :loading="loading" type="primary" @click.native="submitModify">
                                                 <span v-if="!loading">确认提交</span>
                                                 <span v-else>正在提交…</span>
                                             </i-button>
