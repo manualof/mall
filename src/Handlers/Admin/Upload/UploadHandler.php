@@ -12,12 +12,12 @@ use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class UploadHandler.
  */
-class UploadHandler extends SetHandler
+class UploadHandler extends Handler
 {
     /**
      * @var \Illuminate\Filesystem\Filesystem
@@ -39,8 +39,6 @@ class UploadHandler extends SetHandler
 
     /**
      * Execute Handler.
-     *
-     * @return bool
      */
     public function execute()
     {

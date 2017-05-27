@@ -8,17 +8,16 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Shop\Dynamic;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class RemoveHandler.
  */
-class RemoveHandler extends SetHandler
+class RemoveHandler extends Handler
 {
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()

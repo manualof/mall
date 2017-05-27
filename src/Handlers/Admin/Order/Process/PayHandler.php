@@ -8,17 +8,16 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Order\Process;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class PayHandler.
  */
-class PayHandler extends SetHandler
+class PayHandler extends Handler
 {
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()

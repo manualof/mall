@@ -8,17 +8,16 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Product\Category;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class RestoreHandler.
  */
-class RestoreHandler extends SetHandler
+class RestoreHandler extends Handler
 {
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()

@@ -8,17 +8,16 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Brand;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class RevokeHandler.
  */
-class RevokeHandler extends SetHandler
+class RevokeHandler extends Handler
 {
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()

@@ -8,17 +8,16 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Service\Refund;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class ProcessHandler.
  */
-class ProcessHandler extends SetHandler
+class ProcessHandler extends Handler
 {
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()

@@ -8,17 +8,16 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Order\Refund;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class ConfirmHandler.
  */
-class ConfirmHandler extends SetHandler
+class ConfirmHandler extends Handler
 {
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()

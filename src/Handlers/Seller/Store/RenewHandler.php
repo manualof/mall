@@ -8,17 +8,16 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class RenewHandler.
  */
-class RenewHandler extends SetHandler
+class RenewHandler extends Handler
 {
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()

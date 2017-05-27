@@ -8,17 +8,16 @@
  */
 namespace Notadd\Mall\Handlers\User\Order;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class CancelHandler.
  */
-class CancelHandler extends SetHandler
+class CancelHandler extends Handler
 {
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()

@@ -8,17 +8,16 @@
  */
 namespace Notadd\Mall\Handlers\User\Card;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class AddHandler.
  */
-class AddHandler extends SetHandler
+class AddHandler extends Handler
 {
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()

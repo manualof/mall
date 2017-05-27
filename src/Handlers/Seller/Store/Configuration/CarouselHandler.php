@@ -8,17 +8,16 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Configuration;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class CarouselHandler.
  */
-class CarouselHandler extends SetHandler
+class CarouselHandler extends Handler
 {
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()

@@ -37,7 +37,6 @@ class SetHandler extends AbstractSetHandler
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()

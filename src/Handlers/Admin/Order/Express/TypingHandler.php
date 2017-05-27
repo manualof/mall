@@ -8,17 +8,16 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Order\Express;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class TypingHandler.
  */
-class TypingHandler extends SetHandler
+class TypingHandler extends Handler
 {
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()
