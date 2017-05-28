@@ -22,6 +22,6 @@ class RestoreHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
     }
 }

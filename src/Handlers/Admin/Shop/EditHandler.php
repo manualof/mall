@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\Shop;
 
 /**
  * Class EditHandler.
@@ -22,6 +23,12 @@ class EditHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $shop = Shop::query()->find($id);
+        if ($shop && $shop->update($this->request->all())) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }
