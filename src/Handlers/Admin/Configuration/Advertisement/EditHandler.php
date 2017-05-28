@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Configuration\Advertisement;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\Advertisement;
 
 /**
  * Class EditHandler.
@@ -22,6 +23,13 @@ class EditHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $advertisement = Advertisement::query()->find($id);
+        if ($advertisement) {
+            $advertisement->update($this->request->all());
+            $this->success()->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }

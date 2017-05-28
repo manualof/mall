@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Configuration\Advertisement;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\Advertisement;
 
 /**
  * Class ListHandler.
@@ -22,6 +23,7 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $builder = Advertisement::query();
+        $this->success()->withData($builder->get())->withMessage('');
     }
 }
