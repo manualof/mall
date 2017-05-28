@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Order;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\Order;
 
 /**
  * Class EditHandler.
@@ -22,6 +23,12 @@ class EditHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $order = Order::query()->find($id);
+        if ($order && $order->update($this->request->all())) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }
