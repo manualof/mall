@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Order\Process;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\OrderProcess;
 
 /**
  * Class PayHandler.
@@ -22,6 +23,12 @@ class PayHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $process = OrderProcess::query()->find($id);
+        if ($process) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }
