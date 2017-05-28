@@ -22,6 +22,6 @@ class RateHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
     }
 }
