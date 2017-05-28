@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Order\Express;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\OrderExpress;
 
 /**
  * Class TraceHandler.
@@ -22,6 +23,12 @@ class TraceHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $exchange = OrderExpress::query()->find($id);
+        if ($exchange) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }
