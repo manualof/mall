@@ -8,11 +8,11 @@
  */
 namespace Notadd\Mall\Controllers\Api\Seller;
 
-use Notadd\Mall\Handlers\Seller\Product\Specifications\CreateHandler;
-use Notadd\Mall\Handlers\Seller\Product\Specifications\EditHandler;
-use Notadd\Mall\Handlers\Seller\Product\Specifications\ListHandler;
-use Notadd\Mall\Handlers\Seller\Product\Specifications\RemoveHandler;
-use Notadd\Mall\Handlers\Seller\Product\Specifications\SpecificationsHandler;
+use Notadd\Mall\Handlers\Seller\Product\Specification\CreateHandler;
+use Notadd\Mall\Handlers\Seller\Product\Specification\EditHandler;
+use Notadd\Mall\Handlers\Seller\Product\Specification\ListHandler;
+use Notadd\Mall\Handlers\Seller\Product\Specification\RemoveHandler;
+use Notadd\Mall\Handlers\Seller\Product\Specification\SpecificationsHandler;
 
 /**
  * Class ProductSpecificationsController.
@@ -20,7 +20,7 @@ use Notadd\Mall\Handlers\Seller\Product\Specifications\SpecificationsHandler;
 class ProductSpecificationsController
 {
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Product\Specifications\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Seller\Product\Specification\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -31,7 +31,7 @@ class ProductSpecificationsController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Product\Specifications\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Seller\Product\Specification\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -42,7 +42,7 @@ class ProductSpecificationsController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Product\Specifications\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Seller\Product\Specification\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -53,7 +53,7 @@ class ProductSpecificationsController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Product\Specifications\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Seller\Product\Specification\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -64,7 +64,7 @@ class ProductSpecificationsController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Product\Specifications\SpecificationsHandler $handler
+     * @param \Notadd\Mall\Handlers\Seller\Product\Specification\SpecificationsHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

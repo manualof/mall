@@ -6,14 +6,14 @@
  * @copyright (c) 2017, notadd.com
  * @datetime      2017-05-23 20:06
  */
-namespace Notadd\Mall\Handlers\Seller\Product\Specifications;
+namespace Notadd\Mall\Handlers\Seller\Product\Specification;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
- * Class EditHandler.
+ * Class CreateHandler.
  */
-class EditHandler extends Handler
+class CreateHandler extends Handler
 {
     /**
      * Execute Handler.

@@ -4,23 +4,23 @@
  *
  * @author        TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime      2017-05-23 20:06
+ * @datetime      2017-05-23 20:08
  */
-namespace Notadd\Mall\Handlers\Seller\Product\Specifications;
+namespace Notadd\Mall\Handlers\Seller\Product\Specification;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
- * Class CreateHandler.
+ * Class SpecificationsHandler.
  */
-class CreateHandler extends Handler
+class SpecificationsHandler extends Handler
 {
     /**
      * Execute Handler.
      *
      * @throws \Exception
      */
-    public function execute()
+    protected function execute()
     {
         // TODO: Implement execute() method.
     }
