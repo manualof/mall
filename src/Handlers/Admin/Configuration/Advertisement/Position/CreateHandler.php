@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Configuration\Advertisement\Position;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\AdvertisementPosition;
 
 /**
  * Class CreateHandler.
@@ -22,6 +23,10 @@ class CreateHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        if (AdvertisementPosition::query()->create($this->request->all())) {
+            $this->success()->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }
