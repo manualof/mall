@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Order\Rate;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\OrderRate;
 
 /**
  * Class EditHandler.
@@ -22,6 +23,12 @@ class EditHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $rate = OrderRate::query()->find($id);
+        if ($rate && $rate->update($this->request->all())) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withMessage('');
+        }
     }
 }
