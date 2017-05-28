@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\VirtualOrder;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\VirtualProductOrder;
 
 /**
  * Class ListHandler.
@@ -22,6 +23,7 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $builder = VirtualProductOrder::query();
+        $this->withCode(200)->withData($builder->get())->withMessage('');
     }
 }

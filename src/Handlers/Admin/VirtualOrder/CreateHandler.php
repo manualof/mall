@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\VirtualOrder;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\VirtualProductOrder;
 
 /**
  * Class CreateHandler.
@@ -22,6 +23,10 @@ class CreateHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        if (VirtualProductOrder::query()->create($this->request->all())) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }
