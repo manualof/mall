@@ -22,6 +22,6 @@ class SetHandler extends AbstractSetHandler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $this->withCode(200)->withMessage('');
     }
 }
