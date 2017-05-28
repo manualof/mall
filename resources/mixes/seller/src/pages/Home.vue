@@ -112,7 +112,7 @@
     };
 </script>
 <template>
-    <div class="mall-wrap">
+    <div class="seller-wrap">
         <div class="home-wrap">
             <tabs value="home">
                 <tab-pane label="首页" name="home">

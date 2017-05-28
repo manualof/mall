@@ -200,7 +200,7 @@
                             <div>
                                 <p>可选商品</p>
                                 <div class="my-card">
-                                    <card>
+                                    <card :bordered="false">
                                         <checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
                                             <checkbox :label="item" v-for="item in selectList"></checkbox>
                                         </checkbox-group>
@@ -247,7 +247,7 @@
                             <div>
                                 <p>参与秒杀商品</p>
                                 <div class="my-card">
-                                    <card>
+                                    <card :bordered="false">
                                         <checkbox-group v-model="checkSpikeGroup" @on-change="checkSpikeGroupChange">
                                             <checkbox :label="item" v-for="item in spikeList"></checkbox>
                                         </checkbox-group>

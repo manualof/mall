@@ -2,7 +2,7 @@
 /**
  * This file is part of Notadd.
  *
- * @author TwilRoad <269044570@qq.com>
+ * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
  * @datetime 2017-04-24 18:42
  */
@@ -12,12 +12,12 @@ use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Notadd\Foundation\Passport\Abstracts\SetHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 
 /**
  * Class UploadHandler.
  */
-class UploadHandler extends SetHandler
+class UploadHandler extends Handler
 {
     /**
      * @var \Illuminate\Filesystem\Filesystem
@@ -39,8 +39,6 @@ class UploadHandler extends SetHandler
 
     /**
      * Execute Handler.
-     *
-     * @return bool
      */
     public function execute()
     {

@@ -2,20 +2,20 @@
 /**
  * This file is part of Notadd.
  *
- * @author TwilRoad <269044570@qq.com>
+ * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
  * @datetime 2017-04-24 14:05
  */
 namespace Notadd\Mall\Handlers\Admin\Configuration\Search;
 
 use Illuminate\Container\Container;
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Passport\Abstracts\Handler;
 use Notadd\Foundation\Setting\Contracts\SettingsRepository;
 
 /**
  * Class GetHandler.
  */
-class GetHandler extends DataHandler
+class GetHandler extends Handler
 {
     /**
      * @var \Notadd\Foundation\Setting\Contracts\SettingsRepository
@@ -35,14 +35,14 @@ class GetHandler extends DataHandler
     }
 
     /**
-     * Data for handler.
+     * Execute Handler.
      *
-     * @return array
+     * @throws \Exception
      */
-    public function data()
+    protected function execute()
     {
-        return [
+        $this->success()->withData([
             'default' => $this->settings->get('mall.configuration.search.default', ''),
-        ];
+        ])->withMessage('获取配置成功！');
     }
 }

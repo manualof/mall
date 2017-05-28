@@ -2,7 +2,7 @@
 /**
  * This file is part of Notadd.
  *
- * @author TwilRoad <269044570@qq.com>
+ * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
  * @datetime 2017-04-24 12:43
  */
@@ -37,7 +37,6 @@ class SetHandler extends AbstractSetHandler
     /**
      * Execute Handler.
      *
-     * @return bool
      * @throws \Exception
      */
     public function execute()
@@ -45,7 +44,5 @@ class SetHandler extends AbstractSetHandler
         $this->settings->set('mall.configuration.logo', $this->request->input('logo'));
         $this->settings->set('mall.configuration.service.email', $this->request->input('email'));
         $this->settings->set('mall.configuration.service.phone', $this->request->input('phone'));
-
-        return true;
     }
 }
