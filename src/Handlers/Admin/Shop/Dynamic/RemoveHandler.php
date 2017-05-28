@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop\Dynamic;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\ShopDynamic;
 
 /**
  * Class RemoveHandler.
@@ -22,6 +23,12 @@ class RemoveHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $dynamic = ShopDynamic::query()->find($id);
+        if ($dynamic && $dynamic->delete()) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }
