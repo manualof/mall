@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Order\Invoice;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\OrderInvoice;
 
 /**
  * Class InvoiceHandler.
@@ -22,6 +23,11 @@ class InvoiceHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        if (OrderInvoice::query()->where('id', $id)->count()) {
+            $this->withCode(200)->withData(OrderInvoice::query()->find($id))->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }

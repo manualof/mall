@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Order\Invoice;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\OrderInvoice;
 
 /**
  * Class RemoveHandler.
@@ -22,6 +23,12 @@ class RemoveHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $invoice = OrderInvoice::query()->find($id);
+        if ($invoice && $invoice->delete()) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }
