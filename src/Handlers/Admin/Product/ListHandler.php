@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Product;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\Product;
 
 /**
  * Class ListHandler.
@@ -22,6 +23,7 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $builder = Product::query();
+        $this->withCode(200)->withData($builder->get())->withMessage('');
     }
 }
