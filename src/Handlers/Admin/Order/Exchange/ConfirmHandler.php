@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Order\Exchange;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\OrderExchange;
 
 /**
  * Class ConfirmHandler.
@@ -22,6 +23,12 @@ class ConfirmHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $exchange = OrderExchange::query()->find($id);
+        if ($exchange) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }
