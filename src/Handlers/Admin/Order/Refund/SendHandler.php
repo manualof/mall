@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Order\Refund;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\OrderRefund;
 
 /**
  * Class SendHandler.
@@ -22,6 +23,12 @@ class SendHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $refund = OrderRefund::query()->find($id);
+        if ($refund) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }
