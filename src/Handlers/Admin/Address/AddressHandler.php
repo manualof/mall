@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Address;
 
 use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Mall\Models\Address;
 
 /**
  * Class AddressHandler.
@@ -22,6 +23,7 @@ class AddressHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $this->success()->withData(Address::query()->find($id))->withMessage('');
     }
 }
