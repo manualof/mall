@@ -22,6 +22,6 @@ class GetHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->withCode(200)->withData([])->withMessage('');
     }
 }
