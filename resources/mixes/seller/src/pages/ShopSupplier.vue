@@ -183,28 +183,28 @@
                         <div>
                             <i-form ref="goods" :model="goods" :rules="pictureValidate" :label-width="100">
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="供货商名称">
                                             <i-input v-model="goods.name"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="联系人">
                                             <i-input v-model="goods.person"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="联系电话">
                                             <i-input v-model="goods.phone"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="备注信息">
                                             <i-input v-model="goods.remarks"></i-input>
                                         </form-item>
@@ -229,28 +229,28 @@
                         <div>
                             <i-form ref="goodsModify" :model="goodsModify" :rules="ruleValidate" :label-width="100">
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="供货商名称">
                                             <i-input v-model="goods.name"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="联系人">
                                             <i-input v-model="goods.person"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="联系电话">
                                             <i-input v-model="goods.phone"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="备注信息">
                                             <i-input v-model="goods.remarks"></i-input>
                                         </form-item>

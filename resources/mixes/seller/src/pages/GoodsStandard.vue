@@ -23,7 +23,7 @@
                         value: '电子数码3',
                     },
                 ],
-                goodsColumns: [
+                goodsColorColumns: [
                     {
                         align: 'center',
                         key: 'sort',
@@ -44,20 +44,65 @@
                     },
                     {
                         key: 'color',
+                        render() {
+                            return '<i-input style="width: 124px"></i-input> ';
+                        },
                         title: '颜色色块',
                     },
                     {
                         align: 'center',
                         key: 'action',
                         render(row, column, index) {
-                            return `<i-button @click.native="removeGoods(${index})" class="delete-ad"
+                            return `<i-button @click.native="removeColorGoods(${index})" class="delete-ad"
                                      type="ghost">删除</i-button>`;
                         },
                         title: '操作',
                         width: 150,
                     },
                 ],
-                goodsData: [
+                goodsColorData: [
+                    {
+                        sortNum: 1,
+                    },
+                ],
+                goodsSizeColumns: [
+                    {
+                        align: 'center',
+                        key: 'sort',
+                        render() {
+                            return `<input-number :max="10" :min="1" v-model="row.sortNum"
+                                    style="width: 64px"></input-number> `;
+                        },
+                        title: '排序',
+                        width: 150,
+                    },
+                    {
+                        key: 'standardName',
+                        render() {
+                            return '<i-input style="width: 268px"></i-input> ';
+                        },
+                        title: '规格值名称',
+                        width: 400,
+                    },
+                    {
+                        key: 'size',
+                        render() {
+                            return '<i-input style="width: 124px"></i-input> ';
+                        },
+                        title: '尺码大小',
+                    },
+                    {
+                        align: 'center',
+                        key: 'action',
+                        render(row, column, index) {
+                            return `<i-button @click.native="removeSizeGoods(${index})" class="delete-ad"
+                                     type="ghost">删除</i-button>`;
+                        },
+                        title: '操作',
+                        width: 150,
+                    },
+                ],
+                goodsSizeData: [
                     {
                         sortNum: 1,
                     },
@@ -99,8 +144,11 @@
             };
         },
         methods: {
-            removeGoods(index) {
-                this.goodsData.splice(index, 1);
+            removeColorGoods(index) {
+                this.goodsColorData.splice(index, 1);
+            },
+            removeSizeGoods(index) {
+                this.goodsSizeData.splice(index, 1);
             },
         },
     };
@@ -142,19 +190,32 @@
                                     </i-select>
                                 </i-col>
                             </row>
-                            <div class="btn-group">
-                                <i-button class="first-btn" type="ghost">编辑颜色规格</i-button>
-                                <i-button type="ghost">编辑尺码规格</i-button>
-                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                                <i-button type="ghost" class="float-right">添加规格值</i-button>
-                            </div>
-                            <i-table class="goods-table"
-                                     :columns="goodsColumns"
-                                     :context="self"
-                                     :data="goodsData"
-                                     ref="goodsList"
-                                     highlight-row>
-                            </i-table>
+                            <tabs type="card">
+                                <tab-pane label="编辑颜色规格">
+                                    <div class="btn-group">
+                                        <i-button type="ghost" class="float-right" @click="">添加规格值</i-button>
+                                    </div>
+                                    <i-table class="goods-table"
+                                             :columns="goodsColorColumns"
+                                             :context="self"
+                                             :data="goodsColorData"
+                                             ref="goodsColorList"
+                                             highlight-row>
+                                    </i-table>
+                                </tab-pane>
+                                <tab-pane label="编辑尺码规格">
+                                    <div class="btn-group">
+                                        <i-button type="ghost" class="float-right" @click="">添加规格值</i-button>
+                                    </div>
+                                    <i-table class="goods-table"
+                                             :columns="goodsSizeColumns"
+                                             :context="self"
+                                             :data="goodsSizeData"
+                                             ref="goodsSizeList"
+                                             highlight-row>
+                                    </i-table>
+                                </tab-pane>
+                            </tabs>
                         </div>
                         <div class="page">
                             <page :total="100" show-elevator></page>
