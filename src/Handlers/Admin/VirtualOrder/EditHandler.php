@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Admin\VirtualOrder;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\VirtualProductOrder;
 
 /**

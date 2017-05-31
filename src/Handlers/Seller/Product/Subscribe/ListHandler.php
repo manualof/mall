@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Subscribe;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 
 /**
  * Class ListHandler.
