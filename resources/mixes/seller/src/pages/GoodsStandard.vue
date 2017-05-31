@@ -144,6 +144,9 @@
             };
         },
         methods: {
+            addColorStandard() {
+                this.goodsColorData.push();
+            },
             removeColorGoods(index) {
                 this.goodsColorData.splice(index, 1);
             },
@@ -193,7 +196,8 @@
                             <tabs type="card">
                                 <tab-pane label="编辑颜色规格">
                                     <div class="btn-group">
-                                        <i-button type="ghost" class="float-right" @click="">添加规格值</i-button>
+                                        <i-button type="ghost" class="float-right"
+                                                  @click="addColorStandard">添加规格值</i-button>
                                     </div>
                                     <i-table class="goods-table"
                                              :columns="goodsColorColumns"
@@ -205,7 +209,8 @@
                                 </tab-pane>
                                 <tab-pane label="编辑尺码规格">
                                     <div class="btn-group">
-                                        <i-button type="ghost" class="float-right" @click="">添加规格值</i-button>
+                                        <i-button type="ghost" class="float-right"
+                                                  @click="addSizeStandard">添加规格值</i-button>
                                     </div>
                                     <i-table class="goods-table"
                                              :columns="goodsSizeColumns"
