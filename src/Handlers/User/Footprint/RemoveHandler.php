@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\User\Footprint;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 
 /**
  * Class RemoveHandler.
