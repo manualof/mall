@@ -306,6 +306,7 @@
                         num: 4,
                     },
                 ],
+                style: 'height: 400px;',
                 timeList: [
                     {
                         label: '按照月统计',
@@ -362,7 +363,10 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="profileOrderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="profileOrderMoney"
+                                                   :style="style"
+                                                   @click="onClick"
+                                                   @ready="onReady"></i-echarts>
                                     </div>
                                 </tab-pane>
                                 <tab-pane label="下单商品数">
@@ -390,7 +394,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="profileOrderGoods" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="profileOrderGoods" :style="style" @ready="onReady" @click="onClick"></i-echarts>
                                     </div>
                                 </tab-pane>
                                 <tab-pane label="下单量">
@@ -418,7 +422,10 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="profileOrderNum" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="profileOrderNum"
+                                                   :style="style"
+                                                   @click="onClick"
+                                                   @ready="onReady" ></i-echarts>
                                     </div>
                                 </tab-pane>
                             </tabs>
@@ -458,7 +465,10 @@
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="industryGoods" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="industryGoods"
+                                           :style="style"
+                                           @click="onClick"
+                                           @ready="onReady"></i-echarts>
                             </div>
                             <i-table :columns="goodsColumns" :context="self" :data="goodsData"></i-table>
                             <div class="page">
@@ -489,7 +499,10 @@
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="industryShop" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="industryShop"
+                                           :style="style"
+                                           @click="onClick"
+                                           @ready="onReady"></i-echarts>
                             </div>
                             <i-table :columns="shopsColumns" :context="self" :data="shopsData"></i-table>
                             <div class="page">
@@ -538,13 +551,19 @@
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="orderAccount" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="orderAccount"
+                                           :style="style"
+                                           @click="onClick"
+                                           @ready="onReady" ></i-echarts>
                             </div>
                             <div class="order-money-content">
                                 <h5 v-if="!isPriceArea">下单商品数</h5>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="orderNumber" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="orderNumber"
+                                           :style="style"
+                                           @click="onClick"
+                                           @ready="onReady"></i-echarts>
                             </div>
                         </div>
                     </card>

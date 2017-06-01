@@ -634,6 +634,7 @@
                         value: '2',
                     },
                 ],
+                style: 'height: 400px;',
                 timeList: [
                     {
                         label: '按照月统计',
@@ -724,7 +725,10 @@
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="newAddShop" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="newAddShop"
+                                           :style="style"
+                                           @click="onClick"
+                                           @ready="onReady"></i-echarts>
                             </div>
                             <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
                             <i-table :columns="shopColumns" :context="self"
@@ -903,8 +907,11 @@
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts @click="onClick" :option="shopNumberProvince" ref="echarts"
-                                           @ready="onMapReady"></i-echarts>
+                                <i-echarts @click="onClick"
+                                           @ready="onMapReady"
+                                           :option="shopNumberProvince"
+                                           :style="style"
+                                           ref="echarts"></i-echarts>
                             </div>
                             <i-button type="ghost" class="export-btn" @click="exportProvinceData">导出数据</i-button>
                             <i-table :columns="provinceColumns"

@@ -1161,7 +1161,10 @@
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="newAddMember" :style="style" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="newAddMember"
+                                           :style="style"
+                                           @click="onClick"
+                                           @ready="onReady"></i-echarts>
                             </div>
 
                             <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
@@ -1203,7 +1206,10 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoney" :style="style" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderMoney"
+                                                   :style="style"
+                                                   @click="onClick"
+                                                   @ready="onReady" ></i-echarts>
                                     </div>
 
                                     <i-button type="ghost" class="export-btn"
@@ -1233,7 +1239,10 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoney" :style="style" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderMoney"
+                                                   :style="style"
+                                                   @click="onClick"
+                                                   @ready="onReady"></i-echarts>
                                     </div>
 
                                     <i-button type="ghost" class="export-btn"
@@ -1263,7 +1272,10 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoney" :style="style" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderMoney"
+                                                   :style="style"
+                                                   @click="onClick"
+                                                   @ready="onReady" ></i-echarts>
                                     </div>
 
                                     <i-button type="ghost" class="export-btn"
@@ -1308,10 +1320,10 @@
                                     </div>
                                     <div class="echarts">
                                         <i-echarts :option="orderMoneyProvince"
-                                                   ref="echarts"
                                                    :style="style"
                                                    @click="onClick"
-                                                   @ready="onMapReady"></i-echarts>
+                                                   @ready="onMapReady"
+                                                   ref="echarts"></i-echarts>
                                     </div>
                                     <i-button type="ghost" class="export-btn"
                                               @click="exportProvinceMoneyData">导出数据</i-button>
@@ -1340,6 +1352,7 @@
                                     </div>
                                     <div class="echarts">
                                         <i-echarts :option="orderNumberProvince"
+                                                   :style="style"
                                                    ref="echarts"
                                                    @click="onClick"
                                                    @ready="onMapReady"></i-echarts>
@@ -1371,6 +1384,7 @@
                                     </div>
                                     <div class="echarts">
                                         <i-echarts :option="orderCountProvince"
+                                                   :style="style"
                                                    ref="echarts"
                                                    @click="onClick"
                                                    @ready="onMapReady"></i-echarts>

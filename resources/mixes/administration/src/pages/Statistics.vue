@@ -200,6 +200,7 @@
                         shopName: 'xxx旗舰店',
                     },
                 ],
+                style: 'height: 400px;',
             };
         },
         methods: {
@@ -267,7 +268,10 @@
                         <div class="statistics-information">
                             <h5>2017-03-11 销售走势</h5>
                             <div class="echarts">
-                                <i-echarts :option="salesTrend" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="salesTrend"
+                                           :style="style"
+                                           @click="onClick"
+                                           @ready="onReady" ></i-echarts>
                             </div>
                         </div>
                         <div class="table-information">

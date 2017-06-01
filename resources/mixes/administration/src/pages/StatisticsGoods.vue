@@ -244,6 +244,7 @@
                         value: '2',
                     },
                 ],
+                style: 'height: 400px;',
                 timeList: [
                     {
                         label: '按照月统计',
@@ -304,7 +305,10 @@
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="priceAmount" @ready="onReady" @click="onClick"></i-echarts>
+                                <i-echarts :option="priceAmount"
+                                           :style="style"
+                                           @click="onClick"
+                                           @ready="onReady" ></i-echarts>
                             </div>
                         </div>
                     </card>
@@ -344,7 +348,7 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="hotGoods" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="hotGoods" :style="style" @ready="onReady" @click="onClick"></i-echarts>
                                     </div>
                                     <div class="order-module-content">
                                         <i-table :columns="orderColumns" :context="self"
@@ -379,7 +383,10 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="hotGoodsMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="hotGoodsMoney"
+                                                   :style="style"
+                                                   @ready="onReady"
+                                                   @click="onClick"></i-echarts>
                                     </div>
                                     <div class="order-module-content">
                                         <i-table :columns="orderMoneyColumns" :context="self"
