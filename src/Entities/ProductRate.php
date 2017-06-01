@@ -15,4 +15,11 @@ use Notadd\Foundation\Flow\Abstracts\Entity;
  */
 class ProductRate extends Entity
 {
+    /**
+     * @return string
+     */
+    public function name()
+    {
+        return 'mall.product.rate';
+    }
 }

@@ -15,4 +15,11 @@ use Notadd\Foundation\Flow\Abstracts\Entity;
  */
 class ProductCategory extends Entity
 {
+    /**
+     * @return string
+     */
+    public function name()
+    {
+        return 'mall.product.category';
+    }
 }
