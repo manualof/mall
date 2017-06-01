@@ -270,7 +270,48 @@
     <div class="seller-wrap">
         <div class="statistics-goods">
             <tabs value="name1">
-                <tab-pane label="价格销量" name="name1">
+                <tab-pane label="商品详情" name="name1">
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>1.符合以下任何一种条件的订单即为有效订单：1）采用在线支付方式支付并且已付款；
+                                2）采用货到付款方式并且交易已完成</p>
+                            <p>2.以下列表为从昨天开始最近30天有效订单中的所有商品数据</p>
+                            <p>3.近30天下单商品数：从昨天开始最近30天有效订单的某商品总销量</p>
+                            <p>4.近30天下单金额：从昨天开始最近30天有效订单的某商品总销售额</p>
+                            <p>5.点击每列旁边的箭头对列表进行排序，默认按照“近30天成交件数”降序排列</p>
+                            <p>6.点击每条记录后的“走势图”，查看最近30天下单金额、下单商品数、下单量走势</p>
+                        </div>
+                        <div class="analysis-content">
+                            <div class="order-money-content">
+                                <div class="select-content">
+                                    <i-button type="ghost" class="export-btn export-sales-btn"
+                                              @click="exportSalesData">导出数据</i-button>
+                                    <ul>
+                                        <li>
+                                            商品分类
+                                            <i-select v-model="model2" style="width:124px">
+                                                <i-option v-for="item in goodsList" :value="item.value"
+                                                          :key="item">{{ item.label }}</i-option>
+                                            </i-select>
+                                        </li>
+                                        <li class="store-body-header-right">
+                                            <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
+                                                <i-button slot="append" type="primary">搜索</i-button>
+                                            </i-input>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <i-table :columns="salesColumns" :context="self"
+                                         :data="salesData" ref="salesList"></i-table>
+                                <div class="page">
+                                    <page :total="100" show-elevator></page>
+                                </div>
+                            </div>
+                        </div>
+                    </card>
+                </tab-pane>
+                <tab-pane label="价格销量" name="name2">
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
@@ -313,54 +354,16 @@
                         </div>
                     </card>
                 </tab-pane>
-                <tab-pane label="热卖商品" name="name2">
+                <tab-pane label="热卖商品" name="name3">
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>符合以下任何一种条件的订单即为有效订单：1、采用在线支付方式支付并且已付款；
-                                2、采用货到付款方式支付并且交易已完成</p>
-                            <p>图表展示了符合搜索条件的有效订单中的下单总金额和下单量排名前50位的商品</p>
+                            <p>1.符合以下任何一种条件的订单即为有效订单：1）采用在线支付方式支付并且已付款；
+                                2）采用货到付款方式并且交易已完成</p>
+                            <p>2.图表展示了符合搜索条件的有效订单中的下单总金额和下单商品总数排名前30位的商品</p>
                         </div>
                         <div class="analysis-content">
                             <tabs type="card">
-                                <tab-pane label="下单量">
-                                    <div class="order-money-content">
-                                        <div class="select-content hot-sales-goods">
-                                            <ul>
-                                                <li>
-                                                    商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    时间周期
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in timeList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="echarts">
-                                        <i-echarts :option="hotGoods"
-                                                   :style="style"
-                                                   @click="onClick"
-                                                   @ready="onReady" ></i-echarts>
-                                    </div>
-                                    <div class="order-module-content">
-                                        <i-table :columns="orderColumns" :context="self"
-                                                 :data="orderData" ref="orderList"></i-table>
-                                        <div class="page">
-                                            <page :total="100" show-elevator></page>
-                                        </div>
-                                    </div>
-                                </tab-pane>
                                 <tab-pane label="下单金额">
                                     <div class="order-money-content">
                                         <div class="select-content hot-sales-goods">
@@ -399,55 +402,45 @@
                                         </div>
                                     </div>
                                 </tab-pane>
+                                <tab-pane label="下单商品数">
+                                    <div class="order-money-content">
+                                        <div class="select-content hot-sales-goods">
+                                            <ul>
+                                                <li>
+                                                    商品分类
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in goodsList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    时间周期
+                                                    <i-select v-model="model2" style="width:124px">
+                                                        <i-option v-for="item in timeList" :value="item.value"
+                                                                  :key="item">{{ item.label }}</i-option>
+                                                    </i-select>
+                                                </li>
+                                                <li>
+                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="echarts">
+                                        <i-echarts :option="hotGoods"
+                                                   :style="style"
+                                                   @click="onClick"
+                                                   @ready="onReady" ></i-echarts>
+                                    </div>
+                                    <div class="order-module-content">
+                                        <i-table :columns="orderColumns" :context="self"
+                                                 :data="orderData" ref="orderList"></i-table>
+                                        <div class="page">
+                                            <page :total="100" show-elevator></page>
+                                        </div>
+                                    </div>
+                                </tab-pane>
                             </tabs>
-                        </div>
-                    </card>
-                </tab-pane>
-                <tab-pane label="商品销售明细" name="name3">
-                    <card :bordered="false">
-                        <div class="prompt-box">
-                            <p>提示</p>
-                            <p>符合以下任何一种条件的订单即为有效订单：1、采用在线支付方式支付并且已付款；
-                                2、采用货到付款方式支付并且交易已完成</p>
-                            <p>以下列表为符合搜索条件的有效订单中所有商品数据，及时间段内的销量、下单量、下单总金额</p>
-                            <p>默认按照"下单商品件数"降序排列</p>
-                        </div>
-                        <div class="analysis-content">
-                            <div class="order-money-content">
-                                <div class="select-content">
-                                    <i-button type="ghost" class="export-btn export-sales-btn"
-                                              @click="exportSalesData">导出数据</i-button>
-                                    <ul>
-                                        <li>
-                                            商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            时间周期
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in timeList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            <date-picker type="date" placeholder="选择日期"></date-picker>
-                                        </li>
-                                        <li class="store-body-header-right">
-                                            <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-button slot="append" type="primary">搜索</i-button>
-                                            </i-input>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <i-table :columns="salesColumns" :context="self"
-                                         :data="salesData" ref="salesList"></i-table>
-                                <div class="page">
-                                    <page :total="100" show-elevator></page>
-                                </div>
-                            </div>
                         </div>
                     </card>
                 </tab-pane>
