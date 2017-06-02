@@ -9,20 +9,13 @@
 namespace Notadd\Mall\Entities;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class Product.
  */
 class Product extends Entity
 {
-    /**
-     * @return array
-     */
-    public function events()
-    {
-        return [];
-    }
-
     /**
      * @return string
      */
@@ -36,7 +29,16 @@ class Product extends Entity
      */
     public function places()
     {
-        return [];
+        return [
+            'create',
+            'created',
+            'edit',
+            'edited',
+            'remove',
+            'removed',
+            'publish',
+            'published',
+        ];
     }
 
     /**
@@ -44,6 +46,11 @@ class Product extends Entity
      */
     public function transitions()
     {
-        return [];
+        return [
+            new Transition('create', 'create', 'created'),
+            new Transition('edit', 'edit', 'edited'),
+            new Transition('remove', 'remove', 'removed'),
+            new Transition('publish', 'publish', 'published'),
+        ];
     }
 }
