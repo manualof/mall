@@ -16,6 +16,14 @@ use Notadd\Foundation\Flow\Abstracts\Entity;
 class OrderExpress extends Entity
 {
     /**
+     * @return array
+     */
+    public function events()
+    {
+        return [];
+    }
+
+    /**
      * @return string
      */
     public function name()

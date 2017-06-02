@@ -16,6 +16,14 @@ use Notadd\Foundation\Flow\Abstracts\Entity;
 class ProductCategory extends Entity
 {
     /**
+     * @return array
+     */
+    public function events()
+    {
+        return [];
+    }
+
+    /**
      * @return string
      */
     public function name()
