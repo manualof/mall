@@ -13,160 +13,114 @@
                 analysisMoneyColumns: [
                     {
                         key: 'num',
-                        title: '序号',
+                        title: '订单编号',
                     },
                     {
-                        key: 'memberName',
-                        title: '会员名称',
+                        key: 'buyer',
+                        title: '买家',
                     },
                     {
-                        key: 'amount',
-                        title: '下单金额',
+                        key: 'orderTime',
+                        title: '下单时间',
                     },
                     {
-                        key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
-                        },
-                        title: '操作',
-                        width: 120,
+                        key: 'orderMoney',
+                        title: '订单总额',
+                    },
+                    {
+                        key: 'status',
+                        title: '订单状态',
                     },
                 ],
                 analysisMoneyData: [
                     {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
+                        buyer: 'djsed',
+                        num: 22,
+                        orderMoney: '99.00',
+                        orderTime: '2016-12-21 16:11:25',
+                        status: '交易成功',
                     },
                     {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
+                        buyer: 'djsed',
+                        num: 22,
+                        orderMoney: '99.00',
+                        orderTime: '2016-12-21 16:11:25',
+                        status: '交易成功',
                     },
                     {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
+                        buyer: 'djsed',
+                        num: 22,
+                        orderMoney: '99.00',
+                        orderTime: '2016-12-21 16:11:25',
+                        status: '交易成功',
                     },
                     {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
+                        buyer: 'djsed',
+                        num: 22,
+                        orderMoney: '99.00',
+                        orderTime: '2016-12-21 16:11:25',
+                        status: '交易成功',
                     },
                 ],
                 analysisNumberColumns: [
                     {
                         key: 'num',
-                        title: '序号',
+                        title: '订单编号',
                     },
                     {
-                        key: 'memberName',
-                        title: '会员名称',
+                        key: 'buyer',
+                        title: '买家',
                     },
                     {
-                        key: 'amount',
-                        title: '下单商品数',
+                        key: 'orderTime',
+                        title: '下单时间',
                     },
                     {
-                        key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
-                        },
-                        title: '操作',
-                        width: 120,
+                        key: 'orderMoney',
+                        title: '订单总额',
+                    },
+                    {
+                        key: 'status',
+                        title: '订单状态',
                     },
                 ],
                 analysisNumberData: [
                     {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
+                        buyer: 'djsed',
+                        num: 22,
+                        orderMoney: '99.00',
+                        orderTime: '2016-12-21 16:11:25',
+                        status: '交易成功',
                     },
                     {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
+                        buyer: 'djsed',
+                        num: 22,
+                        orderMoney: '99.00',
+                        orderTime: '2016-12-21 16:11:25',
+                        status: '交易成功',
                     },
                     {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
+                        buyer: 'djsed',
+                        num: 22,
+                        orderMoney: '99.00',
+                        orderTime: '2016-12-21 16:11:25',
+                        status: '交易成功',
                     },
                     {
-                        amount: 22,
-                        memberName: 4,
-                        num: 333,
+                        buyer: 'djsed',
+                        num: 22,
+                        orderMoney: '99.00',
+                        orderTime: '2016-12-21 16:11:25',
+                        status: '交易成功',
                     },
                 ],
                 isPriceArea: false,
                 loading: false,
-                memberColumns: [
-                    {
-                        key: 'hour',
-                        title: '小时',
-                    },
-                    {
-                        key: 'yesterday',
-                        title: '昨天',
-                    },
-                    {
-                        key: 'today',
-                        title: '今天',
-                    },
-                    {
-                        key: 'rate',
-                        title: '同比',
-                    },
-                    {
-                        key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
-                        },
-                        title: '操作',
-                        width: 120,
-                    },
-                ],
-                memberData: [
-                    {
-                        hour: 1,
-                        rate: 2,
-                        today: 2,
-                        yesterday: 0,
-                    },
-                    {
-                        hour: 1,
-                        rate: 2,
-                        today: 2,
-                        yesterday: 0,
-                    },
-                    {
-                        hour: 1,
-                        rate: 2,
-                        today: 2,
-                        yesterday: 0,
-                    },
-                    {
-                        hour: 1,
-                        rate: 2,
-                        today: 2,
-                        yesterday: 0,
-                    },
-                ],
-                newAddMember: {
-                    legend: {
-                        bottom: 'auto',
-                        data: ['昨天', '今天'],
-                    },
+                orderAccount: {
                     series: [
                         {
                             data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '今天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                        {
-                            data: [220, 182, 191, 234, 290, 330, 310],
-                            name: '昨天',
+                            name: '下单金额',
                             stack: '下单金额',
                             type: 'line',
                         },
@@ -642,6 +596,27 @@
                         },
                     ],
                 },
+                orderNumber: {
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '下单金额',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
                 orderNumberProvince: {
                     tooltip: {},
                     visualMap: {
@@ -1042,11 +1017,6 @@
                 }
                 return res;
             },
-            exportData() {
-                this.$refs.memberList.exportCsv({
-                    filename: '新增会员数据',
-                });
-            },
             exportMemberMoneyData() {
                 this.$refs.analysisMoneyList.exportCsv({
                     filename: '会员分析下单金额数据',
@@ -1089,10 +1059,11 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>符合以下任何一种条件的订单即为有效订单：1、采用在线支付方式支付并且已付款；
-                                2、采用货到付款方式支付并且交易已完成</p>
-                            <p>列表展示了时间段内所有会员有效订单的订单数量、下单商品数量和订单总金额统计数据，
-                                并可以点击列表上方的"导出数据"，将列表数据导出为Excel文件</p>
+                            <p>1.符合以下任何一种条件的订单即为有效订单：1）采用在线支付方式支付并且已付款;
+                                2）采用货到付款方式并且交易已完成</p>
+                            <p>2.统计图展示了符合搜索条件的有效订单中的下单总金额和下单数量在时间段内的走势情况
+                                及与前一个时间段的趋势对比</p>
+                            <p>3.统计表显示了符合搜索条件的全部有效订单记录并可以点击“导出Excel的”将订单记录导出为Excel的文件</p>
                         </div>
                         <div class="analysis-content">
                             <tabs type="card">
@@ -1167,10 +1138,11 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>符合以下任何一种条件的订单即为有效订单：1、采用在线支付方式支付并且已付款；
-                                2、采用货到付款方式支付并且交易已完成</p>
-                            <p>点击“设置价格区间”进入设置价格区间页面，下方统计图将根据您设置的价格区间进行统计</p>
-                            <p>统计图展示符合搜索条件的有效订单中商品的单价所在价格区间中的总销售额和总下单商品数量走势</p>
+                            <p>1.符合以下任何一种条件的订单即为有效订单：1）采用在线支付方式支付并且已付款;
+                                2）采用货到付款方式并且交易已完成</p>
+                            <p>2.统计图展示了符合搜索条件的有效订单的下单会员数，下单总金额和下单数量在各省级地区的分布情况</p>
+                            <p>3.统计地图将根据各个区域的有效订单统计数据等级依次显示不同的颜色</p>
+                            <p>4.地区排行将根据各个区域的有效订单统计数据进行排名显示</p>
                         </div>
                         <div class="analysis-content">
                             <tabs type="card">
@@ -1278,15 +1250,25 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>统计图展示了时间段内新增会员数的走势和与前一时间段的对比</p>
-                            <p>统计表展示了时间段内新增会员数值和与前一时间段的同比数值，点击每条记录后的"查看"，
-                                了解新增会员的详细信息</p>
-                            <p>点击列表上方的“导出数据”，将列表数据导出为Excel文件</p>
+                            <p>1.符合以下任何一种条件的订单即为有效订单：1）采用在线支付方式支付并且已付款;
+                                2）采用货到付款方式并且交易已完成</p>
+                            <p>2.统计图展示了符合搜索条件的有效订单的下单会员数，下单总金额和下单数量在各省级地区的分布情况</p>
+                            <p>3.统计地图将根据各个区域的有效订单统计数据等级依次显示不同的颜色</p>
+                            <p>4.地区排行将根据各个区域的有效订单统计数据进行排名显示</p>
                         </div>
                         <div class="analysis-content">
+                            <h5>买家排行榜TOP15</h5>
                             <div class="order-money-content">
-                                <div class="select-content">
+                                <i-button type="ghost">设置价格区间</i-button>
+                                <div class="select-content" style="top: -10px">
                                     <ul>
+                                        <li>
+                                            商品分类
+                                            <i-select v-model="model2" style="width:124px">
+                                                <i-option v-for="item in goodsList" :value="item.value"
+                                                          :key="item">{{ item.label }}</i-option>
+                                            </i-select>
+                                        </li>
                                         <li>
                                             时间周期
                                             <i-select v-model="model2" style="width:124px">
@@ -1299,19 +1281,22 @@
                                         </li>
                                     </ul>
                                 </div>
+                                <div v-if="isPriceArea" class="set-price-area">
+                                    <p>看行业价格分布情况前，请先设置价格区间</p>
+                                </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="newAddMember"
+                                <i-echarts :option="orderAccount"
+                                           :style="style"
+                                           @click="onClick"
+                                           @ready="onReady"></i-echarts>
+                            </div>
+                            <h5>购买时间段分布</h5>
+                            <div class="echarts">
+                                <i-echarts :option="orderNumber"
                                            :style="style"
                                            @click="onClick"
                                            @ready="onReady" ></i-echarts>
-                            </div>
-
-                            <i-button type="ghost" class="export-btn" @click="exportData">导出数据</i-button>
-                            <i-table :columns="memberColumns" :context="self"
-                                     :data="memberData" ref="memberList"></i-table>
-                            <div class="page">
-                                <page :total="100" show-elevator></page>
                             </div>
                         </div>
                     </card>
