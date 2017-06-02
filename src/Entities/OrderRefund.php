@@ -9,20 +9,13 @@
 namespace Notadd\Mall\Entities;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class OrderRefund.
  */
 class OrderRefund extends Entity
 {
-    /**
-     * @return array
-     */
-    public function events()
-    {
-        return [];
-    }
-
     /**
      * @return string
      */
@@ -36,7 +29,18 @@ class OrderRefund extends Entity
      */
     public function places()
     {
-        return [];
+        return [
+            'launch',      // 发起退款
+            'launched',    // 发起完成
+            'review',      // 审核退款
+            'reviewed',    // 审核完成
+            'reject',      // 拒绝
+            'rejected',    // 拒绝完成
+            'refund',      // 退货
+            'refunded',    // 退货完成
+            'reimburse',   // 退款
+            'reimbursed',  // 退款完成
+        ];
     }
 
     /**
@@ -44,6 +48,12 @@ class OrderRefund extends Entity
      */
     public function transitions()
     {
-        return [];
+        return [
+            new Transition('launch', 'launch', 'launched'),
+            new Transition('review', 'review', 'review'),
+            new Transition('reject', 'reject', 'rejected'),
+            new Transition('refund', 'refund', 'refund'),
+            new Transition('reimburse', 'reimburse', 'reimburse'),
+        ];
     }
 }
