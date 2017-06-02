@@ -9,20 +9,13 @@
 namespace Notadd\Mall\Entities;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class StoreRate.
  */
 class StoreRate extends Entity
 {
-    /**
-     * @return array
-     */
-    public function events()
-    {
-        return [];
-    }
-
     /**
      * @return string
      */
@@ -36,7 +29,12 @@ class StoreRate extends Entity
      */
     public function places()
     {
-        return [];
+        return [
+            'rate',      // 评价
+            'rated',     // 评价完胜
+            'review',    // 审核
+            'reviewed',  // 审核完成
+        ];
     }
 
     /**
@@ -44,6 +42,9 @@ class StoreRate extends Entity
      */
     public function transitions()
     {
-        return [];
+        return [
+            new Transition('rate', 'rate', 'rated'),
+            new Transition('review', 'review', 'reviewed'),
+        ];
     }
 }
