@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Entities;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class ProductRate.
@@ -36,7 +37,12 @@ class ProductRate extends Entity
      */
     public function places()
     {
-        return [];
+        return [
+            'rate',      // 评价
+            'rated',     // 评价完胜
+            'review',    // 审核
+            'reviewed',  // 审核完成
+        ];
     }
 
     /**
@@ -44,6 +50,9 @@ class ProductRate extends Entity
      */
     public function transitions()
     {
-        return [];
+        return [
+            new Transition('rate', 'rate', 'rated'),
+            new Transition('review', 'review', 'reviewed'),
+        ];
     }
 }
