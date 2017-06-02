@@ -96,51 +96,6 @@ class Order extends Entity
     {
     }
 
-    /**
-     * @return array
-     */
-    public function events()
-    {
-        return [
-            'flow.mall.order.announce.cancel'    => 'announceCancel',
-            'flow.mall.order.announce.deliver'   => 'announceDeliver',
-            'flow.mall.order.announce.pay'       => 'announcePay',
-            'flow.mall.order.announce.take'      => 'announceTake',
-            'flow.mall.order.enter.cancel'       => 'enterCancel',
-            'flow.mall.order.enter.cancelled'    => 'enterCancelled',
-            'flow.mall.order.enter.deliver'      => 'enterDeliver',
-            'flow.mall.order.enter.delivered'    => 'enterDelivered',
-            'flow.mall.order.enter.pay'          => 'enterPay',
-            'flow.mall.order.enter.payed'        => 'enterPayed',
-            'flow.mall.order.enter.take'         => 'enterTake',
-            'flow.mall.order.enter.took'         => 'enterTook',
-            'flow.mall.order.entered.cancel'     => 'enteredCancel',
-            'flow.mall.order.entered.cancelled'  => 'enteredCancelled',
-            'flow.mall.order.entered.deliver'    => 'enteredDeliver',
-            'flow.mall.order.entered.delivered'  => 'enteredDelivered',
-            'flow.mall.order.entered.pay'        => 'enteredPay',
-            'flow.mall.order.entered.payed'      => 'enteredPayed',
-            'flow.mall.order.entered.take'       => 'enteredTake',
-            'flow.mall.order.entered.took'       => 'enteredTook',
-            'flow.mall.order.guard.deliver'      => 'guardDeliver',
-            'flow.mall.order.guard.cancel'       => 'guardCancel',
-            'flow.mall.order.guard.pay'          => 'guardPay',
-            'flow.mall.order.guard.take'         => 'guardTake',
-            'flow.mall.order.leave.cancel'       => 'leaveCancel',
-            'flow.mall.order.leave.cancelled'    => 'leaveCancelled',
-            'flow.mall.order.leave.deliver'      => 'leaveDeliver',
-            'flow.mall.order.leave.delivered'    => 'leaveDelivered',
-            'flow.mall.order.leave.pay'          => 'leavePay',
-            'flow.mall.order.leave.payed'        => 'leavePayed',
-            'flow.mall.order.leave.take'         => 'leaveTake',
-            'flow.mall.order.leave.took'         => 'leaveTook',
-            'flow.mall.order.transition.cancel'  => 'transitionCancel',
-            'flow.mall.order.transition.deliver' => 'transitionDeliver',
-            'flow.mall.order.transition.pay'     => 'transitionPay',
-            'flow.mall.order.transition.take'    => 'transitionTake',
-        ];
-    }
-
     public function guardDeliver()
     {
     }
