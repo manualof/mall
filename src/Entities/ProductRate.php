@@ -22,4 +22,12 @@ class ProductRate extends Entity
     {
         return 'mall.product.rate';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

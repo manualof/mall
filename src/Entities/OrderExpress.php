@@ -22,4 +22,12 @@ class OrderExpress extends Entity
     {
         return 'mall.order.express';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

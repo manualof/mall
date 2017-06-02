@@ -22,4 +22,12 @@ class Pay extends Entity
     {
         return 'mall.pay';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

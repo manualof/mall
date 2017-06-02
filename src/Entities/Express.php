@@ -22,4 +22,12 @@ class Express extends Entity
     {
         return 'mall.express';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

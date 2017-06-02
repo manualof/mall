@@ -22,4 +22,12 @@ class OrderRate extends Entity
     {
         return 'mall.order.rate';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

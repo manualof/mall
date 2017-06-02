@@ -22,4 +22,12 @@ class StoreDynamic extends Entity
     {
         return 'mall.store.dynamic';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

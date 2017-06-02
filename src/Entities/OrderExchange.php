@@ -22,4 +22,12 @@ class OrderExchange extends Entity
     {
         return 'mall.order.exchange';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

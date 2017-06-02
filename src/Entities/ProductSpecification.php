@@ -22,4 +22,12 @@ class ProductSpecification extends Entity
     {
         return 'mall.specification';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

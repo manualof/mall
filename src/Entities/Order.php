@@ -22,4 +22,12 @@ class Order extends Entity
     {
         return 'mall.order';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

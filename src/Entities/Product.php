@@ -22,4 +22,12 @@ class Product extends Entity
     {
         return 'mall.product';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

@@ -22,4 +22,12 @@ class OrderRefund extends Entity
     {
         return 'mall.refund';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

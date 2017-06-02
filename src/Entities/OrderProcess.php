@@ -22,4 +22,12 @@ class OrderProcess extends Entity
     {
         return 'mall.process';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }

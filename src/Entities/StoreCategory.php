@@ -22,4 +22,12 @@ class StoreCategory extends Entity
     {
         return 'mall.store.category';
     }
+
+    /**
+     * @return array
+     */
+    public function places()
+    {
+        return [];
+    }
 }
