@@ -171,24 +171,16 @@
                         title: '商品名称',
                     },
                     {
-                        key: 'shopName',
-                        title: '店铺名称',
-                    },
-                    {
-                        key: 'spu',
-                        title: 'SPU',
+                        key: 'price',
+                        title: '价格',
                     },
                     {
                         key: 'amountNum',
-                        title: '下单商品件数',
-                    },
-                    {
-                        key: 'amount',
-                        title: '下单量',
+                        title: '近30天下单商品数',
                     },
                     {
                         key: 'money',
-                        title: '下单金额（元）',
+                        title: '近30天下单金额',
                     },
                     {
                         key: 'action',
@@ -201,36 +193,28 @@
                 ],
                 salesData: [
                     {
-                        amount: 20,
                         amountNum: 222,
                         goodName: '洗护套装买二送一',
+                        price: '10.00',
                         money: 444,
-                        shopName: 'shop',
-                        spu: 4,
                     },
                     {
-                        amount: 20,
                         amountNum: 222,
                         goodName: '洗护套装买二送一',
+                        price: '10.00',
                         money: 444,
-                        shopName: 'shop',
-                        spu: 4,
                     },
                     {
-                        amount: 20,
                         amountNum: 222,
                         goodName: '洗护套装买二送一',
+                        price: '10.00',
                         money: 444,
-                        shopName: 'shop',
-                        spu: 4,
                     },
                     {
-                        amount: 20,
                         amountNum: 222,
                         goodName: '洗护套装买二送一',
+                        price: '10.00',
                         money: 444,
-                        shopName: 'shop',
-                        spu: 4,
                     },
                 ],
                 self: this,
@@ -262,6 +246,14 @@
                 this.$refs.salesList.exportCsv({
                     filename: '商品销售明细数据',
                 });
+            },
+            settingPrice() {
+                const self = this;
+                self.$router.push(
+                    {
+                        path: 'goods/set',
+                    },
+                );
             },
         },
     };
@@ -323,7 +315,8 @@
                         <div class="analysis-content">
                             <div class="order-money-content search-select-item">
                                 <div class="select-content">
-                                    <i-button type="ghost" class="export-btn">设置价格区间</i-button>
+                                    <i-button type="ghost" class="export-btn"
+                                              @click.native="settingPrice">设置价格区间</i-button>
                                     <ul>
                                         <li>
                                             商品分类
