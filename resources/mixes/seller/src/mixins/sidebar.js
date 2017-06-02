@@ -70,5 +70,35 @@ export default function (injection) {
             icon: 'plus',
             title: '店铺',
         },
+        {
+            children: [
+                {
+                    path: '/seller/statistics',
+                    title: '店铺概况',
+                },
+                {
+                    path: '/seller/statistics/goods',
+                    title: '商品分析',
+                },
+                {
+                    path: '/seller/statistics/operation',
+                    title: '运营报告',
+                },
+                {
+                    path: '/seller/statistics/industry',
+                    title: '行业分析',
+                },
+                {
+                    path: '/seller/statistics/flow',
+                    title: '流量统计',
+                },
+                {
+                    path: '/seller/statistics/settlement',
+                    title: '商品结算',
+                },
+            ],
+            icon: 'plus',
+            title: '统计结算',
+        },
     ]);
 }

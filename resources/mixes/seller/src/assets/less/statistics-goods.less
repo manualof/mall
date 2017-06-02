@@ -1,5 +1,5 @@
-.mall-wrap {
-    .statistics-store {
+.seller-wrap {
+    .statistics-goods {
         .ivu-tabs-nav-scroll {
             background: #ffffff;
             padding-left: 20px;
@@ -33,10 +33,9 @@
                 height: 400px;
             }
             .search-select-item {
-                height: 40px;
+                height: 50px;
             }
             .order-money-content {
-                position: relative;
                 h5 {
                     position: absolute;
                     left: 20px;
@@ -46,8 +45,10 @@
                     margin: 10px 0;
                 }
                 .select-content {
-                    position: absolute;
-                    right: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-bottom: 10px;
                     > ul {
                         > li {
                             float: left;
@@ -80,6 +81,9 @@
                         }
                     }
                 }
+                .hot-sales-goods {
+                    justify-content: flex-end;
+                }
                 .order-module-content {
                     padding-top: 20px;
                 }
@@ -87,12 +91,12 @@
                     padding-top: 260px;
                     text-align: center;
                 }
+                .export-btn {
+                    margin: 10px 0;
+                }
                 .export-sales-btn {
                     margin-top: 0;
                 }
-            }
-            .export-btn {
-                margin: 10px 0;
             }
         }
     }
