@@ -30,4 +30,12 @@ class ProductSpecification extends Entity
     {
         return [];
     }
+
+    /**
+     * @return array
+     */
+    public function transitions()
+    {
+        return [];
+    }
 }

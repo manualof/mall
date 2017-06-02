@@ -30,4 +30,12 @@ class StoreCategory extends Entity
     {
         return [];
     }
+
+    /**
+     * @return array
+     */
+    public function transitions()
+    {
+        return [];
+    }
 }
