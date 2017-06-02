@@ -13,10 +13,57 @@
                     accountData: '2015-02-01',
                     payMoney: ' 0.00 = 0.00 (订单金额) - 0.00 (佣金金额) - 0.00 (退单金额) + 0.00 (退还佣金) ' +
                     '- 0.00 (店铺促销费用)',
-                    settlementNum: '75 (原结算单号：20150115)',
+                    settlementNum: '2165468784246',
                     settlementStatus: '已出帐',
-                    startData: '2015-01-01  至  2015-01-31',
                 },
+                commissionColumns: [
+                    {
+                        align: 'center',
+                        key: 'goodName',
+                        title: '商品名称',
+                    },
+                    {
+                        align: 'center',
+                        key: 'orderId',
+                        title: '订单编号',
+                    },
+                    {
+                        align: 'center',
+                        key: 'orderMoney',
+                        title: '支付金额',
+                    },
+                    {
+                        align: 'center',
+                        key: 'refundMoney',
+                        title: '退款金额',
+                    },
+                    {
+                        align: 'center',
+                        key: 'proportion',
+                        title: '佣金比例',
+                    },
+                    {
+                        align: 'center',
+                        key: 'commission',
+                        title: '已结佣金',
+                    },
+                    {
+                        align: 'center',
+                        key: 'time',
+                        title: '结算时间',
+                    },
+                ],
+                commissionData: [
+                    {
+                        commission: '99.00',
+                        goodName: '名称',
+                        orderId: 111,
+                        orderMoney: '99.00',
+                        proportion: '23',
+                        refundMoney: '33.55',
+                        time: '2017-06-02',
+                    },
+                ],
                 loading: false,
                 managementSearch: '',
                 modal: false,
@@ -35,81 +82,69 @@
                         },
                     ],
                 },
+                promotionColumns: [
+                    {
+                        align: 'center',
+                        key: 'name',
+                        title: '促销名称',
+                    },
+                    {
+                        align: 'center',
+                        key: 'fee',
+                        title: '促销费用',
+                    },
+                    {
+                        align: 'center',
+                        key: 'data',
+                        title: '申请日期',
+                    },
+                ],
+                promotionData: [
+                    {
+                        data: '2016-12-21 ',
+                        fee: '66.00',
+                        name: '买二赠一',
+                    },
+                ],
                 refundColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         key: 'number',
                         title: '退单编号',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'orderNum',
                         title: '订单编号',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'orderMoney',
                         title: '退款金额',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'commission',
                         title: '退还佣金',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'redEnvelopes',
                         title: '退还红包',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'type',
                         title: '类型',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'dealData',
-                        title: '退款日期',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'buyer',
-                        title: '买家',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'buyerId',
-                        title: '买家ID',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'businessmen',
-                        title: '商家',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'businessmenId',
-                        title: '商家ID',
-                        width: 150,
+                        title: '退单时间',
                     },
                 ],
                 refundData: [
                     {
-                        businessmen: 'Rey旗舰店',
-                        businessmenId: '235468',
-                        buyer: '买家',
-                        buyerId: '0012',
                         commission: '37.00',
                         dealData: '2017-2-24',
                         number: '01',
@@ -119,10 +154,6 @@
                         type: '端午节优惠活动',
                     },
                     {
-                        businessmen: 'Rey旗舰店',
-                        businessmenId: '235468',
-                        buyer: '买家',
-                        buyerId: '0012',
                         commission: '37.00',
                         dealData: '2017-2-24',
                         number: '01',
@@ -132,23 +163,6 @@
                         type: '端午节优惠活动',
                     },
                     {
-                        businessmen: 'Rey旗舰店',
-                        businessmenId: '235468',
-                        buyer: '买家',
-                        buyerId: '0012',
-                        commission: '37.00',
-                        dealData: '2017-2-24',
-                        number: '01',
-                        orderMoney: '999.00',
-                        orderNum: '324235346',
-                        redEnvelopes: '0.00',
-                        type: '端午节优惠活动',
-                    },
-                    {
-                        businessmen: 'Rey旗舰店',
-                        businessmenId: '235468',
-                        buyer: '买家',
-                        buyerId: '0012',
                         commission: '37.00',
                         dealData: '2017-2-24',
                         number: '01',
@@ -192,78 +206,50 @@
                 typeColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         key: 'number',
-                        title: '账单编号',
-                        width: 150,
+                        title: '订单编号',
+                    },
+                    {
+                        align: 'center',
+                        key: 'orderData',
+                        title: '下单时间',
+                    },
+                    {
+                        align: 'center',
+                        key: 'dealData',
+                        title: '成交时间',
                     },
                     {
                         align: 'center',
                         key: 'orderMoney',
-                        title: '订单金额（含运费）',
-                        width: 150,
+                        title: '订单金额',
                     },
                     {
                         align: 'center',
                         key: 'freight',
                         title: '运费',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'commission',
-                        title: '佣金',
-                        width: 150,
+                        title: '佣金金额',
                     },
                     {
                         align: 'center',
                         key: 'redEnvelopes',
                         title: '平台红包',
-                        width: 150,
                     },
                     {
                         align: 'center',
-                        key: 'orderData',
-                        title: '下单日期',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'dealData',
-                        title: '成交日期',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'buyer',
-                        title: '买家',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'buyerId',
-                        title: '买家ID',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'businessmen',
-                        title: '商家',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'businessmenId',
-                        title: '商家ID',
-                        width: 150,
+                        key: 'action',
+                        render(row, column, index) {
+                            return `<i-button size="small" type="ghost" @click.native="look(${index})">查看</i-button>`;
+                        },
+                        title: '操作',
                     },
                 ],
                 typeData: [
                     {
-                        buyer: '买家',
-                        buyerId: '0012',
-                        businessmen: 'Rey旗舰店',
-                        businessmenId: '235468',
                         commission: '37.00',
                         dealData: '2017-2-24',
                         freight: '12.00',
@@ -273,10 +259,6 @@
                         orderData: '2017-2-21',
                     },
                     {
-                        buyer: '买家',
-                        buyerId: '0012',
-                        businessmen: 'Rey旗舰店',
-                        businessmenId: '235468',
                         commission: '37.00',
                         dealData: '2017-2-24',
                         freight: '12.00',
@@ -286,10 +268,6 @@
                         orderData: '2017-2-21',
                     },
                     {
-                        buyer: '买家',
-                        buyerId: '0012',
-                        businessmen: 'Rey旗舰店',
-                        businessmenId: '235468',
                         commission: '37.00',
                         dealData: '2017-2-24',
                         freight: '12.00',
@@ -299,10 +277,6 @@
                         orderData: '2017-2-21',
                     },
                     {
-                        buyer: '买家',
-                        buyerId: '0012',
-                        businessmen: 'Rey旗舰店',
-                        businessmenId: '235468',
                         commission: '37.00',
                         dealData: '2017-2-24',
                         freight: '12.00',
@@ -422,7 +396,7 @@
                         <i-table highlight-row :columns="typeColumns" :context="self"
                                  :data="typeData" ref="orderTable"></i-table>
                     </tab-pane>
-                    <tab-pane label="退单列表">
+                    <tab-pane label="退款订单">
                         <div class="album-action">
                             <i-button class="add-data" type="ghost" @click.native="exportRefundData">导出数据</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
@@ -439,56 +413,22 @@
                         <i-table highlight-row :columns="refundColumns" :context="self"
                                  :data="refundData" ref="refundTable"></i-table>
                     </tab-pane>
+                    <tab-pane label="促销费用">
+                        <i-table highlight-row
+                                 :columns="promotionColumns"
+                                 :context="self"
+                                 :data="promotionData"
+                                 class="margin-table"></i-table>
+                    </tab-pane>
+                    <tab-pane label="分销佣金">
+                        <i-table highlight-row
+                                 :columns="commissionColumns"
+                                 :context="self"
+                                 :data="commissionData"
+                                 class="margin-table"></i-table>
+                    </tab-pane>
                 </tabs>
             </card>
-            <modal
-                    v-model="modal"
-                    title="付款信息" class="refund-attribute-modal">
-                <div>
-                    <i-form ref="payModal" :model="payModal" :rules="payValidate" :label-width="100">
-                        <row>
-                            <i-col span="18">
-                                <form-item label="账单编号" prop="billNum">
-                                    {{ payModal.billNum }}
-                                </form-item>
-                            </i-col>
-                        </row>
-                        <form-item label="起止日期" prop="startDate">
-                            <row>
-                                <i-col span="8">
-                                    <date-picker type="date" placeholder="选择日期"
-                                                 v-model="payModal.startDate"></date-picker>
-                                </i-col>
-                                <i-col span="2" style="text-align: center">-</i-col>
-                                <i-col span="8">
-                                    <date-picker type="date" placeholder="选择日期"
-                                                 v-model="payModal.endDate"></date-picker>
-                                </i-col>
-                            </row>
-                        </form-item>
-                        <row>
-                            <i-col span="20">
-                                <form-item label="出账信息" prop="">
-                                    <i-input type="textarea" v-model="payModal.billInformation"></i-input>
-                                    <p class="tip">
-                                        请输入汇款单号、支付方式等付款凭证
-                                    </p>
-                                </form-item>
-                            </i-col>
-                        </row>
-                        <row>
-                            <i-col span="20" class="submit-modal">
-                                <form-item>
-                                    <i-button :loading="loading" type="primary" @click.native="submit">
-                                        <span v-if="!loading">确认提交</span>
-                                        <span v-else>正在提交…</span>
-                                    </i-button>
-                                </form-item>
-                            </i-col>
-                        </row>
-                    </i-form>
-                </div>
-            </modal>
         </div>
     </div>
 </template>
