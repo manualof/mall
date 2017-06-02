@@ -13,8 +13,11 @@
                     accountData: '2015-02-01',
                     payMoney: ' 0.00 = 0.00 (订单金额) - 0.00 (佣金金额) - 0.00 (退单金额) + 0.00 (退还佣金) ' +
                     '- 0.00 (店铺促销费用)',
+                    settlementData: '2017-04-01',
                     settlementNum: '2165468784246',
                     settlementStatus: '已出帐',
+//                    settlementStatus: '商家已确认',
+//                    settlementStatus: '结算完成',
                 },
                 commissionColumns: [
                     {
@@ -365,13 +368,20 @@
                                     </form-item>
                                 </i-col>
                             </row>
+                            <row v-if="settlementStatus === 2">
+                                <i-col span="18">
+                                    <form-item label="结算日期">
+                                        {{billDetail.settlementData}}
+                                    </form-item>
+                                </i-col>
+                            </row>
                             <row>
                                 <i-col span="18">
                                     <form-item label="">
                                         <i-button type="primary" v-if="settlementStatus === 0">审核</i-button>
                                         <i-button type="primary" v-if="settlementStatus === 1"
-                                                  @click.native="pay">付款完成</i-button>
-                                        <i-button type="primary" v-if="settlementStatus === 2">打印</i-button>
+                                                  @click.native="pay">确认结算</i-button>
+                                        <i-button type="ghost" v-if="settlementStatus === 2">打印结算单</i-button>
                                     </form-item>
                                 </i-col>
                             </row>
