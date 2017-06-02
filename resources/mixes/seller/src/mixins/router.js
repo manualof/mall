@@ -22,6 +22,7 @@ import ShopStore from '../pages/ShopStore.vue';
 import Statistics from '../pages/Statistics.vue';
 import StatisticsGoods from '../pages/StatisticsGoods.vue';
 import StatisticsGoodsSet from '../pages/StatisticsGoodsSet.vue';
+import StatisticsOperation from '../pages/StatisticsOperation.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -141,6 +142,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StatisticsGoodsSet,
                     path: 'statistics/goods/set',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsOperation,
+                    path: 'statistics/operation',
                 },
             ],
             component: Layout,
