@@ -23,6 +23,10 @@ import Statistics from '../pages/Statistics.vue';
 import StatisticsGoods from '../pages/StatisticsGoods.vue';
 import StatisticsGoodsSet from '../pages/StatisticsGoodsSet.vue';
 import StatisticsOperation from '../pages/StatisticsOperation.vue';
+import StatisticsIndustry from '../pages/StatisticsIndustry.vue';
+import StatisticsFlow from '../pages/StatisticsFlow.vue';
+import StatisticsSettlement from '../pages/StatisticsSettlement.vue';
+import StatisticsSettlementLook from '../pages/StatisticsSettlementLook.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -147,6 +151,26 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StatisticsOperation,
                     path: 'statistics/operation',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsIndustry,
+                    path: 'statistics/industry',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsFlow,
+                    path: 'statistics/flow',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsSettlement,
+                    path: 'statistics/settlement',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsSettlementLook,
+                    path: 'statistics/settlement/look',
                 },
             ],
             component: Layout,
