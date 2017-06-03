@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Entities;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class OrderExchange.
@@ -28,7 +29,16 @@ class OrderExchange extends Entity
      */
     public function places()
     {
-        return [];
+        return [
+            'deliver',
+            'delivered',
+            'launch',
+            'launched',
+            'send',
+            'sent',
+            'take',
+            'took',
+        ];
     }
 
     /**
@@ -36,7 +46,12 @@ class OrderExchange extends Entity
      */
     public function transitions()
     {
-        return [];
+        return [
+            new Transition('deliver', 'deliver', 'delivered'),
+            new Transition('launch', 'launch', 'launched'),
+            new Transition('send', 'send', 'sent'),
+            new Transition('take', 'take', 'took'),
+        ];
     }
 
     /**
