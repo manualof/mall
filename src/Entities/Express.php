@@ -9,20 +9,13 @@
 namespace Notadd\Mall\Entities;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class Express.
  */
 class Express extends Entity
 {
-    /**
-     * @return array
-     */
-    public function events()
-    {
-        return [];
-    }
-
     /**
      * @return string
      */
@@ -36,7 +29,14 @@ class Express extends Entity
      */
     public function places()
     {
-        return [];
+        return [
+            'pay',     // 支付
+            'payed',   // 支付完成
+            'send',    // 发货
+            'sent',    // 发货完成
+            'take',    // 收货
+            'took',    // 收货完成
+        ];
     }
 
     /**
@@ -44,6 +44,10 @@ class Express extends Entity
      */
     public function transitions()
     {
-        return [];
+        return [
+            new Transition('pay', 'pay', 'payed'),
+            new Transition('send', 'send', 'sent'),
+            new Transition('take', 'take', 'took'),
+        ];
     }
 }
