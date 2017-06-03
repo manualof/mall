@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Entities;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class Store.
@@ -36,7 +37,14 @@ class Store extends Entity
      */
     public function places()
     {
-        return [];
+        return [
+            'close',
+            'closed',
+            'open',
+            'opened',
+            'register',
+            'registered',
+        ];
     }
 
     /**
@@ -44,7 +52,11 @@ class Store extends Entity
      */
     public function transitions()
     {
-        return [];
+        return [
+            new Transition('close', 'close', 'closed'),
+            new Transition('open', 'open', 'opened'),
+            new Transition('register', 'register', 'registered'),
+        ];
     }
 
     /**
