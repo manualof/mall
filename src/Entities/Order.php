@@ -16,130 +16,6 @@ use Symfony\Component\Workflow\Transition;
  */
 class Order extends Entity
 {
-    public function announceCancel()
-    {
-    }
-
-    public function announceDeliver()
-    {
-    }
-
-    public function announcePay()
-    {
-    }
-
-    public function announceTake()
-    {
-    }
-
-    public function enterCancel()
-    {
-    }
-
-    public function enterCancelled()
-    {
-    }
-
-    public function enterDeliver()
-    {
-    }
-
-    public function enterDelivered()
-    {
-    }
-
-    public function enterPay()
-    {
-    }
-
-    public function enterPayed()
-    {
-    }
-
-    public function enterTake()
-    {
-    }
-
-    public function enterTook()
-    {
-    }
-
-    public function enteredCancel()
-    {
-    }
-
-    public function enteredCancelled()
-    {
-    }
-
-    public function enteredDeliver()
-    {
-    }
-
-    public function enteredDelivered()
-    {
-    }
-
-    public function enteredPay()
-    {
-    }
-
-    public function enteredPayed()
-    {
-    }
-
-    public function enteredTake()
-    {
-    }
-
-    public function enteredTook()
-    {
-    }
-
-    public function guardDeliver()
-    {
-    }
-
-    public function guardPay()
-    {
-    }
-
-    public function guardTake()
-    {
-    }
-
-    public function leaveCancel()
-    {
-    }
-
-    public function leaveCancelled()
-    {
-    }
-
-    public function leaveDeliver()
-    {
-    }
-
-    public function leaveDelivered()
-    {
-    }
-
-    public function leavePay()
-    {
-    }
-
-    public function leavePayed()
-    {
-    }
-
-    public function leaveTake()
-    {
-    }
-
-    public function leaveTook()
-    {
-    }
-
     /**
      * @return string
      */
@@ -164,19 +40,6 @@ class Order extends Entity
             'took',      // 收货完成
         ];
     }
-
-    public function transitionCancel()
-    {
-    }
-
-    public function transitionDeliver()
-    {
-    }
-
-    public function transitionPay()
-    {
-    }
-
     /**
      * @return array
      */
@@ -190,7 +53,51 @@ class Order extends Entity
         ];
     }
 
-    public function transitionTake()
+    /**
+     * Announce a transition.
+     */
+    public function announce()
     {
+        // TODO: Implement announce() method.
+    }
+
+    /**
+     * Enter a place.
+     */
+    public function enter()
+    {
+        // TODO: Implement enter() method.
+    }
+
+    /**
+     * Entered a place.
+     */
+    public function entered()
+    {
+        // TODO: Implement entered() method.
+    }
+
+    /**
+     * Guard a transition.
+     */
+    public function guard()
+    {
+        // TODO: Implement guard() method.
+    }
+
+    /**
+     * Leave a place.
+     */
+    public function leave()
+    {
+        // TODO: Implement leave() method.
+    }
+
+    /**
+     * Into a transition.
+     */
+    public function transition()
+    {
+        // TODO: Implement transition() method.
     }
 }
