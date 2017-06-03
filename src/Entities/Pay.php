@@ -9,20 +9,13 @@
 namespace Notadd\Mall\Entities;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class Pay.
  */
 class Pay extends Entity
 {
-    /**
-     * @return array
-     */
-    public function events()
-    {
-        return [];
-    }
-
     /**
      * @return string
      */
@@ -36,7 +29,14 @@ class Pay extends Entity
      */
     public function places()
     {
-        return [];
+        return [
+            'cancel',
+            'canceled',
+            'order',
+            'ordered',
+            'pay',
+            'payed',
+        ];
     }
 
     /**
@@ -44,7 +44,11 @@ class Pay extends Entity
      */
     public function transitions()
     {
-        return [];
+        return [
+            new Transition('cancel', 'cancel', 'canceled'),
+            new Transition('order', 'order', 'ordered'),
+            new Transition('pay', 'pay', 'payed'),
+        ];
     }
 
     /**
