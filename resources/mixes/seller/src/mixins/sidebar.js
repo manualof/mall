@@ -100,5 +100,35 @@ export default function (injection) {
             icon: 'plus',
             title: '统计结算',
         },
+        {
+            children: [
+                {
+                    path: '/seller/order',
+                    title: '交易订单',
+                },
+                {
+                    path: '/seller/order/ship',
+                    title: '发货',
+                },
+                {
+                    path: '/seller/order/setting',
+                    title: '发货设置',
+                },
+                {
+                    path: '/seller/order/waybill',
+                    title: '运单模板',
+                },
+                {
+                    path: '/seller/order/evaluation',
+                    title: '评价管理',
+                },
+                {
+                    path: '/seller/order/logistics',
+                    title: '物流工具',
+                },
+            ],
+            icon: 'plus',
+            title: '订单物流',
+        },
     ]);
 }

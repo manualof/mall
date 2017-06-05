@@ -27,6 +27,7 @@ import StatisticsIndustry from '../pages/StatisticsIndustry.vue';
 import StatisticsFlow from '../pages/StatisticsFlow.vue';
 import StatisticsSettlement from '../pages/StatisticsSettlement.vue';
 import StatisticsSettlementLook from '../pages/StatisticsSettlementLook.vue';
+import Order from '../pages/Order.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -171,6 +172,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StatisticsSettlementLook,
                     path: 'statistics/settlement/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: Order,
+                    path: 'order',
                 },
             ],
             component: Layout,
