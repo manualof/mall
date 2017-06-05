@@ -74,6 +74,33 @@
                                 </div>-->
                             </div>
                         </div>
+                        <table class="order-table">
+                            <thead>
+                            <tr>
+                            <th>商品名称</th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th>买家</th>
+                            <th>订单金额</th>
+                            <th>交易状态</th>
+                            <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="space">
+                                <td colspan="8">
+                                    <span>订单号:</span>
+                                    <span>下单时间:</span>
+                                    <button class="print-btn">打印发货单</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </card>
                 </tab-pane>
                 <tab-pane label="待付款" name="name2">
