@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Entities;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
+use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
@@ -82,9 +83,12 @@ class Order extends Entity
 
     /**
      * Guard a transition.
+     *
+     * @param \Symfony\Component\Workflow\Event\GuardEvent $event
      */
-    public function guard()
+    public function guard(GuardEvent $event)
     {
+        $event->setBlocked(true);
         // TODO: Implement guard() method.
     }
 
@@ -101,6 +105,7 @@ class Order extends Entity
      */
     public function transition()
     {
+        dd(func_get_args());
         // TODO: Implement transition() method.
     }
 }
