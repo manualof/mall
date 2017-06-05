@@ -9,20 +9,13 @@
 namespace Notadd\Mall\Entities;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class ProductSpecification.
  */
 class ProductSpecification extends Entity
 {
-    /**
-     * @return array
-     */
-    public function events()
-    {
-        return [];
-    }
-
     /**
      * @return string
      */
@@ -36,7 +29,14 @@ class ProductSpecification extends Entity
      */
     public function places()
     {
-        return [];
+        return [
+            'create',
+            'created',
+            'edit',
+            'edited',
+            'remove',
+            'removed',
+        ];
     }
 
     /**
@@ -44,6 +44,58 @@ class ProductSpecification extends Entity
      */
     public function transitions()
     {
-        return [];
+        return [
+            new Transition('create', 'create', 'created'),
+            new Transition('edit', 'edit', 'edited'),
+            new Transition('remove', 'remove', 'removed'),
+        ];
+    }
+
+    /**
+     * Announce a transition.
+     */
+    public function announce()
+    {
+        // TODO: Implement announce() method.
+    }
+
+    /**
+     * Enter a place.
+     */
+    public function enter()
+    {
+        // TODO: Implement enter() method.
+    }
+
+    /**
+     * Entered a place.
+     */
+    public function entered()
+    {
+        // TODO: Implement entered() method.
+    }
+
+    /**
+     * Guard a transition.
+     */
+    public function guard()
+    {
+        // TODO: Implement guard() method.
+    }
+
+    /**
+     * Leave a place.
+     */
+    public function leave()
+    {
+        // TODO: Implement leave() method.
+    }
+
+    /**
+     * Into a transition.
+     */
+    public function transition()
+    {
+        // TODO: Implement transition() method.
     }
 }

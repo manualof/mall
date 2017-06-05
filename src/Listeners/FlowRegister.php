@@ -13,7 +13,6 @@ use Notadd\Mall\Entities\Express;
 use Notadd\Mall\Entities\Order;
 use Notadd\Mall\Entities\OrderExchange;
 use Notadd\Mall\Entities\OrderExpress;
-use Notadd\Mall\Entities\OrderProcess;
 use Notadd\Mall\Entities\OrderRate;
 use Notadd\Mall\Entities\OrderRefund;
 use Notadd\Mall\Entities\Pay;
@@ -40,7 +39,6 @@ class FlowRegister extends AbstractFlowRegister
         $this->flow->register(Order::class);
         $this->flow->register(OrderExchange::class);
         $this->flow->register(OrderExpress::class);
-        $this->flow->register(OrderProcess::class);
         $this->flow->register(OrderRate::class);
         $this->flow->register(OrderRefund::class);
         $this->flow->register(Pay::class);

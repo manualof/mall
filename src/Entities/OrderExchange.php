@@ -9,20 +9,13 @@
 namespace Notadd\Mall\Entities;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class OrderExchange.
  */
 class OrderExchange extends Entity
 {
-    /**
-     * @return array
-     */
-    public function events()
-    {
-        return [];
-    }
-
     /**
      * @return string
      */
@@ -36,7 +29,16 @@ class OrderExchange extends Entity
      */
     public function places()
     {
-        return [];
+        return [
+            'deliver',
+            'delivered',
+            'launch',
+            'launched',
+            'send',
+            'sent',
+            'take',
+            'took',
+        ];
     }
 
     /**
@@ -44,6 +46,59 @@ class OrderExchange extends Entity
      */
     public function transitions()
     {
-        return [];
+        return [
+            new Transition('deliver', 'deliver', 'delivered'),
+            new Transition('launch', 'launch', 'launched'),
+            new Transition('send', 'send', 'sent'),
+            new Transition('take', 'take', 'took'),
+        ];
+    }
+
+    /**
+     * Announce a transition.
+     */
+    public function announce()
+    {
+        // TODO: Implement announce() method.
+    }
+
+    /**
+     * Enter a place.
+     */
+    public function enter()
+    {
+        // TODO: Implement enter() method.
+    }
+
+    /**
+     * Entered a place.
+     */
+    public function entered()
+    {
+        // TODO: Implement entered() method.
+    }
+
+    /**
+     * Guard a transition.
+     */
+    public function guard()
+    {
+        // TODO: Implement guard() method.
+    }
+
+    /**
+     * Leave a place.
+     */
+    public function leave()
+    {
+        // TODO: Implement leave() method.
+    }
+
+    /**
+     * Into a transition.
+     */
+    public function transition()
+    {
+        // TODO: Implement transition() method.
     }
 }
