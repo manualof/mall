@@ -33,7 +33,7 @@
                 }
             }
         }
-        /*.order-table {
+        .order-table {
             width: 100%;
             border-collapse: collapse;
             border-spacing: 0;
@@ -42,8 +42,17 @@
                 padding: 7px 16px;
                 text-align: center;
                 &.th-name {
-                    text-align: left;
                     padding-left: 100px;
+                    span {
+                        display: inline-block;
+                        text-align: center;
+                        width: 14.4%;
+                        &:first-child {
+                            width: 66.2%;
+                            padding-left: 10%;
+                            text-align: left;
+                        }
+                    }
                 }
             }
             td {
@@ -62,6 +71,7 @@
                         span {
                             display: inline-block;
                             padding-top: 4px;
+                            margin-right: 16px;
                         }
                         .print-btn {
                             float: right;
@@ -103,25 +113,42 @@
                     -webkit-box-align: center;
                     -ms-flex-align: center;
                     align-items: center;
-                    padding: 3px 16px 10px;
-                    .img {
-                        img {
-                            width: 80px;
-                            height: 80px;
+                    padding: 10px 16px;
+                    border-bottom: 1px solid #eee;
+                    &:last-child {
+                        border: 0 none;
+                    }
+                    .img-text {
+                        width: 72.2%;
+                        text-align: left;
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-align: center;
+                        -ms-flex-align: center;
+                        align-items: center;
+                        .img {
+                            img {
+                                width: 80px;
+                                height: 80px;
+                            }
+                        }
+                        .goods-name {
+                            padding-left: 20px;
+                            line-height: 22px;
+                            text-align: left;
+                            P:first-child {
+                                padding-bottom: 8px;
+                            }
                         }
                     }
-                    .goods-name {
-                        padding-left: 20px;
-                        line-height: 22px;
-                        text-align: left;
-                        P:first-child {
-                            padding-bottom: 8px;
-                        }
+                    .goods-td-border {
+                        text-align: center;
+                        width: 14.4%;
                     }
                 }
                 .goods-gifts {
                     text-align: left;
-                    border-top: 1px solid #e3e8ee;
                     padding: 10px 16px 3px;
                     line-height: 35px;
                     img {
@@ -132,31 +159,41 @@
                     }
                 }
             }
-        }*/
-        .order-content {
-             >ul {
+        }
+        /*.order-content {
+             >div {
                 width: 100%;
                 &.order-title {
                     background-color: #f5f7f9;
                     border-bottom: 1px solid #e3e8ee;
                     border-top: 1px solid #e3e8ee;
-                    li {
+                    > div {
                         float: left;
                         width: 9%;
                         padding: 9px 0;
                         text-align: center;
                         font-weight: bold;
                         &:first-child {
-                            text-align: left;
-                            padding-left: 100px;
-                            width: 45%;
+                            width: 63%;
+                            span {
+                                display: inline-block;
+                                &.span-name {
+                                    width: 71.2%;
+                                    text-align: left;
+                                    padding-left: 100px;
+                                }
+                                &.span-width {
+                                    width: 14.4%;
+                                    text-align: center;
+                                }
+                            }
                         }
                     }
                 }
             }
             > .order-list {
                 margin-top: 10px;
-                > div {
+                > .list-title {
                     background-color: #f5f7f9;
                     font-size: 12px;
                     padding: 0 16px;
@@ -181,17 +218,18 @@
                         margin-top: 7px;
                     }
                 }
-                > ul {
+                > .list-content {
                     width: 100%;
                     border: 1px solid #e3e8ee;
                     border-top: 0 none;
-                    li {
+                    > div {
                         float: left;
                         width: 9%;
                         text-align: center;
+                        border-left: 1px solid #e3e8ee;
                         &:first-child {
                             text-align: left;
-                            width: 45%;
+                            width: 63%;
                         }
                         .goods-name-row {
                             display: -webkit-box;
@@ -201,6 +239,7 @@
                             -ms-flex-align: center;
                             align-items: center;
                             padding: 10px 16px;
+                            padding-right: 0;
                             .img {
                                 img {
                                     width: 80px;
@@ -215,6 +254,10 @@
                                 P:first-child {
                                     padding-bottom: 8px;
                                 }
+                            }
+                            .goods-td-border {
+                                width: 20.4%;
+                                text-align: center;
                             }
                         }
                         .goods-gifts {
@@ -232,6 +275,6 @@
                     }
                 }
             }
-        }
+        }*/
     }
 }
