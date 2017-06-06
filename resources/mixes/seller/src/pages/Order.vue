@@ -594,6 +594,12 @@
             };
         },
         methods: {
+            cancelOrder(index) {
+                this.order.splice(index, 1);
+            },
+            cancelOrderPay(index) {
+                this.orderPrePay.splice(index, 1);
+            },
             settingPrice() {
                 const self = this;
                 self.$router.push(
@@ -699,7 +705,8 @@
                                     <p><a href="">订单详情</a></p>
                                 </td>
                                 <td>
-                                    <i-button type="error" v-if="item.status === 1">取消订单</i-button>
+                                    <i-button type="error" v-if="item.status === 1"
+                                              @click.native="cancelOrder(index)">取消订单</i-button>
                                     <i-button type="primary" v-if="item.status === 2">设置发货</i-button>
                                 </td>
                             </tr>
@@ -797,7 +804,7 @@
                                     <p><a href="">订单详情</a></p>
                                 </td>
                                 <td>
-                                    <i-button type="error">取消订单</i-button>
+                                    <i-button type="error" @click.native="cancelOrderPay(index)">取消订单</i-button>
                                 </td>
                             </tr>
                             <tr class="space-bg">
