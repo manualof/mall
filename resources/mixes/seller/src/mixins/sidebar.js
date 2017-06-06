@@ -130,5 +130,27 @@ export default function (injection) {
             icon: 'plus',
             title: '订单物流',
         },
+        {
+            children: [
+                {
+                    path: '/seller/service',
+                    title: '全部咨询',
+                },
+                {
+                    path: '/seller/service/invest',
+                    title: '投资管理',
+                },
+                {
+                    path: '/seller/service/refund',
+                    title: '退款记录',
+                },
+                {
+                    path: '/seller/service/returns',
+                    title: '退货记录',
+                },
+            ],
+            icon: 'plus',
+            title: '订单物流',
+        },
     ]);
 }

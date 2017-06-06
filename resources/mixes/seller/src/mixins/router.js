@@ -28,6 +28,8 @@ import StatisticsFlow from '../pages/StatisticsFlow.vue';
 import StatisticsSettlement from '../pages/StatisticsSettlement.vue';
 import StatisticsSettlementLook from '../pages/StatisticsSettlementLook.vue';
 import Order from '../pages/Order.vue';
+import Service from '../pages/Service.vue';
+import ServiceRefund from '../pages/ServiceRefund.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -177,6 +179,16 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: Order,
                     path: 'order',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: Service,
+                    path: 'service',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceRefund,
+                    path: 'service/refund',
                 },
             ],
             component: Layout,
