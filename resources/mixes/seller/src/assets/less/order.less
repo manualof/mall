@@ -38,7 +38,6 @@
             border-collapse: collapse;
             border-spacing: 0;
             empty-cells: show;
-            border: 1px solid #e3e8ee;
             td, th {
                 padding: 8px 16px;
                 text-align: center;
@@ -51,6 +50,7 @@
             }
             tr {
                 &.space {
+                    background-color: #f5f7f9;
                     td {
                         text-align: left;
                         .print-btn {
@@ -64,6 +64,17 @@
                             border: 0 none;
                             cursor: pointer;
                         }
+                    }
+                }
+                &.space-bg {
+                    th {
+                        background-color: #fff;
+                    }
+                }
+                &.thead-border {
+                    th {
+                        border-bottom: 1px solid #e3e8ee;
+                        border-top: 1px solid #e3e8ee;
                     }
                 }
             }

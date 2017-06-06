@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -11,6 +12,21 @@
             return {
                 loading: false,
                 managementSearch: '',
+                order: [
+                    {
+                        amount: 22,
+                        buyer: 'maijiaming',
+                        color: '黑色',
+                        createTimeL: '2017-02-09',
+                        image: image1,
+                        name: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                        num: 666666666666688,
+                        orderMoney: '39.9',
+                        price: '4678.00',
+                        status: '',
+                        version: 'D-LTE（4G）/TD-SCDMA',
+                    },
+                ],
                 searchList: [
                     {
                         label: '店铺名称',
@@ -76,7 +92,7 @@
                         </div>
                         <table class="order-table">
                             <thead>
-                            <tr>
+                            <tr class="thead-border">
                             <th>商品名称</th>
                             <th>单价</th>
                             <th>数量</th>
@@ -85,8 +101,11 @@
                             <th>交易状态</th>
                             <th>操作</th>
                             </tr>
+                            <tr class="space-bg">
+                                <th colspan="8"></th>
+                            </tr>
                             </thead>
-                            <tbody>
+                            <tbody v-for="(item, index) in order">
                             <tr class="space">
                                 <td colspan="8">
                                     <span>订单号:</span>
@@ -96,7 +115,13 @@
                             </tr>
                             <tr>
                                 <td>
-
+                                    <div class="img">
+                                        <img :src="item.image" alt="">
+                                    </div>
+                                    <div class="goods-name">
+                                        <p>{{ item.name }}</p>
+                                        <p>颜色:{{ item.color }}, 选择版本{{ item.version }}</p>
+                                    </div>
                                 </td>
                             </tr>
                             </tbody>
