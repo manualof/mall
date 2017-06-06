@@ -250,9 +250,9 @@
             settingPrice() {
                 const self = this;
                 self.$router.push(
-                        {
-                            path: 'goods/set',
-                        },
+                    {
+                        path: 'goods/set',
+                    },
                 );
             },
         },

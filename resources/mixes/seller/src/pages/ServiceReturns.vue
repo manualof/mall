@@ -10,7 +10,6 @@
         },
         data() {
             return {
-                //买家退货申请
                 returnRequest: {
                     returnNumber: '263567946465245485',
                     returnName: 'maijia',
@@ -19,31 +18,27 @@
                     returnState: '发货太慢',
                     img: image1,
                 },
-                //商家处理意见
                 merchantsAdvice: {
                     returnsIdea: '同意',
                     returnsNote: '退款',
                     returnsLogistics: '圆通快递 323264991323',
                     returnsGoods: '确认物品完整',
                 },
-                //商城平台审核
                 mallAudit: {
                     returnsPlatform: '已完成',
                     returnsRefund: '退款',
                 },
-                //商品交易信息
                 commodityTrading: {
                     content: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD¥1999.00 * 1（数量）',
                     carriage: '10.00',
                     order: '138.00',
                     serial: 1254525945416,
                 },
-                //物流信息
                 logisticsInformation: {
                     logisticsCompany: '顺丰快递',
                     trackingNumber: '326596623565694313',
                     logisticsInformation: '2016-12-21 11:30:31  发往西安中转',
-                }
+                },
             };
         },
     };
