@@ -30,6 +30,7 @@ import StatisticsSettlementLook from '../pages/StatisticsSettlementLook.vue';
 import Order from '../pages/Order.vue';
 import Service from '../pages/Service.vue';
 import ServiceRefund from '../pages/ServiceRefund.vue';
+import ServiceReturns from '../pages/ServiceReturns.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -189,6 +190,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ServiceRefund,
                     path: 'service/refund',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceReturns,
+                    path: 'service/returns',
                 },
             ],
             component: Layout,
