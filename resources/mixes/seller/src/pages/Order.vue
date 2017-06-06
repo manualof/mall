@@ -10,6 +10,100 @@
         },
         data() {
             return {
+                delivery: [
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: true,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 1,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 1,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 3,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 4,
+                    },
+                ],
                 loading: false,
                 managementSearch: '',
                 order: [
@@ -62,6 +156,382 @@
                         payStyle: '在线支付',
                         priceAmount: '55.00',
                         status: 2,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 3,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 4,
+                    },
+                ],
+                orderCancel: [
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: true,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 1,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 2,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 3,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 4,
+                    },
+                ],
+                orderComputed: [
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: true,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 1,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 2,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 3,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 4,
+                    },
+                ],
+                orderPrePay: [
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: true,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 1,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 1,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 3,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 4,
+                    },
+                ],
+                orderDelivery: [
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: true,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 1,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 1,
                     },
                     {
                         buyer: 'maijiaming',
@@ -287,7 +757,7 @@
                                 <th colspan="5"></th>
                             </tr>
                             </thead>
-                            <tbody v-for="(item, index) in order">
+                            <tbody v-for="(item, index) in orderPrePay">
                             <tr class="space">
                                 <td colspan="8">
                                     <span>订单号:{{ item.num }}</span>
@@ -323,15 +793,11 @@
                                     <p class="tip">{{ item.payStyle }}</p>
                                 </td>
                                 <td>
-                                    <p v-if="item.status === 1">等待买家付款</p>
-                                    <p v-if="item.status === 2">待发货</p>
-                                    <p v-if="item.status === 3">已取消</p>
-                                    <p v-if="item.status === 4">交易完成</p>
+                                    <p>代付款</p>
                                     <p><a href="">订单详情</a></p>
                                 </td>
                                 <td>
-                                    <i-button type="error" v-if="item.status === 1">取消订单</i-button>
-                                    <i-button type="primary" v-if="item.status === 2">设置发货</i-button>
+                                    <i-button type="error">取消订单</i-button>
                                 </td>
                             </tr>
                             <tr class="space-bg">
@@ -388,7 +854,7 @@
                                 <th colspan="5"></th>
                             </tr>
                             </thead>
-                            <tbody v-for="(item, index) in order">
+                            <tbody v-for="(item, index) in orderDelivery">
                             <tr class="space">
                                 <td colspan="8">
                                     <span>订单号:{{ item.num }}</span>
@@ -424,14 +890,10 @@
                                     <p class="tip">{{ item.payStyle }}</p>
                                 </td>
                                 <td>
-                                    <p v-if="item.status === 1">等待买家付款</p>
-                                    <p v-if="item.status === 2">待发货</p>
-                                    <p v-if="item.status === 3">已取消</p>
-                                    <p v-if="item.status === 4">交易完成</p>
+                                    <p>待发货</p>
                                     <p><a href="">订单详情</a></p>
                                 </td>
                                 <td>
-                                    <i-button type="error" v-if="item.status === 1">取消订单</i-button>
                                     <i-button type="primary" v-if="item.status === 2">设置发货</i-button>
                                 </td>
                             </tr>
@@ -489,7 +951,7 @@
                                 <th colspan="5"></th>
                             </tr>
                             </thead>
-                            <tbody v-for="(item, index) in order">
+                            <tbody v-for="(item, index) in delivery">
                             <tr class="space">
                                 <td colspan="8">
                                     <span>订单号:{{ item.num }}</span>
@@ -525,16 +987,12 @@
                                     <p class="tip">{{ item.payStyle }}</p>
                                 </td>
                                 <td>
-                                    <p v-if="item.status === 1">等待买家付款</p>
-                                    <p v-if="item.status === 2">待发货</p>
-                                    <p v-if="item.status === 3">已取消</p>
-                                    <p v-if="item.status === 4">交易完成</p>
+                                    <p v-if="item.status === 1">待收货</p>
+                                    <p v-if="item.status === 2">待自提</p>
                                     <p><a href="">订单详情</a></p>
+                                    <p><a href="">查看物流</a></p>
                                 </td>
-                                <td>
-                                    <i-button type="error" v-if="item.status === 1">取消订单</i-button>
-                                    <i-button type="primary" v-if="item.status === 2">设置发货</i-button>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr class="space-bg">
                                 <td colspan="5"></td>
@@ -590,7 +1048,7 @@
                                 <th colspan="5"></th>
                             </tr>
                             </thead>
-                            <tbody v-for="(item, index) in order">
+                            <tbody v-for="(item, index) in orderComputed">
                             <tr class="space">
                                 <td colspan="8">
                                     <span>订单号:{{ item.num }}</span>
@@ -626,16 +1084,10 @@
                                     <p class="tip">{{ item.payStyle }}</p>
                                 </td>
                                 <td>
-                                    <p v-if="item.status === 1">等待买家付款</p>
-                                    <p v-if="item.status === 2">待发货</p>
-                                    <p v-if="item.status === 3">已取消</p>
-                                    <p v-if="item.status === 4">交易完成</p>
+                                    <p>交易完成</p>
                                     <p><a href="">订单详情</a></p>
                                 </td>
-                                <td>
-                                    <i-button type="error" v-if="item.status === 1">取消订单</i-button>
-                                    <i-button type="primary" v-if="item.status === 2">设置发货</i-button>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr class="space-bg">
                                 <td colspan="5"></td>
@@ -691,7 +1143,7 @@
                                 <th colspan="5"></th>
                             </tr>
                             </thead>
-                            <tbody v-for="(item, index) in order">
+                            <tbody v-for="(item, index) in orderCancel">
                             <tr class="space">
                                 <td colspan="8">
                                     <span>订单号:{{ item.num }}</span>
@@ -727,16 +1179,10 @@
                                     <p class="tip">{{ item.payStyle }}</p>
                                 </td>
                                 <td>
-                                    <p v-if="item.status === 1">等待买家付款</p>
-                                    <p v-if="item.status === 2">待发货</p>
-                                    <p v-if="item.status === 3">已取消</p>
-                                    <p v-if="item.status === 4">交易完成</p>
+                                    <p>已取消</p>
                                     <p><a href="">订单详情</a></p>
                                 </td>
-                                <td>
-                                    <i-button type="error" v-if="item.status === 1">取消订单</i-button>
-                                    <i-button type="primary" v-if="item.status === 2">设置发货</i-button>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr class="space-bg">
                                 <td colspan="5"></td>
