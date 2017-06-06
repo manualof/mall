@@ -14,16 +14,18 @@
                 managementSearch: '',
                 order: [
                     {
-                        amount: 22,
+                        amount: 2,
                         buyer: 'maijiaming',
                         color: '黑色',
-                        createTimeL: '2017-02-09',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
                         image: image1,
-                        name: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                        isGifts: true,
+                        name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
                         num: 666666666666688,
-                        orderMoney: '39.9',
-                        price: '4678.00',
-                        status: '',
+                        payStyle: '在线支付',
+                        price: '100.00',
+                        status: 1,
                         version: 'D-LTE（4G）/TD-SCDMA',
                     },
                 ],
@@ -90,10 +92,10 @@
                                 </div>-->
                             </div>
                         </div>
-                        <table class="order-table">
+                       <!-- <table class="order-table">
                             <thead>
                             <tr class="thead-border">
-                            <th>商品名称</th>
+                            <th class="th-name">商品名称</th>
                             <th>单价</th>
                             <th>数量</th>
                             <th>买家</th>
@@ -115,17 +117,106 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="img">
-                                        <img :src="item.image" alt="">
+                                    <div>
+                                        <div class="goods-name-row">
+                                            <div class="img">
+                                                <img :src="item.image" alt="">
+                                            </div>
+                                            <div class="goods-name">
+                                                <p>{{ item.name }}</p>
+                                                <p>颜色:{{ item.color }}, 选择版本{{ item.version }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="goods-gifts" v-if="item.isGifts">
+                                            赠品<img :src="item.image" alt="">
+                                        </div>
                                     </div>
-                                    <div class="goods-name">
-                                        <p>{{ item.name }}</p>
-                                        <p>颜色:{{ item.color }}, 选择版本{{ item.version }}</p>
-                                    </div>
+                                </td>
+                                <td class="goods-td-border">
+                                    <div>&yen;{{ item.price }}</div>
+                                </td>
+                                <td class="goods-td-border">
+                                    <div>{{ item.amount }}</div>
+                                </td>
+                                <td>{{ item.buyer }}</td>
+                                <td>
+                                    <p>&yen;{{ (item.price * item.amount).toFixed(2) }}</p>
+                                    <p class="tip">(含运费{{ item.freight }})</p>
+                                    <p class="tip">{{ item.payStyle }}</p>
+                                </td>
+                                <td>
+                                    <p v-if="item.status === 1">等待买家付款</p>
+                                    <p v-if="item.status === 2">待发货</p>
+                                    <p v-if="item.status === 3">已取消</p>
+                                    <p v-if="item.status === 4">交易完成</p>
+                                    <p><a href="">订单详情</a></p>
+                                </td>
+                                <td>
+                                    <i-button type="error" v-if="item.status === 1">取消订单</i-button>
+                                    <i-button type="ghost" v-if="item.status === 2">设置发货</i-button>
                                 </td>
                             </tr>
                             </tbody>
-                        </table>
+                        </table>-->
+                        <div class="order-content">
+                            <ul class="order-title clearfix">
+                                <li>商品名称</li>
+                                <li>单价</li>
+                                <li>数量</li>
+                                <li>买家</li>
+                                <li>订单金额</li>
+                                <li>交易状态</li>
+                                <li>操作</li>
+                            </ul>
+                            <div class="order-list" v-for="(item, index) in order">
+                                <div class="clearfix">
+                                    <span>订单号:{{ item.num }}</span>
+                                    <span>下单时间:{{ item.createTime }}</span>
+                                    <button class="print-btn">打印发货单</button>
+                                </div>
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <div class="goods-name-row">
+                                                <div class="img">
+                                                    <img :src="item.image" alt="">
+                                                </div>
+                                                <div class="goods-name">
+                                                    <p>{{ item.name }}</p>
+                                                    <p>颜色:{{ item.color }}, 选择版本{{ item.version }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="goods-gifts" v-if="item.isGifts">
+                                                赠品<img :src="item.image" alt="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="goods-td-border">
+                                        <div>&yen;{{ item.price }}</div>
+                                    </li>
+                                    <li class="goods-td-border">
+                                        <div>{{ item.amount }}</div>
+                                    </li>
+                                    <li>{{ item.buyer }}</li>
+                                    <li>
+                                        <p>&yen;{{ (item.price * item.amount).toFixed(2) }}</p>
+                                        <p class="tip">(含运费{{ item.freight }})</p>
+                                        <p class="tip">{{ item.payStyle }}</p>
+                                    </li>
+                                    <li>
+                                        <p v-if="item.status === 1">等待买家付款</p>
+                                        <p v-if="item.status === 2">待发货</p>
+                                        <p v-if="item.status === 3">已取消</p>
+                                        <p v-if="item.status === 4">交易完成</p>
+                                        <p><a href="">订单详情</a></p>
+                                    </li>
+                                    <li>
+                                        <i-button type="error" v-if="item.status === 1">取消订单</i-button>
+                                        <i-button type="ghost" v-if="item.status === 2">设置发货</i-button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </card>
                 </tab-pane>
                 <tab-pane label="待付款" name="name2">
