@@ -174,63 +174,6 @@
                             </tr>
                             </tbody>
                         </table>
-                       <!-- <div class="order-content">
-                            <div class="order-title clearfix">
-                                <div>
-                                    <span class="span-name">商品名称</span>
-                                    <span class="span-width">单价</span>
-                                    <span class="span-width">数量</span>
-                                </div>
-                                <div>买家</div>
-                                <div>订单金额</div>
-                                <div>交易状态</div>
-                                <div>操作</div>
-                            </div>
-                            <div class="order-list" v-for="(item, index) in order">
-                                <div class="clearfix list-title">
-                                    <span>订单号:{{ item.num }}</span>
-                                    <span>下单时间:{{ item.createTime }}</span>
-                                    <button class="print-btn">打印发货单</button>
-                                </div>
-                                <div class="list-content clearfix">
-                                    <div class="border-none">
-                                        <div>
-                                            <div class="goods-name-row" v-for="item in item.goods">
-                                                <div class="img">
-                                                    <img :src="item.image" alt="">
-                                                </div>
-                                                <div class="goods-name">
-                                                    <p>{{ item.name }}</p>
-                                                    <p>颜色:{{ item.color }}, 选择版本{{ item.version }}</p>
-                                                </div>
-                                                <div class="goods-td-border">&yen;{{ item.price }}</div>
-                                                <div class="goods-td-border">{{ item.amount }}</div>
-                                            </div>
-                                            <div class="goods-gifts" v-if="item.isGifts">
-                                                赠品<img :src="item.image" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>{{ item.buyer }}</div>
-                                    <div>
-                                        <p>&yen;{{ (item.price * item.amount).toFixed(2) }}</p>
-                                        <p class="tip">(含运费{{ item.freight }})</p>
-                                        <p class="tip">{{ item.payStyle }}</p>
-                                    </div>
-                                    <div>
-                                        <p v-if="item.status === 1">等待买家付款</p>
-                                        <p v-if="item.status === 2">待发货</p>
-                                        <p v-if="item.status === 3">已取消</p>
-                                        <p v-if="item.status === 4">交易完成</p>
-                                        <p><a href="">订单详情</a></p>
-                                    </div>
-                                    <div>
-                                        <i-button type="error" v-if="item.status === 1">取消订单</i-button>
-                                        <i-button type="ghost" v-if="item.status === 2">设置发货</i-button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
                     </card>
                 </tab-pane>
                 <tab-pane label="待付款" name="name2">
