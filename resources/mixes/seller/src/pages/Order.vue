@@ -18,12 +18,14 @@
                         buyer: 'maijiaming',
                         color: '黑色',
                         createTimeL: '2017-02-09',
+                        freight: '10.00',
                         image: image1,
-                        name: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                        name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
                         num: 666666666666688,
                         orderMoney: '39.9',
+                        payStyle: '在线支付',
                         price: '4678.00',
-                        status: '',
+                        status: 1,
                         version: 'D-LTE（4G）/TD-SCDMA',
                     },
                 ],
@@ -93,7 +95,7 @@
                         <table class="order-table">
                             <thead>
                             <tr class="thead-border">
-                            <th>商品名称</th>
+                            <th class="th-name">商品名称</th>
                             <th>单价</th>
                             <th>数量</th>
                             <th>买家</th>
@@ -115,13 +117,39 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="img">
-                                        <img :src="item.image" alt="">
+                                    <div>
+                                        <div class="goods-name-row">
+                                            <div class="img">
+                                                <img :src="item.image" alt="">
+                                            </div>
+                                            <div class="goods-name">
+                                                <p>{{ item.name }}</p>
+                                                <p>颜色:{{ item.color }}, 选择版本{{ item.version }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="goods-gifts">
+                                            赠品<img :src="item.image" alt="">
+                                        </div>
                                     </div>
-                                    <div class="goods-name">
-                                        <p>{{ item.name }}</p>
-                                        <p>颜色:{{ item.color }}, 选择版本{{ item.version }}</p>
-                                    </div>
+                                </td>
+                                <td>{{ item.price }}</td>
+                                <td class="tip">{{ item.amount }}</td>
+                                <td class="tip">{{ item.buyer }}</td>
+                                <td>
+                                    <p>&yen;{{ item.orderMoney }}</p>
+                                    <p>(含运费{{ item.freight }})</p>
+                                    <p>{{ item.payStyle }}</p>
+                                </td>
+                                <td>
+                                    <p v-if="item.status === 1">等待买家付款</p>
+                                    <p v-if="item.status === 2">待发货</p>
+                                    <p v-if="item.status === 3">已取消</p>
+                                    <p v-if="item.status === 4">交易完成</p>
+                                    <p><a href="">订单详情</a></p>
+                                </td>
+                                <td>
+                                    <i-button type="error" v-if="item.status === 1">取消订单</i-button>
+                                    <i-button type="ghost" v-if="item.status === 2">设置发货</i-button>
                                 </td>
                             </tr>
                             </tbody>
