@@ -137,8 +137,8 @@ export default function (injection) {
                     title: '全部咨询',
                 },
                 {
-                    path: '/seller/service/invest',
-                    title: '投资管理',
+                    path: '/seller/service/complaint',
+                    title: '投诉管理',
                 },
                 {
                     path: '/seller/service/refund',
