@@ -42,6 +42,69 @@
                         priceAmount: '55.00',
                         status: 1,
                     },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 2,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 3,
+                    },
+                    {
+                        buyer: 'maijiaming',
+                        createTime: '2017-02-09',
+                        freight: '10.00',
+                        goods: [
+                            {
+                                amount: 2,
+                                color: '黑色',
+                                image: image1,
+                                name: 'MIUI/小米 小米手机4 小米4 MI4智能4G手机包邮 黑色 D-LT（4G）/TD-SCD',
+                                price: '100.00',
+                                version: 'D-LTE（4G）/TD-SCDMA',
+                            },
+                        ],
+                        image: image1,
+                        isGifts: false,
+                        num: 666666666666688,
+                        payStyle: '在线支付',
+                        priceAmount: '55.00',
+                        status: 4,
+                    },
                 ],
                 searchList: [
                     {
@@ -114,15 +177,13 @@
                                 <span>单价</span>
                                 <span>数量</span>
                             </th>
-                           <!-- <th></th>
-                            <th></th>-->
                             <th>买家</th>
                             <th>订单金额</th>
                             <th>交易状态</th>
                             <th>操作</th>
                             </tr>
                             <tr class="space-bg">
-                                <th colspan="8"></th>
+                                <th colspan="5"></th>
                             </tr>
                             </thead>
                             <tbody v-for="(item, index) in order">
@@ -169,8 +230,11 @@
                                 </td>
                                 <td>
                                     <i-button type="error" v-if="item.status === 1">取消订单</i-button>
-                                    <i-button type="ghost" v-if="item.status === 2">设置发货</i-button>
+                                    <i-button type="primary" v-if="item.status === 2">设置发货</i-button>
                                 </td>
+                            </tr>
+                            <tr class="space-bg">
+                                <td colspan="5"></td>
                             </tr>
                             </tbody>
                         </table>
