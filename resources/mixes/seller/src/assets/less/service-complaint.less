@@ -45,24 +45,19 @@
                     margin: 10px 0;
                 }
                 .select-content {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding-bottom: 10px;
                     > ul {
                         > li {
-                            float: left;
                             margin-right: 10px;
                             &:last-child {
-                                margin-right: 12px;
-                                .ivu-select-dropdown {
-                                    left: 364px !important;
-                                }
+                                margin-right: 0;
                             }
-                            &.province-data {
-                                .ivu-select-dropdown {
-                                    left: 110px !important;
-                                }
+                            &:nth-child(2) {
+                                margin-left: 20px;
+                            }
+                            float: right;
+                            margin-bottom: 10px;
+                            .ivu-date-picker {
+                                display: inline-block;
                             }
                             &.store-body-header-right {
                                 .ivu-input-group-append .ivu-btn, .ivu-input-group-prepend .ivu-btn {

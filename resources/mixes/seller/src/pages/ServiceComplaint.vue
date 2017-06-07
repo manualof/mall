@@ -9,251 +9,109 @@
         },
         data() {
             return {
-                goodsList: [
+                complaintList: [
                     {
-                        label: '商品1',
+                        label: '进行中',
                         value: '1',
                     },
                     {
-                        label: '商品2',
+                        label: '已完成',
                         value: '2',
                     },
                 ],
-                hotGoods: {
-                    series: [
-                        {
-                            data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '下单金额',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                    ],
-                    tooltip: {
-                        trigger: 'axis',
-                    },
-                    xAxis: {
-                        boundaryGap: false,
-                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                        type: 'category',
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
-                },
-                hotGoodsMoney: {
-                    series: [
-                        {
-                            data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '下单金额',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                    ],
-                    tooltip: {
-                        trigger: 'axis',
-                    },
-                    xAxis: {
-                        boundaryGap: false,
-                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                        type: 'category',
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
-                },
-                loading: false,
-                orderColumns: [
+                searchList: [
                     {
-                        key: 'num',
-                        title: '序号',
+                        label: '投诉人',
+                        value: '1',
                     },
                     {
-                        key: 'goodName',
-                        title: '商品名称',
+                        label: '投诉主题',
+                        value: '2',
                     },
                     {
-                        key: 'amount',
-                        title: '下单量',
+                        label: '投诉编号',
+                        value: '3',
                     },
                 ],
-                orderData: [
+                complaintColumns: [
                     {
-                        amount: 22,
-                        goodName: 4,
-                        num: 333,
-                    },
-                    {
-                        amount: 22,
-                        goodName: 4,
-                        num: 333,
+                        align: 'center',
+                        key: 'complaintNumber',
+                        title: '投诉编号',
                     },
                     {
-                        amount: 22,
-                        goodName: 4,
-                        num: 333,
+                        align: 'center',
+                        key: 'complaintGoods',
+                        title: '投诉商品',
                     },
                     {
-                        amount: 22,
-                        goodName: 4,
-                        num: 333,
-                    },
-                ],
-                orderMoneyColumns: [
-                    {
-                        key: 'num',
-                        title: '序号',
+                        key: 'complaintTheme',
+                        title: '投诉主题',
+                        align: 'center',
                     },
                     {
-                        key: 'goodName',
-                        title: '商品名称',
+                        align: 'center',
+                        key: 'complaintTime',
+                        title: '投诉时间',
                     },
                     {
-                        key: 'amount',
-                        title: '下单金额(元)',
-                    },
-                ],
-                orderMoneyData: [
-                    {
-                        amount: 22,
-                        goodName: 4,
-                        num: 333,
+                        align: 'center',
+                        key: 'complaintStatus',
+                        title: '投诉状态',
                     },
                     {
-                        amount: 22,
-                        goodName: 4,
-                        num: 333,
-                    },
-                    {
-                        amount: 22,
-                        goodName: 4,
-                        num: 333,
-                    },
-                    {
-                        amount: 22,
-                        goodName: 4,
-                        num: 333,
-                    },
-                ],
-                priceAmount: {
-                    legend: {
-                        bottom: 'auto',
-                        data: ['昨天', '今天'],
-                    },
-                    series: [
-                        {
-                            data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '今天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                        {
-                            data: [220, 182, 191, 234, 290, 330, 310],
-                            name: '昨天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                    ],
-                    tooltip: {
-                        trigger: 'axis',
-                    },
-                    xAxis: {
-                        boundaryGap: false,
-                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                        type: 'category',
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
-                },
-                salesColumns: [
-                    {
-                        key: 'goodName',
-                        title: '商品名称',
-                    },
-                    {
-                        key: 'price',
-                        title: '价格',
-                    },
-                    {
-                        key: 'amountNum',
-                        title: '近30天下单商品数',
-                    },
-                    {
-                        key: 'money',
-                        title: '近30天下单金额',
-                    },
-                    {
-                        key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        align: 'center',
+                        key: 'complaintAction',
+                        render(row, column, index) {
+                            return `<i-button @click.native="remove(${index})" size="small" type="ghost">删除</i-button>`;
                         },
                         title: '操作',
                         width: 120,
                     },
                 ],
-                salesData: [
+                complaintData: [
                     {
-                        amountNum: 222,
-                        goodName: '洗护套装买二送一',
-                        price: '10.00',
-                        money: 444,
+                        complaintNumber: 2646846526,
+                        complaintGoods: '商品名称商品名称',
+                        complaintTheme: '尺码不标准',
+                        complaintTime: '2017-04-01  16:30:31',
+                        complaintStatus: '投诉中',
                     },
                     {
-                        amountNum: 222,
-                        goodName: '洗护套装买二送一',
-                        price: '10.00',
-                        money: 444,
+                        complaintNumber: 2646846526,
+                        complaintGoods: '商品名称商品名称',
+                        complaintTheme: '尺码不标准',
+                        complaintTime: '2017-04-01  16:30:31',
+                        complaintStatus: '投诉中',
                     },
                     {
-                        amountNum: 222,
-                        goodName: '洗护套装买二送一',
-                        price: '10.00',
-                        money: 444,
+                        complaintNumber: 2646846526,
+                        complaintGoods: '商品名称商品名称',
+                        complaintTheme: '尺码不标准',
+                        complaintTime: '2017-04-01  16:30:31',
+                        complaintStatus: '投诉中',
                     },
                     {
-                        amountNum: 222,
-                        goodName: '洗护套装买二送一',
-                        price: '10.00',
-                        money: 444,
+                        complaintNumber: 2646846526,
+                        complaintGoods: '商品名称商品名称',
+                        complaintTheme: '尺码不标准',
+                        complaintTime: '2017-04-01  16:30:31',
+                        complaintStatus: '投诉中',
+                    },
+                    {
+                        complaintNumber: 2646846526,
+                        complaintGoods: '商品名称商品名称',
+                        complaintTheme: '尺码不标准',
+                        complaintTime: '2017-04-01  16:30:31',
+                        complaintStatus: '投诉中',
                     },
                 ],
                 self: this,
-                shopsList: [
-                    {
-                        label: '商品1',
-                        value: '1',
-                    },
-                    {
-                        label: '商品2',
-                        value: '2',
-                    },
-                ],
-                style: 'height: 400px',
-                timeList: [
-                    {
-                        label: '按照月统计',
-                        value: '1',
-                    },
-                    {
-                        label: '按照周统计',
-                        value: '2',
-                    },
-                ],
             };
         },
         methods: {
-            exportSalesData() {
-                this.$refs.salesList.exportCsv({
-                    filename: '商品销售明细数据',
-                });
-            },
-            settingPrice() {
-                const self = this;
-                self.$router.push(
-                    {
-                        path: 'goods/set',
-                    },
-                );
+            remove(index) {
+                this.complaintData.splice(index, 1);
             },
         },
     };
@@ -267,172 +125,42 @@
                         <div class="analysis-content">
                             <div class="order-money-content">
                                 <div class="select-content">
-                                    <ul>
-                                        <li>
-                                            投诉时间
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>—
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
+                                    <ul class="clearfix">
+                                        <li class="store-body-header-right">
+                                            <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
+                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
+                                                    <i-option v-for="item in searchList"
+                                                              :value="item.value">{{ item.label }}</i-option>
+                                                </i-select>
+                                                <i-button slot="append" type="primary">搜索</i-button>
+                                            </i-input>
                                         </li>
                                         <li>
                                             处理状态
                                             <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
+                                                <i-option v-for="item in complaintList" :value="item.value"
                                                           :key="item">{{ item.label }}</i-option>
                                             </i-select>
                                         </li>
-                                        <li class="store-body-header-right">
-                                            <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-button slot="append" type="primary">搜索</i-button>
-                                            </i-input>
+                                        <li>
+                                            下单时间
+                                            <date-picker type="date" placeholder="选择日期"
+                                                         style="width: 124px"></date-picker>
+                                            -
+                                            <date-picker type="date" placeholder="选择日期"
+                                                         style="width: 124px"></date-picker>
                                         </li>
                                     </ul>
                                 </div>
-                                <i-table :columns="salesColumns" :context="self"
-                                         :data="salesData" ref="salesList"></i-table>
+                                <i-table :columns="complaintColumns"
+                                         :context="self"
+                                         :data="complaintData"
+                                         ref="complaintList">
+                                </i-table>
                                 <div class="page">
                                     <page :total="100" show-elevator></page>
                                 </div>
                             </div>
-                        </div>
-                    </card>
-                </tab-pane>
-                <tab-pane label="价格销量" name="name2">
-                    <card :bordered="false">
-                        <div class="prompt-box">
-                            <p>提示</p>
-                            <p>符合以下任何一种条件的订单即为有效订单：1、采用在线支付方式支付并且已付款；
-                                2、采用货到付款方式支付并且交易已完成</p>
-                            <p>点击"设置价格区间"进入设置价格区间页面，下方统计图将根据您设置的价格区间进行统计</p>
-                            <p>统计图展示了符合搜索条件的有效订单中的商品单价，在所设置的价格区间的分布情况</p>
-                        </div>
-                        <div class="analysis-content">
-                            <div class="order-money-content search-select-item">
-                                <div class="select-content">
-                                    <i-button type="ghost" class="export-btn"
-                                              @click.native="settingPrice">设置价格区间</i-button>
-                                    <ul>
-                                        <li>
-                                            商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            时间周期
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in timeList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            <date-picker type="date" placeholder="选择日期"></date-picker>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="echarts">
-                                <i-echarts :option="priceAmount"
-                                           :style="style"
-                                           @click="onClick"
-                                           @ready="onReady" ></i-echarts>
-                            </div>
-                        </div>
-                    </card>
-                </tab-pane>
-                <tab-pane label="热卖商品" name="name3">
-                    <card :bordered="false">
-                        <div class="prompt-box">
-                            <p>提示</p>
-                            <p>1.符合以下任何一种条件的订单即为有效订单：1）采用在线支付方式支付并且已付款；
-                                2）采用货到付款方式并且交易已完成</p>
-                            <p>2.图表展示了符合搜索条件的有效订单中的下单总金额和下单商品总数排名前30位的商品</p>
-                        </div>
-                        <div class="analysis-content">
-                            <tabs type="card">
-                                <tab-pane label="下单金额">
-                                    <div class="order-money-content">
-                                        <div class="select-content hot-sales-goods">
-                                            <ul>
-                                                <li>
-                                                    商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    时间周期
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in timeList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="echarts">
-                                        <i-echarts :option="hotGoodsMoney"
-                                                   :style="style"
-                                                   @click="onClick"
-                                                   @ready="onReady" ></i-echarts>
-                                    </div>
-                                    <div class="order-module-content">
-                                        <i-table :columns="orderMoneyColumns" :context="self"
-                                                 :data="orderMoneyData" ref="orderMoneyList"></i-table>
-                                        <div class="page">
-                                            <page :total="100" show-elevator></page>
-                                        </div>
-                                    </div>
-                                </tab-pane>
-                                <tab-pane label="下单商品数">
-                                    <div class="order-money-content">
-                                        <div class="select-content hot-sales-goods">
-                                            <ul>
-                                                <li>
-                                                    商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    时间周期
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in timeList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="echarts">
-                                        <i-echarts :option="hotGoods"
-                                                   :style="style"
-                                                   @click="onClick"
-                                                   @ready="onReady" ></i-echarts>
-                                    </div>
-                                    <div class="order-module-content">
-                                        <i-table :columns="orderColumns" :context="self"
-                                                 :data="orderData" ref="orderList"></i-table>
-                                        <div class="page">
-                                            <page :total="100" show-elevator></page>
-                                        </div>
-                                    </div>
-                                </tab-pane>
-                            </tabs>
                         </div>
                     </card>
                 </tab-pane>
