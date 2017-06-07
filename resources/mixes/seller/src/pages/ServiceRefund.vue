@@ -45,9 +45,10 @@
             };
         },
         methods: {
-            removeImage() {
-                this.serviceRefund.image = '';
-            }, },
+//            removeImage() {
+//                this.serviceRefund.image = '';
+//            },
+        },
     };
 </script>
 <template>

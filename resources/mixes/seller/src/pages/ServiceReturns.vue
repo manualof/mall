@@ -1,6 +1,7 @@
 <script>
     import injection from '../helpers/injection';
     import image1 from '../assets/images/img_logo.png';
+    import image2 from '../assets/images/img_banner.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -16,7 +17,7 @@
                     returnResponse: '尺码不标准',
                     returnMoney: '￥99.00',
                     returnState: '发货太慢',
-                    img: image1,
+                    image: image2,
                 },
                 merchantsAdvice: {
                     returnsIdea: '同意',
@@ -29,7 +30,9 @@
                     returnsRefund: '退款',
                 },
                 commodityTrading: {
-                    content: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD¥1999.00 * 1（数量）',
+                    pic: image1,
+                    content: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
+                    content1: '¥1999.00 * 1',
                     carriage: '10.00',
                     order: '138.00',
                     serial: 1254525945416,
@@ -37,8 +40,13 @@
                 logisticsInformation: {
                     logisticsCompany: '顺丰快递',
                     trackingNumber: '326596623565694313',
-                    logisticsInformation: '2016-12-21 11:30:31  发往西安中转',
                 },
+                logistics: [
+                    { information: '2016-12-21 11:30:31  发往西安中转' },
+                    { information: '2016-12-21 11:30:31  发往西安中转' },
+                    { information: '2016-12-21 11:30:31  发往西安中转' },
+                    { information: '2016-12-21 11:30:31  发往西安中转' },
+                ],
                 steps: [
                     {
                         content: '2016-12-21 13:11:20',
@@ -121,8 +129,11 @@
                                                 </row>
                                                 <row>
                                                     <i-col span="12">
-                                                        <form-item label="凭证上传">
-                                                            {{ returnRequest.returnState }}
+                                                        <form-item label="凭证上传" prop="image">
+                                                            <div class="image-preview">
+                                                                <img :src="returnRequest.image">
+                                                                <icon type="close" @click.native="removeImage"></icon>
+                                                            </div>
                                                         </form-item>
                                                     </i-col>
                                                 </row>
@@ -194,16 +205,13 @@
                                     <i-form :label-width="200">
                                         <div class="returns-box">
                                             <h5>商品交易信息</h5>
-                                            <div>
+                                            <div class="box-information">
                                                 <row>
-                                                    <i-col span="1">
-                                                        <img :src="commodityTrading.pic">
-                                                    </i-col>
-                                                    <i-col span="20">
-                                                        <form-item>
-                                                            {{ commodityTrading.content }}
-                                                        </form-item>
-                                                    </i-col>
+                                                    <img :src="commodityTrading.pic">
+                                                    <div class="information-box">
+                                                        <span>{{ commodityTrading.content }}</span><br>
+                                                        <span> {{ commodityTrading.content1 }} </span>（数量）
+                                                    </div>
                                                 </row>
                                                 <row>
                                                     <i-col span="12">
@@ -251,7 +259,9 @@
                                                 <row>
                                                     <i-col span="18">
                                                         <form-item label="物流信息">
-                                                            {{ logisticsInformation.logisticsInformation }}
+                                                            <span v-for="item in logistics">
+                                                                {{ item.information }}
+                                                            </span>
                                                         </form-item>
                                                     </i-col>
                                                 </row>
