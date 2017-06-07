@@ -607,6 +607,12 @@
             cancelOrderPay() {
                 this.cancelModal = true;
             },
+            lookLogistics() {
+                const self = this;
+                self.$router.push({
+                    path: 'order/logistics',
+                });
+            },
             submitCancelOrder() {
                 const self = this;
                 self.loading = true;
@@ -1047,8 +1053,8 @@
                                 <td>
                                     <p v-if="item.status === 1">待收货</p>
                                     <p v-if="item.status === 2">待自提</p>
-                                    <p><a href="">订单详情</a></p>
-                                    <p><a href="">查看物流</a></p>
+                                    <p><a>订单详情</a></p>
+                                    <p><a @click="lookLogistics(item)">查看物流</a></p>
                                 </td>
                                 <td></td>
                             </tr>
