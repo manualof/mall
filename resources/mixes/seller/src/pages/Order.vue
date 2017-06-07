@@ -395,7 +395,7 @@
                         status: 4,
                     },
                 ],
-                orderPrePay: [
+                orderDelivery: [
                     {
                         buyer: 'maijiaming',
                         createTime: '2017-02-09',
@@ -489,7 +489,7 @@
                         status: 4,
                     },
                 ],
-                orderDelivery: [
+                orderPrePay: [
                     {
                         buyer: 'maijiaming',
                         createTime: '2017-02-09',
