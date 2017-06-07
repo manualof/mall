@@ -10,6 +10,13 @@
         },
         data() {
             return {
+                cancelModal: false,
+                cancelOrder: {
+                    num: 458789990006645,
+                    reason: '',
+                    reasonList: ['爱拍数码', '不是有效订单', '买家主动要求', '其他原因'],
+                    select: [],
+                },
                 delivery: [
                     {
                         buyer: 'maijiaming',
@@ -594,19 +601,25 @@
             };
         },
         methods: {
-            cancelOrder(index) {
-                this.order.splice(index, 1);
+            cancelOrders() {
+                this.cancelModal = true;
             },
-            cancelOrderPay(index) {
-                this.orderPrePay.splice(index, 1);
+            cancelOrderPay() {
+                this.cancelModal = true;
             },
-            settingPrice() {
+            submitCancelOrder() {
                 const self = this;
-                self.$router.push(
-                    {
-                        path: 'goods/set',
-                    },
-                );
+                self.loading = true;
+                self.$refs.cancelOrder.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
         },
     };
@@ -706,7 +719,7 @@
                                 </td>
                                 <td>
                                     <i-button type="error" v-if="item.status === 1"
-                                              @click.native="cancelOrder(index)">取消订单</i-button>
+                                              @click.native="cancelOrders(index)">取消订单</i-button>
                                     <i-button type="primary" v-if="item.status === 2">设置发货</i-button>
                                 </td>
                             </tr>
@@ -716,6 +729,44 @@
                             </tbody>
                         </table>
                     </card>
+                    <modal
+                            v-model="cancelModal"
+                            title="取消订单" class="upload-picture-modal seller-order-modal">
+                        <div>
+                            <i-form ref="cancelOrder" :model="cancelOrder" :rules="cancelValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="订单编号">
+                                            {{ cancelOrder.num }}
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item label="取消原因">
+                                            <checkbox-group v-model="cancelOrder.select">
+                                                <checkbox :label="item" v-for="item in cancelOrder.reasonList">
+                                                    <span>{{ item }}</span>
+                                                </checkbox>
+                                                </checkbox-group>
+                                            <i-input type="textarea" v-model="cancelOrder.reason"
+                                                     :autosize="{minRows: 3,maxRows: 5}"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submitCancelOrder">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
                 </tab-pane>
                 <tab-pane label="待付款" name="name2">
                     <card :bordered="false">
