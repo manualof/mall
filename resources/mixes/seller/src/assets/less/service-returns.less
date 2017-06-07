@@ -20,18 +20,44 @@
             color: rgba(101, 113, 128, 0.5);
         }
         .returns-service {
-            padding: 32px;
-            text-align: center;
+            padding-left: 70px;
+            padding-top: 24px;
+            padding-bottom: 20px;
+            .ivu-steps .ivu-steps-tail {
+                padding: 0;
+            }
         }
         .ivu-row {
             border-bottom: 1px solid #e3e8ee;
             &:last-child {
                 border-bottom: none;
             }
-            .ivu-form-item {
-                margin-bottom: 0;
-                padding: 8px 0;
-            }
+            //.ivu-form-item {
+            //    .image-preview {
+            //        border: 2px solid #ccc;
+            //        position: relative;
+            //        width: 204px;
+            //        > i {
+            //            bottom: 0;
+            //            font-size: 30px;
+            //            position: absolute;
+            //            right: 0;
+            //        }
+            //        > img {
+            //            display: block;
+            //            max-width: 200px;
+            //        }
+            //    }
+            //    .ivu-upload {
+            //        background: #f5f7f9;
+            //        height: 90px;
+            //        width: 90px;
+            //        > .ivu-upload-select {
+            //            background: url("../images/plus.svg") center no-repeat;
+            //            height: 90px;
+            //        }
+            //    }
+            //}
         }
     }
     .prompt-box {
@@ -73,11 +99,18 @@
         margin-top: 20px;
         margin-left: 190px;
     }
-    //.ivu-col-span-15 {
-    //    padding: 16px;
-    //    background: #fff;
-    //
-    //}
+    .ivu-col-span-9 {
+        height: 990px;
+        border-bottom: 1px solid  #e3e8ee;
+        border-right: 1px solid  #e3e8ee;
+        .ivu-form-item {
+            border-right: transparent;
+            border-left: transparent;
+            &:last-child {
+                border-bottom: transparent;
+            }
+        }
+    }
     .content{
         padding: 16px;
         background: #fff;
@@ -85,5 +118,30 @@
     }
     .ivu-card-body {
         padding: 0;
+    }
+    .box-information {
+        font-size: 12px;
+        color: #657180;
+        .ivu-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        img {
+            width: 64px;
+            height: 64px;
+            margin: 12px 0;
+        }
+        .information-box {
+            span {
+                &:first-child {
+                    margin-top: 2px;
+                }
+                &:last-child {
+                    color: #e4393c;
+                }
+            }
+        }
     }
 }
