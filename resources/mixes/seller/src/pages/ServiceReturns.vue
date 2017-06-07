@@ -39,6 +39,22 @@
                     trackingNumber: '326596623565694313',
                     logisticsInformation: '2016-12-21 11:30:31  发往西安中转',
                 },
+                steps: [
+                    {
+                        content: '2016-12-21 13:11:20',
+                        title: '买家申请退款',
+                    },
+                    {
+                        content: '2016-12-21 13:11:20',
+                        title: '商家处理申请',
+                    },
+                    {
+                        title: '平台审核',
+                    },
+                    {
+                        title: '退货完成',
+                    },
+                ],
             };
         },
     };
@@ -48,27 +64,22 @@
         <div class="service-returns">
             <tabs value="name1">
                 <tab-pane label="退货记录-查看" name="name1">
-                    <div class="content">
-                        <row>
-                            <!--左侧-->
-                            <i-col span="15">
-                                <card :bordered="false">
+                    <card :bordered="false">
+                        <div class="content">
+                            <row>
+                                <!--左侧-->
+                                <i-col span="15">
                                     <i-form :label-width="200">
                                         <div class="returns-box">
                                             <h5>退款服务</h5>
                                             <div class="returns-service">
-                                                <steps :current="current">
-                                                    <step title="买家申请退款" content="2016-12-21 13:11"></step>
-                                                    <step title="商家处理申请" content="2016-12-21 13:11"></step>
-                                                    <step title="平台审核"></step>
-                                                    <step title="退货完成"></step>
+                                                <steps :current="1">
+                                                    <step v-for="step in steps" :title="step.title" :content="step.content"></step>
                                                 </steps>
                                             </div>
                                         </div>
                                     </i-form>
-                                </card>
-                                <!--买家退货申请-->
-                                <card :bordered="false">
+                                    <!--买家退货申请-->
                                     <i-form :label-width="200">
                                         <div class="returns-box">
                                             <h5>买家退款申请</h5>
@@ -118,9 +129,7 @@
                                             </div>
                                         </div>
                                     </i-form>
-                                </card>
-                                <!--商家处理意见-->
-                                <card :bordered="false">
+                                    <!--商家处理意见-->
                                     <i-form :label-width="200">
                                         <div class="returns-box">
                                             <h5>商家处理意见</h5>
@@ -156,9 +165,7 @@
                                             </div>
                                         </div>
                                     </i-form>
-                                </card>
-                                <!--商城平台审核-->
-                                <card :bordered="false">
+                                    <!--商城平台审核-->
                                     <i-form :label-width="200">
                                         <div class="returns-box">
                                             <h5>商城平台审核</h5>
@@ -180,12 +187,10 @@
                                             </div>
                                         </div>
                                     </i-form>
-                                </card>
-                            </i-col>
-                            <!--右侧-->
-                            <i-col span="9">
-                                <!--商品交易信息-->
-                                <card :bordered="false">
+                                </i-col>
+                                <!--右侧-->
+                                <i-col span="9">
+                                    <!--商品交易信息-->
                                     <i-form :label-width="200">
                                         <div class="returns-box">
                                             <h5>商品交易信息</h5>
@@ -224,9 +229,7 @@
                                             </div>
                                         </div>
                                     </i-form>
-                                </card>
-                                <!--物流信息-->
-                                <card :bordered="false">
+                                    <!--物流信息-->
                                     <i-form :label-width="200">
                                         <div class="returns-box">
                                             <h5>物流信息</h5>
@@ -255,10 +258,10 @@
                                             </div>
                                         </div>
                                     </i-form>
-                                </card>
-                            </i-col>
-                        </row>
-                    </div>
+                                </i-col>
+                            </row>
+                        </div>
+                    </card>
                 </tab-pane>
             </tabs>
         </div>
