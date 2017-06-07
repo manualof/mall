@@ -613,6 +613,12 @@
                     path: 'order/logistics',
                 });
             },
+            lookOrderDetail() {
+                const self = this;
+                self.$router.push({
+                    path: 'order/detail',
+                });
+            },
             submitCancelOrder() {
                 const self = this;
                 self.loading = true;
@@ -721,7 +727,7 @@
                                     <p v-if="item.status === 2">待发货</p>
                                     <p v-if="item.status === 3">已取消</p>
                                     <p v-if="item.status === 4">交易完成</p>
-                                    <p><a href="">订单详情</a></p>
+                                    <p><a @click="lookOrderDetail">订单详情</a></p>
                                 </td>
                                 <td>
                                     <i-button type="error" v-if="item.status === 1"
@@ -858,7 +864,7 @@
                                 </td>
                                 <td>
                                     <p>代付款</p>
-                                    <p><a href="">订单详情</a></p>
+                                    <p><a @click="lookOrderDetail">订单详情</a></p>
                                 </td>
                                 <td>
                                     <i-button type="error" @click.native="cancelOrderPay(index)">取消订单</i-button>
@@ -955,7 +961,7 @@
                                 </td>
                                 <td>
                                     <p>待发货</p>
-                                    <p><a href="">订单详情</a></p>
+                                    <p><a>订单详情</a></p>
                                 </td>
                                 <td>
                                     <i-button type="primary" v-if="item.status === 2">设置发货</i-button>
@@ -1149,7 +1155,7 @@
                                 </td>
                                 <td>
                                     <p>交易完成</p>
-                                    <p><a href="">订单详情</a></p>
+                                    <p><a>订单详情</a></p>
                                 </td>
                                 <td></td>
                             </tr>
@@ -1244,7 +1250,7 @@
                                 </td>
                                 <td>
                                     <p>已取消</p>
-                                    <p><a href="">订单详情</a></p>
+                                    <p><a>订单详情</a></p>
                                 </td>
                                 <td></td>
                             </tr>

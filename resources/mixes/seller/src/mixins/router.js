@@ -29,6 +29,7 @@ import StatisticsSettlement from '../pages/StatisticsSettlement.vue';
 import StatisticsSettlementLook from '../pages/StatisticsSettlementLook.vue';
 import Order from '../pages/Order.vue';
 import OrderLogistics from '../pages/OrderLogistics.vue';
+import OrderDatail from '../pages/OrderDatail.vue';
 import Service from '../pages/Service.vue';
 import ServiceRefund from '../pages/ServiceRefund.vue';
 import ServiceReturns from '../pages/ServiceReturns.vue';
@@ -187,6 +188,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: OrderLogistics,
                     path: 'order/logistics',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderDatail,
+                    path: 'order/detail',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
