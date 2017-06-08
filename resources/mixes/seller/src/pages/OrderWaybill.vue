@@ -1,0 +1,105 @@
+<script>
+    import injection from '../helpers/injection';
+    import image from '../assets/images/img_logo.png';
+
+    export default {
+        beforeRouteEnter(to, from, next) {
+            next(() => {
+                injection.sidebar.active('seller');
+            });
+        },
+        data() {
+            return {
+                self: this,
+                templateColumns: [
+                    {
+                        align: 'center',
+                        key: 'company',
+                        title: '物流公司',
+                        width: 160,
+                    },
+                    {
+                        align: 'center',
+                        key: 'template',
+                        title: '运单模版',
+                        width: 160,
+                    },
+                    {
+                        align: 'center',
+                        key: 'example',
+                        render() {
+                            return `<div class="example-module" v-if="row.isTemplate">
+                                        <img :src="row.img" alt="">
+                                        <div>
+                                            <p>宽度: {{ row.width }}</p>
+                                            <p>高度: {{ row.height }}</p>
+                                        </div>
+                                    </div>`;
+                        },
+                        title: '运单图例',
+                    },
+                    {
+                        key: 'default',
+                        render() {
+                            return `<i-switch size="large" v-model="row.status" v-if="row.isTemplate">
+                                        <span slot="open">开启</span>
+                                        <span slot="close">关闭</span>
+                                    </i-switch>`;
+                        },
+                        title: '默认',
+                    },
+                ],
+                templateData: [
+                    {
+                        company: '顺丰速运',
+                        height: '139mm',
+                        img: image,
+                        isTemplate: true,
+                        status: true,
+                        template: '常用模版1',
+                        width: '216mm',
+                    },
+                    {
+                        company: '顺丰速运',
+                        template: '未绑定',
+                        isTemplate: false,
+                    },
+                    {
+                        company: '顺丰速运',
+                        template: '未绑定',
+                        isTemplate: false,
+                    },
+                ],
+            };
+        },
+        methods: {
+        },
+    };
+</script>
+<template>
+    <div class="seller-wrap">
+        <div class="order-waybill">
+            <tabs value="name1">
+                <tab-pane label="模版绑定" name="name1">
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>1.未绑定的物流公司后边会出现“选择模板”按钮，在选择模板页面可以绑定可用的打印模板</p>
+                            <p>2.点击“设置”按钮可以设置自定义的内容，包括偏移量和需要显示的项目</p>
+                            <p>3.点击“默认”按钮可以设置当前模板为默认打印模板</p>
+                            <p>4.点击“解绑”按钮可以解除当前绑定，重新选择其他模板</p>
+                        </div>
+                        <i-table :columns="templateColumns"
+                                 :context="self"
+                                 :data="templateData"></i-table>
+                    </card>
+                </tab-pane>
+                <tab-pane label="自建模版" name="name2">
+                    <card :bordered="false">
+
+                    </card>
+                </tab-pane>
+            </tabs>
+        </div>
+    </div>
+</template>
