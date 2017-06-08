@@ -160,9 +160,55 @@
                             status: '2016-12-21 11:30:31 西安市高新二路揽件',
                         },
                     ],
+                    sender: '小李',
+                    senderPhone: 6776666666,
                     user: '旺旺',
                 },
                 self: this,
+                senderColumns: [
+                    {
+                        align: 'center',
+                        key: 'select',
+                        render() {
+                            return `<radio-group v-model="row.select" vertical>
+                                        <radio label="apple">
+                                            <span></span>
+                                        </radio>
+                                    </radio-group>`;
+                        },
+                        width: 60,
+                    },
+                    {
+                        align: 'center',
+                        key: 'sender',
+                        title: '发货人',
+                        width: 100,
+                    },
+                    {
+                        key: 'address',
+                        title: '发货地址',
+                    },
+                    {
+                        key: 'phone',
+                        title: '电话',
+                        width: 120,
+                    },
+                ],
+                senderData: [
+                    {
+                        address: '陕西省西安市高新区光泰路',
+                        phone: '44444444444',
+                        select: false,
+                        sender: '本初网络',
+                    },
+                    {
+                        address: '陕西省西安市高新区光泰路',
+                        phone: '44444444444',
+                        select: false,
+                        sender: '本初网络',
+                    },
+                ],
+                senderModal: false,
                 styleData: [
                     {
                         children: [
@@ -277,9 +323,26 @@
             editInformation() {
                 this.editModal = true;
             },
+            editSender() {
+                this.senderModal = true;
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
+            },
+            submitAddress() {
+                const self = this;
+                self.loading = true;
+                self.$refs.sender.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
             submitInformation() {
                 const self = this;
@@ -369,8 +432,8 @@
                         确认发货信息
                     </h5>
                     <div class="address-information clearfix insure-infomation">
-                        <span>收货人信息: {{ order.user }} {{ order.phone }} {{ order.address }}</span>
-                        <i-button type="ghost">编辑</i-button>
+                        <span>发货人信息: {{ order.sender }} {{ order.senderPhone }} {{ order.address }}</span>
+                        <i-button type="ghost" @click.native="editSender">编辑</i-button>
                     </div>
                 </div>
                 <div>
@@ -440,6 +503,28 @@
                                 <i-col span="20">
                                     <form-item>
                                         <i-button :loading="loading" type="primary" @click.native="submitInformation">
+                                            <span v-if="!loading">确认提交</span>
+                                            <span v-else>正在提交…</span>
+                                        </i-button>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                        </i-form>
+                    </div>
+                </modal>
+                <modal
+                        v-model="senderModal"
+                        title="选择发货地址" class="upload-picture-modal select-ship-address">
+                    <div>
+                        <i-form ref="sender" :model="sender" :rules="senderValidate" :label-width="20">
+                            <i-table :context="self"
+                                     :columns="senderColumns"
+                                     :data="senderData"
+                                     ref="sender"></i-table>
+                            <row>
+                                <i-col span="12">
+                                    <form-item>
+                                        <i-button :loading="loading" type="primary" @click.native="submitAddress">
                                             <span v-if="!loading">确认提交</span>
                                             <span v-else>正在提交…</span>
                                         </i-button>
