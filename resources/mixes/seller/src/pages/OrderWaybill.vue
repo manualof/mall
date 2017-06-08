@@ -174,6 +174,14 @@
             };
         },
         methods: {
+            addTemplate() {
+                const self = this;
+                self.$router.push(
+                    {
+                        path: 'waybill/add',
+                    },
+                );
+            },
             selectTemplate() {
                 const self = this;
                 self.$router.push(
@@ -212,7 +220,7 @@
                             <p>3.点击“默认”按钮可以设置当前模板为默认打印模板</p>
                             <p>4.点击“解绑”按钮可以解除当前绑定，重新选择其他模板</p>
                         </div>
-                        <i-button class="first-btn" type="ghost">+添加模板</i-button>
+                        <i-button class="first-btn" type="ghost" @click.native="addTemplate">+添加模板</i-button>
                         <i-table :columns="selfTemplateColumns"
                                  :context="self"
                                  :data="selfTemplateData"></i-table>
