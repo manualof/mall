@@ -10,6 +10,116 @@
         },
         data() {
             return {
+                logisticsColumns: [
+                    {
+                        align: 'center',
+                        key: 'name',
+                        title: '公司名称',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        key: 'number',
+                        render() {
+                            return '<i-input v-model="row.number"></i-input>';
+                        },
+                        title: '物流单号',
+                        width: 300,
+                    },
+                    {
+                        align: 'center',
+                        key: 'message',
+                        render() {
+                            return '<i-input v-model="row.message"></i-input>';
+                        },
+                        title: '备忘',
+                    },
+                    {
+                        align: 'center',
+                        render() {
+                            return '<i-button type="ghost">确认</i-button>';
+                        },
+                        title: '操作',
+                        width: 160,
+                    },
+                ],
+                logisticsData: [
+                    {
+                        name: '顺丰速运',
+                        number: '4444444',
+                        message: '',
+                    },
+                    {
+                        name: '顺丰速运',
+                        number: '4444444',
+                        message: '',
+                    },
+                    {
+                        name: '顺丰速运',
+                        number: '4444444',
+                        message: '',
+                    },
+                    {
+                        name: '顺丰速运',
+                        number: '4444444',
+                        message: '',
+                    },
+                ],
+                noLogisticsColumns: [
+                    {
+                        align: 'center',
+                        key: 'name',
+                        title: '公司名称',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        key: 'number',
+                        render() {
+                            return '<i-input v-model="row.number"></i-input>';
+                        },
+                        title: '物流单号',
+                        width: 300,
+                    },
+                    {
+                        align: 'center',
+                        key: 'message',
+                        render() {
+                            return '<i-input v-model="row.message"></i-input>';
+                        },
+                        title: '备忘',
+                    },
+                    {
+                        align: 'center',
+                        render() {
+                            return '<i-button type="ghost">确认</i-button>';
+                        },
+                        title: '操作',
+                        width: 160,
+                    },
+                ],
+                noLogisticsData: [
+                    {
+                        name: '顺丰速运',
+                        number: '4444444',
+                        message: '',
+                    },
+                    {
+                        name: '顺丰速运',
+                        number: '4444444',
+                        message: '',
+                    },
+                    {
+                        name: '顺丰速运',
+                        number: '4444444',
+                        message: '',
+                    },
+                    {
+                        name: '顺丰速运',
+                        number: '4444444',
+                        message: '',
+                    },
+                ],
                 order: {
                     address: '陕西省西安市雁塔区科技四路中段陕西国土资源大厦公寓楼2304',
                     amount: 2,
@@ -50,6 +160,7 @@
                     ],
                     user: '旺旺',
                 },
+                self: this,
             };
         },
         methods: {
@@ -134,6 +245,34 @@
                         <span>收货人信息: {{ order.user }} {{ order.phone }} {{ order.address }}</span>
                         <i-button type="ghost">编辑</i-button>
                     </div>
+                </div>
+                <div>
+                    <h5>
+                        <span>第三步</span> 选择物流
+                        <i class="tip">
+                            您可以通过 “发货设置>默认物流公司” 添加或修改常用货运物流。免运可切换下方 [无需物流运输] 选项卡并操作
+                        </i>
+                    </h5>
+                    <tabs value="name1">
+                        <tab-pane label="选择物流公司" name="name1">
+                            <i-form ref="logistics" :model="logistics" :rules="ruleValidate" :label-width="120">
+                                <i-table :context="self"
+                                         :columns="logisticsColumns"
+                                         :data="logisticsData"
+                                         ref="logistics"></i-table>
+                                <i-button class="submit-btn" type="primary">确认提交</i-button>
+                            </i-form>
+                        </tab-pane>
+                        <tab-pane label="无需物流运输" name="name2">
+                            <i-form ref="logistics" :model="logistics" :rules="ruleValidate" :label-width="120">
+                                <i-table :context="self"
+                                         :columns="noLogisticsColumns"
+                                         :data="noLogisticsData"
+                                         ref="noLogistics"></i-table>
+                                <i-button class="submit-btn" type="primary">确认提交</i-button>
+                            </i-form>
+                        </tab-pane>
+                    </tabs>
                 </div>
             </card>
         </div>
