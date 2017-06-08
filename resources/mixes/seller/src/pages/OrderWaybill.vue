@@ -138,12 +138,13 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render() {
+                        render(row, column, index) {
                             return `<div v-if="row.isTemplate">
                                         <i-button class="edit-btn" size="small" type="ghost">编辑</i-button>
                                         <i-button size="small" type="ghost">解绑</i-button>
                                     </div>
-                                    <i-button size="small" type="ghost" v-if="!row.isTemplate">选择模板</i-button>`;
+                                    <i-button size="small" type="ghost" v-if="!row.isTemplate"
+                                    @click.native="selectTemplate(${index})">选择模板</i-button>`;
                         },
                         title: '操作',
                         width: 160,
@@ -173,6 +174,14 @@
             };
         },
         methods: {
+            selectTemplate() {
+                const self = this;
+                self.$router.push(
+                    {
+                        path: 'waybill/select',
+                    },
+                );
+            },
         },
     };
 </script>
