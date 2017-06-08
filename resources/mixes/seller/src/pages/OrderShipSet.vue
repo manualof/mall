@@ -10,6 +10,8 @@
         },
         data() {
             return {
+                editModal: false,
+                loading: false,
                 logisticsColumns: [
                     {
                         align: 'center',
@@ -161,12 +163,137 @@
                     user: '旺旺',
                 },
                 self: this,
+                styleData: [
+                    {
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '故宫',
+                                        value: '故宫',
+                                    },
+                                    {
+                                        label: '天坛',
+                                        value: '天坛',
+                                    },
+                                    {
+                                        label: '王府井',
+                                        value: '王府井',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅',
+                                        value: '安全座椅',
+                                    },
+                                ],
+                                label: '童车童床',
+                                value: '童车童床',
+                            },
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '北京',
+                        value: '北京',
+                    },
+                    {
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                    {
+                                        label: '婴儿推车3',
+                                        value: '婴儿推车3',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅4',
+                                        value: '安全座椅4',
+                                    },
+                                ],
+                                label: '狮子林',
+                                value: '狮子林',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '夫子庙',
+                                        value: '夫子庙',
+                                    },
+                                    {
+                                        label: '夫子庙1',
+                                        value: '夫子庙1',
+                                    },
+                                ],
+                                label: '南京',
+                                value: '南京',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '车1',
+                                        value: '车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '拙政园',
+                                value: '拙政园',
+                            },
+                        ],
+                        label: '江苏',
+                        value: '江苏',
+                    },
+                ],
+                userInformation: {
+                    message: '',
+                    phone: '',
+                    province: '',
+                    user: '',
+                },
             };
         },
         methods: {
+            editInformation() {
+                this.editModal = true;
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
+            },
+            submitInformation() {
+                const self = this;
+                self.loading = true;
+                self.$refs.userInformation.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
         },
     };
@@ -232,8 +359,8 @@
                         </tbody>
                     </table>
                     <div class="address-information clearfix">
-                        <span>收货人信息: {{ order.user }} {{ order.phone }} {{ order.address }}</span>
-                        <i-button type="ghost">编辑</i-button>
+                        <span>收货人信息: {{ order.user }}&nbsp;&nbsp;{{ order.phone }}&nbsp;&nbsp;{{ order.address }}</span>
+                        <i-button type="ghost" @click.native="editInformation">编辑</i-button>
                     </div>
                 </div>
                 <div>
@@ -274,6 +401,54 @@
                         </tab-pane>
                     </tabs>
                 </div>
+                <modal
+                        v-model="editModal"
+                        title="收货人信息" class="upload-picture-modal">
+                    <div>
+                        <i-form ref="userInformation" :model="userInformation" :rules="userValidate" :label-width="100">
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="收货人">
+                                        <i-input v-model="userInformation.user"></i-input>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="电话">
+                                        <i-input v-model="userInformation.phone"></i-input>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="地区">
+                                        <cascader :data="styleData" trigger="hover"
+                                                  v-model="userInformation.province"></cascader>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="22">
+                                    <form-item label="详细信息">
+                                        <i-input type="textarea" v-model="userInformation.message"
+                                                 :autosize="{minRows: 3,maxRows: 5}"></i-input>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="20">
+                                    <form-item>
+                                        <i-button :loading="loading" type="primary" @click.native="submitInformation">
+                                            <span v-if="!loading">确认提交</span>
+                                            <span v-else>正在提交…</span>
+                                        </i-button>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                        </i-form>
+                    </div>
+                </modal>
             </card>
         </div>
     </div>
