@@ -32,6 +32,7 @@ import OrderLogistics from '../pages/OrderLogistics.vue';
 import OrderDatail from '../pages/OrderDatail.vue';
 import OrderShip from '../pages/OrderShip.vue';
 import OrderShipSet from '../pages/OrderShipSet.vue';
+import OrderSetting from '../pages/OrderSetting.vue';
 import Service from '../pages/Service.vue';
 import ServiceRefund from '../pages/ServiceRefund.vue';
 import ServiceReturns from '../pages/ServiceReturns.vue';
@@ -205,6 +206,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: OrderShipSet,
                     path: 'order/ship/set',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderSetting,
+                    path: 'order/setting',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
