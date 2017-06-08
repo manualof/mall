@@ -165,47 +165,16 @@
                     user: '旺旺',
                 },
                 self: this,
-                senderColumns: [
-                    {
-                        align: 'center',
-                        key: 'select',
-                        render() {
-                            return `<radio-group v-model="row.select" vertical>
-                                        <radio label="apple">
-                                            <span></span>
-                                        </radio>
-                                    </radio-group>`;
-                        },
-                        width: 60,
-                    },
-                    {
-                        align: 'center',
-                        key: 'sender',
-                        title: '发货人',
-                        width: 100,
-                    },
-                    {
-                        key: 'address',
-                        title: '发货地址',
-                    },
-                    {
-                        key: 'phone',
-                        title: '电话',
-                        width: 120,
-                    },
-                ],
-                senderData: [
+                senderList: [
                     {
                         address: '陕西省西安市高新区光泰路',
                         phone: '44444444444',
-                        select: false,
                         sender: '本初网络',
                     },
                     {
-                        address: '陕西省西安市高新区光泰路',
-                        phone: '44444444444',
-                        select: false,
-                        sender: '本初网络',
+                        address: '陕西省西安市高新区光泰路1',
+                        phone: '444444444441',
+                        sender: '本初网络1',
                     },
                 ],
                 senderModal: false,
@@ -517,10 +486,17 @@
                         title="选择发货地址" class="upload-picture-modal select-ship-address">
                     <div>
                         <i-form ref="sender" :model="sender" :rules="senderValidate" :label-width="20">
-                            <i-table :context="self"
-                                     :columns="senderColumns"
-                                     :data="senderData"
-                                     ref="sender"></i-table>
+                            <div class="address-select-module" v-for="(item, index) in senderList">
+                                <label class="form-control-radio" >
+                                    <input type="radio" name="address" :checked="index == 0">
+                                    <div class="address">
+                                        <p class="clearfix">
+                                            <span>{{ item.sender }}&nbsp;&nbsp;{{ item.phone }}
+                                                &nbsp;&nbsp;{{ item.address }}</span>
+                                        </p>
+                                    </div>
+                                </label>
+                            </div>
                             <row>
                                 <i-col span="12">
                                     <form-item>
