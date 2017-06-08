@@ -276,22 +276,10 @@
             };
         },
         methods: {
-            cancelOrders() {
-                this.cancelModal = true;
-            },
-            cancelOrderPay() {
-                this.cancelModal = true;
-            },
-            lookLogistics() {
+            settingShip() {
                 const self = this;
                 self.$router.push({
-                    path: 'order/logistics',
-                });
-            },
-            lookOrderDetail() {
-                const self = this;
-                self.$router.push({
-                    path: 'order/detail',
+                    path: 'ship/set',
                 });
             },
             submitCancelOrder() {
@@ -402,7 +390,7 @@
                                         </row>
                                         <row>
                                             <i-col>
-                                                <i-button type="primary">设置发货</i-button>
+                                                <i-button type="primary" @click.native="settingShip(item)">设置发货</i-button>
                                             </i-col>
                                         </row>
                                     </i-form>
