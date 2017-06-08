@@ -36,6 +36,7 @@ import OrderSetting from '../pages/OrderSetting.vue';
 import OrderWaybill from '../pages/OrderWaybill.vue';
 import OrderWaybillSelect from '../pages/OrderWaybillSelect.vue';
 import OrderWaybillAdd from '../pages/OrderWaybillAdd.vue';
+import OrderWaybillDesign from '../pages/OrderWaybillDesign.vue';
 import Service from '../pages/Service.vue';
 import ServiceRefund from '../pages/ServiceRefund.vue';
 import ServiceReturns from '../pages/ServiceReturns.vue';
@@ -229,6 +230,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: OrderWaybillAdd,
                     path: 'order/waybill/add',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderWaybillDesign,
+                    path: 'order/waybill/design',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

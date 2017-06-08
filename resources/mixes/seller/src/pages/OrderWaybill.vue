@@ -66,7 +66,8 @@
                         align: 'center',
                         key: 'action',
                         render() {
-                            return `<i-button class="action-btn" size="small" type="ghost">设计</i-button>
+                            return `<i-button class="action-btn" @click.native="design"
+                                    size="small" type="ghost">设计</i-button>
                                     <i-button class="action-btn" size="small" type="ghost">测试</i-button>
                                     <i-button class="action-btn" size="small" type="ghost">编辑</i-button>
                                     <i-button class="action-btn" size="small" type="ghost">删除</i-button>`;
@@ -179,6 +180,14 @@
                 self.$router.push(
                     {
                         path: 'waybill/add',
+                    },
+                );
+            },
+            design() {
+                const self = this;
+                self.$router.push(
+                    {
+                        path: 'waybill/design',
                     },
                 );
             },
