@@ -1,8 +1,14 @@
 .seller-wrap {
-    .order-wrap {
+    .order-ship {
         .ivu-tabs-nav-scroll {
             background: #ffffff;
             padding-left: 20px;
+        }
+        .prompt-box {
+            background-color: #f5f7f9;
+            padding: 20px;
+            font-size: 12px;
+            margin-bottom: 20px;
         }
         .order-money-content {
             float: right;
@@ -38,26 +44,6 @@
             border-collapse: collapse;
             border-spacing: 0;
             empty-cells: show;
-            td, th {
-                padding: 7px 16px;
-                text-align: center;
-                &.th-name {
-                    padding-left: 100px;
-                    span {
-                        display: inline-block;
-                        text-align: center;
-                        width: 14.4%;
-                        &:first-child {
-                            width: 66.2%;
-                            padding-left: 10%;
-                            text-align: left;
-                        }
-                    }
-                }
-                a {
-                    color: #657180;
-                }
-            }
             td {
                 border: 1px solid #e3e8ee;
             }
@@ -90,27 +76,14 @@
                     }
                 }
                 &.space-bg {
-                    th {
-                        background-color: #fff;
-                    }
                     td {
                         border: 0 none;
                     }
                 }
-                &.thead-border {
-                    th {
-                        border-bottom: 1px solid #e3e8ee;
-                        border-top: 1px solid #e3e8ee;
-                    }
-                }
             }
             td {
-                &:first-child {
-                    padding: 7px 0;
-                }
-                &.goods-td-border {
-                    vertical-align: top;
-
+                &:last-child {
+                    padding: 7px 16px 16px 0;
                 }
                 .goods-name-row {
                     display: -webkit-box;
@@ -119,13 +92,12 @@
                     -webkit-box-align: center;
                     -ms-flex-align: center;
                     align-items: center;
-                    padding: 10px 16px;
+                    padding: 16px 16px;
                     border-bottom: 1px solid #eee;
                     &:last-child {
                         border: 0 none;
                     }
                     .img-text {
-                        width: 72.2%;
                         text-align: left;
                         display: -webkit-box;
                         display: -ms-flexbox;
@@ -137,6 +109,7 @@
                             img {
                                 width: 80px;
                                 height: 80px;
+                                display: block;
                             }
                         }
                         .goods-name {
@@ -148,15 +121,10 @@
                             }
                         }
                     }
-                    .goods-td-border {
-                        text-align: center;
-                        width: 14.4%;
-                    }
                 }
                 .goods-gifts {
                     text-align: left;
-                    padding: 10px 16px 3px;
-                    line-height: 35px;
+                    padding: 10px 16px;
                     img {
                         width: 32px;
                         height: 32px;
@@ -165,11 +133,19 @@
                     }
                 }
             }
+            .ivu-form {
+                .ivu-row:last-child {
+                    text-align: right;
+                    margin-top: 20px;
+                }
+                .ivu-form-item {
+                    margin-bottom: 0;
+                    p {
+                        font-size: 12px;
+                        line-height: 20px;
+                    }
+                }
+            }
         }
-    }
-}
-.seller-order-modal {
-    .ivu-checkbox-group-item {
-        display: block;
     }
 }

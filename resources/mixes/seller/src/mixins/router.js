@@ -28,6 +28,19 @@ import StatisticsFlow from '../pages/StatisticsFlow.vue';
 import StatisticsSettlement from '../pages/StatisticsSettlement.vue';
 import StatisticsSettlementLook from '../pages/StatisticsSettlementLook.vue';
 import Order from '../pages/Order.vue';
+import OrderLogistics from '../pages/OrderLogistics.vue';
+import OrderDatail from '../pages/OrderDatail.vue';
+import OrderShip from '../pages/OrderShip.vue';
+import OrderShipSet from '../pages/OrderShipSet.vue';
+import OrderSetting from '../pages/OrderSetting.vue';
+import OrderWaybill from '../pages/OrderWaybill.vue';
+import OrderWaybillSelect from '../pages/OrderWaybillSelect.vue';
+import OrderWaybillAdd from '../pages/OrderWaybillAdd.vue';
+import OrderWaybillDesign from '../pages/OrderWaybillDesign.vue';
+import Service from '../pages/Service.vue';
+import ServiceRefund from '../pages/ServiceRefund.vue';
+import ServiceReturns from '../pages/ServiceReturns.vue';
+import ServiceComplaint from '../pages/ServiceComplaint.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -177,6 +190,71 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: Order,
                     path: 'order',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderLogistics,
+                    path: 'order/logistics',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderDatail,
+                    path: 'order/detail',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderShip,
+                    path: 'order/ship',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderShipSet,
+                    path: 'order/ship/set',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderSetting,
+                    path: 'order/setting',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderWaybill,
+                    path: 'order/waybill',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderWaybillSelect,
+                    path: 'order/waybill/select',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderWaybillAdd,
+                    path: 'order/waybill/add',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderWaybillDesign,
+                    path: 'order/waybill/design',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: Service,
+                    path: 'service',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceRefund,
+                    path: 'service/refund',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceReturns,
+                    path: 'service/returns',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceComplaint,
+                    path: 'service/complaint',
                 },
             ],
             component: Layout,

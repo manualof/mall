@@ -90,7 +90,6 @@
                 this.createModal = true;
             },
             pictureManage() {
-                console.log('11');
                 const self = this;
                 self.$router.push({
                     path: 'picture/manage',
