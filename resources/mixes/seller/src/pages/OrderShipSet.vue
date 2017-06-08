@@ -10,7 +10,29 @@
         },
         data() {
             return {
+                address: [
+                    {
+                        address: '陕西省西安市高新区详细地址',
+                        name: '本初1',
+                        phone: '1234544444',
+                    },
+                    {
+                        address: '陕西省西安市高新区详细地址1',
+                        name: '本初2',
+                        phone: '1234544441',
+                    },
+                    {
+                        address: '陕西省西安市高新区详细地址2',
+                        name: '本初3',
+                        phone: '1234544443',
+                    },
+                ],
                 editModal: false,
+                defaultAddress: {
+                    address: '陕西省西安市高新区详细地址',
+                    name: '本初1',
+                    phone: '1234544444',
+                },
                 loading: false,
                 logisticsColumns: [
                     {
@@ -486,16 +508,22 @@
                         title="选择发货地址" class="upload-picture-modal select-ship-address">
                     <div>
                         <i-form ref="sender" :model="sender" :rules="senderValidate" :label-width="20">
-                            <div class="address-select-module" v-for="(item, index) in senderList">
-                                <label class="form-control-radio" >
-                                    <input type="radio" name="address" :checked="index == 0">
-                                    <div class="address">
-                                        <p class="clearfix">
-                                            <span>{{ item.sender }}&nbsp;&nbsp;{{ item.phone }}
-                                                &nbsp;&nbsp;{{ item.address }}</span>
-                                        </p>
+                            <div class="address-select-module">
+                                <div class="table-content">
+                                    <div class="table-title">
+                                        <span></span>
+                                        <span>发货人</span>
+                                        <span>发货地址</span>
+                                        <span>电话</span>
                                     </div>
-                                </label>
+                                    <radio-group v-model="defaultAddress" vertical>
+                                        <radio :label="item" v-for="item in address">
+                                            <span>{{ item.name }}</span>
+                                            <span>{{ item.address }}</span>
+                                            <span>{{ item.phone }}</span>
+                                        </radio>
+                                    </radio-group>
+                                </div>
                             </div>
                             <row>
                                 <i-col span="12">
