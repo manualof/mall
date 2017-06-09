@@ -29,9 +29,49 @@
                         valueDisabled: 4,
                     },
                 ],
+                loading: false,
+                managementSearch: '',
+                message: false,
+                replayMessage: {
+                    assess: '西收到了，做工精细，款式设计的时尚大气，实物和图片没区别，和买家描述的一致，买家态度很好，' +
+                    '物流也很给力。很愉快的一次购物体验。东西收到了，做工精细，款式设计的时尚大气，实物和图片没区别，和 ' +
+                    '买家描述的一致，买家态度很好，物流也很给力。很愉快的一次购物体验',
+                    message: '',
+                },
+                searchList: [
+                    {
+                        label: '店铺名称',
+                        value: '店铺名称',
+                    },
+                    {
+                        label: '商品名称',
+                        value: '商品名称',
+                    },
+                    {
+                        label: '商品分类',
+                        value: '商品分类',
+                    },
+                ],
             };
         },
         methods: {
+            replay() {
+                this.message = true;
+            },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.replayMessage.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
         },
     };
 </script>
@@ -81,7 +121,7 @@
                             <tr>
                                 <td>买家评价: {{ item.assess }}</td>
                                 <td>
-                                    <i-button type="ghost" size="small" >回复</i-button>
+                                    <i-button type="ghost" size="small" @click="replay(item)">回复</i-button>
                                 </td>
                             </tr>
                             <tr class="space-bg">
@@ -90,35 +130,30 @@
                             </tbody>
                         </table>
                     </card>
-                    <!--<modal
-                            v-model="cancelModal"
-                            title="取消订单" class="upload-picture-modal seller-order-modal">
+                    <modal
+                            v-model="message"
+                            title="回复评价" class="upload-picture-modal seller-order-modal">
                         <div>
-                            <i-form ref="cancelOrder" :model="cancelOrder" :rules="cancelValidate" :label-width="100">
+                            <i-form ref="replayMessage" :model="replayMessage" :rules="ruleValidate" :label-width="100">
                                 <row>
-                                    <i-col span="12">
-                                        <form-item label="订单编号">
-                                            {{ cancelOrder.num }}
+                                    <i-col span="22">
+                                        <form-item label="评价内容">
+                                            {{ replayMessage.assess }}
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="20">
-                                        <form-item label="取消原因">
-                                            <checkbox-group v-model="cancelOrder.select">
-                                                <checkbox :label="item" v-for="item in cancelOrder.reasonList">
-                                                    <span>{{ item }}</span>
-                                                </checkbox>
-                                            </checkbox-group>
-                                            <i-input type="textarea" v-model="cancelOrder.reason"
-                                                     :autosize="{minRows: 3,maxRows: 5}"></i-input>
+                                    <i-col span="22">
+                                        <form-item label="回复内容">
+                                            <i-input type="textarea" :autosize="{minRows: 3,maxRows: 5}"
+                                                    v-model="replayMessage.message"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="20">
+                                    <i-col span="22">
                                         <form-item>
-                                            <i-button :loading="loading" type="primary" @click.native="submitCancelOrder">
+                                            <i-button :loading="loading" type="primary" @click.native="submit">
                                                 <span v-if="!loading">确认提交</span>
                                                 <span v-else>正在提交…</span>
                                             </i-button>
@@ -127,7 +162,7 @@
                                 </row>
                             </i-form>
                         </div>
-                    </modal>-->
+                    </modal>
                 </tab-pane>
             </tabs>
         </div>
