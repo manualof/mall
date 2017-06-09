@@ -31,18 +31,19 @@ class Order extends Entity
     public function places()
     {
         return [
-            'cancel',    // 取消
-            'cancelled', // 已取消
-            'deliver',   // 等待发货
-            'delivered', // 发货完成
             'launch',    // 发起订单
             'launched',  // 发起完成
             'pay',       // 等待支付
             'payed',     // 支付完成
+            'deliver',   // 等待发货
+            'delivered', // 发货完成
             'take',      // 等待收货
             'took',      // 收货完成
+            'cancel',    // 取消
+            'cancelled', // 已取消
         ];
     }
+
     /**
      * @return array
      */
@@ -54,6 +55,10 @@ class Order extends Entity
             new Transition('launch', 'launch', 'launched'),
             new Transition('pay', 'pay', 'payed'),
             new Transition('take', 'take', 'took'),
+            new Transition('need_to_cancel', ['launched', 'payed', 'delivered'], 'cancel'),
+            new Transition('wait_to_deliver', 'payed', 'deliver'),
+            new Transition('wait_to_pay', 'launched', 'pay'),
+            new Transition('wait_to_take', 'delivered', 'take'),
         ];
     }
 
@@ -88,7 +93,7 @@ class Order extends Entity
      */
     public function guard(GuardEvent $event)
     {
-        $event->setBlocked(true);
+        $event->setBlocked(false);
         // TODO: Implement guard() method.
     }
 
@@ -105,7 +110,6 @@ class Order extends Entity
      */
     public function transition()
     {
-        dd(func_get_args());
         // TODO: Implement transition() method.
     }
 }
