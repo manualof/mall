@@ -10,6 +10,12 @@
         data() {
             return {
                 addAddress: false,
+                addForm: {
+                    address: '',
+                    name: '',
+                    phone: '',
+                    province: [],
+                },
                 address: [
                     {
                         address: '陕西省西安市高新区详细地址',
@@ -27,6 +33,29 @@
                         phone: '1234544443',
                     },
                 ],
+                addValidate: {
+                    address: [
+                        {
+                            message: '地址不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '联系人不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    province: [
+                        {
+                            message: '地区不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 defaultAddress: {
                     address: '陕西省西安市高新区详细地址',
                     name: '本初1',
@@ -63,6 +92,108 @@
                     money: '',
                 },
                 logisticsSelect: [],
+                provinceData: [
+                    {
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '故宫',
+                                        value: '故宫',
+                                    },
+                                    {
+                                        label: '天坛',
+                                        value: '天坛',
+                                    },
+                                    {
+                                        label: '王府井',
+                                        value: '王府井',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅',
+                                        value: '安全座椅',
+                                    },
+                                ],
+                                label: '童车童床',
+                                value: '童车童床',
+                            },
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '北京',
+                        value: '北京',
+                    },
+                    {
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                    {
+                                        label: '婴儿推车3',
+                                        value: '婴儿推车3',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅4',
+                                        value: '安全座椅4',
+                                    },
+                                ],
+                                label: '狮子林',
+                                value: '狮子林',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '夫子庙',
+                                        value: '夫子庙',
+                                    },
+                                    {
+                                        label: '夫子庙1',
+                                        value: '夫子庙1',
+                                    },
+                                ],
+                                label: '南京',
+                                value: '南京',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '车1',
+                                        value: '车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '拙政园',
+                                value: '拙政园',
+                            },
+                        ],
+                        label: '江苏',
+                        value: '江苏',
+                    },
+                ],
                 self: this,
             };
         },
@@ -72,6 +203,20 @@
             },
             remove(index) {
                 this.address.splice(index, 1);
+            },
+            submitAddAddress() {
+                const self = this;
+                self.loading = true;
+                self.$refs.addForm.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
             submitLogistics() {
                 const self = this;
@@ -118,6 +263,53 @@
                             </radio-group>
                         </div>
                     </card>
+                    <modal
+                            v-model="addAddress"
+                            title="新增地址" class="upload-picture-modal">
+                        <div>
+                            <i-form ref="addForm" :model="addForm" :rules="addValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="联系人" prop="name">
+                                            <i-input v-model="addForm.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="所在地区" prop="province">
+                                            <cascader :data="provinceData" trigger="hover"
+                                                      v-model="addForm.province"></cascader>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="详细地址" prop="address">
+                                            <i-input v-model="addForm.address"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="电话" prop="phone">
+                                            <i-input v-model="addForm.phone"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submitAddAddress">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
                 </tab-pane>
                 <tab-pane label="默认物流公司" name="name2">
                     <card :bordered="false">
