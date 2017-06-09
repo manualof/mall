@@ -65,13 +65,14 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render() {
+                        render(row, column, index) {
                             return `<i-button class="action-btn" @click.native="design"
                                     size="small" type="ghost">设计</i-button>
                                     <i-button class="action-btn" size="small" type="ghost">测试</i-button>
                                     <i-button class="action-btn" @click.native="edit"
                                     size="small" type="ghost">编辑</i-button>
-                                    <i-button class="action-btn" size="small" type="ghost">删除</i-button>`;
+                                    <i-button class="action-btn" @click.native="remove(${index})"
+                                    size="small" type="ghost">删除</i-button>`;
                         },
                         title: '操作',
                     },
@@ -199,6 +200,9 @@
                         path: 'waybill/edit',
                     },
                 );
+            },
+            remove(index) {
+                this.selfTemplateData.splice(index, 1);
             },
             selectTemplate() {
                 const self = this;

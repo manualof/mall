@@ -9,6 +9,7 @@
         },
         data() {
             return {
+                addAddress: false,
                 address: [
                     {
                         address: '陕西省西安市高新区详细地址',
@@ -66,6 +67,12 @@
             };
         },
         methods: {
+            newAddAddress() {
+                this.addAddress = true;
+            },
+            remove(index) {
+                this.address.splice(index, 1);
+            },
             submitLogistics() {
                 const self = this;
                 self.loading = true;
@@ -95,13 +102,18 @@
                                 <span>选择默认</span>
                                 <span>联系人</span>
                                 <span>发货地址</span>
-                                <span>电话</span>s
+                                <span>电话</span>
+                                <span>操作</span>
                             </div>
                             <radio-group v-model="defaultAddress" vertical>
-                                <radio :label="item" v-for="item in address">
+                                <radio :label="item" v-for="(item, index) in address">
                                     <span>{{ item.name }}</span>
                                     <span>{{ item.address }}</span>
                                     <span>{{ item.phone }}</span>
+                                    <span>
+                                        <i-button type="ghost" size="small">编辑</i-button>
+                                        <i-button type="ghost" size="small" @click.native="remove(index)">删除</i-button>
+                                    </span>
                                 </radio>
                             </radio-group>
                         </div>
