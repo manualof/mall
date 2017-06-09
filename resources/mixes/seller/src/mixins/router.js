@@ -40,6 +40,7 @@ import OrderWaybillDesign from '../pages/OrderWaybillDesign.vue';
 import OrderWaybillEdit from '../pages/OrderWaybillEdit.vue';
 import OrderEvaluation from '../pages/OrderEvaluation.vue';
 import CustomerMessage from '../pages/CustomerMessage.vue';
+import Account from '../pages/Account.vue';
 import Service from '../pages/Service.vue';
 import ServiceRefund from '../pages/ServiceRefund.vue';
 import ServiceReturns from '../pages/ServiceReturns.vue';
@@ -253,6 +254,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: CustomerMessage,
                     path: 'customer/message',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: Account,
+                    path: 'account',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

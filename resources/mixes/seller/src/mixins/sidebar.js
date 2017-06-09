@@ -55,7 +55,7 @@ export default function (injection) {
                     title: '评价管理',
                 },
                 {
-                    path: '/seller/order/logistics',
+                    path: '/seller/order/tool',
                     title: '物流工具',
                 },
             ],
@@ -147,6 +147,16 @@ export default function (injection) {
             ],
             icon: 'plus',
             title: '客服消息',
+        },
+        {
+            children: [
+                {
+                    path: '/seller/account',
+                    title: '账号管理',
+                },
+            ],
+            icon: 'plus',
+            title: '账号',
         },
         {
             children: [
