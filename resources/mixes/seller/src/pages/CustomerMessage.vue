@@ -9,6 +9,10 @@
         },
         data() {
             return {
+                form: {
+                    content: '您的结算单平台已付款，请注意查收，结算单编号：37',
+                    sendTime: '2017-04-01 13:10:59',
+                },
                 messageColumns: [
                     {
                         align: 'center',
@@ -57,10 +61,14 @@
                         sendTime: '2016-12-20 13:31:54',
                     },
                 ],
+                messageModal: false,
                 self: this,
             };
         },
         methods: {
+            look() {
+                this.messageModal = true;
+            },
             remove(index) {
                 this.messageData.splice(index, 1);
             },
@@ -85,6 +93,28 @@
                                  :data="messageData"
                                  ref="messageList">
                         </i-table>
+                        <modal
+                                v-model="messageModal"
+                                title="系统消息" class="upload-picture-modal customer-message-modal">
+                            <div>
+                                <i-form ref="form" :model="from" :rules="ruleValidate" :label-width="100">
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="发送时间">
+                                                {{ form.sendTime }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="消息内容">
+                                                {{ form.content }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                </i-form>
+                            </div>
+                        </modal>
                     </card>
                 </tab-pane>
                 <tab-pane label="系统公告" name="name2">
