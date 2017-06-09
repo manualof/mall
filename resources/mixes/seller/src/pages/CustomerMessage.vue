@@ -9,6 +9,24 @@
         },
         data() {
             return {
+                announceColumns: [
+                    {
+                        key: 'title',
+                        title: '标题',
+                    },
+                    {
+                        align: 'center',
+                        key: 'time',
+                        title: '发布时间',
+                        width: 200,
+                    },
+                ],
+                announceData: [
+                    {
+                        time: '2017-6-9 15:30',
+                        title: '您的结算单平台已付款，请注意查收，结算单编号：37216565965',
+                    },
+                ],
                 form: {
                     content: '您的结算单平台已付款，请注意查收，结算单编号：37',
                     sendTime: '2017-04-01 13:10:59',
@@ -63,6 +81,77 @@
                 ],
                 messageModal: false,
                 self: this,
+                settingColumns: [
+                    {
+                        key: 'title',
+                        title: '模板名称',
+                    },
+                    {
+                        align: 'center',
+                        key: 'style',
+                        title: '接收方式',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        key: 'disabled',
+                        render() {
+                            return `<i-switch size="large" v-model="row.disabled">
+                                        <span slot="open">开启</span>
+                                        <span slot="close">关闭</span>
+                                    </i-switch>`;
+                        },
+                        title: '是否接收',
+                        width: 200,
+                    },
+                ],
+                settingData: [
+                    {
+                        disabled: true,
+                        style: '站内提醒',
+                        title: '商品被投诉提醒',
+                    },
+                    {
+                        disabled: true,
+                        style: '站内提醒',
+                        title: '商品库存预警',
+                    },
+                    {
+                        disabled: true,
+                        style: '站内提醒',
+                        title: '商品审核失败提醒',
+                    },
+                    {
+                        disabled: true,
+                        style: '站内提醒',
+                        title: '商品违规被下架',
+                    },
+                    {
+                        disabled: true,
+                        style: '站内提醒',
+                        title: '新订单提醒',
+                    },
+                    {
+                        disabled: true,
+                        style: '站内提醒',
+                        title: '退款提醒',
+                    },
+                    {
+                        disabled: true,
+                        style: '站内提醒',
+                        title: '退款自动处理提醒',
+                    },
+                    {
+                        disabled: true,
+                        style: '站内提醒',
+                        title: '退货未收货自动处理提醒',
+                    },
+                    {
+                        disabled: true,
+                        style: '站内提醒',
+                        title: '退货未收货自动处理提醒',
+                    },
+                ],
             };
         },
         methods: {
@@ -119,12 +208,25 @@
                 </tab-pane>
                 <tab-pane label="系统公告" name="name2">
                     <card :bordered="false">
-
+                        <i-table :columns="announceColumns"
+                                 :context="self"
+                                 :data="announceData"
+                                 ref="announceList">
+                        </i-table>
                     </card>
                 </tab-pane>
                 <tab-pane label="消息接收设置" name="name3">
                     <card :bordered="false">
-
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>1.短信、邮件接收方式需要正确设置接收号码才能正常接收</p>
+                            <p>2.子账号接收消息权限请到账号组中设置</p>
+                        </div>
+                        <i-table :columns="settingColumns"
+                                 :context="self"
+                                 :data="settingData"
+                                 ref="settingList">
+                        </i-table>
                     </card>
                 </tab-pane>
             </tabs>
