@@ -35,6 +35,36 @@ export default function (injection) {
         {
             children: [
                 {
+                    path: '/seller/order',
+                    title: '交易订单',
+                },
+                {
+                    path: '/seller/order/ship',
+                    title: '发货',
+                },
+                {
+                    path: '/seller/order/setting',
+                    title: '发货设置',
+                },
+                {
+                    path: '/seller/order/waybill',
+                    title: '运单模板',
+                },
+                {
+                    path: '/seller/order/evaluation',
+                    title: '评价管理',
+                },
+                {
+                    path: '/seller/order/logistics',
+                    title: '物流工具',
+                },
+            ],
+            icon: 'plus',
+            title: '订单物流',
+        },
+        {
+            children: [
+                {
                     path: '/seller/shop',
                     title: '店铺设置',
                 },
@@ -103,32 +133,20 @@ export default function (injection) {
         {
             children: [
                 {
-                    path: '/seller/order',
-                    title: '交易订单',
+                    path: '/seller/customer',
+                    title: '客服设置',
                 },
                 {
-                    path: '/seller/order/ship',
-                    title: '发货',
+                    path: '/seller/customer/message',
+                    title: '系统消息',
                 },
                 {
-                    path: '/seller/order/setting',
-                    title: '发货设置',
-                },
-                {
-                    path: '/seller/order/waybill',
-                    title: '运单模板',
-                },
-                {
-                    path: '/seller/order/evaluation',
-                    title: '评价管理',
-                },
-                {
-                    path: '/seller/order/logistics',
-                    title: '物流工具',
+                    path: '/seller/customer/record',
+                    title: '聊天记录查询',
                 },
             ],
             icon: 'plus',
-            title: '订单物流',
+            title: '客服消息',
         },
         {
             children: [
