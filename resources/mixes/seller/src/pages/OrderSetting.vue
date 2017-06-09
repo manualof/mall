@@ -9,6 +9,7 @@
         },
         data() {
             return {
+                action: `${window.api}/mall/admin/upload`,
                 addAddress: false,
                 addForm: {
                     address: '',
@@ -122,6 +123,10 @@
                     money: '',
                 },
                 logisticsSelect: [],
+                printForm: {
+                    message: '',
+                    picture: '',
+                },
                 provinceData: [
                     {
                         children: [
@@ -240,6 +245,9 @@
             remove(index) {
                 this.address.splice(index, 1);
             },
+            removeLogo() {
+                this.printForm.picture = '';
+            },
             submitAddAddress() {
                 const self = this;
                 self.loading = true;
@@ -281,6 +289,52 @@
                         });
                     }
                 });
+            },
+            submitPrint() {
+                const self = this;
+                self.loading = true;
+                self.$refs.printForm.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            uploadBefore() {
+                injection.loading.start();
+            },
+            uploadError(error, data) {
+                const self = this;
+                injection.loading.error();
+                if (typeof data.message === 'object') {
+                    for (const p in data.message) {
+                        self.$notice.error({
+                            title: data.message[p],
+                        });
+                    }
+                } else {
+                    self.$notice.error({
+                        title: data.message,
+                    });
+                }
+            },
+            uploadFormatError(file) {
+                this.$notice.warning({
+                    title: '文件格式不正确',
+                    desc: `文件 ${file.name} 格式不正确`,
+                });
+            },
+            uploadSuccess(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.printForm.picture = data.data.path;
             },
         },
     };
@@ -457,7 +511,54 @@
                 </tab-pane>
                 <tab-pane label="发货单打印" name="name4">
                     <card :bordered="false">
-
+                        <i-form ref="printForm" :model="printForm" :rules="editValidate" :label-width="180">
+                            <row>
+                                <i-col span="14">
+                                    <form-item label="备注信息" prop="message">
+                                        <i-input type="textarea" :autosize="{minRows: 3,maxRows: 5}"
+                                                 v-model="printForm.message"></i-input>
+                                        <p class="tip">打印备注信息将会出现在打印订单的下方位置，用于注明店铺简介或发货、
+                                            退换货相关规则等；内容不得超过100字</p>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="14">
+                                    <form-item label="印章图片" prop="picture">
+                                        <div class="image-preview" v-if="printForm.picture">
+                                            <img :src="printForm.picture">
+                                            <icon type="close" @click.native="removeLogo"></icon>
+                                        </div>
+                                        <upload :action="action"
+                                                :before-upload="uploadBefore"
+                                                :format="['jpg','jpeg','png']"
+                                                :headers="{
+                                                        Authorization: `Bearer ${$store.state.token.access_token}`
+                                                    }"
+                                                :max-size="2048"
+                                                :on-error="uploadError"
+                                                :on-format-error="uploadFormatError"
+                                                :on-success="uploadSuccess"
+                                                ref="upload"
+                                                :show-upload-list="false"
+                                                v-if="printForm.picture === '' || printForm.picture === null">
+                                        </upload>
+                                        <p class="tip">印章图片将出现在打印订单的右下角位置，请选在120像素x120像素大小透明
+                                            GIF/PNG格式图片上传作为您店铺的电子印章使用</p>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="20">
+                                    <form-item>
+                                        <i-button :loading="loading" type="primary" @click.native="submitPrint">
+                                            <span v-if="!loading">确认提交</span>
+                                            <span v-else>正在提交…</span>
+                                        </i-button>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                        </i-form>
                     </card>
                 </tab-pane>
             </tabs>
