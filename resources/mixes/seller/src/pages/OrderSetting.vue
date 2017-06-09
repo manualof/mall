@@ -61,6 +61,36 @@
                     name: '本初1',
                     phone: '1234544444',
                 },
+                editAddress: false,
+                editForm: {
+                    address: '',
+                    name: '',
+                    phone: '',
+                    province: '北京市',
+                },
+                editValidate: {
+                    address: [
+                        {
+                            message: '地址不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '联系人不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    province: [
+                        {
+                            message: '地区不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 loading: false,
                 logistics: [
                     {
@@ -119,7 +149,7 @@
                                     },
                                 ],
                                 label: '童车童床',
-                                value: '童车童床',
+                                value: '北京1',
                             },
                             {
                                 label: '营养辅食',
@@ -198,6 +228,12 @@
             };
         },
         methods: {
+            edit() {
+                this.editAddress = true;
+            },
+            handleChange(value, selectedData) {
+                this.editForm.province = selectedData.map(o => o.label).join('>');
+            },
             newAddAddress() {
                 this.addAddress = true;
             },
@@ -208,6 +244,20 @@
                 const self = this;
                 self.loading = true;
                 self.$refs.addForm.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            submitEditAddress() {
+                const self = this;
+                self.loading = true;
+                self.$refs.editForm.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -256,7 +306,7 @@
                                     <span>{{ item.address }}</span>
                                     <span>{{ item.phone }}</span>
                                     <span>
-                                        <i-button type="ghost" size="small">编辑</i-button>
+                                        <i-button type="ghost" size="small" @click.native="edit(index)">编辑</i-button>
                                         <i-button type="ghost" size="small" @click.native="remove(index)">删除</i-button>
                                     </span>
                                 </radio>
@@ -301,6 +351,54 @@
                                     <i-col span="20">
                                         <form-item>
                                             <i-button :loading="loading" type="primary" @click.native="submitAddAddress">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
+                    <modal
+                            v-model="editAddress"
+                            title="编辑地址" class="upload-picture-modal edit-address-modal">
+                        <div>
+                            <i-form ref="editForm" :model="editForm" :rules="editValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="联系人" prop="name">
+                                            <i-input v-model="editForm.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row class="edit-address-flex">
+                                    <i-col span="18">
+                                        <form-item label="所在地区" prop="province">
+                                            <span>{{ editForm.province }}</span>
+                                            <cascader :data="provinceData" trigger="hover" @on-change="handleChange"
+                                                      v-model="editForm.province"></cascader>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="详细地址" prop="address">
+                                            <i-input v-model="editForm.address"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="电话" prop="phone">
+                                            <i-input v-model="editForm.phone"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submitEditAddress">
                                                 <span v-if="!loading">确认提交</span>
                                                 <span v-else>正在提交…</span>
                                             </i-button>
