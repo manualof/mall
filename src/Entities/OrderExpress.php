@@ -45,6 +45,7 @@ class OrderExpress extends Entity
     {
         return [
             new Transition('send', 'send', 'sent'),
+            new Transition('wait_to_take', 'sent', 'take'),
             new Transition('take', 'take', 'took'),
         ];
     }
