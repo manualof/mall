@@ -31,10 +31,10 @@ class OrderExchange extends Entity
     public function places()
     {
         return [
-            'deliver',
-            'delivered',
             'launch',
             'launched',
+            'deliver',
+            'delivered',
             'send',
             'sent',
             'take',
@@ -48,9 +48,12 @@ class OrderExchange extends Entity
     public function transitions()
     {
         return [
-            new Transition('deliver', 'deliver', 'delivered'),
             new Transition('launch', 'launch', 'launched'),
+            new Transition('wait_to_deliver', 'launched', 'deliver'),
+            new Transition('deliver', 'deliver', 'delivered'),
+            new Transition('wait_to_send', 'delivered', 'send'),
             new Transition('send', 'send', 'sent'),
+            new Transition('wait_to_take', 'sent', 'take'),
             new Transition('take', 'take', 'took'),
         ];
     }
