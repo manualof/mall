@@ -9,16 +9,34 @@
         },
         data() {
             return {
+                afterForm: [
+                    {
+                        account: '',
+                        name: '',
+                        tool: '',
+                    },
+                    {
+                        account: '',
+                        name: '',
+                        tool: '',
+                    },
+                ],
                 form: {
-                    afterAccount: '',
-                    afterName: '',
-                    afterTool: '',
-                    preAccount: '',
-                    preName: '',
-                    preTool: '',
                     workTime: '',
                 },
                 loading: false,
+                preForm: [
+                    {
+                        account: '',
+                        name: '',
+                        tool: '',
+                    },
+                    {
+                        account: '',
+                        name: '',
+                        tool: '',
+                    },
+                ],
                 toolList: [
                     {
                         label: '工具1',
@@ -32,6 +50,30 @@
             };
         },
         methods: {
+            addAfterCustomer() {
+                this.afterForm.push(
+                    {
+                        account: '',
+                        name: '',
+                        tool: '',
+                    },
+                );
+            },
+            addCustomer() {
+                this.preForm.push(
+                    {
+                        account: '',
+                        name: '',
+                        tool: '',
+                    },
+                );
+            },
+            deleteAfterForm(index) {
+                this.afterForm.splice(index, 1);
+            },
+            deletePreForm(index) {
+                this.preForm.splice(index, 1);
+            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -58,102 +100,58 @@
                         <i-form ref="form" :model="form" :rules="ruleValidate" :label-width="150">
                             <div>
                                 <h5>售前客服</h5>
-                                <form-item>
+                                <form-item v-for="(item, index) in preForm">
                                     <row>
                                         <i-col span="3">客服名称</i-col>
                                         <i-col span="4">
-                                            <i-input v-model="form.name"></i-input>
+                                            <i-input v-model="item.name"></i-input>
                                         </i-col>
                                         <i-col span="3">客服工具</i-col>
                                         <i-col span="4">
-                                            <i-select v-model="form.tool">
+                                            <i-select v-model="item.tool">
                                                 <i-option v-for="item in toolList" :value="item.value"
                                                           :key="item">{{ item.label }}</i-option>
                                             </i-select>
                                         </i-col>
                                         <i-col span="3">客服账号</i-col>
                                         <i-col span="4">
-                                            <i-input v-model="form.account"></i-input>
+                                            <i-input v-model="item.account"></i-input>
                                         </i-col>
                                         <i-col span="3">
-                                            <i-button type="error">删除</i-button>
+                                            <i-button type="error" @click.native="deletePreForm(index)">删除</i-button>
                                         </i-col>
                                     </row>
                                 </form-item>
                                 <form-item>
-                                    <row>
-                                        <i-col span="3">客服名称</i-col>
-                                        <i-col span="4">
-                                            <i-input v-model="form.name"></i-input>
-                                        </i-col>
-                                        <i-col span="3">客服工具</i-col>
-                                        <i-col span="4">
-                                            <i-select v-model="form.tool">
-                                                <i-option v-for="item in toolList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </i-col>
-                                        <i-col span="3">客服账号</i-col>
-                                        <i-col span="4">
-                                            <i-input v-model="form.account"></i-input>
-                                        </i-col>
-                                        <i-col span="3">
-                                            <i-button type="error">删除</i-button>
-                                        </i-col>
-                                    </row>
-                                </form-item>
-                                <form-item>
-                                    <i-button class="add-btn" type="ghost">+添加客服</i-button>
+                                    <i-button class="add-btn" type="ghost" @click.native="addCustomer">+添加客服</i-button>
                                 </form-item>
                             </div>
                             <div>
                                 <h5>售后客服</h5>
-                                <form-item>
+                                <form-item v-for="(item, index) in afterForm">
                                     <row>
                                         <i-col span="3">客服名称</i-col>
                                         <i-col span="4">
-                                            <i-input v-model="form.afterName"></i-input>
+                                            <i-input v-model="item.name"></i-input>
                                         </i-col>
                                         <i-col span="3">客服工具</i-col>
                                         <i-col span="4">
-                                            <i-select v-model="form.afterTool">
+                                            <i-select v-model="item.tool">
                                                 <i-option v-for="item in toolList" :value="item.value"
                                                           :key="item">{{ item.label }}</i-option>
                                             </i-select>
                                         </i-col>
                                         <i-col span="3">客服账号</i-col>
                                         <i-col span="4">
-                                            <i-input v-model="form.afterAccount"></i-input>
+                                            <i-input v-model="item.account"></i-input>
                                         </i-col>
                                         <i-col span="3">
-                                            <i-button type="error">删除</i-button>
+                                            <i-button type="error" @click.native="deleteAfterForm(index)">删除</i-button>
                                         </i-col>
                                     </row>
                                 </form-item>
                                 <form-item>
-                                    <row>
-                                        <i-col span="3">客服名称</i-col>
-                                        <i-col span="4">
-                                            <i-input v-model="form.afterName"></i-input>
-                                        </i-col>
-                                        <i-col span="3">客服工具</i-col>
-                                        <i-col span="4">
-                                            <i-select v-model="form.afterTool">
-                                                <i-option v-for="item in toolList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </i-col>
-                                        <i-col span="3">客服账号</i-col>
-                                        <i-col span="4">
-                                            <i-input v-model="form.afterAccount"></i-input>
-                                        </i-col>
-                                        <i-col span="3">
-                                            <i-button type="error">删除</i-button>
-                                        </i-col>
-                                    </row>
-                                </form-item>
-                                <form-item>
-                                    <i-button class="add-btn" type="ghost">+添加客服</i-button>
+                                    <i-button class="add-btn" type="ghost" @click.native="addAfterCustomer">+添加客服</i-button>
                                 </form-item>
                             </div>
                             <div class="form-work-time">
@@ -169,8 +167,7 @@
                                 <form-item>
                                     <row>
                                         <i-col span="16">
-                                            <i-button :loading="loading" class="add-btn"
-                                                      type="primary" @click.native="submit">
+                                            <i-button :loading="loading" type="primary" @click.native="submit">
                                                 <span v-if="!loading">确认提交</span>
                                                 <span v-else>正在提交…</span>
                                             </i-button>
