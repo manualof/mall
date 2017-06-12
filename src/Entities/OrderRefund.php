@@ -51,9 +51,13 @@ class OrderRefund extends Entity
     {
         return [
             new Transition('launch', 'launch', 'launched'),
+            new Transition('wait_to_review', 'launched', 'review'),
             new Transition('review', 'review', 'review'),
+            new Transition('wait_to_refund', 'review', 'refund'),
+            new Transition('need_to_reject', 'review', 'reject'),
             new Transition('reject', 'reject', 'rejected'),
             new Transition('refund', 'refund', 'refund'),
+            new Transition('wait_to_reimburse', 'refund', 'reimburse'),
             new Transition('reimburse', 'reimburse', 'reimburse'),
         ];
     }
