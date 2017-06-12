@@ -49,8 +49,11 @@ class StoreDynamic extends Entity
     {
         return [
             new Transition('create', 'create', 'created'),
+            new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
+            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
             new Transition('remove', 'remove', 'removed'),
+            new Transition('need_to_publish', ['created', 'edited'], 'publish'),
             new Transition('publish', 'publish', 'published'),
         ];
     }

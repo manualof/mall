@@ -39,12 +39,12 @@ class Store extends Entity
     public function places()
     {
         return [
+            'register',
+            'registered',
             'close',
             'closed',
             'open',
             'opened',
-            'register',
-            'registered',
         ];
     }
 
@@ -54,9 +54,11 @@ class Store extends Entity
     public function transitions()
     {
         return [
-            new Transition('close', 'close', 'closed'),
-            new Transition('open', 'open', 'opened'),
             new Transition('register', 'register', 'registered'),
+            new Transition('need_to_close', ['opened', 'registered'], 'close'),
+            new Transition('close', 'close', 'closed'),
+            new Transition('need_to_open', 'registered', 'open'),
+            new Transition('open', 'open', 'opened'),
         ];
     }
 

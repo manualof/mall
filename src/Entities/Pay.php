@@ -31,12 +31,12 @@ class Pay extends Entity
     public function places()
     {
         return [
-            'cancel',
-            'canceled',
-            'order',
-            'ordered',
+            'launch',
+            'launched',
             'pay',
             'payed',
+            'cancel',
+            'canceled',
         ];
     }
 
@@ -46,9 +46,11 @@ class Pay extends Entity
     public function transitions()
     {
         return [
-            new Transition('cancel', 'cancel', 'canceled'),
-            new Transition('order', 'order', 'ordered'),
+            new Transition('launch', 'launch', 'launched'),
+            new Transition('wait_to_pay', 'launched', 'pay'),
             new Transition('pay', 'pay', 'payed'),
+            new Transition('need_to_cancel', ['launched', 'payed'], 'cancel'),
+            new Transition('cancel', 'cancel', 'canceled'),
         ];
     }
 

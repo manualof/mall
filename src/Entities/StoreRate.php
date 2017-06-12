@@ -45,6 +45,7 @@ class StoreRate extends Entity
     {
         return [
             new Transition('rate', 'rate', 'rated'),
+            new Transition('wait_to_review', 'rated', 'review'),
             new Transition('review', 'review', 'reviewed'),
         ];
     }
