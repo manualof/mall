@@ -47,7 +47,9 @@ class Express extends Entity
     {
         return [
             new Transition('pay', 'pay', 'payed'),
+            new Transition('wait_to_send', 'payed', 'send'),
             new Transition('send', 'send', 'sent'),
+            new Transition('wait_to_take', 'sent', 'take'),
             new Transition('take', 'take', 'took'),
         ];
     }
