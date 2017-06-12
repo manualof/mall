@@ -1,4 +1,5 @@
 <script>
+    import expandRow from './ExpandRow.vue';
     import injection from '../helpers/injection';
 
     export default {
@@ -6,6 +7,9 @@
             next(() => {
                 injection.sidebar.active('seller');
             });
+        },
+        components: {
+            expandRow,
         },
         data() {
             return {
@@ -16,32 +20,18 @@
                         width: 60,
                     },
                     {
-                        key: 'categoryName',
-                        render() {
-                            return `<collapse accordion>
-                                        <panel name="1">
-                                            {{ row.title }}
-                                            <div slot="content">
-                                                <div class="table-item" v-for="item in row.list">
-                                                    <span style="width: 27%">{{ item.title }}</span>
-                                                    <span style="width: 19%">{{ item.sort }}</span>
-                                                    <span style="width: 30%">
-                                                        <i-switch size="large" v-model="item.status">
-                                                            <span slot="open">开启</span>
-                                                            <span slot="close">关闭</span>
-                                                        </i-switch>
-                                                    </span>
-                                                        <span style="width: 16%" class="action">
-                                                        <i-button class="first-btn"
-                                                                  type="ghost">编辑</i-button>
-                                                        <i-button
-                                                                class="delete-ad" type="ghost">删除</i-button>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </panel>
-                                    </collapse>`;
+                        type: 'expand',
+                        width: 50,
+                        render(h, params) {
+                            return h(expandRow, {
+                                props: {
+                                    row: params.row,
+                                },
+                            });
                         },
+                    },
+                    {
+                        key: 'categoryName',
                         title: '分类名称',
                     },
                     {
@@ -74,18 +64,17 @@
                 ],
                 categoryData: [
                     {
-                        list: [
-                            {
-                                sort: '45',
-                                status: true,
-                                title: '海外代购1',
-                            },
-                        ],
+                        job: '数据工程师',
+                        interest: '羽毛球',
+                        birthday: '1991-05-14',
                         sort: '45',
                         status: true,
                         title: '海外代购',
                     },
                     {
+                        job: '数据工程师',
+                        interest: '羽毛球',
+                        birthday: '1991-05-14',
                         sort: '456',
                         status: true,
                     },
