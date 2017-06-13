@@ -93,7 +93,25 @@ class Store extends Entity
      */
     public function guard(GuardEvent $event)
     {
-        // TODO: Implement guard() method.
+        switch ($event->getTransition()->getName()) {
+            case 'register':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'need_to_close':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'close':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'need_to_open':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'open':
+                $this->block($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 
     /**
