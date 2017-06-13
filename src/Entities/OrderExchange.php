@@ -89,7 +89,31 @@ class OrderExchange extends Entity
      */
     public function guard(GuardEvent $event)
     {
-        // TODO: Implement guard() method.
+        switch ($event->getTransition()->getName()) {
+            case 'launch':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_deliver':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'deliver':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_send':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'send':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_take':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'take':
+                $this->block($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 
     /**
