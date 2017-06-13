@@ -85,7 +85,25 @@ class Pay extends Entity
      */
     public function guard(GuardEvent $event)
     {
-        // TODO: Implement guard() method.
+        switch ($event->getTransition()->getName()) {
+            case 'launch':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_pay':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'pay':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'need_to_cancel':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'cancel':
+                $this->block($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 
     /**
