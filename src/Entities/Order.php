@@ -93,8 +93,37 @@ class Order extends Entity
      */
     public function guard(GuardEvent $event)
     {
-        $event->setBlocked(false);
-        // TODO: Implement guard() method.
+        switch ($event->getTransition()->getName()) {
+            case 'cancel':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'deliver':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'launch':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'pay':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'take':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'need_to_cancel':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_deliver':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_pay':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_take':
+                $this->block($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 
     /**
