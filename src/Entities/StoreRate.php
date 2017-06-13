@@ -81,7 +81,19 @@ class StoreRate extends Entity
      */
     public function guard(GuardEvent $event)
     {
-        // TODO: Implement guard() method.
+        switch ($event->getTransition()->getName()) {
+            case 'rate':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_review':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'review':
+                $this->block($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 
     /**
