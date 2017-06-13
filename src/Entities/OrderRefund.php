@@ -93,7 +93,37 @@ class OrderRefund extends Entity
      */
     public function guard(GuardEvent $event)
     {
-        // TODO: Implement guard() method.
+        switch ($event->getTransition()->getName()) {
+            case 'launch':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_review':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'review':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_refund':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'need_to_reject':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'reject':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'refund':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_reimburse':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'reimburse':
+                $this->block($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 
     /**
