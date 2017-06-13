@@ -81,7 +81,19 @@ class OrderExpress extends Entity
      */
     public function guard(GuardEvent $event)
     {
-        // TODO: Implement guard() method.
+        switch ($event->getTransition()->getName()) {
+            case 'send':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_take':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'take':
+                $this->block($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 
     /**
