@@ -24,6 +24,6 @@ class AddressHandler extends Handler
     protected function execute()
     {
         $id = $this->request->input('id');
-        $this->success()->withData(Address::query()->find($id))->withMessage('');
+        $this->withCode(200)->withData(Address::query()->find($id))->withMessage('');
     }
 }

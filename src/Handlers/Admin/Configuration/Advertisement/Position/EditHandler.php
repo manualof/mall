@@ -27,7 +27,7 @@ class EditHandler extends Handler
         $position = AdvertisementPosition::query()->find($id);
         if ($position) {
             $position->update($this->request->all());
-            $this->success()->withMessage('');
+            $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');
         }

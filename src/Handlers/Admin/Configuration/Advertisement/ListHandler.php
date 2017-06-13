@@ -24,6 +24,6 @@ class ListHandler extends Handler
     protected function execute()
     {
         $builder = Advertisement::query();
-        $this->success()->withData($builder->get())->withMessage('');
+        $this->withCode(200)->withData($builder->get())->withMessage('');
     }
 }

@@ -27,7 +27,7 @@ class EditHandler extends Handler
         $advertisement = Advertisement::query()->find($id);
         if ($advertisement) {
             $advertisement->update($this->request->all());
-            $this->success()->withMessage('');
+            $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');
         }

@@ -41,7 +41,7 @@ class GetHandler extends Handler
      */
     protected function execute()
     {
-        $this->success()->withData([
+        $this->withCode(200)->withData([
             'default' => $this->settings->get('mall.configuration.search.default', ''),
         ])->withMessage('获取配置成功！');
     }

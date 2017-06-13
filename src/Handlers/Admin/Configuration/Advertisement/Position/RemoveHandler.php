@@ -27,7 +27,7 @@ class RemoveHandler extends Handler
         $position = AdvertisementPosition::query()->find($id);
         if ($position) {
             $position->delete();
-            $this->success()->withMessage('');
+            $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');
         }

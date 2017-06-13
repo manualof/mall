@@ -23,6 +23,6 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        $this->success()->withData(Address::query()->get())->withMessage('');
+        $this->withCode(200)->withData(Address::query()->get())->withMessage('');
     }
 }

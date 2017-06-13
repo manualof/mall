@@ -27,7 +27,7 @@ class EditHandler extends Handler
         $address = Address::query()->find($id);
         if ($address) {
             $address->update($this->request->all());
-            $this->success()->withMessage('');
+            $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withMessage('');
         }

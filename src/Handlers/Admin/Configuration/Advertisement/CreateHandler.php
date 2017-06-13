@@ -24,7 +24,7 @@ class CreateHandler extends Handler
     public function execute()
     {
         if (Advertisement::query()->create($this->request->all())) {
-            $this->success()->withMessage('');
+            $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');
         }
