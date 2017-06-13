@@ -85,7 +85,25 @@ class Express extends Entity
      */
     public function guard(GuardEvent $event)
     {
-        // TODO: Implement guard() method.
+        switch ($event->getTransition()->getName()) {
+            case 'pay':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_send':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'send':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_take':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'take':
+                $this->block($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 
     /**
