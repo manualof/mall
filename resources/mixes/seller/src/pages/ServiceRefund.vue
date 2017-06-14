@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -35,9 +36,19 @@
                 ],
                 refundColumns: [
                     {
-                        align: 'center',
+                        align: 'left',
                         key: 'refundTotal',
+                        render() {
+                            return `<div class="refund-total" v-if="row.isRefund">
+                                        <img :src="row.img">
+                                        <div>
+                                            <p>MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD</p>
+                                            <p>订单编号：3232656564988</p>
+                                            <p>退款编号：3232656564988</p>
+                                        </div>`;
+                        },
                         title: '商品/订单号/退款号',
+                        width: 600,
                     },
                     {
                         align: 'right',
@@ -76,7 +87,8 @@
                 ],
                 refundData: [
                     {
-                        refundTotal: 2646846526,
+                        isRefund: true,
+                        img: image,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
                         refundTime: '2017-04-01  16:30:31',
@@ -84,7 +96,8 @@
                         refundPlatform: '已完成',
                     },
                     {
-                        refundTotal: 2646846526,
+                        isRefund: true,
+                        img: image,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
                         refundTime: '2017-04-01  16:30:31',
@@ -92,7 +105,8 @@
                         refundPlatform: '已完成',
                     },
                     {
-                        refundTotal: 2646846526,
+                        isRefund: true,
+                        img: image,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
                         refundTime: '2017-04-01  16:30:31',
@@ -100,7 +114,35 @@
                         refundPlatform: '已完成',
                     },
                     {
-                        refundTotal: 2646846526,
+                        isRefund: true,
+                        img: image,
+                        refundMoney: '300.00',
+                        refundName: 'huiyuanming',
+                        refundTime: '2017-04-01  16:30:31',
+                        refundStatus: '同意',
+                        refundPlatform: '已完成',
+                    },
+                    {
+                        isRefund: true,
+                        img: image,
+                        refundMoney: '300.00',
+                        refundName: 'huiyuanming',
+                        refundTime: '2017-04-01  16:30:31',
+                        refundStatus: '同意',
+                        refundPlatform: '已完成',
+                    },
+                    {
+                        isRefund: true,
+                        img: image,
+                        refundMoney: '300.00',
+                        refundName: 'huiyuanming',
+                        refundTime: '2017-04-01  16:30:31',
+                        refundStatus: '同意',
+                        refundPlatform: '已完成',
+                    },
+                    {
+                        isRefund: true,
+                        img: image,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
                         refundTime: '2017-04-01  16:30:31',
@@ -124,7 +166,7 @@
 </script>
 <template>
     <div class="seller-wrap">
-        <div class="service-complaint">
+        <div class="service-refund">
             <tabs value="name1">
                 <tab-pane label="退款记录" name="name1">
                     <card :bordered="false">
