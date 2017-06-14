@@ -21,6 +21,9 @@
                     information: '退款',
                     goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                     price: '1999.00',
+                    freight: '10.00',
+                    total: '138.00',
+                    numbering: 1254525945416,
                     process: [
                         {
                             status: '2016-12-21 11:30:31 发往西安中转',
@@ -131,43 +134,30 @@
                         </i-col>
                         <i-col span="9">
                             <h5>商品交易信息</h5>
-                            <div class="goods-intro-content">
-                                <row>
-                                    <i-col span="5">
-                                        <img :src="refund.picture" alt="">
-                                    </i-col>
-                                    <i-col span="19">
-                                        <p>{{ refund.goodsName }}</p>
-                                        <p><i>&yen;{{ refund.price }}</i>*{{ refund.amount }}(数量)</p>
-                                    </i-col>
-                                </row>
-                                <row>
-                                    <i-col>
-                                        <form-item label="运费">
-                                            {{ refund.freight }}
-                                        </form-item>
-                                    </i-col>
-                                </row>
-                            </div>
-                            <row>
-
-                                <i-col>
-                                    <form-item label="订单总额">
-                                        {{ refund.priceAll }}
-                                    </form-item>
-                                </i-col>
-                                <i-col>
+                            <i-form :label-width="160">
+                                <div class="goods-intro-content">
+                                    <row>
+                                        <i-col span="5">
+                                            <img :src="refund.picture" alt="">
+                                        </i-col>
+                                        <i-col span="19">
+                                            <p>{{ refund.goodsName }}</p>
+                                            <p><i>&yen;{{ refund.price }}</i>*{{ refund.amount }}(数量)</p>
+                                        </i-col>
+                                    </row>
+                                </div>
+                                <form-item label="运费">
+                                    {{ refund.freight }}
+                                </form-item>
+                                <form-item label="订单总额">
+                                    {{ refund.total }}
+                                </form-item>
+                                <row class="refund-number">
                                     <form-item label="订单编号">
-                                        {{ refund.orderNum }}
+                                        {{ refund.numbering }}
                                     </form-item>
-                                </i-col>
-                            </row>
-                            <row>
-
-                            </row>
-                            <row>
-
-                            </row>
+                                </row>
+                            </i-form>
                         </i-col>
                     </row>
                 </div>
