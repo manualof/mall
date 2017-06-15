@@ -1,135 +1,91 @@
-.service-refund-check {
-    .ivu-tabs-nav-scroll {
-        background: #ffffff;
-        padding: 0 20px;
-    }
-    .service-box {
-        border: 1px solid #e3e8ee;
+.seller-wrap {
+    .service-refund-check {
+        .edit-link-title {
+            background-color: #fff;
+            height: 44px;
+            line-height: 44px;
+            margin-bottom: 10px;
+            .ivu-btn {
+                padding: 6px 8px 6px 20px;
+            }
+        }
         h5 {
-            font-size: 14px;
             height: 40px;
             line-height: 40px;
             background-color: #f5f7f9;
             padding: 0 20px;
             border-bottom: 1px solid #e3e8ee;
+            font-size: 14px;
         }
-        .refund-service {
-            //padding: 32px;
-            //background-color: #f5f7f9;
-            padding-left: 70px;
-            padding-top: 24px;
-            padding-bottom: 20px;
-            .ivu-steps .ivu-steps-title {
-                //background: #f5f7f9;
+        .refund-details {
+            border: solid 1px #e3e8ee;
+            margin-bottom: 100px;
+            .ivu-col-span-15 {
+                border-right: 1px solid #e3e8ee;
+                min-height: 700px;
+                .ivu-row:last-child {
+                    .ivu-form-item {
+                        border-bottom: 0 none;
+                    }
+                }
             }
-            .ivu-steps .ivu-steps-head
-            ,.ivu-steps-item.ivu-steps-status-wait .ivu-steps-head-inner {
-                //background: #f5f7f9;
+            .check-step {
+                padding-left: 70px;
+                //padding-top: 24px;
+                //padding-bottom: 20px;
+                padding-top: 54px;
+                padding-bottom: 50px;
+                .ivu-steps .ivu-steps-tail {
+                    padding: 0;
+                }
             }
-            .ivu-steps .ivu-steps-tail {
-                padding: 0;
-            }
-        }
-        .ivu-row {
-            border-bottom: 1px solid #e3e8ee;
-            &:last-child {
-                border-bottom: none;
+            .ivu-col-span-9 {
+                .ivu-row:last-child {
+                    .ivu-form-item {
+                        border-bottom: 0 none;
+                    }
+                }
             }
             .ivu-form-item {
                 margin-bottom: 0;
                 padding: 8px 0;
+                border-bottom: 1px solid #e3e8ee;
             }
-        }
-    }
-    .prompt-box {
-        background-color: #f5f7f9;
-        padding: 20px;
-        font-size: 12px;
-        margin-bottom: 20px;
-    }
-    .apply-renewal {
-        padding-top: 30px;
-    }
-    .ivu-form-item {
-        .image-preview {
-            border: 2px solid #ccc;
-            position: relative;
-            width: 204px;
-            > i {
-                bottom: 0;
-                font-size: 30px;
-                position: absolute;
-                right: 0;
-            }
-            > img {
-                display: block;
-                max-width: 200px;
-            }
-        }
-        .ivu-upload {
-            background: #f5f7f9;
-            height: 90px;
-            width: 90px;
-            > .ivu-upload-select {
-                background: url("../images/plus.svg") center no-repeat;
-                height: 90px;
-            }
-        }
-    }
-    button {
-        margin-top: 20px;
-        margin-left: 190px;
-    }
-    .content{
-        padding: 16px;
-        background: #fff;
-    }
-    .ivu-card-body {
-        padding: 0;
-    }
-    .ivu-col-span-9 {
-        height: 697px;
-        border-bottom: 1px solid  #e3e8ee;
-        border-right: 1px solid  #e3e8ee;
-        .ivu-form-item {
-            border-right: transparent;
-            border-left: transparent;
-            &:last-child {
-                border-bottom: transparent;
-            }
-        }
-    }
-    .ivu-col-span-4 {
-        text-align: left;
-    }
-    .ivu-col-span-18 {
-        text-align: left;
-        margin-left: 0;
-        padding-left: 0;
-    }
-    .box-information {
-        font-size: 12px;
-        color: #657180;
-        .ivu-row {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
-        img {
-            width: 64px;
-            height: 64px;
-            margin: 12px 0;
-        }
-        .information-box {
-            span {
-                &:first-child {
-                    margin-top: 2px;
+            .goods-intro-content {
+                font-size: 12px;
+                border-bottom: 1px solid #e3e8ee;
+                > .ivu-row {
+                    padding: 12px 20px;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    align-items: center;;
                 }
-                &:last-child {
-                    color: #e4393c;
+                .ivu-col-span-5 {
+                    width: 64px;
+                    img {
+                        width: 64px;
+                        height: 64px;
+                    }
+                }
+                .ivu-col-span-19 {
+                    padding-left: 12px;
+                    p {
+                        &:last-child {
+                            margin-top: 6px;
+                        }
+                        i {
+                            color: #ff3300;
+                            font-style: normal;
+                        }
+                    }
                 }
             }
         }
+    }
+    .refund-number {
+        margin-bottom: 0;
     }
 }
