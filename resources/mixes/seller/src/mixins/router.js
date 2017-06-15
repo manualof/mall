@@ -47,6 +47,7 @@ import ServiceRefund from '../pages/ServiceRefund.vue';
 import ServiceRefundCheck from '../pages/ServiceRefundCheck.vue';
 import ServiceRefundDeal from '../pages/ServiceRefundDeal.vue';
 import ServiceReturns from '../pages/ServiceReturns.vue';
+import ServiceReturnsCheck from '../pages/ServiceReturnsCheck.vue';
 import ServiceComplaint from '../pages/ServiceComplaint.vue';
 
 export default function (injection) {
@@ -292,6 +293,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ServiceReturns,
                     path: 'service/returns',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceReturnsCheck,
+                    path: 'service/returns/check',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

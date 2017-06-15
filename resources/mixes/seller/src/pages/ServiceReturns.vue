@@ -12,6 +12,7 @@
         data() {
             return {
                 commodityTrading: {
+                    amount: 1,
                     carriage: '10.00',
                     content: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                     content1: '¥1999.00 * 1',
