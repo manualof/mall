@@ -1,6 +1,6 @@
 <script>
-    import injection from '../helpers/injection';
     import image from '../assets/images/img_logo.png';
+    import injection from '../helpers/injection';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -10,33 +10,6 @@
         },
         data() {
             return {
-                refund: {
-                    number: 263567946465245485,
-                    person: 'maijia',
-                    response: '未按时发货',
-                    money: '99.00',
-                    state: '发货太慢',
-                    picture: image,
-                    whether: '同意',
-                    information: '退款',
-                    goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
-                    price: '1999.00',
-                    freight: '10.00',
-                    total: '138.00',
-                    numbering: 1254525945416,
-                    process: [
-                        {
-                            status: '2016-12-21 11:30:31 发往西安中转',
-                        },
-                        {
-                            status: '2016-12-21 11:30:31 发往西安中转',
-                        },
-                        {
-                            status: '2016-12-21 11:30:31 西安市高新二路揽件',
-                        },
-                    ],
-                    user: '旺旺',
-                },
                 checkSteps: [
                     {
                         content: '2016-12-21 13:11:20',
@@ -53,6 +26,21 @@
                         title: '退货完成',
                     },
                 ],
+                refund: {
+                    freight: '10.00',
+                    goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
+                    information: '退款',
+                    money: '99.00',
+                    number: 263567946465245485,
+                    numbering: 1254525945416,
+                    person: 'maijia',
+                    price: '1999.00',
+                    picture: image,
+                    response: '未按时发货',
+                    state: '发货太慢',
+                    total: '138.00',
+                    whether: '同意',
+                },
             };
         },
         methods: {
@@ -84,7 +72,7 @@
                                         <row>
                                             <div class="check-step">
                                                 <steps :current="1">
-                                                    <step v-for="step in checkSteps" :title="step.title" :content="step.content"></step>
+                                                    <step :content="step.content" :title="step.title" v-for="step in checkSteps"></step>
                                                 </steps>
                                             </div>
                                         </row>
@@ -138,7 +126,7 @@
                                 <div class="goods-intro-content">
                                     <row>
                                         <i-col span="5">
-                                            <img :src="refund.picture" alt="">
+                                            <img :src="refund.picture">
                                         </i-col>
                                         <i-col span="19">
                                             <p>{{ refund.goodsName }}</p>
