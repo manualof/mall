@@ -1,6 +1,6 @@
 <script>
-    import injection from '../helpers/injection';
     import image from '../assets/images/img_logo.png';
+    import injection from '../helpers/injection';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -10,30 +10,6 @@
         },
         data() {
             return {
-                refundList: [
-                    {
-                        label: '进行中',
-                        value: '1',
-                    },
-                    {
-                        label: '已完成',
-                        value: '2',
-                    },
-                ],
-                searchList: [
-                    {
-                        label: '退款人',
-                        value: '1',
-                    },
-                    {
-                        label: '退款主题',
-                        value: '2',
-                    },
-                    {
-                        label: '退款编号',
-                        value: '3',
-                    },
-                ],
                 refundColumns: [
                     {
                         align: 'left',
@@ -87,67 +63,91 @@
                 ],
                 refundData: [
                     {
-                        isRefund: true,
                         img: image,
+                        isRefund: true,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundTime: '2017-04-01  16:30:31',
-                        refundStatus: '同意',
                         refundPlatform: '已完成',
+                        refundStatus: '同意',
+                        refundTime: '2017-04-01  16:30:31',
                     },
                     {
-                        isRefund: true,
                         img: image,
+                        isRefund: true,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundTime: '2017-04-01  16:30:31',
-                        refundStatus: '同意',
                         refundPlatform: '已完成',
+                        refundStatus: '同意',
+                        refundTime: '2017-04-01  16:30:31',
                     },
                     {
-                        isRefund: true,
                         img: image,
+                        isRefund: true,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundTime: '2017-04-01  16:30:31',
-                        refundStatus: '同意',
                         refundPlatform: '已完成',
+                        refundStatus: '同意',
+                        refundTime: '2017-04-01  16:30:31',
                     },
                     {
-                        isRefund: true,
                         img: image,
+                        isRefund: true,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundTime: '2017-04-01  16:30:31',
-                        refundStatus: '同意',
                         refundPlatform: '已完成',
+                        refundStatus: '同意',
+                        refundTime: '2017-04-01  16:30:31',
                     },
                     {
-                        isRefund: true,
                         img: image,
+                        isRefund: true,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundTime: '2017-04-01  16:30:31',
-                        refundStatus: '同意',
                         refundPlatform: '已完成',
+                        refundStatus: '同意',
+                        refundTime: '2017-04-01  16:30:31',
                     },
                     {
-                        isRefund: true,
                         img: image,
+                        isRefund: true,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundTime: '2017-04-01  16:30:31',
-                        refundStatus: '同意',
                         refundPlatform: '已完成',
+                        refundStatus: '同意',
+                        refundTime: '2017-04-01  16:30:31',
                     },
                     {
-                        isRefund: true,
                         img: image,
+                        isRefund: true,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundTime: '2017-04-01  16:30:31',
-                        refundStatus: '同意',
                         refundPlatform: '已完成',
+                        refundStatus: '同意',
+                        refundTime: '2017-04-01  16:30:31',
+                    },
+                ],
+                refundList: [
+                    {
+                        label: '进行中',
+                        value: '1',
+                    },
+                    {
+                        label: '已完成',
+                        value: '2',
+                    },
+                ],
+                searchList: [
+                    {
+                        label: '退款人',
+                        value: '1',
+                    },
+                    {
+                        label: '退款主题',
+                        value: '2',
+                    },
+                    {
+                        label: '退款编号',
+                        value: '3',
                     },
                 ],
                 self: this,
@@ -175,10 +175,9 @@
                                 <div class="select-content">
                                     <ul class="clearfix">
                                         <li class="store-body-header-right">
-                                            <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
+                                            <i-input  placeholder="请输入关键词进行搜索" v-model="applicationWord">
+                                                <i-select slot="prepend" style="width: 100px;" placeholder="请输入关键词进行搜索">
+                                                    <i-option :value="item.value" v-for="item in searchList">{{ item.label }}</i-option>
                                                 </i-select>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
@@ -186,17 +185,14 @@
                                         <li>
                                             处理状态
                                             <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in refundList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
+                                                <i-option :key="item" :value="item.value" v-for="item in refundList">{{ item.label }}</i-option>
                                             </i-select>
                                         </li>
                                         <li>
                                             申请时间
-                                            <date-picker type="date" placeholder="选择日期"
-                                                         style="width: 124px"></date-picker>
+                                            <date-picker placeholder="选择日期" style="width: 124px" type="date"></date-picker>
                                             -
-                                            <date-picker type="date" placeholder="选择日期"
-                                                         style="width: 124px"></date-picker>
+                                            <date-picker placeholder="选择日期" style="width: 124px" type="date"></date-picker>
                                         </li>
                                     </ul>
                                 </div>
@@ -206,7 +202,7 @@
                                          ref="refundList">
                                 </i-table>
                                 <div class="page">
-                                    <page :total="100" show-elevator></page>
+                                    <page  show-elevator :total="100"></page>
                                 </div>
                             </div>
                         </div>

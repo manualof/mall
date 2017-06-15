@@ -1,7 +1,7 @@
 <script>
-    import injection from '../helpers/injection';
     import image1 from '../assets/images/img_logo.png';
     import image2 from '../assets/images/img_banner.png';
+    import injection from '../helpers/injection';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -11,35 +11,13 @@
         },
         data() {
             return {
-                returnRequest: {
-                    returnNumber: '263567946465245485',
-                    returnName: 'maijia',
-                    returnResponse: '尺码不标准',
-                    returnMoney: '￥99.00',
-                    returnState: '发货太慢',
-                    image: image2,
-                },
-                merchantsAdvice: {
-                    returnsIdea: '同意',
-                    returnsNote: '退款',
-                    returnsLogistics: '圆通快递 323264991323',
-                    returnsGoods: '确认物品完整',
-                },
-                mallAudit: {
-                    returnsPlatform: '已完成',
-                    returnsRefund: '退款',
-                },
                 commodityTrading: {
-                    pic: image1,
+                    carriage: '10.00',
                     content: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                     content1: '¥1999.00 * 1',
-                    carriage: '10.00',
                     order: '138.00',
+                    pic: image1,
                     serial: 1254525945416,
-                },
-                logisticsInformation: {
-                    logisticsCompany: '顺丰快递',
-                    trackingNumber: '326596623565694313',
                 },
                 logistics: [
                     { information: '2016-12-21 11:30:31  发往西安中转' },
@@ -47,6 +25,28 @@
                     { information: '2016-12-21 11:30:31  发往西安中转' },
                     { information: '2016-12-21 11:30:31  发往西安中转' },
                 ],
+                logisticsInformation: {
+                    logisticsCompany: '顺丰快递',
+                    trackingNumber: '326596623565694313',
+                },
+                mallAudit: {
+                    returnsPlatform: '已完成',
+                    returnsRefund: '退款',
+                },
+                merchantsAdvice: {
+                    returnsIdea: '同意',
+                    returnsGoods: '确认物品完整',
+                    returnsLogistics: '圆通快递 323264991323',
+                    returnsNote: '退款',
+                },
+                returnRequest: {
+                    image: image2,
+                    returnMoney: '￥99.00',
+                    returnName: 'maijia',
+                    returnNumber: '263567946465245485',
+                    returnResponse: '尺码不标准',
+                    returnState: '发货太慢',
+                },
                 steps: [
                     {
                         content: '2016-12-21 13:11:20',
@@ -82,7 +82,7 @@
                                             <h5>退款服务</h5>
                                             <div class="returns-service">
                                                 <steps :current="1">
-                                                    <step v-for="step in steps" :title="step.title" :content="step.content"></step>
+                                                    <step  :content="step.content" :title="step.title" v-for="step in steps"></step>
                                                 </steps>
                                             </div>
                                         </div>
