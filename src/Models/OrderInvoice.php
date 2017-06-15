@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
-use Notadd\Member\Models\Member;
+use Notadd\Foundation\Member\Member;
 
 /**
  * Class OrderInvoice.
