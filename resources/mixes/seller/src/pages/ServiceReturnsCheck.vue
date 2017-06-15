@@ -195,7 +195,7 @@
                                     {{ logisticsInformation.trackingNumber }}
                                 </form-item>
                                 <row>
-                                    <i-col span="18">
+                                    <i-col span="16">
                                         <form-item label="物流信息">
                                         <span v-for="item in logistics">
                                             {{ item.information }}
