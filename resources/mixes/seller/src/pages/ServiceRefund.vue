@@ -56,7 +56,7 @@
                         key: 'complaintAction',
                         render(row, column, index) {
                             return `<i-button @click.native="check(${index})" size="small" type="ghost" v-if="row.isLook">查看</i-button>
-                                     <i-button  @click.native="" size="small" type="ghost" v-if="!row.isLook">处理</i-button>`;
+                                     <i-button  @click.native="deal(${index})" size="small" type="ghost" v-if="!row.isLook">处理</i-button>`;
                         },
                         title: '操作',
                         width: 120,
@@ -71,7 +71,7 @@
                         refundPlatform: '已完成',
                         refundStatus: '同意',
                         refundTime: '2017-04-01  16:30:31',
-                        isLook: true
+                        isLook: true,
                     },
                     {
                         img: image,
@@ -80,7 +80,7 @@
                         refundName: 'huiyuanming',
                         refundStatus: '同意',
                         refundTime: '2017-04-01  16:30:31',
-                        isLook: false
+                        isLook: false,
                     },
                     {
                         img: image,
@@ -155,6 +155,13 @@
                 this.$router.push(
                     {
                         path: 'refund/check',
+                    },
+                );
+            },
+            deal() {
+                this.$router.push(
+                    {
+                        path: 'refund/deal',
                     },
                 );
             },
