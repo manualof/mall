@@ -14,6 +14,7 @@
                         align: 'center',
                         key: 'complaintNumber',
                         title: '投诉编号',
+                        width: 150,
                     },
                     {
                         align: 'center',

@@ -24,32 +24,36 @@
                                         </div>`;
                         },
                         title: '商品/订单号/退货编号',
-                        width: 600,
                     },
                     {
-                        align: 'right',
+                        align: 'center',
                         key: 'returnsMoney',
                         title: '退款金额',
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'returnsName',
                         title: '买家会员名',
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'returnsTime',
                         title: '申请时间',
+                        width: 160,
                     },
                     {
                         align: 'center',
                         key: 'returnsStatus',
-                        title: '处理状态1',
+                        title: '处理状态',
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'returnsPlatform',
                         title: '平台确认',
+                        width: 100,
                     },
                     {
                         align: 'center',
