@@ -117,7 +117,7 @@
                                     </form-item>
                                     <row>
                                         <form-item label="备注信息" class="deal-advise">
-                                            <i-input type="textarea"></i-input>
+                                            <i-input type="textarea" :autosize="{minRows: 3,maxRows: 5}"></i-input>
                                             <p class="tip">只能提交一次，请认真选择，同意并经过平台确认后会将金额返还给买家，不同意买家可以向平台投诉或再次申请</p>
                                         </form-item>
                                     </row>
