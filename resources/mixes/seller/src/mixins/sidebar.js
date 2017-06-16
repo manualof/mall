@@ -161,10 +161,6 @@ export default function (injection) {
         {
             children: [
                 {
-                    path: '/seller/service',
-                    title: '全部咨询',
-                },
-                {
                     path: '/seller/service/complaint',
                     title: '投诉管理',
                 },

@@ -42,7 +42,6 @@ import OrderEvaluation from '../pages/OrderEvaluation.vue';
 import Customer from '../pages/Customer.vue';
 import CustomerMessage from '../pages/CustomerMessage.vue';
 import Account from '../pages/Account.vue';
-import Service from '../pages/Service.vue';
 import ServiceRefund from '../pages/ServiceRefund.vue';
 import ServiceRefundCheck from '../pages/ServiceRefundCheck.vue';
 import ServiceRefundDeal from '../pages/ServiceRefundDeal.vue';
@@ -269,11 +268,6 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: Account,
                     path: 'account',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: Service,
-                    path: 'service',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
