@@ -24,32 +24,36 @@
                                         </div>`;
                         },
                         title: '商品/订单号/退款号',
-                        width: 600,
                     },
                     {
-                        align: 'right',
+                        align: 'center',
                         key: 'refundMoney',
                         title: '退款金额',
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'refundName',
                         title: '买家会员名',
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'refundTime',
                         title: '申请时间',
+                        width: 160,
                     },
                     {
                         align: 'center',
                         key: 'refundStatus',
                         title: '处理状态',
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'refundPlatform',
                         title: '平台确认',
+                        width: 100,
                     },
                     {
                         align: 'center',

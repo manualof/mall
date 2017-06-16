@@ -41,13 +41,13 @@
                         align: 'center',
                         key: 'returnsTime',
                         title: '申请时间',
-                        width: 150,
+                        width: 160,
                     },
                     {
                         align: 'center',
                         key: 'returnsStatus',
-                        title: '处理状态1',
-                        width: 150,
+                        title: '处理状态',
+                        width: 100,
                     },
                     {
                         align: 'center',
@@ -63,14 +63,14 @@
                                      <i-button  @click.native="deal(${index})" size="small" type="ghost" v-if="!row.isLook">处理</i-button>`;
                         },
                         title: '操作',
-                        width: 180,
+                        width: 120,
                     },
                 ],
                 returnsData: [
                     {
                         img: image,
                         isReturns: true,
-                        returnsMoney: '￥1999.00',
+                        returnsMoney: '1999.00',
                         returnsName: 'ibenchu',
                         returnsPlatform: '无',
                         returnsStatus: '待审核',
