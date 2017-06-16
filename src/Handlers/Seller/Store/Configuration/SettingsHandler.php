@@ -13,7 +13,7 @@ use Notadd\Foundation\Routing\Abstracts\Handler;
 /**
  * Class SettingHandler.
  */
-class SettingHandler extends Handler
+class SettingsHandler extends Handler
 {
     /**
      * Execute Handler.

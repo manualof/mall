@@ -226,7 +226,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/category/remove', StoreCategoryController::class . '@remove');
             $this->router->post('store/configuration', StoreConfigurationController::class . '@configuration');
             $this->router->post('store/configuration/carousel', StoreConfigurationController::class . '@carousel');
-            $this->router->post('store/configuration/setting', StoreConfigurationController::class . '@setting');
+            $this->router->post('store/configuration/setting', StoreConfigurationController::class . '@settings');
             $this->router->post('store/dynamic', StoreDynamicController::class . '@dynamic');
             $this->router->post('store/dynamic/configuration', StoreDynamicController::class . '@configuration');
             $this->router->post('store/dynamic/create', StoreDynamicController::class . '@create');
