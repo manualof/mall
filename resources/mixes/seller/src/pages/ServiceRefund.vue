@@ -123,27 +123,31 @@
                         refundTime: '2017-04-01  16:30:31',
                     },
                 ],
-                refundList: [
+                dealRefund: [
                     {
-                        label: '进行中',
+                        label: '待审核',
                         value: '1',
                     },
                     {
-                        label: '已完成',
+                        label: '同意',
+                        value: '2',
+                    },
+                    {
+                        label: '不同意',
                         value: '2',
                     },
                 ],
-                searchList: [
+                refundSearch: [
                     {
-                        label: '退款人',
+                        label: '订单编号',
                         value: '1',
                     },
                     {
-                        label: '退款主题',
+                        label: '退货编号',
                         value: '2',
                     },
                     {
-                        label: '退款编号',
+                        label: '买家会员名',
                         value: '3',
                     },
                 ],
@@ -179,17 +183,17 @@
                                 <div class="select-content">
                                     <ul class="clearfix">
                                         <li class="store-body-header-right">
-                                            <i-input  placeholder="请输入关键词进行搜索" v-model="applicationWord">
+                                            <i-input  placeholder="请输入关键词进行搜索">
                                                 <i-select slot="prepend" style="width: 100px;" placeholder="请输入关键词进行搜索">
-                                                    <i-option :value="item.value" v-for="item in searchList">{{ item.label }}</i-option>
+                                                    <i-option :value="item.value" v-for="item in refundSearch">{{ item.label }}</i-option>
                                                 </i-select>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
                                         <li>
                                             处理状态
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option :key="item" :value="item.value" v-for="item in refundList">{{ item.label }}</i-option>
+                                            <i-select style="width:124px">
+                                                <i-option :key="item" :value="item.value" v-for="item in dealRefund">{{ item.label }}</i-option>
                                             </i-select>
                                         </li>
                                         <li>
