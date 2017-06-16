@@ -8,11 +8,20 @@
  */
 namespace Notadd\Mall\Handlers\User\Order;
 
-use Notadd\Foundation\Passport\Abstracts\DataHandler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 
 /**
  * Class ListHandler.
  */
-class ListHandler extends DataHandler
+class ListHandler extends Handler
 {
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    protected function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

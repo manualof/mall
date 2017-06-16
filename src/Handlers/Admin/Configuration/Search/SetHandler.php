@@ -9,13 +9,13 @@
 namespace Notadd\Mall\Handlers\Admin\Configuration\Search;
 
 use Illuminate\Container\Container;
-use Notadd\Foundation\Passport\Abstracts\SetHandler as AbstractSetHandler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Foundation\Setting\Contracts\SettingsRepository;
 
 /**
  * Class SetHandler.
  */
-class SetHandler extends AbstractSetHandler
+class SetHandler extends Handler
 {
     /**
      * @var \Notadd\Foundation\Setting\Contracts\SettingsRepository
@@ -36,13 +36,10 @@ class SetHandler extends AbstractSetHandler
 
     /**
      * Execute Handler.
-     *
-     * @throws \Exception
      */
     public function execute()
     {
         $this->settings->set('mall.configuration.search.default', $this->request->input('defaultSearch'));
-
-        return true;
+        $this->withCode(200)->withMessage('');
     }
 }
