@@ -65,22 +65,22 @@
                 refundData: [
                     {
                         img: image,
+                        isLook: true,
                         isRefund: true,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
                         refundPlatform: '已完成',
                         refundStatus: '同意',
                         refundTime: '2017-04-01  16:30:31',
-                        isLook: true,
                     },
                     {
                         img: image,
+                        isLook: false,
                         isRefund: true,
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
                         refundStatus: '同意',
                         refundTime: '2017-04-01  16:30:31',
-                        isLook: false,
                     },
                     {
                         img: image,
