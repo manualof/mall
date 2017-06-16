@@ -24,32 +24,36 @@
                                         </div>`;
                         },
                         title: '商品/订单号/退货编号',
-                        width: 600,
                     },
                     {
-                        align: 'right',
+                        align: 'center',
                         key: 'returnsMoney',
                         title: '退款金额',
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'returnsName',
                         title: '买家会员名',
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'returnsTime',
                         title: '申请时间',
+                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'returnsStatus',
                         title: '处理状态1',
+                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'returnsPlatform',
                         title: '平台确认',
+                        width: 100,
                     },
                     {
                         align: 'center',
@@ -59,14 +63,14 @@
                                      <i-button  @click.native="deal(${index})" size="small" type="ghost" v-if="!row.isLook">处理</i-button>`;
                         },
                         title: '操作',
-                        width: 120,
+                        width: 180,
                     },
                 ],
                 returnsData: [
                     {
                         img: image,
                         isReturns: true,
-                        returnsMoney: '1999.00',
+                        returnsMoney: '￥1999.00',
                         returnsName: 'ibenchu',
                         returnsPlatform: '无',
                         returnsStatus: '待审核',
