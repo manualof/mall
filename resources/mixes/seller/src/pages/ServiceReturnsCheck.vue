@@ -11,10 +11,10 @@
         data() {
             return {
                 commodityTrading: {
-                    carriage: '10.00',
+                    amount: 1,
+                    carriage: 10.00,
                     content: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
-                    content1: '¥1999.00 * 1',
-                    order: '138.00',
+                    content1: 1999.00,
                     pic: image,
                     serial: 1254525945416,
                 },
@@ -40,7 +40,7 @@
                 },
                 returnRequest: {
                     picture: image,
-                    returnMoney: '￥99.00',
+                    returnMoney: '99.00',
                     returnName: 'maijia',
                     returnNumber: '263567946465245485',
                     returnResponse: '尺码不标准',
@@ -68,6 +68,12 @@
             goBack() {
                 const self = this;
                 self.$router.go(-1);
+            },
+        },
+        computed: {
+            checkOrder() {
+                return (this.commodityTrading.content1 * this.commodityTrading.amount)
+                        + this.commodityTrading.carriage;
             },
         },
     };
@@ -177,7 +183,7 @@
                                     {{ commodityTrading.carriage }}
                                 </form-item>
                                 <form-item label="订单总额">
-                                    {{ commodityTrading.order }}
+                                    {{ checkOrder }}
                                 </form-item>
                                 <row class="refund-number">
                                     <form-item label="订单编号">
@@ -195,9 +201,9 @@
                                     {{ logisticsInformation.trackingNumber }}
                                 </form-item>
                                 <row>
-                                    <i-col span="16">
+                                    <i-col span="24">
                                         <form-item label="物流信息">
-                                        <span v-for="item in logistics">
+                                        <span v-for="item in logistics" class="logistics-check">
                                             {{ item.information }}
                                         </span>
                                         </form-item>
