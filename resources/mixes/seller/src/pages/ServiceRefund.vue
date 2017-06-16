@@ -35,7 +35,7 @@
                         align: 'center',
                         key: 'refundName',
                         title: '买家会员名',
-                        width: 100,
+                        width: 120,
                     },
                     {
                         align: 'center',
