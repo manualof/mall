@@ -4,25 +4,25 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-01 16:08
+ * @datetime 2017-06-01 18:11
  */
-namespace Notadd\Mall\Entities;
+namespace Notadd\Mall\Flows;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class ProductCategory.
+ * Class OrderExpress.
  */
-class ProductCategory extends Entity
+class OrderExpress extends Entity
 {
     /**
      * @return string
      */
     public function name()
     {
-        return 'mall.product.category';
+        return 'mall.order.express';
     }
 
     /**
@@ -31,12 +31,10 @@ class ProductCategory extends Entity
     public function places()
     {
         return [
-            'create',
-            'created',
-            'edit',
-            'edited',
-            'remove',
-            'removed',
+            'send',
+            'sent',
+            'take',
+            'took',
         ];
     }
 
@@ -46,11 +44,9 @@ class ProductCategory extends Entity
     public function transitions()
     {
         return [
-            new Transition('create', 'create', 'created'),
-            new Transition('need_to_edit', 'created', 'edit'),
-            new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
-            new Transition('remove', 'remove', 'removed'),
+            new Transition('send', 'send', 'sent'),
+            new Transition('wait_to_take', 'sent', 'take'),
+            new Transition('take', 'take', 'took'),
         ];
     }
 
@@ -62,19 +58,13 @@ class ProductCategory extends Entity
     public function guard(GuardEvent $event)
     {
         switch ($event->getTransition()->getName()) {
-            case 'create':
+            case 'send':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'need_to_edit':
+            case 'wait_to_take':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'edit':
-                $this->block($event, $this->permission(''));
-                break;
-            case 'need_to_remove':
-                $this->block($event, $this->permission(''));
-                break;
-            case 'remove':
+            case 'take':
                 $this->block($event, $this->permission(''));
                 break;
             default:

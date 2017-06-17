@@ -4,25 +4,25 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-01 18:11
+ * @datetime 2017-06-01 16:07
  */
-namespace Notadd\Mall\Entities;
+namespace Notadd\Mall\Flows;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class OrderExpress.
+ * Class OrderRate.
  */
-class OrderExpress extends Entity
+class OrderRate extends Entity
 {
     /**
      * @return string
      */
     public function name()
     {
-        return 'mall.order.express';
+        return 'mall.order.rate';
     }
 
     /**
@@ -31,10 +31,10 @@ class OrderExpress extends Entity
     public function places()
     {
         return [
-            'send',
-            'sent',
-            'take',
-            'took',
+            'rate',      // 评价
+            'rated',     // 评价完胜
+            'review',    // 审核
+            'reviewed',  // 审核完成
         ];
     }
 
@@ -44,9 +44,9 @@ class OrderExpress extends Entity
     public function transitions()
     {
         return [
-            new Transition('send', 'send', 'sent'),
-            new Transition('wait_to_take', 'sent', 'take'),
-            new Transition('take', 'take', 'took'),
+            new Transition('rate', 'rate', 'rated'),
+            new Transition('wait_to_review', 'rated', 'review'),
+            new Transition('review', 'review', 'reviewed'),
         ];
     }
 
@@ -58,13 +58,13 @@ class OrderExpress extends Entity
     public function guard(GuardEvent $event)
     {
         switch ($event->getTransition()->getName()) {
-            case 'send':
+            case 'rate':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'wait_to_take':
+            case 'wait_to_review':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'take':
+            case 'review':
                 $this->block($event, $this->permission(''));
                 break;
             default:

@@ -4,25 +4,25 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-01 12:08
+ * @datetime 2017-06-01 16:06
  */
-namespace Notadd\Mall\Entities;
+namespace Notadd\Mall\Flows;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class Product.
+ * Class StoreDynamic.
  */
-class Product extends Entity
+class StoreDynamic extends Entity
 {
     /**
      * @return string
      */
     public function name()
     {
-        return 'mall.product';
+        return 'mall.store.dynamic';
     }
 
     /**

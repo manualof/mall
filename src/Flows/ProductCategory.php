@@ -4,25 +4,25 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-01 16:05
+ * @datetime 2017-06-01 16:08
  */
-namespace Notadd\Mall\Entities;
+namespace Notadd\Mall\Flows;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class Express.
+ * Class ProductCategory.
  */
-class Express extends Entity
+class ProductCategory extends Entity
 {
     /**
      * @return string
      */
     public function name()
     {
-        return 'mall.express';
+        return 'mall.product.category';
     }
 
     /**
@@ -31,12 +31,12 @@ class Express extends Entity
     public function places()
     {
         return [
-            'pay',     // 支付
-            'payed',   // 支付完成
-            'send',    // 发货
-            'sent',    // 发货完成
-            'take',    // 收货
-            'took',    // 收货完成
+            'create',
+            'created',
+            'edit',
+            'edited',
+            'remove',
+            'removed',
         ];
     }
 
@@ -46,11 +46,11 @@ class Express extends Entity
     public function transitions()
     {
         return [
-            new Transition('pay', 'pay', 'payed'),
-            new Transition('wait_to_send', 'payed', 'send'),
-            new Transition('send', 'send', 'sent'),
-            new Transition('wait_to_take', 'sent', 'take'),
-            new Transition('take', 'take', 'took'),
+            new Transition('create', 'create', 'created'),
+            new Transition('need_to_edit', 'created', 'edit'),
+            new Transition('edit', 'edit', 'edited'),
+            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('remove', 'remove', 'removed'),
         ];
     }
 
@@ -62,19 +62,19 @@ class Express extends Entity
     public function guard(GuardEvent $event)
     {
         switch ($event->getTransition()->getName()) {
-            case 'pay':
+            case 'create':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'wait_to_send':
+            case 'need_to_edit':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'send':
+            case 'edit':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'wait_to_take':
+            case 'need_to_remove':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'take':
+            case 'remove':
                 $this->block($event, $this->permission(''));
                 break;
             default:

@@ -6,7 +6,7 @@
  * @copyright (c) 2017, notadd.com
  * @datetime 2017-06-01 16:07
  */
-namespace Notadd\Mall\Entities;
+namespace Notadd\Mall\Flows;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
 use Symfony\Component\Workflow\Event\GuardEvent;

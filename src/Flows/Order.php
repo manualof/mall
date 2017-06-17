@@ -4,25 +4,25 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-01 18:12
+ * @datetime 2017-06-01 16:05
  */
-namespace Notadd\Mall\Entities;
+namespace Notadd\Mall\Flows;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class OrderRefund.
+ * Class Order.
  */
-class OrderRefund extends Entity
+class Order extends Entity
 {
     /**
      * @return string
      */
     public function name()
     {
-        return 'mall.refund';
+        return 'mall.order';
     }
 
     /**
@@ -31,16 +31,16 @@ class OrderRefund extends Entity
     public function places()
     {
         return [
-            'launch',      // 发起退款
-            'launched',    // 发起完成
-            'review',      // 审核退款
-            'reviewed',    // 审核完成
-            'reject',      // 拒绝
-            'rejected',    // 拒绝完成
-            'refund',      // 退货
-            'refunded',    // 退货完成
-            'reimburse',   // 退款
-            'reimbursed',  // 退款完成
+            'launch',    // 发起订单
+            'launched',  // 发起完成
+            'pay',       // 等待支付
+            'payed',     // 支付完成
+            'deliver',   // 等待发货
+            'delivered', // 发货完成
+            'take',      // 等待收货
+            'took',      // 收货完成
+            'cancel',    // 取消
+            'cancelled', // 已取消
         ];
     }
 
@@ -50,15 +50,15 @@ class OrderRefund extends Entity
     public function transitions()
     {
         return [
+            new Transition('cancel', 'cancel', 'cancelled'),
+            new Transition('deliver', 'deliver', 'delivered'),
             new Transition('launch', 'launch', 'launched'),
-            new Transition('wait_to_review', 'launched', 'review'),
-            new Transition('review', 'review', 'review'),
-            new Transition('wait_to_refund', 'review', 'refund'),
-            new Transition('need_to_reject', 'review', 'reject'),
-            new Transition('reject', 'reject', 'rejected'),
-            new Transition('refund', 'refund', 'refund'),
-            new Transition('wait_to_reimburse', 'refund', 'reimburse'),
-            new Transition('reimburse', 'reimburse', 'reimburse'),
+            new Transition('pay', 'pay', 'payed'),
+            new Transition('take', 'take', 'took'),
+            new Transition('need_to_cancel', ['launched', 'payed', 'delivered'], 'cancel'),
+            new Transition('wait_to_deliver', 'payed', 'deliver'),
+            new Transition('wait_to_pay', 'launched', 'pay'),
+            new Transition('wait_to_take', 'delivered', 'take'),
         ];
     }
 
@@ -70,31 +70,31 @@ class OrderRefund extends Entity
     public function guard(GuardEvent $event)
     {
         switch ($event->getTransition()->getName()) {
+            case 'cancel':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'deliver':
+                $this->block($event, $this->permission(''));
+                break;
             case 'launch':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'wait_to_review':
+            case 'pay':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'review':
+            case 'take':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'wait_to_refund':
+            case 'need_to_cancel':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'need_to_reject':
+            case 'wait_to_deliver':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'reject':
+            case 'wait_to_pay':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'refund':
-                $this->block($event, $this->permission(''));
-                break;
-            case 'wait_to_reimburse':
-                $this->block($event, $this->permission(''));
-                break;
-            case 'reimburse':
+            case 'wait_to_take':
                 $this->block($event, $this->permission(''));
                 break;
             default:

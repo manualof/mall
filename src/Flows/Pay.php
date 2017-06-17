@@ -4,25 +4,25 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-01 16:07
+ * @datetime 2017-06-01 16:06
  */
-namespace Notadd\Mall\Entities;
+namespace Notadd\Mall\Flows;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class OrderRate.
+ * Class Pay.
  */
-class OrderRate extends Entity
+class Pay extends Entity
 {
     /**
      * @return string
      */
     public function name()
     {
-        return 'mall.order.rate';
+        return 'mall.pay';
     }
 
     /**
@@ -31,10 +31,12 @@ class OrderRate extends Entity
     public function places()
     {
         return [
-            'rate',      // 评价
-            'rated',     // 评价完胜
-            'review',    // 审核
-            'reviewed',  // 审核完成
+            'launch',
+            'launched',
+            'pay',
+            'payed',
+            'cancel',
+            'canceled',
         ];
     }
 
@@ -44,9 +46,11 @@ class OrderRate extends Entity
     public function transitions()
     {
         return [
-            new Transition('rate', 'rate', 'rated'),
-            new Transition('wait_to_review', 'rated', 'review'),
-            new Transition('review', 'review', 'reviewed'),
+            new Transition('launch', 'launch', 'launched'),
+            new Transition('wait_to_pay', 'launched', 'pay'),
+            new Transition('pay', 'pay', 'payed'),
+            new Transition('need_to_cancel', ['launched', 'payed'], 'cancel'),
+            new Transition('cancel', 'cancel', 'canceled'),
         ];
     }
 
@@ -58,13 +62,19 @@ class OrderRate extends Entity
     public function guard(GuardEvent $event)
     {
         switch ($event->getTransition()->getName()) {
-            case 'rate':
+            case 'launch':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'wait_to_review':
+            case 'wait_to_pay':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'review':
+            case 'pay':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'need_to_cancel':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'cancel':
                 $this->block($event, $this->permission(''));
                 break;
             default:

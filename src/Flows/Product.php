@@ -4,33 +4,25 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-01 16:04
+ * @datetime 2017-06-01 12:08
  */
-namespace Notadd\Mall\Entities;
+namespace Notadd\Mall\Flows;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class Store.
+ * Class Product.
  */
-class Store extends Entity
+class Product extends Entity
 {
-    /**
-     * @return array
-     */
-    public function events()
-    {
-        return [];
-    }
-
     /**
      * @return string
      */
     public function name()
     {
-        return 'mall.store';
+        return 'mall.product';
     }
 
     /**
@@ -39,12 +31,14 @@ class Store extends Entity
     public function places()
     {
         return [
-            'register',
-            'registered',
-            'close',
-            'closed',
-            'open',
-            'opened',
+            'create',
+            'created',
+            'edit',
+            'edited',
+            'remove',
+            'removed',
+            'publish',
+            'published',
         ];
     }
 
@@ -54,11 +48,13 @@ class Store extends Entity
     public function transitions()
     {
         return [
-            new Transition('register', 'register', 'registered'),
-            new Transition('need_to_close', ['opened', 'registered'], 'close'),
-            new Transition('close', 'close', 'closed'),
-            new Transition('need_to_open', 'registered', 'open'),
-            new Transition('open', 'open', 'opened'),
+            new Transition('create', 'create', 'created'),
+            new Transition('need_to_edit', 'created', 'edit'),
+            new Transition('edit', 'edit', 'edited'),
+            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('remove', 'remove', 'removed'),
+            new Transition('need_to_publish', ['created', 'edited'], 'publish'),
+            new Transition('publish', 'publish', 'published'),
         ];
     }
 
@@ -70,19 +66,25 @@ class Store extends Entity
     public function guard(GuardEvent $event)
     {
         switch ($event->getTransition()->getName()) {
-            case 'register':
+            case 'create':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'need_to_close':
+            case 'need_to_edit':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'close':
+            case 'edit':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'need_to_open':
+            case 'need_to_remove':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'open':
+            case 'remove':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'need_to_publish':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'publish':
                 $this->block($event, $this->permission(''));
                 break;
             default:

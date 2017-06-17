@@ -9,21 +9,21 @@
 namespace Notadd\Mall\Listeners;
 
 use Notadd\Foundation\Flow\Abstracts\FlowRegister as AbstractFlowRegister;
-use Notadd\Mall\Entities\Express;
-use Notadd\Mall\Entities\Order;
-use Notadd\Mall\Entities\OrderExchange;
-use Notadd\Mall\Entities\OrderExpress;
-use Notadd\Mall\Entities\OrderRate;
-use Notadd\Mall\Entities\OrderRefund;
-use Notadd\Mall\Entities\Pay;
-use Notadd\Mall\Entities\Product;
-use Notadd\Mall\Entities\ProductCategory;
-use Notadd\Mall\Entities\ProductRate;
-use Notadd\Mall\Entities\ProductSpecification;
-use Notadd\Mall\Entities\Store;
-use Notadd\Mall\Entities\StoreCategory;
-use Notadd\Mall\Entities\StoreDynamic;
-use Notadd\Mall\Entities\StoreRate;
+use Notadd\Mall\Flows\Express;
+use Notadd\Mall\Flows\Order;
+use Notadd\Mall\Flows\OrderExchange;
+use Notadd\Mall\Flows\OrderExpress;
+use Notadd\Mall\Flows\OrderRate;
+use Notadd\Mall\Flows\OrderRefund;
+use Notadd\Mall\Flows\Pay;
+use Notadd\Mall\Flows\Product;
+use Notadd\Mall\Flows\ProductCategory;
+use Notadd\Mall\Flows\ProductRate;
+use Notadd\Mall\Flows\ProductSpecification;
+use Notadd\Mall\Flows\Store;
+use Notadd\Mall\Flows\StoreCategory;
+use Notadd\Mall\Flows\StoreDynamic;
+use Notadd\Mall\Flows\StoreRate;
 
 /**
  * Class FlowRegister.

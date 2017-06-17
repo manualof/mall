@@ -4,25 +4,25 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-01 16:06
+ * @datetime 2017-06-01 16:05
  */
-namespace Notadd\Mall\Entities;
+namespace Notadd\Mall\Flows;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class StoreDynamic.
+ * Class Express.
  */
-class StoreDynamic extends Entity
+class Express extends Entity
 {
     /**
      * @return string
      */
     public function name()
     {
-        return 'mall.store.dynamic';
+        return 'mall.express';
     }
 
     /**
@@ -31,14 +31,12 @@ class StoreDynamic extends Entity
     public function places()
     {
         return [
-            'create',
-            'created',
-            'edit',
-            'edited',
-            'remove',
-            'removed',
-            'publish',
-            'published',
+            'pay',     // 支付
+            'payed',   // 支付完成
+            'send',    // 发货
+            'sent',    // 发货完成
+            'take',    // 收货
+            'took',    // 收货完成
         ];
     }
 
@@ -48,13 +46,11 @@ class StoreDynamic extends Entity
     public function transitions()
     {
         return [
-            new Transition('create', 'create', 'created'),
-            new Transition('need_to_edit', 'created', 'edit'),
-            new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
-            new Transition('remove', 'remove', 'removed'),
-            new Transition('need_to_publish', ['created', 'edited'], 'publish'),
-            new Transition('publish', 'publish', 'published'),
+            new Transition('pay', 'pay', 'payed'),
+            new Transition('wait_to_send', 'payed', 'send'),
+            new Transition('send', 'send', 'sent'),
+            new Transition('wait_to_take', 'sent', 'take'),
+            new Transition('take', 'take', 'took'),
         ];
     }
 
@@ -66,25 +62,19 @@ class StoreDynamic extends Entity
     public function guard(GuardEvent $event)
     {
         switch ($event->getTransition()->getName()) {
-            case 'create':
+            case 'pay':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'need_to_edit':
+            case 'wait_to_send':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'edit':
+            case 'send':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'need_to_remove':
+            case 'wait_to_take':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'remove':
-                $this->block($event, $this->permission(''));
-                break;
-            case 'need_to_publish':
-                $this->block($event, $this->permission(''));
-                break;
-            case 'publish':
+            case 'take':
                 $this->block($event, $this->permission(''));
                 break;
             default:

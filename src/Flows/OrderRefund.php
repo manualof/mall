@@ -4,25 +4,25 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-01 18:11
+ * @datetime 2017-06-01 18:12
  */
-namespace Notadd\Mall\Entities;
+namespace Notadd\Mall\Flows;
 
 use Notadd\Foundation\Flow\Abstracts\Entity;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class OrderExchange.
+ * Class OrderRefund.
  */
-class OrderExchange extends Entity
+class OrderRefund extends Entity
 {
     /**
      * @return string
      */
     public function name()
     {
-        return 'mall.order.exchange';
+        return 'mall.refund';
     }
 
     /**
@@ -31,14 +31,16 @@ class OrderExchange extends Entity
     public function places()
     {
         return [
-            'launch',
-            'launched',
-            'deliver',
-            'delivered',
-            'send',
-            'sent',
-            'take',
-            'took',
+            'launch',      // 发起退款
+            'launched',    // 发起完成
+            'review',      // 审核退款
+            'reviewed',    // 审核完成
+            'reject',      // 拒绝
+            'rejected',    // 拒绝完成
+            'refund',      // 退货
+            'refunded',    // 退货完成
+            'reimburse',   // 退款
+            'reimbursed',  // 退款完成
         ];
     }
 
@@ -49,12 +51,14 @@ class OrderExchange extends Entity
     {
         return [
             new Transition('launch', 'launch', 'launched'),
-            new Transition('wait_to_deliver', 'launched', 'deliver'),
-            new Transition('deliver', 'deliver', 'delivered'),
-            new Transition('wait_to_send', 'delivered', 'send'),
-            new Transition('send', 'send', 'sent'),
-            new Transition('wait_to_take', 'sent', 'take'),
-            new Transition('take', 'take', 'took'),
+            new Transition('wait_to_review', 'launched', 'review'),
+            new Transition('review', 'review', 'review'),
+            new Transition('wait_to_refund', 'review', 'refund'),
+            new Transition('need_to_reject', 'review', 'reject'),
+            new Transition('reject', 'reject', 'rejected'),
+            new Transition('refund', 'refund', 'refund'),
+            new Transition('wait_to_reimburse', 'refund', 'reimburse'),
+            new Transition('reimburse', 'reimburse', 'reimburse'),
         ];
     }
 
@@ -69,22 +73,28 @@ class OrderExchange extends Entity
             case 'launch':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'wait_to_deliver':
+            case 'wait_to_review':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'deliver':
+            case 'review':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'wait_to_send':
+            case 'wait_to_refund':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'send':
+            case 'need_to_reject':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'wait_to_take':
+            case 'reject':
                 $this->block($event, $this->permission(''));
                 break;
-            case 'take':
+            case 'refund':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'wait_to_reimburse':
+                $this->block($event, $this->permission(''));
+                break;
+            case 'reimburse':
                 $this->block($event, $this->permission(''));
                 break;
             default:
