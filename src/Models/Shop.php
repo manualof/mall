@@ -11,6 +11,7 @@ namespace Notadd\Mall\Models;
 use Notadd\Foundation\Database\Model;
 use Notadd\Foundation\Flow\Traits\HasFlow;
 use Symfony\Component\Workflow\Event\GuardEvent;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class Shop.
@@ -57,7 +58,7 @@ class Shop extends Model
      */
     public function name()
     {
-        // TODO: Implement name() method.
+        return 'mall.store';
     }
 
     /**
@@ -67,7 +68,14 @@ class Shop extends Model
      */
     public function places()
     {
-        // TODO: Implement places() method.
+        return [
+            'register',
+            'registered',
+            'close',
+            'closed',
+            'open',
+            'opened',
+        ];
     }
 
     /**
@@ -77,7 +85,13 @@ class Shop extends Model
      */
     public function transitions()
     {
-        // TODO: Implement transitions() method.
+        return [
+            new Transition('register', 'register', 'registered'),
+            new Transition('need_to_close', ['opened', 'registered'], 'close'),
+            new Transition('close', 'close', 'closed'),
+            new Transition('need_to_open', 'registered', 'open'),
+            new Transition('open', 'open', 'opened'),
+        ];
     }
 
     /**
@@ -87,6 +101,24 @@ class Shop extends Model
      */
     public function guardTransition(GuardEvent $event)
     {
-        // TODO: Implement guardTransition() method.
+        switch ($event->getTransition()->getName()) {
+            case 'register':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'need_to_close':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'close':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'need_to_open':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'open':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 }

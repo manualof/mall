@@ -12,6 +12,7 @@ use Notadd\Foundation\Database\Model;
 use Notadd\Foundation\Flow\Traits\HasFlow;
 use Notadd\Foundation\Member\Member;
 use Symfony\Component\Workflow\Event\GuardEvent;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class OrderExpress.
@@ -67,7 +68,7 @@ class OrderExpress extends Model
      */
     public function name()
     {
-        // TODO: Implement name() method.
+        return 'mall.order.express';
     }
 
     /**
@@ -77,7 +78,12 @@ class OrderExpress extends Model
      */
     public function places()
     {
-        // TODO: Implement places() method.
+        return [
+            'send',
+            'sent',
+            'take',
+            'took',
+        ];
     }
 
     /**
@@ -87,7 +93,11 @@ class OrderExpress extends Model
      */
     public function transitions()
     {
-        // TODO: Implement transitions() method.
+        return [
+            new Transition('send', 'send', 'sent'),
+            new Transition('wait_to_take', 'sent', 'take'),
+            new Transition('take', 'take', 'took'),
+        ];
     }
 
     /**
@@ -97,6 +107,18 @@ class OrderExpress extends Model
      */
     public function guardTransition(GuardEvent $event)
     {
-        // TODO: Implement guardTransition() method.
+        switch ($event->getTransition()->getName()) {
+            case 'send':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'wait_to_take':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'take':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 }

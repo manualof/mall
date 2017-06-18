@@ -11,6 +11,7 @@ namespace Notadd\Mall\Models;
 use Notadd\Foundation\Database\Model;
 use Notadd\Foundation\Flow\Traits\HasFlow;
 use Symfony\Component\Workflow\Event\GuardEvent;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class ShopCategory.
@@ -49,7 +50,7 @@ class ShopCategory extends Model
      */
     public function name()
     {
-        // TODO: Implement name() method.
+        return 'mall.store.category';
     }
 
     /**
@@ -59,7 +60,14 @@ class ShopCategory extends Model
      */
     public function places()
     {
-        // TODO: Implement places() method.
+        return [
+            'create',
+            'created',
+            'edit',
+            'edited',
+            'remove',
+            'removed',
+        ];
     }
 
     /**
@@ -69,7 +77,13 @@ class ShopCategory extends Model
      */
     public function transitions()
     {
-        // TODO: Implement transitions() method.
+        return [
+            new Transition('create', 'create', 'created'),
+            new Transition('need_to_edit', 'created', 'edit'),
+            new Transition('edit', 'edit', 'edited'),
+            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('remove', 'remove', 'removed'),
+        ];
     }
 
     /**
@@ -79,6 +93,24 @@ class ShopCategory extends Model
      */
     public function guardTransition(GuardEvent $event)
     {
-        // TODO: Implement guardTransition() method.
+        switch ($event->getTransition()->getName()) {
+            case 'create':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'need_to_edit':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'edit':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'need_to_remove':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'remove':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 }

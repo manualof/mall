@@ -12,6 +12,7 @@ use Notadd\Foundation\Database\Model;
 use Notadd\Foundation\Flow\Traits\HasFlow;
 use Notadd\Foundation\Member\Member;
 use Symfony\Component\Workflow\Event\GuardEvent;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class OrderExchange.
@@ -64,7 +65,7 @@ class OrderExchange extends Model
      */
     public function name()
     {
-        // TODO: Implement name() method.
+        return 'mall.order.exchange';
     }
 
     /**
@@ -74,7 +75,16 @@ class OrderExchange extends Model
      */
     public function places()
     {
-        // TODO: Implement places() method.
+        return [
+            'launch',
+            'launched',
+            'deliver',
+            'delivered',
+            'send',
+            'sent',
+            'take',
+            'took',
+        ];
     }
 
     /**
@@ -84,7 +94,15 @@ class OrderExchange extends Model
      */
     public function transitions()
     {
-        // TODO: Implement transitions() method.
+        return [
+            new Transition('launch', 'launch', 'launched'),
+            new Transition('wait_to_deliver', 'launched', 'deliver'),
+            new Transition('deliver', 'deliver', 'delivered'),
+            new Transition('wait_to_send', 'delivered', 'send'),
+            new Transition('send', 'send', 'sent'),
+            new Transition('wait_to_take', 'sent', 'take'),
+            new Transition('take', 'take', 'took'),
+        ];
     }
 
     /**
@@ -94,6 +112,30 @@ class OrderExchange extends Model
      */
     public function guardTransition(GuardEvent $event)
     {
-        // TODO: Implement guardTransition() method.
+        switch ($event->getTransition()->getName()) {
+            case 'launch':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'wait_to_deliver':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'deliver':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'wait_to_send':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'send':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'wait_to_take':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'take':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 }

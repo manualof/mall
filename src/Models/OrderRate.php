@@ -12,6 +12,7 @@ use Notadd\Foundation\Database\Model;
 use Notadd\Foundation\Flow\Traits\HasFlow;
 use Notadd\Foundation\Member\Member;
 use Symfony\Component\Workflow\Event\GuardEvent;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class OrderRate.
@@ -58,7 +59,7 @@ class OrderRate extends Model
      */
     public function name()
     {
-        // TODO: Implement name() method.
+        return 'mall.order.rate';
     }
 
     /**
@@ -68,7 +69,12 @@ class OrderRate extends Model
      */
     public function places()
     {
-        // TODO: Implement places() method.
+        return [
+            'rate',      // 评价
+            'rated',     // 评价完胜
+            'review',    // 审核
+            'reviewed',  // 审核完成
+        ];
     }
 
     /**
@@ -78,7 +84,11 @@ class OrderRate extends Model
      */
     public function transitions()
     {
-        // TODO: Implement transitions() method.
+        return [
+            new Transition('rate', 'rate', 'rated'),
+            new Transition('wait_to_review', 'rated', 'review'),
+            new Transition('review', 'review', 'reviewed'),
+        ];
     }
 
     /**
@@ -88,6 +98,18 @@ class OrderRate extends Model
      */
     public function guardTransition(GuardEvent $event)
     {
-        // TODO: Implement guardTransition() method.
+        switch ($event->getTransition()->getName()) {
+            case 'rate':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'wait_to_review':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'review':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 }
