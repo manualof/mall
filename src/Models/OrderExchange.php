@@ -9,13 +9,17 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
+use Notadd\Foundation\Flow\Traits\HasFlow;
 use Notadd\Foundation\Member\Member;
+use Symfony\Component\Workflow\Event\GuardEvent;
 
 /**
  * Class OrderExchange.
  */
 class OrderExchange extends Model
 {
+    use HasFlow;
+
     /**
      * @var array
      */
@@ -51,5 +55,45 @@ class OrderExchange extends Model
     public function user()
     {
         return $this->hasOne(Member::class, 'id', 'user_id');
+    }
+
+    /**
+     * Definition of name for flow.
+     *
+     * @return string
+     */
+    public function name()
+    {
+        // TODO: Implement name() method.
+    }
+
+    /**
+     * Definition of places for flow.
+     *
+     * @return array
+     */
+    public function places()
+    {
+        // TODO: Implement places() method.
+    }
+
+    /**
+     * Definition of transitions for flow.
+     *
+     * @return array
+     */
+    public function transitions()
+    {
+        // TODO: Implement transitions() method.
+    }
+
+    /**
+     * Guard a transition.
+     *
+     * @param \Symfony\Component\Workflow\Event\GuardEvent $event
+     */
+    public function guardTransition(GuardEvent $event)
+    {
+        // TODO: Implement guardTransition() method.
     }
 }
