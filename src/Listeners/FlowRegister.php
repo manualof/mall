@@ -10,20 +10,15 @@ namespace Notadd\Mall\Listeners;
 
 use Notadd\Foundation\Flow\Abstracts\FlowRegister as AbstractFlowRegister;
 use Notadd\Mall\Flows\Express;
-use Notadd\Mall\Flows\Order;
-use Notadd\Mall\Flows\OrderExchange;
-use Notadd\Mall\Flows\OrderExpress;
-use Notadd\Mall\Flows\OrderRate;
-use Notadd\Mall\Flows\OrderRefund;
 use Notadd\Mall\Flows\Pay;
-use Notadd\Mall\Flows\Product;
-use Notadd\Mall\Flows\ProductCategory;
-use Notadd\Mall\Flows\ProductRate;
-use Notadd\Mall\Flows\ProductSpecification;
-use Notadd\Mall\Flows\Store;
-use Notadd\Mall\Flows\StoreCategory;
-use Notadd\Mall\Flows\StoreDynamic;
-use Notadd\Mall\Flows\StoreRate;
+use Notadd\Mall\Models\Order;
+use Notadd\Mall\Models\OrderExchange;
+use Notadd\Mall\Models\OrderExpress;
+use Notadd\Mall\Models\OrderRate;
+use Notadd\Mall\Models\OrderRefund;
+use Notadd\Mall\Models\Product;
+use Notadd\Mall\Models\ProductCategory;
+use Notadd\Mall\Models\ProductSpecification;
 
 /**
  * Class FlowRegister.
@@ -44,11 +39,10 @@ class FlowRegister extends AbstractFlowRegister
         $this->flow->register(Pay::class);
         $this->flow->register(Product::class);
         $this->flow->register(ProductCategory::class);
-        $this->flow->register(ProductRate::class);
         $this->flow->register(ProductSpecification::class);
-        $this->flow->register(Store::class);
-        $this->flow->register(StoreCategory::class);
-        $this->flow->register(StoreDynamic::class);
-        $this->flow->register(StoreRate::class);
+//        $this->flow->register(Store::class);
+//        $this->flow->register(StoreCategory::class);
+//        $this->flow->register(StoreDynamic::class);
+//        $this->flow->register(StoreRate::class);
     }
 }
