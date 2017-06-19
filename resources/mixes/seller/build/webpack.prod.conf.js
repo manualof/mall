@@ -20,13 +20,13 @@ var webpackConfig = merge(baseWebpackConfig, {
     plugins: [
         // http://vuejs.github.io/vue-loader/en/workflow/production.html
         new webpack.DefinePlugin({
-            'process.env': env
+            'process.env': env,
         }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                warnings: false
+                warnings: false,
             },
-            sourceMap: true
+            sourceMap: true,
         }),
         // extract css into its own file
         new ExtractTextPlugin({
@@ -35,7 +35,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         // Compress extracted CSS. We are using this plugin so that possible
         // duplicated CSS from different components can be deduped.
         new OptimizeCSSPlugin(),
-    ]
+    ],
 });
 
 if (config.build.productionGzip) {
@@ -48,11 +48,11 @@ if (config.build.productionGzip) {
             test: new RegExp(
                 '\\.(' +
                 config.build.productionGzipExtensions.join('|') +
-                ')$'
+                ')$',
             ),
             threshold: 10240,
-            minRatio: 0.8
-        })
+            minRatio: 0.8,
+        }),
     );
 }
 

@@ -27,7 +27,7 @@ exports.cssLoaders = function (options) {
                 loader: loader + '-loader',
                 options: Object.assign({}, loaderOptions, {
                     sourceMap: options.sourceMap
-                })
+                }),
             });
         }
 
@@ -36,7 +36,7 @@ exports.cssLoaders = function (options) {
         if (options.extract) {
             return ExtractTextPlugin.extract({
                 use: loaders,
-                fallback: 'vue-style-loader'
+                fallback: 'vue-style-loader',
             });
         } else {
             return ['vue-style-loader'].concat(loaders);
@@ -53,7 +53,7 @@ exports.cssLoaders = function (options) {
         stylus: generateLoaders('stylus'),
         styl: generateLoaders('stylus')
     };
-}
+};
 
 // Generate loaders for standalone style files (outside of .vue)
 exports.styleLoaders = function (options) {
@@ -63,7 +63,7 @@ exports.styleLoaders = function (options) {
         var loader = loaders[extension];
         output.push({
             test: new RegExp('\\.' + extension + '$'),
-            use: loader
+            use: loader,
         });
     }
     return output;

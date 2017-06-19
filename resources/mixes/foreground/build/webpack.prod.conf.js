@@ -110,7 +110,7 @@ if (config.build.productionGzip) {
             minRatio: 0.8,
         }),
     );
-};
+}
 
 if (config.build.bundleAnalyzerReport) {
     var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
