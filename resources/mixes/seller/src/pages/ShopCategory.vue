@@ -13,6 +13,12 @@
         },
         data() {
             return {
+                addCategory: {
+                    enable: true,
+                    name: '',
+                    sort: '',
+                },
+                addModal: false,
                 categoryColumns: [
                     {
                         align: 'center',
@@ -97,6 +103,12 @@
                 ],
                 checkAll: false,
                 checkAllGroup: [],
+                editCategory: {
+                    enable: true,
+                    name: '',
+                    sort: '',
+                },
+                editModal: false,
                 indeterminate: true,
                 loading: false,
                 newAdd: {
@@ -110,13 +122,45 @@
             };
         },
         methods: {
-            addCategory() {},
+            addCategoryModal() {
+                this.addModal = true;
+            },
             addSubordinate() {
                 this.subordinate = true;
             },
-            edit() {},
+            edit() {
+                this.editModal = true;
+            },
             remove(index) {
                 this.categoryData.splice(index, 1);
+            },
+            submitCategory() {
+                const self = this;
+                self.loading = true;
+                self.$refs.addCategory.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            submitEdit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.editCategory.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
             submitSubordinate() {
                 const self = this;
@@ -142,7 +186,7 @@
                 <tab-pane label="店铺分类" name="name1">
                     <card :bordered="false">
                         <div class="category-list">
-                            <i-button class="first-btn" type="ghost" @click.native="addCategory">+新增分类</i-button>
+                            <i-button class="first-btn" type="ghost" @click.native="addCategoryModal">+新增分类</i-button>
                             <i-button type="ghost">批量删除</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                             <i-table :columns="categoryColumns"
@@ -176,7 +220,7 @@
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="10">
                                         <form-item label="排序">
                                             <i-input v-model="newAdd.sort"></i-input>
                                         </form-item>
@@ -196,6 +240,90 @@
                                     <i-col span="20">
                                         <form-item>
                                             <i-button :loading="loading" type="primary" @click.native="submitSubordinate">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
+                    <modal
+                            v-model="editModal"
+                            title="编辑分类" class="upload-picture-modal">
+                        <div>
+                            <i-form ref="editCategory" :model="editCategory" :rules="editValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="分类名称">
+                                            <i-input v-model="editCategory.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="10">
+                                        <form-item label="排序">
+                                            <i-input v-model="editCategory.sort"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="显示状态">
+                                            <radio-group v-model="editCategory.enable">
+                                                <radio label="是"></radio>
+                                                <radio label="否"></radio>
+                                            </Radio-group>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submitEdit">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
+                    <modal
+                            v-model="addModal"
+                            title="新增分类" class="upload-picture-modal">
+                        <div>
+                            <i-form ref="addCategory" :model="addCategory" :rules="editValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="分类名称">
+                                            <i-input v-model="addCategory.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="10">
+                                        <form-item label="排序">
+                                            <i-input v-model="addCategory.sort"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="显示状态">
+                                            <radio-group v-model="addCategory.enable">
+                                                <radio label="是"></radio>
+                                                <radio label="否"></radio>
+                                            </Radio-group>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submitCategory">
                                                 <span v-if="!loading">确认提交</span>
                                                 <span v-else>正在提交…</span>
                                             </i-button>
