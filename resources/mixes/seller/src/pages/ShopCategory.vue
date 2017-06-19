@@ -34,7 +34,7 @@
                         key: 'categoryName',
                         render() {
                             return `<span>{{ row.categoryName }}</span>
-                                    <i-button type="ghost" type="small">新增下级</i-button>`;
+                                    <i-button type="ghost" type="small" @click.native="addSubordinate">新增下级</i-button>`;
                         },
                         title: '分类名称',
                     },
@@ -98,14 +98,39 @@
                 checkAll: false,
                 checkAllGroup: [],
                 indeterminate: true,
+                loading: false,
+                newAdd: {
+                    category: '海外代购',
+                    enable: true,
+                    name: '',
+                    sort: '',
+                },
                 self: this,
+                subordinate: false,
             };
         },
         methods: {
             addCategory() {},
+            addSubordinate() {
+                this.subordinate = true;
+            },
             edit() {},
             remove(index) {
                 this.categoryData.splice(index, 1);
+            },
+            submitSubordinate() {
+                const self = this;
+                self.loading = true;
+                self.$refs.newAdd.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
         },
     };
@@ -131,6 +156,55 @@
                             <page :total="100" show-elevator></page>
                         </div>
                     </card>
+                    <modal
+                            v-model="subordinate"
+                            title="新增下级" class="upload-picture-modal">
+                        <div>
+                            <i-form ref="newAdd" :model="newAdd" :rules="newAddValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="分类名称">
+                                            <i-input v-model="newAdd.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="上级分类">
+                                            {{ newAdd.category }}
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="排序">
+                                            <i-input v-model="newAdd.sort"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="显示状态">
+                                            <radio-group v-model="newAdd.enable">
+                                                <radio label="是"></radio>
+                                                <radio label="否"></radio>
+                                            </Radio-group>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submitSubordinate">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
                 </tab-pane>
             </tabs>
         </div>
