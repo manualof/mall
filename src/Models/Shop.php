@@ -9,12 +9,17 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
+use Notadd\Foundation\Flow\Traits\HasFlow;
+use Symfony\Component\Workflow\Event\GuardEvent;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class Shop.
  */
 class Shop extends Model
 {
+    use HasFlow;
+
     /**
      * @var array
      */
@@ -44,5 +49,76 @@ class Shop extends Model
     public function category()
     {
         return $this->hasOne(ShopCategory::class, 'id', 'category_id');
+    }
+
+    /**
+     * Definition of name for flow.
+     *
+     * @return string
+     */
+    public function name()
+    {
+        return 'mall.store';
+    }
+
+    /**
+     * Definition of places for flow.
+     *
+     * @return array
+     */
+    public function places()
+    {
+        return [
+            'register',
+            'registered',
+            'close',
+            'closed',
+            'open',
+            'opened',
+        ];
+    }
+
+    /**
+     * Definition of transitions for flow.
+     *
+     * @return array
+     */
+    public function transitions()
+    {
+        return [
+            new Transition('register', 'register', 'registered'),
+            new Transition('need_to_close', ['opened', 'registered'], 'close'),
+            new Transition('close', 'close', 'closed'),
+            new Transition('need_to_open', 'registered', 'open'),
+            new Transition('open', 'open', 'opened'),
+        ];
+    }
+
+    /**
+     * Guard a transition.
+     *
+     * @param \Symfony\Component\Workflow\Event\GuardEvent $event
+     */
+    public function guardTransition(GuardEvent $event)
+    {
+        switch ($event->getTransition()->getName()) {
+            case 'register':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'need_to_close':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'close':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'need_to_open':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'open':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 }

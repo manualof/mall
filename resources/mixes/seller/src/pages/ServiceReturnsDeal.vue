@@ -31,10 +31,11 @@
                     { information: '2016-12-21 11:30:31  发往西安中转' },
                 ],
                 dealTrading: {
-                    carriage: '10.00',
+                    amount: 1,
+                    carriage: 10.00,
                     content: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
-                    content1: '¥1999.00 * 1',
-                    order: '138.00',
+                    content1: 1999.00,
+                    order: '',
                     pic: image,
                     serial: 346952350274,
                 },
@@ -68,6 +69,12 @@
             goBack() {
                 const self = this;
                 self.$router.go(-1);
+            },
+        },
+        computed: {
+            totalAmount() {
+                return (this.dealTrading.content1 * this.dealTrading.amount)
+                        + this.dealTrading.carriage;
             },
         },
     };
@@ -177,7 +184,7 @@
                                     {{ dealTrading.carriage }}
                                 </form-item>
                                 <form-item label="订单总额">
-                                    {{ dealTrading.order }}
+                                    {{ totalAmount }}
                                 </form-item>
                                 <row class="refund-number">
                                     <form-item label="订单编号">
@@ -195,9 +202,10 @@
                                     {{ dealInformation.trackingNumber }}
                                 </form-item>
                                 <row>
-                                    <i-col span="16">
+                                    <!--<i-col span="16">-->
+                                    <i-col span="24">
                                         <form-item label="物流信息">
-                                        <span v-for="item in dealLogistics">
+                                        <span v-for="item in dealLogistics" class="logistics">
                                             {{ item.information }}
                                         </span>
                                         </form-item>

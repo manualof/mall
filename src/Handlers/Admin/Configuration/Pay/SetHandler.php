@@ -8,12 +8,12 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Configuration\Pay;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler as AbstractSetHandler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 
 /**
  * Class SetHandler.
  */
-class SetHandler extends AbstractSetHandler
+class SetHandler extends Handler
 {
     /**
      * Execute Handler.

@@ -12,17 +12,16 @@
             return {
                 deal: {
                     amount: 1,
-                    freight: '10.00',
+                    freight: 10.00,
                     goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
-                    money: '99.00',
+                    money: 99.00,
                     number: 263567946465245485,
                     numbering: 1254525945416,
                     person: 'maijia',
-                    price: '1999.00',
+                    price: 1999.00,
                     picture: image,
                     response: '未按时发货',
                     state: '发货太慢',
-                    total: '138.00',
                 },
                 dealSteps: [
                     {
@@ -47,6 +46,12 @@
             goBack() {
                 const self = this;
                 self.$router.go(-1);
+            },
+        },
+        computed: {
+            dealTotal() {
+                return (this.deal.price * this.deal.amount)
+                    + this.deal.freight;
             },
         },
     };
@@ -142,7 +147,7 @@
                                     {{ deal.freight }}
                                 </form-item>
                                 <form-item label="订单总额">
-                                    {{ deal.total }}
+                                    {{ dealTotal }}
                                 </form-item>
                                 <row class="deal-number">
                                     <form-item label="订单编号">
