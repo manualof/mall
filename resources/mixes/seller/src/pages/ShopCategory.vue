@@ -32,6 +32,10 @@
                     },
                     {
                         key: 'categoryName',
+                        render() {
+                            return `<span>{{ row.categoryName }}</span>
+                                    <i-button type="ghost" type="small">新增下级</i-button>`;
+                        },
                         title: '分类名称',
                     },
                     {
@@ -40,7 +44,6 @@
                         title: '排序',
                     },
                     {
-                        align: 'center',
                         key: 'shelves',
                         render() {
                             return `<i-switch size="large" v-model="row.status">
@@ -59,19 +62,32 @@
                                      type="ghost">删除</i-button>`;
                         },
                         title: '操作',
-                        width: 180,
                     },
                 ],
                 categoryData: [
                     {
+                        categoryName: '海外代购',
                         job: '数据工程师',
                         interest: '羽毛球',
                         birthday: '1991-05-14',
                         sort: '45',
                         status: true,
+                        subordinate: [
+                            {
+                                name: '鞋子',
+                                sort: 3,
+                                status: true,
+                            },
+                            {
+                                name: '卫衣',
+                                sort: 5,
+                                status: true,
+                            },
+                        ],
                         title: '海外代购',
                     },
                     {
+                        categoryName: '海外代购',
                         job: '数据工程师',
                         interest: '羽毛球',
                         birthday: '1991-05-14',
