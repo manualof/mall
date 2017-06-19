@@ -22,32 +22,30 @@
 
 <script>
     export default {
-        data () {
+        data() {
             return {
                 isOpen: false,
-                isShow: false
-            }
+                isShow: false,
+            };
         },
         methods: {
-            open () {
-                let _this = this
-
-                _this.isShow = true
-                _this.$nextTick(function () {
-                    _this.isOpen = true
-                    _this.$refs.modal.focus()
-                })
+            open() {
+                const self = this;
+                self.isShow = true;
+                self.$nextTick(() => {
+                    self.isOpen = true;
+                    self.$refs.modal.focus();
+                });
             },
-            close () {
-                let _this = this
-
-                _this.isOpen = false
-                _this.$nextTick(function () {
+            close() {
+                const self = this;
+                self.isOpen = false;
+                self.$nextTick(() => {
                     setTimeout(() => {
-                        _this.isShow = false
-                    }, 500)
-                })
-            }
-        }
-    }
+                        self.isShow = false;
+                    }, 500);
+                });
+            },
+        },
+    };
 </script>

@@ -173,7 +173,7 @@
                                 size: 'M',
                                 old_price: 126.07,
                                 now_price: 39.9,
-                                num: 1
+                                num: 1,
                             },
                             {
                                 id: 2,
@@ -182,9 +182,9 @@
                                 size: 'M',
                                 old_price: 126.07,
                                 now_price: 39.9,
-                                num: 2
-                            }
-                        ]
+                                num: 2,
+                            },
+                        ],
                     },
                     {
                         name: '母婴',
@@ -198,9 +198,9 @@
                                 size: 'M',
                                 old_price: 126.07,
                                 now_price: 39.9,
-                                num: 1
-                            }
-                        ]
+                                num: 1,
+                            },
+                        ],
                     },
                     {
                         name: 'XX母婴用品',
@@ -215,7 +215,7 @@
                                 size: 'M',
                                 old_price: 126.07,
                                 now_price: 39.9,
-                                num: 1
+                                num: 1,
                             },
                             {
                                 id: 2,
@@ -224,49 +224,40 @@
                                 size: 'M',
                                 old_price: 126.07,
                                 now_price: 39.9,
-                                num: 1
-                            }
-                        ]
-                    }
+                                num: 1,
+                            },
+                        ],
+                    },
                 ],
             }
         },
         components: {
             NeedBrowse,
             EveryoneBrowse,
-            MyselfBrowse
+            MyselfBrowse,
         },
         computed: {
-            selectNum(){
+            selectNum() {
                 let num = 0;
-                this.productList.forEach(
-                    function (item) {
+                this.productList.forEach((item) => {
                         num = num + item.selected.length;
                     }
                 );
                 return num;
             },
-            totalPrice(){
+            totalPrice() {
                 let tPrice = 0;
-                this.productList.forEach(
-                    function (item) {
-                        item.selected.forEach(
-                            function (pro) {
-
-                            }
-                        )
+                this.productList.forEach((item) => {
+                        item.selected.forEach((pro) => {});
                     }
                 );
                 return tPrice;
             },
-            totalFreight(){
-
-            }
+            totalFreight() {},
         },
         methods: {
             reduce (item){
                 if (item.num <= 1) {
-                    item.num = item.num;
                 } else {
                     item.num -= 1;
                 }
@@ -306,12 +297,12 @@
                     this.productList.forEach(function (data) {
                         data.products.forEach(function (item) {
                             data.selected.indexOf(item.id) === -1 && data.selected.push(item.id);
-                        })
-                    })
+                        });
+                    });
                 } else {
                     this.productList.forEach(function (data) {
                         data.selected = [];
-                    })
+                    });
                 }
             },
             /**
@@ -326,7 +317,7 @@
 
             price: function (num, price) {
                 return ( price * num ).toFixed(2);
-            }
-        }
-    }
+            },
+        },
+    };
 </script>

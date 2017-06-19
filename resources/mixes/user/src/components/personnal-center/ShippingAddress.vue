@@ -134,45 +134,45 @@
                         name: '王茂',
                         address: '陕西省  西安市 雁塔区 高新二路 36号 xx大厦',
                         phone: 13000000000,
-                        isdefault: 1
+                        isdefault: 1,
                     },
                     {
                         name: 'xiaoxiao',
                         address: '陕西省  西安市 雁塔区 高新二路 36号 xx大厦',
                         phone: 13000000000,
-                        isdefault: 0
+                        isdefault: 0,
                     },
                     {
                         name: '木木',
                         address: '陕西省  西安市 雁塔区 高新二路 36号 xx大厦',
                         phone: 13000000000,
-                        isdefault: 0
-                    }
-                ]
-            }
+                        isdefault: 0,
+                    },
+                ],
+            };
         },
         components: {Modal},
         methods: {
             settingAddress (item) {
-                this.addressList.forEach(function (index) {
-                    index.isdefault = 0
+                this.addressList.forEach((index) => {
+                    index.isdefault = 0;
                 });
-                item.isdefault = 1
+                item.isdefault = 1;
             },
             deleteAddress (item) {
                 let index = this.addressList.indexOf(item)
                 if (index !== -1) {
-                    this.addressList.splice(index, 1)
+                    this.addressList.splice(index, 1);
                 }
             },
             addNewAddress () {
                 this.$refs.modal.open();
-                this.modalTitle = '新增收货地址'
+                this.modalTitle = '新增收货地址';
             },
             editModal () {
                 this.$refs.modal.open();
-                this.modalTitle = '编辑收货地址'
-            }
-        }
-    }
+                this.modalTitle = '编辑收货地址';
+            },
+        },
+    };
 </script>

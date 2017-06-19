@@ -46,9 +46,9 @@
 <script>
     import RightSide from './dashboard/RightSide';
 
-    import HeaderBar from './dashboard/HeaderBar'
-    import FooterBar from './dashboard/FooterBar'
-    import FooterContent from './dashboard/FooterContent'
+    import HeaderBar from './dashboard/HeaderBar';
+    import FooterBar from './dashboard/FooterBar';
+    import FooterContent from './dashboard/FooterContent';
 
     export default {
         data () {
@@ -61,15 +61,15 @@
                     name: 'Purrfectdiary 咕噜日记 1-8岁儿童中筒袜1双袜子随机发货中筒袜1双袜子随机发货',
                     num: 3,
                     size: 'M',
-                    money: 1034.88
-                }
-            }
+                    money: 1034.88,
+                },
+            };
         },
         components: {
             RightSide,
             HeaderBar,
             FooterBar,
-            FooterContent
-        }
-    }
+            FooterContent,
+        },
+    };
 </script>

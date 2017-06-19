@@ -51,11 +51,11 @@
 </template>
 
 <script>
-    import FooterBar from './dashboard/FooterBar'
+    import FooterBar from './dashboard/FooterBar';
 
     export default {
         components: {
-            FooterBar
+            FooterBar,
         },
-    }
+    };
 </script>

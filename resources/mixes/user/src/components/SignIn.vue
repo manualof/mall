@@ -43,13 +43,13 @@
 </template>
 
 <script>
-    import FooterContent from './dashboard/FooterContent'
-    import FooterBar from './dashboard/FooterBar'
+    import FooterContent from './dashboard/FooterContent';
+    import FooterBar from './dashboard/FooterBar';
 
     export default {
         components: {
             FooterContent,
-            FooterBar
+            FooterBar,
         },
-    }
+    };
 </script>

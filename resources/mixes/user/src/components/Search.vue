@@ -69,29 +69,29 @@
 </template>
 <script>
 
-    import SearchList from './dashboard/SearchList'
-    import NeedBrowse from './dashboard/NeedBrowse'
-    import EveryoneBrowse from './dashboard/EveryoneBrowse'
-    import MyselfBrowse from './dashboard/MyselfBrowse'
-    import RightSide from './dashboard/RightSide'
+    import SearchList from './dashboard/SearchList';
+    import NeedBrowse from './dashboard/NeedBrowse';
+    import EveryoneBrowse from './dashboard/EveryoneBrowse';
+    import MyselfBrowse from './dashboard/MyselfBrowse';
+    import RightSide from './dashboard/RightSide';
 
     export default {
-        data(){
+        data() {
             return {
                 data: {
                     brands: ['佳尔乐', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适'],
                     classifications: ['纸尿裤', '拉拉裤', '尿片', '个人洗护'],
                     sizes: ['M', 'L', 'XL', 'XXL'],
-                    made_address: ['中国', '日本', '美国', '英国']
-                }
-            }
+                    made_address: ['中国', '日本', '美国', '英国'],
+                },
+            };
         },
         components: {
             SearchList,
             NeedBrowse,
             EveryoneBrowse,
             MyselfBrowse,
-            RightSide
-        }
-    }
+            RightSide,
+        },
+    };
 </script>

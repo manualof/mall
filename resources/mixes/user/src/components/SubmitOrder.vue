@@ -76,19 +76,19 @@
     import RightSide from './dashboard/RightSide';
 
     export default {
-        data () {
+        data() {
             return {
                 addressSelect: [
                     {
                         name: '王茂',
                         phone: 12345676543,
                         isdefault: '默认地址',
-                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604'
+                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
                     },
                     {
                         name: '王茂',
                         phone: 12345676543,
-                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604'
+                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
                     }
                 ],
                 submitOrder: {
@@ -101,28 +101,28 @@
                             name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
                             price1: 126.07,
                             price2: 39.9,
-                            num: 1
+                            num: 1,
                         },
                         {
                             shop: 'XXX母婴用品店',
                             name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
                             price1: 126.07,
                             price2: 39.9,
-                            num: 2
+                            num: 2,
                         },
                         {
                             shop: 'XXX母婴用品店',
                             name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
                             price1: 126.07,
                             price2: 39.9,
-                            num: 1
-                        }
+                            num: 1,
+                        },
                     ],
-                }
-            }
+                },
+            };
         },
         components: {
-            RightSide
+            RightSide,
         },
         computed: {
             total_price() {
@@ -134,6 +134,6 @@
                 );
                 return totalPrice.toFixed(2);
             },
-        }
-    }
+        },
+    };
 </script>

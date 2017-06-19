@@ -66,12 +66,12 @@
 </template>
 <script>
 
-    export default{
-        data(){
+    export default {
+        data() {
             return {
                 red: false,
                 sorce: 5,
-                productImgs: []
+                productImgs: [],
             }
         },
         methods: {
@@ -80,11 +80,11 @@
                 let _this = this;
                 let _image = {
                     content: '',
-                    file: _file
+                    file: _file,
                 };
                 const _reader = new global.FileReader();
                 _reader.onload = () => {
-                    _image.content = _reader.result
+                    _image.content = _reader.result;
                 };
                 _reader.readAsDataURL(_file);
                 _this.productImgs.push(_image);

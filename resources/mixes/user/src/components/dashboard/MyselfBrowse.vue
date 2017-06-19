@@ -23,7 +23,7 @@
     import image1 from '../../assets/images/img_07.png';
 
     export default {
-        data () {
+        data() {
             return {
                 browse: {
                     title: '猜你喜欢',
@@ -33,35 +33,35 @@
                             img: image1,
                             name: '西部母婴推荐哆啦A梦可爱儿童玩具',
                             price: 48.88,
-                            amount: 188
+                            amount: 188,
                         },
                         {
                             img: image1,
                             name: '西部母婴推荐哆啦A梦可爱儿童玩具',
                             price: 48.88,
-                            amount: 188
+                            amount: 188,
                         },
                         {
                             img: image1,
                             name: '西部母婴推荐哆啦A梦可爱儿童玩具',
                             price: 48.88,
-                            amount: 188
+                            amount: 188,
                         },
                         {
                             img: image1,
                             name: '西部母婴推荐哆啦A梦可爱儿童玩具',
                             price: 48.88,
-                            amount: 188
+                            amount: 188,
                         },
                         {
                             img: image1,
                             name: '西部母婴推荐哆啦A梦可爱儿童玩具',
                             price: 48.88,
-                            amount: 188
-                        }
-                    ]
-                }
-            }
-        }
-    }
+                            amount: 188,
+                        },
+                    ],
+                },
+            };
+        },
+    };
 </script>

@@ -718,8 +718,8 @@
 
     import img from '../assets/images/alipay.png';
 
-    export default{
-        data(){
+    export default {
+        data() {
             return {
                 temps: ['入驻须知', '公司信息', '店铺信息', '入驻审核'],
                 temp: 1,
@@ -729,17 +729,17 @@
                     children: [
                         {
                             value: 'gugong',
-                            label: '故宫'
+                            label: '故宫',
                         },
                         {
                             value: 'tiantan',
-                            label: '天坛'
+                            label: '天坛',
                         },
                         {
                             value: 'wangfujing',
-                            label: '王府井'
-                        }
-                    ]
+                            label: '王府井',
+                        },
+                    ],
                 }, {
                     value: 'jiangsu',
                     label: '江苏',
@@ -751,8 +751,8 @@
                                 {
                                     value: 'fuzimiao',
                                     label: '夫子庙',
-                                }
-                            ]
+                                },
+                            ],
                         },
                         {
                             value: 'suzhou',
@@ -765,15 +765,15 @@
                                 {
                                     value: 'shizilin',
                                     label: '狮子林',
-                                }
-                            ]
-                        }
+                                },
+                            ],
+                        },
                     ],
                 }],
                 connect: {
                     name: '',
                     phone: '',
-                    email: ''
+                    email: '',
                 },
                 lincenseInfo: {
                     company_name: '',
@@ -801,19 +801,19 @@
                     code: '',
                     startDate: new Date(),
                     endDate: new Date(),
-                    certificate_imgs: []
+                    certificate_imgs: [],
                 },
                 taxationInfo: {
                     taxpayer_type: '',
                     code: '',
                     certificate_imgs: [],
-                    tax_paymentCode: ''
+                    tax_paymentCode: '',
                 },
                 bankInfo: {
                     public_account: '',
                     branch_num: '',
                     branch_name: '',
-                    address: ''
+                    address: '',
                 },
                 operatingInfo: {
                     company_type: '',
@@ -828,51 +828,51 @@
                     warehouse_address: '',
                     used_logistics: '',
                     erp_type: '',
-                    behalf_company_name: ''
+                    behalf_company_name: '',
                 },
                 shopInfo: {
                     shop_type: {
                         name: '',
-                        options: ['请选择', '有限公司', '国营企业', '私营企业']
+                        options: ['请选择', '有限公司', '国营企业', '私营企业'],
                     },
                     main_categories: [
                         {
                             name: '',
-                            options: ['请选择', '1', '2', '3']
+                            options: ['请选择', '1', '2', '3'],
                         },
                         {
                             name: '',
-                            options: ['请选择', '1', '2', '3']
+                            options: ['请选择', '1', '2', '3'],
                         },
                         {
                             name: '',
-                            options: ['请选择', '1', '2', '3']
+                            options: ['请选择', '1', '2', '3'],
                         },
                     ],
                     shop_name: '',
                     business_firm: '',
-                    shop_account: ''
-                }
-            }
+                    shop_account: '',
+                },
+            };
         },
         methods: {
-            next(){
+            next() {
                 if (this.temp < 7) {
                     this.temp++;
                 }
             },
-            prev(){
+            prev() {
                 this.temp--;
             },
             imageSelected: function (e, arr) {
                 let _file = e.target.files[0];
                 let _image = {
                     content: '',
-                    file: _file
+                    file: _file,
                 };
                 const _reader = new global.FileReader();
                 _reader.onload = () => {
-                    _image.content = _reader.result
+                    _image.content = _reader.result;
                 };
                 _reader.readAsDataURL(_file);
                 arr.push(_image);
@@ -884,7 +884,7 @@
         },
         components: {
             Datepicker,
-            Cascader
-        }
-    }
+            Cascader,
+        },
+    };
 </script>

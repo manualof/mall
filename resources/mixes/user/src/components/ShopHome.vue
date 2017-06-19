@@ -56,11 +56,11 @@
 </template>
 <script>
 
-    import SearchList from './dashboard/SearchList'
-    import NeedBrowse from './dashboard/NeedBrowse'
-    import EveryoneBrowse from './dashboard/EveryoneBrowse'
-    import MyselfBrowse from './dashboard/MyselfBrowse'
-    import RightSide from './dashboard/RightSide'
+    import SearchList from './dashboard/SearchList';
+    import NeedBrowse from './dashboard/NeedBrowse';
+    import EveryoneBrowse from './dashboard/EveryoneBrowse';
+    import MyselfBrowse from './dashboard/MyselfBrowse';
+    import RightSide from './dashboard/RightSide';
 
     export default {
         components: {
@@ -68,7 +68,7 @@
             NeedBrowse,
             EveryoneBrowse,
             MyselfBrowse,
-            RightSide
-        }
-    }
+            RightSide,
+        },
+    };
 </script>

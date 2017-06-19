@@ -23,30 +23,30 @@
                 'list': [
                     {
                         'to': {'name': 'all-order'},
-                        'text': '我的订单'
+                        'text': '我的订单',
                     },
                     {
                         'to': {'name': 'coupon'},
-                        'text': '我的优惠券'
+                        'text': '我的优惠券',
                     },
                     {
                         'to': {'name': 'integral'},
-                        'text': '我的积分'
+                        'text': '我的积分',
                     },
                     {
                         'to': {'name': 'collect-store'},
-                        'text': '我的收藏'
+                        'text': '我的收藏',
                     },
                     {
                         'to': {'name': 'account-security'},
-                        'text': '账户安全'
+                        'text': '账户安全',
                     },
                     {
                         'to': {'name': 'shipping-address'},
-                        'text': '管理收货地址'
-                    }
-                ]
-            }
-        }
+                        'text': '管理收货地址',
+                    },
+                ],
+            };
+        },
     };
 </script>

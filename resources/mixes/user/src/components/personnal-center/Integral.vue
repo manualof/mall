@@ -69,25 +69,25 @@
                     {
                         img: image1,
                         name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                        price: 48.88
+                        price: 48.88,
                     },
                     {
                         img: image1,
                         name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                        price: 48.88
+                        price: 48.88,
                     },
                     {
                         img: image1,
                         name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                        price: 48.88
+                        price: 48.88,
                     },
                     {
                         img: image1,
                         name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                        price: 48.88
-                    }
-                ]
-            }
-        }
-    }
+                        price: 48.88,
+                    },
+                ],
+            };
+        },
+    };
 </script>

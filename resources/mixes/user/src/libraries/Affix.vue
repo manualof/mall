@@ -45,10 +45,10 @@
                 type: Number
             }
         },
-        data () {
+        data() {
             return {
                 affix: false,
-                styles: {}
+                styles: {},
             };
         },
         computed: {
@@ -62,10 +62,10 @@
             classes () {
                 return [
                     {
-                        [`${prefixCls}`]: this.affix
-                    }
+                        [`${prefixCls}`]: this.affix,
+                    },
                 ];
-            }
+            },
         },
         created () {
             window.addEventListener('scroll', this.handleScroll, false);
@@ -88,7 +88,7 @@
                     this.styles = {
                         top: `${this.offsetTop}px`,
                         left: `${elOffset.left}px`,
-                        width: `${this.$el.offsetWidth}px`
+                        width: `${this.$el.offsetWidth}px`,
                     };
                     this.$emit('on-change', true);
                 } else if ((elOffset.top - this.offsetTop) > scrollTop && this.offsetType == 'top' && affix) {
@@ -102,15 +102,15 @@
                     this.styles = {
                         bottom: `${this.offsetBottom}px`,
                         left: `${elOffset.left}px`,
-                        width: `${this.$el.offsetWidth}px`
+                        width: `${this.$el.offsetWidth}px`,
                     };
                     this.$emit('on-change', true);
                 } else if ((elOffset.top + this.offsetBottom + elHeight) < (scrollTop + windowHeight) && this.offsetType == 'bottom' && affix) {
                     this.affix = false;
                     this.styles = null;
                     this.$emit('on-change', false);
-                }
-            }
-        }
+                },
+            },
+        },
     };
 </script>

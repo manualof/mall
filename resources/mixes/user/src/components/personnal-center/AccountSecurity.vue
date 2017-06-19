@@ -160,8 +160,8 @@
         data(){
             return {
                 temp: 1,
-                isAccountExit: 0
-            }
+                isAccountExit: 0,
+            };
         },
         methods: {
             editPassword() {
@@ -172,7 +172,7 @@
             },
             submitResult2() {
                 this.temp += 1;
-            }
-        }
-    }
+            },
+        },
+    };
 </script>

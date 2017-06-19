@@ -34,8 +34,9 @@
 </template>
 <script>
     import image1 from '../../assets/images/img_07.png';
+
     export default {
-        data () {
+        data() {
             return {
                 attentionStore: [
                     {
@@ -45,19 +46,19 @@
                             {
                                 img: image1,
                                 name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                                price: 48.88
+                                price: 48.88,
                             },
                             {
                                 img: image1,
                                 name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                                price: 48.88
+                                price: 48.88,
                             },
                             {
                                 img: image1,
                                 name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                                price: 48.88
-                            }
-                        ]
+                                price: 48.88,
+                            },
+                        ],
                     },
                     {
                         store_img: image1,
@@ -66,19 +67,19 @@
                             {
                                 img: image1,
                                 name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                                price: 48.88
+                                price: 48.88,
                             },
                             {
                                 img: image1,
                                 name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                                price: 48.88
+                                price: 48.88,
                             },
                             {
                                 img: image1,
                                 name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                                price: 48.88
-                            }
-                        ]
+                                price: 48.88,
+                            },
+                        ],
                     },
                     {
                         store_img: image1,
@@ -87,30 +88,30 @@
                             {
                                 img: image1,
                                 name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                                price: 48.88
+                                price: 48.88,
                             },
                             {
                                 img: image1,
                                 name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                                price: 48.88
+                                price: 48.88,
                             },
                             {
                                 img: image1,
                                 name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                                price: 48.88
-                            }
-                        ]
-                    }
-                ]
-            }
+                                price: 48.88,
+                            },
+                        ],
+                    },
+                ],
+            };
         },
         methods: {
-            cancelAttention (store) {
-                let index = this.attentionStore.indexOf(store)
+            cancelAttention(store) {
+                const index = this.attentionStore.indexOf(store);
                 if (index !== -1) {
                     this.attentionStore.splice(index, 1);
                 }
-            }
-        }
-    }
+            },
+        },
+    };
 </script>

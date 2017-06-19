@@ -657,74 +657,74 @@
                         {
                             title: '年末特惠',
                             intro: '满300减50优惠折扣',
-                            img: image1
+                            img: image1,
                         },
                         {
                             title: '年末特惠',
                             intro: '满300减50优惠折扣',
-                            img: image1
+                            img: image1,
                         },
                         {
                             title: '年末特惠',
                             intro: '满300减50优惠折扣',
-                            img: image1
+                            img: image1,
                         },
                         {
                             title: '年末特惠',
                             intro: '满300减50优惠折扣',
-                            img: image1
-                        }
+                            img: image1,
+                        },
                     ],
                     recommen2: [
                         {
                             title: '年末特惠',
                             intro: '满300减50优惠折扣',
-                            img: image1
+                            img: image1,
                         },
                         {
                             title: '年末特惠',
                             intro: '满300减50优惠折扣',
-                            img: image1
-                        }
+                            img: image1,
+                        },
                     ],
                     recommen3: [
                         {
                             title: '年末特惠',
                             intro: '满300减50优惠折扣',
-                            img: image1
+                            img: image1,
                         },
                         {
                             title: '年末特惠',
                             intro: '满300减50优惠折扣',
-                            img: image1
+                            img: image1,
                         },
                         {
                             title: '年末特惠',
                             intro: '满300减50优惠折扣',
-                            img: image1
+                            img: image1,
                         },
                         {
                             title: '年末特惠',
                             intro: '满300减50优惠折扣',
-                            img: image1
-                        }
-                    ]
+                            img: image1,
+                        },
+                    ],
                 },
                 yearOfferList: [
                     {
                         title: '年末特惠',
                         intro: '满300减50优惠折扣',
-                        img: image2
+                        img: image2,
                     },
                     {
                         title: '年末特惠',
                         intro: '满300减50优惠折扣',
-                        img: image2
+                        img: image2,
                     },
                     {
                         title: '年末特惠',
                         intro: '满300减50优惠折扣',
-                        img: image2
+                        img: image2,
                     }
                 ],
                 typeList: {
@@ -741,31 +741,31 @@
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
-                            }
+                                img: picture2,
+                            },
                         ],
                         offerList: [
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
+                                img: picture3,
                             },
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
-                            }
-                        ]
+                                img: picture3,
+                            },
+                        ],
                     },
                     typeList2: {
                         module: '母婴专区',
@@ -775,36 +775,36 @@
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
-                            }
+                                img: picture2,
+                            },
                         ],
                         offerList: [
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
+                                img: picture3,
                             },
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
-                            }
-                        ]
+                                img: picture3,
+                            },
+                        ],
                     },
                     typeList3: {
                         module: '棉品寝卧',
@@ -814,36 +814,36 @@
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
-                            }
+                                img: picture2,
+                            },
                         ],
                         offerList: [
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
+                                img: picture3,
                             },
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
-                            }
-                        ]
+                                img: picture3,
+                            },
+                        ],
                     },
                     typeList4: {
                         module: '护理美妆',
@@ -853,36 +853,36 @@
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
-                            }
+                                img: picture2,
+                            },
                         ],
                         offerList: [
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
+                                img: picture3,
                             },
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
-                            }
-                        ]
+                                img: picture3,
+                            },
+                        ],
                     },
                     typeList5: {
                         module: '内衣服饰',
@@ -892,36 +892,36 @@
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             }
                         ],
                         offerList: [
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
+                                img: picture3,
                             },
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
-                            }
-                        ]
+                                img: picture3,
+                            },
+                        ],
                     },
                     typeList6: {
                         module: '婴儿食品',
@@ -931,36 +931,36 @@
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
-                            }
+                                img: picture2,
+                            },
                         ],
                         offerList: [
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
+                                img: picture3,
                             },
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
-                            }
-                        ]
+                                img: picture3,
+                            },
+                        ],
                     },
                     typeList7: {
                         module: '婴儿纸品',
@@ -970,36 +970,36 @@
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             }
                         ],
                         offerList: [
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
+                                img: picture3,
                             },
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
-                            }
-                        ]
+                                img: picture3,
+                            },
+                        ],
                     },
                     typeList8: {
                         module: '幼儿玩具',
@@ -1009,36 +1009,36 @@
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
-                            }
+                                img: picture2,
+                            },
                         ],
                         offerList: [
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
+                                img: picture3,
                             },
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
-                            }
-                        ]
+                                img: picture3,
+                            },
+                        ],
                     },
                     typeList9: {
                         module: '育婴心得',
@@ -1048,100 +1048,100 @@
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
+                                img: picture2,
                             },
                             {
                                 title: '新品上架',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture2
-                            }
+                                img: picture2,
+                            },
                         ],
                         offerList: [
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
+                                img: picture3,
                             },
                             {
                                 title: '满减优惠',
                                 intro: '舒适耐实用儿童睡椅',
-                                img: picture3
-                            }
-                        ]
-                    }
+                                img: picture3,
+                            },
+                        ],
+                    },
                 },
                 newProduct: [
                     {
                         title: '新品上架',
                         name: '舒适耐用儿童睡椅',
                         price: 98.00,
-                        img: image3
+                        img: image3,
                     },
                     {
                         title: '新品上架',
                         name: '舒适耐用儿童睡椅',
                         price: 98.00,
-                        img: image3
+                        img: image3,
                     },
                     {
                         title: '新品上架',
                         name: '舒适耐用儿童睡椅',
                         price: 98.00,
-                        img: image3
+                        img: image3,
                     },
                     {
                         title: '新品上架',
                         name: '舒适耐用儿童睡椅',
                         price: 98.00,
-                        img: image3
-                    }
+                        img: image3,
+                    },
                 ],
                 spikeList: [
                     {
                         img: image4,
                         name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
                         price1: 34.00,
-                        price2: 98.00
+                        price2: 98.00,
                     },
                     {
                         img: image4,
                         name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
                         price1: 34.00,
-                        price2: 98.00
+                        price2: 98.00,
                     },
                     {
                         img: image4,
                         name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
                         price1: 34.00,
-                        price2: 98.00
+                        price2: 98.00,
                     },
                     {
                         img: image4,
                         name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
                         price1: 34.00,
-                        price2: 98.00
+                        price2: 98.00,
                     },
                     {
                         img: image4,
                         name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
                         price1: 34.00,
-                        price2: 98.00
+                        price2: 98.00,
                     },
                     {
                         img: image4,
                         name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
                         price1: 34.00,
-                        price2: 98.00
+                        price2: 98.00,
                     }
                 ],
                 slideList: [
@@ -1149,32 +1149,32 @@
                         img: slideImg,
                         title: '品质生活',
                         intro: '大牌低至大牌低至',
-                        discount: '2折'
+                        discount: '2折',
                     },
                     {
                         img: slideImg,
                         title: '品质生活',
                         intro: '大牌低至大牌低至',
-                        discount: '2折'
+                        discount: '2折',
                     },
                     {
                         img: slideImg,
                         title: '品质生活',
                         intro: '大牌低至大牌低至',
-                        discount: '2折'
+                        discount: '2折',
                     },
                     {
                         img: slideImg,
                         title: '品质生活',
                         intro: '大牌低至大牌低至',
-                        discount: '2折'
-                    }
-                ]
-            }
+                        discount: '2折',
+                    },
+                ],
+            };
         },
         components: {
             RightSide,
-            NeedBrowse
+            NeedBrowse,
         },
         methods: {
             toTop: function () {
@@ -1184,6 +1184,6 @@
         },
         mounted () {
             jQuery("body").scrollspy({target: ".bs-js-navbar-scrollspy"});
-        }
-    }
+        },
+    };
 </script>

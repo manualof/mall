@@ -219,11 +219,11 @@
 <script>
     import RightSide from './dashboard/RightSide';
 
-    import HeaderBar from './dashboard/HeaderBar'
-    import FooterBar from './dashboard/FooterBar'
-    import FooterContent from './dashboard/FooterContent'
-    import EveryoneBrowse from './dashboard/EveryoneBrowse'
-    import MyselfBrowse from './dashboard/MyselfBrowse'
+    import HeaderBar from './dashboard/HeaderBar';
+    import FooterBar from './dashboard/FooterBar';
+    import FooterContent from './dashboard/FooterContent';
+    import EveryoneBrowse from './dashboard/EveryoneBrowse';
+    import MyselfBrowse from './dashboard/MyselfBrowse';
 
     export default {
         components: {
@@ -232,7 +232,7 @@
             FooterBar,
             FooterContent,
             EveryoneBrowse,
-            MyselfBrowse
-        }
-    }
+            MyselfBrowse,
+        },
+    };
 </script>

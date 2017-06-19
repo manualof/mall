@@ -58,7 +58,7 @@
             FooterBar,
             LogoModal,
             NeedBrowse,
-            FooterContent
-        }
-    }
+            FooterContent,
+        },
+    };
 </script>

@@ -15,33 +15,33 @@
 </template>
 
 <script>
-    import MenuBar from '../MenuBar'
+    import MenuBar from '../MenuBar';
 
     export default {
         components: {
-            MenuBar
+            MenuBar,
         },
         data () {
             return {
                 'navigation': [
                     {
                         'to': {'name': 'home'},
-                        'text': '首页'
+                        'text': '首页',
                     },
                     {
                         'to': {'name': 'offer'},
-                        'text': '优惠'
+                        'text': '优惠',
                     },
                     {
                         'to': {'name': 'spike'},
-                        'text': '秒杀'
+                        'text': '秒杀',
                     },
                     {
                         'to': {'name': 'discount'},
-                        'text': '折扣'
-                    }
-                ]
-            }
-        }
-    }
+                        'text': '折扣',
+                    },
+                ],
+            };
+        },
+    };
 </script>

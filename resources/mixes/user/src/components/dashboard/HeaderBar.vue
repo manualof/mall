@@ -21,31 +21,31 @@
 
 <script>
     export default {
-        data () {
+        data() {
             return {
                 'navigation': [
                     {
                         'to': {'name': 'order'},
-                        'text': '我的订单'
+                        'text': '我的订单',
                     },
                     {
                         'to': {'name': 'personnal-center'},
-                        'text': '个人中心'
+                        'text': '个人中心',
                     },
                     {
                         'to': {'name': 'customer-serve'},
-                        'text': '客户服务'
+                        'text': '客户服务',
                     },
                     {
                         'to': {'name': 'more'},
-                        'text': '更多'
+                        'text': '更多',
                     },
                     {
                         'to': {'name': 'businessmen'},
-                        'text': '商家入驻'
-                    }
-                ]
-            }
-        }
-    }
+                        'text': '商家入驻',
+                    },
+                ],
+            };
+        },
+    };
 </script>

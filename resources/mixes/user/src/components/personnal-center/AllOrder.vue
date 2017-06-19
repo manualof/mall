@@ -167,8 +167,8 @@
                                 transport_price: 10.00,
                                 status: [1, 2],
                                 operating: [1, 2]
-                            }
-                        ]
+                            },
+                        ],
                     },
                     {
                         time: '2017-02-09',
@@ -200,9 +200,9 @@
                                         {
                                             address: '北京海淀区xx大道',
                                             time: '2016-12-29 13:06:03'
-                                        }
-                                    ]
-                                }
+                                        },
+                                    ],
+                                },
                             },
                             {
                                 img: img1,
@@ -213,9 +213,9 @@
                                 transport_price: 10.00,
                                 old_price: 123.9,
                                 status: [2, 3],
-                                operating: [1, 3]
-                            }
-                        ]
+                                operating: [1, 3],
+                            },
+                        ],
                     },
                     {
                         time: '2017-02-09',
@@ -238,18 +238,18 @@
                                     logisticsList: [
                                         {
                                             address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03'
+                                            time: '2016-12-29 13:06:03',
                                         },
                                         {
                                             address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03'
+                                            time: '2016-12-29 13:06:03',
                                         },
                                         {
                                             address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03'
-                                        }
-                                    ]
-                                }
+                                            time: '2016-12-29 13:06:03',
+                                        },
+                                    ],
+                                },
                             },
                             {
                                 img: img1,
@@ -260,7 +260,7 @@
                                 old_price: 123.9,
                                 transport_price: 10.00,
                                 status: [3],
-                                operating: [1, 3]
+                                operating: [1, 3],
                             },
                             {
                                 img: img1,
@@ -271,19 +271,18 @@
                                 price: 39.9,
                                 transport_price: 10.00,
                                 status: [1, 2],
-                                operating: [1, 5]
-                            }
-                        ]
-                    }
-                ]
-            }
+                                operating: [1, 5],
+                            },
+                        ],
+                    },
+                ],
+            };
         },
         methods: {
             deleteProduct(item) {
                 let index = this.allOrder.indexOf(item);
-                console.log(index);
                 this.allOrder.splice(index, 1);
-            }
-        }
-    }
+            },
+        },
+    };
 </script>

@@ -279,17 +279,17 @@
                     children: [
                         {
                             value: 'gugong',
-                            label: '故宫'
+                            label: '故宫',
                         },
                         {
                             value: 'tiantan',
-                            label: '天坛'
+                            label: '天坛',
                         },
                         {
                             value: 'wangfujing',
-                            label: '王府井'
-                        }
-                    ]
+                            label: '王府井',
+                        },
+                    ],
                 }, {
                     value: 'jiangsu',
                     label: '江苏',
@@ -301,8 +301,8 @@
                                 {
                                     value: 'fuzimiao',
                                     label: '夫子庙',
-                                }
-                            ]
+                                },
+                            ],
                         },
                         {
                             value: 'suzhou',
@@ -315,9 +315,9 @@
                                 {
                                     value: 'shizilin',
                                     label: '狮子林',
-                                }
-                            ]
-                        }
+                                },
+                            ],
+                        },
                     ],
                 }],
                 product_intro: {
@@ -330,7 +330,7 @@
                     integral: 138,
                     transport_price: 12.00,
                     status: '有货，今天下单预计1月22送到',
-                    type: ['套餐一', '套餐二', '套餐三']
+                    type: ['套餐一', '套餐二', '套餐三'],
                 },
                 recommend_products: [
                     {
@@ -338,28 +338,28 @@
                         img: img7,
                         name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
                         price: 46.88,
-                        old_price: 60
+                        old_price: 60,
                     },
                     {
                         id: 2,
                         img: img7,
                         name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
                         price: 46.88,
-                        old_price: 60
+                        old_price: 60,
                     },
                     {
                         id: 3,
                         img: img7,
                         name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
                         price: 46.88,
-                        old_price: 60
+                        old_price: 60,
                     },
                     {
                         id: 4,
                         img: img7,
                         name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
                         price: 46.88,
-                        old_price: 60
+                        old_price: 60,
                     }
                 ],
                 seeAgain_products: [
@@ -368,21 +368,21 @@
                         img: img7,
                         name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
                         price: 46.88,
-                        sales: 187
+                        sales: 187,
                     },
                     {
                         id: 2,
                         img: img7,
                         name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
                         price: 46.88,
-                        sales: 187
+                        sales: 187,
                     },
                     {
                         id: 3,
                         img: img7,
                         name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
                         price: 46.88,
-                        sales: 187
+                        sales: 187,
                     }
                 ],
                 selectRecommends: [],
@@ -396,7 +396,7 @@
                     madeIn: "中国",
                     cailiao: "实木",
                     style: "欧式",
-                    color: "原木 黑色 象牙白"
+                    color: "原木 黑色 象牙白",
                 },
                 activeImg: '',
                 isActive: false,
@@ -410,8 +410,8 @@
                         evaluationTxt: '包装精美 跟我想象的面料不太一样 但是超满意 裸睡王 贴身内衣的那种棉质 家人特别喜欢 超值的 就是被套有点大 理想尺码床单1米八 被罩2米3 但是不拆开卖 除了这个缺点 其他的都超满意',
                         productInfo: {
                             color: '蓝色',
-                            size: 'm'
-                        }
+                            size: 'm',
+                        },
                     },
                     {
                         name: '皮皮虾',
@@ -423,8 +423,8 @@
                         evaluationImg: [img1, img2],
                         productInfo: {
                             color: '蓝色',
-                            size: 'm'
-                        }
+                            size: 'm',
+                        },
                     },
                     {
                         name: '皮皮虾',
@@ -436,8 +436,8 @@
                         evaluationImg: [img1, img2],
                         productInfo: {
                             color: '蓝色',
-                            size: 'm'
-                        }
+                            size: 'm',
+                        },
                     },
                     {
                         name: '皮皮虾',
@@ -449,18 +449,18 @@
                         evaluationImg: [img1, img2, img1],
                         productInfo: {
                             color: '蓝色',
-                            size: 'm'
-                        }
-                    }
-                ]
-            }
+                            size: 'm',
+                        },
+                    },
+                ],
+            };
         },
         components: {
             RightSide,
             NeedBrowse,
             MyselfBrowse,
             EveryoneBrowse,
-            Cascader
+            Cascader,
         },
         computed: {
             total_price() {
@@ -536,7 +536,7 @@
                     this.selectRecommends.splice(index, 1)
                 }
                 console.log(this.selectRecommends);
-            }
+            },
         },
         mounted(){
             this.bigImg = this.smallImgs[0];
@@ -549,6 +549,6 @@
                 spaceBetween: 10,
                 normalizeSlideIndex: true,
             });
-        }
-    }
+        },
+    };
 </script>
