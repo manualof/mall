@@ -111,7 +111,7 @@
         </div>
         <!--推荐购买-->
         <ul class="combination-buy container">
-            <router-link to="/" tag="li" class="text-center" v-for="product in recommend_products">
+            <router-link to="/" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
                 <a href="javascript:void (0)">
                     <img :src="product.img"/>
                 </a>
@@ -134,7 +134,7 @@
             <div class="see-again-box">
                 <h4>看了又看</h4>
                 <ul>
-                    <router-link tag="li" to="/" v-for="item in seeAgain_products">
+                    <router-link tag="li" to="/" v-for="(item, index) in seeAgain_products" :key="index">
                         <a href="javascript:void (0)">
                             <img :src="item.img"/>
                         </a>

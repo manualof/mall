@@ -23,7 +23,7 @@
             <div class="container">
                 <div>
                     <router-link :to="{ name: 'product-details' }" class="col-sm-3 row-content row-margin"
-                                 v-for="item in newProduct">
+                                 v-for="item in newProduct" :key="index">
                         <div class="img-box">
                             <img :src="item.img" alt="">
                         </div>
@@ -44,7 +44,7 @@
                     <p>还有&nbsp;<span>13</span><i>:</i><span>22</span><i>:</i><span>07</span>&nbsp;结束</p>
                 </div>
                 <div class="spike-content row">
-                    <router-link :to="{ name: 'product-details' }" v-for="item in spikeList">
+                    <router-link :to="{ name: 'product-details' }" v-for="(item, index) in spikeList" :key="index">
                         <dl class="col col-line">
                             <dt><img :src="item.img"></dt>
                             <dd>
@@ -63,7 +63,7 @@
                     <div class="recommend-name"><i class="icon iconfont icon-dianzan"></i>{{ recommendList.title1 }}
                     </div>
                     <div class="recommend-content clearfix">
-                        <router-link class="recommend-content-model" v-for="item in recommendList.recommen1"
+                        <router-link class="recommend-content-model" v-for="(item, index) in recommendList.recommen1" :key="index"
                                      :to="{name: 'product-details'}">
                             <div class="content-model text-center">
                                 <p class="name">{{ item.title }}</p>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="recommend-content">
                         <div class="content-top clearfix">
-                            <router-link class="recommend-content-model" v-for="item in recommendList.recommen2"
+                            <router-link class="recommend-content-model" v-for="(item, index) in recommendList.recommen2" :key="index"
                                          :to="{name: 'product-details'}">
                                 <div class="content-model text-center">
                                     <p class="name">年末特惠</p>
@@ -99,7 +99,7 @@
                 <div class="product-recommend-model product-kinds">
                     <div class="recommend-name"><i class="icon iconfont icon-xing"></i>{{ recommendList.title3 }}</div>
                     <div class="recommend-content clearfix">
-                        <router-link class="recommend-content-model" v-for="item in recommendList.recommen3"
+                        <router-link class="recommend-content-model" v-for="(item, index) in recommendList.recommen3" :key="index"
                                      :to="{name: 'product-details'}">
                             <div class="content-model text-center">
                                 <p class="name">年末特惠</p>
@@ -116,7 +116,7 @@
         <!--年末特惠-->
         <div class="year-offer">
             <div class="container">
-                <router-link class="year-offer-model offer-margin" v-for="item in yearOfferList" to="/">
+                <router-link class="year-offer-model offer-margin" v-for="(item, index) in yearOfferList" to="/" :key="index">
                     <div class="offer-content">
                         <span class="top-line"></span>
                         <p class="name">{{ item.title }}</p>
@@ -152,7 +152,7 @@
                         <div class="content-right-model">
                             <div class="content">
                                 <ul class="model-content">
-                                    <li class="content-item item-line" v-for="item in typeList.typeList1.newProduct">
+                                    <li class="content-item item-line" v-for="(item, index) in typeList.typeList1.newProduct" :key="index">
                                         <router-link :to="{name: 'product-details'}">
                                             <div class="img-box">
                                                 <img :src="item.img" alt="">

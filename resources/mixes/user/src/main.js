@@ -1,10 +1,13 @@
-import Vue from 'vue'
-import VueResource from 'vue-resource'
-import App from './App'
-import router from './router'
-import 'bootstrap'
+import Vue from 'vue';
+import VueResource from 'vue-resource';
+import App from './App';
+import router from './router';
+import 'bootstrap';
 
-Vue.use(VueResource)
+import RouterLink from './directives/router-link';
+import './assets/less/bootstrap-muying.less';
+
+Vue.use(VueResource);
 
 Vue.directive('router-link', RouterLink)
 
@@ -14,4 +17,4 @@ new Vue({
     router,
     template: '<App/>',
     components: { App },
-})
+});
