@@ -9,10 +9,10 @@
 namespace Notadd\Mall\Controllers\Api\Seller;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Seller\Order\ProcessHandler;
 use Notadd\Mall\Handlers\Seller\Product\CreateHandler;
 use Notadd\Mall\Handlers\Seller\Product\EditHandler;
 use Notadd\Mall\Handlers\Seller\Product\ListHandler;
+use Notadd\Mall\Handlers\Seller\Product\ProductHandler;
 use Notadd\Mall\Handlers\Seller\Product\RemoveHandler;
 
 /**
@@ -54,12 +54,12 @@ class ProductController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Order\ProcessHandler $handler
+     * @param \Notadd\Mall\Handlers\Seller\Product\ProductHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function product(ProcessHandler $handler)
+    public function product(ProductHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
