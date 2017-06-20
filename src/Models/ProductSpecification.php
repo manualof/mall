@@ -24,6 +24,11 @@ class ProductSpecification extends Model
      * @var array
      */
     protected $fillable = [
+        'category_id',
+        'name',
+        'store_id',
+        'type',
+        'value',
     ];
 
     /**
