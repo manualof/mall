@@ -50,7 +50,7 @@ class CreateHandler extends Handler
             'inventory_warning.numeric' => '库存预警值必须为数值',
         ]);
         $this->database->beginTransaction();
-        $result = Product::query()->create($this->request->only([
+        $data = $this->request->only([
             'barcode',
             'brand_id',
             'business_item',
@@ -62,8 +62,8 @@ class CreateHandler extends Handler
             'price_market',
             'inventory',
             'inventory_warning',
-        ]));
-        if ($result) {
+        ]);
+        if (Product::query()->create($data)) {
             $this->database->commit();
             $this->withCode(200)->withMessage('添加产品成功！');
         } else {
