@@ -22,12 +22,13 @@ class CreateMallProductBrandsTable extends Migration
     {
         $this->schema->create('mall_product_brands', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id');
-            $table->string('logo')->nullable();
-            $table->string('name');
-            $table->tinyInteger('order')->default(0);
-            $table->tinyInteger('recommend')->default(0);
-            $table->enum('show', ['image', 'text'])->default('text');
+            $table->integer('category_id')->comment('分类 ID');
+            $table->string('logo')->nullable()->comment('品牌 Logo');
+            $table->string('name')->comment('品牌名称');
+            $table->tinyInteger('order')->default(0)->comment('排列顺序');
+            $table->tinyInteger('recommend')->default(0)->comment('是否推荐');
+            $table->enum('show', ['image', 'text'])->default('text')->comment('显示方式');
+            $table->integer('store_id')->comment('店铺 ID');
             $table->timestamps();
             $table->softDeletes();
         });
