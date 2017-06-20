@@ -26,11 +26,15 @@ class Product extends Model
     protected $fillable = [
         'barcode',
         'brand_id',
+        'business_item',
         'category_id',
         'description',
         'name',
-        'weight',
-        'size',
+        'price',
+        'price_cost',
+        'price_market',
+        'inventory',
+        'inventory_warning',
     ];
 
     /**

@@ -22,13 +22,17 @@ class CreateMallProductsTable extends Migration
     {
         $this->schema->create('mall_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('barcode')->nullable();
-            $table->integer('brand_id')->default();
-            $table->integer('category_id')->default(0);
-            $table->string('description')->nullable();
-            $table->string('name');
-            $table->string('weight')->nullable();
-            $table->string('size');
+            $table->string('barcode')->nullable()->comment('商品条形码');
+            $table->integer('brand_id')->nullable()->comment('品牌 ID');
+            $table->integer('business_item')->nullable()->comment('商家货号');
+            $table->integer('category_id')->default(0)->comment('分类 ID');
+            $table->text('description')->nullable()->comment('商品描述');
+            $table->string('name')->comment('商品名称');
+            $table->string('price')->deault('0.00')->comment('价格');
+            $table->string('price_cost')->deault('0.00')->comment('成本价格');
+            $table->string('price_market')->deault('0.00')->comment('市场价格');
+            $table->integer('inventory')->defualt(0)->comment('库存');
+            $table->integer('inventory_warning')->defualt(0)->comment('库存预警值');
             $table->timestamps();
             $table->softDeletes();
         });
