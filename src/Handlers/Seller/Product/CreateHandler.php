@@ -49,7 +49,7 @@ class CreateHandler extends Handler
             'inventory.numeric'         => '库存必须为数值',
             'inventory_warning.numeric' => '库存预警值必须为数值',
         ]);
-        $this->database->beginTransaction();
+        $this->beginTransaction();
         $data = $this->request->only([
             'barcode',
             'brand_id',
@@ -64,10 +64,10 @@ class CreateHandler extends Handler
             'inventory_warning',
         ]);
         if (Product::query()->create($data)) {
-            $this->database->commit();
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('添加产品成功！');
         } else {
-            $this->database->rollBack();
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('添加产品失败！');
         }
     }

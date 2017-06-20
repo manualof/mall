@@ -52,7 +52,7 @@ class EditHandler extends Handler
             'inventory.numeric'         => '库存必须为数值',
             'inventory_warning.numeric' => '库存预警值必须为数值',
         ]);
-        $this->database->beginTransaction();
+        $this->beginTransaction();
         $data = $this->request->only([
             'barcode',
             'brand_id',
@@ -68,10 +68,10 @@ class EditHandler extends Handler
         ]);
         $product = Product::query()->find($this->request->input('id'));
         if ($product instanceof Product && $product->update($data)) {
-            $this->database->commit();
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('修改产品信息成功！');
         } else {
-            $this->database->rollBack();
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('修改产品信息失败！');
         }
     }

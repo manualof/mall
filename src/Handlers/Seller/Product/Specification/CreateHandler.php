@@ -38,7 +38,7 @@ class CreateHandler extends Handler
             'type.required'        => '规格类型必须填写',
             'value.required'       => '规格值必须填写',
         ]);
-        $this->database->beginTransaction();
+        $this->beginTransaction();
         $data = $this->request->only([
             'category_id',
             'name',
@@ -47,10 +47,10 @@ class CreateHandler extends Handler
             'value',
         ]);
         if (ProductSpecification::query()->create($data)) {
-            $this->database->commit();
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('添加产品规格成功！');
         } else {
-            $this->database->rollBack();
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('添加产品规格失败！');
         }
     }

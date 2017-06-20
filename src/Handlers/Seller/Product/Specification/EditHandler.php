@@ -41,7 +41,7 @@ class EditHandler extends Handler
             'type.required'        => '规格类型必须填写',
             'value.required'       => '规格值必须填写',
         ]);
-        $this->database->beginTransaction();
+        $this->beginTransaction();
         $data = $this->request->only([
             'category_id',
             'name',
@@ -51,10 +51,10 @@ class EditHandler extends Handler
         ]);
         $specification = ProductSpecification::query()->find($this->request->input('id'));
         if ($specification instanceof ProductSpecification && $specification->update($data)) {
-            $this->database->commit();
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('编辑产品规格成功！');
         } else {
-            $this->database->rollBack();
+            $this->rollBackTransaction();
             $this->withCode(500)->withMessage('编辑产品规格失败！');
         }
     }
