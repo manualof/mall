@@ -39,13 +39,13 @@ class CreateHandler extends Handler
             'value.required'       => '规格值必须填写',
         ]);
         $this->database->beginTransaction();
-        $data = [
+        $data = $this->request->only([
             'category_id',
             'name',
             'store_id',
             'type',
             'value',
-        ];
+        ]);
         if (ProductSpecification::query()->create($data)) {
             $this->database->commit();
             $this->withCode(200)->withMessage('添加产品规格成功！');
