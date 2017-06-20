@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\ShopCategory;
+use Notadd\Mall\Models\StoreCategory;
 
 /**
  * Class EditHandler.
@@ -24,7 +24,7 @@ class EditHandler extends Handler
     public function execute()
     {
         $id = $this->request->input('id');
-        $category = ShopCategory::query()->find($id);
+        $category = StoreCategory::query()->find($id);
         if ($category && $category->update($this->request->all())) {
             $this->withCode(200)->withMessage('');
         } else {

@@ -4,7 +4,7 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 15:05
+ * @datetime 2017-05-09 15:02
  */
 namespace Notadd\Mall\Models;
 
@@ -14,9 +14,9 @@ use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class ShopCategory.
+ * Class ShopRate.
  */
-class ShopCategory extends Model
+class StoreRate extends Model
 {
     use HasFlow;
 
@@ -24,24 +24,12 @@ class ShopCategory extends Model
      * @var array
      */
     protected $fillable = [
-        'amount_of_deposit',
-        'order',
-        'parent_id',
-        'name',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_shop_categories';
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function parent()
-    {
-        return $this->hasOne(ShopCategory::class, 'id', 'parent_id');
-    }
+    protected $table = 'mall_shop_rates';
 
     /**
      * Definition of name for flow.
@@ -50,7 +38,7 @@ class ShopCategory extends Model
      */
     public function name()
     {
-        return 'mall.store.category';
+        return 'mall.store.rate';
     }
 
     /**
@@ -61,12 +49,10 @@ class ShopCategory extends Model
     public function places()
     {
         return [
-            'create',
-            'created',
-            'edit',
-            'edited',
-            'remove',
-            'removed',
+            'rate',      // 评价
+            'rated',     // 评价完胜
+            'review',    // 审核
+            'reviewed',  // 审核完成
         ];
     }
 
@@ -78,11 +64,9 @@ class ShopCategory extends Model
     public function transitions()
     {
         return [
-            new Transition('create', 'create', 'created'),
-            new Transition('need_to_edit', 'created', 'edit'),
-            new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
-            new Transition('remove', 'remove', 'removed'),
+            new Transition('rate', 'rate', 'rated'),
+            new Transition('wait_to_review', 'rated', 'review'),
+            new Transition('review', 'review', 'reviewed'),
         ];
     }
 
@@ -94,19 +78,13 @@ class ShopCategory extends Model
     public function guardTransition(GuardEvent $event)
     {
         switch ($event->getTransition()->getName()) {
-            case 'create':
+            case 'rate':
                 $this->blockTransition($event, $this->permission(''));
                 break;
-            case 'need_to_edit':
+            case 'wait_to_review':
                 $this->blockTransition($event, $this->permission(''));
                 break;
-            case 'edit':
-                $this->blockTransition($event, $this->permission(''));
-                break;
-            case 'need_to_remove':
-                $this->blockTransition($event, $this->permission(''));
-                break;
-            case 'remove':
+            case 'review':
                 $this->blockTransition($event, $this->permission(''));
                 break;
             default:

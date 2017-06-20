@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\ShopCategory;
+use Notadd\Mall\Models\StoreCategory;
 
 /**
  * Class ListHandler.
@@ -23,7 +23,7 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        $builder = ShopCategory::query();
+        $builder = StoreCategory::query();
         $this->withCode(200)->withData($builder->get())->withMessage('');
     }
 }

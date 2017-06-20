@@ -9,9 +9,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
 /**
- * Class CreateMallShopRatesTable.
+ * Class CreateMallStoreRatesTable.
  */
-class CreateMallShopRatesTable extends Migration
+class CreateMallStoreRatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +20,7 @@ class CreateMallShopRatesTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('mall_shop_rates', function (Blueprint $table) {
+        $this->schema->create('mall_store_rates', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ class CreateMallShopRatesTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('mall_shop_rates');
+        $this->schema->drop('mall_store_rates');
     }
 }

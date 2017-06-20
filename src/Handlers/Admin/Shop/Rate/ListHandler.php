@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\ShopRate;
+use Notadd\Mall\Models\StoreRate;
 
 /**
  * Class ListHandler.
@@ -23,7 +23,7 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        $builder = ShopRate::query();
+        $builder = StoreRate::query();
         $this->withCode(200)->withData($builder->get())->withMessage('');
     }
 }

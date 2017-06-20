@@ -60,7 +60,7 @@ class Order extends Model
      */
     public function shop()
     {
-        return $this->hasOne(Shop::class, 'id', 'shop_id');
+        return $this->hasOne(Store::class, 'id', 'shop_id');
     }
 
     /**

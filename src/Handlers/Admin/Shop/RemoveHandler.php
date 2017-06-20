@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\Shop;
+use Notadd\Mall\Models\Store;
 
 /**
  * Class RemoveHandler.
@@ -24,7 +24,7 @@ class RemoveHandler extends Handler
     public function execute()
     {
         $id = $this->request->input('id');
-        $shop = Shop::query()->find($id);
+        $shop = Store::query()->find($id);
         if ($shop && $shop->delete()) {
             $this->withCode(200)->withMessage('');
         } else {

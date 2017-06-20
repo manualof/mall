@@ -4,7 +4,7 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 15:02
+ * @datetime 2017-05-09 15:08
  */
 namespace Notadd\Mall\Models;
 
@@ -14,9 +14,9 @@ use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class ShopRate.
+ * Class Shop.
  */
-class ShopRate extends Model
+class Store extends Model
 {
     use HasFlow;
 
@@ -24,12 +24,32 @@ class ShopRate extends Model
      * @var array
      */
     protected $fillable = [
+        'address',
+        'avatar',
+        'category_id',
+        'company',
+        'end_at',
+        'identification',
+        'level',
+        'location',
+        'logo',
+        'name',
+        'open_at',
+        'status',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_shop_rates';
+    protected $table = 'mall_shops';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function category()
+    {
+        return $this->hasOne(StoreCategory::class, 'id', 'category_id');
+    }
 
     /**
      * Definition of name for flow.
@@ -38,7 +58,7 @@ class ShopRate extends Model
      */
     public function name()
     {
-        return 'mall.store.rate';
+        return 'mall.store';
     }
 
     /**
@@ -49,10 +69,12 @@ class ShopRate extends Model
     public function places()
     {
         return [
-            'rate',      // 评价
-            'rated',     // 评价完胜
-            'review',    // 审核
-            'reviewed',  // 审核完成
+            'register',
+            'registered',
+            'close',
+            'closed',
+            'open',
+            'opened',
         ];
     }
 
@@ -64,9 +86,11 @@ class ShopRate extends Model
     public function transitions()
     {
         return [
-            new Transition('rate', 'rate', 'rated'),
-            new Transition('wait_to_review', 'rated', 'review'),
-            new Transition('review', 'review', 'reviewed'),
+            new Transition('register', 'register', 'registered'),
+            new Transition('need_to_close', ['opened', 'registered'], 'close'),
+            new Transition('close', 'close', 'closed'),
+            new Transition('need_to_open', 'registered', 'open'),
+            new Transition('open', 'open', 'opened'),
         ];
     }
 
@@ -78,13 +102,19 @@ class ShopRate extends Model
     public function guardTransition(GuardEvent $event)
     {
         switch ($event->getTransition()->getName()) {
-            case 'rate':
+            case 'register':
                 $this->blockTransition($event, $this->permission(''));
                 break;
-            case 'wait_to_review':
+            case 'need_to_close':
                 $this->blockTransition($event, $this->permission(''));
                 break;
-            case 'review':
+            case 'close':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'need_to_open':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'open':
                 $this->blockTransition($event, $this->permission(''));
                 break;
             default:

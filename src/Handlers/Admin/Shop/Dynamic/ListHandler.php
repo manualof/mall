@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop\Dynamic;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\ShopDynamic;
+use Notadd\Mall\Models\StoreDynamic;
 
 /**
  * Class ListHandler.
@@ -23,7 +23,7 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        $builder = ShopDynamic::query();
+        $builder = StoreDynamic::query();
         $this->withCode(200)->withData($builder->get())->withMessage('');
     }
 }

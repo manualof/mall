@@ -4,20 +4,19 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 15:04
+ * @datetime 2017-05-09 15:05
  */
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
 use Notadd\Foundation\Flow\Traits\HasFlow;
-use Notadd\Foundation\Member\Member;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class ShopDynamic.
+ * Class ShopCategory.
  */
-class ShopDynamic extends Model
+class StoreCategory extends Model
 {
     use HasFlow;
 
@@ -25,32 +24,23 @@ class ShopDynamic extends Model
      * @var array
      */
     protected $fillable = [
-        'content',
-        'shop_id',
-        'show',
-        'title',
-        'user_id',
+        'amount_of_deposit',
+        'order',
+        'parent_id',
+        'name',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_shop_dynamics';
+    protected $table = 'mall_shop_categories';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function shop()
+    public function parent()
     {
-        return $this->hasOne(Shop::class, 'id', 'shop_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function user()
-    {
-        return $this->hasOne(Member::class, 'id', 'user_id');
+        return $this->hasOne(StoreCategory::class, 'id', 'parent_id');
     }
 
     /**
@@ -60,7 +50,7 @@ class ShopDynamic extends Model
      */
     public function name()
     {
-        return 'mall.store.dynamic';
+        return 'mall.store.category';
     }
 
     /**
@@ -77,8 +67,6 @@ class ShopDynamic extends Model
             'edited',
             'remove',
             'removed',
-            'publish',
-            'published',
         ];
     }
 
@@ -95,8 +83,6 @@ class ShopDynamic extends Model
             new Transition('edit', 'edit', 'edited'),
             new Transition('need_to_remove', ['created', 'edited'], 'remove'),
             new Transition('remove', 'remove', 'removed'),
-            new Transition('need_to_publish', ['created', 'edited'], 'publish'),
-            new Transition('publish', 'publish', 'published'),
         ];
     }
 
@@ -121,12 +107,6 @@ class ShopDynamic extends Model
                 $this->blockTransition($event, $this->permission(''));
                 break;
             case 'remove':
-                $this->blockTransition($event, $this->permission(''));
-                break;
-            case 'need_to_publish':
-                $this->blockTransition($event, $this->permission(''));
-                break;
-            case 'publish':
                 $this->blockTransition($event, $this->permission(''));
                 break;
             default:

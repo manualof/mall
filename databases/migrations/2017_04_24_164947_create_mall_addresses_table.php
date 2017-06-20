@@ -42,6 +42,6 @@ class CreateMallAddressesTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('addresses');
+        $this->schema->drop('mall_addresses');
     }
 }

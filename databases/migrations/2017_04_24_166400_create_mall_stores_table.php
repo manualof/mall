@@ -9,9 +9,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
 /**
- * Class CreateMallShopsTable.
+ * Class CreateMallStoresTable.
  */
-class CreateMallShopsTable extends Migration
+class CreateMallStoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +20,7 @@ class CreateMallShopsTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('mall_shops', function (Blueprint $table) {
+        $this->schema->create('mall_stores', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->default(0);
             $table->string('address')->nullable();
@@ -46,6 +46,6 @@ class CreateMallShopsTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('mall_shops');
+        $this->schema->drop('mall_stores');
     }
 }

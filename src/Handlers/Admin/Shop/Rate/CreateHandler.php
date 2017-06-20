@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\ShopRate;
+use Notadd\Mall\Models\StoreRate;
 
 /**
  * Class CreateHandler.
@@ -23,7 +23,7 @@ class CreateHandler extends Handler
      */
     public function execute()
     {
-        if (ShopRate::query()->create($this->request->all())) {
+        if (StoreRate::query()->create($this->request->all())) {
             $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');

@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\ShopCategory;
+use Notadd\Mall\Models\StoreCategory;
 
 /**
  * Class CreateHandler.
@@ -23,7 +23,7 @@ class CreateHandler extends Handler
      */
     public function execute()
     {
-        if (ShopCategory::query()->create($this->request->all())) {
+        if (StoreCategory::query()->create($this->request->all())) {
             $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');

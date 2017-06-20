@@ -2,16 +2,16 @@
 /**
  * This file is part of Notadd.
  *
- * @datetime 2017-05-09 13:55:59
+ * @datetime 2017-05-09 13:54:48
  */
 
 use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
 /**
- * Class CreateMallShopDynamicsTable.
+ * Class CreateMallStoreCategoriesTable.
  */
-class CreateMallShopDynamicsTable extends Migration
+class CreateMallStoreCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,13 +20,12 @@ class CreateMallShopDynamicsTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('mall_shop_dynamics', function (Blueprint $table) {
+        $this->schema->create('mall_store_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('content')->nullable();
-            $table->integer('shop_id');
-            $table->tinyInteger('show')->default(0);
-            $table->string('title');
-            $table->integer('user_id');
+            $table->integer('amount_of_deposit')->default(0);
+            $table->tinyInteger('order')->default(0);
+            $table->integer('parent_id')->default(0);
+            $table->string('name');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -39,6 +38,6 @@ class CreateMallShopDynamicsTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('mall_shop_dynamics');
+        $this->schema->drop('mall_store_categories');
     }
 }

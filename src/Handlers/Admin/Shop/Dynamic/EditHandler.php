@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop\Dynamic;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\ShopDynamic;
+use Notadd\Mall\Models\StoreDynamic;
 
 /**
  * Class EditHandler.
@@ -24,7 +24,7 @@ class EditHandler extends Handler
     public function execute()
     {
         $id = $this->request->input('id');
-        $dynamic = ShopDynamic::query()->find($id);
+        $dynamic = StoreDynamic::query()->find($id);
         if ($dynamic && $dynamic->update($this->request->all())) {
             $this->withCode(200)->withMessage('');
         } else {

@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop\Dynamic;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\ShopDynamic;
+use Notadd\Mall\Models\StoreDynamic;
 
 /**
  * Class CreateHandler.
@@ -23,7 +23,7 @@ class CreateHandler extends Handler
      */
     public function execute()
     {
-        if (ShopDynamic::query()->create($this->request->all())) {
+        if (StoreDynamic::query()->create($this->request->all())) {
             $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');

@@ -4,19 +4,20 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 15:08
+ * @datetime 2017-05-09 15:04
  */
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
 use Notadd\Foundation\Flow\Traits\HasFlow;
+use Notadd\Foundation\Member\Member;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
 /**
- * Class Shop.
+ * Class ShopDynamic.
  */
-class Shop extends Model
+class StoreDynamic extends Model
 {
     use HasFlow;
 
@@ -24,31 +25,32 @@ class Shop extends Model
      * @var array
      */
     protected $fillable = [
-        'address',
-        'avatar',
-        'category_id',
-        'company',
-        'end_at',
-        'identification',
-        'level',
-        'location',
-        'logo',
-        'name',
-        'open_at',
-        'status',
+        'content',
+        'shop_id',
+        'show',
+        'title',
+        'user_id',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_shops';
+    protected $table = 'mall_shop_dynamics';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function category()
+    public function shop()
     {
-        return $this->hasOne(ShopCategory::class, 'id', 'category_id');
+        return $this->hasOne(Store::class, 'id', 'shop_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne(Member::class, 'id', 'user_id');
     }
 
     /**
@@ -58,7 +60,7 @@ class Shop extends Model
      */
     public function name()
     {
-        return 'mall.store';
+        return 'mall.store.dynamic';
     }
 
     /**
@@ -69,12 +71,14 @@ class Shop extends Model
     public function places()
     {
         return [
-            'register',
-            'registered',
-            'close',
-            'closed',
-            'open',
-            'opened',
+            'create',
+            'created',
+            'edit',
+            'edited',
+            'remove',
+            'removed',
+            'publish',
+            'published',
         ];
     }
 
@@ -86,11 +90,13 @@ class Shop extends Model
     public function transitions()
     {
         return [
-            new Transition('register', 'register', 'registered'),
-            new Transition('need_to_close', ['opened', 'registered'], 'close'),
-            new Transition('close', 'close', 'closed'),
-            new Transition('need_to_open', 'registered', 'open'),
-            new Transition('open', 'open', 'opened'),
+            new Transition('create', 'create', 'created'),
+            new Transition('need_to_edit', 'created', 'edit'),
+            new Transition('edit', 'edit', 'edited'),
+            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('remove', 'remove', 'removed'),
+            new Transition('need_to_publish', ['created', 'edited'], 'publish'),
+            new Transition('publish', 'publish', 'published'),
         ];
     }
 
@@ -102,19 +108,25 @@ class Shop extends Model
     public function guardTransition(GuardEvent $event)
     {
         switch ($event->getTransition()->getName()) {
-            case 'register':
+            case 'create':
                 $this->blockTransition($event, $this->permission(''));
                 break;
-            case 'need_to_close':
+            case 'need_to_edit':
                 $this->blockTransition($event, $this->permission(''));
                 break;
-            case 'close':
+            case 'edit':
                 $this->blockTransition($event, $this->permission(''));
                 break;
-            case 'need_to_open':
+            case 'need_to_remove':
                 $this->blockTransition($event, $this->permission(''));
                 break;
-            case 'open':
+            case 'remove':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'need_to_publish':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'publish':
                 $this->blockTransition($event, $this->permission(''));
                 break;
             default:

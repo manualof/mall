@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Shop\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\ShopRate;
+use Notadd\Mall\Models\StoreRate;
 
 /**
  * Class EditHandler.
@@ -24,7 +24,7 @@ class EditHandler extends Handler
     public function execute()
     {
         $id = $this->request->input('id');
-        $rate = ShopRate::query()->find($id);
+        $rate = StoreRate::query()->find($id);
         if ($rate && $rate->update($this->request->all())) {
             $this->withCode(200)->withMessage('');
         } else {
