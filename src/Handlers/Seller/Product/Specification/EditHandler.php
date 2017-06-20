@@ -33,6 +33,7 @@ class EditHandler extends Handler
         ], [
             'category_id.numeric'  => '分类 ID 必须为数值',
             'category_id.required' => '分类 ID 必须填写',
+            'id.numeric'           => '规格 ID 必须为数值',
             'id.required'          => '规格 ID 必须填写',
             'name.required'        => '规格显示名称必须填写',
             'store_id.numeric'     => '商家 ID 必须为数值',
