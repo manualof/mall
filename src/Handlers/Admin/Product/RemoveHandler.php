@@ -23,12 +23,16 @@ class RemoveHandler extends Handler
      */
     public function execute()
     {
-        $id = $this->request->input('id');
-        $product = Product::query()->find($id);
-        if ($product && $product->delete()) {
-            $this->withCode(200)->withMessage('');
+        $this->validate($this->request, [
+            'id' => 'required',
+        ], [
+            'id.required' => '产品 ID 必须填写',
+        ]);
+        $product = Product::query()->find($this->request->input('id'));
+        if ($product instanceof Product && $product->delete()) {
+            $this->withCode(200)->withMessage('删除产品成功！');
         } else {
-            $this->withCode(500)->withError('');
+            $this->withCode(500)->withError('删除产品失败！');
         }
     }
 }
