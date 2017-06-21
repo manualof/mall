@@ -180,6 +180,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/rate/create', StoreRateController::class . '@create');
             $this->router->post('store/rate/edit', StoreRateController::class . '@edit');
             $this->router->post('store/rate/list', StoreRateController::class . '@list');
+            $this->router->post('specification', ProductSpecificationController::class . '@specification');
             $this->router->post('specification/create', ProductSpecificationController::class . '@create');
             $this->router->post('specification/edit', ProductSpecificationController::class . '@edit');
             $this->router->post('specification/list', ProductSpecificationController::class . '@list');

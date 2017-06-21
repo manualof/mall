@@ -13,6 +13,7 @@ use Notadd\Mall\Handlers\Admin\Product\Specification\CreateHandler;
 use Notadd\Mall\Handlers\Admin\Product\Specification\EditHandler;
 use Notadd\Mall\Handlers\Admin\Product\Specification\ListHandler;
 use Notadd\Mall\Handlers\Admin\Product\Specification\RemoveHandler;
+use Notadd\Mall\Handlers\Admin\Product\Specification\SpecificationHandler;
 
 /**
  * Class SpecificationController.
@@ -59,6 +60,17 @@ class ProductSpecificationController extends Controller
      * @throws \Exception
      */
     public function remove(RemoveHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Product\Specification\SpecificationHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function specification(SpecificationHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
