@@ -21,12 +21,10 @@ class CreateMallProductCategoriesTable extends Migration
     {
         $this->schema->create('mall_product_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('commission')->default(0);
-            $table->tinyInteger('commission_inherit')->default(0);
-            $table->string('identification');
-            $table->string('name');
-            $table->integer('parent_id')->default(0);
-            $table->tinyInteger('order')->default(0);
+            $table->integer('deposit')->default(0)->comment('保证金数额');
+            $table->string('name')->comment('分类名称');
+            $table->integer('parent_id')->default(0)->comment('父级分类 ID');
+            $table->tinyInteger('order')->default(0)->comment('排序');
             $table->timestamps();
             $table->softDeletes();
         });
