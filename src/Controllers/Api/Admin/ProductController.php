@@ -53,6 +53,11 @@ class ProductController extends Controller
         return $handler->toResponse()->generateHttpResponse();
     }
 
+    public function product()
+    {
+        
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\Admin\Product\RemoveHandler $handler
      *

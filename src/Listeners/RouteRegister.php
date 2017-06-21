@@ -143,6 +143,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('order/process/finish', OrderProcessController::class . '@finish');
             $this->router->post('order/process/pay', OrderProcessController::class . '@pay');
             $this->router->post('order/process/send', OrderProcessController::class . '@send');
+            $this->router->post('product', ProductController::class . '@product');
             $this->router->post('product/create', ProductController::class . '@create');
             $this->router->post('product/edit', ProductController::class . '@edit');
             $this->router->post('product/list', ProductController::class . '@list');
