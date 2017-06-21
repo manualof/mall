@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Product\Brand;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\ProductBrand;
 
 /**
  * Class BrandHandler.
@@ -22,6 +23,17 @@ class BrandHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'id' => 'required|numeric',
+        ], [
+            'id.numeric'  => '品牌 ID 必须为数值',
+            'id.required' => '品牌 ID 必须填写',
+        ]);
+        $brand = ProductBrand::query()->find($this->request->input('id'));
+        if ($brand instanceof ProductBrand) {
+            $this->withCode(200)->withData($brand)->withMessage('获取品牌信息成功！');
+        } else {
+            $this->withCode(500)->withError('获取品牌信息失败！');
+        }
     }
 }
