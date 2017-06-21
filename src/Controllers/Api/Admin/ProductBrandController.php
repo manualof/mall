@@ -11,6 +11,7 @@ namespace Notadd\Mall\Controllers\Api\Admin;
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Admin\Product\Brand\CreateHandler;
 use Notadd\Mall\Handlers\Admin\Product\Brand\EditHandler;
+use Notadd\Mall\Handlers\Admin\Product\Brand\removeHandler;
 
 /**
  * Class ProductBrandController.
@@ -35,6 +36,17 @@ class ProductBrandController extends Controller
      * @throws \Exception
      */
     public function edit(EditHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Product\Brand\removeHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function remove(RemoveHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
