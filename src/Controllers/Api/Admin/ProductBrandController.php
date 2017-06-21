@@ -10,6 +10,7 @@ namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Admin\Product\Brand\AccessHandler;
+use Notadd\Mall\Handlers\Admin\Product\Brand\BrandHandler;
 use Notadd\Mall\Handlers\Admin\Product\Brand\CreateHandler;
 use Notadd\Mall\Handlers\Admin\Product\Brand\EditHandler;
 use Notadd\Mall\Handlers\Admin\Product\Brand\removeHandler;
@@ -26,6 +27,17 @@ class ProductBrandController extends Controller
      * @throws \Exception
      */
     public function access(AccessHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Product\Brand\BrandHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function brand(BrandHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
