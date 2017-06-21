@@ -9,14 +9,33 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Admin\Product\Brand\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Product\Brand\EditHandler;
 
 /**
  * Class ProductBrandController.
  */
 class ProductBrandController extends Controller
 {
-    public function create()
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Product\Brand\CreateHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function create(CreateHandler $handler)
     {
-        
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Product\Brand\EditHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function edit(EditHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
     }
 }
