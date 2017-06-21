@@ -23,12 +23,35 @@ class EditHandler extends Handler
      */
     public function execute()
     {
-        $id = $this->request->input('id');
-        $specification = ProductSpecification::query()->find($id);
-        if ($specification && $specification->update($this->request->all())) {
-            $this->withCode(200)->withMessage('');
+        $this->validate($this->request, [
+            'category_id' => 'required|numeric',
+            'id'          => 'required',
+            'name'        => 'required',
+            'type'        => 'required',
+            'value'       => 'required',
+        ], [
+            'category_id.numeric'  => '分类 ID 必须为数值',
+            'category_id.required' => '分类 ID 必须填写',
+            'id.numeric'           => '规格 ID 必须为数值',
+            'id.required'          => '规格 ID 必须填写',
+            'name.required'        => '规格显示名称必须填写',
+            'type.required'        => '规格类型必须填写',
+            'value.required'       => '规格值必须填写',
+        ]);
+        $this->beginTransaction();
+        $data = $this->request->only([
+            'category_id',
+            'name',
+            'type',
+            'value',
+        ]);
+        $specification = ProductSpecification::query()->find($this->request->input('id'));
+        if ($specification instanceof ProductSpecification && $specification->update($data)) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('编辑产品规格成功！');
         } else {
-            $this->withCode(500)->withError('');
+            $this->rollBackTransaction();
+            $this->withCode(500)->withMessage('编辑产品规格失败！');
         }
     }
 }
