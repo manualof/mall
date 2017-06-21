@@ -22,11 +22,11 @@ class CreateMallStoreDynamicsTable extends Migration
     {
         $this->schema->create('mall_store_dynamics', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('content')->nullable();
-            $table->integer('shop_id');
-            $table->tinyInteger('show')->default(0);
-            $table->string('title');
-            $table->integer('user_id');
+            $table->text('content')->nullable()->comment('动态内容');
+            $table->tinyInteger('show')->default(0)->comment('是否显示');
+            $table->integer('store_id')->comment('店铺 ID');
+            $table->string('thumbnail')->nullable()->comment('缩略图');
+            $table->string('title')->comment('动态标题');
             $table->timestamps();
             $table->softDeletes();
         });

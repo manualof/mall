@@ -26,10 +26,10 @@ class StoreDynamic extends Model
      */
     protected $fillable = [
         'content',
-        'shop_id',
         'show',
+        'store_id',
+        'thumbnail',
         'title',
-        'user_id',
     ];
 
     /**
