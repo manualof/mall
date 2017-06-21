@@ -13,7 +13,7 @@ use Notadd\Mall\Handlers\Admin\Product\Brand\AccessHandler;
 use Notadd\Mall\Handlers\Admin\Product\Brand\BrandHandler;
 use Notadd\Mall\Handlers\Admin\Product\Brand\CreateHandler;
 use Notadd\Mall\Handlers\Admin\Product\Brand\EditHandler;
-use Notadd\Mall\Handlers\Admin\Product\Brand\removeHandler;
+use Notadd\Mall\Handlers\Admin\Product\Brand\RemoveHandler;
 
 /**
  * Class ProductBrandController.
@@ -65,7 +65,7 @@ class ProductBrandController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Product\Brand\removeHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Product\Brand\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
