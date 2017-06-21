@@ -4,12 +4,12 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 12:16
+ * @datetime 2017-05-08 15:50
  */
-namespace Notadd\Mall\Handlers\Admin\Shop\Dynamic;
+namespace Notadd\Mall\Handlers\Admin\Store\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\StoreDynamic;
+use Notadd\Mall\Models\StoreRate;
 
 /**
  * Class ListHandler.
@@ -23,7 +23,7 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        $builder = StoreDynamic::query();
+        $builder = StoreRate::query();
         $this->withCode(200)->withData($builder->get())->withMessage('');
     }
 }

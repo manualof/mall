@@ -4,17 +4,17 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-03 16:23
+ * @datetime 2017-05-08 15:56
  */
-namespace Notadd\Mall\Handlers\Admin\Shop;
+namespace Notadd\Mall\Handlers\Admin\Store\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\Store;
+use Notadd\Mall\Models\StoreRate;
 
 /**
- * Class CreateHandler.
+ * Class EditHandler.
  */
-class CreateHandler extends Handler
+class EditHandler extends Handler
 {
     /**
      * Execute Handler.
@@ -23,7 +23,9 @@ class CreateHandler extends Handler
      */
     public function execute()
     {
-        if (Store::query()->create($this->request->all())) {
+        $id = $this->request->input('id');
+        $rate = StoreRate::query()->find($id);
+        if ($rate && $rate->update($this->request->all())) {
             $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');

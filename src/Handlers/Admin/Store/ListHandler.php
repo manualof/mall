@@ -4,16 +4,17 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 12:10
+ * @datetime 2017-05-03 16:15
  */
-namespace Notadd\Mall\Handlers\Admin\Shop\Category;
+namespace Notadd\Mall\Handlers\Admin\Store;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\Store;
 
 /**
- * Class CategoryHandler.
+ * Class ListHandler.
  */
-class CategoryHandler extends Handler
+class ListHandler extends Handler
 {
     /**
      * Execute Handler.
@@ -22,6 +23,7 @@ class CategoryHandler extends Handler
      */
     protected function execute()
     {
-        $id = $this->request->input('id');
+        $builder = Store::query();
+        $this->withCode(200)->withData($builder->get())->withMessage('');
     }
 }

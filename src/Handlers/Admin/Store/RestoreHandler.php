@@ -4,9 +4,9 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 12:14
+ * @datetime 2017-05-03 16:49
  */
-namespace Notadd\Mall\Handlers\Admin\Shop\Category;
+namespace Notadd\Mall\Handlers\Admin\Store;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
 

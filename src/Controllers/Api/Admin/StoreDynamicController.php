@@ -4,23 +4,24 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-08 15:50
+ * @datetime 2017-05-09 12:16
  */
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Admin\Shop\Rate\CreateHandler;
-use Notadd\Mall\Handlers\Admin\Shop\Rate\EditHandler;
-use Notadd\Mall\Handlers\Admin\Shop\Rate\ListHandler;
-use Notadd\Mall\Handlers\Admin\Shop\Rate\RateHandler;
+use Notadd\Mall\Handlers\Admin\Store\Dynamic\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Store\Dynamic\DynamicHandler;
+use Notadd\Mall\Handlers\Admin\Store\Dynamic\EditHandler;
+use Notadd\Mall\Handlers\Admin\Store\Dynamic\ListHandler;
+use Notadd\Mall\Handlers\Admin\Store\Dynamic\RemoveHandler;
 
 /**
- * Class ShopRateController.
+ * Class ShopDynamicController.
  */
-class ShopRateController extends Controller
+class StoreDynamicController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Shop\Rate\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Store\Dynamic\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -31,7 +32,18 @@ class ShopRateController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Shop\Rate\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Store\Dynamic\DynamicHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function dynamic(DynamicHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Store\Dynamic\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -42,7 +54,7 @@ class ShopRateController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Shop\Rate\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Store\Dynamic\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -53,12 +65,12 @@ class ShopRateController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Shop\Rate\RateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Store\Dynamic\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function rate(RateHandler $handler)
+    public function remove(RemoveHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

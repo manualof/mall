@@ -6,7 +6,7 @@
  * @copyright (c) 2017, notadd.com
  * @datetime 2017-05-09 12:00
  */
-namespace Notadd\Mall\Handlers\Admin\Shop\Category;
+namespace Notadd\Mall\Handlers\Admin\Store\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreCategory;

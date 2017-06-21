@@ -4,23 +4,23 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-08 16:45
+ * @datetime 2017-05-09 12:14
  */
-namespace Notadd\Mall\Handlers\Admin\Shop\Rate;
+namespace Notadd\Mall\Handlers\Admin\Store\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
 
 /**
- * Class RateHandler.
+ * Class RestoreHandler.
  */
-class RateHandler extends Handler
+class RestoreHandler extends Handler
 {
     /**
      * Execute Handler.
      *
      * @throws \Exception
      */
-    protected function execute()
+    public function execute()
     {
         $id = $this->request->input('id');
     }

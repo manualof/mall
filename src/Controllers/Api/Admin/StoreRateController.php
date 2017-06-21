@@ -4,24 +4,23 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-03 16:13
+ * @datetime 2017-05-08 15:50
  */
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Shop\CreateHandler;
-use Notadd\Mall\Handlers\Admin\Shop\EditHandler;
-use Notadd\Mall\Handlers\Admin\Shop\ListHandler;
-use Notadd\Mall\Handlers\Admin\Shop\RemoveHandler;
-use Notadd\Mall\Handlers\Admin\Shop\RestoreHandler;
+use Notadd\Mall\Handlers\Admin\Store\Rate\CreateHandler;
+use Notadd\Mall\Handlers\Admin\Store\Rate\EditHandler;
+use Notadd\Mall\Handlers\Admin\Store\Rate\ListHandler;
+use Notadd\Mall\Handlers\Admin\Store\Rate\RateHandler;
 
 /**
- * Class StoreController.
+ * Class ShopRateController.
  */
-class ShopController extends Controller
+class StoreRateController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Shop\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Store\Rate\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -32,7 +31,7 @@ class ShopController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Shop\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Store\Rate\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -41,9 +40,9 @@ class ShopController extends Controller
     {
         return $handler->toResponse()->generateHttpResponse();
     }
-    
+
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Shop\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Store\Rate\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -54,23 +53,12 @@ class ShopController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Shop\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Admin\Store\Rate\RateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function remove(RemoveHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
-     * @param \Notadd\Mall\Handlers\Admin\Shop\RestoreHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function restore(RestoreHandler $handler)
+    public function rate(RateHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

@@ -4,12 +4,12 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 12:11
+ * @datetime 2017-05-09 12:22
  */
-namespace Notadd\Mall\Handlers\Admin\Shop\Category;
+namespace Notadd\Mall\Handlers\Admin\Store\Dynamic;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\StoreCategory;
+use Notadd\Mall\Models\StoreDynamic;
 
 /**
  * Class RemoveHandler.
@@ -24,8 +24,8 @@ class RemoveHandler extends Handler
     public function execute()
     {
         $id = $this->request->input('id');
-        $category = StoreCategory::query()->find($id);
-        if ($category && $category->delete()) {
+        $dynamic = StoreDynamic::query()->find($id);
+        if ($dynamic && $dynamic->delete()) {
             $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');

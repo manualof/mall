@@ -4,17 +4,17 @@
  *
  * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 12:19
+ * @datetime 2017-05-09 11:59
  */
-namespace Notadd\Mall\Handlers\Admin\Shop\Dynamic;
+namespace Notadd\Mall\Handlers\Admin\Store\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\StoreDynamic;
+use Notadd\Mall\Models\StoreCategory;
 
 /**
- * Class EditHandler.
+ * Class CreateHandler.
  */
-class EditHandler extends Handler
+class CreateHandler extends Handler
 {
     /**
      * Execute Handler.
@@ -23,9 +23,7 @@ class EditHandler extends Handler
      */
     public function execute()
     {
-        $id = $this->request->input('id');
-        $dynamic = StoreDynamic::query()->find($id);
-        if ($dynamic && $dynamic->update($this->request->all())) {
+        if (StoreCategory::query()->create($this->request->all())) {
             $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');
