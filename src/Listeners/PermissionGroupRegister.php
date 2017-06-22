@@ -20,28 +20,91 @@ class PermissionGroupRegister extends AbstractPermissionGroupRegister
      */
     public function handle()
     {
+        $this->extendAdministrationGroup();
+        $this->extendSellerGroup();
+        $this->extendUserGroup();
+    }
+
+    protected function extendAdministrationGroup()
+    {
         $this->manager->extend([
-            'description'    => '全局权限定义。',
+            'description'    => '全局权限定义',
             'identification' => 'global',
-            'module'         => 'mall',
+            'module'         => 'mall-administration',
             'name'           => '全局权限',
         ]);
         $this->manager->extend([
-            'description'    => '商品权限定义。',
+            'description'    => '商品权限定义',
             'identification' => 'product',
-            'module'         => 'mall',
+            'module'         => 'mall-administration',
             'name'           => '商品权限',
         ]);
         $this->manager->extend([
-            'description'    => '商店权限定义。',
+            'description'    => '商店权限定义',
             'identification' => 'store',
-            'module'         => 'mall',
+            'module'         => 'mall-administration',
             'name'           => '商店权限',
         ]);
         $this->manager->extend([
-            'description'    => '商家权限定义。',
+            'description'    => '商家权限定义',
             'identification' => 'seller',
-            'module'         => 'mall',
+            'module'         => 'mall-administration',
+            'name'           => '商家权限',
+        ]);
+    }
+
+    protected function extendSellerGroup()
+    {
+        $this->manager->extend([
+            'description'    => '全局权限定义',
+            'identification' => 'global',
+            'module'         => 'mall-seller',
+            'name'           => '全局权限',
+        ]);
+        $this->manager->extend([
+            'description'    => '商品权限定义',
+            'identification' => 'product',
+            'module'         => 'mall-seller',
+            'name'           => '商品权限',
+        ]);
+        $this->manager->extend([
+            'description'    => '商店权限定义',
+            'identification' => 'store',
+            'module'         => 'mall-seller',
+            'name'           => '商店权限',
+        ]);
+        $this->manager->extend([
+            'description'    => '商家权限定义',
+            'identification' => 'seller',
+            'module'         => 'mall-seller',
+            'name'           => '商家权限',
+        ]);
+    }
+
+    protected function extendUserGroup()
+    {
+        $this->manager->extend([
+            'description'    => '全局权限定义',
+            'identification' => 'global',
+            'module'         => 'mall-user',
+            'name'           => '全局权限',
+        ]);
+        $this->manager->extend([
+            'description'    => '商品权限定义',
+            'identification' => 'product',
+            'module'         => 'mall-user',
+            'name'           => '商品权限',
+        ]);
+        $this->manager->extend([
+            'description'    => '商店权限定义',
+            'identification' => 'store',
+            'module'         => 'mall-user',
+            'name'           => '商店权限',
+        ]);
+        $this->manager->extend([
+            'description'    => '商家权限定义',
+            'identification' => 'seller',
+            'module'         => 'mall-user',
             'name'           => '商家权限',
         ]);
     }
