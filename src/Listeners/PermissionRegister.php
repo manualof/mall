@@ -27,6 +27,24 @@ class PermissionRegister extends AbstractPermissionRegister
 
     protected function extendAdministrationPermission()
     {
+        $this->extendOrderPermissionForAdministration();
+        $this->extendOrderExchangePermissionForAdministration();
+        $this->extendOrderExpressPermissionForAdministration();
+        $this->extendOrderInvoicePermissionForAdministration();
+        $this->extendOrderRatePermissionForAdministration();
+        $this->extendOrderRefundPermissionForAdministration();
+        $this->extendProductPermissionForAdministration();
+        $this->extendProductBrandPermissionForAdministration();
+        $this->extendProductCategoryPermissionForAdministration();
+        $this->extendProductSpecificationPermissionForAdministration();
+        $this->extendStorePermissionForAdministration();
+        $this->extendStoreCategoryPermissionForAdministration();
+        $this->extendStoreDynamicPermissionForAdministration();
+        $this->extendStoreRatePermissionForAdministration();
+    }
+
+    protected function extendOrderPermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '订单编辑权限',
@@ -62,7 +80,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'restore',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendOrderExchangePermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '发货权限',
@@ -91,7 +112,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'confirm',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendOrderExpressPermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '列表权限',
@@ -113,7 +137,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'typing',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendOrderInvoicePermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '创建权限',
@@ -149,7 +176,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'remove',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendOrderRatePermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '编辑权限',
@@ -171,7 +201,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'rate',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendOrderRefundPermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '确认权限',
@@ -193,7 +226,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'list',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendProductPermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '创建权限',
@@ -236,7 +272,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'restore',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendProductBrandPermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '通过权限',
@@ -272,7 +311,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'remove',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendProductCategoryPermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '详情权限',
@@ -315,7 +357,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'restore',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendProductSpecificationPermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '创建权限',
@@ -351,7 +396,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'specification',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendStorePermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '创建权限',
@@ -387,7 +435,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'restore',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendStoreCategoryPermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '详情权限',
@@ -430,7 +481,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'restore',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendStoreDynamicPermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '详情权限',
@@ -459,7 +513,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'remove',
             'module'         => 'mall-administration',
         ]);
+    }
 
+    protected function extendStoreRatePermissionForAdministration()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '编辑权限',
