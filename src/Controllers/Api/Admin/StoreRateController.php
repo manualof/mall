@@ -20,17 +20,6 @@ use Notadd\Mall\Handlers\Admin\Store\Rate\RateHandler;
 class StoreRateController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Store\Rate\CreateHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function create(CreateHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
      * @param \Notadd\Mall\Handlers\Admin\Store\Rate\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
