@@ -12,12 +12,12 @@ use Notadd\Mall\Handlers\Seller\Product\Specification\CreateHandler;
 use Notadd\Mall\Handlers\Seller\Product\Specification\EditHandler;
 use Notadd\Mall\Handlers\Seller\Product\Specification\ListHandler;
 use Notadd\Mall\Handlers\Seller\Product\Specification\RemoveHandler;
-use Notadd\Mall\Handlers\Seller\Product\Specification\SpecificationsHandler;
+use Notadd\Mall\Handlers\Seller\Product\Specification\SpecificationHandler;
 
 /**
  * Class ProductSpecificationsController.
  */
-class ProductSpecificationsController
+class ProductSpecificationController
 {
     /**
      * @param \Notadd\Mall\Handlers\Seller\Product\Specification\CreateHandler $handler
@@ -64,12 +64,12 @@ class ProductSpecificationsController
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Product\Specification\SpecificationsHandler $handler
+     * @param \Notadd\Mall\Handlers\Seller\Product\Specification\SpecificationHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function specifications(SpecificationsHandler $handler)
+    public function specifications(SpecificationHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

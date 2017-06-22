@@ -14,7 +14,7 @@ use Notadd\Mall\Models\ProductSpecification;
 /**
  * Class SpecificationsHandler.
  */
-class SpecificationsHandler extends Handler
+class SpecificationHandler extends Handler
 {
     /**
      * Execute Handler.

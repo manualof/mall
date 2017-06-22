@@ -44,7 +44,7 @@ use Notadd\Mall\Controllers\Api\Admin\VirtualOrderController;
 use Notadd\Mall\Controllers\Api\Admin\VirtualProductController;
 use Notadd\Mall\Controllers\Api\Seller\OrderController as SellerOrderController;
 use Notadd\Mall\Controllers\Api\Seller\ProductController as SellerProductController;
-use Notadd\Mall\Controllers\Api\Seller\ProductSpecificationsController;
+use Notadd\Mall\Controllers\Api\Seller\ProductSpecificationController as SellerProductSpecificationController;
 use Notadd\Mall\Controllers\Api\Seller\ProductSubscribeController;
 use Notadd\Mall\Controllers\Api\Seller\ServiceController;
 use Notadd\Mall\Controllers\Api\Seller\ServiceRefundController;
@@ -254,11 +254,11 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/product/remove', SellerProductController::class . '@remove');
             $this->router->post('store/product/subscribe/list', ProductSubscribeController::class . '@list');
             $this->router->post('store/product/subscribe/remove', ProductSubscribeController::class . '@remove');
-            $this->router->post('store/product/specifications', ProductSpecificationsController::class . '@specifications');
-            $this->router->post('store/product/specifications/create', ProductSpecificationsController::class . '@create');
-            $this->router->post('store/product/specifications/edit', ProductSpecificationsController::class . '@edit');
-            $this->router->post('store/product/specifications/list', ProductSpecificationsController::class . '@list');
-            $this->router->post('store/product/specifications/remove', ProductSpecificationsController::class . '@remove');
+            $this->router->post('store/product/specifications', SellerProductSpecificationController::class . '@specifications');
+            $this->router->post('store/product/specifications/create', SellerProductSpecificationController::class . '@create');
+            $this->router->post('store/product/specifications/edit', SellerProductSpecificationController::class . '@edit');
+            $this->router->post('store/product/specifications/list', SellerProductSpecificationController::class . '@list');
+            $this->router->post('store/product/specifications/remove', SellerProductSpecificationController::class . '@remove');
         });
 
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/store'], function () {
