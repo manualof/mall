@@ -12,6 +12,7 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Admin\Product\CreateHandler;
 use Notadd\Mall\Handlers\Admin\Product\EditHandler;
 use Notadd\Mall\Handlers\Admin\Product\ListHandler;
+use Notadd\Mall\Handlers\Admin\Product\ProductHandler;
 use Notadd\Mall\Handlers\Admin\Product\RemoveHandler;
 use Notadd\Mall\Handlers\Admin\Product\RestoreHandler;
 
@@ -53,9 +54,15 @@ class ProductController extends Controller
         return $handler->toResponse()->generateHttpResponse();
     }
 
-    public function product()
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Product\ProductHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function product(ProductHandler $handler)
     {
-        
+        return $handler->toResponse()->generateHttpResponse();
     }
 
     /**
