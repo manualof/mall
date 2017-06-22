@@ -113,6 +113,42 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'typing',
             'module'         => 'mall-administration',
         ]);
+
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '创建权限',
+            'group'          => 'order-invoice',
+            'identification' => 'create',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '编辑权限',
+            'group'          => 'order-invoice',
+            'identification' => 'edit',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '详情权限',
+            'group'          => 'order-invoice',
+            'identification' => 'invoice',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '列表权限',
+            'group'          => 'order-invoice',
+            'identification' => 'list',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '删除权限',
+            'group'          => 'order-invoice',
+            'identification' => 'remove',
+            'module'         => 'mall-administration',
+        ]);
     }
 
     protected function extendSellerPermission()

@@ -52,6 +52,12 @@ class PermissionGroupRegister extends AbstractPermissionGroupRegister
             'name'           => '订单物流权限',
         ]);
         $this->manager->extend([
+            'description'    => '订单发票权限定义',
+            'identification' => 'order-invoice',
+            'module'         => 'mall-administration',
+            'name'           => '订单发票权限',
+        ]);
+        $this->manager->extend([
             'description'    => '商品权限定义',
             'identification' => 'product',
             'module'         => 'mall-administration',
