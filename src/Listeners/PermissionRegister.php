@@ -171,6 +171,28 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'rate',
             'module'         => 'mall-administration',
         ]);
+
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '确认权限',
+            'group'          => 'order-refund',
+            'identification' => 'confirm',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '完结权限',
+            'group'          => 'order-refund',
+            'identification' => 'finish',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '列表权限',
+            'group'          => 'order-refund',
+            'identification' => 'list',
+            'module'         => 'mall-administration',
+        ]);
     }
 
     protected function extendSellerPermission()

@@ -58,6 +58,18 @@ class PermissionGroupRegister extends AbstractPermissionGroupRegister
             'name'           => '订单发票权限',
         ]);
         $this->manager->extend([
+            'description'    => '订单评价权限定义',
+            'identification' => 'order-rate',
+            'module'         => 'mall-administration',
+            'name'           => '订单评价权限',
+        ]);
+        $this->manager->extend([
+            'description'    => '订单退货权限定义',
+            'identification' => 'order-refund',
+            'module'         => 'mall-administration',
+            'name'           => '订单退货权限',
+        ]);
+        $this->manager->extend([
             'description'    => '商品权限定义',
             'identification' => 'product',
             'module'         => 'mall-administration',

@@ -9,28 +9,15 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Admin\Order\Refund\AskHandler;
 use Notadd\Mall\Handlers\Admin\Order\Refund\ConfirmHandler;
 use Notadd\Mall\Handlers\Admin\Order\Refund\FinishHandler;
 use Notadd\Mall\Handlers\Admin\Order\Refund\ListHandler;
-use Notadd\Mall\Handlers\Admin\Order\Refund\SendHandler;
 
 /**
  * Class OrderRefundController.
  */
 class OrderRefundController extends Controller
 {
-    /**
-     * @param \Notadd\Mall\Handlers\Admin\Order\Refund\AskHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function ask(AskHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
     /**
      * @param \Notadd\Mall\Handlers\Admin\Order\Refund\ConfirmHandler $handler
      *
@@ -60,17 +47,6 @@ class OrderRefundController extends Controller
      * @throws \Exception
      */
     public function list(ListHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
-     * @param \Notadd\Mall\Handlers\Admin\Order\Refund\SendHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function send(SendHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
