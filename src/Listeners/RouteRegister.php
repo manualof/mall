@@ -129,7 +129,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('order/invoice/edit', OrderInvoiceController::class . '@edit');
             $this->router->post('order/invoice/list', OrderInvoiceController::class . '@list');
             $this->router->post('order/invoice/remove', OrderInvoiceController::class . '@remove');
-            $this->router->post('order/rate/create', OrderRateController::class . '@create');
+            $this->router->post('order/rate', OrderRateController::class . '@rate');
             $this->router->post('order/rate/edit', OrderRateController::class . '@edit');
             $this->router->post('order/rate/list', OrderRateController::class . '@list');
             $this->router->post('order/refund/ask', OrderRefundController::class . '@ask');

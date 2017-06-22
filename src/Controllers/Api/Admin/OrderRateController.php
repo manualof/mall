@@ -19,17 +19,6 @@ use Notadd\Mall\Handlers\Admin\Order\Rate\RateHandler;
 class OrderRateController
 {
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Order\Rate\CreateHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function create(CreateHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
      * @param \Notadd\Mall\Handlers\Admin\Order\Rate\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
