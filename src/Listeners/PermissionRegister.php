@@ -20,6 +20,57 @@ class PermissionRegister extends AbstractPermissionRegister
      */
     public function handle()
     {
-        // TODO: Implement handle() method.
+        $this->extendAdministrationPermission();
+        $this->extendSellerPermission();
+        $this->extendUserPermission();
+    }
+
+    protected function extendAdministrationPermission()
+    {
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '订单编辑权限',
+            'group'          => 'order',
+            'identification' => 'edit',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '订单列表权限',
+            'group'          => 'order',
+            'identification' => 'list',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '订单删除权限',
+            'group'          => 'order',
+            'identification' => 'order',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '订单删除权限',
+            'group'          => 'order',
+            'identification' => 'remove',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '订单恢复权限',
+            'group'          => 'order',
+            'identification' => 'restore',
+            'module'         => 'mall-administration',
+        ]);
+    }
+
+    protected function extendSellerPermission()
+    {
+
+    }
+
+    protected function extendUserPermission()
+    {
+
     }
 }
