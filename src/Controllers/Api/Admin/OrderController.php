@@ -12,6 +12,7 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Admin\Order\CreateHandler;
 use Notadd\Mall\Handlers\Admin\Order\EditHandler;
 use Notadd\Mall\Handlers\Admin\Order\ListHandler;
+use Notadd\Mall\Handlers\Admin\Order\OrderHandler;
 use Notadd\Mall\Handlers\Admin\Order\RemoveHandler;
 use Notadd\Mall\Handlers\Admin\Order\RestoreHandler;
 
@@ -20,17 +21,6 @@ use Notadd\Mall\Handlers\Admin\Order\RestoreHandler;
  */
 class OrderController extends Controller
 {
-    /**
-     * @param \Notadd\Mall\Handlers\Admin\Order\CreateHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function create(CreateHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
     /**
      * @param \Notadd\Mall\Handlers\Admin\Order\EditHandler $handler
      *
@@ -49,6 +39,17 @@ class OrderController extends Controller
      * @throws \Exception
      */
     public function list(ListHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Order\OrderHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function order(OrderHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
