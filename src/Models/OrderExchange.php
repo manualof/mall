@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
-use Notadd\Foundation\Flow\Traits\HasFlow;
+use Notadd\Foundation\Database\Traits\HasFlow;
 use Notadd\Foundation\Member\Member;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
@@ -30,6 +30,7 @@ class OrderExchange extends Model
         'address_for_exchange',
         'express_id_for_receive',
         'express_id_for_exchange',
+        'flow_marketing',
         'order_id',
         'reason',
         'remark',

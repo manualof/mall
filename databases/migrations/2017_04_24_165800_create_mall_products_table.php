@@ -33,6 +33,7 @@ class CreateMallProductsTable extends Migration
             $table->string('price_market')->deault('0.00')->comment('市场价格');
             $table->integer('inventory')->defualt(0)->comment('库存');
             $table->integer('inventory_warning')->defualt(0)->comment('库存预警值');
+            $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

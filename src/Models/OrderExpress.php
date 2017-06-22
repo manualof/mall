@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
-use Notadd\Foundation\Flow\Traits\HasFlow;
+use Notadd\Foundation\Database\Traits\HasFlow;
 use Notadd\Foundation\Member\Member;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
@@ -28,6 +28,7 @@ class OrderExpress extends Model
         'address_id',
         'courier_number',
         'express_company',
+        'flow_marketing',
         'order_id',
         'user_id',
     ];

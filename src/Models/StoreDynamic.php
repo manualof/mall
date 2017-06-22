@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
-use Notadd\Foundation\Flow\Traits\HasFlow;
+use Notadd\Foundation\Database\Traits\HasFlow;
 use Notadd\Foundation\Member\Member;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
@@ -26,6 +26,7 @@ class StoreDynamic extends Model
      */
     protected $fillable = [
         'content',
+        'flow_marketing',
         'show',
         'store_id',
         'thumbnail',

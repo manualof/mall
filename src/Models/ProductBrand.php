@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
-use Notadd\Foundation\Flow\Traits\HasFlow;
+use Notadd\Foundation\Database\Traits\HasFlow;
 use Symfony\Component\Workflow\Event\GuardEvent;
 
 /**
@@ -24,6 +24,7 @@ class ProductBrand extends Model
      */
     protected $fillable = [
         'category_id',
+        'flow_marketing',
         'logo',
         'name',
         'order',

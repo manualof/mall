@@ -27,6 +27,7 @@ class CreateMallOrderInvoicesTable extends Migration
             $table->string('title');
             $table->enum('type', ['normal', 'vat'])->default('normal');
             $table->integer('user_id');
+            $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

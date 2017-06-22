@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
-use Notadd\Foundation\Flow\Traits\HasFlow;
+use Notadd\Foundation\Database\Traits\HasFlow;
 use Symfony\Component\Workflow\Event\GuardEvent;
 
 /**
@@ -23,6 +23,7 @@ class Message extends Model
      * @var array
      */
     protected $fillable = [
+        'flow_marketing',
     ];
 
     /**

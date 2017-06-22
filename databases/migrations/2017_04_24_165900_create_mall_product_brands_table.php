@@ -29,6 +29,7 @@ class CreateMallProductBrandsTable extends Migration
             $table->tinyInteger('recommend')->default(0)->comment('是否推荐');
             $table->enum('show', ['image', 'text'])->default('text')->comment('显示方式');
             $table->integer('store_id')->comment('店铺 ID');
+            $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -26,6 +26,7 @@ class CreateMallStoreCategoriesTable extends Migration
             $table->tinyInteger('order')->default(0);
             $table->integer('parent_id')->default(0);
             $table->string('name');
+            $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

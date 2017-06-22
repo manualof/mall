@@ -27,6 +27,7 @@ class CreateMallStoreDynamicsTable extends Migration
             $table->integer('store_id')->comment('店铺 ID');
             $table->string('thumbnail')->nullable()->comment('缩略图');
             $table->string('title')->comment('动态标题');
+            $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

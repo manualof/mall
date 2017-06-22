@@ -27,6 +27,7 @@ class CreateMallOrderExpressesTable extends Migration
             $table->string('express_company');
             $table->integer('order_id');
             $table->integer('user_id');
+            $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

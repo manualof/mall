@@ -32,6 +32,7 @@ class CreateMallOrdersTable extends Migration
             $table->integer('rate')->nullable();
             $table->string('rate_comment')->nullable();
             $table->boolean('rate_mail_sent')->default(false);
+            $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

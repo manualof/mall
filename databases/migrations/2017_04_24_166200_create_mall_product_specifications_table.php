@@ -27,6 +27,7 @@ class CreateMallProductSpecificationsTable extends Migration
             $table->integer('store_id')->comment('商家 ID');
             $table->enum('type', ['color', 'size', 'extend'])->default('')->comment('规格类型');
             $table->string('value')->comment('规格值');
+            $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
