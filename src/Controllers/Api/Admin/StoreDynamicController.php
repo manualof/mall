@@ -21,17 +21,6 @@ use Notadd\Mall\Handlers\Admin\Store\Dynamic\RemoveHandler;
 class StoreDynamicController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Store\Dynamic\CreateHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function create(CreateHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
      * @param \Notadd\Mall\Handlers\Admin\Store\Dynamic\DynamicHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
