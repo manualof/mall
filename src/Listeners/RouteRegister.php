@@ -116,7 +116,6 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('order/list', OrderController::class . '@list');
             $this->router->post('order/remove', OrderController::class . '@remove');
             $this->router->post('order/restore', OrderController::class . '@restore');
-            $this->router->post('order/exchange/ask', OrderExchangeController::class . '@ask');
             $this->router->post('order/exchange/confirm', OrderExchangeController::class . '@confirm');
             $this->router->post('order/exchange/finish', OrderExchangeController::class . '@finish');
             $this->router->post('order/exchange/list', OrderExchangeController::class . '@list');

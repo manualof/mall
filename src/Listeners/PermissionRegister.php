@@ -62,6 +62,57 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'restore',
             'module'         => 'mall-administration',
         ]);
+
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '发货权限',
+            'group'          => 'order-exchange',
+            'identification' => 'send',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '换货列表权限',
+            'group'          => 'order-exchange',
+            'identification' => 'list',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '完结权限',
+            'group'          => 'order-exchange',
+            'identification' => 'finish',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '确认权限',
+            'group'          => 'order-exchange',
+            'identification' => 'confirm',
+            'module'         => 'mall-administration',
+        ]);
+
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '列表权限',
+            'group'          => 'order-express',
+            'identification' => 'list',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '详情权限',
+            'group'          => 'order-express',
+            'identification' => 'trace',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '输入权限',
+            'group'          => 'order-express',
+            'identification' => 'typing',
+            'module'         => 'mall-administration',
+        ]);
     }
 
     protected function extendSellerPermission()
