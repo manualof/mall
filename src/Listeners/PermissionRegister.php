@@ -387,6 +387,49 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'restore',
             'module'         => 'mall-administration',
         ]);
+
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '详情权限',
+            'group'          => 'store-category',
+            'identification' => 'category',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '创建权限',
+            'group'          => 'store-category',
+            'identification' => 'create',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '编辑权限',
+            'group'          => 'store-category',
+            'identification' => 'edit',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '列表权限',
+            'group'          => 'store-category',
+            'identification' => 'list',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '删除权限',
+            'group'          => 'store-category',
+            'identification' => 'remove',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '恢复权限',
+            'group'          => 'store-category',
+            'identification' => 'restore',
+            'module'         => 'mall-administration',
+        ]);
     }
 
     protected function extendSellerPermission()

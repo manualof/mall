@@ -100,6 +100,12 @@ class PermissionGroupRegister extends AbstractPermissionGroupRegister
             'name'           => '店铺权限',
         ]);
         $this->manager->extend([
+            'description'    => '店铺分类权限定义',
+            'identification' => 'store-category',
+            'module'         => 'mall-administration',
+            'name'           => '店铺分类权限',
+        ]);
+        $this->manager->extend([
             'description'    => '商家权限定义',
             'identification' => 'seller',
             'module'         => 'mall-administration',
