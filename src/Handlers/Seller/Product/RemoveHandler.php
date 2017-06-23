@@ -28,10 +28,13 @@ class RemoveHandler extends Handler
         ], [
             'id.required' => '产品 ID 必须填写',
         ]);
+        $this->beginTransaction();
         $product = Product::query()->find($this->request->input('id'));
         if ($product instanceof Product && $product->delete()) {
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('删除产品成功！');
         } else {
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('删除产品失败！');
         }
     }

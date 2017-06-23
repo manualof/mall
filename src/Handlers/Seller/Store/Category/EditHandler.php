@@ -42,8 +42,10 @@ class EditHandler extends Handler
             'store_id',
         ]);
         if ($category && $category->update($data)) {
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('编辑分类信息成功！');
         } else {
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('编辑分类信息失败！');
         }
     }

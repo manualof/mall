@@ -28,10 +28,13 @@ class RestoreHandler extends Handler
         ], [
             'id.required' => '产品 ID 必须填写',
         ]);
+        $this->beginTransaction();
         $product = Product::query()->onlyTrashed()->find($this->request->input('id'));
         if ($product instanceof Product && $product->restore()) {
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('恢复产品成功！');
         } else {
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('恢复产品失败！');
         }
     }
