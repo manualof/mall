@@ -542,7 +542,70 @@ class PermissionRegister extends AbstractPermissionRegister
 
     protected function extendSellerPermission()
     {
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '列表权限',
+            'group'          => 'order',
+            'identification' => 'list',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '详情权限',
+            'group'          => 'order',
+            'identification' => 'order',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '进程权限',
+            'group'          => 'order',
+            'identification' => 'process',
+            'module'         => 'mall-seller',
+        ]);
 
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '创建权限',
+            'group'          => 'product',
+            'identification' => 'create',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '编辑权限',
+            'group'          => 'product',
+            'identification' => 'edit',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '列表权限',
+            'group'          => 'product',
+            'identification' => 'list',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '详情权限',
+            'group'          => 'product',
+            'identification' => 'product',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '删除权限',
+            'group'          => 'product',
+            'identification' => 'remove',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '恢复权限',
+            'group'          => 'product',
+            'identification' => 'restore',
+            'module'         => 'mall-seller',
+        ]);
     }
 
     protected function extendUserPermission()

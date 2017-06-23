@@ -14,6 +14,7 @@ use Notadd\Mall\Handlers\Seller\Product\EditHandler;
 use Notadd\Mall\Handlers\Seller\Product\ListHandler;
 use Notadd\Mall\Handlers\Seller\Product\ProductHandler;
 use Notadd\Mall\Handlers\Seller\Product\RemoveHandler;
+use Notadd\Mall\Handlers\Seller\Product\RestoreHandler;
 
 /**
  * Class ProductController.
@@ -71,6 +72,17 @@ class ProductController extends Controller
      * @throws \Exception
      */
     public function remove(RemoveHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Product\RestoreHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function restore(RestoreHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
