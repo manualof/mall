@@ -2,63 +2,63 @@
 /**
  * This file is part of Notadd.
  *
- * @author        TwilRoad <heshudong@ibenchu.com>
+ * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime      2017-05-24 16:48
+ * @datetime 2017-05-22 18:07
  */
-namespace Notadd\Mall\Controllers\Api\User;
+namespace Notadd\Mall\Controllers\Api\Administration;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\User\Follow\CreateHandler;
-use Notadd\Mall\Handlers\User\Follow\EditHandler;
-use Notadd\Mall\Handlers\User\Follow\ListHandler;
-use Notadd\Mall\Handlers\User\Follow\RemoveHandler;
+use Notadd\Mall\Handlers\Administration\Statistics\Store\AreaHandler;
+use Notadd\Mall\Handlers\Administration\Statistics\Store\HotsHandler;
+use Notadd\Mall\Handlers\Administration\Statistics\Store\NewlyHandler;
+use Notadd\Mall\Handlers\Administration\Statistics\Store\SalesHandler;
 
 /**
- * Class FollowController.
+ * Class StatisticsStoreController.
  */
-class FollowController extends Controller
+class StatisticsStoreController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Administration\Statistics\Store\AreaHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function create(CreateHandler $handler)
+    public function area(AreaHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Administration\Statistics\Store\HotsHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function edit(EditHandler $handler)
+    public function hots(HotsHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Administration\Statistics\Store\NewlyHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function list(ListHandler $handler)
+    public function newly(NewlyHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Administration\Statistics\Store\SalesHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function remove(RemoveHandler $handler)
+    public function sales(SalesHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

@@ -2,25 +2,26 @@
 /**
  * This file is part of Notadd.
  *
- * @author        TwilRoad <heshudong@ibenchu.com>
+ * @author TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime      2017-05-24 16:48
+ * @datetime 2017-05-08 17:53
  */
-namespace Notadd\Mall\Controllers\Api\User;
+namespace Notadd\Mall\Controllers\Api\Administration;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\User\Follow\CreateHandler;
-use Notadd\Mall\Handlers\User\Follow\EditHandler;
-use Notadd\Mall\Handlers\User\Follow\ListHandler;
-use Notadd\Mall\Handlers\User\Follow\RemoveHandler;
+use Notadd\Mall\Handlers\Administration\Order\Invoice\CreateHandler;
+use Notadd\Mall\Handlers\Administration\Order\Invoice\EditHandler;
+use Notadd\Mall\Handlers\Administration\Order\Invoice\InvoiceHandler;
+use Notadd\Mall\Handlers\Administration\Order\Invoice\ListHandler;
+use Notadd\Mall\Handlers\Administration\Order\Invoice\RemoveHandler;
 
 /**
- * Class FollowController.
+ * Class OrderInvoiceController.
  */
-class FollowController extends Controller
+class OrderInvoiceController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\Administration\Order\Invoice\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -31,7 +32,7 @@ class FollowController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Administration\Order\Invoice\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -42,7 +43,18 @@ class FollowController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Administration\Order\Invoice\InvoiceHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function invoice(InvoiceHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Administration\Order\Invoice\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -53,7 +65,7 @@ class FollowController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\Administration\Order\Invoice\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
