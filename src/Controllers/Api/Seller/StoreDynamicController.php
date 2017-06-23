@@ -15,6 +15,7 @@ use Notadd\Mall\Handlers\Seller\Store\Dynamic\DynamicHandler;
 use Notadd\Mall\Handlers\Seller\Store\Dynamic\EditHandler;
 use Notadd\Mall\Handlers\Seller\Store\Dynamic\ListHandler;
 use Notadd\Mall\Handlers\Seller\Store\Dynamic\RemoveHandler;
+use Notadd\Mall\Handlers\Seller\Store\Dynamic\RestoreHandler;
 
 /**
  * Class StoreDynamicController.
@@ -83,6 +84,17 @@ class StoreDynamicController extends Controller
      * @throws \Exception
      */
     public function remove(RemoveHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Dynamic\RestoreHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function restore(RestoreHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
