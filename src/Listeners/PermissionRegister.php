@@ -642,6 +642,21 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'specifications',
             'module'         => 'mall-seller',
         ]);
+
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '列表权限',
+            'group'          => 'product-subscribe',
+            'identification' => 'list',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '删除权限',
+            'group'          => 'product-subscribe',
+            'identification' => 'remove',
+            'module'         => 'mall-seller',
+        ]);
     }
 
     protected function extendUserPermission()
