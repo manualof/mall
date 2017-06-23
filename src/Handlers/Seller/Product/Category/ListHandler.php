@@ -2,14 +2,14 @@
 /**
  * This file is part of Notadd.
  *
- * @author        TwilRoad <heshudong@ibenchu.com>
+ * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime      2017-05-23 18:34
+ * @datetime 2017-06-23 16:02
  */
-namespace Notadd\Mall\Handlers\Seller\Product\Brand;
+namespace Notadd\Mall\Handlers\Seller\Product\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\ProductBrand;
+use Notadd\Mall\Models\ProductCategory;
 
 /**
  * Class ListHandler.
@@ -30,8 +30,7 @@ class ListHandler extends Handler
             'page.numeric'     => '当前页面必须为数值',
             'paginate.numeric' => '分页数必须为数值',
         ]);
-        $builder = ProductBrand::query();
-        $builder->where('store_id', '');
+        $builder = ProductCategory::query();
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)->withData($builder->items())->withMessage('获取产品列表成功！')->withExtra([
             'pagination' => [
