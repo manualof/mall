@@ -13,6 +13,7 @@ use Notadd\Mall\Handlers\Admin\Product\Brand\AccessHandler;
 use Notadd\Mall\Handlers\Admin\Product\Brand\BrandHandler;
 use Notadd\Mall\Handlers\Admin\Product\Brand\CreateHandler;
 use Notadd\Mall\Handlers\Admin\Product\Brand\EditHandler;
+use Notadd\Mall\Handlers\Admin\Product\Brand\ListHandler;
 use Notadd\Mall\Handlers\Admin\Product\Brand\RemoveHandler;
 
 /**
@@ -60,6 +61,17 @@ class ProductBrandController extends Controller
      * @throws \Exception
      */
     public function edit(EditHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Product\Brand\ListHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function list(ListHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

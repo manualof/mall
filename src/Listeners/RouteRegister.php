@@ -150,6 +150,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('product/brand/access', ProductBrandController::class . '@access');
             $this->router->post('product/brand/create', ProductBrandController::class . '@create');
             $this->router->post('product/brand/edit', ProductBrandController::class . '@edit');
+            $this->router->post('product/brand/list', ProductBrandController::class . '@list');
             $this->router->post('product/brand/remove', ProductBrandController::class . '@remove');
             $this->router->post('product/category', ProductCategoryController::class . '@category');
             $this->router->post('product/category/create', ProductCategoryController::class . '@create');
