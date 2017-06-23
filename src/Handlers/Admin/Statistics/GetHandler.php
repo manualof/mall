@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Statistics;
 
+use Illuminate\Support\Collection;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 
 /**
@@ -22,6 +23,7 @@ class GetHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $data = new Collection();
+        $this->withCode(200)->withData($data)->withMessage('');
     }
 }
