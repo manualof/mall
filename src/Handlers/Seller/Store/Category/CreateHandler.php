@@ -28,8 +28,8 @@ class CreateHandler extends Handler
             'store_id' => 'required|numeric',
         ], [
             'name.required'     => '分类名称必须填写',
-            'store_id.numeric'  => '店铺 ID 必须填写',
-            'store_id.required' => '店铺 ID 必须为数值',
+            'store_id.numeric'  => '店铺 ID 必须数值',
+            'store_id.required' => '店铺 ID 必须为填写',
         ]);
         $this->beginTransaction();
         $data = $this->request->only([

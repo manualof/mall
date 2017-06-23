@@ -22,6 +22,28 @@ class EditHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'id'       => 'required|numeric',
+            'name'     => 'required',
+            'status'   => 'numeric',
+        ], [
+            'id.numeric'        => '分类 ID 必须为数值',
+            'id.required'       => '分类 ID 必须填写',
+            'name.required'     => '分类名称必须填写',
+            'status.numeric'    => '状态值必须数值',
+        ]);
+        $this->beginTransaction();
+        $category = StoreCategory::query()->find($this->request->input('id'));
+        $data = $this->request->only([
+            'parent_id',
+            'name',
+            'status',
+            'store_id',
+        ]);
+        if ($category && $category->update($data)) {
+            $this->withCode(200)->withMessage('编辑分类信息成功！');
+        } else {
+            $this->withCode(500)->withError('编辑分类信息失败！');
+        }
     }
 }
