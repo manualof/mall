@@ -6,7 +6,7 @@
  * @copyright (c) 2017, notadd.com
  * @datetime      2017-05-23 18:34
  */
-namespace Notadd\Mall\Handlers\Seller\Store\Brand;
+namespace Notadd\Mall\Handlers\Seller\Product\Brand;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
 
