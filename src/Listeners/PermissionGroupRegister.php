@@ -170,6 +170,12 @@ class PermissionGroupRegister extends AbstractPermissionGroupRegister
             'name'           => '商店动态权限',
         ]);
         $this->manager->extend([
+            'description'    => '商店导航权限定义',
+            'identification' => 'store-navigation',
+            'module'         => 'mall-seller',
+            'name'           => '商店导航权限',
+        ]);
+        $this->manager->extend([
             'description'    => '商家权限定义',
             'identification' => 'seller',
             'module'         => 'mall-seller',
