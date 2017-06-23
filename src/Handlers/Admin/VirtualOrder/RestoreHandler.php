@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Admin\VirtualOrder;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 
 /**
  * Class RestoreHandler.
@@ -22,6 +22,6 @@ class RestoreHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
     }
 }

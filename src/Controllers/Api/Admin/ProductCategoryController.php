@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Admin;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Admin\Product\Category\CategoryHandler;
 use Notadd\Mall\Handlers\Admin\Product\Category\CreateHandler;
 use Notadd\Mall\Handlers\Admin\Product\Category\EditHandler;
 use Notadd\Mall\Handlers\Admin\Product\Category\ListHandler;
@@ -20,6 +21,17 @@ use Notadd\Mall\Handlers\Admin\Product\Category\RestoreHandler;
  */
 class ProductCategoryController extends Controller
 {
+    /**
+     * @param \Notadd\Mall\Handlers\Admin\Product\Category\CategoryHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function category(CategoryHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\Admin\Product\Category\CreateHandler $handler
      *

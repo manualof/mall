@@ -142,6 +142,14 @@
             };
         },
         methods: {
+            addData() {
+                const self = this;
+                self.$router.push(
+                    {
+                        path: 'library/add',
+                    },
+                );
+            },
             remove(index) {
                 this.libraryData.splice(index, 1);
             },
@@ -168,7 +176,7 @@
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
-                                <i-button class="export-btn" @click="exportData" type="ghost">+新增数据</i-button>
+                                <i-button class="export-btn" @click="addData" type="ghost">+新增数据</i-button>
                                 <div class="store-body-header-right">
                                     <i-input v-model="searchWord" placeholder="请输入关键词进行搜索">
                                         <i-select v-model="searchCategory" slot="prepend" style="width: 100px">

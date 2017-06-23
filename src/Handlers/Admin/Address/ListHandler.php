@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Address;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\Address;
 
 /**
@@ -23,6 +23,6 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        $this->success()->withData(Address::query()->get())->withMessage('');
+        $this->withCode(200)->withData(Address::query()->get())->withMessage('');
     }
 }

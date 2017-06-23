@@ -8,17 +8,15 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Configuration\Image\DefaultImage;
 
-use Notadd\Foundation\Passport\Abstracts\SetHandler as AbstractSetHandler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 
 /**
  * Class SetHandler.
  */
-class SetHandler extends AbstractSetHandler
+class SetHandler extends Handler
 {
     /**
      * Execute Handler.
-     *
-     * @throws \Exception
      */
     public function execute()
     {

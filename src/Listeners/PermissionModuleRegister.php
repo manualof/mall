@@ -21,9 +21,19 @@ class PermissionModuleRegister extends AbstractPermissionModuleRegister
     public function handle()
     {
         $this->manager->extend([
-            'description'    => '商城权限。',
-            'identification' => 'mall',
-            'name'           => '商城',
+            'description'    => '商城后台权限',
+            'identification' => 'mall-administration',
+            'name'           => '商城后台',
+        ]);
+        $this->manager->extend([
+            'description'    => '商城商家权限',
+            'identification' => 'mall-seller',
+            'name'           => '商城商家',
+        ]);
+        $this->manager->extend([
+            'description'    => '商城用户权限',
+            'identification' => 'mall-user',
+            'name'           => '商城用户',
         ]);
     }
 }

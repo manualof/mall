@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Configuration\Search;
 
 use Illuminate\Container\Container;
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Foundation\Setting\Contracts\SettingsRepository;
 
 /**
@@ -41,7 +41,7 @@ class GetHandler extends Handler
      */
     protected function execute()
     {
-        $this->success()->withData([
+        $this->withCode(200)->withData([
             'default' => $this->settings->get('mall.configuration.search.default', ''),
         ])->withMessage('获取配置成功！');
     }

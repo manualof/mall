@@ -1,0 +1,8 @@
+<template>
+    <div class="tab-item" id="common-problem">
+        <div class="item-title"><span>常见问题</span></div>
+        <div class="item-title-content">
+            222
+        </div>
+    </div>
+</template>

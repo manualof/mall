@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\User\Card;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 
 /**
  * Class EmptyHandler.

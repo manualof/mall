@@ -1,4 +1,5 @@
 <script>
+    import expandRow from './ExpandRow.vue';
     import injection from '../helpers/injection';
 
     export default {
@@ -7,8 +8,17 @@
                 injection.sidebar.active('seller');
             });
         },
+        components: {
+            expandRow,
+        },
         data() {
             return {
+                addCategory: {
+                    enable: true,
+                    name: '',
+                    sort: '',
+                },
+                addModal: false,
                 categoryColumns: [
                     {
                         align: 'center',
@@ -16,31 +26,21 @@
                         width: 60,
                     },
                     {
+                        type: 'expand',
+                        width: 50,
+                        render(h, params) {
+                            return h(expandRow, {
+                                props: {
+                                    row: params.row,
+                                },
+                            });
+                        },
+                    },
+                    {
                         key: 'categoryName',
                         render() {
-                            return `<collapse accordion>
-                                        <panel name="1">
-                                            {{ row.title }}
-                                            <div slot="content">
-                                                <div class="table-item" v-for="item in row.list">
-                                                    <span style="width: 27%">{{ item.title }}</span>
-                                                    <span style="width: 19%">{{ item.sort }}</span>
-                                                    <span style="width: 30%">
-                                                        <i-switch size="large" v-model="item.status">
-                                                            <span slot="open">开启</span>
-                                                            <span slot="close">关闭</span>
-                                                        </i-switch>
-                                                    </span>
-                                                        <span style="width: 16%" class="action">
-                                                        <i-button class="first-btn"
-                                                                  type="ghost">编辑</i-button>
-                                                        <i-button
-                                                                class="delete-ad" type="ghost">删除</i-button>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </panel>
-                                    </collapse>`;
+                            return `<span>{{ row.categoryName }}</span>
+                                    <i-button type="ghost" type="small" @click.native="addSubordinate">新增下级</i-button>`;
                         },
                         title: '分类名称',
                     },
@@ -50,7 +50,6 @@
                         title: '排序',
                     },
                     {
-                        align: 'center',
                         key: 'shelves',
                         render() {
                             return `<i-switch size="large" v-model="row.status">
@@ -69,109 +68,113 @@
                                      type="ghost">删除</i-button>`;
                         },
                         title: '操作',
-                        width: 180,
                     },
                 ],
                 categoryData: [
                     {
-                        list: [
-                            {
-                                sort: '45',
-                                status: true,
-                                title: '海外代购1',
-                            },
-                        ],
+                        categoryName: '海外代购',
+                        job: '数据工程师',
+                        interest: '羽毛球',
+                        birthday: '1991-05-14',
                         sort: '45',
                         status: true,
+                        subordinate: [
+                            {
+                                name: '鞋子',
+                                sort: 3,
+                                status: true,
+                            },
+                            {
+                                name: '卫衣',
+                                sort: 5,
+                                status: true,
+                            },
+                        ],
                         title: '海外代购',
                     },
                     {
+                        categoryName: '海外代购',
+                        job: '数据工程师',
+                        interest: '羽毛球',
+                        birthday: '1991-05-14',
                         sort: '456',
                         status: true,
                     },
                 ],
-                categoryList: [
-                    {
-                        list: [
-                            {
-                                sort: 22,
-                                status: true,
-                                title: '鞋子',
-                            },
-                            {
-                                sort: 15,
-                                status: true,
-                                title: '短袖/polo/衬衫',
-                            },
-                            {
-                                sort: 2,
-                                status: true,
-                                title: '外套/夹克/长袖/卫衣',
-                            },
-                        ],
-                        sort: 300,
-                        status: true,
-                        title: '海外代购',
-                    },
-                    {
-                        list: [
-                            {
-                                sort: 22,
-                                status: true,
-                                title: '鞋子',
-                            },
-                            {
-                                sort: 15,
-                                status: true,
-                                title: '短袖/polo/衬衫',
-                            },
-                            {
-                                sort: 2,
-                                status: true,
-                                title: '外套/夹克/长袖/卫衣',
-                            },
-                        ],
-                        sort: 300,
-                        status: true,
-                        title: '海外代购1',
-                    },
-                ],
                 checkAll: false,
                 checkAllGroup: [],
+                editCategory: {
+                    enable: true,
+                    name: '',
+                    sort: '',
+                },
+                editModal: false,
                 indeterminate: true,
+                loading: false,
+                newAdd: {
+                    category: '海外代购',
+                    enable: true,
+                    name: '',
+                    sort: '',
+                },
                 self: this,
+                subordinate: false,
             };
         },
         methods: {
-            addCategory() {},
-            checkAllGroupChange(data) {
-                if (data.length === this.categoryList.length) {
-                    this.indeterminate = false;
-                    this.checkAll = true;
-                } else if (data.length > 0) {
-                    this.indeterminate = true;
-                    this.checkAll = false;
-                } else {
-                    this.indeterminate = false;
-                    this.checkAll = false;
-                }
+            addCategoryModal() {
+                this.addModal = true;
             },
-            edit() {},
-            handleCheckAll() {
-                if (this.indeterminate) {
-                    this.checkAll = false;
-                } else {
-                    this.checkAll = !this.checkAll;
-                }
-                this.indeterminate = false;
-                if (this.checkAll) {
-                    this.checkAllGroup = this.categoryList;
-                } else {
-                    this.checkAllGroup = [];
-                }
+            addSubordinate() {
+                this.subordinate = true;
+            },
+            edit() {
+                this.editModal = true;
             },
             remove(index) {
                 this.categoryData.splice(index, 1);
+            },
+            submitCategory() {
+                const self = this;
+                self.loading = true;
+                self.$refs.addCategory.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            submitEdit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.editCategory.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            submitSubordinate() {
+                const self = this;
+                self.loading = true;
+                self.$refs.newAdd.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
         },
     };
@@ -183,67 +186,9 @@
                 <tab-pane label="店铺分类" name="name1">
                     <card :bordered="false">
                         <div class="category-list">
-                            <i-button class="first-btn" type="ghost" @click.native="addCategory">+新增分类</i-button>
+                            <i-button class="first-btn" type="ghost" @click.native="addCategoryModal">+新增分类</i-button>
                             <i-button type="ghost">批量删除</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                            <!--<div class="category-table">
-                                <div class="top-title">
-                                    <checkbox
-                                            :indeterminate="indeterminate"
-                                            :value="checkAll"
-                                            @click.prevent.native="handleCheckAll"
-                                            style="width: 6%"></checkbox>
-                                    <span style="width: 26%">分类名称</span>
-                                    <span style="width: 18%">排序</span>
-                                    <span style="width: 30%">显示</span>
-                                    <span style="width: 10%" class="action">操作</span>
-                                </div>
-                                <checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
-                                    <checkbox :label="item" v-for="(item, index) in categoryList">
-                                        <div class="table-content">
-                                            <collapse v-model="value2" accordion>
-                                                <panel name="1">
-                                                    <div class="table-item">
-                                                        <span style="width: 27%">{{ item.title }}
-                                                        <i-button type="ghost">新增下级</i-button></span>
-                                                        <span style="width: 19%">{{ item.sort }}</span>
-                                                        <span style="width: 30%">
-                                                            <i-switch size="large" v-model="item.status">
-                                                            <span slot="open">开启</span>
-                                                            <span slot="close">关闭</span>
-                                                        </i-switch>
-                                                        </span>
-                                                        <span style="width: 16%" class="action">
-                                                            <i-button class="first-btn"
-                                                                      type="ghost">编辑</i-button>
-                                                            <i-button
-                                                                      class="delete-ad" type="ghost">删除</i-button>
-                                                        </span>
-                                                    </div>
-                                                    <div slot="content">
-                                                        <div class="table-item" v-for="item in item.list">
-                                                            <span style="width: 27%">{{ item.title }}</span>
-                                                            <span style="width: 19%">{{ item.sort }}</span>
-                                                            <span style="width: 30%">
-                                                                <i-switch size="large" v-model="item.status">
-                                                                    <span slot="open">开启</span>
-                                                                    <span slot="close">关闭</span>
-                                                                </i-switch>
-                                                            </span>
-                                                                <span style="width: 16%" class="action">
-                                                                <i-button class="first-btn"
-                                                                          type="ghost">编辑</i-button>
-                                                                <i-button
-                                                                        class="delete-ad" type="ghost">删除</i-button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </panel>
-                                            </collapse>
-                                        </div>
-                                    </checkbox>
-                                </checkbox-group>
-                            </div>-->
                             <i-table :columns="categoryColumns"
                                      :context="self"
                                      :data="categoryData"
@@ -255,6 +200,139 @@
                             <page :total="100" show-elevator></page>
                         </div>
                     </card>
+                    <modal
+                            v-model="subordinate"
+                            title="新增下级" class="upload-picture-modal">
+                        <div>
+                            <i-form ref="newAdd" :model="newAdd" :rules="newAddValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="分类名称">
+                                            <i-input v-model="newAdd.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="上级分类">
+                                            {{ newAdd.category }}
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="10">
+                                        <form-item label="排序">
+                                            <i-input v-model="newAdd.sort"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="显示状态">
+                                            <radio-group v-model="newAdd.enable">
+                                                <radio label="是"></radio>
+                                                <radio label="否"></radio>
+                                            </Radio-group>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submitSubordinate">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
+                    <modal
+                            v-model="editModal"
+                            title="编辑分类" class="upload-picture-modal">
+                        <div>
+                            <i-form ref="editCategory" :model="editCategory" :rules="editValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="分类名称">
+                                            <i-input v-model="editCategory.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="10">
+                                        <form-item label="排序">
+                                            <i-input v-model="editCategory.sort"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="显示状态">
+                                            <radio-group v-model="editCategory.enable">
+                                                <radio label="是"></radio>
+                                                <radio label="否"></radio>
+                                            </Radio-group>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submitEdit">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
+                    <modal
+                            v-model="addModal"
+                            title="新增分类" class="upload-picture-modal">
+                        <div>
+                            <i-form ref="addCategory" :model="addCategory" :rules="editValidate" :label-width="100">
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="分类名称">
+                                            <i-input v-model="addCategory.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="10">
+                                        <form-item label="排序">
+                                            <i-input v-model="addCategory.sort"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="显示状态">
+                                            <radio-group v-model="addCategory.enable">
+                                                <radio label="是"></radio>
+                                                <radio label="否"></radio>
+                                            </Radio-group>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="20">
+                                        <form-item>
+                                            <i-button :loading="loading" type="primary" @click.native="submitCategory">
+                                                <span v-if="!loading">确认提交</span>
+                                                <span v-else>正在提交…</span>
+                                            </i-button>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-form>
+                        </div>
+                    </modal>
                 </tab-pane>
             </tabs>
         </div>

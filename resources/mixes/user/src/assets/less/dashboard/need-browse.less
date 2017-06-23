@@ -1,0 +1,61 @@
+.browse-model {
+    margin-top: 20px;
+    .browse-commeneds {
+        height: 58px;
+        line-height: 58px;
+        .recommend-name {
+            font-size: 20px;
+            span {
+                font-size: 14px;
+                color: #999999;
+                margin-left: 10px;
+            }
+            i {
+                margin-right: 10px;
+                font-size: 20px;
+                color: #de2634;
+            }
+        }
+    }
+
+    .browse-content {
+        background-color: #fff;
+        height: 302px;
+        //padding-top: 20px;
+        //padding-bottom: 20px;
+        dl {
+            margin-bottom: 0;
+        }
+        .col {
+            padding: 20px;
+            width: 237px;
+            float: left;
+            border-right: 1px solid #e5e5e5;
+            &:last-child {
+                border-right: 0;
+            }
+            dt img {
+                width: 198px;
+                height: 198px;
+            }
+            .name {
+                margin-top: 15px;
+                margin-bottom: 4px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .new-price {
+                font-size: 18px;
+                color: #de2634;
+                margin-bottom: 0;
+                .pre-price {
+                    font-size: 14px;
+                    color: #d0d0d0;
+                    float: right;
+                    margin-top: 4px;
+                }
+            }
+        }
+    }
+}

@@ -19,6 +19,36 @@ import ShopCategory from '../pages/ShopCategory.vue';
 import ShopApplication from '../pages/ShopApplication.vue';
 import ShopSupplier from '../pages/ShopSupplier.vue';
 import ShopStore from '../pages/ShopStore.vue';
+import Statistics from '../pages/Statistics.vue';
+import StatisticsGoods from '../pages/StatisticsGoods.vue';
+import StatisticsGoodsSet from '../pages/StatisticsGoodsSet.vue';
+import StatisticsOperation from '../pages/StatisticsOperation.vue';
+import StatisticsIndustry from '../pages/StatisticsIndustry.vue';
+import StatisticsFlow from '../pages/StatisticsFlow.vue';
+import StatisticsSettlement from '../pages/StatisticsSettlement.vue';
+import StatisticsSettlementLook from '../pages/StatisticsSettlementLook.vue';
+import Order from '../pages/Order.vue';
+import OrderLogistics from '../pages/OrderLogistics.vue';
+import OrderDatail from '../pages/OrderDatail.vue';
+import OrderShip from '../pages/OrderShip.vue';
+import OrderShipSet from '../pages/OrderShipSet.vue';
+import OrderSetting from '../pages/OrderSetting.vue';
+import OrderWaybill from '../pages/OrderWaybill.vue';
+import OrderWaybillSelect from '../pages/OrderWaybillSelect.vue';
+import OrderWaybillAdd from '../pages/OrderWaybillAdd.vue';
+import OrderWaybillDesign from '../pages/OrderWaybillDesign.vue';
+import OrderWaybillEdit from '../pages/OrderWaybillEdit.vue';
+import OrderEvaluation from '../pages/OrderEvaluation.vue';
+import Customer from '../pages/Customer.vue';
+import CustomerMessage from '../pages/CustomerMessage.vue';
+import Account from '../pages/Account.vue';
+import ServiceRefund from '../pages/ServiceRefund.vue';
+import ServiceRefundCheck from '../pages/ServiceRefundCheck.vue';
+import ServiceRefundDeal from '../pages/ServiceRefundDeal.vue';
+import ServiceReturns from '../pages/ServiceReturns.vue';
+import ServiceReturnsCheck from '../pages/ServiceReturnsCheck.vue';
+import ServiceReturnsDeal from '../pages/ServiceReturnsDeal.vue';
+import ServiceComplaint from '../pages/ServiceComplaint.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -123,6 +153,156 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ShopStore,
                     path: 'shop/store',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: Statistics,
+                    path: 'statistics',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsGoods,
+                    path: 'statistics/goods',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsGoodsSet,
+                    path: 'statistics/goods/set',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsOperation,
+                    path: 'statistics/operation',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsIndustry,
+                    path: 'statistics/industry',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsFlow,
+                    path: 'statistics/flow',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsSettlement,
+                    path: 'statistics/settlement',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsSettlementLook,
+                    path: 'statistics/settlement/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: Order,
+                    path: 'order',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderLogistics,
+                    path: 'order/logistics',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderDatail,
+                    path: 'order/detail',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderShip,
+                    path: 'order/ship',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderShipSet,
+                    path: 'order/ship/set',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderSetting,
+                    path: 'order/setting',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderWaybill,
+                    path: 'order/waybill',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderWaybillSelect,
+                    path: 'order/waybill/select',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderWaybillAdd,
+                    path: 'order/waybill/add',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderWaybillDesign,
+                    path: 'order/waybill/design',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderWaybillEdit,
+                    path: 'order/waybill/edit',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderEvaluation,
+                    path: 'order/evaluation',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: Customer,
+                    path: 'customer',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: CustomerMessage,
+                    path: 'customer/message',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: Account,
+                    path: 'account',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceRefund,
+                    path: 'service/refund',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceRefundCheck,
+                    path: 'service/refund/check',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceRefundDeal,
+                    path: 'service/refund/deal',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceReturns,
+                    path: 'service/returns',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceReturnsCheck,
+                    path: 'service/returns/check',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceReturnsDeal,
+                    path: 'service/returns/deal',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ServiceComplaint,
+                    path: 'service/complaint',
                 },
             ],
             component: Layout,

@@ -125,7 +125,7 @@
                         <i-form :label-width="200" :model="form" ref="form" :rules="rules">
                             <row>
                                 <i-col span="12">
-                                    <form-item label="网站logo" prop="logo">
+                                    <form-item label="网站 Logo" prop="logo">
                                         <div class="image-preview" v-if="form.logo">
                                             <img :src="form.logo">
                                             <icon type="close" @click.native="removeLogo"></icon>

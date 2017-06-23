@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Configuration\Search\Hot;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 
 /**
  * Class RemoveHandler.

@@ -1,0 +1,554 @@
+<template>
+    <div class="product-details">
+        <div class="basic-intro container clearfix">
+            <div class="product-img">
+                <div>
+                    <!--<div id="preview" class="spec-preview">
+                        <span class="jqzoom" @mouseover="imgBigbox1" @mousemove="moveZoom($event)"
+                              @mouseleave="imgBigbox2"
+                              ref="smallImgBox">
+                          <img class="img-responsive" :src="bigImg"/>
+                          <div id="magnifier-pup" v-if="show" ref="filter"></div>
+                        </span>
+                        <div class="magnifier-box" v-if="show" ref="bigImgBox">
+                            <img class="img-responsive" :src="bigImg" ref="bigImg"/>
+                        </div>
+                    </div>-->
+                    <div id="preview" class="spec-preview">
+                        <span class="jqzoom">
+                          <img class="img-responsive" :src="bigImg"/>
+                          <div id="magnifier-pup" v-if="show" ref="filter"></div>
+                        </span>
+                        <div class="magnifier-box" v-if="show" ref="bigImgBox">
+                            <img class="img-responsive" :src="bigImg" ref="bigImg"/>
+                        </div>
+                    </div>
+                    <!--缩图开始-->
+                    <div class="spec-scroll clearfix">
+                        <a class="prev swiper-button-prev"><i class="icon iconfont icon-gengduo gengduo-left"></i></a>
+                        <a class="next swiper-button-next"><i class="icon iconfont icon-gengduo"></i></a>
+                        <div class="items swiper-container">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide" v-for="(item,index) in smallImgs">
+                                    <img class="img-responsive" :index="index" :src="item"
+                                         @mousemove="preview($event);">
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!--缩图结束-->
+                </div>
+            </div>
+            <div class="product-intro">
+                <h3>{{ product_intro.name }}</h3>
+                <p class="offer">{{ product_intro.offer.join('&nbsp;') }}</p>
+                <div class="price-box">
+                    <p><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
+                    </p>
+                </div>
+                <ul class="sell-info">
+                    <li class="sell-count">
+                        <span>销量</span>
+                        <span class="count">{{　product_intro.sales_num　}}</span>
+                    </li>
+                    <li class="evaluation-count">
+                        <span>评价</span>
+                        <span class="count">{{ product_intro.eval_num }}</span>
+                    </li>
+                    <li class="integral-count">
+                        <span>赠送积分</span>
+                        <span class="count">{{　product_intro.integral　}}</span>
+                    </li>
+                </ul>
+                <div class="distribution">
+                    <p>配送<span class="origin-adress">西安</span>至
+                        <Cascader class="destination" :data="data" v-model="distribution_address"></Cascader>
+                        运费：<span class="freigh">&nbsp;{{ product_intro.transport_price }}</span></p>
+                    <p class="stock">{{ product_intro.status }}</p>
+                </div>
+                <dl class="product-type-select clearfix">
+                    <dt>类型</dt>
+                    <dd>
+                        <ul>
+                            <li v-for="type in product_intro.type">
+                                <label class="form-control-radio">
+                                    <input type="radio" name="package" value="type">
+                                    <span>{{ type }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="product-num clearfix">
+                    <dt>数量</dt>
+                    <dd>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon" @click="productNum > 1 ?productNum--:0">-</span>
+                            <input type="number" class="form-control" v-model="productNum">
+                            <span class="input-group-addon" @click="productNum++">+</span>
+                        </div>
+                    </dd>
+                </dl>
+                <ul class="product-buy clearfix">
+                    <li class="buy"><a class="text-center">立刻购买</a></li>
+                    <li class="basket"><a class="text-center">加入购物车</a></li>
+                </ul>
+                <p class="prompt">温馨提示&nbsp;本产品不支持货到付款</p>
+            </div>
+            <div class="shop-info">
+                <div class="shop-img">
+                    <router-link :to="{ name: 'shop-home'}">
+                        <img src="../assets/images/details/shop.png"/>
+                    </router-link>
+                </div>
+                <h5 class="shop-name">xxx母婴用品店<span class="shop-type text-center">自荐</span></h5>
+                <p class="shop-score">店铺评分：<span>9.2</span></p>
+                <p class="shop-serve">服务：七天无理由退换货</p>
+                <a class="shop-btn text-center contact" href="javascript:void (0)">联系客服</a>
+                <a class="shop-btn text-center" href="javascript:void (0)">关注店家</a>
+            </div>
+        </div>
+        <!--推荐购买-->
+        <ul class="combination-buy container">
+            <router-link to="/" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
+                <a href="javascript:void (0)">
+                    <img :src="product.img"/>
+                </a>
+                <p class="intro">{{ product.name }}</p>
+                <p class="price">￥{{　product.price　}}</p>
+                <div class="check-box select">
+                    <span><input @change="selectRecommend(product,$event)" name="recommend" type="checkbox"
+                                 class="input_check" :id="product.id"><label :for="product.id"> </label></span>
+                </div>
+            </router-link>
+            <li>
+                <p class="original-price">原价：<s>￥{{ total_oldPrice }}</s></p>
+                <p class="package-price">套餐价格：<span>￥{{　total_price　}}</span></p>
+                <a class="text-center" href="javascript:void (0)">立即购买</a>
+            </li>
+        </ul>
+        <!--产品相关-->
+        <div class="product-about container clearfix">
+            <!--看了又看-->
+            <div class="see-again-box">
+                <h4>看了又看</h4>
+                <ul>
+                    <router-link tag="li" to="/" v-for="(item, index) in seeAgain_products" :key="index">
+                        <a href="javascript:void (0)">
+                            <img :src="item.img"/>
+                        </a>
+                        <p>{{ item.name }}
+                        </p>
+                        <p>
+                            <span class="price">￥{{ item.price }}</span>
+                            <span class="sales">销量：{{ item.sales }}</span>
+                        </p>
+                    </router-link>
+                </ul>
+            </div>
+            <!--商品详情及用户评价-->
+            <div class="details-evaluation pull-left">
+                <ul class="clearfix nav">
+                    <li class="pull-left active text-center">
+                        <i></i>
+                        <a class="text-center a-block" href="#details" data-toggle="tab">
+                            商品详情
+                        </a>
+                    </li>
+                    <li class="pull-left">
+                        <i></i>
+                        <a class="text-center a-block" href="#evaluation" data-toggle="tab">
+                            用户评价
+                        </a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane in active" id="details">
+                        <ul class="product-info row">
+                            <li class="product-option  col-md-4">
+                                <span class="option">品牌：</span>
+                                <span class="option-value">{{ productInfo.name }}</span>
+                            </li>
+                            <li class="product-option  col-md-4">
+                                <span class="option">地区：</span>
+                                <span class="option-value">{{ productInfo.madeIn }}</span>
+                            </li>
+                            <li class="product-option  col-md-4">
+                                <span class="option">材质：</span>
+                                <span class="option-value">{{ productInfo.cailiao }}</span>
+                            </li>
+                            <li class="product-option  col-md-4">
+                                <span class="option">风格：</span>
+                                <span class="option-value">{{ productInfo.style }}</span>
+                            </li>
+                            <li class="product-option  col-md-4">
+                                <span class="option">颜色：</span>
+                                <span class="option-value">{{ productInfo.color }}</span>
+                            </li>
+                        </ul>
+                        <div class="img-show">
+                            <img src="../assets/images/details/details-img.png"/>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="evaluation">
+                        <div class="evaluation-sorce">
+                            <p>评分：<span class="sorce">9.98</span>
+                                <span class="evaluation-count">评价人数：2290</span>
+                            </p>
+                        </div>
+                        <div class="evaluation-select">
+                            <div class="select">
+                                <input type="radio" id="all-evaluation" name="evaluation-select"/>
+                                <label for="all-evaluation">全部评价</label>
+                            </div>
+                            <div class="select">
+                                <input type="radio" id="img-evaluation" name="evaluation-select"/>
+                                <label for="img-evaluation">图片</label>
+                            </div>
+                            <ul class="sorting">
+                                <li class="time-sorting"><a>按时间排序</a></li>
+                                <li class="default-sorting"><a>默认排序</a></li>
+                            </ul>
+                        </div>
+                        <ul class="evaluation-details">
+                            <li class="evaluation-li" v-for="(item,index1) in evaluation">
+                                <div class="clearfix evaluation-box">
+                                    <div class="userinfo">
+                                        <img :src="item.userImg">
+                                        <p class="text-center">{{ item.name }}</p>
+                                    </div>
+                                    <div class="user-say">
+                                        <div class="buy-info clearfix">
+                                            <div class="buy-sorce">评分：
+                                                <i v-if="item.sorce>=1" class="icon iconfont icon-xing1"></i>
+                                                <i v-if="item.sorce>=2" class="icon iconfont icon-xing1"></i>
+                                                <i v-if="item.sorce>=3" class="icon iconfont icon-xing1"></i>
+                                                <i v-if="item.sorce>=4" class="icon iconfont icon-xing1"></i>
+                                                <i v-if="item.sorce>=5" class="icon iconfont icon-xing1"></i>
+                                            </div>
+                                            <p><span class="date">{{ item.buyDate }}</span><span
+                                                class="color">颜色：{{ item.productInfo.color }}</span><span class="size">尺码：{{ item.productInfo.size }}</span>
+                                            </p>
+                                        </div>
+                                        <p class="user-description">{{ item.evaluationTxt }}</p>
+                                        <ul class="buy-img clearfix">
+                                            <li v-for="(value,index2) in item.evaluationImg"
+                                                :class="{ zoom: item.bigImg === '' || item.bigImg !== value, ziim: item.bigImg === value }">
+                                                <img :src="value" :i1="index1" :i2="index2"
+                                                     @click="showImg(item, $event)"/>
+                                            </li>
+                                        </ul>
+                                        <div class="active-img" v-if="item.bigImg">
+                                            <img :src="item.bigImg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <need-browse></need-browse>
+        <everyone-browse></everyone-browse>
+        <myself-browse></myself-browse>
+        <right-side></right-side>
+    </div>
+</template>
+<script>
+    import RightSide from './dashboard/RightSide';
+    import NeedBrowse from './dashboard/NeedBrowse'
+    import MyselfBrowse from './dashboard/MyselfBrowse'
+    import EveryoneBrowse from './dashboard/EveryoneBrowse'
+    import swiper from 'swiper'
+
+    import img1 from '../assets/images/details/stool2.png'
+    import img2 from '../assets/images/details/stool1.png'
+    import userImg from '../assets/images/details/user-img.png'
+    import img7 from '../assets/images/img_07.png'
+    import stool from '../assets/images/details/stool.png'
+    import Cascader from 'iview/src/components/cascader';
+
+    export default {
+        data() {
+            return {
+                data: [{
+                    value: 'beijing',
+                    label: '北京',
+                    children: [
+                        {
+                            value: 'gugong',
+                            label: '故宫',
+                        },
+                        {
+                            value: 'tiantan',
+                            label: '天坛',
+                        },
+                        {
+                            value: 'wangfujing',
+                            label: '王府井',
+                        },
+                    ],
+                }, {
+                    value: 'jiangsu',
+                    label: '江苏',
+                    children: [
+                        {
+                            value: 'nanjing',
+                            label: '南京',
+                            children: [
+                                {
+                                    value: 'fuzimiao',
+                                    label: '夫子庙',
+                                },
+                            ],
+                        },
+                        {
+                            value: 'suzhou',
+                            label: '苏州',
+                            children: [
+                                {
+                                    value: 'zhuozhengyuan',
+                                    label: '拙政园',
+                                },
+                                {
+                                    value: 'shizilin',
+                                    label: '狮子林',
+                                },
+                            ],
+                        },
+                    ],
+                }],
+                product_intro: {
+                    name: 'Daisy London纯手工迷你雏菊IOTA纯银戒指S码M码L码年轻 与活力时尚简约',
+                    offer: ['很便宜', '清仓大甩卖', '买二送一'],
+                    price: 239.00,
+                    original_price: 488.00,
+                    sales_num: 7764,
+                    eval_num: 6298,
+                    integral: 138,
+                    transport_price: 12.00,
+                    status: '有货，今天下单预计1月22送到',
+                    type: ['套餐一', '套餐二', '套餐三'],
+                },
+                recommend_products: [
+                    {
+                        id: 1,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        price: 46.88,
+                        old_price: 60,
+                    },
+                    {
+                        id: 2,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        price: 46.88,
+                        old_price: 60,
+                    },
+                    {
+                        id: 3,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        price: 46.88,
+                        old_price: 60,
+                    },
+                    {
+                        id: 4,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        price: 46.88,
+                        old_price: 60,
+                    }
+                ],
+                seeAgain_products: [
+                    {
+                        id: 1,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        price: 46.88,
+                        sales: 187,
+                    },
+                    {
+                        id: 2,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        price: 46.88,
+                        sales: 187,
+                    },
+                    {
+                        id: 3,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        price: 46.88,
+                        sales: 187,
+                    }
+                ],
+                selectRecommends: [],
+                show: 0,
+                productNum: 1,
+                distribution_address: [],
+                smallImgs: [img1, img2, img1, img2, img1, img1, img1],
+                bigImg: [stool, stool, stool, stool, stool],
+                productInfo: {
+                    name: "西部母婴",
+                    madeIn: "中国",
+                    cailiao: "实木",
+                    style: "欧式",
+                    color: "原木 黑色 象牙白",
+                },
+                activeImg: '',
+                isActive: false,
+                evaluation: [
+                    {
+                        name: '皮皮虾',
+                        userImg: userImg,
+                        bigImg: '',
+                        sorce: 4,
+                        buyDate: '2016-12-30',
+                        evaluationTxt: '包装精美 跟我想象的面料不太一样 但是超满意 裸睡王 贴身内衣的那种棉质 家人特别喜欢 超值的 就是被套有点大 理想尺码床单1米八 被罩2米3 但是不拆开卖 除了这个缺点 其他的都超满意',
+                        productInfo: {
+                            color: '蓝色',
+                            size: 'm',
+                        },
+                    },
+                    {
+                        name: '皮皮虾',
+                        userImg: userImg,
+                        bigImg: '',
+                        sorce: 3,
+                        buyDate: '2016-12-30',
+                        evaluationTxt: '包装精美 跟我想象的面料不太一样 但是超满意 裸睡王 贴身内衣的那种棉质 家人特别喜欢 超值的 就是被套有点大 理想尺码床单1米八 被罩2米3 但是不拆开卖 除了这个缺点 其他的都超满意',
+                        evaluationImg: [img1, img2],
+                        productInfo: {
+                            color: '蓝色',
+                            size: 'm',
+                        },
+                    },
+                    {
+                        name: '皮皮虾',
+                        userImg: userImg,
+                        bigImg: '',
+                        sorce: 2,
+                        buyDate: '2016-12-30',
+                        evaluationTxt: '包装精美 跟我想象的面料不太一样 但是超满意 裸睡王 贴身内衣的那种棉质 家人特别喜欢 超值的 就是被套有点大 理想尺码床单1米八 被罩2米3 但是不拆开卖 除了这个缺点 其他的都超满意',
+                        evaluationImg: [img1, img2],
+                        productInfo: {
+                            color: '蓝色',
+                            size: 'm',
+                        },
+                    },
+                    {
+                        name: '皮皮虾',
+                        userImg: userImg,
+                        bigImg: '',
+                        sorce: 5,
+                        buyDate: '2016-12-30',
+                        evaluationTxt: '包装精美 跟我想象的面料不太一样 但是超满意 裸睡王 贴身内衣的那种棉质 家人特别喜欢 超值的 就是被套有点大 理想尺码床单1米八 被罩2米3 但是不拆开卖 除了这个缺点 其他的都超满意',
+                        evaluationImg: [img1, img2, img1],
+                        productInfo: {
+                            color: '蓝色',
+                            size: 'm',
+                        },
+                    },
+                ],
+            };
+        },
+        components: {
+            RightSide,
+            NeedBrowse,
+            MyselfBrowse,
+            EveryoneBrowse,
+            Cascader,
+        },
+        computed: {
+            total_price() {
+                let totalPrice = 0;
+                this.selectRecommends.forEach(
+                    function (item) {
+                        totalPrice = totalPrice + item.price;
+                    }
+                );
+                return totalPrice.toFixed(2);
+            },
+            total_oldPrice() {
+                let totalOldPrice = 0;
+                this.selectRecommends.forEach(
+                    function (item) {
+                        totalOldPrice = totalOldPrice + item.old_price;
+                    }
+                );
+                return totalOldPrice.toFixed(2);
+            }
+        },
+        methods: {
+            preview: function ($event) {
+                let index = $event.target.getAttribute("index");
+                this.bigImg = this.smallImgs[index];
+            },
+            zoom(){
+                /*jQuery(".jqzoom").jqueryzoom({xzoom:380,yzoom:410});*/
+            },
+            showImg(item, $event){
+                let source = $event.target.getAttribute("src");
+                if (item.bigImg === source) {
+                    item.bigImg = ''
+                } else {
+                    item.bigImg = source
+                }
+            },
+            /*imgBigbox1() {
+                this.show = 1;
+            },
+            imgBigbox2() {
+                this.show = 0;
+            },
+            moveZoom(e) {
+                let x = e.clientX;//鼠标相对于视口的位置
+                let y = e.clientY;
+                let t = this.$refs.smallImgBox.offsetTop;//box相对于视口的位置
+                let l = this.$refs.smallImgBox.offsetLeft;
+                let _left = x - l - this.$refs.filter.offsetWidth - 100;//计算move的位置
+                let _top = y - t - this.$refs.filter.offsetHeight - 100;
+                if (_top <= 0)//滑到box的最顶部
+                    _top = 0;
+                else if (_top >= this.$refs.smallImgBox.offsetHeight - this.$refs.filter.offsetHeight)//滑到box的最底部
+                    _top = this.$refs.smallImgBox.offsetHeight - this.$refs.filter.offsetHeight;
+                if (_left <= 0)//滑到box的最左边
+                    _left = 0;
+                else if (_left >= this.$refs.smallImgBox.offsetWidth - this.$refs.filter.offsetWidth)//滑到box的最右边
+                    _left = this.$refs.smallImgBox.offsetWidth - this.$refs.filter.offsetWidth;
+                this.$refs.filter.style.top = _top + "px";//设置move的位置
+                this.$refs.filter.style.left = _left + "px";
+                let w = _left / (this.$refs.smallImgBox.offsetWidth - this.$refs.filter.offsetWidth);//计算移动的比例
+                let h = _top / (this.$refs.smallImgBox.offsetHeight - this.$refs.filter.offsetHeight);
+                let b_bimg_top = (this.$refs.bigImg.offsetHeight - this.$refs.bigImgBox.offsetHeight) * h;//计算大图的位置
+                let b_bimg_left = (this.$refs.bigImg.offsetWidth - this.$refs.bigImgBox.offsetWidth) * w;
+                this.$refs.bigImg.style.top = -b_bimg_top + "px";//设置大图的位置信息
+                this.$refs.bigImg.style.left = -b_bimg_left + "px";
+            },*/
+            selectRecommend(item, e) {
+                let index = this.selectRecommends.indexOf(item);
+                if (e.target.checked && index == -1) {
+                    this.selectRecommends.push(item);
+                } else {
+                    this.selectRecommends.splice(index, 1)
+                }
+                console.log(this.selectRecommends);
+            },
+        },
+        mounted(){
+            this.bigImg = this.smallImgs[0];
+            let mySwiper = new Swiper('.swiper-container', {
+                slidesPerView: 4,
+                loop: true,
+                direction: 'horizontal',
+                prevButton: '.swiper-button-prev',
+                nextButton: '.swiper-button-next',
+                spaceBetween: 10,
+                normalizeSlideIndex: true,
+            });
+        },
+    };
+</script>

@@ -298,6 +298,7 @@
                     },
                 ],
                 self: this,
+                style: 'height: 400px;',
                 timeList: [
                     {
                         label: '按照月统计',
@@ -415,7 +416,10 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderAmount" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderAmount"
+                                                   :style="style"
+                                                   @click="onClick"
+                                                   @ready="onReady"></i-echarts>
                                     </div>
                                     <i-button type="ghost" class="export-btn "
                                               @click="exportOrderData">导出数据</i-button>
@@ -452,7 +456,10 @@
                                         </div>
                                     </div>
                                     <div class="echarts">
-                                        <i-echarts :option="orderMoney" @ready="onReady" @click="onClick"></i-echarts>
+                                        <i-echarts :option="orderMoney"
+                                                   :style="style"
+                                                   @click="onClick"
+                                                   @ready="onReady"></i-echarts>
                                     </div>
                                     <i-button type="ghost" class="export-btn "
                                               @click="exportOrderMoneyData">导出数据</i-button>

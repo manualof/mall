@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Configuration\Advertisement;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\Advertisement;
 
 /**
@@ -24,7 +24,7 @@ class CreateHandler extends Handler
     public function execute()
     {
         if (Advertisement::query()->create($this->request->all())) {
-            $this->success()->withMessage('');
+            $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');
         }

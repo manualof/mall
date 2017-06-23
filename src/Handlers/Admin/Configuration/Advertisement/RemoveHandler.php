@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Configuration\Advertisement;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\Advertisement;
 
 /**
@@ -27,7 +27,7 @@ class RemoveHandler extends Handler
         $advertisement = Advertisement::query()->find($id);
         if ($advertisement) {
             $advertisement->delete();
-            $this->success()->withMessage('');
+            $this->withCode(200)->withMessage('');
         } else {
             $this->withCode(500)->withError('');
         }

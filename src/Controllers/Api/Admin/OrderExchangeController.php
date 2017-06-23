@@ -21,17 +21,6 @@ use Notadd\Mall\Handlers\Admin\Order\Exchange\SendHandler;
 class OrderExchangeController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Admin\Order\Exchange\AskHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function ask(AskHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
      * @param \Notadd\Mall\Handlers\Admin\Order\Exchange\ConfirmHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response

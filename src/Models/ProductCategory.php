@@ -9,23 +9,26 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
+use Notadd\Foundation\Database\Traits\HasFlow;
+use Symfony\Component\Workflow\Event\GuardEvent;
+use Symfony\Component\Workflow\Transition;
 
 /**
  * Class ProductCategory.
  */
 class ProductCategory extends Model
 {
+    use HasFlow;
+
     /**
      * @var array
      */
     protected $fillable = [
-        'commission',
-        'commission_inherit',
-        'identification',
+        'deposit',
+        'flow_marketing',
         'name',
         'order',
         'parent_id',
-        'show',
     ];
 
     /**
@@ -39,5 +42,76 @@ class ProductCategory extends Model
     public function parent()
     {
         return $this->hasOne(ProductCategory::class, 'id', 'category_id');
+    }
+
+    /**
+     * Definition of name for flow.
+     *
+     * @return string
+     */
+    public function name()
+    {
+        return 'mall.product.category';
+    }
+
+    /**
+     * Definition of places for flow.
+     *
+     * @return array
+     */
+    public function places()
+    {
+        return [
+            'create',
+            'created',
+            'edit',
+            'edited',
+            'remove',
+            'removed',
+        ];
+    }
+
+    /**
+     * Definition of transitions for flow.
+     *
+     * @return array
+     */
+    public function transitions()
+    {
+        return [
+            new Transition('create', 'create', 'created'),
+            new Transition('need_to_edit', 'created', 'edit'),
+            new Transition('edit', 'edit', 'edited'),
+            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('remove', 'remove', 'removed'),
+        ];
+    }
+
+    /**
+     * Guard a transition.
+     *
+     * @param \Symfony\Component\Workflow\Event\GuardEvent $event
+     */
+    public function guardTransition(GuardEvent $event)
+    {
+        switch ($event->getTransition()->getName()) {
+            case 'create':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'need_to_edit':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'edit':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'need_to_remove':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            case 'remove':
+                $this->blockTransition($event, $this->permission(''));
+                break;
+            default:
+                $event->setBlocked(true);
+        }
     }
 }

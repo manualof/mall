@@ -9,13 +9,13 @@
 namespace Notadd\Mall\Handlers\Admin\Configuration;
 
 use Illuminate\Container\Container;
-use Notadd\Foundation\Passport\Abstracts\SetHandler as AbstractSetHandler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Foundation\Setting\Contracts\SettingsRepository;
 
 /**
  * Class SetHandler.
  */
-class SetHandler extends AbstractSetHandler
+class SetHandler extends Handler
 {
     /**
      * @var \Notadd\Foundation\Setting\Contracts\SettingsRepository
@@ -44,5 +44,6 @@ class SetHandler extends AbstractSetHandler
         $this->settings->set('mall.configuration.logo', $this->request->input('logo'));
         $this->settings->set('mall.configuration.service.email', $this->request->input('email'));
         $this->settings->set('mall.configuration.service.phone', $this->request->input('phone'));
+        $this->withCode(200)->withMessage('');
     }
 }

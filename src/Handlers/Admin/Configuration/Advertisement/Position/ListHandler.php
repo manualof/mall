@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Configuration\Advertisement\Position;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\AdvertisementPosition;
 
 /**
@@ -24,6 +24,6 @@ class ListHandler extends Handler
     protected function execute()
     {
         $builder = AdvertisementPosition::query();
-        $this->success()->withData($builder->get())->withMessage('');
+        $this->withCode(200)->withData($builder->get())->withMessage('');
     }
 }

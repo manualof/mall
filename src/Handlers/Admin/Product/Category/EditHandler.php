@@ -8,7 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Product\Category;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\ProductCategory;
 
 /**
  * Class EditHandler.
@@ -22,6 +23,35 @@ class EditHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'deposit'   => 'required|numeric',
+            'id'        => 'required|numeric',
+            'name'      => 'required',
+            'parent_id' => 'numeric',
+            'order'     => 'numeric',
+        ], [
+            'deposit.numeric'   => '保证金数额必须为数值',
+            'deposit.required'  => '保证金数额必须填写',
+            'id.required'       => '分类 ID 必须填写',
+            'id.numeric'        => '分类 ID 必须为数值',
+            'name.required'     => '分类名称必须填写',
+            'parent_id.numeric' => '父级分类 ID 必须为数值',
+            'order.numeric'     => '排序必须为数值',
+        ]);
+        $this->beginTransaction();
+        $category = ProductCategory::query()->find($this->request->input('id'));
+        $data = $this->request->only([
+            'deposit',
+            'name',
+            'parent_id',
+            'order',
+        ]);
+        if ($category instanceof ProductCategory && $category->update($data)) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('编辑分类信息成功！');
+        } else {
+            $this->rollBackTransaction();
+            $this->withCode(500)->withError('编辑分类信息失败！');
+        }
     }
 }

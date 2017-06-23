@@ -8,7 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Product\Category;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\ProductCategory;
 
 /**
  * Class RemoveHandler.
@@ -22,6 +23,20 @@ class RemoveHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'id' => 'required|numeric',
+        ], [
+            'id.numeric'  => '分类 ID 必须为数值',
+            'id.required' => '分类 ID 必须填写',
+        ]);
+        $this->beginTransaction();
+        $category = ProductCategory::query()->find($this->request->input('id'));
+        if ($category instanceof ProductCategory && $category->delete()) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('移除分类成功！');
+        } else {
+            $this->rollBackTransaction();
+            $this->withCode(500)->withError('移除分类失败！');
+        }
     }
 }

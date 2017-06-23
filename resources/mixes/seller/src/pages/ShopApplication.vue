@@ -334,21 +334,21 @@
                         <div>
                             <i-form ref="goods" :model="goods" :rules="pictureValidate" :label-width="100">
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="品牌名称">
                                             <i-input v-model="goods.name"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="名称首字母">
                                             <i-input v-model="goods.initials"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="品牌类别">
                                             <cascader :data="styleData" trigger="hover" v-model="goods.type"></cascader>
                                         </form-item>
@@ -401,21 +401,21 @@
                         <div>
                             <i-form ref="goodsModify" :model="goodsModify" :rules="ruleValidate" :label-width="100">
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="品牌名称">
                                             <i-input v-model="goodsModify.name"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="名称首字母">
                                             <i-input v-model="goodsModify.initials"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="12">
+                                    <i-col span="14">
                                         <form-item label="品牌类别">
                                             <cascader :data="styleData" trigger="hover" v-model="goodsModify.type"></cascader>
                                         </form-item>

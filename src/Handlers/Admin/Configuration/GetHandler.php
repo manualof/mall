@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Admin\Configuration;
 
 use Illuminate\Container\Container;
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Foundation\Setting\Contracts\SettingsRepository;
 
 /**
@@ -41,7 +41,7 @@ class GetHandler extends Handler
      */
     protected function execute()
     {
-        $this->success()->withData([
+        $this->withCode(200)->withData([
             'email' => $this->settings->get('mall.configuration.service.email', ''),
             'logo' => $this->settings->get('mall.configuration.logo', ''),
             'phone' => $this->settings->get('mall.configuration.service.phone', ''),

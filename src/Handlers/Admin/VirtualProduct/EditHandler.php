@@ -8,7 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Admin\VirtualProduct;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\VirtualProduct;
 
 /**
  * Class EditHandler.
@@ -22,6 +23,12 @@ class EditHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $product = VirtualProduct::query()->find($id);
+        if ($product && $product->update($this->request->all())) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }

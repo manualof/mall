@@ -8,7 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Admin\VirtualOrder;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\VirtualProductOrder;
 
 /**
  * Class RemoveHandler.
@@ -22,6 +23,12 @@ class RemoveHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $id = $this->request->input('id');
+        $order = VirtualProductOrder::query()->find($id);
+        if ($order && $order->delete()) {
+            $this->withCode(200)->withMessage('');
+        } else {
+            $this->withCode(500)->withError('');
+        }
     }
 }

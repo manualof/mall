@@ -8,7 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Admin\Statistics\Member;
 
-use Notadd\Foundation\Passport\Abstracts\Handler;
+use Illuminate\Support\Collection;
+use Notadd\Foundation\Routing\Abstracts\Handler;
 
 /**
  * Class MemberHandler.
@@ -22,6 +23,7 @@ class MemberHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $data = new Collection();
+        $this->withCode(200)->withData($data)->withMessage('');
     }
 }
