@@ -542,6 +542,16 @@ class PermissionRegister extends AbstractPermissionRegister
 
     protected function extendSellerPermission()
     {
+        $this->extendOrderPermissionForSeller();
+        $this->extendProductSpecificationPermissionForSeller();
+        $this->extendProductSubscribePermissionForSeller();
+        $this->extendStorePermissionForSeller();
+        $this->extendStoreDynamicPermissionForSeller();
+        $this->extendStoreNavigationPermissionForSeller();
+    }
+
+    protected function extendOrderPermissionForSeller()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '列表权限',
@@ -563,7 +573,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'process',
             'module'         => 'mall-seller',
         ]);
+    }
 
+    protected function extendProductPermissionForSeller()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '创建权限',
@@ -606,7 +619,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'restore',
             'module'         => 'mall-seller',
         ]);
+    }
 
+    protected function extendProductSpecificationPermissionForSeller()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '创建权限',
@@ -642,7 +658,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'specifications',
             'module'         => 'mall-seller',
         ]);
+    }
 
+    protected function extendProductSubscribePermissionForSeller()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '列表权限',
@@ -657,7 +676,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'remove',
             'module'         => 'mall-seller',
         ]);
+    }
 
+    protected function extendStorePermissionForSeller()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '上新权限',
@@ -672,7 +694,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'store',
             'module'         => 'mall-seller',
         ]);
+    }
 
+    protected function extendStoreDynamicPermissionForSeller()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '配置权限',
@@ -722,7 +747,10 @@ class PermissionRegister extends AbstractPermissionRegister
             'identification' => 'restore',
             'module'         => 'mall-seller',
         ]);
+    }
 
+    protected function extendStoreNavigationPermissionForSeller()
+    {
         $this->manager->extend([
             'default'        => false,
             'description'    => '创建权限',
