@@ -8,14 +8,14 @@
  */
 namespace Notadd\Mall\Controllers\Api\Store;
 
-use Notadd\Mall\Abstracts\StoreController as AbstractStoreController;
+use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Store\ListHandler;
 use Notadd\Mall\Handlers\Store\StoreHandler;
 
 /**
  * Class StoreController.
  */
-class StoreController extends AbstractStoreController
+class StoreController extends Controller
 {
     /**
      * @param \Notadd\Mall\Handlers\Store\ListHandler $handler
