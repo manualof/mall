@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\StoreCategory;
 
 /**
  * Class EditHandler.
