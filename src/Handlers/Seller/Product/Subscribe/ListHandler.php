@@ -34,7 +34,7 @@ class ListHandler extends Handler
             'store.numeric'    => '店铺 ID 必须为数值',
         ]);
         $builder = ProductSubscribe::query();
-        $builder = $builder->where('store_id', $this->request->input('store_id'));
+        $builder->where('store_id', $this->request->input('store_id'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)->withData($builder->items())->withMessage('获取产品列表成功！')->withExtra([
             'pagination' => [
