@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Product;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\Product;
 
 /**
  * Class RestoreHandler.
@@ -22,6 +23,16 @@ class RestoreHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'id' => 'required',
+        ], [
+            'id.required' => '产品 ID 必须填写',
+        ]);
+        $product = Product::query()->onlyTrashed()->find($this->request->input('id'));
+        if ($product instanceof Product && $product->restore()) {
+            $this->withCode(200)->withMessage('恢复产品成功！');
+        } else {
+            $this->withCode(500)->withError('恢复产品失败！');
+        }
     }
 }
