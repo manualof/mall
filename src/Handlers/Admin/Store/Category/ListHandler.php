@@ -23,7 +23,14 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
+        $this->validate($this->request, [
+            'store_id' => 'required|numeric',
+        ], [
+            'store_id.required' => '店铺 ID 必须填写',
+            'store_id.numeric'  => '店铺 ID 必须为数值',
+        ]);
         $builder = StoreCategory::query();
-        $this->withCode(200)->withData($builder->get())->withMessage('');
+        $builder->where('store_id', $this->request->input('store_id'));
+        $this->withCode(200)->withData($builder->get())->withMessage('获取产品列表成功！');
     }
 }
