@@ -190,7 +190,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('statistics/member/area', StatisticsMemberControllerForAdministration::class . '@area');
             $this->router->post('statistics/member/newly', StatisticsMemberControllerForAdministration::class . '@newly');
             $this->router->post('statistics/sales', StatisticsSalesControllerForAdministration::class . '@income');
-            $this->router->post('statistics/sales/order', StatisticsStoreControllerForAdministration::class . '@order');
+            $this->router->post('statistics/sales/order', StatisticsSalesControllerForAdministration::class . '@order');
             $this->router->post('statistics/store/area', StatisticsStoreControllerForAdministration::class . '@area');
             $this->router->post('statistics/store/hots', StatisticsStoreControllerForAdministration::class . '@hots');
             $this->router->post('statistics/store/newly', StatisticsStoreControllerForAdministration::class . '@newly');
