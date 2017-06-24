@@ -30,6 +30,7 @@ use Notadd\Mall\Controllers\Api\Administration\OrderProcessController as OrderPr
 use Notadd\Mall\Controllers\Api\Administration\OrderRateController as OrderRateControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\OrderRefundController as OrderRefundControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\ProductController as ProductControllerForAdministration;
+use Notadd\Mall\Controllers\Api\Administration\StatisticsSalesController as StatisticsSalesControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StoreCategoryController as StoreCategoryControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StoreController as StoreControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StoreDynamicController as StoreDynamicControllerForAdministration;
@@ -188,7 +189,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('statistics/member', StatisticsMemberControllerForAdministration::class . '@member');
             $this->router->post('statistics/member/area', StatisticsMemberControllerForAdministration::class . '@area');
             $this->router->post('statistics/member/newly', StatisticsMemberControllerForAdministration::class . '@newly');
-            $this->router->post('statistics/sales', StatisticsStoreControllerForAdministration::class . '@income');
+            $this->router->post('statistics/sales', StatisticsSalesControllerForAdministration::class . '@income');
             $this->router->post('statistics/sales/order', StatisticsStoreControllerForAdministration::class . '@order');
             $this->router->post('statistics/store/area', StatisticsStoreControllerForAdministration::class . '@area');
             $this->router->post('statistics/store/hots', StatisticsStoreControllerForAdministration::class . '@hots');
