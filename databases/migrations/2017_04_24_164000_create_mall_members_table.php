@@ -22,6 +22,8 @@ class CreateMallMembersTable extends Migration
     {
         $this->schema->create('mall_members', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->comment('用户 ID');
+
             $table->timestamps();
         });
     }
