@@ -19,6 +19,15 @@ use Notadd\Mall\Handlers\Administration\Order\Refund\ListHandler;
 class OrderRefundController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::order-refund::confirm' => 'confirm',
+        'global::mall-administration::order-refund::finish'  => 'finish',
+        'global::mall-administration::order-refund::list'    => 'list',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Administration\Order\Refund\ConfirmHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
