@@ -32,7 +32,7 @@ class ProductHandler extends Handler
         if ($product instanceof Product) {
             $this->withCode(200)->withData($product)->withMessage('获取产品信息成功！');
         } else {
-            $this->withCode(500)->withError('获取产品信息失败！');
+            $this->withCode(500)->withError('没有对应的产品信息！');
         }
     }
 }

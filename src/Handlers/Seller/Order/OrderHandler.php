@@ -33,7 +33,7 @@ class OrderHandler extends Handler
         if ($order instanceof Order) {
             $this->withCode(200)->withData($order)->withMessage('获取订单信息成功！');
         } else {
-            $this->withCode(500)->withError('获取订单信息失败！');
+            $this->withCode(500)->withError('没有对应的订单信息！');
         }
     }
 }

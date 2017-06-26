@@ -72,7 +72,7 @@ class EditHandler extends Handler
             $this->withCode(200)->withMessage('修改产品信息成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('修改产品信息失败！');
+            $this->withCode(500)->withError('没有对应的产品信息！');
         }
     }
 }

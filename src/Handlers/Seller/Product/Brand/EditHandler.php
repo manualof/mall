@@ -62,7 +62,7 @@ class EditHandler extends Handler
             $this->withCode(200)->withMessage('更新品牌信息成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('更新品牌信息失败！');
+            $this->withCode(500)->withError('没有对应的品牌信息！');
         }
     }
 }

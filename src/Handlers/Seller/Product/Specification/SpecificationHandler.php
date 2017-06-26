@@ -33,7 +33,7 @@ class SpecificationHandler extends Handler
         if ($specification instanceof ProductSpecification) {
             $this->withCode(200)->withData($specification)->withMessage('获取产品规格数据成功！');
         } else {
-            $this->withCode(500)->withError('获取产品规格数据失败！');
+            $this->withCode(500)->withError('没有对应的产品规格信息！');
         }
     }
 }
