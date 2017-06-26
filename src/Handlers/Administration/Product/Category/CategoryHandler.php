@@ -33,7 +33,7 @@ class CategoryHandler extends Handler
         if ($category instanceof ProductCategory) {
             $this->withCode(200)->withData($category)->withMessage('获取分类信息成功！');
         } else {
-            $this->withCode(500)->withError('获取分类信息失败！');
+            $this->withCode(500)->withError('没有对应的分类信息！');
         }
     }
 }

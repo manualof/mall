@@ -51,7 +51,7 @@ class EditHandler extends Handler
             $this->withCode(200)->withMessage('编辑分类信息成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('编辑分类信息失败！');
+            $this->withCode(500)->withError('没有对应的分类信息！');
         }
     }
 }

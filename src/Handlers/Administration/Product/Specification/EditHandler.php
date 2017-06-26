@@ -51,7 +51,7 @@ class EditHandler extends Handler
             $this->withCode(200)->withMessage('编辑产品规格成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withMessage('编辑产品规格失败！');
+            $this->withCode(500)->withMessage('没有对应的产品规格！');
         }
     }
 }

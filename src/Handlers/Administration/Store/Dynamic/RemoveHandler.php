@@ -36,7 +36,7 @@ class RemoveHandler extends Handler
             $this->withCode(200)->withMessage('删除店铺动态成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('删除店铺动态失败！');
+            $this->withCode(500)->withError('没有对应的店铺分类信息！');
         }
     }
 }

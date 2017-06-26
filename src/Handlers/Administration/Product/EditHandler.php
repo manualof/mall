@@ -41,6 +41,7 @@ class EditHandler extends Handler
             'brand_id.numeric'          => '品牌 ID 必须为数值',
             'business_item.numeric'     => '商家货号必须为数值',
             'category_id.numeric'       => '分类 ID 必须为数值',
+            'description.required'      => '商品描述必须填写',
             'id.required'               => '商品 ID 必须填写',
             'id.numeric'                => '商品 ID 必须为数值',
             'name.required'             => '商品名称必须填写',
@@ -72,7 +73,7 @@ class EditHandler extends Handler
             $this->withCode(200)->withMessage('修改产品信息成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('修改产品信息失败！');
+            $this->withCode(500)->withError('没有对应的产品信息！');
         }
     }
 }

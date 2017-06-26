@@ -24,6 +24,6 @@ class OrderHandler extends Handler
     protected function execute()
     {
         $data = new Collection();
-        $this->withCode(200)->withData($data)->withMessage('');
+        $this->withCode(200)->withData($data)->withMessage('获取统计数据成功！');
     }
 }

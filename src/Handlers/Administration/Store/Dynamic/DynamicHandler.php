@@ -33,7 +33,7 @@ class DynamicHandler extends Handler
         if ($dynamic instanceof StoreDynamic) {
             $this->withCode(200)->withData($dynamic)->withMessage('获取店铺动态信息成功！');
         } else {
-            $this->withCode(500)->withError('获取店铺动态信息失败！');
+            $this->withCode(500)->withError('没有对应的店铺动态信息！');
         }
     }
 }

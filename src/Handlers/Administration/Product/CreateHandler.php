@@ -41,6 +41,7 @@ class CreateHandler extends Handler
             'business_item.numeric'     => '商家货号必须为数值',
             'category_id.numeric'       => '分类 ID 必须为数值',
             'name.required'             => '商品名称必须填写',
+            'description.required'      => '商品描述必须填写',
             'price.numeric'             => '价格必须为数值',
             'price.required'            => '价格必须填写',
             'price_cost.numeric'        => '成本价格必须为数值',

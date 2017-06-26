@@ -36,7 +36,7 @@ class RemoveHandler extends Handler
             $this->withCode(200)->withMessage('撤销品牌成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('撤销品牌失败！');
+            $this->withCode(500)->withError('没有对应的品牌信息！');
         }
     }
 }

@@ -32,7 +32,7 @@ class RestoreHandler extends Handler
         if ($product instanceof Product && $product->restore()) {
             $this->withCode(200)->withMessage('恢复产品成功！');
         } else {
-            $this->withCode(500)->withError('恢复产品失败！');
+            $this->withCode(500)->withError('没有对应的产品信息！');
         }
     }
 }
