@@ -9,7 +9,6 @@
 namespace Notadd\Mall\Controllers\Api\Administration;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Admin\Order\CreateHandler;
 use Notadd\Mall\Handlers\Administration\Order\EditHandler;
 use Notadd\Mall\Handlers\Administration\Order\ListHandler;
 use Notadd\Mall\Handlers\Administration\Order\OrderHandler;
@@ -21,6 +20,17 @@ use Notadd\Mall\Handlers\Administration\Order\RestoreHandler;
  */
 class OrderController extends Controller
 {
+    /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::order::edit'    => 'edit',
+        'global::mall-administration::order::list'    => 'list',
+        'global::mall-administration::order::order'   => 'order',
+        'global::mall-administration::order::remove'  => 'remove',
+        'global::mall-administration::order::restore' => 'restore',
+    ];
+
     /**
      * @param \Notadd\Mall\Handlers\Administration\Order\EditHandler $handler
      *
