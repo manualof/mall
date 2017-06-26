@@ -19,6 +19,15 @@ use Notadd\Mall\Handlers\Administration\Order\Express\TypingHandler;
 class OrderExpressController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::order-express::list'   => 'list',
+        'global::mall-administration::order-express::trace'  => 'trace',
+        'global::mall-administration::order-express::typing' => 'typing',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Administration\Order\Express\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
