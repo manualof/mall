@@ -21,6 +21,17 @@ use Notadd\Mall\Handlers\Administration\Order\Invoice\RemoveHandler;
 class OrderInvoiceController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::order-invoice::create'  => 'create',
+        'global::mall-administration::order-invoice::edit'    => 'edit',
+        'global::mall-administration::order-invoice::invoice' => 'invoice',
+        'global::mall-administration::order-invoice::list'    => 'list',
+        'global::mall-administration::order-invoice::remove'  => 'remove',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Administration\Order\Invoice\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
