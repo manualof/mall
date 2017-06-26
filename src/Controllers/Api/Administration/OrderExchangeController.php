@@ -21,6 +21,16 @@ use Notadd\Mall\Handlers\Administration\Order\Exchange\SendHandler;
 class OrderExchangeController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::order-exchange::confirm' => 'confirm',
+        'global::mall-administration::order-exchange::finish'  => 'finish',
+        'global::mall-administration::order-exchange::list'    => 'list',
+        'global::mall-administration::order-exchange::send'    => 'send',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Administration\Order\Exchange\ConfirmHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
