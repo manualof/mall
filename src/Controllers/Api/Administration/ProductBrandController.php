@@ -22,6 +22,18 @@ use Notadd\Mall\Handlers\Administration\Product\Brand\RemoveHandler;
 class ProductBrandController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::product-brand::access' => 'access',
+        'global::mall-administration::product-brand::brand'  => 'brand',
+        'global::mall-administration::product-brand::create' => 'create',
+        'global::mall-administration::product-brand::edit'   => 'edit',
+        'global::mall-administration::product-brand::list'   => 'list',
+        'global::mall-administration::product-brand::remove' => 'remove',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Administration\Product\Brand\AccessHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
@@ -42,7 +54,7 @@ class ProductBrandController extends Controller
     {
         return $handler->toResponse()->generateHttpResponse();
     }
-    
+
     /**
      * @param \Notadd\Mall\Handlers\Administration\Product\Brand\CreateHandler $handler
      *
