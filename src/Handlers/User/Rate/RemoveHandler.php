@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\User\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\OrderRate;
 
 /**
  * Class RemoveHandler.
@@ -22,6 +23,20 @@ class RemoveHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'id' => 'required|numeric',
+        ], [
+            'id.required' => '订单 ID 必须填写',
+            'id.numeric'  => '订单 ID 必须为数值',
+        ]);
+        $this->beginTransaction();
+        $rate = OrderRate::query()->find($this->request->input('id'));
+        if ($rate instanceof OrderRate && $rate->delete()) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('删除订单评论成功！');
+        } else {
+            $this->rollBackTransaction();
+            $this->withCode(500)->withError('没有对应的订单评论信息');
+        }
     }
 }
