@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Controllers\Api\Administration;
 
-use Notadd\Mall\Handlers\Administration\Order\Rate\CreateHandler;
+use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Administration\Order\Rate\EditHandler;
 use Notadd\Mall\Handlers\Administration\Order\Rate\ListHandler;
 use Notadd\Mall\Handlers\Administration\Order\Rate\RateHandler;
@@ -16,8 +16,17 @@ use Notadd\Mall\Handlers\Administration\Order\Rate\RateHandler;
 /**
  * Class OrderRateController.
  */
-class OrderRateController
+class OrderRateController extends Controller
 {
+    /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::order-rate::edit' => 'edit',
+        'global::mall-administration::order-rate::list' => 'list',
+        'global::mall-administration::order-rate::rate' => 'rate',
+    ];
+
     /**
      * @param \Notadd\Mall\Handlers\Administration\Order\Rate\EditHandler $handler
      *
