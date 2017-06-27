@@ -43,6 +43,7 @@ use Notadd\Mall\Controllers\Api\Administration\StatisticsStoreController as Stat
 use Notadd\Mall\Controllers\Api\Administration\UploadController as UploadControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Seller\OrderController as OrderControllerForSeller;
 use Notadd\Mall\Controllers\Api\Seller\OrderExpressController as OrderExpressControllerForSeller;
+use Notadd\Mall\Controllers\Api\Seller\StoreOutletController as StoreOutletControllerForSeller;
 use Notadd\Mall\Controllers\Api\Seller\ProductCategoryController as ProductCategoryControllerForSeller;
 use Notadd\Mall\Controllers\Api\Seller\ProductController as ProductControllerForSeller;
 use Notadd\Mall\Controllers\Api\Seller\ProductSpecificationController as ProductSpecificationControllerForSeller;
@@ -241,6 +242,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/navigation/edit', StoreNavigationControllerForSeller::class . '@edit');
             $this->router->post('store/navigation/list', StoreNavigationControllerForSeller::class . '@list');
             $this->router->post('store/navigation/remove', StoreNavigationControllerForSeller::class . '@remove');
+            $this->router->post('store/outlet', StoreOutletControllerForSeller::class . '@outlet');
             $this->router->post('store/product', ProductControllerForSeller::class . '@product');
             $this->router->post('store/product/create', ProductControllerForSeller::class . '@create');
             $this->router->post('store/product/edit', ProductControllerForSeller::class . '@edit');
