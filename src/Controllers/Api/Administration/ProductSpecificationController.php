@@ -21,6 +21,17 @@ use Notadd\Mall\Handlers\Administration\Product\Specification\SpecificationHandl
 class ProductSpecificationController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::product-specification::create'        => 'create',
+        'global::mall-administration::product-specification::edit'          => 'edit',
+        'global::mall-administration::product-specification::list'          => 'list',
+        'global::mall-administration::product-specification::remove'        => 'remove',
+        'global::mall-administration::product-specification::specification' => 'specification',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Administration\Product\Specification\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
