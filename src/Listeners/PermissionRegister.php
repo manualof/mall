@@ -696,6 +696,45 @@ class PermissionRegister extends AbstractPermissionRegister
         ]);
     }
 
+    protected function extendStoreBrandPermissionForSeller()
+    {
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '申请权限',
+            'group'          => 'store-brand',
+            'identification' => 'apply',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '详情权限',
+            'group'          => 'store-brand',
+            'identification' => 'brand',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '编辑权限',
+            'group'          => 'store-brand',
+            'identification' => 'edit',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '列表权限',
+            'group'          => 'store-brand',
+            'identification' => 'list',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '撤销权限',
+            'group'          => 'store-brand',
+            'identification' => 'revoke',
+            'module'         => 'mall-seller',
+        ]);
+    }
+
     protected function extendStoreDynamicPermissionForSeller()
     {
         $this->manager->extend([
