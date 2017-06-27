@@ -10,6 +10,7 @@ namespace Notadd\Mall\Controllers\Api\Seller;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Store\Information\InformationHandler;
+use Notadd\Mall\Handlers\Seller\Store\Information\RenewHandler;
 
 /**
  * Class StoreInformationController.
@@ -23,6 +24,17 @@ class StoreInformationController extends Controller
      * @throws \Exception
      */
     public function information(InformationHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Information\RenewHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function renew(RenewHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
