@@ -273,141 +273,68 @@
     export default {
         data() {
             return {
-                data: [{
-                    value: 'beijing',
-                    label: '北京',
-                    children: [
-                        {
-                            value: 'gugong',
-                            label: '故宫',
-                        },
-                        {
-                            value: 'tiantan',
-                            label: '天坛',
-                        },
-                        {
-                            value: 'wangfujing',
-                            label: '王府井',
-                        },
-                    ],
-                }, {
-                    value: 'jiangsu',
-                    label: '江苏',
-                    children: [
-                        {
-                            value: 'nanjing',
-                            label: '南京',
-                            children: [
-                                {
-                                    value: 'fuzimiao',
-                                    label: '夫子庙',
-                                },
-                            ],
-                        },
-                        {
-                            value: 'suzhou',
-                            label: '苏州',
-                            children: [
-                                {
-                                    value: 'zhuozhengyuan',
-                                    label: '拙政园',
-                                },
-                                {
-                                    value: 'shizilin',
-                                    label: '狮子林',
-                                },
-                            ],
-                        },
-                    ],
-                }],
-                product_intro: {
-                    name: 'Daisy London纯手工迷你雏菊IOTA纯银戒指S码M码L码年轻 与活力时尚简约',
-                    offer: ['很便宜', '清仓大甩卖', '买二送一'],
-                    price: 239.00,
-                    original_price: 488.00,
-                    sales_num: 7764,
-                    eval_num: 6298,
-                    integral: 138,
-                    transport_price: 12.00,
-                    status: '有货，今天下单预计1月22送到',
-                    type: ['套餐一', '套餐二', '套餐三'],
-                },
-                recommend_products: [
-                    {
-                        id: 1,
-                        img: img7,
-                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
-                        price: 46.88,
-                        old_price: 60,
-                    },
-                    {
-                        id: 2,
-                        img: img7,
-                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
-                        price: 46.88,
-                        old_price: 60,
-                    },
-                    {
-                        id: 3,
-                        img: img7,
-                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
-                        price: 46.88,
-                        old_price: 60,
-                    },
-                    {
-                        id: 4,
-                        img: img7,
-                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
-                        price: 46.88,
-                        old_price: 60,
-                    }
-                ],
-                seeAgain_products: [
-                    {
-                        id: 1,
-                        img: img7,
-                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
-                        price: 46.88,
-                        sales: 187,
-                    },
-                    {
-                        id: 2,
-                        img: img7,
-                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
-                        price: 46.88,
-                        sales: 187,
-                    },
-                    {
-                        id: 3,
-                        img: img7,
-                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
-                        price: 46.88,
-                        sales: 187,
-                    }
-                ],
-                selectRecommends: [],
-                show: 0,
-                productNum: 1,
-                distribution_address: [],
-                smallImgs: [img1, img2, img1, img2, img1, img1, img1],
-                bigImg: [stool, stool, stool, stool, stool],
-                productInfo: {
-                    name: "西部母婴",
-                    madeIn: "中国",
-                    cailiao: "实木",
-                    style: "欧式",
-                    color: "原木 黑色 象牙白",
-                },
                 activeImg: '',
-                isActive: false,
+                bigImg: [stool, stool, stool, stool, stool],
+                data: [
+                    {
+                        children: [
+                            {
+                                label: '故宫',
+                                value: 'gugong',
+                            },
+                            {
+                                label: '天坛',
+                                value: 'tiantan',
+                            },
+                            {
+                                label: '王府井',
+                                value: 'wangfujing',
+                            },
+                        ],
+                        label: '北京',
+                        value: 'beijing',
+                    },
+                    {
+                        children: [
+                            {
+                                value: 'nanjing',
+                                label: '南京',
+                                children: [
+                                    {
+                                        value: 'fuzimiao',
+                                        label: '夫子庙',
+                                    },
+                                ],
+                            },
+                            {
+                                value: 'suzhou',
+                                label: '苏州',
+                                children: [
+                                    {
+                                        value: 'zhuozhengyuan',
+                                        label: '拙政园',
+                                    },
+                                    {
+                                        value: 'shizilin',
+                                        label: '狮子林',
+                                    },
+                                ],
+                            },
+                        ],
+                        label: '江苏',
+                        value: 'jiangsu',
+                    },
+                ],
+                distribution_address: [],
                 evaluation: [
                     {
                         name: '皮皮虾',
                         userImg: userImg,
                         bigImg: '',
-                        sorce: 4,
+                        sorce: 3,
                         buyDate: '2016-12-30',
                         evaluationTxt: '包装精美 跟我想象的面料不太一样 但是超满意 裸睡王 贴身内衣的那种棉质 家人特别喜欢 超值的 就是被套有点大 理想尺码床单1米八 被罩2米3 但是不拆开卖 除了这个缺点 其他的都超满意',
+                        evaluationImg: [img1, img2],
                         productInfo: {
                             color: '蓝色',
                             size: 'm',
@@ -430,7 +357,7 @@
                         name: '皮皮虾',
                         userImg: userImg,
                         bigImg: '',
-                        sorce: 2,
+                        sorce: 3,
                         buyDate: '2016-12-30',
                         evaluationTxt: '包装精美 跟我想象的面料不太一样 但是超满意 裸睡王 贴身内衣的那种棉质 家人特别喜欢 超值的 就是被套有点大 理想尺码床单1米八 被罩2米3 但是不拆开卖 除了这个缺点 其他的都超满意',
                         evaluationImg: [img1, img2],
@@ -439,115 +366,187 @@
                             size: 'm',
                         },
                     },
+                ],
+                isActive: false,
+                product_intro: {
+                    eval_num: 6298,
+                    integral: 138,
+                    name: 'Daisy London纯手工迷你雏菊IOTA纯银戒指S码M码L码年轻 与活力时尚简约',
+                    offer: ['很便宜', '清仓大甩卖', '买二送一'],
+                    original_price: 488.00,
+                    price: 239.00,
+                    transport_price: 12.00,
+                    type: ['套餐一', '套餐二', '套餐三'],
+                    sales_num: 7764,
+                    status: '有货，今天下单预计1月22送到',
+                },
+                productNum: 1,
+                productInfo: {
+                    cailiao: '实木',
+                    color: '原木 黑色 象牙白',
+                    madeIn: '中国',
+                    name: '西部母婴',
+                    style: '欧式',
+                },
+                recommend_products: [
                     {
-                        name: '皮皮虾',
-                        userImg: userImg,
-                        bigImg: '',
-                        sorce: 5,
-                        buyDate: '2016-12-30',
-                        evaluationTxt: '包装精美 跟我想象的面料不太一样 但是超满意 裸睡王 贴身内衣的那种棉质 家人特别喜欢 超值的 就是被套有点大 理想尺码床单1米八 被罩2米3 但是不拆开卖 除了这个缺点 其他的都超满意',
-                        evaluationImg: [img1, img2, img1],
-                        productInfo: {
-                            color: '蓝色',
-                            size: 'm',
-                        },
+                        id: 1,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        old_price: 60,
+                        price: 46.88,
+                    },
+                    {
+                        id: 1,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        old_price: 60,
+                        price: 46.88,
+                    },
+                    {
+                        id: 1,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        old_price: 60,
+                        price: 46.88,
+                    },
+                    {
+                        id: 1,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        old_price: 60,
+                        price: 46.88,
+                    },
+                    {
+                        id: 1,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        old_price: 60,
+                        price: 46.88,
                     },
                 ],
+                seeAgain_products: [
+                    {
+                        id: 2,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        price: 46.88,
+                        sales: 187,
+                    },
+                    {
+                        img: img7,
+                        id: 1,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        price: 46.88,
+                        sales: 187,
+                    },
+                    {
+                        id: 3,
+                        img: img7,
+                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
+                        price: 46.88,
+                        sales: 187,
+                    },
+                ],
+                selectRecommends: [],
+                show: 0,
+                smallImgs: [img1, img2, img1, img2, img1, img1, img1],
             };
         },
         components: {
-            RightSide,
-            NeedBrowse,
-            MyselfBrowse,
-            EveryoneBrowse,
             Cascader,
+            EveryoneBrowse,
+            MyselfBrowse,
+            NeedBrowse,
+            RightSide,
         },
         computed: {
             total_price() {
                 let totalPrice = 0;
-                this.selectRecommends.forEach(
-                    function (item) {
-                        totalPrice = totalPrice + item.price;
-                    }
-                );
+                this.selectRecommends.forEach(item => {
+                    totalPrice += item.price;
+                });
                 return totalPrice.toFixed(2);
             },
             total_oldPrice() {
                 let totalOldPrice = 0;
-                this.selectRecommends.forEach(
-                    function (item) {
-                        totalOldPrice = totalOldPrice + item.old_price;
-                    }
-                );
+                this.selectRecommends.forEach(item => {
+                    totalOldPrice += item.old_price;
+                });
                 return totalOldPrice.toFixed(2);
-            }
+            },
         },
         methods: {
-            preview: function ($event) {
-                let index = $event.target.getAttribute("index");
+            preview($event) {
+                const index = $event.target.getAttribute('index');
                 this.bigImg = this.smallImgs[index];
             },
-            zoom(){
-                /*jQuery(".jqzoom").jqueryzoom({xzoom:380,yzoom:410});*/
+            zoom() {
+//                jQuery(".jqzoom").jqueryzoom({xzoom:380,yzoom:410});
             },
-            showImg(item, $event){
-                let source = $event.target.getAttribute("src");
+            showImg(item, $event) {
+                const source = $event.target.getAttribute('src');
                 if (item.bigImg === source) {
-                    item.bigImg = ''
+                    item.bigImg = '';
                 } else {
-                    item.bigImg = source
+                    item.bigImg = source;
                 }
             },
-            /*imgBigbox1() {
-                this.show = 1;
-            },
-            imgBigbox2() {
-                this.show = 0;
-            },
-            moveZoom(e) {
-                let x = e.clientX;//鼠标相对于视口的位置
-                let y = e.clientY;
-                let t = this.$refs.smallImgBox.offsetTop;//box相对于视口的位置
-                let l = this.$refs.smallImgBox.offsetLeft;
-                let _left = x - l - this.$refs.filter.offsetWidth - 100;//计算move的位置
-                let _top = y - t - this.$refs.filter.offsetHeight - 100;
-                if (_top <= 0)//滑到box的最顶部
-                    _top = 0;
-                else if (_top >= this.$refs.smallImgBox.offsetHeight - this.$refs.filter.offsetHeight)//滑到box的最底部
-                    _top = this.$refs.smallImgBox.offsetHeight - this.$refs.filter.offsetHeight;
-                if (_left <= 0)//滑到box的最左边
-                    _left = 0;
-                else if (_left >= this.$refs.smallImgBox.offsetWidth - this.$refs.filter.offsetWidth)//滑到box的最右边
-                    _left = this.$refs.smallImgBox.offsetWidth - this.$refs.filter.offsetWidth;
-                this.$refs.filter.style.top = _top + "px";//设置move的位置
-                this.$refs.filter.style.left = _left + "px";
-                let w = _left / (this.$refs.smallImgBox.offsetWidth - this.$refs.filter.offsetWidth);//计算移动的比例
-                let h = _top / (this.$refs.smallImgBox.offsetHeight - this.$refs.filter.offsetHeight);
-                let b_bimg_top = (this.$refs.bigImg.offsetHeight - this.$refs.bigImgBox.offsetHeight) * h;//计算大图的位置
-                let b_bimg_left = (this.$refs.bigImg.offsetWidth - this.$refs.bigImgBox.offsetWidth) * w;
-                this.$refs.bigImg.style.top = -b_bimg_top + "px";//设置大图的位置信息
-                this.$refs.bigImg.style.left = -b_bimg_left + "px";
-            },*/
+//            imgBigbox1() {
+//                this.show = 1;
+//            },
+//            imgBigbox2() {
+//                this.show = 0;
+//            },
+//            moveZoom(e) {
+//                let x = e.clientX;//鼠标相对于视口的位置
+//                let y = e.clientY;
+//                let t = this.$refs.smallImgBox.offsetTop;//box相对于视口的位置
+//                let l = this.$refs.smallImgBox.offsetLeft;
+//                let _left = x - l - this.$refs.filter.offsetWidth - 100;//计算move的位置
+//                let _top = y - t - this.$refs.filter.offsetHeight - 100;
+//                if (_top <= 0)//滑到box的最顶部
+//                    _top = 0;
+//                else if (_top >= this.$refs.smallImgBox.offsetHeight -
+//                      this.$refs.filter.offsetHeight)//滑到box的最底部
+//                    _top = this.$refs.smallImgBox.offsetHeight - this.$refs.filter.offsetHeight;
+//                if (_left <= 0)//滑到box的最左边
+//                    _left = 0;
+//                else if (_left >= this.$refs.smallImgBox.offsetWidth -
+//                       this.$refs.filter.offsetWidth)//滑到box的最右边
+//                    _left = this.$refs.smallImgBox.offsetWidth - this.$refs.filter.offsetWidth;
+//                this.$refs.filter.style.top = _top + "px";//设置move的位置
+//                this.$refs.filter.style.left = _left + "px";
+//                let w = _left / (this.$refs.smallImgBox.offsetWidth -
+//                      this.$refs.filter.offsetWidth);//计算移动的比例
+//                let h = _top / (this.$refs.smallImgBox.offsetHeight -
+//                          this.$refs.filter.offsetHeight);
+//                let b_bimg_top = (this.$refs.bigImg.offsetHeight -
+//                                  this.$refs.bigImgBox.offsetHeight) * h;//计算大图的位置
+//                let b_bimg_left = (this.$refs.bigImg.offsetWidth -
+//                                  this.$refs.bigImgBox.offsetWidth) * w;
+//                this.$refs.bigImg.style.top = -b_bimg_top + "px";//设置大图的位置信息
+//                this.$refs.bigImg.style.left = -b_bimg_left + "px";
+//            },
             selectRecommend(item, e) {
-                let index = this.selectRecommends.indexOf(item);
-                if (e.target.checked && index == -1) {
+                const index = this.selectRecommends.indexOf(item);
+                if (e.target.checked && index === -1) {
                     this.selectRecommends.push(item);
                 } else {
-                    this.selectRecommends.splice(index, 1)
+                    this.selectRecommends.splice(index, 1);
                 }
-                console.log(this.selectRecommends);
             },
         },
-        mounted(){
+        mounted() {
             this.bigImg = this.smallImgs[0];
-            let mySwiper = new Swiper('.swiper-container', {
-                slidesPerView: 4,
-                loop: true,
+            const mySwiper = new Swiper('.swiper-container', {
                 direction: 'horizontal',
-                prevButton: '.swiper-button-prev',
+                loop: true,
                 nextButton: '.swiper-button-next',
-                spaceBetween: 10,
                 normalizeSlideIndex: true,
+                prevButton: '.swiper-button-prev',
+                spaceBetween: 10,
+                slidesPerView: 4,
             });
         },
     };
