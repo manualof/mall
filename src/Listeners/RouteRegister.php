@@ -258,6 +258,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/supplier', StoreSupplierControllerForSeller::class . '@supplier');
             $this->router->post('store/supplier/create', StoreSupplierControllerForSeller::class . '@create');
             $this->router->post('store/supplier/edit', StoreSupplierControllerForSeller::class . '@edit');
+            $this->router->post('store/supplier/list', StoreSupplierControllerForSeller::class . '@list');
             $this->router->post('store/supplier/remove', StoreSupplierControllerForSeller::class . '@remove');
         });
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/store'], function () {
