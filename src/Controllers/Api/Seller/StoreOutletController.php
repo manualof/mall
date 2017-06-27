@@ -11,6 +11,7 @@ namespace Notadd\Mall\Controllers\Api\Seller;
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Store\Outlet\CreateHandler;
 use Notadd\Mall\Handlers\Seller\Store\Outlet\EditHandler;
+use Notadd\Mall\Handlers\Seller\Store\Outlet\ListHandler;
 use Notadd\Mall\Handlers\Seller\Store\Outlet\OutletHandler;
 
 /**
@@ -36,6 +37,17 @@ class StoreOutletController extends Controller
      * @throws \Exception
      */
     public function edit(EditHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Outlet\ListHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function list(ListHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
