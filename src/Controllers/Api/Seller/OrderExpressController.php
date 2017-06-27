@@ -12,6 +12,7 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Order\OrderExpress\ConfigurationHandler;
 use Notadd\Mall\Handlers\Seller\Order\OrderExpress\DeliveryHandler;
 use Notadd\Mall\Handlers\Seller\Order\OrderExpress\OrderHandler;
+use Notadd\Mall\Handlers\Seller\Order\OrderExpress\TemplateHandler;
 
 /**
  * Class OrderExpressController.
@@ -47,6 +48,17 @@ class OrderExpressController extends Controller
      * @throws \Exception
      */
     public function order(OrderHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Order\OrderExpress\TemplateHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function template(TemplateHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

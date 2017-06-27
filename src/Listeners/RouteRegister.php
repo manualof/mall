@@ -205,6 +205,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('order/express/configuration', OrderExpressControllerForSeller::class . '@configuration');
             $this->router->post('order/express/delivery', OrderExpressControllerForSeller::class . '@delivery');
             $this->router->post('order/express/order', OrderExpressControllerForSeller::class . '@order');
+            $this->router->post('order/express/template', OrderExpressControllerForSeller::class . '@template');
             $this->router->post('service', ServiceControllerForSeller::class . '@list');
             $this->router->post('service/remove', ServiceControllerForSeller::class . '@remove');
             $this->router->post('service/refund', ServiceRefundControllerForSeller::class . '@refund');
