@@ -21,6 +21,17 @@ use Notadd\Mall\Handlers\Administration\Store\RestoreHandler;
 class StoreController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::store::create'  => 'create',
+        'global::mall-administration::store::edit'    => 'edit',
+        'global::mall-administration::store::list'    => 'list',
+        'global::mall-administration::store::remove'  => 'remove',
+        'global::mall-administration::store::restore' => 'restore',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Administration\Store\CreateHandler $handler
      *
      * @return mixed
@@ -41,7 +52,7 @@ class StoreController extends Controller
     {
         return $handler->toResponse()->generateHttpResponse();
     }
-    
+
     /**
      * @param \Notadd\Mall\Handlers\Administration\Store\ListHandler $handler
      *
