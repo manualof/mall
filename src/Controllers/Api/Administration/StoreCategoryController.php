@@ -22,6 +22,17 @@ use Notadd\Mall\Handlers\Administration\Store\Category\RestoreHandler;
 class StoreCategoryController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::store-category::category' => 'category',
+        'global::mall-administration::store-category::edit'     => 'edit',
+        'global::mall-administration::store-category::list'     => 'list',
+        'global::mall-administration::store-category::remove'   => 'remove',
+        'global::mall-administration::store-category::restore'  => 'restore',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Administration\Store\Category\CategoryHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
