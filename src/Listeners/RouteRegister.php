@@ -244,6 +244,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/navigation/remove', StoreNavigationControllerForSeller::class . '@remove');
             $this->router->post('store/outlet', StoreOutletControllerForSeller::class . '@outlet');
             $this->router->post('store/outlet/create', StoreOutletControllerForSeller::class . '@create');
+            $this->router->post('store/outlet/edit', StoreOutletControllerForSeller::class . '@edit');
             $this->router->post('store/product', ProductControllerForSeller::class . '@product');
             $this->router->post('store/product/create', ProductControllerForSeller::class . '@create');
             $this->router->post('store/product/edit', ProductControllerForSeller::class . '@edit');
