@@ -54,6 +54,7 @@ use Notadd\Mall\Controllers\Api\Seller\StoreCategoryController as StoreCategoryC
 use Notadd\Mall\Controllers\Api\Seller\StoreConfigurationController as StoreConfigurationControllerForSeller;
 use Notadd\Mall\Controllers\Api\Seller\StoreController as StoreControllerForSeller;
 use Notadd\Mall\Controllers\Api\Seller\StoreDynamicController as StoreDynamicControllerForSeller;
+use Notadd\Mall\Controllers\Api\Seller\StoreInformationController as StoreInformationControllerForSeller;
 use Notadd\Mall\Controllers\Api\Seller\StoreNavigationController as StoreNavigationControllerForSeller;
 use Notadd\Mall\Controllers\Api\Store\CategoryController as CategoryControllerForStore;
 use Notadd\Mall\Controllers\Api\Store\ProductController as ProductControllerForStore;
@@ -232,6 +233,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/dynamic/list', StoreDynamicControllerForSeller::class . '@list');
             $this->router->post('store/dynamic/remove', StoreDynamicControllerForSeller::class . '@remove');
             $this->router->post('store/dynamic/restore', StoreDynamicControllerForSeller::class . '@restore');
+            $this->router->post('store/information', StoreInformationControllerForSeller::class . '@information');
             $this->router->post('store/navigation', StoreNavigationControllerForSeller::class . '@navigation');
             $this->router->post('store/navigation/create', StoreNavigationControllerForSeller::class . '@create');
             $this->router->post('store/navigation/edit', StoreNavigationControllerForSeller::class . '@edit');
