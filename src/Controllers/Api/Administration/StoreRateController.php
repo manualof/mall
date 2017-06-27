@@ -9,7 +9,6 @@
 namespace Notadd\Mall\Controllers\Api\Administration;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Admin\Store\Rate\CreateHandler;
 use Notadd\Mall\Handlers\Administration\Store\Rate\EditHandler;
 use Notadd\Mall\Handlers\Administration\Store\Rate\ListHandler;
 use Notadd\Mall\Handlers\Administration\Store\Rate\RateHandler;
