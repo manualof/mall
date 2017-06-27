@@ -543,6 +543,7 @@ class PermissionRegister extends AbstractPermissionRegister
     protected function extendSellerPermission()
     {
         $this->extendOrderPermissionForSeller();
+        $this->extendProductPermissionForSeller();
         $this->extendProductCategoryPermissionForSeller();
         $this->extendProductSpecificationPermissionForSeller();
         $this->extendProductSubscribePermissionForSeller();
