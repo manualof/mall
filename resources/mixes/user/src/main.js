@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+import 'bootstrap';
 import App from './App';
 import router from './router';
-import 'bootstrap';
 
 import RouterLink from './directives/router-link';
 import './assets/less/bootstrap-muying.less';
