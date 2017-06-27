@@ -546,6 +546,7 @@ class PermissionRegister extends AbstractPermissionRegister
         $this->extendProductSpecificationPermissionForSeller();
         $this->extendProductSubscribePermissionForSeller();
         $this->extendStorePermissionForSeller();
+        $this->extendStoreBrandPermissionForSeller();
         $this->extendStoreDynamicPermissionForSeller();
         $this->extendStoreNavigationPermissionForSeller();
     }
