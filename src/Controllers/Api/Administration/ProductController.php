@@ -22,6 +22,18 @@ use Notadd\Mall\Handlers\Administration\Product\RestoreHandler;
 class ProductController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::product::create'  => 'create',
+        'global::mall-administration::product::edit'    => 'edit',
+        'global::mall-administration::product::list'    => 'list',
+        'global::mall-administration::product::product' => 'product',
+        'global::mall-administration::product::remove'  => 'remove',
+        'global::mall-administration::product::restore' => 'restore',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Administration\Product\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
