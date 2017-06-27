@@ -547,6 +547,7 @@ class PermissionRegister extends AbstractPermissionRegister
         $this->extendProductSubscribePermissionForSeller();
         $this->extendStorePermissionForSeller();
         $this->extendStoreBrandPermissionForSeller();
+        $this->extendStoreCategoryPermissionForSeller();
         $this->extendStoreDynamicPermissionForSeller();
         $this->extendStoreNavigationPermissionForSeller();
     }
@@ -732,6 +733,45 @@ class PermissionRegister extends AbstractPermissionRegister
             'description'    => '撤销权限',
             'group'          => 'store-brand',
             'identification' => 'revoke',
+            'module'         => 'mall-seller',
+        ]);
+    }
+
+    protected function extendStoreCategoryPermissionForSeller()
+    {
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '详情权限',
+            'group'          => 'store-category',
+            'identification' => 'category',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '创建权限',
+            'group'          => 'store-category',
+            'identification' => 'create',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '编辑权限',
+            'group'          => 'store-category',
+            'identification' => 'edit',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '列表权限',
+            'group'          => 'store-category',
+            'identification' => 'list',
+            'module'         => 'mall-seller',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '删除权限',
+            'group'          => 'store-category',
+            'identification' => 'remove',
             'module'         => 'mall-seller',
         ]);
     }
