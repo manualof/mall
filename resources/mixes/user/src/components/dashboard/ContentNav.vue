@@ -21,24 +21,24 @@
         components: {
             MenuBar,
         },
-        data () {
+        data() {
             return {
-                'navigation': [
+                navigation: [
                     {
-                        'to': {'name': 'home'},
-                        'text': '首页',
+                        to: { name: 'home'},
+                        text: '首页',
                     },
                     {
-                        'to': {'name': 'offer'},
-                        'text': '优惠',
+                        to: { name: 'offer'},
+                        text: '优惠',
                     },
                     {
-                        'to': {'name': 'spike'},
-                        'text': '秒杀',
+                        to: { name: 'spike'},
+                        text: '秒杀',
                     },
                     {
-                        'to': {'name': 'discount'},
-                        'text': '折扣',
+                        to: { name: 'discount'},
+                        text: '折扣',
                     },
                 ],
             };
