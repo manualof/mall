@@ -23,6 +23,19 @@ use Notadd\Mall\Handlers\Seller\Store\Dynamic\RestoreHandler;
 class StoreDynamicController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-seller::store-dynamic::configuration' => 'configuration',
+        'global::mall-seller::store-dynamic::create'        => 'create',
+        'global::mall-seller::store-dynamic::dynamic'       => 'dynamic',
+        'global::mall-seller::store-dynamic::edit'          => 'edit',
+        'global::mall-seller::store-dynamic::list'          => 'list',
+        'global::mall-seller::store-dynamic::remove'        => 'remove',
+        'global::mall-seller::store-dynamic::restore'       => 'restore',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Seller\Store\Dynamic\ConfigurationHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
