@@ -62,17 +62,17 @@ export default [
             {
                 name: '',
                 path: '',
-                redirect: { name: 'home' }
+                redirect: { name: 'home' },
             },
             {
                 path: 'home',
                 name: 'home',
-                component: Home
+                component: Home,
             },
             {
                 path: 'order',
                 name: 'order',
-                component: MyOrder
+                component: MyOrder,
             },
             {
                 path: 'personnal-center',
@@ -83,69 +83,69 @@ export default [
                     {
                         path: 'all-order',
                         name: 'all-order',
-                        component: AllOrder
+                        component: AllOrder,
                     },
                     {
                         path: 'coupon',
                         name: 'coupon',
-                        component: Coupon
+                        component: Coupon,
                     },
                     {
                         path: 'integral',
                         name: 'integral',
-                        component: Integral
+                        component: Integral,
                     },
                     {
                         path: 'account-security',
                         name: 'account-security',
-                        component: AccountSecurity
+                        component: AccountSecurity,
                     },
                     {
                         path: 'shipping-address',
                         name: 'shipping-address',
-                        component: ShippingAddress
+                        component: ShippingAddress,
                     },
                     {
                         path: 'collect-store',
                         name: 'collect-store',
-                        component: CollectStore
+                        component: CollectStore,
                     }
                 ]
             },
             {
                 path: 'customer-serve',
                 name: 'customer-serve',
-                component: CustomerServe
+                component: CustomerServe,
             },
             {
                 path: 'more',
                 name: 'more',
-                component: More
+                component: More,
             },
             {
                 path: 'businessmen',
                 name: 'businessmen',
-                component: Businessmen
+                component: Businessmen,
             },
             {
                 path: 'offer',
                 name: 'offer',
-                component: Offer
+                component: Offer,
             },
             {
                 path: 'discount',
                 name: 'discount',
-                component: Discount
+                component: Discount,
             },
             {
                 path: 'spike',
                 name: 'spike',
-                component: Spike
+                component: Spike,
             },
             {
                 path: 'classification',
                 name: 'classification',
-                component: Classification
+                component: Classification,
             },
             {
                 path: 'search',
@@ -155,27 +155,27 @@ export default [
             {
                 path: 'search/product-details',
                 name: 'product-details',
-                component: ProductDetails
+                component: ProductDetails,
             },
             {
                 path: 'shop-home',
                 name: 'shop-home',
-                component: ShopHome
+                component: ShopHome,
             },
             {
                 path: 'submit-order',
                 name: 'submit-order',
-                component: SubmitOrder
+                component: SubmitOrder,
             },
             {
                 path: 'cart',
                 name: 'cart-settlement',
-                component: CartSettlement
+                component: CartSettlement,
             },
             {
                 path: 'evaluation',
                 name: 'evaluation',
-                component: Evaluation
+                component: Evaluation,
             },
             {
                 path: '/',
@@ -185,80 +185,80 @@ export default [
                     {
                         path: 'shop-process',
                         name: 'shop-process',
-                        component: ShopProcess
+                        component: ShopProcess,
                     },
                     {
                         path: 'pay-method',
                         name: 'pay-method',
-                        component: PayMethod
+                        component: PayMethod,
                     },
                     {
                         path: 'common-problem',
                         name: 'common-problem',
-                        component: CommonProblem
+                        component: CommonProblem,
                     },
                     {
                         path: 'return-process',
                         name: 'return-process',
-                        component: ReturnProcess
+                        component: ReturnProcess,
                     },
                     {
                         path: 'return-money',
                         name: 'return-money',
-                        component: ReturnMoney
+                        component: ReturnMoney,
                     },
                     {
                         path: 'contact-service',
                         name: 'contact-service',
-                        component: ContactService
+                        component: ContactService,
                     },
                     {
                         path: 'delivery-method',
                         name: 'delivery-method',
-                        component: DeliveryMethod
+                        component: DeliveryMethod,
                     },
                     {
                         path: 'delivery-sevice',
                         name: 'delivery-sevice',
-                        component: DeliverySevice
+                        component: DeliverySevice,
                     },
                     {
                         path: 'delivery-track',
                         name: 'delivery-track',
-                        component: DeliveryTrack
+                        component: DeliveryTrack,
                     },
                     {
                         path: 'about-us',
                         name: 'about-us',
-                        component: AboutUs
+                        component: AboutUs,
                     },
                     {
                         path: 'contact-us',
                         name: 'contact-us',
-                        component: ContactUs
+                        component: ContactUs,
                     },
                     {
                         path: 'cooperation',
                         name: 'cooperation',
-                        component: Cooperation
-                    }
-                ]
-            }
-        ]
+                        component: Cooperation,
+                    },
+                ],
+            },
+        ],
     },
     {
         path: 'order-success',
         name: 'order-success',
-        component: OrderSuccess
+        component: OrderSuccess,
     },
     {
         path: '/pay-result',
         name: 'pay-result',
-        component: PayResult
+        component: PayResult,
     },
     {
         path: '/payment-success',
         name: 'payment-success',
-        component: PaymentSuccess
-    }
-]
+        component: PaymentSuccess,
+    },
+];

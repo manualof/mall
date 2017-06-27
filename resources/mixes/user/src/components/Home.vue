@@ -23,7 +23,7 @@
             <div class="container">
                 <div>
                     <router-link :to="{ name: 'product-details' }" class="col-sm-3 row-content row-margin"
-                                 v-for="item in newProduct" :key="index">
+                                 v-for="(item, index) in newProduct" :key="index">
                         <div class="img-box">
                             <img :src="item.img" alt="">
                         </div>

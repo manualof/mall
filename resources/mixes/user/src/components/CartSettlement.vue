@@ -39,41 +39,41 @@
                     <div class="freight clearfix">
                         <div class="name">
                             <div class="check-box select">
-                <span>
-                  <input type="checkbox" class="input_check" :id="item.name" :checked="isTitleChecked(item)"
-                         @change="changeTitleChecked(item,$event)">
-                  <label :for="item.name"> </label>
-                </span>
-                            </div>
-                            <span class="shop">{{ item.name }}</span>
-                        </div>
-                        <span class="money">运费: {{ item.pay_transform }}</span>
-                    </div>
-                    <table width="100%">
-                        <colgroup>
-                            <col width="46px">
-                            <col width="40px">
-                            <col width="500px">
-                            <col width="150px">
-                            <col width="154px">
-                            <col width="150px">
-                            <col width="150px">
-                        </colgroup>
-                        <tbody>
-                        <tr class="offer-tr" v-if="item.offer">
-                            <td colspan="7" class="offer">
-                                <span>优惠</span>{{ item.offer }}
-                            </td>
-                        </tr>
-                        <tr v-for="(product,num) in item.products">
-                            <td class="td-select">
-                                <div class="check-box">
-                  <span>
-                    <input type="checkbox" class="input_check"
-                           v-model='item.selected' :value="product.id" name='checkboxinput' :id="index.toString()+num">
-                    <label :for="index.toString()+num"> </label>
-                  </span>
+                                <span>
+                                    <input type="checkbox" class="input_check" :id="item.name" :checked="isTitleChecked(item)"
+                                         @change="changeTitleChecked(item,$event)">
+                                    <label :for="item.name"> </label>
+                                    </span>
+                                    </div>
+                                    <span class="shop">{{ item.name }}</span>
                                 </div>
+                                <span class="money">运费: {{ item.pay_transform }}</span>
+                            </div>
+                            <table width="100%">
+                                <colgroup>
+                                    <col width="46px">
+                                    <col width="40px">
+                                    <col width="500px">
+                                    <col width="150px">
+                                    <col width="154px">
+                                    <col width="150px">
+                                    <col width="150px">
+                                </colgroup>
+                                <tbody>
+                                <tr class="offer-tr" v-if="item.offer">
+                                    <td colspan="7" class="offer">
+                                        <span>优惠</span>{{ item.offer }}
+                                    </td>
+                                </tr>
+                                <tr v-for="(product,num) in item.products">
+                                    <td class="td-select">
+                                        <div class="check-box">
+                            <span>
+                            <input type="checkbox" class="input_check"
+                                   v-model='item.selected' :value="product.id" name='checkboxinput' :id="index.toString()+num">
+                            <label :for="index.toString()+num"> </label>
+                                </span>
+                            </div>
                             </td>
                             <td class="td-img">
                                 <router-link :to="{name: 'product-details'}">
@@ -90,15 +90,15 @@
                             </td>
                             <td>
                                 <div class="num-input clearfix">
-                  <span class="num" @click="reduce(product)">
-                    -
-                  </span>
+                                    <span class="num" @click="reduce(product)">
+                                        -
+                                    </span>
                                     <span class="input">
-                    <input type="text" v-model="product.num">
-                  </span>
+                                    <input type="number" v-model.number="product.num">
+                                    </span>
                                     <span class="num" @click="plus(product)">
-                    +
-                  </span>
+                                        +
+                                    </span>
                                 </div>
                             </td>
                             <td class="price">
@@ -118,8 +118,10 @@
                     <tr>
                         <th class="select">
                             <div class="check-box select-all">
-                <span><input type="checkbox" :checked="isAllChecked()" @change="changeAllChecked($event)"
-                             class="input_check" id="all-select2"><label for="all-select2"> </label></span>
+                                <span>
+                                    <input type="checkbox" :checked="isAllChecked" @change="changeAllChecked($event)"
+                                            class="input_check" id="all-select2">
+                                    <label for="all-select2"> </label></span>
                             </div>
                         </th>
                         <th class="delete-product">
@@ -248,12 +250,14 @@
             totalPrice() {
                 let tPrice = 0;
                 this.productList.forEach((item) => {
-                        item.selected.forEach((pro) => {});
+                        item.selected.forEach((pro) => {
+                        });
                     }
                 );
                 return tPrice;
             },
-            totalFreight() {},
+            totalFreight() {
+            },
         },
         methods: {
             reduce (item){
