@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Seller;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Seller\Order\OrderExpress\DeliveryHandler;
 use Notadd\Mall\Handlers\Seller\Order\OrderExpress\OrderHandler;
 
 /**
@@ -16,6 +17,17 @@ use Notadd\Mall\Handlers\Seller\Order\OrderExpress\OrderHandler;
  */
 class OrderExpressController extends Controller
 {
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Order\OrderExpress\DeliveryHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function delivery(DeliveryHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\Seller\Order\OrderExpress\OrderHandler $handler
      *

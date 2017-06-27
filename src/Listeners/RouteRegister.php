@@ -198,11 +198,11 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('statistics/store/sales', StatisticsStoreControllerForAdministration::class . '@sales');
             $this->router->post('upload', UploadControllerForAdministration::class . '@handle');
         });
-
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/seller'], function () {
             $this->router->post('order', OrderControllerForSeller::class . '@order');
             $this->router->post('order/list', OrderControllerForSeller::class . '@list');
             $this->router->post('order/process', OrderControllerForSeller::class . '@process');
+            $this->router->post('order/express/delivery', OrderExpressControllerForSeller::class . '@delivery');
             $this->router->post('order/express/order', OrderExpressControllerForSeller::class . '@order');
             $this->router->post('service', ServiceControllerForSeller::class . '@list');
             $this->router->post('service/remove', ServiceControllerForSeller::class . '@remove');
@@ -250,7 +250,6 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/product/specifications/list', ProductSpecificationControllerForSeller::class . '@list');
             $this->router->post('store/product/specifications/remove', ProductSpecificationControllerForSeller::class . '@remove');
         });
-
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/store'], function () {
             $this->router->post('/', StoreControllerForStore::class . '@store');
             $this->router->post('list', StoreControllerForStore::class . '@list');
@@ -261,7 +260,6 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('product/rate', ProductRateControllerForStore::class . '@rate');
             $this->router->post('product/rate/list', ProductRateControllerForStore::class . '@list');
         });
-
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/user'], function () {
             $this->router->post('/', UserControllerForUser::class . '@user');
             $this->router->post('card', CardControllerForUser::class . '@card');
@@ -287,7 +285,6 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('rate/remove', RateControllerForUser::class . '@remove');
             $this->router->post('vip', VipControllerForUser::class . '@vip');
         });
-
         $this->router->group(['middleware' => ['web'], 'prefix' => 'mall'], function () {
             $this->router->get('mall*', MallControllerForForeground::class . '@handle');
             $this->router->get('store*', StoreControllerForForeground::class . '@handle');
