@@ -33,6 +33,7 @@ class CreateMallOrderRefundsTable extends Migration
             $table->string('remark')->nullable();
             $table->json('response');
             $table->integer('user_id');
+            $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

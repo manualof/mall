@@ -8,7 +8,7 @@
  */
 namespace Notadd\Mall\Controllers\Api\User;
 
-use Notadd\Mall\Abstracts\UserController as AbstractUserController;
+use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\User\Coupon\CouponHandler;
 use Notadd\Mall\Handlers\User\Coupon\ListHandler;
 use Notadd\Mall\Handlers\User\Coupon\RemoveHandler;
@@ -16,7 +16,7 @@ use Notadd\Mall\Handlers\User\Coupon\RemoveHandler;
 /**
  * Class CouponController.
  */
-class CouponController extends AbstractUserController
+class CouponController extends Controller
 {
     /**
      * @param \Notadd\Mall\Handlers\User\Coupon\CouponHandler $handler

@@ -15,7 +15,7 @@ use Notadd\Mall\Handlers\User\Follow\ListHandler;
 use Notadd\Mall\Handlers\User\Follow\RemoveHandler;
 
 /**
- * Class UserFollowController.
+ * Class FollowController.
  */
 class FollowController extends Controller
 {

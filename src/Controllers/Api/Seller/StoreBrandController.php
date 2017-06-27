@@ -9,11 +9,11 @@
 namespace Notadd\Mall\Controllers\Api\Seller;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\Seller\Store\Brand\ApplyHandler;
-use Notadd\Mall\Handlers\Seller\Store\Brand\BrandHandler;
-use Notadd\Mall\Handlers\Seller\Store\Brand\EditHandler;
-use Notadd\Mall\Handlers\Seller\Store\Brand\ListHandler;
-use Notadd\Mall\Handlers\Seller\Store\Brand\RevokeHandler;
+use Notadd\Mall\Handlers\Seller\Product\Brand\ApplyHandler;
+use Notadd\Mall\Handlers\Seller\Product\Brand\BrandHandler;
+use Notadd\Mall\Handlers\Seller\Product\Brand\EditHandler;
+use Notadd\Mall\Handlers\Seller\Product\Brand\ListHandler;
+use Notadd\Mall\Handlers\Seller\Product\Brand\RevokeHandler;
 
 /**
  * Class StoreBrandController.
@@ -21,7 +21,18 @@ use Notadd\Mall\Handlers\Seller\Store\Brand\RevokeHandler;
 class StoreBrandController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Store\Brand\ApplyHandler $handler
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-seller::store-brand::apply'  => 'apply',
+        'global::mall-seller::store-brand::brand'  => 'brand',
+        'global::mall-seller::store-brand::edit'   => 'edit',
+        'global::mall-seller::store-brand::list'   => 'list',
+        'global::mall-seller::store-brand::revoke' => 'revoke',
+    ];
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Product\Brand\ApplyHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -32,7 +43,7 @@ class StoreBrandController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Store\Brand\BrandHandler $handler
+     * @param \Notadd\Mall\Handlers\Seller\Product\Brand\BrandHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -43,7 +54,7 @@ class StoreBrandController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Store\Brand\EditHandler $handler
+     * @param \Notadd\Mall\Handlers\Seller\Product\Brand\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -54,7 +65,7 @@ class StoreBrandController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Store\Brand\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\Seller\Product\Brand\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -65,7 +76,7 @@ class StoreBrandController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\Seller\Store\Brand\RevokeHandler $handler
+     * @param \Notadd\Mall\Handlers\Seller\Product\Brand\RevokeHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

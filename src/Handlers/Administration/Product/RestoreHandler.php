@@ -1,0 +1,38 @@
+<?php
+/**
+ * This file is part of Notadd.
+ *
+ * @author TwilRoad <heshudong@ibenchu.com>
+ * @copyright (c) 2017, notadd.com
+ * @datetime 2017-04-26 14:53
+ */
+namespace Notadd\Mall\Handlers\Administration\Product;
+
+use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\Product;
+
+/**
+ * Class RestoreHandler.
+ */
+class RestoreHandler extends Handler
+{
+    /**
+     * Execute Handler.
+     *
+     * @throws \Exception
+     */
+    public function execute()
+    {
+        $this->validate($this->request, [
+            'id' => 'required',
+        ], [
+            'id.required' => '产品 ID 必须填写',
+        ]);
+        $product = Product::query()->onlyTrashed()->find($this->request->input('id'));
+        if ($product instanceof Product && $product->restore()) {
+            $this->withCode(200)->withMessage('恢复产品成功！');
+        } else {
+            $this->withCode(500)->withError('没有对应的产品信息！');
+        }
+    }
+}

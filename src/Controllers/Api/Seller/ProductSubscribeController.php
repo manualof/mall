@@ -8,14 +8,23 @@
  */
 namespace Notadd\Mall\Controllers\Api\Seller;
 
+use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Product\Subscribe\ListHandler;
 use Notadd\Mall\Handlers\Seller\Product\Subscribe\RemoveHandler;
 
 /**
  * Class ProductSubscribeController.
  */
-class ProductSubscribeController
+class ProductSubscribeController extends Controller
 {
+    /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-seller::product-subscribe::list'   => 'list',
+        'global::mall-seller::product-subscribe::remove' => 'remove',
+    ];
+
     /**
      * @param \Notadd\Mall\Handlers\Seller\Product\Subscribe\ListHandler $handler
      *

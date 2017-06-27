@@ -15,12 +15,26 @@ use Notadd\Mall\Handlers\Seller\Store\Dynamic\DynamicHandler;
 use Notadd\Mall\Handlers\Seller\Store\Dynamic\EditHandler;
 use Notadd\Mall\Handlers\Seller\Store\Dynamic\ListHandler;
 use Notadd\Mall\Handlers\Seller\Store\Dynamic\RemoveHandler;
+use Notadd\Mall\Handlers\Seller\Store\Dynamic\RestoreHandler;
 
 /**
  * Class StoreDynamicController.
  */
 class StoreDynamicController extends Controller
 {
+    /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-seller::store-dynamic::configuration' => 'configuration',
+        'global::mall-seller::store-dynamic::create'        => 'create',
+        'global::mall-seller::store-dynamic::dynamic'       => 'dynamic',
+        'global::mall-seller::store-dynamic::edit'          => 'edit',
+        'global::mall-seller::store-dynamic::list'          => 'list',
+        'global::mall-seller::store-dynamic::remove'        => 'remove',
+        'global::mall-seller::store-dynamic::restore'       => 'restore',
+    ];
+
     /**
      * @param \Notadd\Mall\Handlers\Seller\Store\Dynamic\ConfigurationHandler $handler
      *
@@ -83,6 +97,17 @@ class StoreDynamicController extends Controller
      * @throws \Exception
      */
     public function remove(RemoveHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Dynamic\RestoreHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function restore(RestoreHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

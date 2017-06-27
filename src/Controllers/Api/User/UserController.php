@@ -8,13 +8,13 @@
  */
 namespace Notadd\Mall\Controllers\Api\User;
 
-use Notadd\Mall\Abstracts\UserController as AbstractUserController;
+use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\User\UserHandler;
 
 /**
  * Class UserController.
  */
-class UserController extends AbstractUserController
+class UserController extends Controller
 {
     /**
      * @param \Notadd\Mall\Handlers\User\UserHandler $handler

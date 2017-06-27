@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
-use Notadd\Foundation\Flow\Traits\HasFlow;
+use Notadd\Foundation\Database\Traits\HasFlow;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
 
@@ -26,11 +26,16 @@ class Product extends Model
     protected $fillable = [
         'barcode',
         'brand_id',
+        'business_item',
         'category_id',
         'description',
+        'flow_marketing',
         'name',
-        'weight',
-        'size',
+        'price',
+        'price_cost',
+        'price_market',
+        'inventory',
+        'inventory_warning',
     ];
 
     /**

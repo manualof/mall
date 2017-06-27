@@ -19,6 +19,10 @@ use Notadd\Mall\Models\OrderRefund;
 use Notadd\Mall\Models\Product;
 use Notadd\Mall\Models\ProductCategory;
 use Notadd\Mall\Models\ProductSpecification;
+use Notadd\Mall\Models\Store;
+use Notadd\Mall\Models\StoreCategory;
+use Notadd\Mall\Models\StoreDynamic;
+use Notadd\Mall\Models\StoreRate;
 
 /**
  * Class FlowRegister.
@@ -40,9 +44,9 @@ class FlowRegister extends AbstractFlowRegister
         $this->flow->register(Product::class);
         $this->flow->register(ProductCategory::class);
         $this->flow->register(ProductSpecification::class);
-//        $this->flow->register(Store::class);
-//        $this->flow->register(StoreCategory::class);
-//        $this->flow->register(StoreDynamic::class);
-//        $this->flow->register(StoreRate::class);
+        $this->flow->register(Store::class);
+        $this->flow->register(StoreCategory::class);
+        $this->flow->register(StoreDynamic::class);
+        $this->flow->register(StoreRate::class);
     }
 }

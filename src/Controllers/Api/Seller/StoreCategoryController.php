@@ -21,6 +21,17 @@ use Notadd\Mall\Handlers\Seller\Store\Category\RemoveHandler;
 class StoreCategoryController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-seller::store-category::category' => 'category',
+        'global::mall-seller::store-category::create'   => 'create',
+        'global::mall-seller::store-category::edit'     => 'edit',
+        'global::mall-seller::store-category::list'     => 'list',
+        'global::mall-seller::store-category::remove'   => 'remove',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Seller\Store\Category\CategoryHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response

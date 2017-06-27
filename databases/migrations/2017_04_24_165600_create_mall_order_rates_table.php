@@ -26,6 +26,7 @@ class CreateMallOrderRatesTable extends Migration
             $table->integer('order_id');
             $table->tinyInteger('rate')->default(0);
             $table->integer('user_id');
+            $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
-use Notadd\Foundation\Flow\Traits\HasFlow;
+use Notadd\Foundation\Database\Traits\HasFlow;
 use Notadd\Foundation\Member\Member;
 use Symfony\Component\Workflow\Event\GuardEvent;
 use Symfony\Component\Workflow\Transition;
@@ -28,6 +28,7 @@ class Order extends Model
         'address_id',
         'description',
         'end_date',
+        'flow_marketing',
         'shop_id',
         'status',
         'type',
@@ -60,7 +61,7 @@ class Order extends Model
      */
     public function shop()
     {
-        return $this->hasOne(Shop::class, 'id', 'shop_id');
+        return $this->hasOne(Store::class, 'id', 'shop_id');
     }
 
     /**
