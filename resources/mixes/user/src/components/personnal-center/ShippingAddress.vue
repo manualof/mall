@@ -123,55 +123,55 @@
 </template>
 
 <script>
-    import Modal from './Modal'
+    import Modal from './Modal';
     export default {
+        components: { Modal },
         data() {
             return {
-                status: 0,
-                modalTitle: '',
                 addressList: [
                     {
-                        name: '王茂',
                         address: '陕西省  西安市 雁塔区 高新二路 36号 xx大厦',
-                        phone: 13000000000,
                         isdefault: 1,
+                        name: '王茂',
+                        phone: 13000000000,
                     },
                     {
-                        name: 'xiaoxiao',
                         address: '陕西省  西安市 雁塔区 高新二路 36号 xx大厦',
+                        isdefault: 1,
+                        name: '王茂',
                         phone: 13000000000,
-                        isdefault: 0,
                     },
                     {
-                        name: '木木',
                         address: '陕西省  西安市 雁塔区 高新二路 36号 xx大厦',
+                        isdefault: 1,
+                        name: '王茂',
                         phone: 13000000000,
-                        isdefault: 0,
                     },
                 ],
+                modalTitle: '',
+                status: 0,
             };
         },
-        components: {Modal},
         methods: {
-            settingAddress (item) {
-                this.addressList.forEach((index) => {
-                    index.isdefault = 0;
-                });
-                item.isdefault = 1;
+            addNewAddress() {
+                this.$refs.modal.open();
+                this.modalTitle = '新增收货地址';
             },
-            deleteAddress (item) {
-                let index = this.addressList.indexOf(item)
+            deleteAddress(item) {
+                const index = this.addressList.indexOf(item)
                 if (index !== -1) {
                     this.addressList.splice(index, 1);
                 }
             },
-            addNewAddress () {
-                this.$refs.modal.open();
-                this.modalTitle = '新增收货地址';
-            },
-            editModal () {
+            editModal() {
                 this.$refs.modal.open();
                 this.modalTitle = '编辑收货地址';
+            },
+            settingAddress(item) {
+                this.addressList.forEach((index) => {
+                    index.isdefault = 0;
+                });
+                item.isdefault = 1;
             },
         },
     };
