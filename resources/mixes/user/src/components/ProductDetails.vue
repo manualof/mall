@@ -481,8 +481,13 @@
                 const index = $event.target.getAttribute('index');
                 this.bigImg = this.smallImgs[index];
             },
-            zoom() {
-//                jQuery(".jqzoom").jqueryzoom({xzoom:380,yzoom:410});
+            selectRecommend(item, e) {
+                const index = this.selectRecommends.indexOf(item);
+                if (e.target.checked && index === -1) {
+                    this.selectRecommends.push(item);
+                } else {
+                    this.selectRecommends.splice(index, 1);
+                }
             },
             showImg(item, $event) {
                 const source = $event.target.getAttribute('src');
@@ -528,13 +533,8 @@
 //                this.$refs.bigImg.style.top = -b_bimg_top + "px";//设置大图的位置信息
 //                this.$refs.bigImg.style.left = -b_bimg_left + "px";
 //            },
-            selectRecommend(item, e) {
-                const index = this.selectRecommends.indexOf(item);
-                if (e.target.checked && index === -1) {
-                    this.selectRecommends.push(item);
-                } else {
-                    this.selectRecommends.splice(index, 1);
-                }
+            zoom() {
+//                jQuery(".jqzoom").jqueryzoom({xzoom:380,yzoom:410});
             },
         },
         mounted() {

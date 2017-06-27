@@ -80,16 +80,16 @@
             return {
                 addressSelect: [
                     {
+                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
+                        isdefault: '默认地址',
                         name: '王茂',
                         phone: 12345676543,
-                        isdefault: '默认地址',
-                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
                     },
                     {
+                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
                         name: '王茂',
                         phone: 12345676543,
-                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
-                    }
+                    },
                 ],
                 submitOrder: {
                     integral_num: 1660,
@@ -97,25 +97,32 @@
                     freight: 20,
                     productList: [
                         {
-                            shop: 'XXX母婴用品店',
                             name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
-                            price1: 126.07,
-                            price2: 39.9,
-                            num: 1,
-                        },
-                        {
-                            shop: 'XXX母婴用品店',
-                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
-                            price1: 126.07,
-                            price2: 39.9,
                             num: 2,
-                        },
-                        {
-                            shop: 'XXX母婴用品店',
-                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
                             price1: 126.07,
                             price2: 39.9,
-                            num: 1,
+                            shop: 'XXX母婴用品店',
+                        },
+                        {
+                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
+                            num: 2,
+                            price1: 126.07,
+                            price2: 39.9,
+                            shop: 'XXX母婴用品店',
+                        },
+                        {
+                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
+                            num: 2,
+                            price1: 126.07,
+                            price2: 39.9,
+                            shop: 'XXX母婴用品店',
+                        },
+                        {
+                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
+                            num: 2,
+                            price1: 126.07,
+                            price2: 39.9,
+                            shop: 'XXX母婴用品店',
                         },
                     ],
                 },
@@ -127,11 +134,9 @@
         computed: {
             total_price() {
                 let totalPrice = 0;
-                this.submitOrder.productList.forEach(
-                    function (item) {
-                        totalPrice = totalPrice + item.price2 * item.num;
-                    }
-                );
+                this.submitOrder.productList.forEach(item => {
+                    totalPrice += item.price2 * item.num;
+                });
                 return totalPrice.toFixed(2);
             },
         },

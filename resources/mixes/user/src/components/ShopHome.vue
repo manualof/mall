@@ -55,20 +55,19 @@
     </div>
 </template>
 <script>
-
-    import SearchList from './dashboard/SearchList';
-    import NeedBrowse from './dashboard/NeedBrowse';
     import EveryoneBrowse from './dashboard/EveryoneBrowse';
     import MyselfBrowse from './dashboard/MyselfBrowse';
+    import NeedBrowse from './dashboard/NeedBrowse';
     import RightSide from './dashboard/RightSide';
+    import SearchList from './dashboard/SearchList';
 
     export default {
         components: {
-            SearchList,
-            NeedBrowse,
             EveryoneBrowse,
             MyselfBrowse,
+            NeedBrowse,
             RightSide,
+            SearchList,
         },
     };
 </script>

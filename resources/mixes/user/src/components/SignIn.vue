@@ -45,13 +45,13 @@
 </template>
 
 <script>
-    import FooterContent from './dashboard/FooterContent';
     import FooterBar from './dashboard/FooterBar';
+    import FooterContent from './dashboard/FooterContent';
 
     export default {
         components: {
-            FooterContent,
             FooterBar,
+            FooterContent,
         },
     };
 </script>
