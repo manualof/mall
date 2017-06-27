@@ -20,6 +20,15 @@ use Notadd\Mall\Handlers\Administration\Store\Rate\RateHandler;
 class StoreRateController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::store-rate::edit' => 'edit',
+        'global::mall-administration::store-rate::list' => 'list',
+        'global::mall-administration::store-rate::rate' => 'rate',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Administration\Store\Rate\EditHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
