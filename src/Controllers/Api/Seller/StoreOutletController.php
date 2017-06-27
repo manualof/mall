@@ -13,6 +13,7 @@ use Notadd\Mall\Handlers\Seller\Store\Outlet\CreateHandler;
 use Notadd\Mall\Handlers\Seller\Store\Outlet\EditHandler;
 use Notadd\Mall\Handlers\Seller\Store\Outlet\ListHandler;
 use Notadd\Mall\Handlers\Seller\Store\Outlet\OutletHandler;
+use Notadd\Mall\Handlers\Seller\Store\Outlet\RemoveHandler;
 
 /**
  * Class StoreOutletHandler.
@@ -59,6 +60,17 @@ class StoreOutletController extends Controller
      * @throws \Exception
      */
     public function outlet(OutletHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Seller\Store\Outlet\RemoveHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function remove(RemoveHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
