@@ -21,6 +21,16 @@ use Notadd\Mall\Handlers\Administration\Store\Dynamic\RemoveHandler;
 class StoreDynamicController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-administration::store-dynamic::dynamic' => 'dynamic',
+        'global::mall-administration::store-dynamic::edit'    => 'edit',
+        'global::mall-administration::store-dynamic::list'    => 'list',
+        'global::mall-administration::store-dynamic::remove'  => 'remove',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Administration\Store\Dynamic\DynamicHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
