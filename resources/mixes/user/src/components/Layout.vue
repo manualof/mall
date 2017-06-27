@@ -21,11 +21,11 @@
 
     export default {
         components: {
-            HeaderBar,
-            FooterBar,
-            LogoModal,
             ContentNav,
+            FooterBar,
             FooterContent,
+            HeaderBar,
+            LogoModal,
         },
     };
 </script>

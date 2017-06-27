@@ -43,22 +43,21 @@
 </template>
 
 <script>
+    import FooterBar from './dashboard/FooterBar';
+    import FooterContent from './dashboard/FooterContent';
+    import HeaderBar from './dashboard/HeaderBar';
+    import LogoModal from './dashboard/LogoModal';
+    import NeedBrowse from './dashboard/NeedBrowse';
     import RightSide from './dashboard/RightSide';
-
-    import HeaderBar from './dashboard/HeaderBar'
-    import LogoModal from './dashboard/LogoModal'
-    import FooterBar from './dashboard/FooterBar'
-    import NeedBrowse from './dashboard/NeedBrowse'
-    import FooterContent from './dashboard/FooterContent'
 
     export default {
         components: {
-            RightSide,
-            HeaderBar,
             FooterBar,
+            FooterContent,
+            HeaderBar,
             LogoModal,
             NeedBrowse,
-            FooterContent,
+            RightSide,
         },
     };
 </script>

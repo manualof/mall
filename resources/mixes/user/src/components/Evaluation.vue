@@ -69,12 +69,16 @@
     export default {
         data() {
             return {
+                productImgs: [],
                 red: false,
                 sorce: 5,
-                productImgs: [],
             };
         },
         methods: {
+            deleteImg(e) {
+                const index = e.target.getAttribute('i');
+                this.productImgs.splice(index);
+            },
             imageSelected(e) {
                 const file = e.target.files[0];
                 const self = this;
@@ -88,10 +92,6 @@
                 };
                 reader.readAsDataURL(file);
                 self.productImgs.push(image);
-            },
-            deleteImg(e) {
-                const index = e.target.getAttribute('i');
-                this.productImgs.splice(index);
             },
             score(e) {
                 this.red = true;

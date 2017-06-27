@@ -45,31 +45,30 @@
 
 <script>
     import RightSide from './dashboard/RightSide';
-
     import HeaderBar from './dashboard/HeaderBar';
     import FooterBar from './dashboard/FooterBar';
     import FooterContent from './dashboard/FooterContent';
 
     export default {
-        data () {
-            return {
-                orderDetail: {
-                    number: 1122154857863,
-                    address: '北京市朝阳区群众',
-                    user: '王茂',
-                    phone: 12345654321,
-                    name: 'Purrfectdiary 咕噜日记 1-8岁儿童中筒袜1双袜子随机发货中筒袜1双袜子随机发货',
-                    num: 3,
-                    size: 'M',
-                    money: 1034.88,
-                },
-            };
-        },
         components: {
-            RightSide,
-            HeaderBar,
             FooterBar,
             FooterContent,
+            HeaderBar,
+            RightSide,
+        },
+        data() {
+            return {
+                orderDetail: {
+                    address: '北京市朝阳区群众',
+                    money: 1034.88,
+                    name: 'Purrfectdiary 咕噜日记 1-8岁儿童中筒袜1双袜子随机发货中筒袜1双袜子随机发货',
+                    num: 3,
+                    number: 1122154857863,
+                    phone: 12345654321,
+                    user: '王茂',
+                    size: 'M',
+                },
+            };
         },
     };
 </script>
