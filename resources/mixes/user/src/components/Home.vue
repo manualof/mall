@@ -29,8 +29,7 @@
                         </div>
                         <div class="product">
                             <p class="name">{{ item.title }}</p>
-                            <p class="intro"><span>{{ item.name }}</span> <span class="money">&yen; <i>{{ item.price
-                                }}</i></span></p>
+                            <p class="intro"><span>{{ item.name }}</span> <span class="money">&yen; <i>{{ item.price }}</i></span></p>
                         </div>
                     </router-link>
                 </div>
@@ -49,7 +48,7 @@
                             <dt><img :src="item.img"></dt>
                             <dd>
                                 <p class="name">{{ item.name }}</p>
-                                <p class="new-price">￥{{item.price1}}<s class="pre-price">￥{{item.price2}}</s></p>
+                                <p class="new-price">￥{{ item.price1 }}<s class="pre-price">￥{{ item.price2 }}</s></p>
                             </dd>
                         </dl>
                     </router-link>
@@ -81,7 +80,7 @@
                     <div class="recommend-content">
                         <div class="content-top clearfix">
                             <router-link class="recommend-content-model" v-for="(item, index) in recommendList.recommen2" :key="index"
-                                         :to="{name: 'product-details'}">
+                                         :to="{ name: 'product-details' }">
                                 <div class="content-model text-center">
                                     <p class="name">年末特惠</p>
                                     <p class="intro">满300减50优惠折扣</p>

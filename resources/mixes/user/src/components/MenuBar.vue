@@ -37,7 +37,8 @@
     </div>
 </template>
 <script>
-    import adv from '../assets/images/logo.png';
+    import huwei from '../assets/images/huawei.png';
+    import adv from '../assets/images/banner_01.png';
 
     export default {
         data() {
@@ -47,28 +48,28 @@
                         advertising: {
                             smallAdv: [
                                 {
-                                    img: adv,
+                                    img: huwei,
                                 },
                                 {
-                                    img: adv,
+                                    img: huwei,
                                 },
                                 {
-                                    img: adv,
+                                    img: huwei,
                                 },
                                 {
-                                    img: adv,
+                                    img: huwei,
                                 },
                                 {
-                                    img: adv,
+                                    img: huwei,
                                 },
                                 {
-                                    img: adv,
+                                    img: huwei,
                                 },
                                 {
-                                    img: adv,
+                                    img: huwei,
                                 },
                                 {
-                                    img: adv,
+                                    img: huwei,
                                 },
                             ],
                             bigAdvs: [
