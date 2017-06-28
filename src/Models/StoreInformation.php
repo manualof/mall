@@ -18,7 +18,22 @@ class StoreInformation extends Model
     /**
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'address',
+        'capital',
+        'company',
+        'contacts',
+        'email',
+        'employees',
+        'licence_image',
+        'licence_location',
+        'licence_number',
+        'licence_validity',
+        'licence_sphere',
+        'location',
+        'store_id',
+        'telephone',
+    ];
 
     /**
      * @var string
