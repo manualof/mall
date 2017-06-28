@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Outlet;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\StoreOutlet;
 
 /**
  * Class OutletHandler.
@@ -22,6 +23,17 @@ class OutletHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'id' => 'required|numeric',
+        ], [
+            'id.numeric'  => '供应商 ID 必须为数值',
+            'id.required' => '供应商 ID 必须填写',
+        ]);
+        $outlet = StoreOutlet::query()->find($this->request->input('id'));
+        if ($outlet instanceof StoreOutlet) {
+            $this->withCode(200)->withData($outlet)->withMessage('获取门店信息成功！');
+        } else {
+            $this->withCode(500)->withError('没有对应的门店信息！');
+        }
     }
 }
