@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Supplier;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\StoreSupplier;
 
 /**
  * Class RemoveHandler.
@@ -22,6 +23,20 @@ class RemoveHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'id' => 'required|numeric',
+        ], [
+            'id.numeric'  => '供应商 ID 必须为数值',
+            'id.required' => '供应商 ID 必须填写',
+        ]);
+        $this->beginTransaction();
+        $supplier = StoreSupplier::query()->find($this->request->input('id'));
+        if ($supplier instanceof StoreSupplier && $supplier->delete()) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('删除供应商信息成功！');
+        } else {
+            $this->rollBackTransaction();
+            $this->withCode(500)->withError('没有对应的供应商信息！');
+        }
     }
 }
