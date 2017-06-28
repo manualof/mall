@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\User\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\OrderRate;
+use Notadd\Mall\Models\ProductRate;
 
 /**
  * Class ListHandler.
@@ -33,7 +33,7 @@ class ListHandler extends Handler
             'user_id.numeric'  => '用户 ID 必须为数值',
             'user_id.required' => '用户 ID 必须填写',
         ]);
-        $builder = OrderRate::query();
+        $builder = ProductRate::query();
         $builder->where('user_id', $this->request->input('user_id'));
         $builder = $builder->paginate($this->request->input('', 20));
         $this->withCode(200)->withData($builder->items())->withMessage('获取订单评论列表成功！')->withExtra([

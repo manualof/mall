@@ -10,7 +10,7 @@ use Notadd\Foundation\Database\Migrations\Migration;
 /**
  * Class CreateMallOrderRatesTable.
  */
-class CreateMallOrderRatesTable extends Migration
+class CreateMallProductRatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,12 +19,13 @@ class CreateMallOrderRatesTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('mall_order_rates', function (Blueprint $table) {
+        $this->schema->create('mall_product_rates', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('comment')->nullable();
-            $table->integer('order_id');
-            $table->tinyInteger('rate')->default(0);
-            $table->integer('user_id');
+            $table->integer('order_id')->comment('订单 ID');
+            $table->integer('product_id')->comment('产品 ID');
+            $table->integer('user_id')->comment('用户 ID');
+            $table->text('comment')->nullable()->comment('评论内容');
+            $table->tinyInteger('rate')->default(0)->comment('星星评分');
             $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
@@ -38,6 +39,6 @@ class CreateMallOrderRatesTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('mall_order_rates');
+        $this->schema->drop('mall_product_rates');
     }
 }

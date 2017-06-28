@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Order\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\OrderRate;
+use Notadd\Mall\Models\ProductRate;
 
 /**
  * Class EditHandler.
@@ -24,7 +24,7 @@ class EditHandler extends Handler
     public function execute()
     {
         $id = $this->request->input('id');
-        $rate = OrderRate::query()->find($id);
+        $rate = ProductRate::query()->find($id);
         if ($rate && $rate->update($this->request->all())) {
             $this->withCode(200)->withMessage('');
         } else {

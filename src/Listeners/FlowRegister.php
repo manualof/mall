@@ -14,7 +14,7 @@ use Notadd\Mall\Flows\Pay;
 use Notadd\Mall\Models\Order;
 use Notadd\Mall\Models\OrderExchange;
 use Notadd\Mall\Models\OrderExpress;
-use Notadd\Mall\Models\OrderRate;
+use Notadd\Mall\Models\ProductRate;
 use Notadd\Mall\Models\OrderRefund;
 use Notadd\Mall\Models\Product;
 use Notadd\Mall\Models\ProductCategory;
@@ -38,7 +38,7 @@ class FlowRegister extends AbstractFlowRegister
         $this->flow->register(Order::class);
         $this->flow->register(OrderExchange::class);
         $this->flow->register(OrderExpress::class);
-        $this->flow->register(OrderRate::class);
+        $this->flow->register(ProductRate::class);
         $this->flow->register(OrderRefund::class);
         $this->flow->register(Pay::class);
         $this->flow->register(Product::class);

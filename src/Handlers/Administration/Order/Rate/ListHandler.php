@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Order\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\OrderRate;
+use Notadd\Mall\Models\ProductRate;
 
 /**
  * Class ListHandler.
@@ -23,7 +23,7 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        $builder = OrderRate::query();
+        $builder = ProductRate::query();
         $this->withCode(200)->withData($builder->get())->withMessage('');
     }
 }
