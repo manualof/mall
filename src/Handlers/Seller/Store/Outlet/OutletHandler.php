@@ -26,8 +26,8 @@ class OutletHandler extends Handler
         $this->validate($this->request, [
             'id' => 'required|numeric',
         ], [
-            'id.numeric'  => '供应商 ID 必须为数值',
-            'id.required' => '供应商 ID 必须填写',
+            'id.numeric'  => '门店 ID 必须为数值',
+            'id.required' => '门店 ID 必须填写',
         ]);
         $outlet = StoreOutlet::query()->find($this->request->input('id'));
         if ($outlet instanceof StoreOutlet) {

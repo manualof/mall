@@ -31,8 +31,8 @@ class EditHandler extends Handler
             'telephone' => 'required',
         ], [
             'address.required'   => '详细地址必须填写',
-            'id.numeric'         => '供应商 ID 必须为数值',
-            'id.required'        => '供应商 ID 必须填写',
+            'id.numeric'         => '门店 ID 必须为数值',
+            'id.required'        => '门店 ID 必须填写',
             'name.required'      => '门店名称必须填写',
             'store_id.numeric'   => '店铺 ID 必须为数值',
             'store_id.required'  => '店铺 ID 必须填写',
