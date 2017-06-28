@@ -4,7 +4,6 @@
  *
  * @datetime 2017-06-28 11:58:31
  */
-
 use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
@@ -22,6 +21,7 @@ class CreateMallStoreInformationsTable extends Migration
     {
         $this->schema->create('mall_store_informations', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('store_id')->comment('店铺 ID');
             $table->timestamps();
         });
     }
