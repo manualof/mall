@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\User\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\OrderRate;
+use Notadd\Mall\Models\ProductRate;
 
 /**
  * Class EditHandler.
@@ -30,9 +30,9 @@ class EditHandler extends Handler
             'id.numeric'  => '订单 ID 必须为数值',
         ]);
         $this->beginTransaction();
-        $rate = OrderRate::query()->find($this->request->input('id'));
+        $rate = ProductRate::query()->find($this->request->input('id'));
         $data = $this->request->only([]);
-        if ($rate instanceof OrderRate && $rate->update($data)) {
+        if ($rate instanceof ProductRate && $rate->update($data)) {
             $this->withCode(200)->withMessage('编辑订单评价信息成功！');
         } else {
             $this->withCode(500)->withError('没有对应的订单评价信息！');

@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\User\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\OrderRate;
+use Notadd\Mall\Models\ProductRate;
 
 /**
  * Class RemoveHandler.
@@ -30,8 +30,8 @@ class RemoveHandler extends Handler
             'id.numeric'  => '订单 ID 必须为数值',
         ]);
         $this->beginTransaction();
-        $rate = OrderRate::query()->find($this->request->input('id'));
-        if ($rate instanceof OrderRate && $rate->delete()) {
+        $rate = ProductRate::query()->find($this->request->input('id'));
+        if ($rate instanceof ProductRate && $rate->delete()) {
             $this->commitTransaction();
             $this->withCode(200)->withMessage('删除订单评论成功！');
         } else {

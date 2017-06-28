@@ -9,7 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Order\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\OrderRate;
+use Notadd\Mall\Models\ProductRate;
 
 /**
  * Class RateHandler.
@@ -24,8 +24,8 @@ class RateHandler extends Handler
     public function execute()
     {
         $id = $this->request->input('id');
-        if (OrderRate::query()->where('id', $id)->count()) {
-            $this->withCode(200)->withData(OrderRate::query()->find($id))->withMessage('');
+        if (ProductRate::query()->where('id', $id)->count()) {
+            $this->withCode(200)->withData(ProductRate::query()->find($id))->withMessage('');
         } else {
             $this->withCode(500)->withMessage('');
         }

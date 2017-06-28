@@ -17,7 +17,7 @@ use Symfony\Component\Workflow\Transition;
 /**
  * Class OrderRate.
  */
-class OrderRate extends Model
+class ProductRate extends Model
 {
     use HasFlow;
 
@@ -28,6 +28,7 @@ class OrderRate extends Model
         'comment',
         'flow_marketing',
         'order_id',
+        'product_id',
         'rate',
         'user_id',
     ];
@@ -43,6 +44,14 @@ class OrderRate extends Model
     public function order()
     {
         return $this->hasOne(Order::class, 'id', 'order_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
     /**
