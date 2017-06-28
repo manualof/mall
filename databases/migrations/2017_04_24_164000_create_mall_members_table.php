@@ -4,7 +4,6 @@
  *
  * @datetime 2017-06-24 16:40:59
  */
-
 use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
@@ -23,7 +22,6 @@ class CreateMallMembersTable extends Migration
         $this->schema->create('mall_members', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->comment('用户 ID');
-
             $table->timestamps();
         });
     }

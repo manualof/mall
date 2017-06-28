@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Supplier;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\StoreSupplier;
 
 /**
  * Class EditHandler.
@@ -22,6 +23,36 @@ class EditHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'contacts'  => 'required',
+            'id'        => 'required|numeric',
+            'name'      => 'required',
+            'store_id'  => 'required|numeric',
+            'telephone' => 'required',
+        ], [
+            'contacts.required'  => '联系人必须填写',
+            'id.numeric'         => '供应商 ID 必须为数值',
+            'id.required'        => '供应商 ID 必须填写',
+            'name.required'      => '供货商名称必须填写',
+            'store_id.numeric'   => '店铺 ID 必须为数值',
+            'store_id.required'  => '店铺 ID 必须填写',
+            'telephone.required' => '联系电话必须填写',
+        ]);
+        $this->beginTransaction();
+        $data = $this->request->only([
+            'store_id',
+            'name',
+            'contacts',
+            'telephone',
+            'comments',
+        ]);
+        $supplier = StoreSupplier::query()->find($this->request->input('id'));
+        if ($supplier instanceof StoreSupplier && $supplier->update($data)) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('编辑供应商信息成功！');
+        } else {
+            $this->rollBackTransaction();
+            $this->withCode(500)->withError('没有对应的供应商信息！');
+        }
     }
 }

@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Outlet;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\StoreOutlet;
 
 /**
  * Class EditHandler.
@@ -22,6 +23,36 @@ class EditHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'address'   => 'required',
+            'id'        => 'required|numeric',
+            'name'      => 'required',
+            'store_id'  => 'required|numeric',
+            'telephone' => 'required',
+        ], [
+            'address.required'   => '详细地址必须填写',
+            'id.numeric'         => '门店 ID 必须为数值',
+            'id.required'        => '门店 ID 必须填写',
+            'name.required'      => '门店名称必须填写',
+            'store_id.numeric'   => '店铺 ID 必须为数值',
+            'store_id.required'  => '店铺 ID 必须填写',
+            'telephone.required' => '公交信息必须填写',
+        ]);
+        $this->beginTransaction();
+        $data = $this->request->only([
+            'address',
+            'bus_information',
+            'name',
+            'store_id',
+            'telephone',
+        ]);
+        $outlet = StoreOutlet::query()->find($this->request->input('id'));
+        if ($outlet instanceof StoreOutlet && $outlet->update($data)) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('编辑门店信息成功！');
+        } else {
+            $this->rollBackTransaction();
+            $this->withCode(500)->withError('没有对应的门店信息！');
+        }
     }
 }
