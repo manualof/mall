@@ -51,6 +51,9 @@
                     <p>店铺评分：<i>{{ shop.score }}</i></p>
                     <a class="btn">关注店铺</a>
                 </div>
+                <div class="workingTime">
+                    <p>工作时间： <span>{{ shop.workingHours }}-{{ shop.offHours }}</span></p>
+                </div>
             </div>
             <search-list></search-list>
         </div>
