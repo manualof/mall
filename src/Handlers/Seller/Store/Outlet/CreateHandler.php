@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Outlet;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\StoreOutlet;
 
 /**
  * Class CreateHandler.
@@ -22,6 +23,32 @@ class CreateHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'address'   => 'required',
+            'name'      => 'required',
+            'store_id'  => 'required|numeric',
+            'telephone' => 'required',
+        ], [
+            'address.required'   => '详细地址必须填写',
+            'name.required'      => '门店名称必须填写',
+            'store_id.numeric'   => '店铺 ID 必须为数值',
+            'store_id.required'  => '店铺 ID 必须填写',
+            'telephone.required' => '公交信息必须填写',
+        ]);
+        $this->beginTransaction();
+        $data = $this->request->only([
+            'address',
+            'bus_information',
+            'name',
+            'store_id',
+            'telephone',
+        ]);
+        if (StoreOutlet::query()->create($data)) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('创建店面门店成功！');
+        } else {
+            $this->rollBackTransaction();
+            $this->withCode(500)->withError('创建店面门店失败！');
+        }
     }
 }
