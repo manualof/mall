@@ -24,15 +24,15 @@ class CreateHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'store_id'  => 'required|numeric',
-            'name'      => 'required',
             'contacts'  => 'required',
+            'name'      => 'required',
+            'store_id'  => 'required|numeric',
             'telephone' => 'required',
         ], [
+            'contacts.required'  => '联系人必须填写',
+            'name.required'      => '供货商名称必须填写',
             'store_id.numeric'   => '店铺 ID 必须为数值',
             'store_id.required'  => '店铺 ID 必须填写',
-            'name.required'      => '供货商名称必须填写',
-            'contacts.required'  => '联系人必须填写',
             'telephone.required' => '联系电话必须填写',
         ]);
         $this->beginTransaction();
