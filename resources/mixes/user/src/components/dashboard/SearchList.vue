@@ -252,6 +252,5 @@
             <p class="product-intro">西部母婴推荐西部母婴推荐哆啦A梦可爱儿童玩具...</p>
             <p class="sales">本月销量<span>3324</span>件</p>
         </div>
-
     </div>
 </template>

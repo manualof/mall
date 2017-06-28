@@ -2,14 +2,16 @@
     <div class="signin ">
         <div class="header-bar-logo">
             <div class="container">
-                <img src="../assets/images/logo.png" alt="">
+                <router-link to="/home">
+                    <img src="../assets/images/logo.png" alt="">
+                </router-link>
             </div>
         </div>
         <div class="signup-content container clearfix">
             <div class="signin-content">
                 <div class="signup-title clearfix">
                     <span>密码登录</span>
-                    <a href="/signup">没有账号？立即注册</a>
+                    <router-link to="/signup">没有账号？立即注册</router-link>
                 </div>
                 <form class="signup-form">
                     <div class="signup-form-group form-icon">
@@ -43,13 +45,13 @@
 </template>
 
 <script>
-    import FooterContent from './dashboard/FooterContent';
     import FooterBar from './dashboard/FooterBar';
+    import FooterContent from './dashboard/FooterContent';
 
     export default {
         components: {
-            FooterContent,
             FooterBar,
+            FooterContent,
         },
     };
 </script>

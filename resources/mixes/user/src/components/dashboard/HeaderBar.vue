@@ -23,26 +23,26 @@
     export default {
         data() {
             return {
-                'navigation': [
+                navigation: [
                     {
-                        'to': {'name': 'order'},
-                        'text': '我的订单',
+                        to: { name: 'order' },
+                        text: '我的订单',
                     },
                     {
-                        'to': {'name': 'personnal-center'},
-                        'text': '个人中心',
+                        to: { name: 'personnal-center' },
+                        text: '个人中心',
                     },
                     {
-                        'to': {'name': 'customer-serve'},
-                        'text': '客户服务',
+                        to: { name: 'customer-serve' },
+                        text: '客户服务',
                     },
                     {
-                        'to': {'name': 'more'},
-                        'text': '更多',
+                        to: { name: 'more' },
+                        text: '更多',
                     },
                     {
-                        'to': {'name': 'businessmen'},
-                        'text': '商家入驻',
+                        to: { name: 'businessmen' },
+                        text: '商家入驻',
                     },
                 ],
             };

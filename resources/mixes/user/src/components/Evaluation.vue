@@ -69,36 +69,34 @@
     export default {
         data() {
             return {
+                productImgs: [],
                 red: false,
                 sorce: 5,
-                productImgs: [],
-            }
+            };
         },
         methods: {
-            imageSelected: function (e) {
-                let _file = e.target.files[0];
-                let _this = this;
-                let _image = {
-                    content: '',
-                    file: _file,
-                };
-                const _reader = new global.FileReader();
-                _reader.onload = () => {
-                    _image.content = _reader.result;
-                };
-                _reader.readAsDataURL(_file);
-                _this.productImgs.push(_image);
-                console.log(this.productImgs);
-            },
-            deleteImg: function (e) {
-                let index = e.target.getAttribute("i");
+            deleteImg(e) {
+                const index = e.target.getAttribute('i');
                 this.productImgs.splice(index);
             },
-            score (e) {
+            imageSelected(e) {
+                const file = e.target.files[0];
+                const self = this;
+                const image = {
+                    content: '',
+                    file1: file,
+                };
+                const reader = new global.FileReader();
+                reader.onload = () => {
+                    image.content = reader.result;
+                };
+                reader.readAsDataURL(file);
+                self.productImgs.push(image);
+            },
+            score(e) {
                 this.red = true;
                 this.sorce = Number(e.target.getAttribute('i')) + 1;
-                console.log(this.sorce);
-            }
-        }
-    }
+            },
+        },
+    };
 </script>

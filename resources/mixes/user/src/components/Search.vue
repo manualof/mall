@@ -81,8 +81,8 @@
                 data: {
                     brands: ['佳尔乐', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适'],
                     classifications: ['纸尿裤', '拉拉裤', '尿片', '个人洗护'],
-                    sizes: ['M', 'L', 'XL', 'XXL'],
                     made_address: ['中国', '日本', '美国', '英国'],
+                    sizes: ['M', 'L', 'XL', 'XXL'],
                 },
             };
         },

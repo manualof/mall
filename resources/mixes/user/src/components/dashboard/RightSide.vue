@@ -27,12 +27,12 @@
 <script>
     export default {
         methods: {
-            toTop: function () {
-                jQuery('body').animate({scrollTop: 0}, 1080);
+            toTop() {
+                jQuery('body').animate({ scrollTop: 0 }, 1080);
                 return false;
             },
         },
-        mounted(){
+        mounted() {
             jQuery('.right-side').css({
                 position: 'absolute',
                 top: '800px',
@@ -42,10 +42,11 @@
                 () => {
                     if (jQuery(window).scrollTop() > 800) {
                         jQuery('.toTop').fadeIn(1500);
-                        jQuery('.right-side').css({
+                        jQuery('.right-side').css(
+                            {
                                 position: 'fixed',
                                 top: '50%',
-                            }
+                            },
                         );
                         if (jQuery(window).scrollTop() > 2000) {
                             jQuery('.floor').fadeIn(300);
@@ -53,10 +54,12 @@
                     } else {
                         jQuery('.toTop').fadeOut(1500);
                         jQuery('.floor').fadeOut(1000);
-                        jQuery('.right-side').css({
-                            position: 'absolute',
-                            top: '800px',
-                        });
+                        jQuery('.right-side').css(
+                            {
+                                position: 'absolute',
+                                top: '800px',
+                            },
+                        );
                     }
                 },
             );

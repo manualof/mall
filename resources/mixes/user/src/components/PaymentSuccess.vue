@@ -217,22 +217,21 @@
 </template>
 
 <script>
-    import RightSide from './dashboard/RightSide';
-
-    import HeaderBar from './dashboard/HeaderBar';
+    import EveryoneBrowse from './dashboard/EveryoneBrowse';
     import FooterBar from './dashboard/FooterBar';
     import FooterContent from './dashboard/FooterContent';
-    import EveryoneBrowse from './dashboard/EveryoneBrowse';
+    import HeaderBar from './dashboard/HeaderBar';
     import MyselfBrowse from './dashboard/MyselfBrowse';
+    import RightSide from './dashboard/RightSide';
 
     export default {
         components: {
-            RightSide,
-            HeaderBar,
+            EveryoneBrowse,
             FooterBar,
             FooterContent,
-            EveryoneBrowse,
+            HeaderBar,
             MyselfBrowse,
+            RightSide,
         },
     };
 </script>

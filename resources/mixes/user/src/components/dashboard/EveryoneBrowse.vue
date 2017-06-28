@@ -26,40 +26,34 @@
         data() {
             return {
                 browse: {
-                    title: '大家都喜欢',
-                    intro: '根据你的浏览推荐',
                     commendList: [
                         {
+                            amount: 188,
                             img: image1,
                             name: '西部母婴推荐哆啦A梦可爱儿童玩具',
                             price: 48.88,
-                            amount: 188,
                         },
                         {
+                            amount: 188,
                             img: image1,
                             name: '西部母婴推荐哆啦A梦可爱儿童玩具',
                             price: 48.88,
-                            amount: 188,
                         },
                         {
+                            amount: 188,
                             img: image1,
                             name: '西部母婴推荐哆啦A梦可爱儿童玩具',
                             price: 48.88,
-                            amount: 188,
                         },
                         {
+                            amount: 188,
                             img: image1,
                             name: '西部母婴推荐哆啦A梦可爱儿童玩具',
                             price: 48.88,
-                            amount: 188,
-                        },
-                        {
-                            img: image1,
-                            name: '西部母婴推荐哆啦A梦可爱儿童玩具',
-                            price: 48.88,
-                            amount: 188,
                         },
                     ],
+                    intro: '根据你的浏览推荐',
+                    title: '大家都喜欢',
                 },
             };
         },

@@ -160,24 +160,6 @@
                             {
                                 img: img1,
                                 name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
-                                size: 'M',
-                                num: 1,
-                                old_price: 123.9,
-                                price: 39.9,
-                                transport_price: 10.00,
-                                status: [1, 2],
-                                operating: [1, 2]
-                            },
-                        ],
-                    },
-                    {
-                        time: '2017-02-09',
-                        order_code: 11052616584585,
-                        shop_name: 'xxx母婴用品店',
-                        products: [
-                            {
-                                img: img1,
-                                name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
                                 product_size: 'M',
                                 num: 1,
                                 price: 39.9,
@@ -191,15 +173,15 @@
                                     logisticsList: [
                                         {
                                             address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03'
+                                            time: '2016-12-29 13:06:03',
                                         },
                                         {
                                             address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03'
+                                            time: '2016-12-29 13:06:03',
                                         },
                                         {
                                             address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03'
+                                            time: '2016-12-29 13:06:03',
                                         },
                                     ],
                                 },
@@ -207,15 +189,33 @@
                             {
                                 img: img1,
                                 name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
-                                product_size: 'M',
                                 num: 1,
-                                price: 39.9,
-                                transport_price: 10.00,
                                 old_price: 123.9,
-                                status: [2, 3],
                                 operating: [1, 3],
+                                price: 39.9,
+                                product_size: 'M',
+                                transport_price: 10.00,
+                                status: [2, 3],
                             },
                         ],
+                    },
+                    {
+                        order_code: 11052616584585,
+                        products: [
+                            {
+                                img: img1,
+                                name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
+                                num: 1,
+                                old_price: 123.9,
+                                operating: [1, 2],
+                                price: 39.9,
+                                transport_price: 10.00,
+                                size: 'M',
+                                status: [1, 2],
+                            },
+                        ],
+                        time: '2017-02-09',
+                        shop_name: 'xxx母婴用品店',
                     },
                     {
                         time: '2017-02-09',
@@ -224,14 +224,6 @@
                         products: [
                             {
                                 img: img1,
-                                name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
-                                product_size: 'M',
-                                num: 1,
-                                price: 39.9,
-                                transport_price: 10.00,
-                                old_price: 123.9,
-                                status: [3, 4],
-                                operating: [1, 2],
                                 logistics: {
                                     name: '顺丰速运',
                                     transport_code: 11265445952,
@@ -250,28 +242,36 @@
                                         },
                                     ],
                                 },
+                                name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
+                                num: 1,
+                                old_price: 123.9,
+                                operating: [1, 2],
+                                price: 39.9,
+                                product_size: 'M',
+                                transport_price: 10.00,
+                                status: [3, 4],
                             },
                             {
                                 img: img1,
                                 name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
-                                product_size: 'M',
                                 num: 1,
-                                price: 39.9,
                                 old_price: 123.9,
+                                operating: [1, 2],
+                                price: 39.9,
+                                product_size: 'M',
                                 transport_price: 10.00,
-                                status: [3],
-                                operating: [1, 3],
+                                status: [3, 4],
                             },
                             {
                                 img: img1,
                                 name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
-                                product_size: 'M',
                                 num: 1,
                                 old_price: 123.9,
+                                operating: [1, 2],
                                 price: 39.9,
+                                product_size: 'M',
                                 transport_price: 10.00,
-                                status: [1, 2],
-                                operating: [1, 5],
+                                status: [3, 4],
                             },
                         ],
                     },
@@ -280,7 +280,7 @@
         },
         methods: {
             deleteProduct(item) {
-                let index = this.allOrder.indexOf(item);
+                const index = this.allOrder.indexOf(item);
                 this.allOrder.splice(index, 1);
             },
         },

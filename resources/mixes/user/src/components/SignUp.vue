@@ -2,7 +2,9 @@
     <div class="signup ">
         <div class="header-bar-logo">
             <div class="container">
-                <img src="../assets/images/logo.png" alt="">
+                <router-link to="/home">
+                    <img src="../assets/images/logo.png" alt="">
+                </router-link>
             </div>
         </div>
         <div class="signup-content">

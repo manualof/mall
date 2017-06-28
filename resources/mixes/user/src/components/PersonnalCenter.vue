@@ -18,32 +18,32 @@
 
 <script>
     export default {
-        data () {
+        data() {
             return {
-                'list': [
+                list: [
                     {
-                        'to': {'name': 'all-order'},
-                        'text': '我的订单',
+                        to: { name: 'all-order' },
+                        text: '我的订单',
                     },
                     {
-                        'to': {'name': 'coupon'},
-                        'text': '我的优惠券',
+                        to: { name: 'coupon' },
+                        text: '我的优惠券',
                     },
                     {
-                        'to': {'name': 'integral'},
-                        'text': '我的积分',
+                        to: { name: 'integral' },
+                        text: '我的积分',
                     },
                     {
-                        'to': {'name': 'collect-store'},
-                        'text': '我的收藏',
+                        to: { name: 'collect-store' },
+                        text: '我的收藏',
                     },
                     {
-                        'to': {'name': 'account-security'},
-                        'text': '账户安全',
+                        to: { name: 'account-security' },
+                        text: '账户安全',
                     },
                     {
-                        'to': {'name': 'shipping-address'},
-                        'text': '管理收货地址',
+                        to: { name: 'shipping-address' },
+                        text: '管理收货地址',
                     },
                 ],
             };
