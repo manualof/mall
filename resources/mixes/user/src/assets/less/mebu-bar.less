@@ -1,11 +1,11 @@
 .menu {
-    display: none;
+    display: block;
     .menu-bar {
         position: absolute;
         z-index: 99;
         height: 480px;
         background-color: rgba(0, 0, 0, 0.6);
-        li {
+        > li {
             width: 182px;
             height: 40px;
             span {
@@ -28,14 +28,32 @@
     li .menu-content {
         position: absolute;
         top: 0;
+        left: 182px;
+        z-index: 99;
+        width: 1010px;
+    }
+    li .menu-box {
         width: 710px;
         height: 480px;
         background-color: #ffffff;
-        left: 182px;
-        z-index: 99;
         padding: 15px 32px 0 40px;
         color: #666666;
-        display: none;
+        display: block;
+        .recommend {
+            li {
+                float: left;
+                margin-right: 10px;
+                a {
+                    border: 1px solid #d0d0d0;
+                    display: block;
+                    font-size: 12px;
+                    height: 24px;
+                    line-height: 24px;
+                    text-align: center;
+                    width: 64px;
+                }
+            }
+        }
         .content-list {
             h5 {
                 font-weight: 600;
@@ -46,19 +64,19 @@
             ul {
                 margin: 0;
                 li {
+                    float: left;
                     padding: 0;
-                    width: 60px;
-
+                    width: auto;
                     a {
                         font-size: 14px;
                         color: #666666;
-                        padding-right: 5px;
                         &:hover {
                             color: #ff2342;
                         }
                     }
                     span {
                         color: #666666;
+                        margin: 0 5px;
                     }
                     &:last-child {
                         a {
@@ -69,6 +87,45 @@
                         }
                     }
                 }
+            }
+        }
+    }
+    li .advertising {
+        background: #ffffff;
+        border-left: 1px solid #e5e5e5;
+        height: 480px;
+        width: 300px;
+        ul {
+            padding: 19px 20px;
+            li {
+                width: 49%;
+                margin-right: 2px;
+                margin-bottom: 2px;
+                &:nth-child(even) {
+                    margin-right: 0;
+                }
+                a {
+                    width: 100%;
+                    img {
+                        display: block;
+                        height: 48px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .bigAdv {
+            height: 120px;
+            width: 100%;
+            a {
+                img {
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            &:nth-child(2) {
+                margin-bottom: 2px;
             }
         }
     }
