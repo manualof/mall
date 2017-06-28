@@ -18,7 +18,13 @@ class StoreOutlet extends Model
     /**
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'address',
+        'bus_information',
+        'name',
+        'store_id',
+        'telephone',
+    ];
 
     /**
      * @var string

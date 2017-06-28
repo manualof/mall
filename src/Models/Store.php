@@ -63,6 +63,14 @@ class Store extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function outlets()
+    {
+        return $this->belongsTo(StoreOutlet::class, 'store_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function suppliers()
     {
         return $this->belongsTo(StoreSupplier::class, 'store_id');
