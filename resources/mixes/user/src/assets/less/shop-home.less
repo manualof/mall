@@ -2,6 +2,33 @@
     padding-bottom: 60px;
     color: #444444;
     background-color: #f7f7f7;
+    .carousel-indicators li {
+        text-indent: 0;
+    }
+    .carousel-indicators {
+        background: rgba(0,0,0,0.5);
+        border: 0;
+        border-radius: 8px;
+        bottom: 10px;
+        height: 16px;
+        line-height: 16px;
+        margin-bottom: 0;
+        margin-left: -41px;
+        width: 82px;
+        li {
+            background: #ffffff;
+            display: inline-block;
+            height: 8px;
+            width: 8px;
+            margin-right: 10px;
+            &:last-child {
+                margin-right: 0;
+            }
+            &.active {
+                background: #ff2342;
+            }
+        }
+    }
     .home-shop {
         margin-top: 30px;
         .shop-img {

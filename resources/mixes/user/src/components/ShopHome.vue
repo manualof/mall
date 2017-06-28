@@ -4,7 +4,7 @@
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" :data-slide-to="index-1" :class="{active:sindex=1}" v-for="index in shop.banner.length">{{ index }}</li>
+                    <li data-target="#carousel-example-generic" :data-slide-to="index-1" :class="{active:sindex=1}" v-for="index in shop.banner.length"></li>
                 </ol>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
