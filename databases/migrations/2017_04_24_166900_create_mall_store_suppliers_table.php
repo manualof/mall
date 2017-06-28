@@ -23,6 +23,10 @@ class CreateMallStoreSuppliersTable extends Migration
         $this->schema->create('mall_store_suppliers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('store_id')->comment('店铺 ID');
+            $table->string('name')->comment('供货商名称');
+            $table->string('contacts')->comment('联系人');
+            $table->string('telephone')->comment('联系电话');
+            $table->string('comments')->comment('备注信息');
             $table->timestamps();
         });
     }

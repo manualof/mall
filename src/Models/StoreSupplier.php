@@ -19,7 +19,11 @@ class StoreSupplier extends Model
      * @var array
      */
     protected $fillable = [
+        'comments',
+        'contacts',
+        'name',
         'store_id',
+        'telephone',
     ];
 
     /**
