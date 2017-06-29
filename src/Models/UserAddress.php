@@ -1,0 +1,33 @@
+<?php
+/**
+ * This file is part of Notadd.
+ *
+ * @author TwilRoad <269044570@qq.com>
+ * @copyright (c) 2017, notadd.com
+ * @datetime 2017-06-29 17:30
+ */
+namespace Notadd\Mall\Models;
+
+use Notadd\Foundation\Database\Model;
+
+/**
+ * Class UserAddress.
+ */
+class UserAddress extends Model
+{
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'phone',
+        'location',
+        'address',
+        'is_default',
+    ];
+
+    /**
+     * @var string
+     */
+    protected $table = 'mall_user_addresses';
+}

@@ -22,6 +22,11 @@ class CreateMallUserAddressesTable extends Migration
     {
         $this->schema->create('mall_user_addresses', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name')->comment('收货人姓名');
+            $table->string('phone')->comment('电话号码');
+            $table->string('location')->comment('所在区域');
+            $table->string('address')->comment('详细地址');
+            $table->tinyInteger('is_default')->default(0)->comment('默认地址');
             $table->timestamps();
         });
     }
