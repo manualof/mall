@@ -30,6 +30,7 @@
                     goodStyle: '',
                     logo: '',
                     name: '',
+                    picture: '',
                     price: '',
                     sellPoint: '',
                     type: '数码办公>时尚影音>智能设备',
@@ -221,7 +222,7 @@
                                             </form-item>
                                         </i-col>
                                     </row>
-                                    <row>
+                                    <row class="row-goods-upload">
                                         <i-col span="24">
                                             <form-item label="商品图片">
                                                 <div class="image-preview" v-if="goodsEdit.logo">
@@ -347,11 +348,27 @@
                                                                                         文字不得超过500字</span>
                                                                                 </div>
                                                                                 <div class="pro-bg2">
-                                                                                    <i-button type="ghost">插入图片</i-button>
-                                                                                    <i-button @click.native="addText"
+                                                                                    <upload :action="action"
+                                                                                            :before-upload="uploadBefore"
+                                                                                            :format="['jpg','jpeg','png']"
+                                                                                            :headers="{
+                                                                                                Authorization: `Bearer ${$store.state.token.access_token}`
+                                                                                            }"
+                                                                                            :max-size="2048"
+                                                                                            :on-error="uploadError"
+                                                                                            :on-format-error="uploadFormatError"
+                                                                                            :on-success="uploadSuccess"
+                                                                                            ref="upload"
+                                                                                            :show-upload-list="false"
+                                                                                            v-if="goodsEdit.picture === '' || goodsEdit.picture === null">
+                                                                                        <i-button type="ghost">插入图片</i-button>
+                                                                                    </upload>
+                                                                                    <i-button @click.native="addText" class="ivu-button-text"
                                                                                               type="ghost">添加文字</i-button>
                                                                                 </div>
-                                                                                <div class="pro-content"></div>
+                                                                                <div class="pro-content">
+                                                                                    <img :src="goodsEdit.picture" v-if="goodsEdit.picture">
+                                                                                </div>
                                                                             </div>
                                                                         </i-col>
                                                                         <i-col span="14" class="request-col-line">
