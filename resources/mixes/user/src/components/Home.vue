@@ -1147,12 +1147,12 @@
         },
         methods: {
             toTop() {
-                jQuery('body').animate({ scrollTop: 0 }, 1000);
+                window.jQuery('body').animate({ scrollTop: 0 }, 1000);
                 return false;
             },
         },
         mounted() {
-            jQuery('body').scrollspy({ target: '.bs-js-navbar-scrollspy' });
+            window.jQuery('body').scrollspy({ target: '.bs-js-navbar-scrollspy' });
         },
     };
 </script>
