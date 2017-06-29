@@ -63,6 +63,14 @@ class Store extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function navigations()
+    {
+        return $this->hasMany(StoreNavigation::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function outlets()
     {
         return $this->hasMany(StoreOutlet::class);
