@@ -39,11 +39,11 @@ class ProductRate extends Model
     protected $table = 'mall_order_rates';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function order()
     {
-        return $this->hasOne(Order::class, 'id', 'order_id');
+        return $this->belongsTo(Order::class);
     }
 
     /**

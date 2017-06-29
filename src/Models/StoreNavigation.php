@@ -30,4 +30,12 @@ class StoreNavigation extends Model
      * @var string
      */
     protected $table = 'mall_store_navigations';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
+    }
 }

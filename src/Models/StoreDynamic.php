@@ -39,11 +39,11 @@ class StoreDynamic extends Model
     protected $table = 'mall_shop_dynamics';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function shop()
+    public function store()
     {
-        return $this->hasOne(Store::class, 'id', 'shop_id');
+        return $this->belongsTo(Store::class);
     }
 
     /**
