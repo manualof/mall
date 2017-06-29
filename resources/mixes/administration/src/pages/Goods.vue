@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -50,7 +51,11 @@
                         align: 'center',
                         key: 'goodsImg',
                         render() {
-                            return '<icon type="image"></icon>';
+                            return `<tooltip placement="right-end">
+                                    <icon type="image"></icon>
+                                    <div slot="content">
+                                    <img :src="row.goodsImg">
+                                    </tooltip>`;
                         },
                         title: '商品图片',
                         width: 100,
@@ -79,14 +84,14 @@
                         key: 'action',
                         render(row, column, index) {
                             return `<dropdown>
-                                    <i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
+                                    <i-button size="small" type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
                                     <dropdown-menu slot="list">
                                     <dropdown-item>查看商品详情</dropdown-item>
                                     <dropdown-item name="goodSku" @click.native="lookGoodsSku">查看商品SKU</dropdown-item>
                                     <dropdown-item>加入商品库</dropdown-item>
                                     </dropdown-menu></dropdown>
                                     <i-button @click.native="remove(${index})" class="delete-ad"
-                                     type="ghost">下架</i-button>`;
+                                     size="small" type="ghost">下架</i-button>`;
                         },
                         title: '操作',
                         width: 180,
@@ -95,6 +100,7 @@
                 goodsData: [
                     {
                         adWord: '纯棉易用七天',
+                        goodsImg: image1,
                         goodsName: '太阳镜眼睛放蓝光紫外线',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
@@ -105,6 +111,7 @@
                     },
                     {
                         adWord: '纯棉易用七天',
+                        goodsImg: image1,
                         goodsName: '太阳镜眼睛放蓝光紫外线',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
@@ -115,6 +122,7 @@
                     },
                     {
                         adWord: '纯棉易用七天',
+                        goodsImg: image1,
                         goodsName: '太阳镜眼睛放蓝光紫外线',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
@@ -125,6 +133,7 @@
                     },
                     {
                         adWord: '纯棉易用七天',
+                        goodsImg: image1,
                         goodsName: '太阳镜眼睛放蓝光紫外线',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
@@ -135,6 +144,7 @@
                     },
                     {
                         adWord: '纯棉易用七天',
+                        goodsImg: image1,
                         goodsName: '太阳镜眼睛放蓝光紫外线',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
@@ -188,7 +198,11 @@
                         align: 'center',
                         key: 'goodsImg',
                         render() {
-                            return '<icon type="image"></icon>';
+                            return `<tooltip placement="right-end">
+                                    <icon type="image"></icon>
+                                    <div slot="content">
+                                    <img :src="row.goodsImg">
+                                    </tooltip>`;
                         },
                         title: '商品图片',
                         width: 100,
@@ -217,14 +231,14 @@
                         key: 'action',
                         render(row, column, index) {
                             return `<dropdown>
-                                    <i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
+                                    <i-button size="small" type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
                                     <dropdown-menu slot="list">
                                     <dropdown-item>查看商品详情</dropdown-item>
                                     <dropdown-item name="goodSku" @click.native="lookGoodsSku">查看商品SKU</dropdown-item>
                                     <dropdown-item>加入商品库</dropdown-item>
                                     </dropdown-menu></dropdown>
                                     <i-button @click.native="removeShelf(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                                     size="small" type="ghost">删除</i-button>`;
                         },
                         title: '操作',
                         width: 180,
@@ -233,6 +247,7 @@
                 goodsShelfData: [
                     {
                         adWord: '纯棉易用七天',
+                        goodsImg: image1,
                         goodsName: '太阳镜眼睛放蓝光紫外线',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
@@ -243,6 +258,7 @@
                     },
                     {
                         adWord: '纯棉易用七天',
+                        goodsImg: image1,
                         goodsName: '太阳镜眼睛放蓝光紫外线',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
@@ -253,6 +269,7 @@
                     },
                     {
                         adWord: '纯棉易用七天',
+                        goodsImg: image1,
                         goodsName: '太阳镜眼睛放蓝光紫外线',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
@@ -263,6 +280,7 @@
                     },
                     {
                         adWord: '纯棉易用七天',
+                        goodsImg: image1,
                         goodsName: '太阳镜眼睛放蓝光紫外线',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
@@ -273,6 +291,7 @@
                     },
                     {
                         adWord: '纯棉易用七天',
+                        goodsImg: image1,
                         goodsName: '太阳镜眼睛放蓝光紫外线',
                         goodsPrice: '99.00',
                         goodsStatus: '出售中',
