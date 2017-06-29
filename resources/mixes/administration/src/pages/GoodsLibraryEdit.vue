@@ -10,6 +10,7 @@
         data() {
             return {
                 action: `${window.api}/mall/admin/upload`,
+                addAlbum: true,
                 distribution: [
                     {
                         label: '333',
@@ -76,23 +77,6 @@
                         value: '2',
                     },
                 ],
-                requests: [
-                    {
-                        content: '（1）手机详情总体大小：图片+文字，图片不超过20张，文字不超过5000字；' +
-                        '建议：所有图片都是本宝贝相关的图片',
-                        name: '1.基本要求',
-                    },
-                    {
-                        content: '（1）建议使用宽度480~620像素、高度小于等于960像素的图片；' +
-                        '（2）格式为：jpg、jepg、gif、png举例：可以上传一张宽度为480，高度为960像素，格式为jpg的图片',
-                        name: '2.图片大小要求',
-                    },
-                    {
-                        content: '（1）每次插入文字不能超过500个字，标点、特殊字符按照一个字计算；' +
-                        '（2）请手动输入文字，不要复制粘网页上的文字，防止出现乱码；',
-                        name: '3.文字要求',
-                    },
-                ],
                 ruleValidate: {
                     remarks: [
                         {
@@ -106,12 +90,8 @@
         },
         methods: {
             addAlbumPicture() {
-                const self = this;
-                self.isPcPicture = !self.isPcPicture;
-            },
-            addPicture() {
-                const self = this;
-                self.isEditPicture = !self.isEditPicture;
+                this.addAlbum = false;
+                this.isPcPicture = true;
             },
             addText() {
                 const self = this;
@@ -122,8 +102,8 @@
                 self.isEditPicture = false;
             },
             closePcAlbum() {
-                const self = this;
-                self.isPcPicture = false;
+                this.isPcPicture = false;
+                this.addAlbum = true;
             },
             editInformation() {
                 const self = this;
@@ -223,7 +203,7 @@
                                             <form-item label="商品卖点">
                                                 <i-input v-model="goodsEdit.sellPoint" type="textarea"
                                                          :autosize="{minRows: 3,maxRows: 5}"></i-input>
-                                                <p>商品卖点最长不超过140个汉字</p>
+                                                <p class="tip">商品卖点最长不超过140个汉字</p>
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -231,7 +211,7 @@
                                         <i-col span="10">
                                             <form-item label="商品条形码">
                                                 <i-input v-model="goodsEdit.barCode"></i-input>
-                                                <p>请填写商品条形码下方数字</p>
+                                                <p class="tip">请填写商品条形码下方数字</p>
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -260,8 +240,7 @@
                                                     建议使用尺寸800*800像素以上，大小不超过4M的正方形图片，单击选中图片，
                                                     可进行上传，替换和删除
                                                 </p>
-                                                <i-button type="ghost">图片上传</i-button>
-                                                <i-button type="ghost">从图片空间删除</i-button>
+                                                <i-button type="ghost">从图片空间上传</i-button>
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -334,6 +313,7 @@
                                                                     </row>
                                                                     <i-button class="close-album"
                                                                               @click.native="addAlbumPicture"
+                                                                              v-if="addAlbum"
                                                                               type="ghost">插入相册图片</i-button>
                                                                     <div class="picture-edit-area" v-if="isPcPicture">
                                                                         <i-button class="close-album"
@@ -361,46 +341,40 @@
                                                                                         文字不得超过500字</span>
                                                                                 </div>
                                                                                 <div class="pro-bg2">
-                                                                                    <i-button @click.native="addPicture"
-                                                                                              type="ghost">插入图片</i-button>
+                                                                                    <i-button type="ghost">插入图片</i-button>
                                                                                     <i-button @click.native="addText"
                                                                                               type="ghost">添加文字</i-button>
                                                                                 </div>
                                                                                 <div class="pro-content"></div>
                                                                             </div>
-                                                                            <div class="text-edit-area" v-if="isEditText">
-                                                                                <span>还可以输入500字</span><br>
-                                                                                <i-input  type="textarea"
-                                                                                          v-model="goodsEdit.remarks"
-                                                                                         :rows="6"></i-input>
-                                                                                <i-button type="ghost">确认</i-button>
-                                                                                <i-button type="ghost">提交</i-button>
-                                                                            </div>
-                                                                            <div class="picture-edit-area"
-                                                                                 v-if="isEditPicture">
-                                                                                <i-button type="ghost" class="close-album"
-                                                                                          @click.native="closeAlbum">
-                                                                                    关闭相册</i-button>
-                                                                                <p>用户相册>全部图片</p>
-                                                                                <div class="picture-content">
-                                                                                     <row>
-                                                                                         <i-col span="4" v-for="img in [1,2,3,4,5,6,7,8,9]">
-                                                                                             <img src="../assets/images/adv.jpg" alt="">
-                                                                                         </i-col>
-                                                                                     </row>
-                                                                                    <div class="page">
-                                                                                        <page :total="100" show-elevator></page>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
                                                                         </i-col>
                                                                         <i-col span="14" class="request-col-line">
                                                                             <row>
-                                                                                <i-col span="14">
+                                                                                <i-col span="18">
                                                                                     <ul class="request">
-                                                                                        <li v-for="item in requests">
-                                                                                            <p>{{item.name}}</p>
-                                                                                            <span>{{item.content}}</span>
+                                                                                        <li>
+                                                                                            <p>1.基本要求</p>
+                                                                                            <div>
+                                                                                                <p>（1）手机详情总体大小：图片+文字，图片不超过20张，文字不超过5000字；</p>
+                                                                                                <p>建议：所有图片都是本宝贝相关的图片</p>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <p>2.图片大小要求</p>
+                                                                                            <div>
+                                                                                                <p>（1）建议使用宽度480~620像素、高度小于等于960像素的图片；</p>
+                                                                                                <p>（2）格式为：jpg、jepg、gif、png</p>
+                                                                                                <p>举例：可以上传一张宽度为480，高度为960像素，格式为jpg的图片</p>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <p>3.文字要求</p>
+                                                                                            <div>
+                                                                                                <p>（1）每次插入文字不能超过500个字，标点、特殊字符按照一个字计算；</p>
+                                                                                                <p>（2）请手动输入文字，不要复制粘网页上的文字，防止出现乱码；</p>
+                                                                                                <p>（3）以下特殊字符“<”、“>”、“ " ”、“ ' ”、“\”会被替换为空</p>
+                                                                                                <p>建议：不要添加太多的文字，这样看起来更清晰</p>
+                                                                                            </div>
                                                                                         </li>
                                                                                     </ul>
                                                                                 </i-col>
@@ -408,6 +382,37 @@
                                                                             </row>
 
                                                                         </i-col>
+                                                                        <div>
+                                                                            <div class="text-edit-area" v-if="isEditText">
+                                                                                <span>还可以输入500字</span><br>
+                                                                                <i-input  type="textarea"
+                                                                                          v-model="goodsEdit.remarks"
+                                                                                          :rows="6"></i-input>
+                                                                                <i-button type="ghost">确认</i-button>
+                                                                                <i-button type="ghost">提交</i-button>
+                                                                            </div>
+                                                                            <i-button class="close-album"
+                                                                                      @click.native="addAlbumPicture"
+                                                                                      v-if="addAlbum"
+                                                                                      type="ghost">插入相册图片</i-button>
+                                                                            <div class="picture-edit-area"
+                                                                                 v-if="isEditPicture">
+                                                                                <i-button type="ghost" class="close-album"
+                                                                                          @click.native="closeAlbum">
+                                                                                    关闭相册</i-button>
+                                                                                <p>用户相册>全部图片</p>
+                                                                                <div class="picture-content">
+                                                                                    <row>
+                                                                                        <i-col span="4" v-for="img in [1,2,3,4,5,6,7,8,9]">
+                                                                                            <img src="../assets/images/adv.jpg" alt="">
+                                                                                        </i-col>
+                                                                                    </row>
+                                                                                    <div class="page">
+                                                                                        <page :total="100" show-elevator></page>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </row>
                                                                 </tab-pane>
                                                             </tabs>
