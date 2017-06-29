@@ -2,16 +2,16 @@
     <div class="refund">
         <div class="container top">
             <div class="col-sm-4">
-                <div class="bar bar-right" :class="{barxuanzhong}">1</div>
-                <div class="tuikuanliucheng">买家申请退款</div>
+                <div class="bar bar-right" :class="{barxuanzhong : status === 1 | status === 2 ||status ===3 }">1</div>
+                <div class="tuikuanliucheng" :class="{tuikuanliuchengxuanzhong : status === 1 || status === 2 ||status ===3 }">买家申请退款</div>
             </div>
             <div class="col-sm-4">
-                <div class="bar bar-main">2</div>
-                <div class="tuikuanliucheng">商家处理退款申请</div>
+                <div class="bar bar-main" :class="{barxuanzhong :  status ===2 || status === 3 }">2</div>
+                <div class="tuikuanliucheng" :class="{tuikuanliuchengxuanzhong :  status === 2 ||status ===3 }">商家处理退款申请</div>
             </div>
             <div class="col-sm-4">
-                <div class="bar bar-left">3</div>
-                <div class="tuikuanliucheng">平台审核，退款完成</div>
+                <div class="bar bar-left" :class="{barxuanzhong : status ===3 }">3</div>
+                <div class="tuikuanliucheng" :class="{tuikuanliuchengxuanzhong : status ===3 }">平台审核，退款完成</div>
             </div>
         </div>
         <div class="container bottom">
@@ -51,7 +51,7 @@
                         </p>
                         <p class="msg-main">如果商家同意，金额会尽快返回您的账户</p>
                         <p class="msg-main">如果商家拒绝，那么您将不能再次申请退款，有疑问可以联系平台</p>
-                        <p class="msg-main">如果 <span class="price">2天10时30分27秒</span> 内商家未处理，退款申请将会自动达成并将金额返还至您的账户</p>
+                        <p class="msg-main">如果 <span class="price"><end-timer @time-end="message = '倒计时结束'" :endTime='endTime'></end-timer></span> 内商家未处理，退款申请将会自动达成并将金额返还至您的账户</p>
 
                     </div>
                 </div>
@@ -60,7 +60,11 @@
     </div>
 </template>
 <script>
+    import EndTimer from './extend/Timer';
     export default{
+        components: {
+            EndTimer,
+        },
         data() {
             return {
                 goods: {
@@ -69,7 +73,7 @@
                     ordernum: '25648946541656',
                     seller: 'xxx旗舰店',
                     msg: '女装 夏季自然腰宽松九分裤休闲长裤麻混纺',
-                    taocan: '官方套餐一'
+                    taocan: '官方套餐一',
                 },
                 refund: {
                     reason: '物品有瑕疵',
@@ -77,7 +81,9 @@
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
-                status: 1,
+                status: 2,
+                message : '正在倒计时',
+                endTime : '2017-10-08 10:06:00',
             };
         },
     };
