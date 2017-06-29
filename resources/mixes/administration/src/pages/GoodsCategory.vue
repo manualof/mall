@@ -13,22 +13,18 @@
                     {
                         commissionRate: '5%',
                         goodShow: '颜色',
-                        typeStyle: '通用类型',
                     },
                     {
                         commissionRate: '5%',
                         goodShow: '颜色',
-                        typeStyle: '通用类型',
                     },
                     {
                         commissionRate: '5%',
                         goodShow: '颜色',
-                        typeStyle: '通用类型',
                     },
                     {
                         commissionRate: '5%',
                         goodShow: '颜色',
-                        typeStyle: '通用类型',
                     },
                 ],
                 goodColumns: [
@@ -54,11 +50,6 @@
                         width: 200,
                     },
                     {
-                        key: 'typeStyle',
-                        title: '类型',
-                        width: 150,
-                    },
-                    {
                         key: 'commissionRate',
                         title: '分拥比例',
                         width: 150,
@@ -77,7 +68,6 @@
                                     <dropdown-item @click.native="editType">编辑分类信息</dropdown-item>
                                     <dropdown-item>新增下级分类</dropdown-item>
                                     <dropdown-item>查看下级分类</dropdown-item>
-                                    <dropdown-item @click.native="editTypeNav">编辑分类导航</dropdown-item>
                                     </dropdown-menu>
                                     </dropdown>
                                     <i-button class="delete-ad" @click.native="remove(${index})"
@@ -133,11 +123,8 @@
                             <p>当店主添加商品时可选择商品分类，用户可根据分类查询商品列表</p>
                             <p>对分类做任何更改后，都需要到 站点设置>清理缓存 清理商品分类，新的设置才会生效</p>
                             <p>"商品展示"为在商品列表页的展示方式</p>
-                            <p>"颜色"：每个SPU只展示不同颜色的SKU，同一颜色多个SKU只展示一个SKU</p>
-                            <p>"SPU"：每个SPU只展示一个SKU</p>
-                            <p>"编辑分类导航"功能可以设置前台左上侧商品分类导航的相关信息，可以设置分类前图片、分类别名、
-                                推荐分类、推荐品牌以及两张广告图片</p>
-                            <p>分类导航信息设置弯沉够，需要更新“首页及频道”缓存</p>
+                            <p>"SKU"：以某一SKU分别展示,例如,商品列表页同款商品分别展示不同颜色</p>
+                            <p>"SPU"：每个SPU只展示一个SKU,默认销量最大且有库存的SKU</p>
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
@@ -153,9 +140,6 @@
                             <page :total="100" show-elevator></page>
                         </div>
                     </card>
-                </tab-pane>
-                <tab-pane label="TAG管理" name="name2">
-
                 </tab-pane>
             </tabs>
         </div>
