@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Navigation;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\StoreNavigation;
 
 /**
  * Class CreateHandler.
@@ -22,6 +23,31 @@ class CreateHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'is_show'       => 'numeric',
+            'name'          => 'required',
+            'order'         => 'numeric',
+            'parent_target' => 'numeric',
+        ], [
+            'is_show.numeric'       => '是否显示的值必须为数值',
+            'name.required'         => '导航名称必须填写',
+            'order.numeric'         => '排序的值必须为数值',
+            'parent_target.numeric' => '新窗口打开的值必须为数值',
+        ]);
+        $this->beginTransaction();
+        $data = $this->request->only([
+            'is_show',
+            'name',
+            'order',
+            'parent_target',
+            'url',
+        ]);
+        if (StoreNavigation::query()->create($data)) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('创建店铺导航成功！');
+        } else {
+            $this->rollBackTransaction();
+            $this->withCode(500)->withError('创建店铺导航失败！');
+        }
     }
 }
