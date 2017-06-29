@@ -22,6 +22,7 @@ class CreateMallProductPicturesTable extends Migration
     {
         $this->schema->create('mall_product_pictures', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('product_id')->comment('商品 ID');
             $table->timestamps();
         });
     }

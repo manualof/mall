@@ -62,6 +62,14 @@ class Product extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function pictures()
+    {
+        return $this->hasMany(ProductPicture::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function rates()
     {
         return $this->hasMany(ProductRate::class);
