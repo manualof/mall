@@ -25,6 +25,7 @@ class CreateMallStoreNavigationsTable extends Migration
             $table->string('name')->comment('导航名称');
             $table->tinyInteger('is_show')->default(0)->comment('是否显示');
             $table->string('url')->nullable()->comment('链接地址');
+            $table->integer('store_id')->comment('店铺 ID');
             $table->tinyInteger('order')->default(0)->comment('排序');
             $table->tinyInteger('parent_target')->default(0)->comment('新窗口打开');
             $table->timestamps();

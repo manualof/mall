@@ -29,6 +29,7 @@ class EditHandler extends Handler
             'name'          => 'required',
             'order'         => 'numeric',
             'parent_target' => 'numeric',
+            'store_id' => 'required|numeric',
         ], [
             'id.required'           => '导航 ID 必须填写',
             'id.numeric'            => '导航 ID 必须为数值',
@@ -36,6 +37,8 @@ class EditHandler extends Handler
             'name.required'         => '导航名称必须填写',
             'order.numeric'         => '排序的值必须为数值',
             'parent_target.numeric' => '新窗口打开的值必须为数值',
+            'store_id.numeric'  => '店铺 ID 必须为数值',
+            'store_id.required' => '店铺 ID 必须填写',
         ]);
         $this->beginTransaction();
         $data = $this->request->only([
@@ -43,6 +46,7 @@ class EditHandler extends Handler
             'name',
             'order',
             'parent_target',
+            'store_id',
             'url',
         ]);
         $navigation = StoreNavigation::query()->find($this->request->input('id'));

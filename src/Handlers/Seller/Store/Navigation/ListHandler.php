@@ -26,23 +26,15 @@ class ListHandler extends Handler
         $this->validate($this->request, [
             'page'     => 'numeric',
             'paginate' => 'numeric',
+            'store_id' => 'required|numeric',
         ], [
             'page.numeric'     => '当前页面必须为数值',
             'paginate.numeric' => '分页数必须为数值',
+            'store_id.numeric'  => '店铺 ID 必须为数值',
+            'store_id.required' => '店铺 ID 必须填写',
         ]);
         $builder = StoreNavigation::query();
-        $builder = $builder->paginate($this->request->input('paginate', 20));
-        $this->withCode(200)->withData($builder->items())->withMessage('获取店铺导航列表成功！')->withExtra([
-            'pagination' => [
-                'total'         => $builder->total(),
-                'per_page'      => $builder->perPage(),
-                'current_page'  => $builder->currentPage(),
-                'last_page'     => $builder->lastPage(),
-                'next_page_url' => $builder->nextPageUrl(),
-                'prev_page_url' => $builder->previousPageUrl(),
-                'from'          => $builder->firstItem(),
-                'to'            => $builder->lastItem(),
-            ],
-        ]);
+        $data = $builder->where('store_id', $this->request->input('store_id'))->get();
+        $this->withCode(200)->withData($data)->withMessage('获取店铺导航列表成功！');
     }
 }
