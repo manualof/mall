@@ -24,4 +24,12 @@ class ProductRatePicture extends Model
      * @var string
      */
     protected $table = 'mall_product_rate_pictures';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function rate()
+    {
+        return $this->belongsTo(ProductRate::class);
+    }
 }

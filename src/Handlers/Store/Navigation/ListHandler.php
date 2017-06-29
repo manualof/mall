@@ -2,11 +2,11 @@
 /**
  * This file is part of Notadd.
  *
- * @author        TwilRoad <heshudong@ibenchu.com>
+ * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime      2017-05-23 17:46
+ * @datetime 2017-06-29 12:18
  */
-namespace Notadd\Mall\Handlers\Seller\Store\Navigation;
+namespace Notadd\Mall\Handlers\Store\Navigation;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreNavigation;
@@ -28,8 +28,8 @@ class ListHandler extends Handler
             'paginate' => 'numeric',
             'store_id' => 'required|numeric',
         ], [
-            'page.numeric'     => '当前页面必须为数值',
-            'paginate.numeric' => '分页数必须为数值',
+            'page.numeric'      => '当前页面必须为数值',
+            'paginate.numeric'  => '分页数必须为数值',
             'store_id.numeric'  => '店铺 ID 必须为数值',
             'store_id.required' => '店铺 ID 必须填写',
         ]);

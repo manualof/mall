@@ -60,6 +60,38 @@ class Product extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pictures()
+    {
+        return $this->hasMany(ProductPicture::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rates()
+    {
+        return $this->hasMany(ProductRate::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function specifications()
+    {
+        return $this->hasMany(ProductSpecification::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function subscribes()
+    {
+        return $this->hasMany(ProductSubscribe::class);
+    }
+
+    /**
      * Definition of name for flow.
      *
      * @return string

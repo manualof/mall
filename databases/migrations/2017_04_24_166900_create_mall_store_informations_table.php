@@ -36,6 +36,7 @@ class CreateMallStoreInformationsTable extends Migration
             $table->string('licence_sphere')->comment('法定经营范围');
             $table->string('licence_image')->comment('营业执照电子版');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
