@@ -34,10 +34,13 @@
                         <p><span class="msg-title">退款说明</span><span class="msg-main">桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错。</span></p>
                     </div>
                     <div class="shangjiachuli">
-                        <p class="title-jinggao"></p>
-                        <p>如果商家同意，金额会尽快返回您的账户</p>
-                        <p>如果商家拒绝，那么您将不能再次申请退款，有疑问可以联系平台</p>
-                        <p>如果 2天10时30分27秒 内商家未处理，退款申请将会自动达成并将金额返还至您的账户</p>
+                        <p class="title-jinggao">
+                            <span class="jinggao">!</span>
+                            <span class="jinggao-msg">等待商家处理退款申请</span>
+                        </p>
+                        <p class="msg-main">如果商家同意，金额会尽快返回您的账户</p>
+                        <p class="msg-main">如果商家拒绝，那么您将不能再次申请退款，有疑问可以联系平台</p>
+                        <p class="msg-main">如果 <span class="price">2天10时30分27秒</span> 内商家未处理，退款申请将会自动达成并将金额返还至您的账户</p>
 
                     </div>
                 </div>
