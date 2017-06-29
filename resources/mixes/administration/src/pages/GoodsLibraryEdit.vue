@@ -11,6 +11,7 @@
             return {
                 action: `${window.api}/mall/admin/upload`,
                 addAlbum: true,
+                addPhoneAlbum: true,
                 distribution: [
                     {
                         label: '333',
@@ -66,6 +67,7 @@
                 isEditPicture: false,
                 isEditText: false,
                 isPcPicture: false,
+                isPhonePicture: false,
                 loading: false,
                 priceList: [
                     {
@@ -93,17 +95,21 @@
                 this.addAlbum = false;
                 this.isPcPicture = true;
             },
+            addPhonePicture() {
+                this.addPhoneAlbum = false;
+                this.isPhonePicture = true;
+            },
             addText() {
                 const self = this;
                 self.isEditText = !self.isEditText;
             },
-            closeAlbum() {
-                const self = this;
-                self.isEditPicture = false;
-            },
             closePcAlbum() {
                 this.isPcPicture = false;
                 this.addAlbum = true;
+            },
+            closePhoneAlbum() {
+                this.isPhonePicture = false;
+                this.addPhoneAlbum = true;
             },
             editInformation() {
                 const self = this;
@@ -333,7 +339,7 @@
                                                                     </div>
                                                                 </tab-pane>
                                                                 <tab-pane label="手机端" class="mobile-module-content">
-                                                                    <row>
+                                                                    <row class="row-phone-line">
                                                                         <i-col span="10" class="request-col-border">
                                                                             <div class="pro-des">
                                                                                 <div class="pro-bg">
@@ -382,38 +388,38 @@
                                                                             </row>
 
                                                                         </i-col>
-                                                                        <div>
-                                                                            <div class="text-edit-area" v-if="isEditText">
-                                                                                <span>还可以输入500字</span><br>
-                                                                                <i-input  type="textarea"
-                                                                                          v-model="goodsEdit.remarks"
-                                                                                          :rows="6"></i-input>
-                                                                                <i-button type="ghost">确认</i-button>
-                                                                                <i-button type="ghost">提交</i-button>
-                                                                            </div>
-                                                                            <i-button class="close-album"
-                                                                                      @click.native="addAlbumPicture"
-                                                                                      v-if="addAlbum"
-                                                                                      type="ghost">插入相册图片</i-button>
-                                                                            <div class="picture-edit-area"
-                                                                                 v-if="isEditPicture">
-                                                                                <i-button type="ghost" class="close-album"
-                                                                                          @click.native="closeAlbum">
-                                                                                    关闭相册</i-button>
-                                                                                <p>用户相册>全部图片</p>
-                                                                                <div class="picture-content">
-                                                                                    <row>
-                                                                                        <i-col span="4" v-for="img in [1,2,3,4,5,6,7,8,9]">
-                                                                                            <img src="../assets/images/adv.jpg" alt="">
-                                                                                        </i-col>
-                                                                                    </row>
-                                                                                    <div class="page">
-                                                                                        <page :total="100" show-elevator></page>
-                                                                                    </div>
+                                                                    </row>
+                                                                    <div>
+                                                                        <i-button class="close-album"
+                                                                                  @click.native="addPhonePicture"
+                                                                                  v-if="addPhoneAlbum"
+                                                                                  type="ghost">插入相册图片</i-button>
+                                                                        <div class="picture-edit-area"
+                                                                             v-if="isPhonePicture">
+                                                                            <i-button type="ghost" class="close-album"
+                                                                                      @click.native="closePhoneAlbum">
+                                                                                关闭相册</i-button>
+                                                                            <p>用户相册>全部图片</p>
+                                                                            <div class="picture-content">
+                                                                                <row class="row-phone-line">
+                                                                                    <i-col span="4" v-for="img in [1,2,3,4,5,6,7,8,9]">
+                                                                                        <img src="../assets/images/adv.jpg" alt="">
+                                                                                    </i-col>
+                                                                                </row>
+                                                                                <div class="page">
+                                                                                    <page :total="100" show-elevator></page>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </row>
+                                                                        <div class="text-edit-area" v-if="isEditText">
+                                                                            <span>还可以输入500字</span><br>
+                                                                            <i-input  type="textarea"
+                                                                                      v-model="goodsEdit.remarks"
+                                                                                      :autosize="{minRows: 6,maxRows: 8}"></i-input>
+                                                                            <i-button type="ghost">确认</i-button>
+                                                                            <i-button type="ghost">提交</i-button>
+                                                                        </div>
+                                                                    </div>
                                                                 </tab-pane>
                                                             </tabs>
                                                         </div>
