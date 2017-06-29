@@ -27,6 +27,7 @@ class CreateMallStoreOutletsTable extends Migration
             $table->string('telephone')->comment('联系电话');
             $table->string('bus_information')->comment('公交信息');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
