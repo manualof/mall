@@ -1,48 +1,48 @@
-import SignUp from '../components/SignUp.vue'
-import SignIn from '../components/SignIn.vue'
+import SignUp from '../components/SignUp';
+import SignIn from '../components/SignIn';
 
-import Layout from '../components/Layout.vue'
-import Home from '../components/Home.vue'
-import MyOrder from '../components/MyOrder.vue'
-import PersonnalCenter from '../components/PersonnalCenter.vue'
-import CustomerServe from '../components/CustomerServe.vue'
-import More from '../components/More.vue'
-import Businessmen from '../components/Businessmen.vue'
-import Offer from '../components/Offer.vue'
-import Discount from '../components/Discount.vue'
-import Spike from '../components/Spike.vue'
-import Classification from '../components/Classification.vue'
-import Search from '../components/Search.vue'
-import ProductDetails from '../components/ProductDetails.vue'
-import ShopHome from '../components/ShopHome.vue'
-import Evaluation from '../components/Evaluation.vue'
+import Layout from '../components/Layout';
+import Home from '../components/Home';
+import MyOrder from '../components/MyOrder';
+import PersonnalCenter from '../components/PersonnalCenter';
+import CustomerServe from '../components/CustomerServe';
+import More from '../components/More';
+import Businessmen from '../components/Businessmen';
+import Offer from '../components/Offer';
+import Discount from '../components/Discount';
+import Spike from '../components/Spike';
+import Classification from '../components/Classification';
+import Search from '../components/Search';
+import ProductDetails from '../components/ProductDetails';
+import ShopHome from '../components/ShopHome';
+import Evaluation from '../components/Evaluation';
 
-import SubmitOrder from '../components/SubmitOrder.vue'
-import OrderSuccess from '../components/OrderSuccess.vue'
-import PayResult from '../components/PayResult.vue'
-import CartSettlement from '../components/CartSettlement.vue'
-import PaymentSuccess from '../components/PaymentSuccess.vue'
+import SubmitOrder from '../components/SubmitOrder';
+import OrderSuccess from '../components/OrderSuccess';
+import PayResult from '../components/PayResult';
+import CartSettlement from '../components/CartSettlement';
+import PaymentSuccess from '../components/PaymentSuccess';
 
-import AllOrder from '../components/personnal-center/AllOrder.vue'
-import Coupon from '../components/personnal-center/Coupon.vue'
-import Integral from '../components/personnal-center/Integral.vue'
-import AccountSecurity from '../components/personnal-center/AccountSecurity.vue'
-import ShippingAddress from '../components/personnal-center/ShippingAddress.vue'
-import CollectStore from '../components/personnal-center/CollectStore.vue'
+import AllOrder from '../components/personnal-center/AllOrder';
+import Coupon from '../components/personnal-center/Coupon';
+import Integral from '../components/personnal-center/Integral';
+import AccountSecurity from '../components/personnal-center/AccountSecurity';
+import ShippingAddress from '../components/personnal-center/ShippingAddress';
+import CollectStore from '../components/personnal-center/CollectStore';
 
-import ShoppingProcess from '../components/ShoppingProcess.vue'
-import ShopProcess from '../components/ShoppingProcess/ShopProcess.vue'
-import PayMethod from '../components/ShoppingProcess/PayMethod.vue'
-import CommonProblem from '../components/ShoppingProcess/CommonProblem.vue'
-import ReturnProcess from '../components/ShoppingProcess/ReturnProcess.vue'
-import ReturnMoney from '../components/ShoppingProcess/ReturnMoney.vue'
-import ContactService from '../components/ShoppingProcess/ContactService.vue'
-import DeliveryMethod from '../components/ShoppingProcess/DeliveryMethod.vue'
-import DeliverySevice from '../components/ShoppingProcess/DeliverySevice.vue'
-import DeliveryTrack from '../components/ShoppingProcess/DeliveryTrack.vue'
-import AboutUs from '../components/ShoppingProcess/AboutUs.vue'
-import ContactUs from '../components/ShoppingProcess/ContactUs.vue'
-import Cooperation from '../components/ShoppingProcess/Cooperation.vue'
+import ShoppingProcess from '../components/ShoppingProcess';
+import ShopProcess from '../components/ShoppingProcess/ShopProcess';
+import PayMethod from '../components/ShoppingProcess/PayMethod';
+import CommonProblem from '../components/ShoppingProcess/CommonProblem';
+import ReturnProcess from '../components/ShoppingProcess/ReturnProcess';
+import ReturnMoney from '../components/ShoppingProcess/ReturnMoney';
+import ContactService from '../components/ShoppingProcess/ContactService';
+import DeliveryMethod from '../components/ShoppingProcess/DeliveryMethod';
+import DeliverySevice from '../components/ShoppingProcess/DeliverySevice';
+import DeliveryTrack from '../components/ShoppingProcess/DeliveryTrack';
+import AboutUs from '../components/ShoppingProcess/AboutUs';
+import ContactUs from '../components/ShoppingProcess/ContactUs';
+import Cooperation from '../components/ShoppingProcess/Cooperation';
 
 export default [
     {
@@ -109,8 +109,8 @@ export default [
                         path: 'collect-store',
                         name: 'collect-store',
                         component: CollectStore,
-                    }
-                ]
+                    },
+                ],
             },
             {
                 path: 'customer-serve',

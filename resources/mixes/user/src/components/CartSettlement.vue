@@ -152,10 +152,9 @@
 </template>
 
 <script>
-
-    import NeedBrowse from './dashboard/NeedBrowse'
-    import EveryoneBrowse from './dashboard/EveryoneBrowse'
-    import MyselfBrowse from './dashboard/MyselfBrowse'
+    import NeedBrowse from './dashboard/NeedBrowse';
+    import EveryoneBrowse from './dashboard/EveryoneBrowse';
+    import MyselfBrowse from './dashboard/MyselfBrowse';
 
     import productImg from '../assets/images/img_06.png';
 
@@ -241,17 +240,18 @@
         computed: {
             selectNum() {
                 let num = 0;
-                this.productList.forEach((item) => {
+                this.productList.forEach(item => {
                     num += item.selected.length;
-                },);
+                });
                 return num;
             },
             totalPrice() {
                 const tPrice = 0;
-                this.productList.forEach((item) => {
-                    item.selected.forEach((pro) => {
+                this.productList.forEach(item => {
+                    item.selected.forEach(pro => {
+                        console.log(pro);
                     });
-                },);
+                });
                 return tPrice;
             },
             totalFreight() {
@@ -265,12 +265,11 @@
             changeAllChecked(event) {
                 if (event.target.checked === true) {
                     this.productList.forEach(data => {
-                        data.products.forEach(item => {
-                            data.selected.indexOf(item.id) === -1 && data.selected.push(item.id);
-                        });
+                        data.products.forEach(item => data.selected.indexOf(item.id) ===
+                        -1 && data.selected.push(item.id));
                     });
                 } else {
-                    this.productList.forEach(data =>{
+                    this.productList.forEach(data => {
                         data.selected = [];
                     });
                 }
@@ -280,29 +279,24 @@
              */
             changeTitleChecked(data, event) {
                 if (event.target.checked === true) {
-                    data.products.forEach(item => {
-                        data.selected.indexOf(item.id) === -1 && data.selected.push(item.id);
-                    });
+                    data.products.forEach(item => data.selected.indexOf(item.id) ===
+                    -1 && data.selected.push(item.id));
                 } else {
                     data.selected = [];
                 }
             },
             isAllChecked() {
-                return this.productList.every(data => {
-                    return data.selected.length === data.products.length;
-                });
+                return this.productList.every(data => data.selected.length === data.products.length);
             },
 
             /**
              * 判断父标题选择状态
              */
             isTitleChecked(data) {
-                const _selected = data.selected;
-                const _products = data.products;
+                const selected1 = data.selected;
+                const products1 = data.products;
                 // 验证selected中是否含有全部的product的id 如果是 证明title要选中
-                return _products.every(item => {
-                    return _selected.indexOf(item.id) != -1;
-                });
+                return products1.every(item => selected1.indexOf(item.id) !== -1);
             },
             plus(item) {
                 item.num += 1;
@@ -312,13 +306,10 @@
              * @returns {boolean}
              */
             price(num, price) {
-                return ( price * num ).toFixed(2);
+                return (price * num).toFixed(2);
             },
-            reduce(item){
-                if (item.num <= 1) {
-                } else {
-                    item.num -= 1;
-                }
+            reduce(item) {
+                console.log(item);
             },
         },
     };

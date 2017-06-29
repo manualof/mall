@@ -716,7 +716,7 @@
     import Datepicker from 'vuejs-datepicker';
     import Cascader from 'iview/src/components/cascader';
 
-    import img from '../assets/images/alipay.png';
+//    import img from '../assets/images/alipay.png';
 
     export default {
         data() {
@@ -858,27 +858,27 @@
         methods: {
             next() {
                 if (this.temp < 7) {
-                    this.temp++;
+                    this.temp += 1;
                 }
             },
             prev() {
-                this.temp--;
+                this.temp -= 1;
             },
-            imageSelected: function (e, arr) {
-                let _file = e.target.files[0];
-                let _image = {
+            imageSelected(e, arr) {
+                const file = e.target.files[0];
+                const image = {
                     content: '',
-                    file: _file,
+                    file1: file,
                 };
-                const _reader = new global.FileReader();
-                _reader.onload = () => {
-                    _image.content = _reader.result;
+                const reader = new global.FileReader();
+                reader.onload = () => {
+                    image.content = reader.result;
                 };
-                _reader.readAsDataURL(_file);
-                arr.push(_image);
+                reader.readAsDataURL(file);
+                arr.push(image);
                 console.log(this.lincenseInfo.account_imgs);
             },
-            deleteImg: function (arr, item) {
+            deleteImg(arr, item) {
                 arr.splice(arr.indexOf(item));
             },
         },
