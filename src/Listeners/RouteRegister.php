@@ -65,6 +65,7 @@ use Notadd\Mall\Controllers\Api\Store\ProductRateController as ProductRateContro
 use Notadd\Mall\Controllers\Api\Store\StoreController as StoreControllerForStore;
 use Notadd\Mall\Controllers\Api\User\CardController as CardControllerForUser;
 use Notadd\Mall\Controllers\Api\User\CouponController as CouponControllerForUser;
+use Notadd\Mall\Controllers\Api\User\IntegralController as IntegralControllerForUser;
 use Notadd\Mall\Controllers\Api\User\OrderController as OrderControllerForUser;
 use Notadd\Mall\Controllers\Api\User\RateController as RateControllerForUser;
 use Notadd\Mall\Controllers\Api\User\UserController as UserControllerForUser;
@@ -281,6 +282,8 @@ class RouteRegister extends AbstractRouteRegister
         });
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/user'], function () {
             $this->router->post('/', UserControllerForUser::class . '@user');
+            $this->router->post('/login', UserControllerForUser::class . '@login');
+            $this->router->post('/register', UserControllerForUser::class . '@register');
             $this->router->post('card', CardControllerForUser::class . '@card');
             $this->router->post('card/add', CardControllerForUser::class . '@add');
             $this->router->post('card/empty', CardControllerForUser::class . '@empty');
@@ -294,7 +297,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('follow/remove', FollowControllerForUser::class . '@remove');
             $this->router->post('footprint/list', OrderControllerForUser::class . '@list');
             $this->router->post('footprint/remove', OrderControllerForUser::class . '@remove');
-            $this->router->post('integral', '');
+            $this->router->post('integral', IntegralControllerForUser::class . '@integral');
             $this->router->post('order', OrderControllerForUser::class . '@order');
             $this->router->post('order/cancel', OrderControllerForUser::class . '@cancel');
             $this->router->post('order/edit', OrderControllerForUser::class . '@edit');
