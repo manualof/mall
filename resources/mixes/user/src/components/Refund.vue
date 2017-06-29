@@ -1,7 +1,8 @@
 <template>
-    <div class="redund row">
-        <div class="col-sm-2">3333</div>
-        <div class="col-sm-2">{{msg}}</div>
+    <div class="refund">
+        <div class="container top">
+            退款流程
+        </div>
     </div>
 </template>
 <script>
