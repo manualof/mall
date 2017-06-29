@@ -27,4 +27,20 @@ class UserIntegral extends Model
      * @var string
      */
     protected $table = 'mall_user_integrals';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function log()
+    {
+        return $this->hasMany(UserIntegralLog::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
