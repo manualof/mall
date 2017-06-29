@@ -1,22 +1,18 @@
 <template>
     <div class="shop-home">
         <div class="container home-shop clearfix">
-            <div class="shop-img">
-                <img src="../assets/images/shop-home.png">
-            </div>
-            <div class="shop-info">
-                <div class="shop-title clearfix">
-                    <div class="intro-img">
-                        <img src="../assets/images/details/shop.png">
-                    </div>
-                    <div class="shop-name">
-                        <h4>xxx母婴用品店</h4>
-                        <p>在售商品<span class="sell-num">24</span>个</p>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" :data-slide-to="index-1" :class="{active:index=1}"
+                        v-for="index in shop.banner.length"></li>
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item" :class="{active:index === 1}" v-for="(item,index) in shop.banner">
+                        <img :src="item.img">
                     </div>
                 </div>
-                <p class="shop-txt">
-                    Tangle ANGEL是凯特王妃的御用美发师Richard Ward所创品牌，旗下有Tangle ANGEL、 Tangle CHERUB多个系列产品。Richard Ward是几百位明星和政要的御用发型师。其所创的Tangle ANGEL是专注于打理头发的新一代产品，“防毛躁、梳柔顺、无疼痛感”都是美发梳的代言词，抗菌是美发梳特有的专利配方。在英国是众多时尚达人的新宠。</p>
-                <a class="attention-btn order-btn">+关注</a>
             </div>
         </div>
         <div class="container">
@@ -41,13 +37,26 @@
                     折扣
                 </div>
                 <span class="page pull-right">
-        1/10
-        <i class="icon iconfont icon-gengduo page-pre active"> </i>
-        <i class="icon iconfont icon-gengduo page-pre"> </i>
-      </span>
+                    1/10
+                    <i class="icon iconfont icon-gengduo page-pre active"> </i>
+                    <i class="icon iconfont icon-gengduo page-pre"> </i>
+                </span>
             </div>
         </div>
-        <search-list></search-list>
+        <div class="container">
+            <div class="shop-wrap pull-left">
+                <div class="shop-title">
+                    <img :src="shop.img" alt="">
+                    <p>{{ shop.name }}</p>
+                    <p>店铺评分：<i>{{ shop.score }}</i></p>
+                    <a class="btn">关注店铺</a>
+                </div>
+                <div class="workingTime">
+                    <p>工作时间： <span>{{ shop.workingHours }}-{{ shop.offHours }}</span></p>
+                </div>
+            </div>
+            <search-list></search-list>
+        </div>
         <need-browse></need-browse>
         <everyone-browse></everyone-browse>
         <myself-browse></myself-browse>
@@ -55,6 +64,8 @@
     </div>
 </template>
 <script>
+    import shop from '../assets/images/shopBanner.png';
+    import shopImg from '../assets/images/img_lofo.png';
     import EveryoneBrowse from './dashboard/EveryoneBrowse';
     import MyselfBrowse from './dashboard/MyselfBrowse';
     import NeedBrowse from './dashboard/NeedBrowse';
@@ -68,6 +79,31 @@
             NeedBrowse,
             RightSide,
             SearchList,
+        },
+        data() {
+            return {
+                shop: {
+                    img: shopImg,
+                    banner: [
+                        {
+                            img: shop,
+                        },
+                        {
+                            img: shop,
+                        },
+                        {
+                            img: shop,
+                        },
+                        {
+                            img: shop,
+                        },
+                    ],
+                    name: 'xxx旗舰店',
+                    score: 9.2,
+                    workingHours: '9:00',
+                    offHours: '23:00',
+                },
+            };
         },
     };
 </script>
