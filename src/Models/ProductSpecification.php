@@ -38,6 +38,14 @@ class ProductSpecification extends Model
     protected $table = 'mall_product_specifications';
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    /**
      * Definition of name for flow.
      *
      * @return string

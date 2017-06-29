@@ -19,7 +19,7 @@ class CreateMallMembersTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('mall_members', function (Blueprint $table) {
+        $this->schema->create('mall_users', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->comment('用户 ID');
             $table->timestamps();
@@ -33,6 +33,6 @@ class CreateMallMembersTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('mall_members');
+        $this->schema->drop('mall_users');
     }
 }

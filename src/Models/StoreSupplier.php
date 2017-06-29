@@ -30,4 +30,12 @@ class StoreSupplier extends Model
      * @var string
      */
     protected $table = 'mall_store_suppliers';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function store()
+    {
+        return $this->belongsTo(Store::class, 'store_id');
+    }
 }

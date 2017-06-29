@@ -4,7 +4,6 @@
  *
  * @datetime 2017-06-28 17:15:13
  */
-
 use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 

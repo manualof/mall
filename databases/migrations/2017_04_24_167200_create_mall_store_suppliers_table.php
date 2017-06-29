@@ -4,7 +4,6 @@
  *
  * @datetime 2017-06-28 12:30:48
  */
-
 use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
@@ -28,6 +27,7 @@ class CreateMallStoreSuppliersTable extends Migration
             $table->string('telephone')->comment('联系电话');
             $table->string('comments')->comment('备注信息');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
