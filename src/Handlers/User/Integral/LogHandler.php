@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\User\Integral;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\UserIntegralLog;
 
 /**
  * Class LogHandler.
@@ -22,6 +23,13 @@ class LogHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'user_id' => 'required|numeric',
+        ], [
+            'user_id.numeric'  => '用户 ID 必须为数值',
+            'user_id.required' => '用户 ID 必须填写',
+        ]);
+        $logs = UserIntegralLog::query()->where('user_id', $this->request->input('user_id'))->get();
+        $this->withCode(200)->withData($logs)->withMessage('获取用户积分记录成功！');
     }
 }
