@@ -4,38 +4,34 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-28 12:32
+ * @datetime 2017-06-29 14:45
  */
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
 
 /**
- * Class StoreSuppliers.
+ * Class ProductPicture.
  */
-class StoreSupplier extends Model
+class ProductPicture extends Model
 {
     /**
      * @var array
      */
     protected $fillable = [
-        'comments',
-        'contacts',
-        'name',
-        'store_id',
-        'telephone',
+        'product_id',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_store_suppliers';
+    protected $table = 'mall_product_pictures';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function store()
+    public function product()
     {
-        return $this->belongsTo(Store::class, 'store_id');
+        return $this->belongsTo(Product::class);
     }
 }

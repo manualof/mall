@@ -59,11 +59,13 @@ use Notadd\Mall\Controllers\Api\Seller\StoreInformationController as StoreInform
 use Notadd\Mall\Controllers\Api\Seller\StoreNavigationController as StoreNavigationControllerForSeller;
 use Notadd\Mall\Controllers\Api\Seller\StoreSupplierController as StoreSupplierControllerForSeller;
 use Notadd\Mall\Controllers\Api\Store\CategoryController as CategoryControllerForStore;
+use Notadd\Mall\Controllers\Api\Store\NavigationController as NavigationControllerForStore;
 use Notadd\Mall\Controllers\Api\Store\ProductController as ProductControllerForStore;
 use Notadd\Mall\Controllers\Api\Store\ProductRateController as ProductRateControllerForStore;
 use Notadd\Mall\Controllers\Api\Store\StoreController as StoreControllerForStore;
 use Notadd\Mall\Controllers\Api\User\CardController as CardControllerForUser;
 use Notadd\Mall\Controllers\Api\User\CouponController as CouponControllerForUser;
+use Notadd\Mall\Controllers\Api\User\IntegralController as IntegralControllerForUser;
 use Notadd\Mall\Controllers\Api\User\OrderController as OrderControllerForUser;
 use Notadd\Mall\Controllers\Api\User\RateController as RateControllerForUser;
 use Notadd\Mall\Controllers\Api\User\UserController as UserControllerForUser;
@@ -272,6 +274,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('list', StoreControllerForStore::class . '@list');
             $this->router->post('category', CategoryControllerForStore::class . '@category');
             $this->router->post('category/list', CategoryControllerForStore::class . '@list');
+            $this->router->post('navigation/list', NavigationControllerForStore::class . '@product');
             $this->router->post('product', ProductControllerForStore::class . '@product');
             $this->router->post('product/list', ProductControllerForStore::class . '@list');
             $this->router->post('product/rate', ProductRateControllerForStore::class . '@rate');
@@ -279,6 +282,8 @@ class RouteRegister extends AbstractRouteRegister
         });
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/user'], function () {
             $this->router->post('/', UserControllerForUser::class . '@user');
+            $this->router->post('/login', UserControllerForUser::class . '@login');
+            $this->router->post('/register', UserControllerForUser::class . '@register');
             $this->router->post('card', CardControllerForUser::class . '@card');
             $this->router->post('card/add', CardControllerForUser::class . '@add');
             $this->router->post('card/empty', CardControllerForUser::class . '@empty');
@@ -292,6 +297,8 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('follow/remove', FollowControllerForUser::class . '@remove');
             $this->router->post('footprint/list', OrderControllerForUser::class . '@list');
             $this->router->post('footprint/remove', OrderControllerForUser::class . '@remove');
+            $this->router->post('integral', IntegralControllerForUser::class . '@integral');
+            $this->router->post('integral/log', IntegralControllerForUser::class . '@log');
             $this->router->post('order', OrderControllerForUser::class . '@order');
             $this->router->post('order/cancel', OrderControllerForUser::class . '@cancel');
             $this->router->post('order/edit', OrderControllerForUser::class . '@edit');

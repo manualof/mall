@@ -4,37 +4,43 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-23 15:29
+ * @datetime 2017-06-29 15:16
  */
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
 
 /**
- * Class ProductSubscribe.
+ * Class UserIntegral.
  */
-class ProductSubscribe extends Model
+class UserIntegral extends Model
 {
     /**
      * @var array
      */
     protected $fillable = [
-        'product_id',
-        'store_id',
-        'status',
+        'integral',
         'user_id',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_product_subscribes';
+    protected $table = 'mall_user_integrals';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function log()
+    {
+        return $this->hasMany(UserIntegralLog::class);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function product()
+    public function user()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -25,7 +26,11 @@
                         align: 'center',
                         key: 'pic',
                         render() {
-                            return '<icon type="image"></icon>';
+                            return `<tooltip placement="right-end">
+                                    <icon type="image"></icon>
+                                    <div slot="content">
+                                    <img :src="row.pic">
+                                    </tooltip>`;
                         },
                         title: '商品图片',
                         width: 170,
@@ -88,7 +93,7 @@
                         configurationID: 33,
                         configurationName: '运动健康>户外>鞋服',
                         name: '太阳镜眼睛放蓝光紫外线',
-                        pic: '',
+                        pic: image1,
                         time: '2017-03-30 16:30:41',
                     },
                     {
@@ -98,7 +103,7 @@
                         configurationID: 33,
                         configurationName: '运动健康>户外>鞋服',
                         name: '太阳镜眼睛放蓝光紫外线',
-                        pic: '',
+                        pic: image1,
                         time: '2017-03-30 16:30:41',
                     },
                     {
@@ -108,7 +113,7 @@
                         configurationID: 33,
                         configurationName: '运动健康>户外>鞋服',
                         name: '太阳镜眼睛放蓝光紫外线',
-                        pic: '',
+                        pic: image1,
                         time: '2017-03-30 16:30:41',
                     },
                     {
@@ -118,23 +123,23 @@
                         configurationID: 33,
                         configurationName: '运动健康>户外>鞋服',
                         name: '太阳镜眼睛放蓝光紫外线',
-                        pic: '',
+                        pic: image1,
                         time: '2017-03-30 16:30:41',
                     },
                 ],
                 searchCategory: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '订单编号',
-                    },
-                    {
                         label: '商品名称',
                         value: '商品名称',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '分类名称',
+                        value: '分类名称',
+                    },
+                    {
+                        label: '品牌名称',
+                        value: '品牌名称',
                     },
                 ],
                 searchWord: '',

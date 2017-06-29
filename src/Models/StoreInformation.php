@@ -39,4 +39,12 @@ class StoreInformation extends Model
      * @var string
      */
     protected $table = 'mall_store_informations';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
+    }
 }

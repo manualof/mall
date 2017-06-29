@@ -4,26 +4,31 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-24 16:42
+ * @datetime 2017-06-29 17:30
  */
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
 
 /**
- * Class Member.
+ * Class UserAddress.
  */
-class Member extends Model
+class UserAddress extends Model
 {
     /**
      * @var array
      */
     protected $fillable = [
-        '',
+        'address',
+        'is_default',
+        'location',
+        'name',
+        'phone',
+        'user_id',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_members';
+    protected $table = 'mall_user_addresses';
 }

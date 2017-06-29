@@ -44,6 +44,8 @@ import AboutUs from '../components/ShoppingProcess/AboutUs';
 import ContactUs from '../components/ShoppingProcess/ContactUs';
 import Cooperation from '../components/ShoppingProcess/Cooperation';
 
+import Refund from '../components/Refund.vue'
+
 export default [
     {
         path: '/signup',
@@ -141,6 +143,11 @@ export default [
                 path: 'spike',
                 name: 'spike',
                 component: Spike,
+            },
+            {
+                path: 'refund',
+                name: 'refund',
+                component: Refund,
             },
             {
                 path: 'classification',

@@ -2,15 +2,15 @@
 /**
  * This file is part of Notadd.
  *
- * @datetime 2017-06-24 16:40:59
+ * @datetime 2017-06-28 17:15:13
  */
 use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
 /**
- * Class CreateMallMembersTable.
+ * Class CreateMallProductRatePicturesTable.
  */
-class CreateMallMembersTable extends Migration
+class CreateMallProductRatePicturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,9 +19,8 @@ class CreateMallMembersTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('mall_members', function (Blueprint $table) {
+        $this->schema->create('mall_product_rate_pictures', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->comment('用户 ID');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreateMallMembersTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('mall_members');
+        $this->schema->drop('mall_product_rate_pictures');
     }
 }

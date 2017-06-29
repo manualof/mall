@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Navigation;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\StoreNavigation;
 
 /**
  * Class RemoveHandler.
@@ -22,6 +23,18 @@ class RemoveHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'id' => 'required|numeric',
+        ], [
+            'id.required' => '导航 ID 必须填写',
+            'id.numeric'  => '导航 ID 必须为数值',
+        ]);
+        $this->commitTransaction();
+        $navigation = StoreNavigation::query()->find($this->request->input('id'));
+        if ($navigation instanceof StoreNavigation && $navigation->delete()) {
+            $this->withCode(200)->withMessage('删除店铺导航成功！');
+        } else {
+            $this->withCode(500)->withError('没有对应的店铺导航信息！');
+        }
     }
 }

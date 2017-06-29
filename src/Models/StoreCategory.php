@@ -45,6 +45,14 @@ class StoreCategory extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
+    }
+
+    /**
      * Definition of name for flow.
      *
      * @return string
