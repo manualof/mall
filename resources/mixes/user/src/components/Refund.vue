@@ -1,7 +1,18 @@
 <template>
     <div class="refund">
         <div class="container top">
-            退款流程
+            <div class="col-sm-4">
+                <div class="bar bar-right" :class="{barxuanzhong}">1</div>
+                <div class="tuikuanliucheng">买家申请退款</div>
+            </div>
+            <div class="col-sm-4">
+                <div class="bar bar-main">2</div>
+                <div class="tuikuanliucheng">商家处理退款申请</div>
+            </div>
+            <div class="col-sm-4">
+                <div class="bar bar-left">3</div>
+                <div class="tuikuanliucheng">平台审核，退款完成</div>
+            </div>
         </div>
         <div class="container bottom">
             <div class="shengqing-goods">
@@ -18,7 +29,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="refund-main">
-                    <p>运费： {{ goods.freight}}</p>
+                    <p>运费： {{ goods.freight }}</p>
                     <p>订单金额：<span class="price">￥{{goods.price }}</span></p>
                     <p>订单编号：{{ goods.ordernum}}</p>
                     <p>商家：{{ goods.seller}}</p>
@@ -66,6 +77,7 @@
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
+                status: 1,
             };
         },
     };

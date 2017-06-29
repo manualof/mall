@@ -11,7 +11,79 @@
         border: 1px solid #e5e5e5;
         color: #e5e5e5;
         margin-bottom: 20px;
+        .tuikuanliucheng{
+            color: #000000;
+
+        }
+        .bar{
+            width: 32px;
+            height: 32px;
+            border-radius: 32px;
+            background: #de2634;
+            margin: 58px auto 0;
+            position: relative;
+            font-size:18px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 32px;
+            margin-bottom:15px ;
+        }
+        .bar-main{
+            &:before{
+                content: '';
+                width: 181px;
+                height: 2px;
+                background: #de2634;
+                position: absolute;
+                top:15px;
+                left:33px;
+            }
+            &::after{
+                content: '';
+                width: 181px;
+                height: 2px;
+                background: #de2634;
+                position: absolute;
+                top:15px;
+                left: -182px;
+            }
+        }
+        .bar-left{
+            &::after{
+                content: '';
+                width: 181px;
+                height: 2px;
+                background: #de2634;
+                position: absolute;
+                top:15px;
+                left: -182px;
+            }
+        }
+        .bar-right{
+            &:before{
+                content: '';
+                width: 181px;
+                height: 2px;
+                background: #de2634;
+                position: absolute;
+                top:15px;
+                left:33px;
+            }
+        }
+        .barxuanzhong{
+            background: #d0d0d0;
+            &:before{
+                background: #d0d0d0 !important;
+            }
+            &:after{
+                background: #d0d0d0 !important;
+            }
+        }
+        .tuikuanliucheng{
+            text-align: center;
+        }
     }
+
     .bottom{
         .shengqing-goods{
             float: left;
