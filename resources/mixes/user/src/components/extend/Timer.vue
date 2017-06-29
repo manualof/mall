@@ -27,7 +27,8 @@
             timeDown() {
                 const endTime = new Date(this.endTime);
                 const nowTime = new Date();
-                let leftTime = parseInt( (endTime.getTime() - nowTime.getTime()) / 1000);
+                console.log();
+                const leftTime = parseInt( (endTime.getTime() - nowTime.getTime()) / 1000);
                 let d = parseInt(leftTime / (24 * 60 * 60));
                 let h = this.formate(parseInt(leftTime / (60 * 60) % 24));
                 let m = this.formate(parseInt(leftTime / 60 % 60));

@@ -1,6 +1,6 @@
 <template>
-    <div class="refund">
-        <div class="container top">
+    <div class="refund container">
+        <div class="container top row">
             <div class="col-sm-4">
                 <div class="bar bar-right" :class="{barxuanzhong : status === 1 | status === 2 ||status ===3 }">1</div>
                 <div class="tuikuanliucheng" :class="{tuikuanliuchengxuanzhong : status === 1 || status === 2 ||status ===3 }">买家申请退款</div>
