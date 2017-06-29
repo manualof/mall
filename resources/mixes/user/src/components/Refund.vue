@@ -20,7 +20,9 @@
                 <div class="goods-box">
                     <div class="goods-main">
 
-                        <div class="goods-img"></div>
+                        <div class="goods-img">
+                            <img :src="imgsrc" >
+                        </div>
                         <div class="goods-msg">
                             <div >{{ goods.msg }}</div>
                             <div class="goods-type">{{ goods.taocan }}</div>
@@ -51,8 +53,8 @@
                         </p>
                         <p class="msg-main">如果商家同意，金额会尽快返回您的账户</p>
                         <p class="msg-main">如果商家拒绝，那么您将不能再次申请退款，有疑问可以联系平台</p>
-                        <p class="msg-main">如果 <span class="price"><end-timer @time-end="message = '倒计时结束'" :endTime='endTime'></end-timer></span> 内商家未处理，退款申请将会自动达成并将金额返还至您的账户</p>
-
+                        <p v-if="this.onOff" class="msg-main">如果 <span class="price"><end-timer @time-end="dosomething" :endTime='endTime'></end-timer></span> 内商家未处理，退款申请将会自动达成并将金额返还至您的账户</p>
+                        <p v-if="!this.onOff" class="msg-main">时间已经过期</p>
                     </div>
                 </div>
             </div>
@@ -61,6 +63,7 @@
 </template>
 <script>
     import EndTimer from './extend/Timer';
+    import img from '../assets/images/b1.jpg';
     export default{
         components: {
             EndTimer,
@@ -82,9 +85,16 @@
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
                 status: 2,
-                message : '正在倒计时',
-                endTime : '2017-10-08 10:06:00',
+                message : '已超时',
+                endTime : '2018-10-08 10:06:00',
+                imgsrc: img,
+                onOff: true,
             };
+        },
+        methods: {
+            dosomething(n) {
+                this.onOff = n;
+            },
         },
     };
 </script>
