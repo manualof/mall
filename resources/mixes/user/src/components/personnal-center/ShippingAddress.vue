@@ -124,6 +124,7 @@
 
 <script>
     import Modal from './Modal';
+
     export default {
         components: { Modal },
         data() {
@@ -158,7 +159,7 @@
                 this.modalTitle = '新增收货地址';
             },
             deleteAddress(item) {
-                const index = this.addressList.indexOf(item)
+                const index = this.addressList.indexOf(item);
                 if (index !== -1) {
                     this.addressList.splice(index, 1);
                 }
@@ -168,7 +169,7 @@
                 this.modalTitle = '编辑收货地址';
             },
             settingAddress(item) {
-                this.addressList.forEach((index) => {
+                this.addressList.forEach(index => {
                     index.isdefault = 0;
                 });
                 item.isdefault = 1;

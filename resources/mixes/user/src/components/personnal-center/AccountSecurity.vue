@@ -157,7 +157,7 @@
 
 <script>
     export default{
-        data(){
+        data() {
             return {
                 temp: 1,
                 isAccountExit: 0,
