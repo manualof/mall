@@ -32,6 +32,7 @@
                     name: '',
                     picture: '',
                     price: '',
+                    remarks: '',
                     sellPoint: '',
                     type: '数码办公>时尚影音>智能设备',
                 },
@@ -80,15 +81,6 @@
                         value: '2',
                     },
                 ],
-                ruleValidate: {
-                    remarks: [
-                        {
-                            message: '信息不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
-                },
             };
         },
         methods: {
@@ -139,6 +131,7 @@
                     }
                 });
             },
+            submitTextContent() {},
             uploadBefore() {
                 injection.loading.start();
             },
@@ -157,6 +150,12 @@
                     });
                 }
             },
+            uploadErrorPicture(file) {
+                this.$notice.warning({
+                    title: '文件格式不正确',
+                    desc: `文件 ${file.name} 格式不正确`,
+                });
+            },
             uploadFormatError(file) {
                 this.$notice.warning({
                     title: '文件格式不正确',
@@ -170,6 +169,14 @@
                     title: data.message,
                 });
                 self.goodsEdit.logo = data.data.path;
+            },
+            uploadSuccessPicture(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.goodsEdit.picture = data.data.path;
             },
         },
     };
@@ -247,7 +254,21 @@
                                                     建议使用尺寸800*800像素以上，大小不超过4M的正方形图片，单击选中图片，
                                                     可进行上传，替换和删除
                                                 </p>
-                                                <i-button type="ghost">从图片空间上传</i-button>
+                                                <upload class="upload-picture-button"
+                                                        :action="action"
+                                                        :before-upload="uploadBefore"
+                                                        :format="['jpg','jpeg','png']"
+                                                        :headers="{
+                                                            Authorization: `Bearer ${$store.state.token.access_token}`
+                                                        }"
+                                                        :max-size="2048"
+                                                        :on-error="uploadError"
+                                                        :on-format-error="uploadFormatError"
+                                                        :on-success="uploadSuccess"
+                                                        ref="upload"
+                                                        :show-upload-list="false">
+                                                    <i-button type="ghost">从图片空间上传</i-button>
+                                                </upload>
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -356,18 +377,20 @@
                                                                                             }"
                                                                                             :max-size="2048"
                                                                                             :on-error="uploadError"
-                                                                                            :on-format-error="uploadFormatError"
-                                                                                            :on-success="uploadSuccess"
+                                                                                            :on-format-error="uploadErrorPicture"
+                                                                                            :on-success="uploadSuccessPicture"
                                                                                             ref="upload"
-                                                                                            :show-upload-list="false"
-                                                                                            v-if="goodsEdit.picture === '' || goodsEdit.picture === null">
+                                                                                            :show-upload-list="false">
                                                                                         <i-button type="ghost">插入图片</i-button>
                                                                                     </upload>
                                                                                     <i-button @click.native="addText" class="ivu-button-text"
                                                                                               type="ghost">添加文字</i-button>
                                                                                 </div>
                                                                                 <div class="pro-content">
-                                                                                    <img :src="goodsEdit.picture" v-if="goodsEdit.picture">
+                                                                                    <div class="image-preview" v-if="goodsEdit.picture">
+                                                                                        <img :src="goodsEdit.picture">
+                                                                                        <icon type="close" @click.native="removePicture"></icon>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </i-col>
@@ -434,7 +457,8 @@
                                                                                       v-model="goodsEdit.remarks"
                                                                                       :autosize="{minRows: 6,maxRows: 8}"></i-input>
                                                                             <i-button type="ghost">确认</i-button>
-                                                                            <i-button type="ghost">提交</i-button>
+                                                                            <i-button @click.native="submitTextContent"
+                                                                                      type="ghost">提交</i-button>
                                                                         </div>
                                                                     </div>
                                                                 </tab-pane>
