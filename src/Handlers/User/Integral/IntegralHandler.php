@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\User\Integral;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\UserIntegral;
 
 /**
  * Class IntegralHandler.
@@ -22,6 +23,17 @@ class IntegralHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'user_id' => 'required|numeric',
+        ], [
+            'user_id.numeric'  => '用户 ID 必须为数值',
+            'user_id.required' => '用户 ID 必须填写',
+        ]);
+        $integral = UserIntegral::query()->where('user', $this->request->input('user_id'))->first();
+        if ($integral instanceof UserIntegral) {
+            $this->withCode(200)->withData($integral)->withMessage('获取用户积分信息成功！');
+        } else {
+            $this->withCode(500)->withError('没有对应的用户积分信息！');
+        }
     }
 }
