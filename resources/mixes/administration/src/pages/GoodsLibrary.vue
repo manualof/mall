@@ -125,16 +125,16 @@
                 searchCategory: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '订单编号',
-                    },
-                    {
                         label: '商品名称',
                         value: '商品名称',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '分类名称',
+                        value: '分类名称',
+                    },
+                    {
+                        label: '品牌名称',
+                        value: '品牌名称',
                     },
                 ],
                 searchWord: '',

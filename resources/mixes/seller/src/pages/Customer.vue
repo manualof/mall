@@ -61,11 +61,11 @@
             },
             addCustomer() {
                 this.preForm.push(
-                    {
-                        account: '',
-                        name: '',
-                        tool: '',
-                    },
+                        {
+                            account: '',
+                            name: '',
+                            tool: '',
+                        },
                 );
             },
             deleteAfterForm(index) {
