@@ -111,8 +111,8 @@ export default [
                         path: 'collect-store',
                         name: 'collect-store',
                         component: CollectStore,
-                    }
-                ]
+                    },
+                ],
             },
             {
                 path: 'customer-serve',
