@@ -10,6 +10,8 @@
         data() {
             return {
                 action: `${window.api}/mall/admin/upload`,
+                addAlbum: true,
+                addPhoneAlbum: true,
                 distribution: [
                     {
                         label: '333',
@@ -28,7 +30,9 @@
                     goodStyle: '',
                     logo: '',
                     name: '',
+                    picture: '',
                     price: '',
+                    remarks: '',
                     sellPoint: '',
                     type: '数码办公>时尚影音>智能设备',
                 },
@@ -62,111 +66,10 @@
                         value: '2',
                     },
                 ],
-                goodType: [
-                    {
-                        children: [
-                            {
-                                children: [
-                                    {
-                                        label: '婴儿推车',
-                                        value: '婴儿推车',
-                                    },
-                                    {
-                                        label: '自行车',
-                                        value: '自行车',
-                                    },
-                                    {
-                                        label: '婴儿推车',
-                                        value: '婴儿推车',
-                                    },
-                                    {
-                                        label: '电动车',
-                                        value: '电动车',
-                                    },
-                                    {
-                                        label: '安全座椅',
-                                        value: '安全座椅',
-                                    },
-                                ],
-                                label: '童车童床',
-                                value: '童车童床',
-                            },
-                            {
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
-                            },
-                        ],
-                        label: '个护化妆',
-                        value: '个护化妆',
-                    },
-                    {
-                        children: [
-                            {
-                                children: [
-                                    {
-                                        label: '婴儿推车1',
-                                        value: '婴儿推车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                    {
-                                        label: '婴儿推车3',
-                                        value: '婴儿推车3',
-                                    },
-                                    {
-                                        label: '电动车',
-                                        value: '电动车',
-                                    },
-                                    {
-                                        label: '安全座椅4',
-                                        value: '安全座椅4',
-                                    },
-                                ],
-                                label: '服饰寝居',
-                                value: '服饰寝居',
-                            },
-                            {
-                                children: [
-                                    {
-                                        label: '婴儿推车1',
-                                        value: '婴儿推车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                ],
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                children: [
-                                    {
-                                        label: '车1',
-                                        value: '车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                ],
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
-                            },
-                        ],
-                        label: '家用电器',
-                        value: '家用电器',
-                    },
-                ],
                 isEditPicture: false,
                 isEditText: false,
                 isPcPicture: false,
+                isPhonePicture: false,
                 loading: false,
                 priceList: [
                     {
@@ -178,54 +81,34 @@
                         value: '2',
                     },
                 ],
-                requests: [
-                    {
-                        content: '（1）手机详情总体大小：图片+文字，图片不超过20张，文字不超过5000字；' +
-                        '建议：所有图片都是本宝贝相关的图片',
-                        name: '1.基本要求',
-                    },
-                    {
-                        content: '（1）建议使用宽度480~620像素、高度小于等于960像素的图片；' +
-                        '（2）格式为：jpg、jepg、gif、png举例：可以上传一张宽度为480，高度为960像素，格式为jpg的图片',
-                        name: '2.图片大小要求',
-                    },
-                    {
-                        content: '（1）每次插入文字不能超过500个字，标点、特殊字符按照一个字计算；' +
-                        '（2）请手动输入文字，不要复制粘网页上的文字，防止出现乱码；',
-                        name: '3.文字要求',
-                    },
-                ],
-                ruleValidate: {
-                    remarks: [
-                        {
-                            message: '信息不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
-                },
             };
         },
         methods: {
             addAlbumPicture() {
-                const self = this;
-                self.isPcPicture = !self.isPcPicture;
+                this.addAlbum = false;
+                this.isPcPicture = true;
             },
-            addPicture() {
-                const self = this;
-                self.isEditPicture = !self.isEditPicture;
+            addPhonePicture() {
+                this.addPhoneAlbum = false;
+                this.isPhonePicture = true;
             },
             addText() {
                 const self = this;
                 self.isEditText = !self.isEditText;
             },
-            closeAlbum() {
-                const self = this;
-                self.isEditPicture = false;
-            },
             closePcAlbum() {
+                this.isPcPicture = false;
+                this.addAlbum = true;
+            },
+            closePhoneAlbum() {
+                this.isPhonePicture = false;
+                this.addPhoneAlbum = true;
+            },
+            editInformation() {
                 const self = this;
-                self.isPcPicture = false;
+                self.$router.push({
+                    path: 'edit/category',
+                });
             },
             goBack() {
                 const self = this;
@@ -248,6 +131,7 @@
                     }
                 });
             },
+            submitTextContent() {},
             uploadBefore() {
                 injection.loading.start();
             },
@@ -266,6 +150,12 @@
                     });
                 }
             },
+            uploadErrorPicture(file) {
+                this.$notice.warning({
+                    title: '文件格式不正确',
+                    desc: `文件 ${file.name} 格式不正确`,
+                });
+            },
             uploadFormatError(file) {
                 this.$notice.warning({
                     title: '文件格式不正确',
@@ -279,6 +169,14 @@
                     title: data.message,
                 });
                 self.goodsEdit.logo = data.data.path;
+            },
+            uploadSuccessPicture(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.goodsEdit.picture = data.data.path;
             },
         },
     };
@@ -319,7 +217,7 @@
                                             <form-item label="商品卖点">
                                                 <i-input v-model="goodsEdit.sellPoint" type="textarea"
                                                          :autosize="{minRows: 3,maxRows: 5}"></i-input>
-                                                <p>商品卖点最长不超过140个汉字</p>
+                                                <p class="tip">商品卖点最长不超过140个汉字</p>
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -327,11 +225,11 @@
                                         <i-col span="10">
                                             <form-item label="商品条形码">
                                                 <i-input v-model="goodsEdit.barCode"></i-input>
-                                                <p>请填写商品条形码下方数字</p>
+                                                <p class="tip">请填写商品条形码下方数字</p>
                                             </form-item>
                                         </i-col>
                                     </row>
-                                    <row>
+                                    <row class="row-goods-upload">
                                         <i-col span="24">
                                             <form-item label="商品图片">
                                                 <div class="image-preview" v-if="goodsEdit.logo">
@@ -356,8 +254,21 @@
                                                     建议使用尺寸800*800像素以上，大小不超过4M的正方形图片，单击选中图片，
                                                     可进行上传，替换和删除
                                                 </p>
-                                                <i-button type="ghost">图片上传</i-button>
-                                                <i-button type="ghost">从图片空间删除</i-button>
+                                                <upload class="upload-picture-button"
+                                                        :action="action"
+                                                        :before-upload="uploadBefore"
+                                                        :format="['jpg','jpeg','png']"
+                                                        :headers="{
+                                                            Authorization: `Bearer ${$store.state.token.access_token}`
+                                                        }"
+                                                        :max-size="2048"
+                                                        :on-error="uploadError"
+                                                        :on-format-error="uploadFormatError"
+                                                        :on-success="uploadSuccess"
+                                                        ref="upload"
+                                                        :show-upload-list="false">
+                                                    <i-button type="ghost">从图片空间上传</i-button>
+                                                </upload>
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -430,6 +341,7 @@
                                                                     </row>
                                                                     <i-button class="close-album"
                                                                               @click.native="addAlbumPicture"
+                                                                              v-if="addAlbum"
                                                                               type="ghost">插入相册图片</i-button>
                                                                     <div class="picture-edit-area" v-if="isPcPicture">
                                                                         <i-button class="close-album"
@@ -449,7 +361,7 @@
                                                                     </div>
                                                                 </tab-pane>
                                                                 <tab-pane label="手机端" class="mobile-module-content">
-                                                                    <row>
+                                                                    <row class="row-phone-line">
                                                                         <i-col span="10" class="request-col-border">
                                                                             <div class="pro-des">
                                                                                 <div class="pro-bg">
@@ -457,46 +369,58 @@
                                                                                         文字不得超过500字</span>
                                                                                 </div>
                                                                                 <div class="pro-bg2">
-                                                                                    <i-button @click.native="addPicture"
-                                                                                              type="ghost">插入图片</i-button>
-                                                                                    <i-button @click.native="addText"
+                                                                                    <upload :action="action"
+                                                                                            :before-upload="uploadBefore"
+                                                                                            :format="['jpg','jpeg','png']"
+                                                                                            :headers="{
+                                                                                                Authorization: `Bearer ${$store.state.token.access_token}`
+                                                                                            }"
+                                                                                            :max-size="2048"
+                                                                                            :on-error="uploadError"
+                                                                                            :on-format-error="uploadErrorPicture"
+                                                                                            :on-success="uploadSuccessPicture"
+                                                                                            ref="upload"
+                                                                                            :show-upload-list="false">
+                                                                                        <i-button type="ghost">插入图片</i-button>
+                                                                                    </upload>
+                                                                                    <i-button @click.native="addText" class="ivu-button-text"
                                                                                               type="ghost">添加文字</i-button>
                                                                                 </div>
-                                                                                <div class="pro-content"></div>
-                                                                            </div>
-                                                                            <div class="text-edit-area" v-if="isEditText">
-                                                                                <span>还可以输入500字</span><br>
-                                                                                <i-input  type="textarea"
-                                                                                          v-model="goodsEdit.remarks"
-                                                                                          :rows="6"></i-input>
-                                                                                <i-button type="ghost">确认</i-button>
-                                                                                <i-button type="ghost">提交</i-button>
-                                                                            </div>
-                                                                            <div class="picture-edit-area"
-                                                                                 v-if="isEditPicture">
-                                                                                <i-button type="ghost" class="close-album"
-                                                                                          @click.native="closeAlbum">
-                                                                                    关闭相册</i-button>
-                                                                                <p>用户相册>全部图片</p>
-                                                                                <div class="picture-content">
-                                                                                    <row>
-                                                                                        <i-col span="4" v-for="img in [1,2,3,4,5,6,7,8,9]">
-                                                                                            <img src="../assets/images/adv.jpg" alt="">
-                                                                                        </i-col>
-                                                                                    </row>
-                                                                                    <div class="page">
-                                                                                        <page :total="100" show-elevator></page>
+                                                                                <div class="pro-content">
+                                                                                    <div class="image-preview" v-if="goodsEdit.picture">
+                                                                                        <img :src="goodsEdit.picture">
+                                                                                        <icon type="close" @click.native="removePicture"></icon>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </i-col>
                                                                         <i-col span="14" class="request-col-line">
                                                                             <row>
-                                                                                <i-col span="14">
+                                                                                <i-col span="18">
                                                                                     <ul class="request">
-                                                                                        <li v-for="item in requests">
-                                                                                            <p>{{item.name}}</p>
-                                                                                            <span>{{item.content}}</span>
+                                                                                        <li>
+                                                                                            <p>1.基本要求</p>
+                                                                                            <div>
+                                                                                                <p>（1）手机详情总体大小：图片+文字，图片不超过20张，文字不超过5000字；</p>
+                                                                                                <p>建议：所有图片都是本宝贝相关的图片</p>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <p>2.图片大小要求</p>
+                                                                                            <div>
+                                                                                                <p>（1）建议使用宽度480~620像素、高度小于等于960像素的图片；</p>
+                                                                                                <p>（2）格式为：jpg、jepg、gif、png</p>
+                                                                                                <p>举例：可以上传一张宽度为480，高度为960像素，格式为jpg的图片</p>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <p>3.文字要求</p>
+                                                                                            <div>
+                                                                                                <p>（1）每次插入文字不能超过500个字，标点、特殊字符按照一个字计算；</p>
+                                                                                                <p>（2）请手动输入文字，不要复制粘网页上的文字，防止出现乱码；</p>
+                                                                                                <p>（3）以下特殊字符“<”、“>”、“ " ”、“ ' ”、“\”会被替换为空</p>
+                                                                                                <p>建议：不要添加太多的文字，这样看起来更清晰</p>
+                                                                                            </div>
                                                                                         </li>
                                                                                     </ul>
                                                                                 </i-col>
@@ -505,6 +429,38 @@
 
                                                                         </i-col>
                                                                     </row>
+                                                                    <div>
+                                                                        <i-button class="close-album"
+                                                                                  @click.native="addPhonePicture"
+                                                                                  v-if="addPhoneAlbum"
+                                                                                  type="ghost">插入相册图片</i-button>
+                                                                        <div class="picture-edit-area"
+                                                                             v-if="isPhonePicture">
+                                                                            <i-button type="ghost" class="close-album"
+                                                                                      @click.native="closePhoneAlbum">
+                                                                                关闭相册</i-button>
+                                                                            <p>用户相册>全部图片</p>
+                                                                            <div class="picture-content">
+                                                                                <row class="row-phone-line">
+                                                                                    <i-col span="4" v-for="img in [1,2,3,4,5,6,7,8,9]">
+                                                                                        <img src="../assets/images/adv.jpg" alt="">
+                                                                                    </i-col>
+                                                                                </row>
+                                                                                <div class="page">
+                                                                                    <page :total="100" show-elevator></page>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="text-edit-area" v-if="isEditText">
+                                                                            <span>还可以输入500字</span><br>
+                                                                            <i-input  type="textarea"
+                                                                                      v-model="goodsEdit.remarks"
+                                                                                      :autosize="{minRows: 6,maxRows: 8}"></i-input>
+                                                                            <i-button type="ghost">确认</i-button>
+                                                                            <i-button @click.native="submitTextContent"
+                                                                                      type="ghost">提交</i-button>
+                                                                        </div>
+                                                                    </div>
                                                                 </tab-pane>
                                                             </tabs>
                                                         </div>
