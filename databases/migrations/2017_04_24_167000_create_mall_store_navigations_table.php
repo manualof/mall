@@ -22,6 +22,11 @@ class CreateMallStoreNavigationsTable extends Migration
     {
         $this->schema->create('mall_store_navigations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name')->comment('导航名称');
+            $table->tinyInteger('is_show')->default(0)->comment('是否显示');
+            $table->string('url')->nullable()->comment('链接地址');
+            $table->tinyInteger('order')->default(0)->comment('排序');
+            $table->tinyInteger('parent_target')->default(0)->comment('新窗口打开');
             $table->timestamps();
         });
     }

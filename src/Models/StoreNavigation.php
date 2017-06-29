@@ -18,7 +18,13 @@ class StoreNavigation extends Model
     /**
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'is_show',
+        'name',
+        'order',
+        'parent_target',
+        'url',
+    ];
 
     /**
      * @var string
