@@ -25,19 +25,19 @@
             return {
                 navigation: [
                     {
-                        to: { name: 'home'},
+                        to: { name: 'home' },
                         text: '首页',
                     },
                     {
-                        to: { name: 'offer'},
+                        to: { name: 'offer' },
                         text: '优惠',
                     },
                     {
-                        to: { name: 'spike'},
+                        to: { name: 'spike' },
                         text: '秒杀',
                     },
                     {
-                        to: { name: 'discount'},
+                        to: { name: 'discount' },
                         text: '折扣',
                     },
                 ],

@@ -8,43 +8,48 @@
             return {
                 time: '',
                 flag: false,
+                onOff: true,
             };
         },
+        methods: {
+            formate(time) {
+                if (time >= 10) {
+                    return time;
+                }
+                return `0${time}`;
+            },
+        },
         mounted() {
-            let time = setInterval(() => {
+            const time = setInterval(() => {
                 if (this.flag === true) {
                     clearInterval(time);
                 }
-                this.timeDown();
+                const endTime = new Date(this.endTime);
+                const nowTime = new Date();
+                if (nowTime > endTime) {
+                    this.onOff = false;
+                    this.$emit('mistake', this.onOff);
+                    clearInterval(time);
+                }
+                const leftTime = parseInt((endTime.getTime() - nowTime.getTime()) / 1000, 10);
+                const d = parseInt(leftTime / (24 * 60 * 60), 10);
+                const h = this.formate(parseInt((leftTime / (60 * 60)) % 24, 10));
+                const m = this.formate(parseInt((leftTime / 60) % 60, 10));
+                const s = this.formate(parseInt(leftTime % 60, 10));
+                if (leftTime <= 0) {
+                    this.flag = true;
+                    this.$emit('time-end');
+                }
+                this.time = `${d}天${h}小时${m}分${s}秒`;
             }, 500);
         },
         props: {
             endTime: {
                 type: String,
             },
-        },
-        methods: {
-            timeDown() {
-                const endTime = new Date(this.endTime);
-                const nowTime = new Date();
-                console.log();
-                const leftTime = parseInt( (endTime.getTime() - nowTime.getTime()) / 1000);
-                let d = parseInt(leftTime / (24 * 60 * 60));
-                let h = this.formate(parseInt(leftTime / (60 * 60) % 24));
-                let m = this.formate(parseInt(leftTime / 60 % 60));
-                let s = this.formate(parseInt(leftTime % 60));
-                if (leftTime <= 0) {
-                    this.flag = true;
-                    this.$emit('time-end');
-                }
-                this.time = `${d}天${h}小时${m}分${s}秒`;
-            },
-            formate(time) {
-                if (time >= 10) {
-                    return time;
-                } else {
-                    return `0${time}`;
-                }
+            misTake: {
+                type: String,
+                default: '已经超时',
             },
         },
     };

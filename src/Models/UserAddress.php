@@ -19,11 +19,12 @@ class UserAddress extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'phone',
-        'location',
         'address',
         'is_default',
+        'location',
+        'name',
+        'phone',
+        'user_id',
     ];
 
     /**

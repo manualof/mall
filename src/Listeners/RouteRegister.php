@@ -295,6 +295,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('follow/edit', FollowControllerForUser::class . '@edit');
             $this->router->post('follow/list', FollowControllerForUser::class . '@list');
             $this->router->post('follow/remove', FollowControllerForUser::class . '@remove');
+            $this->router->post('footprint', OrderControllerForUser::class . '@footprint');
             $this->router->post('footprint/list', OrderControllerForUser::class . '@list');
             $this->router->post('footprint/remove', OrderControllerForUser::class . '@remove');
             $this->router->post('integral', IntegralControllerForUser::class . '@integral');

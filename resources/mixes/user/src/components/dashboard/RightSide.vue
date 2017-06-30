@@ -28,33 +28,33 @@
     export default {
         methods: {
             toTop() {
-                jQuery('body').animate({ scrollTop: 0 }, 1080);
+                window.jQuery('body').animate({ scrollTop: 0 }, 1080);
                 return false;
             },
         },
         mounted() {
-            jQuery('.right-side').css({
+            window.jQuery('.right-side').css({
                 position: 'absolute',
                 top: '800px',
             });
-            jQuery('.toTop').fadeOut();
-            jQuery(window).scroll(
+            window.jQuery('.toTop').fadeOut();
+            window.jQuery(window).scroll(
                 () => {
-                    if (jQuery(window).scrollTop() > 800) {
-                        jQuery('.toTop').fadeIn(1500);
-                        jQuery('.right-side').css(
+                    if (window.jQuery(window).scrollTop() > 800) {
+                        window.jQuery('.toTop').fadeIn(1500);
+                        window.jQuery('.right-side').css(
                             {
                                 position: 'fixed',
                                 top: '50%',
                             },
                         );
-                        if (jQuery(window).scrollTop() > 2000) {
-                            jQuery('.floor').fadeIn(300);
+                        if (window.jQuery(window).scrollTop() > 2000) {
+                            window.jQuery('.floor').fadeIn(300);
                         }
                     } else {
-                        jQuery('.toTop').fadeOut(1500);
-                        jQuery('.floor').fadeOut(1000);
-                        jQuery('.right-side').css(
+                        window.jQuery('.toTop').fadeOut(1500);
+                        window.jQuery('.floor').fadeOut(1000);
+                        window.jQuery('.right-side').css(
                             {
                                 position: 'absolute',
                                 top: '800px',

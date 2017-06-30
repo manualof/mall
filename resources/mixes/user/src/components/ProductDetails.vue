@@ -257,18 +257,18 @@
     </div>
 </template>
 <script>
-    import RightSide from './dashboard/RightSide';
-    import NeedBrowse from './dashboard/NeedBrowse'
-    import MyselfBrowse from './dashboard/MyselfBrowse'
-    import EveryoneBrowse from './dashboard/EveryoneBrowse'
-    import swiper from 'swiper'
-
-    import img1 from '../assets/images/details/stool2.png'
-    import img2 from '../assets/images/details/stool1.png'
-    import userImg from '../assets/images/details/user-img.png'
-    import img7 from '../assets/images/img_07.png'
-    import stool from '../assets/images/details/stool.png'
     import Cascader from 'iview/src/components/cascader';
+    import RightSide from './dashboard/RightSide';
+    import NeedBrowse from './dashboard/NeedBrowse';
+    import MyselfBrowse from './dashboard/MyselfBrowse';
+    import EveryoneBrowse from './dashboard/EveryoneBrowse';
+    //    import swiper from 'swiper';
+
+    import img1 from '../assets/images/details/stool2.png';
+    import img2 from '../assets/images/details/stool1.png';
+    import user from '../assets/images/details/user-img.png';
+    import img7 from '../assets/images/img_07.png';
+    import stool from '../assets/images/details/stool.png';
 
     export default {
         data() {
@@ -329,7 +329,7 @@
                 evaluation: [
                     {
                         name: '皮皮虾',
-                        userImg: userImg,
+                        userImg: user,
                         bigImg: '',
                         sorce: 3,
                         buyDate: '2016-12-30',
@@ -342,7 +342,7 @@
                     },
                     {
                         name: '皮皮虾',
-                        userImg: userImg,
+                        userImg: user,
                         bigImg: '',
                         sorce: 3,
                         buyDate: '2016-12-30',
@@ -355,7 +355,7 @@
                     },
                     {
                         name: '皮皮虾',
-                        userImg: userImg,
+                        userImg: user,
                         bigImg: '',
                         sorce: 3,
                         buyDate: '2016-12-30',
@@ -538,16 +538,16 @@
             },
         },
         mounted() {
-            this.bigImg = this.smallImgs[0];
-            const mySwiper = new Swiper('.swiper-container', {
-                direction: 'horizontal',
-                loop: true,
-                nextButton: '.swiper-button-next',
-                normalizeSlideIndex: true,
-                prevButton: '.swiper-button-prev',
-                spaceBetween: 10,
-                slidesPerView: 4,
-            });
+//            this.bigImg = this.smallImgs[0];
+//            const mySwiper = new Swiper('.swiper-container', {
+//                direction: 'horizontal',
+//                loop: true,
+//                nextButton: '.swiper-button-next',
+//                normalizeSlideIndex: true,
+//                prevButton: '.swiper-button-prev',
+//                spaceBetween: 10,
+//                slidesPerView: 4,
+//            });
         },
     };
 </script>

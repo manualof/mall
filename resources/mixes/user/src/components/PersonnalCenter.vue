@@ -42,6 +42,10 @@
                         text: '账户安全',
                     },
                     {
+                        to: { name: 'selaes-return' },
+                        text: '退货退款',
+                    },
+                    {
                         to: { name: 'shipping-address' },
                         text: '管理收货地址',
                     },
