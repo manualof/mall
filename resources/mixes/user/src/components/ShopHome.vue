@@ -122,7 +122,7 @@
 <script>
     import shop from '../assets/images/shopBanner.png';
     import service from '../assets/images/service.png';
-    import product from '../assets/images/product.png';
+    import product from '../assets/images/thephone.png';
     import shopImg from '../assets/images/img_lofo.png';
     import EveryoneBrowse from './dashboard/EveryoneBrowse';
     import MyselfBrowse from './dashboard/MyselfBrowse';
