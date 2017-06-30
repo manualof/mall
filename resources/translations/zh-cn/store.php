@@ -34,7 +34,7 @@ return [
                 'success' => '',
             ],
         ],
-        'rate' => [
+        'rate'    => [
             'list' => [
                 'fail'    => '',
                 'success' => '',
