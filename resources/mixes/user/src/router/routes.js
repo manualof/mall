@@ -29,6 +29,7 @@ import Integral from '../components/personnal-center/Integral';
 import AccountSecurity from '../components/personnal-center/AccountSecurity';
 import ShippingAddress from '../components/personnal-center/ShippingAddress';
 import CollectStore from '../components/personnal-center/CollectStore';
+import SelaesReturn from '../components/personnal-center/SelaesReturn';
 
 import ShoppingProcess from '../components/ShoppingProcess';
 import ShopProcess from '../components/ShoppingProcess/ShopProcess';
@@ -111,6 +112,11 @@ export default [
                         path: 'collect-store',
                         name: 'collect-store',
                         component: CollectStore,
+                    },
+                    {
+                        path: 'selaes-return',
+                        name: 'selaes-return',
+                        component: SelaesReturn,
                     },
                 ],
             },
