@@ -20,7 +20,7 @@
             },
         },
         mounted() {
-            let time = setInterval(() => {
+            const time = setInterval(() => {
                 if (this.flag === true) {
                     clearInterval(time);
                 }
@@ -31,11 +31,11 @@
                     this.$emit('mistake', this.onOff);
                     clearInterval(time);
                 };
-                const leftTime = parseInt( (endTime.getTime() - nowTime.getTime()) / 1000);
-                const d = parseInt(leftTime / (24 * 60 * 60));
-                const h = this.formate(parseInt( (leftTime / (60 * 60)) % 24));
-                const m = this.formate(parseInt( (leftTime / 60) % 60));
-                const s = this.formate(parseInt( leftTime % 60));
+                const leftTime = parseInt((endTime.getTime() - nowTime.getTime()) / 1000, 10);
+                const d = parseInt(leftTime / (24 * 60 * 60), 10);
+                const h = this.formate(parseInt((leftTime / (60 * 60)) % 24, 10));
+                const m = this.formate(parseInt((leftTime / 60) % 60, 10));
+                const s = this.formate(parseInt(leftTime % 60 ,10));
                 if (leftTime <= 0) {
                     this.flag = true;
                     this.$emit('time-end');

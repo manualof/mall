@@ -53,7 +53,7 @@
                         </p>
                         <p class="msg-main">如果商家同意，金额会尽快返回您的账户</p>
                         <p class="msg-main">如果商家拒绝，那么您将不能再次申请退款，有疑问可以联系平台</p>
-                        <p v-if="this.onOff" class="msg-main">如果 <span class="price"><end-timer @time-end="dosomething" :endTime='endTime'></end-timer></span> 内商家未处理，退款申请将会自动达成并将金额返还至您的账户</p>
+                        <p v-if="this.onOff" class="msg-main">如果 <span class="price"><end-timer @mistake="dosomething" @time-end="dosomething" :endTime='endTime'></end-timer></span> 内商家未处理，退款申请将会自动达成并将金额返还至您的账户</p>
                         <p v-if="!this.onOff" class="msg-main">时间已经过期</p>
                     </div>
                 </div>
