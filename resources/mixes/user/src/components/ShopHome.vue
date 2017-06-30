@@ -77,13 +77,18 @@
                     <h3>商品分类</h3>
                     <ul>
                         <li v-for="item in shop.classificationList">
-                            <p><i class="text-center">+</i>{{ item.title }}</p>
-                            <ul class="clearfix">
-                                <li class="pull-left"
-                                    v-for="classification in item.classifications">
-                                    {{ classification.name }}
-                                </li>
-                            </ul>
+                            <p @click="showSubcategories(item)">
+                                <i class="text-center" v-if="item.show === false">+</i>
+                                <i class="text-center" v-if="item.show === true">-</i>
+                                {{ item.title }}</p>
+                            <transition name="slide">
+                                <ul class="clearfix" v-show="item.show">
+                                    <li class="pull-left"
+                                        v-for="classification in item.classifications">
+                                        {{ classification.name }}
+                                    </li>
+                                </ul>
+                            </transition>
                         </li>
                     </ul>
                 </div>
@@ -162,6 +167,7 @@
                                     name: '特价折扣区',
                                 },
                             ],
+                            show: true,
                         },
                         {
                             title: '断码清仓区',
@@ -175,6 +181,7 @@
                                     name: '按价格',
                                 },
                             ],
+                            show: false,
                         },
                         {
                             title: '潮牌',
@@ -188,6 +195,7 @@
                                     name: '特价折扣区',
                                 },
                             ],
+                            show: false,
                         },
                         {
                             title: '男装',
@@ -197,6 +205,7 @@
                                     name: '按销量',
                                 },
                             ],
+                            show: false,
                         },
                         {
                             title: '短袖衬衫',
@@ -210,6 +219,7 @@
                                     name: '特价折扣区',
                                 },
                             ],
+                            show: false,
                         },
                         {
                             title: '裤子',
@@ -223,6 +233,7 @@
                                     name: '特价折扣区',
                                 },
                             ],
+                            show: false,
                         },
                     ],
                     img: shopImg,
@@ -250,6 +261,11 @@
                     workingHours: '9:00',
                 },
             };
+        },
+        methods: {
+            showSubcategories(item) {
+                item.show = !item.show;
+            },
         },
     };
 </script>

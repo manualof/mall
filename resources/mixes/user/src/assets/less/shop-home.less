@@ -121,7 +121,6 @@
                         }
                     }
                     > ul {
-                        display: none;
                         padding-left: 22px;
                         > li {
                             line-height: 26px;
@@ -132,4 +131,33 @@
             }
         }
     }
+    .slide-enter-active, .slide-leave-active {
+        transition: slideDown 0.2s;
+    }
+    .slide-leave-active {
+        transition: slideUp 0.2s;
+    }
+    @keyframes slideDown {
+        0% {
+            transform: translateY(-100%);
+        }
+        50% {
+            transform: translateY(-50%);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+    @keyframes slideUp {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-50%);
+        }
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+
 }
