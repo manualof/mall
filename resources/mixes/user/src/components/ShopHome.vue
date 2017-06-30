@@ -92,7 +92,7 @@
                     <i class="icon iconfont icon-gengduo page-pre"> </i>
                 </span>
                 </div>
-                <div class="product">
+                <div class="product clearfix">
                     <router-link class="pull-left"
                                  :key="index"
                                  to="/" v-for="(product, index) in shop.productList">
