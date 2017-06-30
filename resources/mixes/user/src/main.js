@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
-import 'bootstrap';
+// import 'bootstrap';
 import jQuery from 'jquery';
 import App from './App';
 import router from './router';
