@@ -64,11 +64,26 @@
                     </ul>
                     <h5>售后客服</h5>
                     <ul class="clearfix">
-                        <li class="pull-left" v-for="service in shop.afterSaleServices">
+                        <li class="pull-left"
+                            v-for="service in shop.afterSaleServices">
                             <router-link to="/">
                                 {{ service.name }}
                                 <img :src="service.img" alt="">
                             </router-link>
+                        </li>
+                    </ul>
+                </div>
+                <div class="categories">
+                    <h3>商品分类</h3>
+                    <ul>
+                        <li v-for="item in shop.classificationList">
+                            <p><i class="text-center">+</i>{{ item.title }}</p>
+                            <ul class="clearfix">
+                                <li class="pull-left"
+                                    v-for="classification in item.classifications">
+                                    {{ classification.name }}
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -102,7 +117,16 @@
         data() {
             return {
                 shop: {
-                    img: shopImg,
+                    afterSaleServices: [
+                        {
+                            name: '客服1',
+                            img: service,
+                        },
+                        {
+                            name: '客服2',
+                            img: service,
+                        },
+                    ],
                     banner: [
                         {
                             img: shop,
@@ -117,9 +141,93 @@
                             img: shop,
                         },
                     ],
+                    classificationList: [
+                        {
+                            title: '查看所有商品',
+                            classifications: [
+                                {
+                                    id: 1,
+                                    name: '按销量',
+                                },
+                                {
+                                    id: 1,
+                                    name: '按价格',
+                                },
+                                {
+                                    id: 1,
+                                    name: '按新品',
+                                },
+                                {
+                                    id: 1,
+                                    name: '特价折扣区',
+                                },
+                            ],
+                        },
+                        {
+                            title: '断码清仓区',
+                            classifications: [
+                                {
+                                    id: 1,
+                                    name: '按销量',
+                                },
+                                {
+                                    id: 1,
+                                    name: '按价格',
+                                },
+                            ],
+                        },
+                        {
+                            title: '潮牌',
+                            classifications: [
+                                {
+                                    id: 1,
+                                    name: '按新品',
+                                },
+                                {
+                                    id: 1,
+                                    name: '特价折扣区',
+                                },
+                            ],
+                        },
+                        {
+                            title: '男装',
+                            classifications: [
+                                {
+                                    id: 1,
+                                    name: '按销量',
+                                },
+                            ],
+                        },
+                        {
+                            title: '短袖衬衫',
+                            classifications: [
+                                {
+                                    id: 1,
+                                    name: '按销量',
+                                },
+                                {
+                                    id: 1,
+                                    name: '特价折扣区',
+                                },
+                            ],
+                        },
+                        {
+                            title: '裤子',
+                            classifications: [
+                                {
+                                    id: 1,
+                                    name: '按销量',
+                                },
+                                {
+                                    id: 1,
+                                    name: '特价折扣区',
+                                },
+                            ],
+                        },
+                    ],
+                    img: shopImg,
                     name: 'xxx旗舰店',
                     offHours: '23:00',
-                    score: 9.2,
                     preSaleServices: [
                         {
                             name: '客服1',
@@ -138,17 +246,7 @@
                             img: service,
                         },
                     ],
-                    afterSaleServices: [
-                        {
-                            name: '客服1',
-                            img: service,
-                        },
-                        {
-                            name: '客服2',
-                            img: service,
-                        },
-                    ],
-
+                    score: 9.2,
                     workingHours: '9:00',
                 },
             };
