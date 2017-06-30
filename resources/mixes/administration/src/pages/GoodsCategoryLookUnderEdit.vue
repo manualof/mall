@@ -10,6 +10,26 @@
         data() {
             return {
                 editDetail: {
+                    attributes: [
+                        {
+                            intro: '32英寸以上',
+                            single: false,
+                            spu: false,
+                            type: '价格',
+                        },
+                        {
+                            intro: '支持',
+                            single: false,
+                            spu: false,
+                            type: '尺寸',
+                        },
+                        {
+                            intro: '智能电视,全高清',
+                            single: false,
+                            spu: false,
+                            type: '功能',
+                        },
+                    ],
                     checkboxAllBrand: [],
                     checkboxDefault: [],
                     contactBrand: [
@@ -248,6 +268,19 @@
             };
         },
         methods: {
+            addCustomer() {
+                this.editDetail.attributes.push(
+                    {
+                        intro: '',
+                        single: false,
+                        spu: false,
+                        type: '',
+                    },
+                );
+            },
+            deletePreForm(index) {
+                this.editDetail.attributes.splice(index, 1);
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
@@ -356,7 +389,38 @@
                         </row>
                         <row>
                             <i-col>
-
+                                <form-item label="添加属性" class="form-item-attribute">
+                                    <row v-for="(item, index) in editDetail.attributes" class="row-attributes">
+                                        <i-col span="2" style="width: 50px">
+                                            <i-input></i-input>
+                                        </i-col>
+                                        <i-col span="3">
+                                            <i-input v-model="item.type"></i-input>
+                                        </i-col>
+                                        <i-col span="7">
+                                            <i-input v-model="item.intro"></i-input>
+                                        </i-col>
+                                        <i-col span="4" style="width: 60px">
+                                            <checkbox v-model="item.single">显示</checkbox>
+                                        </i-col>
+                                        <i-col span="4" style="width: 80px">
+                                            <checkbox v-model="item.spu">SKU展示</checkbox>
+                                        </i-col>
+                                        <i-col span="2" style="width: 56px">
+                                            <i-button type="ghost">编辑</i-button>
+                                        </i-col>
+                                        <i-col span="2" style="width: 56px">
+                                            <i-button type="error" @click.native="deletePreForm(index)">删除</i-button>
+                                        </i-col>
+                                    </row>
+                                </form-item>
+                                <form-item>
+                                    <i-button class="add-btn" type="ghost"
+                                              @click.native="addCustomer">+添加一个属性</i-button>
+                                    <p class="tip">已添加属性为商城前台商品筛选条件及商品详情</p>
+                                    <p class="tip">需要修改属性值,请点击属性后面的编辑按钮</p>
+                                    <p class="tip">商品展示方式若为SKU展示,则可勾选一SKU(单选);若为SPU展示,勾选后无效</p>
+                                </form-item>
                             </i-col>
                         </row>
                         <row>
