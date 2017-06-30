@@ -1,14 +1,3 @@
-.layout {
-    min-height: 100%;
-}
-
-.container {
-    margin: 0 auto;
-    padding-left: 0;
-    padding-right: 0;
-    min-width: 1190px;
-}
-
 body {
     color: #666;
     background-color: #f7f7f7;
@@ -20,6 +9,7 @@ ul, li {
     margin: 0;
     padding: 0;
 }
+
 p,
 ul,
 li,
@@ -32,6 +22,7 @@ h6 {
     margin: 0;
     padding: 0;
 }
+
 a {
     text-decoration: none;
     color: #666;
@@ -64,6 +55,17 @@ label {
 
 button:focus {
     outline: none;
+}
+
+.layout {
+    min-height: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 1190px;
 }
 
 //checkbox
@@ -252,9 +254,10 @@ button:focus {
             display: block;
         }
         .diamond-upload-file {
+            border: 1px solid #ccc;
+            height: 80px;
             position: relative;
             width: 80px;
-            height: 80px;
             input {
                 display: block;
                 width: 100%;
@@ -265,7 +268,6 @@ button:focus {
                 left: 0;
             }
 
-            border: 1px solid #ccc;
 
             .icon {
                 color: #b0b0b0;

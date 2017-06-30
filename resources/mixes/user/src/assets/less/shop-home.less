@@ -1,12 +1,12 @@
 .shop-home {
-    padding-bottom: 60px;
     color: #444444;
     background-color: #f7f7f7;
+    padding-bottom: 60px;
     .carousel-indicators li {
         text-indent: 0;
     }
     .carousel-indicators {
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
         border: 0;
         border-radius: 8px;
         bottom: 10px;
@@ -34,7 +34,7 @@
     }
     .shop-wrap {
         margin-right: 12px;
-        margin-top: 10px;
+        margin-top: 20px;
         width: 180px;
         .shop-title {
             background: #ffffff;
@@ -46,7 +46,7 @@
             }
             p:nth-child(3) {
                 margin-top: 9px;
-                i{
+                i {
                     color: #de2634;
                 }
             }
@@ -63,13 +63,149 @@
         }
         .workingTime {
             background: #ffffff;
-            padding: 20px 24px 20px 22px;
+            padding: 20px 20px 15px 22px;
             p {
+                font-weight: bold;
+                font-size: 12px;
                 span {
                     color: #999999;
-                    font-size: 12px;
+                    font-weight: normal;
+                }
+            }
+            h5 {
+                font-weight: bold;
+                margin-top: 20px;
+            }
+            > ul {
+                margin-top: 10px;
+                li {
+                    width: 50%;
+                    &:nth-child(2n) {
+                        text-align: end;
+                    }
+                    a {
+                        font-size: 12px;
+                        color: #999999;
+                        line-height: 30px;
+                        img {
+                            display: inline-block;
+                            margin-left: 6px;
+                        }
+                    }
                 }
             }
         }
+        .categories {
+            background: #ffffff;
+            margin-top: 20px;
+            h3 {
+                border-bottom: 1px solid #e5e5e5;
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 60px;
+                padding-left: 20px;
+            }
+            > ul {
+                font-size: 12px;
+                padding: 19px;
+                li {
+                    p {
+                        line-height: 26px;
+                        i {
+                            border: 1px solid #e5e5e5;
+                            display: inline-block;
+                            height: 12px;
+                            line-height: 12px;
+                            margin-right: 10px;
+                            width: 12px;
+                        }
+                    }
+                    > ul {
+                        padding-left: 22px;
+                        > li {
+                            line-height: 26px;
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .slide-enter-active, .slide-leave-active {
+        transition: slideDown 0.2s;
+    }
+    .slide-leave-active {
+        transition: slideUp 0.2s;
+    }
+    @keyframes slideDown {
+        0% {
+            transform: translateY(-100%);
+        }
+        50% {
+            transform: translateY(-50%);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+    @keyframes slideUp {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-50%);
+        }
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+    .product-list {
+        margin-top: 20px;
+        width: 998px;
+        .product {
+            a {
+                background: #ffffff;
+                padding: 20px;
+                margin: 10px 10px 0 0;
+                width: 24.24%;
+                &:nth-child(4n) {
+                    margin-right: 0;
+                }
+                p {
+                    &:nth-child(2) {
+                        margin-top: 20px;
+                        em {
+                            color: #de2634;
+                            font-style: normal;
+                            font-size: 18px;
+                            b {
+                                font-size: 14px;
+                                font-weight: 600;
+                            }
+                        }
+                        s {
+                            color: #d0d0d0;
+                            font-size: 12px;
+                            margin-left: 10px;
+                        }
+                    }
+                    &:nth-child(3) {
+                        margin-top: 10px;
+                    }
+                    &:last-child {
+                        color: #999999;
+                        font-size: 12px;
+                        margin-top: 10px;
+                        span {
+                            color: #666666;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .arrangement-method {
+        margin-top: 0;
     }
 }
