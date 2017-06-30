@@ -19,6 +19,9 @@ import GoodsCategoryEdit from '../pages/GoodsCategoryEdit.vue';
 import GoodsCategoryAdd from '../pages/GoodsCategoryAdd.vue';
 import GoodsCategoryAddUnder from '../pages/GoodsCategoryAddUnder.vue';
 import GoodsCategoryLook from '../pages/GoodsCategoryLook.vue';
+import GoodsCategoryLookAdd from '../pages/GoodsCategoryLookAdd.vue';
+import GoodsCategoryLookAddUnder from '../pages/GoodsCategoryLookAddUnder.vue';
+import GoodsCategoryLookEdit from '../pages/GoodsCategoryLookEdit.vue';
 import GoodsCategoryLookUnder from '../pages/GoodsCategoryLookUnder.vue';
 import GoodsCategoryEditNav from '../pages/GoodsCategoryEditNav.vue';
 import GoodsLibrary from '../pages/GoodsLibrary.vue';
@@ -190,6 +193,21 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: GoodsCategoryLook,
                     path: 'goods/category/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsCategoryLookAdd,
+                    path: 'goods/category/look/add',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsCategoryLookAddUnder,
+                    path: 'goods/category/look/add/under',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsCategoryLookEdit,
+                    path: 'goods/category/look/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
