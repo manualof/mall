@@ -9,43 +9,35 @@
                 padding: 6px 8px 6px 20px;
             }
         }
-        .prompt-box {
-            background-color: #f5f7f9;
-            padding: 20px;
-            margin-bottom: 20px;
-            font-size: 12px;
-        }
         .ivu-card {
             .ivu-form-item {
-                .image-preview {
-                    border: 2px solid #ccc;
-                    position: relative;
-                    width: 204px;
-                    > i {
-                        bottom: 0;
-                        font-size: 30px;
-                        position: absolute;
-                        right: 0;
-                    }
-                    > img {
-                        display: block;
-                        max-width: 200px;
-                    }
-                }
-                .ivu-upload {
-                    background: #f5f7f9;
-                    height: 90px;
-                    width: 90px;
-                    > .ivu-upload-select {
-                        background: url("../images/plus.svg") center no-repeat;
-                        height: 90px;
-                    }
-                }
                 .input-address {
                     margin-top: 16px;
                 }
             }
             .ivu-form {
+                .form-item-attribute {
+                    margin-bottom: 0;
+                    .ivu-row {
+                        &.row-attributes {
+                            margin-bottom: 16px;
+                            .ivu-col {
+                                margin-right: 15px;
+                            }
+                            .ivu-col-span-4 {
+                                text-align: center;
+                            }
+                        }
+                        .ivu-btn-error {
+                            background-color: inherit;
+                            color: #f30;
+                            &:hover {
+                                background-color: inherit;
+                                color: #ff5c33;
+                            }
+                        }
+                    }
+                }
                 .quike-position {
                     .ivu-form-item-content {
                         .flex-position {
@@ -69,21 +61,13 @@
                 .tip {
                     width: 500px;
                     color: rgba(101, 113, 128, 0.5);
-                    p {
-                        line-height: 18px;
-                    }
+                    line-height: 18px;
                 }
                 .tip-width {
                     color: rgba(101, 113, 128, 0.5);
                     p {
                         line-height: 18px;
                     }
-                }
-                .tip-color {
-                    color: rgba(101, 113, 128, 0.5);
-                }
-                .contact {
-                    line-height: 12px;
                 }
                 .inline-symbol {
                     height: 32px;

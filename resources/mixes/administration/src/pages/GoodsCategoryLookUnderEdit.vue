@@ -9,22 +9,119 @@
         },
         data() {
             return {
-                action: `${window.api}/mall/admin/upload`,
                 editDetail: {
-                    adAddress1: '',
-                    adAddress2: '',
-                    adPicture1: '',
-                    adPicture2: '',
-                    checkbox1: [],
-                    checkbox2: [],
-                    checkbox3: [],
+                    attributes: [
+                        {
+                            intro: '32英寸以上',
+                            single: false,
+                            spu: false,
+                            type: '价格',
+                        },
+                        {
+                            intro: '支持',
+                            single: false,
+                            spu: false,
+                            type: '尺寸',
+                        },
+                        {
+                            intro: '智能电视,全高清',
+                            single: false,
+                            spu: false,
+                            type: '功能',
+                        },
+                    ],
                     checkboxAllBrand: [],
                     checkboxDefault: [],
+                    contactBrand: [
+                        {
+                            brand: '平板电视',
+                            brandList: [
+                                {
+                                    name: '三星',
+                                },
+                                {
+                                    name: '索尼',
+                                },
+                                {
+                                    name: '康佳',
+                                },
+                                {
+                                    name: '海信',
+                                },
+                                {
+                                    name: '三星1',
+                                },
+                                {
+                                    name: '三星4',
+                                },
+                            ],
+                        },
+                        {
+                            brand: '冰箱',
+                            brandList: [
+                                {
+                                    name: '三星',
+                                },
+                                {
+                                    name: '索尼',
+                                },
+                                {
+                                    name: '康佳',
+                                },
+                                {
+                                    name: '海信',
+                                },
+                                {
+                                    name: '三星1',
+                                },
+                                {
+                                    name: '三星4',
+                                },
+                            ],
+                        },
+                    ],
+                    contactSpecification: [
+                        {
+                            brand: '默认',
+                            brandList: [
+                                {
+                                    name: '三星',
+                                },
+                                {
+                                    name: '索尼',
+                                },
+                                {
+                                    name: '康佳',
+                                },
+                                {
+                                    name: '海信',
+                                },
+                                {
+                                    name: '三星1',
+                                },
+                                {
+                                    name: '三星4',
+                                },
+                            ],
+                        },
+                        {
+                            brand: '服饰鞋帽',
+                            brandList: [
+                                {
+                                    name: '尺码',
+                                },
+                            ],
+                        },
+                        {
+                            brand: '雨伞雨具',
+                            brandList: [
+                                {
+                                    name: '颜色',
+                                },
+                            ],
+                        },
+                    ],
                     goodsSort: '',
-                    interestRadio: '',
-                    interestStyle: '',
-                    interestType: true,
-                    logo: '',
                     quotaRatio: '',
                     showStyle: '',
                     typeName: '',
@@ -171,12 +268,22 @@
             };
         },
         methods: {
+            addCustomer() {
+                this.editDetail.attributes.push(
+                    {
+                        intro: '',
+                        single: false,
+                        spu: false,
+                        type: '',
+                    },
+                );
+            },
+            deletePreForm(index) {
+                this.editDetail.attributes.splice(index, 1);
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
-            },
-            removeLogo() {
-                this.editDetail.logo = '';
             },
             submit() {
                 const self = this;
@@ -192,38 +299,6 @@
                     }
                 });
             },
-            uploadBefore() {
-                injection.loading.start();
-            },
-            uploadError(error, data) {
-                const self = this;
-                injection.loading.error();
-                if (typeof data.message === 'object') {
-                    for (const p in data.message) {
-                        self.$notice.error({
-                            title: data.message[p],
-                        });
-                    }
-                } else {
-                    self.$notice.error({
-                        title: data.message,
-                    });
-                }
-            },
-            uploadFormatError(file) {
-                this.$notice.warning({
-                    title: '文件格式不正确',
-                    desc: `文件 ${file.name} 格式不正确`,
-                });
-            },
-            uploadSuccess(data) {
-                const self = this;
-                injection.loading.finish();
-                self.$notice.open({
-                    title: data.message,
-                });
-                self.editDetail.logo = data.data.path;
-            },
         },
     };
 </script>
@@ -237,181 +312,122 @@
                 <span>分类管理—编辑"项链"</span>
             </div>
             <card :bordered="false">
-                <div class="prompt-box">
-                    <p>提示</p>
-                    <p>设置前台左上侧商品分类导航的相关信息，可以设置分类前图标、分类别名、推荐分类、推荐品牌以及两张广告图片</p>
-                    <p>分类导航信息设置完成后，需进入"平台>设置>清理缓存>首页及频道"操作后生效</p>
-                </div>
                 <i-form ref="editDetail" :model="editDetail" :rules="ruleValidate" :label-width="200">
                     <div class="basic-information">
                         <row>
                             <i-col span="12">
-                                <form-item label="分类别名">
+                                <form-item label="分类名称">
                                     <i-input v-model="editDetail.typeName"></i-input>
                                 </form-item>
                             </i-col>
                         </row>
                         <row>
                             <i-col span="12">
-                                <form-item label="分类图片" prop="logo">
-                                    <div class="image-preview" v-if="editDetail.logo">
-                                        <img :src="editDetail.logo">
-                                        <icon type="close" @click.native="removeLogo"></icon>
-                                    </div>
-                                    <upload :action="action"
-                                            :before-upload="uploadBefore"
-                                            :format="['jpg','jpeg','png']"
-                                            :headers="{
-                                                Authorization: `Bearer ${$store.state.token.access_token}`
-                                            }"
-                                            :max-size="2048"
-                                            :on-error="uploadError"
-                                            :on-format-error="uploadFormatError"
-                                            :on-success="uploadSuccess"
-                                            ref="upload"
-                                            :show-upload-list="false"
-                                            v-if="editDetail.logo === '' || editDetail.logo === null">
-                                    </upload>
-                                    <p class="tip">建议使用16*16像素png透明背景图片</p>
+                                <form-item label="商品展示方式">
+                                    <i-select placeholder="请选择" v-model="editDetail.showStyle">
+                                        <i-option v-for="item in showStyle" :value="item.value"
+                                                  :key="item">{{ item.label }}</i-option>
+                                    </i-select>
+                                    <p class="tip">在商品列表页的展示方式</p>
+                                    <p class="tip">"SKU": 以某一个SKU分别展示,例如,商品列表页同款商品分别展示不同颜色</p>
+                                    <p class="tip">"SPU": 每个SPU只展示一个SKU,默认销量最大且有库存的SKU</p>
                                 </form-item>
                             </i-col>
                         </row>
                         <row>
-                            <i-col span="20">
-                                <form-item label="推荐分类" prop="recommend">分类下的三级分类
-                                    <div class="recommended-classification">
-                                        <ul>
-                                            <li>
-                                                <p>时尚物品</p>
-                                                <checkbox-group v-model="editDetail.checkbox1">
-                                                    <checkbox label="时尚"></checkbox>
-                                                    <checkbox label="时尚1"></checkbox>
-                                                    <checkbox label="运动品牌"></checkbox>
-                                                </checkbox-group>
-                                            </li>
-                                            <li>
-                                                <p>时尚物品</p>
-                                                <checkbox-group v-model="editDetail.checkbox2">
-                                                    <checkbox label="时尚"></checkbox>
-                                                    <checkbox label="时尚1"></checkbox>
-                                                    <checkbox label="运动品牌"></checkbox>
-                                                    <checkbox label="运动品牌"></checkbox>
-                                                </checkbox-group>
-                                            </li>
-                                            <li>
-                                                <p>时尚物品</p>
-                                                <checkbox-group v-model="editDetail.checkbox3">
-                                                    <checkbox label="时尚"></checkbox>
-                                                    <checkbox label="时尚1"></checkbox>
-                                                </checkbox-group>
-                                            </li>
-                                        </ul>
+                            <i-col span="12">
+                                <form-item label="分佣比例" prop="quotaRatio">
+                                    <i-input v-model="editDetail.quotaRatio"></i-input>
+                                    <div class="tip">
+                                        <p>分佣比例必须为0-100的整数</p>
                                     </div>
-                                    <p class="tip-color">推荐品牌将在展开后的二、三级导航列表右侧突出显示，
-                                        建议选择数量为8个具有图片的品牌，超过将被隐藏</p>
                                 </form-item>
                             </i-col>
+                            <i-col span="1" class="inline-symbol">%</i-col>
                         </row>
                         <row>
                             <i-col span="20">
-                                <form-item label="推荐品牌" class="quike-position">
+                                <form-item label="关联品牌" class="quike-position">
                                     <div class="flex-position">
                                         <span class="title">快捷定位</span>
                                         <cascader :data="styleData" trigger="hover" @on-change="handleChange"></cascader>
-                                        <span class="intro">分类下的商品类型</span>
+                                        <span class="intro">分类下对应的品牌</span>
                                     </div>
                                     <div class="recommended-classification recommended-brand">
                                         <ul>
-                                            <li>
-                                                <p>默认</p>
-                                                <checkbox-group v-model="editDetail.checkboxDefault">
-                                                    <checkbox label="时尚"></checkbox>
-                                                    <checkbox label="时尚1"></checkbox>
-                                                    <checkbox label="运动品牌"></checkbox>
-                                                </checkbox-group>
-                                            </li>
-                                            <li>
-                                                <p>所有品牌</p>
-                                                <checkbox-group v-model="editDetail.checkboxAllBrand">
-                                                    <checkbox label="时尚"></checkbox>
-                                                    <checkbox label="时尚1"></checkbox>
-                                                    <checkbox label="运动品牌"></checkbox>
-                                                    <checkbox label="运动品牌"></checkbox>
-                                                    <checkbox label="运动品牌"></checkbox>
-                                                    <checkbox label="运动品牌"></checkbox>
-                                                    <checkbox label="运动品牌"></checkbox>
-                                                    <checkbox label="运动品牌"></checkbox>
-                                                    <checkbox label="运动品牌"></checkbox>
+                                            <li v-for="item in editDetail.contactBrand">
+                                                <p>{{ item.brand }}</p>
+                                                <checkbox-group>
+                                                    <checkbox :label="item.name" v-for="item in item.brandList"></checkbox>
                                                 </checkbox-group>
                                             </li>
                                         </ul>
                                     </div>
-                                    <p class="tip-color">推荐品牌将在展开后的二、三级导航列表右侧突出显示，
-                                        建议选择数量为8个具有图片的品牌，超过将被隐藏</p>
                                 </form-item>
                             </i-col>
                         </row>
                         <row>
                             <i-col span="20">
-                                <form-item label="广告图1" prop="adPicture1">
-                                    <div class="image-preview" v-if="editDetail.adPicture1">
-                                        <img :src="editDetail.adPicture1">
-                                        <icon type="close" @click.native="removeLogo"></icon>
+                                <form-item label="关联规格" class="quike-position">
+                                    <div class="flex-position">
+                                        <span class="title">快捷定位</span>
+                                        <cascader :data="styleData" trigger="hover" @on-change="handleChange"></cascader>
+                                        <span class="intro">分类下对应的规格</span>
                                     </div>
-                                    <upload :action="action"
-                                            :before-upload="uploadBefore"
-                                            :format="['jpg','jpeg','png']"
-                                            :headers="{
-                                                Authorization: `Bearer ${$store.state.token.access_token}`
-                                            }"
-                                            :max-size="2048"
-                                            :on-error="uploadError"
-                                            :on-format-error="uploadFormatError"
-                                            :on-success="uploadSuccess"
-                                            ref="upload"
-                                            :show-upload-list="false"
-                                            v-if="editDetail.adPicture1 === '' || editDetail.adPicture1 === null">
-                                    </upload>
-                                    <i-input class="input-address" placeholder="http://"
-                                             v-model="editDetail.adAddress1" ></i-input>
-                                    <div class="tip-width">
-                                        <p>
-                                            广告图片将展示在推荐品牌下方，请使用宽度190像素，高度150像素的jpg、gif、
-                                            png格式图片作为分类导航广告上传，如需跳转请在后方添加以http：//开头的链接地址
-                                        </p>
+                                    <div class="recommended-classification recommended-brand">
+                                        <ul>
+                                            <li v-for="item in editDetail.contactSpecification">
+                                                <p>{{ item.brand }}</p>
+                                                <checkbox-group>
+                                                    <checkbox :label="item.name" v-for="item in item.brandList"></checkbox>
+                                                </checkbox-group>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </form-item>
                             </i-col>
                         </row>
                         <row>
-                            <i-col span="20">
-                                <form-item label="广告图2" prop="adPicture2">
-                                    <div class="image-preview" v-if="editDetail.adPicture2">
-                                        <img :src="editDetail.adPicture2">
-                                        <icon type="close" @click.native="removeLogo"></icon>
-                                    </div>
-                                    <upload :action="action"
-                                            :before-upload="uploadBefore"
-                                            :format="['jpg','jpeg','png']"
-                                            :headers="{
-                                                Authorization: `Bearer ${$store.state.token.access_token}`
-                                            }"
-                                            :max-size="2048"
-                                            :on-error="uploadError"
-                                            :on-format-error="uploadFormatError"
-                                            :on-success="uploadSuccess"
-                                            ref="upload"
-                                            :show-upload-list="false"
-                                            v-if="editDetail.adPicture2 === '' || editDetail.adPicture2 === null">
-                                    </upload>
-                                    <i-input class="input-address" placeholder="http://"
-                                             v-model="editDetail.adAddress2"></i-input>
-                                    <div class="tip-width">
-                                        <p>
-                                            广告图片将展示在推荐品牌下方，请使用宽度190像素，高度150像素的jpg、gif、
-                                            png格式图片作为分类导航广告上传，如需跳转请在后方添加以http：//开头的链接地址
-                                        </p>
-                                    </div>
+                            <i-col>
+                                <form-item label="添加属性" class="form-item-attribute">
+                                    <row v-for="(item, index) in editDetail.attributes" class="row-attributes">
+                                        <i-col span="2" style="width: 50px">
+                                            <i-input></i-input>
+                                        </i-col>
+                                        <i-col span="3">
+                                            <i-input v-model="item.type"></i-input>
+                                        </i-col>
+                                        <i-col span="7">
+                                            <i-input v-model="item.intro"></i-input>
+                                        </i-col>
+                                        <i-col span="4" style="width: 60px">
+                                            <checkbox v-model="item.single">显示</checkbox>
+                                        </i-col>
+                                        <i-col span="4" style="width: 80px">
+                                            <checkbox v-model="item.spu">SKU展示</checkbox>
+                                        </i-col>
+                                        <i-col span="2" style="width: 56px">
+                                            <i-button type="ghost">编辑</i-button>
+                                        </i-col>
+                                        <i-col span="2" style="width: 56px">
+                                            <i-button type="error" @click.native="deletePreForm(index)">删除</i-button>
+                                        </i-col>
+                                    </row>
+                                </form-item>
+                                <form-item>
+                                    <i-button class="add-btn" type="ghost"
+                                              @click.native="addCustomer">+添加一个属性</i-button>
+                                    <p class="tip">已添加属性为商城前台商品筛选条件及商品详情</p>
+                                    <p class="tip">需要修改属性值,请点击属性后面的编辑按钮</p>
+                                    <p class="tip">商品展示方式若为SKU展示,则可勾选一SKU(单选);若为SPU展示,勾选后无效</p>
+                                </form-item>
+                            </i-col>
+                        </row>
+                        <row>
+                            <i-col span="12">
+                                <form-item label="排序">
+                                    <i-input v-model="editDetail.goodsSort"></i-input>
+                                    <p class="tip">数字范围为0~255,数字越小越靠前</p>
                                 </form-item>
                             </i-col>
                         </row>
