@@ -141,11 +141,8 @@
                             <div class="lable">物流公司</div>
                             <div class="input-main">
                                 <select class="form-control">
-                                    <option>请选择物流公司</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <option v-for="item in company">{{ item }}</option>
+
                                 </select>
                             </div>
                         </div>
@@ -261,11 +258,13 @@
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
-                status: 6,
+                status: 3,
                 message: '已超时',
                 endTime: '2018-10-08 10:06:00',
                 imgsrc: img,
                 onOff: true,
+                result: ['请选择退款原因', '七天无理由退换', '拍错了'],
+                company: ['中通', '圆通', '顺丰'],
             };
         },
         methods: {
