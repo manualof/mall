@@ -1,8 +1,8 @@
 <template>
     <div class="selases-return">
         <div class="saases-title">
-            <span>退款申请</span>
-            <span>退货申请</span>
+            <span @click="qiehuan" :class="{xuanzhong: !type}">退款申请</span>
+            <span @click="qiehuan" :class="{xuanzhong: type}">退货申请</span>
         </div>
         <div class="selaes-serch">
             <input type="text" placeholder="">
@@ -18,21 +18,23 @@
                 <div>平台确认</div>
                 <div>操作</div>
             </div>
-            <div class="goods-list">
+            <div class="goods-list" v-for="item in goods">
                 <p>
-                    <span>退款编号：11052646854585</span>
-                    <span>申请时间：2017-05-30  13:21:54</span>
-                    <span>xxx旗舰店</span>
+                    <span>退款编号：{{ item.refundnum }}</span>
+                    <span>申请时间：{{ item.time }}</span>
+                    <span>{{ item.seller }}</span>
                 </p>
                 <div class="goods-list-title">
                     <div>
-                        <div class="goods-img"></div>
+                        <div class="goods-img">
+                            <img :src="item.imgsrc" alt="">
+                        </div>
                         <div class="goods-msg">
-                            <div class="goods-msg-main">Ｐurrfect diary 咕噜日记1-7岁儿童可爱短袜5双装岁儿童可爱短袜5双装</div>
-                            <div class="diangdanbianhao">订单编号：5546459835659646</div>
+                            <div class="goods-msg-main">{{ item.name }}</div>
+                            <div class="diangdanbianhao">订单编号：{{ item.num }}</div>
                         </div>
                     </div>
-                    <div>3300.00</div>
+                    <div>{{ item.price }}</div>
                     <div>1</div>
                     <div>待审核</div>
                     <div>无</div>
@@ -43,11 +45,60 @@
     </div>
 </template>
 <script>
+    import img from '../../assets/images/img_02-3.png';
+
     export default{
         data() {
             return {
-                msg: 11,
+                type: true,
+                goods: [
+                    {
+                        refundnum: '11052646854585',
+                        time: '2017-5-30-13:21:54',
+                        seller: 'xxx旗舰店',
+                        imgsrc: img,
+                        name: 'Ｐurrfect diary 咕噜日记1-7岁儿童可爱短袜5双装岁儿童可爱短袜5双装',
+                        num: '5546459835659646',
+                        price: '3300.00',
+                        status: 1,
+                    },
+                    {
+                        refundnum: '11052646854585',
+                        time: '2017-5-30-13:21:54',
+                        seller: 'xxx旗舰店',
+                        imgsrc: img,
+                        name: 'Ｐurrfect diary 咕噜日记1-7岁儿童可爱短袜5双装岁儿童可爱短袜5双装',
+                        num: '5546459835659646',
+                        price: '3300.00',
+                        status: 1,
+                    },
+                    {
+                        refundnum: '11052646854585',
+                        time: '2017-5-30-13:21:54',
+                        seller: 'xxx旗舰店',
+                        imgsrc: img,
+                        name: 'Ｐurrfect diary 咕噜日记1-7岁儿童可爱短袜5双装岁儿童可爱短袜5双装',
+                        num: '5546459835659646',
+                        price: '3300.00',
+                        status: 1,
+                    },
+                    {
+                        refundnum: '11052646854585',
+                        time: '2017-5-30-13:21:54',
+                        seller: 'xxx旗舰店',
+                        imgsrc: img,
+                        name: 'Ｐurrfect diary 咕噜日记1-7岁儿童可爱短袜5双装岁儿童可爱短袜5双装',
+                        num: '5546459835659646',
+                        price: '3300.00',
+                        status: 1,
+                    },
+                ],
             };
+        },
+        methods: {
+            qiehuan() {
+                this.type = !this.type;
+            },
         },
     };
 </script>
@@ -67,8 +118,9 @@
                 height: 58px;
                 line-height: 57px;
             }
-            span:nth-child(2){
+            .xuanzhong{
                 border-bottom:2px solid #de2634 ;
+                color: #de2634;
             }
         }
         .selaes-serch{
@@ -78,12 +130,14 @@
                 height: 24px;
                 border: 1px solid #e5e5e5;
                 float: left;
+                font-size: 12px;
+                padding: 5px 12px;
             }
             span{
                 width: 82px;
                 display: inline-block;
                 text-align: center;
-                background: #e5e5e5;
+                background: #999;
                 height: 24px;
                 float: left;
                 font-size: 12px;
@@ -135,15 +189,19 @@
                     padding-top: 30px;
                     height: 100%;
                     line-height: 1;
-                    color: #666;
+                    color: #444;
                 }
                 &>div:nth-child(1){
                     padding-top: 20px;
+                    color: #666;
                     .goods-img{
                         width: 80px;
                         height: 80px;
                         float: left;
-                        border: 1px solid;
+                        overflow: hidden;
+                        img{
+                            max-width: 100%;
+                        }
                     }
                     .goods-msg{
                         float: left;
