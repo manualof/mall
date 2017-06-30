@@ -133,6 +133,9 @@
             }
 
         }
+        .border-none{
+            border: none !important;
+        }
         .shengqing-maijia{
             float: right;
             width: 930px;
@@ -159,6 +162,67 @@
                         .msg-main{
                             float: left;
                             font-size: 12px;
+                        }
+                    }
+                    .group-input{
+                        clear: both;
+
+                        &:after{
+                            content: '';
+                            clear: both;
+                            overflow: hidden;
+                        }
+                        .lable{
+                            float: left;
+                            width: 50px;
+                            height: 10px;
+                        }
+                        .input-main{
+                            float: left;
+                            margin-left: 20px;
+                            .form-control{
+                                width: 180px;
+                                height: 24px;
+                                border-radius: 0;
+                                padding: 0;
+                                margin-bottom: 20px;
+                                border-color: #e5e5e5;
+                            }
+                            input{
+                                display: inline;
+                                margin-bottom: 20px;
+                                border: 1px solid #e5e5e5;
+                            }
+                            textarea{
+                                width: 512px;
+                                height: 84px;
+                                resize: none;
+                                display: block;
+                                border: 1px solid #e5e5e5;
+                            }
+                            .img{
+                                width:80px ;
+                                height: 80px;
+                                border: 1px solid #e5e5e5;
+                            }
+                            .submit-btn{
+                                width: 140px;
+                                height: 42px;
+                                line-height: 42px;
+                                background: #de2634;
+                                color: #fff;
+                                text-align: center;
+                                margin-top: 0;
+                                font-size: 16px;
+                                font-weight: 300;
+                            }
+                            .tishixinxi{
+                                margin-bottom: 20px;
+                                font-size: 12px;
+                                text-align: left;
+                                color: #d0d0d0;
+                                margin-top: 10px;
+                            }
                         }
                     }
                 }
