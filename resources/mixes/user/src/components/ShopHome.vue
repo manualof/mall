@@ -52,7 +52,25 @@
                     <a class="btn">关注店铺</a>
                 </div>
                 <div class="workingTime">
-                    <p>工作时间： <span>{{ shop.workingHours }}-{{ shop.offHours }}</span></p>
+                    <p>工作时间  <span>{{ shop.workingHours }}-{{ shop.offHours }}</span></p>
+                    <h5>售前客服</h5>
+                    <ul class="clearfix">
+                        <li class="pull-left" v-for="service in shop.preSaleServices">
+                            <router-link to="/">
+                                {{ service.name }}
+                                <img :src="service.img" alt="">
+                            </router-link>
+                        </li>
+                    </ul>
+                    <h5>售后客服</h5>
+                    <ul class="clearfix">
+                        <li class="pull-left" v-for="service in shop.afterSaleServices">
+                            <router-link to="/">
+                                {{ service.name }}
+                                <img :src="service.img" alt="">
+                            </router-link>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <search-list></search-list>
@@ -65,6 +83,7 @@
 </template>
 <script>
     import shop from '../assets/images/shopBanner.png';
+    import service from '../assets/images/service.png';
     import shopImg from '../assets/images/img_lofo.png';
     import EveryoneBrowse from './dashboard/EveryoneBrowse';
     import MyselfBrowse from './dashboard/MyselfBrowse';
@@ -99,9 +118,38 @@
                         },
                     ],
                     name: 'xxx旗舰店',
-                    score: 9.2,
-                    workingHours: '9:00',
                     offHours: '23:00',
+                    score: 9.2,
+                    preSaleServices: [
+                        {
+                            name: '客服1',
+                            img: service,
+                        },
+                        {
+                            name: '客服2',
+                            img: service,
+                        },
+                        {
+                            name: '客服3',
+                            img: service,
+                        },
+                        {
+                            name: '客服4',
+                            img: service,
+                        },
+                    ],
+                    afterSaleServices: [
+                        {
+                            name: '客服1',
+                            img: service,
+                        },
+                        {
+                            name: '客服2',
+                            img: service,
+                        },
+                    ],
+
+                    workingHours: '9:00',
                 },
             };
         },
