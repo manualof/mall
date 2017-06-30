@@ -37,6 +37,50 @@
                     <p>商家：{{ goods.seller}}</p>
                 </div>
             </div>
+            <div class="shengqing-maijia ">
+                <div class="title">买家退款申请</div>
+                <div class="maijia-box">
+                    <div class="maijia-main border-none">
+                        <div class="group-input">
+                            <div class="lable">退款原因</div>
+                            <div class="input-main">
+                                <select class="form-control">
+                                    <option>请选择退款原因</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="group-input">
+                            <div class="lable">退款金额</div>
+                            <div class="input-main"><input type="text">最多￥99.00（含运费0.00）</div>
+                        </div>
+                        <div class="group-input">
+                            <div class="lable">退款说明</div>
+                            <div class="input-main">
+                                <textarea  rows="3"></textarea>
+                                <div class="tishixinxi">还可以输入200字</div>
+                            </div>
+                        </div>
+                        <div class="group-input">
+                            <div class="lable">上传凭证</div>
+                            <div class="input-main">
+                                <div class="img"></div>
+                                <div class="tishixinxi">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</div>
+                            </div>
+                        </div>
+                        <div class="group-input">
+                            <div class="lable"></div>
+                            <div class="input-main">
+                                <div class="submit-btn">提交退款申请</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
             <div class="shengqing-maijia">
                 <div class="title">买家退款申请</div>
                 <div class="maijia-box">
@@ -55,6 +99,25 @@
                         <p class="msg-main">如果商家拒绝，那么您将不能再次申请退款，有疑问可以联系平台</p>
                         <p v-if="this.onOff" class="msg-main">如果 <span class="price"><end-timer @mistake="dosomething" @time-end="dosomething" :endTime='endTime'></end-timer></span> 内商家未处理，退款申请将会自动达成并将金额返还至您的账户</p>
                         <p v-if="!this.onOff" class="msg-main">时间已经过期</p>
+                    </div>
+                </div>
+            </div>
+            <div class="shengqing-maijia">
+                <div class="title">买家退款申请</div>
+                <div class="maijia-box">
+                    <div class="maijia-main">
+                        <p><span class="msg-title">退款原因</span><span class="msg-main">{{ refund.reason }}</span></p>
+                        <p><span class="msg-title">退款金额</span><span class="msg-main price">￥{{ refund.price }}</span></p>
+                        <p><span class="msg-title">退款编号</span><span class="msg-main">{{ refund.number }}</span></p>
+                        <p><span class="msg-title">退款说明</span><span class="msg-main">{{ refund.illustrate }}</span></p>
+                    </div>
+                    <div class="shangjiachuli">
+                        <p class="title-jinggao">
+                            <span class="jinggao">!</span>
+                            <span class="jinggao-msg">商家同意，退款完成</span>
+                        </p>
+                        <p class="msg-main">商家同意，金额会晶块返回您的账户，有疑问可以联系平台</p>
+
                     </div>
                 </div>
             </div>
