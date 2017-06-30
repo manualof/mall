@@ -10,6 +10,7 @@
     }
 
     table {
+        font-size: 12px;
         .select-all {
             margin-top: -7px;
         }
@@ -64,6 +65,7 @@
                 padding-right: 2px;
                 padding-top: 15px;
                 padding-left: 12px;
+                color: #999999;
             }
             th.select-all {
                 padding: 0;
@@ -85,14 +87,26 @@
                         padding: 16px 14px 0 20px;
                         width: 20px;
                     }
+                    &:nth-child(n+3){
+                        vertical-align: top;
+                        padding-top: 20px;
+                    }
                     &.td-information {
                         width: 490px;
                         text-align: left;
                         padding-left: 20px;
                         padding-right: 0;
-                        padding-top: 8px;
+                        a {
+                            display: block;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
                         p {
-                            margin-top: 20px;
+                            &:last-child {
+                                color: #999999;
+                                margin-top: 24px;
+                            }
                         }
                     }
                     &:last-child {
@@ -155,7 +169,7 @@
 
         thead {
             height: 64px;
-            color: #666;
+            color: #999;
             tr {
                 text-align: center;
             }
@@ -164,6 +178,7 @@
                 height: 64px;
                 line-height: 34px;
                 padding: 0;
+                color: #999999;
 
                 &.select {
                     padding-left: 20px;

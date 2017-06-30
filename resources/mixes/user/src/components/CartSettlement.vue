@@ -65,7 +65,7 @@
                                         <span>优惠</span>{{ item.offer }}
                                     </td>
                                 </tr>
-                                <tr v-for="(product,num) in item.products">
+                                <tr v-for="(product, num) in item.products">
                                     <td class="td-select">
                                         <div class="check-box">
                             <span>
@@ -83,6 +83,7 @@
                             <td class="td-information">
                                 <router-link :to="{name: 'product-details'}"> {{ product.name }}</router-link>
                                 <p>尺码：{{ product.size }}</p>
+                                <p>本商品 <i v-if="item.mention">支持</i><i v-if="!item.mention">不支持</i>门店自提</p>
                             </td>
                             <td>
                                 <s>&yen;{{ product.old_price }}</s>
@@ -163,33 +164,9 @@
             return {
                 productList: [
                     {
-                        name: 'XX母婴用品店',
-                        pay_transform: 10,
-                        products: [
-                            {
-                                id: 1,
-                                img: productImg,
-                                name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童 可爱短袜5双装',
-                                num: 1,
-                                now_price: 39.9,
-                                old_price: 126.07,
-                                size: 'M',
-                            },
-                            {
-                                id: 1,
-                                img: productImg,
-                                name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童 可爱短袜5双装',
-                                num: 1,
-                                now_price: 39.9,
-                                old_price: 126.07,
-                                size: 'M',
-                            },
-                        ],
-                        selected: [],
-                    },
-                    {
                         name: '母婴',
                         pay_transform: 10,
+                        mention: true,
                         selected: [],
                         products: [
                             {
@@ -202,10 +179,37 @@
                                 size: 'M',
                             },
                         ],
+                    },
+                    {
+                        name: 'XX母婴用品店',
+                        pay_transform: 10,
+                        mention: true,
+                        products: [
+                            {
+                                id: 1,
+                                img: productImg,
+                                name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童 可爱短袜5双装',
+                                num: 1,
+                                now_price: 39.9,
+                                old_price: 126.07,
+                                size: 'M',
+                            },
+                            {
+                                id: 1,
+                                img: productImg,
+                                name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童 可爱短袜5双装',
+                                num: 1,
+                                now_price: 39.9,
+                                old_price: 126.07,
+                                size: 'M',
+                            },
+                        ],
+                        selected: [],
                     },
                     {
                         name: 'XX母婴用品',
                         offer: '买二送一',
+                        mention: false,
                         pay_transform: 10,
                         products: [
                             {
