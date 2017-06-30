@@ -37,7 +37,7 @@
                     <p>商家：{{ goods.seller}}</p>
                 </div>
             </div>
-            <div class="shengqing-maijia ">
+            <div v-if="status === 1" class="shengqing-maijia ">
                 <div class="title">买家退款申请</div>
                 <div class="maijia-box">
                     <div class="maijia-main border-none">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div class="shengqing-maijia">
+            <div v-else-if="status === 2" class="shengqing-maijia">
                 <div class="title">买家退款申请</div>
                 <div class="maijia-box">
                     <div class="maijia-main">
@@ -102,7 +102,7 @@
                     </div>
                 </div>
             </div>
-            <div class="shengqing-maijia">
+            <div v-else="status === 3" class="shengqing-maijia">
                 <div class="title">买家退款申请</div>
                 <div class="maijia-box">
                     <div class="maijia-main">
@@ -148,7 +148,7 @@
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
-                status: 2,
+                status: 3,
                 message: '已超时',
                 endTime: '2018-10-08 10:06:00',
                 imgsrc: img,
