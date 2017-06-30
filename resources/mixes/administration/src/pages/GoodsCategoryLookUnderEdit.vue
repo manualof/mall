@@ -229,12 +229,12 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="goods-category-edit-nav">
+        <div class="goods-category-look-under-edit">
             <div class="edit-link-title">
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
-                <span>分类管理—编辑"珠宝手表"分类导航</span>
+                <span>分类管理—编辑"项链"</span>
             </div>
             <card :bordered="false">
                 <div class="prompt-box">
