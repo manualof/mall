@@ -6,7 +6,7 @@
         text-indent: 0;
     }
     .carousel-indicators {
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
         border: 0;
         border-radius: 8px;
         bottom: 10px;
@@ -34,7 +34,7 @@
     }
     .shop-wrap {
         margin-right: 12px;
-        margin-top: 10px;
+        margin-top: 20px;
         width: 180px;
         .shop-title {
             background: #ffffff;
@@ -46,7 +46,7 @@
             }
             p:nth-child(3) {
                 margin-top: 9px;
-                i{
+                i {
                     color: #de2634;
                 }
             }
@@ -159,5 +159,53 @@
             transform: translateY(-100%);
         }
     }
-
+    .product-list {
+        margin-top: 20px;
+        width: 998px;
+        .product {
+            a {
+                background: #ffffff;
+                padding: 20px;
+                margin: 10px 10px 0 0;
+                width: 24.24%;
+                &:nth-child(4n) {
+                    margin-right: 0;
+                }
+                p {
+                    &:nth-child(2) {
+                        margin-top: 20px;
+                        em {
+                            color: #de2634;
+                            font-style: normal;
+                            font-size: 18px;
+                            b {
+                                font-size: 14px;
+                                font-weight: 600;
+                            }
+                        }
+                        s {
+                            color: #d0d0d0;
+                            font-size: 12px;
+                            margin-left: 10px;
+                        }
+                    }
+                    &:nth-child(3) {
+                        margin-top: 10px;
+                    }
+                    &:last-child {
+                        color: #999999;
+                        font-size: 12px;
+                        margin-top: 10px;
+                        span {
+                            color: #666666;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .arrangement-method {
+        margin-top: 0;
+    }
 }

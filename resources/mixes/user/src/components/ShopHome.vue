@@ -15,35 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="arrangement-method clearfix">
-                <ul class="clearfix pull-left">
-                    <li class="active text-center pull-left">人气<i class="icon iconfont icon-paixu"> </i></li>
-                    <li class="text-center pull-left">销量<i class="icon iconfont icon-paixu"> </i></li>
-                    <li class="text-center pull-left">价格<i class="icon iconfont icon-paixu"> </i></li>
-                    <li class="text-center pull-left">新品<i class="icon iconfont icon-paixu"> </i></li>
-                </ul>
-                <div class="price">
-                    <input type="number" min="0" placeholder="￥">
-                    -
-                    <input type="number" min="0" placeholder="￥">
-                </div>
-                <div class="check-box select">
-                    <span><input type="checkbox" class="input_check" id="check3"><label for="check3"> </label></span>
-                    包邮
-                </div>
-                <div class="check-box select">
-                    <span><input type="checkbox" class="input_check" id="check4"><label for="check4"> </label></span>
-                    折扣
-                </div>
-                <span class="page pull-right">
-                    1/10
-                    <i class="icon iconfont icon-gengduo page-pre active"> </i>
-                    <i class="icon iconfont icon-gengduo page-pre"> </i>
-                </span>
-            </div>
-        </div>
-        <div class="container">
+        <div class="container clearfix">
             <div class="shop-wrap pull-left">
                 <div class="shop-title">
                     <img :src="shop.img" alt="">
@@ -93,7 +65,53 @@
                     </ul>
                 </div>
             </div>
-            <search-list></search-list>
+            <div class="product-list pull-right clearfix">
+                <div class="arrangement-method clearfix">
+                    <ul class="clearfix pull-left">
+                        <li class="active text-center pull-left">人气<i class="icon iconfont icon-paixu"> </i></li>
+                        <li class="text-center pull-left">销量<i class="icon iconfont icon-paixu"> </i></li>
+                        <li class="text-center pull-left">价格<i class="icon iconfont icon-paixu"> </i></li>
+                        <li class="text-center pull-left">新品<i class="icon iconfont icon-paixu"> </i></li>
+                    </ul>
+                    <div class="price">
+                        <input type="number" min="0" placeholder="￥">
+                        -
+                        <input type="number" min="0" placeholder="￥">
+                    </div>
+                    <div class="check-box select">
+                        <span><input type="checkbox" class="input_check" id="check3"><label for="check3"> </label></span>
+                        包邮
+                    </div>
+                    <div class="check-box select">
+                        <span><input type="checkbox" class="input_check" id="check4"><label for="check4"> </label></span>
+                        折扣
+                    </div>
+                    <span class="page pull-right">
+                    1/10
+                    <i class="icon iconfont icon-gengduo page-pre active"> </i>
+                    <i class="icon iconfont icon-gengduo page-pre"> </i>
+                </span>
+                </div>
+                <div class="product">
+                    <router-link class="pull-left"
+                                 :key="index"
+                                 to="/" v-for="(product, index) in shop.productList">
+                        <img :src="product.img"/>
+                        <p>
+                            <em>
+                                <b>￥</b>
+                                {{ product.price }}
+                            </em>
+                            <s>
+                                <b>￥</b>
+                                {{ product.old_price }}
+                            </s>
+                        </p>
+                        <p class="product-intro">{{ product.intro }}</p>
+                        <p class="sales">本月销量<span>{{ product.saleNum }}</span>件</p>
+                    </router-link>
+                </div>
+            </div>
         </div>
         <need-browse></need-browse>
         <everyone-browse></everyone-browse>
@@ -104,12 +122,12 @@
 <script>
     import shop from '../assets/images/shopBanner.png';
     import service from '../assets/images/service.png';
+    import product from '../assets/images/product.png';
     import shopImg from '../assets/images/img_lofo.png';
     import EveryoneBrowse from './dashboard/EveryoneBrowse';
     import MyselfBrowse from './dashboard/MyselfBrowse';
     import NeedBrowse from './dashboard/NeedBrowse';
     import RightSide from './dashboard/RightSide';
-    import SearchList from './dashboard/SearchList';
 
     export default {
         components: {
@@ -117,7 +135,6 @@
             MyselfBrowse,
             NeedBrowse,
             RightSide,
-            SearchList,
         },
         data() {
             return {
@@ -255,6 +272,120 @@
                         {
                             name: '客服4',
                             img: service,
+                        },
+                    ],
+                    productList: [
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            saleNum: 3324,
                         },
                     ],
                     score: 9.2,
