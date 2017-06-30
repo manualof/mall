@@ -19,10 +19,6 @@ export default function (injection) {
                     title: '品牌管理',
                 },
                 {
-                    path: '/mall/goods/type',
-                    title: '类型管理',
-                },
-                {
                     path: '/mall/goods/standard',
                     title: '规格管理',
                 },
