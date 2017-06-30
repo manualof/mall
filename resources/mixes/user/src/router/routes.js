@@ -46,6 +46,7 @@ import ContactUs from '../components/ShoppingProcess/ContactUs';
 import Cooperation from '../components/ShoppingProcess/Cooperation';
 
 import Refund from '../components/Refund';
+import ReturnOfGoods from '../components/ReturnOfGoods';
 
 export default [
     {
@@ -154,6 +155,11 @@ export default [
                 path: 'refund',
                 name: 'refund',
                 component: Refund,
+            },
+            {
+                path: 'return-of-goods',
+                name: 'return-of-goods',
+                component: ReturnOfGoods,
             },
             {
                 path: 'classification',

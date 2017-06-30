@@ -1,0 +1,286 @@
+.return-of-goods{
+    //公共类
+    .price{
+        color: #de2634;
+        font-size: 12px;
+    }
+    margin: 40px auto 60px;
+    .top{
+        width: 100%;
+        height: 178px;
+        border: 1px solid #e5e5e5;
+        color: #e5e5e5;
+        margin-bottom: 20px;
+        .tuikuanliucheng{
+            color: #000000;
+
+        }
+        .bar{
+            width: 32px;
+            height: 32px;
+            border-radius: 32px;
+            background: #d0d0d0;
+            margin: 58px auto 0;
+            position: relative;
+            font-size:18px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 32px;
+            margin-bottom:15px ;
+        }
+        .bar-main{
+            &:before{
+                content: '';
+                width: 134px;
+                height: 2px;
+                background: #d0d0d0;
+                position: absolute;
+                top:15px;
+                left:33px;
+            }
+            &::after{
+                content: '';
+                width: 134px;
+                height: 2px;
+                background: #d0d0d0;
+                position: absolute;
+                top:15px;
+                left: -135px;
+            }
+        }
+        .bar-left{
+            &::after{
+                content: '';
+                width: 134px;
+                height: 2px;
+                background: #d0d0d0;
+                position: absolute;
+                top:15px;
+                left: -135px;
+            }
+        }
+        .bar-right{
+            &:before{
+                content: '';
+                width: 135px;
+                height: 2px;
+                background: #de2634;
+                position: absolute;
+                top:15px;
+                left:33px;
+            }
+        }
+        .barxuanzhong{
+            background: #de2634;
+            &:before{
+                background: #de2634 !important;
+            }
+            &:after{
+                background: #de2634 !important;
+            }
+        }
+        .tuikuanliucheng{
+            text-align: center;
+            color: #d0d0d0;
+        }
+        .tuikuanliuchengxuanzhong{
+            color: #000;
+        }
+    }
+
+    .bottom{
+        .shengqing-goods{
+            float: left;
+            width: 240px;
+            height: 249px;
+            border: 1px solid #e5e5e5;
+            .goods-box{
+                padding:0 20px;
+                .goods-main{
+                    font-size: 12px;
+                    text-align: left;
+                    color: #444;
+                    line-height: 1.5;
+                    height: 72px;
+                    border-bottom: 1px solid #e5e5e5;
+                    .goods-img{
+                        float: left;
+                        width: 48px;
+                        height: 48px;
+                        border: 1px solid #e5e5e5;
+                        img{
+                            max-width: 100%;
+                        }
+                    }
+                    .goods-msg{
+                        float: left;
+                        width: 136px;
+                        height: 31px;
+                        margin-left:11px ;
+                        .goods-type{
+                            color: #999;
+                        }
+                    }
+
+                }
+            }
+
+            .refund-main{
+                padding: 20px;
+                font-size: 12px;
+                line-height: 1.5;
+                color: #444;
+            }
+
+        }
+        .border-none{
+            border: none !important;
+        }
+        .shengqing-maijia{
+            float: right;
+            width: 930px;
+            height: 468px;
+            border: 1px solid #e5e5e5;
+            .title{
+                padding-left: 32px;
+            }
+            .maijia-box{
+                padding: 0 32px;
+                font-size: 12px;
+                .maijia-main{
+                    color: #444;
+                    border-bottom: 1px solid #e5e5e5;
+                    .tuihuowancheng{
+                        margin-bottom: 20px;
+                        border-bottom: 1px solid #e5e5e5;
+                    }
+                    & > p{
+                        clear: both;
+                        margin-bottom: 20px;
+                        height: 13px;
+                        .msg-title{
+                            float: left;
+                            width: 48px;
+                            margin-right: 20px;
+                        }
+                        .msg-main{
+                            float: left;
+                            font-size: 12px;
+                        }
+                    }
+                    .group-input{
+                        clear: both;
+
+                        &:after{
+                            content: '';
+                            clear: both;
+                            overflow: hidden;
+                        }
+                        .lable{
+                            float: left;
+                            width: 50px;
+                            height: 10px;
+                        }
+                        .input-main{
+                            float: left;
+                            margin-left: 20px;
+                            .form-control{
+                                width: 180px;
+                                height: 24px;
+                                border-radius: 0;
+                                padding: 0;
+                                margin-bottom: 20px;
+                                border-color: #e5e5e5;
+                            }
+                            input{
+                                display: inline;
+                                margin-bottom: 20px;
+                                border: 1px solid #e5e5e5;
+                            }
+                            textarea{
+                                width: 512px;
+                                height: 84px;
+                                resize: none;
+                                display: block;
+                                border: 1px solid #e5e5e5;
+                            }
+                            .img{
+                                width:80px ;
+                                height: 80px;
+                                border: 1px solid #e5e5e5;
+                            }
+                            .submit-btn{
+                                width: 140px;
+                                height: 42px;
+                                line-height: 42px;
+                                background: #de2634;
+                                color: #fff;
+                                text-align: center;
+                                margin-top: 0;
+                                font-size: 16px;
+                                font-weight: 300;
+                            }
+                            .tishixinxi{
+                                margin-bottom: 20px;
+                                font-size: 12px;
+                                text-align: left;
+                                color: #d0d0d0;
+                                margin-top: 10px;
+                            }
+                        }
+                    }
+                }
+                .shangjiachuli{
+                    .title-jinggao{
+                        height: 30px;
+                        margin-top: 30px;
+                        margin-bottom: 14px;
+                        .jinggao{
+                            width: 30px;
+                            border-radius: 30px;
+                            border: 2px solid #de2634;
+                            color: #de2634;
+                            height: 30px;
+                            text-align: center;
+                            line-height: 25px;
+                            float: left;
+                            font-size: 20px;
+                            font-weight: bold;
+                            margin-left: 18px;
+                        }
+                        .jinggao-msg{
+                            float: left;
+                            margin-left: 20px;
+                            height: 30px;
+                            font-size: 18px;
+                            color: #444;
+                            font-weight: bold;
+                            line-height: 30px;
+
+                        }
+                    }
+                    .msg-main{
+                        padding-left: 70px;
+                        margin-bottom: 20px;
+                        height: 13px;
+                        .price{
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+        .title{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            font-family: "Microsoft Yahei";
+            font-weight: bold;
+            text-align: left;
+            padding-left: 21px;
+            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 19px;
+        }
+    }
+}
