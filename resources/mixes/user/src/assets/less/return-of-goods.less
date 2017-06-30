@@ -1,4 +1,4 @@
-.refund{
+.return-of-goods{
     //公共类
     .price{
         color: #de2634;
@@ -31,7 +31,7 @@
         .bar-main{
             &:before{
                 content: '';
-                width: 181px;
+                width: 134px;
                 height: 2px;
                 background: #d0d0d0;
                 position: absolute;
@@ -40,29 +40,29 @@
             }
             &::after{
                 content: '';
-                width: 181px;
+                width: 134px;
                 height: 2px;
                 background: #d0d0d0;
                 position: absolute;
                 top:15px;
-                left: -182px;
+                left: -135px;
             }
         }
         .bar-left{
             &::after{
                 content: '';
-                width: 181px;
+                width: 134px;
                 height: 2px;
                 background: #d0d0d0;
                 position: absolute;
                 top:15px;
-                left: -182px;
+                left: -135px;
             }
         }
         .bar-right{
             &:before{
                 content: '';
-                width: 181px;
+                width: 135px;
                 height: 2px;
                 background: #de2634;
                 position: absolute;
@@ -103,26 +103,26 @@
                     line-height: 1.5;
                     height: 72px;
                     border-bottom: 1px solid #e5e5e5;
-                .goods-img{
-                    float: left;
-                    width: 48px;
-                    height: 48px;
-                    border: 1px solid #e5e5e5;
-                    img{
-                        max-width: 100%;
+                    .goods-img{
+                        float: left;
+                        width: 48px;
+                        height: 48px;
+                        border: 1px solid #e5e5e5;
+                        img{
+                            max-width: 100%;
+                        }
                     }
-                }
-                .goods-msg{
-                    float: left;
-                    width: 136px;
-                    height: 31px;
-                    margin-left:11px ;
-                    .goods-type{
-                        color: #999;
+                    .goods-msg{
+                        float: left;
+                        width: 136px;
+                        height: 31px;
+                        margin-left:11px ;
+                        .goods-type{
+                            color: #999;
+                        }
                     }
-                }
 
-            }
+                }
             }
 
             .refund-main{
@@ -130,6 +130,13 @@
                 font-size: 12px;
                 line-height: 1.5;
                 color: #444;
+                &>p{
+                    height: 13px;
+                    margin-bottom: 10px;
+                }
+                p:nth-last-child(1){
+                    margin-bottom: 20px;
+                }
             }
 
         }
@@ -139,7 +146,7 @@
         .shengqing-maijia{
             float: right;
             width: 930px;
-            height: 468px;
+            height: 490px;
             border: 1px solid #e5e5e5;
             .title{
                 padding-left: 32px;
@@ -147,9 +154,15 @@
             .maijia-box{
                 padding: 0 32px;
                 font-size: 12px;
+                .tuihuowancheng{
+                    margin-bottom: 20px;
+                    border-bottom: 1px solid #e5e5e5;
+                    padding-bottom: 20px;
+                }
                 .maijia-main{
                     color: #444;
                     border-bottom: 1px solid #e5e5e5;
+
                     & > p{
                         clear: both;
                         margin-bottom: 20px;
@@ -187,11 +200,15 @@
                                 padding: 0;
                                 margin-bottom: 20px;
                                 border-color: #e5e5e5;
+                                padding-left: 12px;
+                                font-size: 12px;
                             }
                             input{
                                 display: inline;
                                 margin-bottom: 20px;
                                 border: 1px solid #e5e5e5;
+                                padding-left:12px;
+                                font-size: 12px;
                             }
                             textarea{
                                 width: 512px;
@@ -199,6 +216,7 @@
                                 resize: none;
                                 display: block;
                                 border: 1px solid #e5e5e5;
+                                font-size: 12px;
                             }
                             .img{
                                 width:80px ;

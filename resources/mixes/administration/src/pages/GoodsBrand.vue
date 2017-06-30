@@ -11,18 +11,23 @@
             return {
                 brandColumns: [
                     {
+                        align: 'center',
                         key: 'brandId',
                         title: '品牌ID',
+                        width: 120,
                     },
                     {
+                        align: 'center',
                         key: 'name',
                         title: '品牌名称',
                     },
                     {
+                        align: 'center',
                         key: 'initials',
                         title: '首字母',
                     },
                     {
+                        align: 'center',
                         key: 'brandPicture',
                         render() {
                             return '<icon type="image"></icon>';
@@ -30,10 +35,12 @@
                         title: '品牌图片',
                     },
                     {
+                        align: 'center',
                         key: 'sort',
                         title: '品牌排序',
                     },
                     {
+                        align: 'center',
                         key: 'isshow',
                         render(row) {
                             return `<span v-if="${row.status} === true" class="status-check">
@@ -48,11 +55,14 @@
                         title: '展示形式',
                     },
                     {
+                        align: 'center',
                         key: 'action',
-                        render() {
-                            return '<i-button type="ghost" @click.native="edit">编辑</i-button>';
+                        render(row, column, index) {
+                            return `<i-button size="small" type="ghost" @click.native="edit">编辑</i-button>
+                                    <i-button size="small" type="ghost" @click.native="remove(${index})">删除</i-button>`;
                         },
                         title: '操作',
+                        width: 180,
                     },
                 ],
                 brandData: [
@@ -104,6 +114,9 @@
                 self.$router.push({
                     path: 'brand/add',
                 });
+            },
+            remove(index) {
+                this.brandData.splice(index, 1);
             },
         },
     };

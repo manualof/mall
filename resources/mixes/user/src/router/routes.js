@@ -29,6 +29,7 @@ import Integral from '../components/personnal-center/Integral';
 import AccountSecurity from '../components/personnal-center/AccountSecurity';
 import ShippingAddress from '../components/personnal-center/ShippingAddress';
 import CollectStore from '../components/personnal-center/CollectStore';
+import SelaesReturn from '../components/personnal-center/SelaesReturn';
 
 import ShoppingProcess from '../components/ShoppingProcess';
 import ShopProcess from '../components/ShoppingProcess/ShopProcess';
@@ -45,6 +46,7 @@ import ContactUs from '../components/ShoppingProcess/ContactUs';
 import Cooperation from '../components/ShoppingProcess/Cooperation';
 
 import Refund from '../components/Refund';
+import ReturnOfGoods from '../components/ReturnOfGoods';
 
 export default [
     {
@@ -112,6 +114,11 @@ export default [
                         name: 'collect-store',
                         component: CollectStore,
                     },
+                    {
+                        path: 'selaes-return',
+                        name: 'selaes-return',
+                        component: SelaesReturn,
+                    },
                 ],
             },
             {
@@ -148,6 +155,11 @@ export default [
                 path: 'refund',
                 name: 'refund',
                 component: Refund,
+            },
+            {
+                path: 'return-of-goods',
+                name: 'return-of-goods',
+                component: ReturnOfGoods,
             },
             {
                 path: 'classification',

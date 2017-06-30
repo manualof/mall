@@ -86,36 +86,29 @@
             addData() {
                 const self = this;
                 self.$router.push({
-                    path: 'category/add',
+                    path: 'look/add',
                 });
             },
             addSubordinate() {
                 const self = this;
                 self.$router.push({
-                    path: 'category/add/under',
+                    path: 'look/add/under',
                 });
             },
             editType() {
                 const self = this;
                 self.$router.push({
-                    path: 'category/edit',
+                    path: 'look/edit',
                 });
             },
-            editTypeNav() {
+            goBack() {
                 const self = this;
-                self.$router.push({
-                    path: 'category/edit/nav',
-                });
-            },
-            exportData() {
-                this.$refs.goodTable.exportCsv({
-                    filename: '商品分类数据',
-                });
+                self.$router.go(-1);
             },
             lookSubordinate() {
                 const self = this;
                 self.$router.push({
-                    path: 'category/look',
+                    path: 'look/under',
                 });
             },
             remove(index) {
@@ -126,34 +119,32 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="goods-category">
-            <tabs value="name1">
-                <tab-pane label="分类管理" name="name1">
-                    <card :bordered="false">
-                        <div class="prompt-box">
-                            <p>提示</p>
-                            <p>当店主添加商品时可选择商品分类，用户可根据分类查询商品列表</p>
-                            <p>对分类做任何更改后，都需要到 站点设置>清理缓存 清理商品分类，新的设置才会生效</p>
-                            <p>"商品展示"为在商品列表页的展示方式</p>
-                            <p>"SKU"：以某一SKU分别展示,例如,商品列表页同款商品分别展示不同颜色</p>
-                            <p>"SPU"：每个SPU只展示一个SKU,默认销量最大且有库存的SKU</p>
-                        </div>
-                        <div class="store-body">
-                            <div class="store-body-header">
-                                <i-button @click.native="addData" type="ghost">+新增数据</i-button>
-                                <i-button @click="exportData" type="ghost">导出数据</i-button>
-                                <i-button @click="deleteData" type="ghost">批量删除</i-button>
-                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                            </div>
-                            <i-table ref="goodTable" highlight-row :context="self" class="shop-table"
-                                     :columns="goodColumns" :data="classificationData"></i-table>
-                        </div>
-                        <div class="page">
-                            <page :total="100" show-elevator></page>
-                        </div>
-                    </card>
-                </tab-pane>
-            </tabs>
+        <div class="goods-category-look">
+            <div class="edit-link-title">
+                <i-button type="text" @click.native="goBack">
+                    <icon type="chevron-left"></icon>
+                </i-button>
+                <span>分类管理—"珠宝手表"的下级列表(二级)</span>
+            </div>
+            <card :bordered="false">
+                <div class="prompt-box">
+                    <p>提示</p>
+                    <p>当店主添加商品时可选择商品分类，用户可根据分类查询商品列表</p>
+                    <p>对分类做任何更改后，都需要到 站点设置>清理缓存 清理商品分类，新的设置才会生效</p>
+                </div>
+                <div class="store-body">
+                    <div class="store-body-header">
+                        <i-button @click.native="addData" type="ghost">+新增数据</i-button>
+                        <i-button @click="deleteData" type="ghost">批量删除</i-button>
+                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                    </div>
+                    <i-table ref="goodTable" highlight-row :context="self" class="shop-table"
+                             :columns="goodColumns" :data="classificationData"></i-table>
+                </div>
+                <div class="page">
+                    <page :total="100" show-elevator></page>
+                </div>
+            </card>
         </div>
     </div>
 </template>
