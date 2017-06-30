@@ -62,16 +62,10 @@
                         align: 'center',
                         key: 'action',
                         render(row, column, index) {
-                            return `<dropdown>
-                                    <i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
-                                    <dropdown-menu slot="list">
-                                    <dropdown-item @click.native="editType">编辑分类信息</dropdown-item>
-                                    <dropdown-item @click.native="addSubordinate">新增下级分类</dropdown-item>
-                                    <dropdown-item @click.native="lookSubordinate">查看下级分类</dropdown-item>
-                                    </dropdown-menu>
-                                    </dropdown>
-                                    <i-button class="delete-ad" @click.native="remove(${index})"
-                                    type="ghost">删除</i-button>`;
+                            return `<i-button class="delete-ad" @click.native="remove(${index})"
+                                    size="small" type="ghost">删除</i-button>
+                                    <i-button @click.native="edit"
+                                    size="small" type="ghost">编辑</i-button>`;
                         },
                         title: '操作',
                         width: 200,
@@ -86,30 +80,18 @@
             addData() {
                 const self = this;
                 self.$router.push({
-                    path: 'look/add',
+                    path: 'under/add',
                 });
             },
-            addSubordinate() {
+            edit() {
                 const self = this;
                 self.$router.push({
-                    path: 'look/add/under',
-                });
-            },
-            editType() {
-                const self = this;
-                self.$router.push({
-                    path: 'look/edit',
+                    path: 'under/edit',
                 });
             },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
-            },
-            lookSubordinate() {
-                const self = this;
-                self.$router.push({
-                    path: 'look/under',
-                });
             },
             remove(index) {
                 this.classificationData.splice(index, 1);
@@ -119,12 +101,12 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="goods-category-look">
+        <div class="goods-category-look-under">
             <div class="edit-link-title">
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
-                <span>分类管理—"珠宝手表"的下级列表(二级)</span>
+                <span>分类管理—"珠宝手表-时尚饰品"的下级列表(三级)</span>
             </div>
             <card :bordered="false">
                 <div class="prompt-box">
