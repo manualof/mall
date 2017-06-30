@@ -17,6 +17,7 @@ import GoodsBrandEdit from '../pages/GoodsBrandEdit.vue';
 import GoodsCategory from '../pages/GoodsCategory.vue';
 import GoodsCategoryEdit from '../pages/GoodsCategoryEdit.vue';
 import GoodsCategoryAdd from '../pages/GoodsCategoryAdd.vue';
+import GoodsCategoryAddUnder from '../pages/GoodsCategoryAddUnder.vue';
 import GoodsCategoryEditNav from '../pages/GoodsCategoryEditNav.vue';
 import GoodsLibrary from '../pages/GoodsLibrary.vue';
 import GoodsLibraryEdit from '../pages/GoodsLibraryEdit.vue';
@@ -170,6 +171,26 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsCategoryEdit,
+                    path: 'goods/category/edit',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsCategoryAdd,
+                    path: 'goods/category/add',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsCategoryAddUnder,
+                    path: 'goods/category/add/under',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsCategoryEditNav,
+                    path: 'goods/category/edit/nav',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
                     component: GoodsBrand,
                     path: 'goods/brand',
                 },
@@ -182,21 +203,6 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: GoodsBrandEdit,
                     path: 'goods/brand/edit',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryEdit,
-                    path: 'goods/category/edit',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryAdd,
-                    path: 'goods/category/add',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryEditNav,
-                    path: 'goods/category/edit/nav',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

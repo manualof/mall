@@ -66,7 +66,7 @@
                                     <i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
                                     <dropdown-menu slot="list">
                                     <dropdown-item @click.native="editType">编辑分类信息</dropdown-item>
-                                    <dropdown-item>新增下级分类</dropdown-item>
+                                    <dropdown-item @click.native="addSubordinate">新增下级分类</dropdown-item>
                                     <dropdown-item>查看下级分类</dropdown-item>
                                     </dropdown-menu>
                                     </dropdown>
@@ -87,6 +87,12 @@
                 const self = this;
                 self.$router.push({
                     path: 'category/add',
+                });
+            },
+            addSubordinate() {
+                const self = this;
+                self.$router.push({
+                    path: 'category/add/under',
                 });
             },
             editType() {
