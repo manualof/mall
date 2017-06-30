@@ -44,7 +44,7 @@ import AboutUs from '../components/ShoppingProcess/AboutUs';
 import ContactUs from '../components/ShoppingProcess/ContactUs';
 import Cooperation from '../components/ShoppingProcess/Cooperation';
 
-import Refund from '../components/Refund.vue'
+import Refund from '../components/Refund';
 
 export default [
     {

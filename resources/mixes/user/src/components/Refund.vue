@@ -64,6 +64,7 @@
 <script>
     import EndTimer from './extend/Timer';
     import img from '../assets/images/b1.jpg';
+
     export default{
         components: {
             EndTimer,
@@ -85,8 +86,8 @@
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
                 status: 2,
-                message : '已超时',
-                endTime : '2018-10-08 10:06:00',
+                message: '已超时',
+                endTime: '2018-10-08 10:06:00',
                 imgsrc: img,
                 onOff: true,
             };
