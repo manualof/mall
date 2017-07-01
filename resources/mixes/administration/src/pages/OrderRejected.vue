@@ -397,6 +397,12 @@
                     path: 'rejected/look',
                 });
             },
+            recordHandel() {
+                const self = this;
+                self.$router.push({
+                    path: 'rejected/handel',
+                });
+            },
             recordRejectLook() {
                 const self = this;
                 self.$router.push({
