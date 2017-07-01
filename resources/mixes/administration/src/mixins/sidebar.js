@@ -48,10 +48,6 @@ export default function (injection) {
                     path: '/mall/store/dynamics',
                     title: '店铺动态',
                 },
-                {
-                    path: '/mall/store/postal',
-                    title: '包邮',
-                },
             ],
             icon: 'plus',
             title: '店铺',
