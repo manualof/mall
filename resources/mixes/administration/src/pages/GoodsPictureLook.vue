@@ -102,14 +102,16 @@
                             :indeterminate="indeterminate"
                             :value="checkAll"
                             @click.prevent.native="handleCheckAll">全选</checkbox>
-                    <i-button type="ghost" @click.native="delete">删除</i-button>
+                    <i-button class="delete-btn" type="ghost" @click.native="delete">删除</i-button>
                 </div>
                 <checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
                     <checkbox :label="item" v-for="(item, index) in pictureList">
-                        <img :src="item.img" alt="">
-                        <p>{{ item.name}}</p>
+                        <div class="img">
+                            <img :src="item.img" alt="">
+                        </div>
+                        <p class="first-param">{{ item.name}}</p>
                         <p class="tip">{{ item.uploadTime}}</p>
-                        <p class="tip">{{ item.size}}</p>
+                        <p class="tip last-param">{{ item.size}}</p>
                     </checkbox>
                 </checkbox-group>
                 <div class="page">
