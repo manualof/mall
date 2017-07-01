@@ -63,7 +63,7 @@
                         key: 'action',
                         render(row, column, index) {
                             return `<dropdown>
-                                    <i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
+                                    <i-button size="small" type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
                                     <dropdown-menu slot="list">
                                     <dropdown-item @click.native="editType">编辑分类信息</dropdown-item>
                                     <dropdown-item @click.native="addSubordinate">新增下级分类</dropdown-item>
@@ -71,7 +71,7 @@
                                     </dropdown-menu>
                                     </dropdown>
                                     <i-button class="delete-ad" @click.native="remove(${index})"
-                                    type="ghost">删除</i-button>`;
+                                    size="small" type="ghost">删除</i-button>`;
                         },
                         title: '操作',
                         width: 200,

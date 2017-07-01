@@ -89,12 +89,12 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="goods-picture-look">
+        <div class="goods-picture-look-all">
             <div class="edit-link-title">
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
-                <span>图片管理—查看</span>
+                <span>图片管理—全部图片</span>
             </div>
             <card :bordered="false">
                 <div class="picture-select">

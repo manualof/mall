@@ -19,10 +19,6 @@ export default function (injection) {
                     title: '品牌管理',
                 },
                 {
-                    path: '/mall/goods/type',
-                    title: '类型管理',
-                },
-                {
                     path: '/mall/goods/standard',
                     title: '规格管理',
                 },
@@ -52,10 +48,6 @@ export default function (injection) {
                     path: '/mall/store/dynamics',
                     title: '店铺动态',
                 },
-                {
-                    path: '/mall/store/postal',
-                    title: '包邮',
-                },
             ],
             icon: 'plus',
             title: '店铺',
@@ -77,10 +69,6 @@ export default function (injection) {
                 {
                     path: '/mall/order/evaluation',
                     title: '评价管理',
-                },
-                {
-                    path: '/mall/order/complain',
-                    title: '投诉管理',
                 },
             ],
             icon: 'plus',

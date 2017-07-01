@@ -25,13 +25,13 @@ import GoodsCategoryLookEdit from '../pages/GoodsCategoryLookEdit.vue';
 import GoodsCategoryLookUnder from '../pages/GoodsCategoryLookUnder.vue';
 import GoodsCategoryLookUnderAdd from '../pages/GoodsCategoryLookUnderAdd.vue';
 import GoodsCategoryLookUnderEdit from '../pages/GoodsCategoryLookUnderEdit.vue';
-import GoodsCategoryEditNav from '../pages/GoodsCategoryEditNav.vue';
 import GoodsLibrary from '../pages/GoodsLibrary.vue';
 import GoodsLibraryEdit from '../pages/GoodsLibraryEdit.vue';
 import GoodsLibraryAdd from '../pages/GoodsLibraryAdd.vue';
 import GoodsLibraryEditCategory from '../pages/GoodsLibraryEditCategory.vue';
 import GoodsPicture from '../pages/GoodsPicture.vue';
 import GoodsPictureLook from '../pages/GoodsPictureLook.vue';
+import GoodsPictureLookAll from '../pages/GoodsPictureLookAll.vue';
 import GoodsStandard from '../pages/GoodsStandard.vue';
 import GoodsStandardAdd from '../pages/GoodsStandardAdd.vue';
 import GoodsStandardEdit from '../pages/GoodsStandardEdit.vue';
@@ -50,12 +50,16 @@ import OrderView from '../pages/OrderView.vue';
 import OrderComplain from '../pages/OrderComplain.vue';
 import OrderEvaluation from '../pages/OrderEvaluation.vue';
 import OrderRefund from '../pages/OrderRefund.vue';
+import OrderRefundAllLook from '../pages/OrderRefundAllLook.vue';
+import OrderRefundAllHandel from '../pages/OrderRefundAllHandel.vue';
 import OrderRefundProcess from '../pages/OrderRefundProcess.vue';
 import OrderRefundReedit from '../pages/OrderRefundReedit.vue';
 import OrderRefundAdd from '../pages/OrderRefundAdd.vue';
 import OrderRejected from '../pages/OrderRejected.vue';
 import OrderRejectedLook from '../pages/OrderRejectedLook.vue';
+import OrderRejectedLookReject from '../pages/OrderRejectedLookReject.vue';
 import OrderRejectedHandel from '../pages/OrderRejectedHandel.vue';
+import OrderRejectedAllHandel from '../pages/OrderRejectedAllHandel.vue';
 import Statistics from '../pages/Statistics.vue';
 import StatisticsAftersales from '../pages/StatisticsAftersales.vue';
 import StatisticsAnalysis from '../pages/StatisticsAnalysis.vue';
@@ -64,15 +68,17 @@ import StatisticsMember from '../pages/StatisticsMember.vue';
 import StatisticsSales from '../pages/StatisticsSales.vue';
 import StatisticsStore from '../pages/StatisticsStore.vue';
 import Store from '../pages/Store.vue';
+import StoreEdit from '../pages/StoreEdit.vue';
+import StoreLook from '../pages/StoreLook.vue';
+import StoreLookEdit from '../pages/StoreLookEdit.vue';
 import StoreCategory from '../pages/StoreCategory.vue';
 import StoreCategorySet from '../pages/StoreCategorySet.vue';
 import StoreCategoryAdd from '../pages/StoreCategoryAdd.vue';
-import StoreEdit from '../pages/StoreEdit.vue';
 import StoreDynamics from '../pages/StoreDynamics.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
 import StoreLevel from '../pages/StoreLevel.vue';
 import StoreLevelAdd from '../pages/StoreLevelAdd.vue';
-import StorePostal from '../pages/StorePostal.vue';
+import StoreLevelEdit from '../pages/StoreLevelEdit.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
 import SalesSpikesLook from '../pages/SalesSpikesLook.vue';
 import SalesSpike from '../pages/SalesSpike.vue';
@@ -228,11 +234,6 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryEditNav,
-                    path: 'goods/category/edit/nav',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
                     component: GoodsBrand,
                     path: 'goods/brand',
                 },
@@ -288,6 +289,11 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsPictureLookAll,
+                    path: 'goods/picture/look/all',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
                     component: Order,
                     path: 'order',
                 },
@@ -310,6 +316,16 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: OrderRefund,
                     path: 'order/refund',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRefundAllLook,
+                    path: 'order/refund/all/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRefundAllHandel,
+                    path: 'order/refund/all/handel',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -338,8 +354,18 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRejectedLookReject,
+                    path: 'order/rejected/look/reject',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
                     component: OrderRejectedHandel,
                     path: 'order/rejected/handel',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRejectedAllHandel,
+                    path: 'order/rejected/all/handel',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -413,6 +439,16 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
+                    component: StoreLook,
+                    path: 'store/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StoreLookEdit,
+                    path: 'store/look/edit',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
                     component: StoreEdit,
                     path: 'store/edit',
                 },
@@ -448,8 +484,8 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StorePostal,
-                    path: 'store/postal',
+                    component: StoreLevelEdit,
+                    path: 'store/level/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

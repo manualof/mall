@@ -59,8 +59,26 @@
                 </span>
             </div>
         </div>
-
-        <search-list></search-list>
+        <div class="search-list container">
+            <div class="product" v-for="product in data.productList">
+                <router-link to="/">
+                    <img :src="product.img"/>
+                    <p>
+                        <em>
+                            <b>￥</b>
+                            {{ product.price }}
+                        </em>
+                        <s>
+                            <b>￥</b>
+                            {{ product.old_price }}
+                        </s>
+                        <span>{{ product.pre_price }}元/片</span>
+                    </p>
+                    <p class="product-intro">{{ product.intro }}</p>
+                    <p class="sales">本月销量<span> {{ product.saleNum }} </span>件</p>
+                </router-link>
+            </div>
+        </div>
         <need-browse></need-browse>
         <everyone-browse></everyone-browse>
         <myself-browse></myself-browse>
@@ -68,7 +86,7 @@
     </div>
 </template>
 <script>
-
+    import product from '../assets/images/thephone.png';
     import SearchList from './dashboard/SearchList';
     import NeedBrowse from './dashboard/NeedBrowse';
     import EveryoneBrowse from './dashboard/EveryoneBrowse';
@@ -82,6 +100,98 @@
                     brands: ['佳尔乐', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适', 'HUGGIES/好奇', 'Pampers/帮宝适'],
                     classifications: ['纸尿裤', '拉拉裤', '尿片', '个人洗护'],
                     made_address: ['中国', '日本', '美国', '英国'],
+                    productList: [
+                        {
+                            id: '',
+                            img: product,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            hot: true,
+                            old_price: 46.88,
+                            price: 3299.00,
+                            pre_price: 1.21,
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            hot: false,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            old_price: 46.88,
+                            price: 3299.00,
+                            pre_price: 1.21,
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            hot: false,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            old_price: 46.88,
+                            price: 3299.00,
+                            pre_price: 1.21,
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            hot: false,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            old_price: 46.88,
+                            price: 3299.00,
+                            pre_price: 1.21,
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            hot: false,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            old_price: 46.88,
+                            price: 3299.00,
+                            pre_price: 1.21,
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            hot: false,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            old_price: 46.88,
+                            price: 3299.00,
+                            pre_price: 1.21,
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            hot: false,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            old_price: 46.88,
+                            price: 3299.00,
+                            pre_price: 1.21,
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            hot: false,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            old_price: 46.88,
+                            price: 3299.00,
+                            pre_price: 1.21,
+                            saleNum: 3324,
+                        },
+                        {
+                            id: '',
+                            img: product,
+                            hot: false,
+                            intro: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                            old_price: 46.88,
+                            price: 3299.00,
+                            pre_price: 1.21,
+                            saleNum: 3324,
+                        },
+                    ],
                     sizes: ['M', 'L', 'XL', 'XXL'],
                 },
             };
