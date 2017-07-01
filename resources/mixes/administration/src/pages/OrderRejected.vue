@@ -66,43 +66,43 @@
                     },
                     {
                         align: 'center',
-                        key: 'companyPhone',
+                        key: 'companyNum',
                         title: '订单编号',
                         width: 150,
                     },
                     {
                         align: 'center',
-                        key: 'companyPhone',
+                        key: 'handel',
                         title: '商家处理',
                         width: 150,
                     },
                     {
                         align: 'center',
-                        key: 'companyPhone',
+                        key: 'handelMessage',
                         title: '商家处理备注',
                         width: 150,
                     },
                     {
                         align: 'center',
-                        key: 'companyPhone',
+                        key: 'platform',
                         title: '平台处理',
                         width: 150,
                     },
                     {
                         align: 'center',
-                        key: 'companyPhone',
+                        key: 'platformMessage',
                         title: '平台处理备注',
                         width: 150,
                     },
                     {
                         align: 'center',
-                        key: 'companyPhone',
+                        key: 'buyerId',
                         title: '买家ID',
                         width: 150,
                     },
                     {
                         align: 'center',
-                        key: 'companyPhone',
+                        key: 'companyId',
                         title: '商家ID',
                         width: 150,
                     },
@@ -111,7 +111,12 @@
                         fixed: 'right',
                         key: 'action',
                         render() {
-                            return '<i-button @click.native="recordLook" size="small" type="ghost">查看</i-button>';
+                            return `<i-button @click.native="recordLook" size="small"
+                                    v-if="row.handel === '同意'" type="ghost">查看</i-button>
+                                    <i-button @click.native="recordRejectLook" size="small"
+                                     v-if="row.handel === '不同意'" type="ghost">查看</i-button>
+                                    <i-button @click.native="handelAll" size="small"
+                                    v-if="row.handel === '待审核'" type="ghost">处理</i-button>`;
                         },
                         title: '操作',
                         width: 140,
@@ -120,50 +125,78 @@
                 allRecordsData: [
                     {
                         applicationStatus: '等待审核',
+                        buyerId: 22,
+                        companyId: 3434,
                         companyName: '本初网络',
+                        companyNum: '4535',
                         companyAddress: '陕西西安',
                         companyPhone: '029-5554544',
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        handel: '同意',
+                        handelMessage: '',
                         memberAccount: '465465445',
                         memberID: '65454654546',
+                        platform: '',
+                        platformMessage: '',
                         shopLength: '3年',
                     },
                     {
                         applicationStatus: '等待审核',
+                        buyerId: 22,
+                        companyId: 3434,
                         companyName: '本初网络',
+                        companyNum: '4535',
                         companyAddress: '陕西西安',
                         companyPhone: '029-5554544',
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        handel: '待审核',
+                        handelMessage: '',
                         memberAccount: '465465445',
                         memberID: '65454654546',
+                        platform: '',
+                        platformMessage: '',
                         shopLength: '3年',
                     },
                     {
                         applicationStatus: '等待审核',
+                        buyerId: 22,
+                        companyId: 3434,
                         companyName: '本初网络',
+                        companyNum: '4535',
                         companyAddress: '陕西西安',
                         companyPhone: '029-5554544',
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        handel: '同意',
+                        handelMessage: '',
                         memberAccount: '465465445',
                         memberID: '65454654546',
+                        platform: '',
+                        platformMessage: '',
                         shopLength: '3年',
                     },
                     {
                         applicationStatus: '等待审核',
+                        buyerId: 22,
+                        companyId: 3434,
                         companyName: '本初网络',
+                        companyNum: '4535',
                         companyAddress: '陕西西安',
                         companyPhone: '029-5554544',
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        handel: '不同意',
+                        handelMessage: '',
                         memberAccount: '465465445',
                         memberID: '65454654546',
+                        platform: '',
+                        platformMessage: '',
                         shopLength: '3年',
                     },
                 ],
@@ -322,16 +355,24 @@
                 searchCategory: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '店铺名称',
+                        label: '退单编号',
+                        value: '1',
                     },
                     {
                         label: '商品名称',
-                        value: '商品名称',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '买家账号',
+                        value: '3',
+                    },
+                    {
+                        label: '店铺名称',
+                        value: '4',
+                    },
+                    {
+                        label: '订单编号',
+                        value: '5',
                     },
                 ],
                 searchWord: '',
@@ -344,16 +385,22 @@
                     filename: '退货管理数据',
                 });
             },
-            recordHandel() {
+            handelAll() {
                 const self = this;
                 self.$router.push({
-                    path: 'rejected/handel',
+                    path: 'rejected/all/handel',
                 });
             },
             recordLook() {
                 const self = this;
                 self.$router.push({
                     path: 'rejected/look',
+                });
+            },
+            recordRejectLook() {
+                const self = this;
+                self.$router.push({
+                    path: 'rejected/look/reject',
                 });
             },
             remove(index) {
@@ -370,7 +417,7 @@
                   <card :bordered="false">
                      <div class="prompt-box">
                          <p>提示</p>
-                         <p>如果当前时间超过店铺有效期或店铺处于关闭状态，前台将不能继续浏览该店铺，但是店主仍然可以编辑该店铺</p>
+                         <p>卖家提交申请，商家同意并经平台确认后，退款金额以买家付款方式返回给买家</p>
                      </div>
                      <div class="store-body">
                          <div class="store-body-header">

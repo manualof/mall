@@ -21,6 +21,7 @@
                     refundDescription: 'mm',
                     refundImg: '',
                     refundMoney: '99.00',
+                    refundNum: 2,
                     refundReason: '不要',
                     remarks: '',
                 },
@@ -93,6 +94,13 @@
                                         <i-col span="18">
                                             <form-item label="退货原因">
                                                 {{returnDetail.refundReason}}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="18">
+                                            <form-item label="退货数量">
+                                                {{returnDetail.refundNum}}
                                             </form-item>
                                         </i-col>
                                     </row>
