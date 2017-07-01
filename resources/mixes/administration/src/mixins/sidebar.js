@@ -70,10 +70,6 @@ export default function (injection) {
                     path: '/mall/order/evaluation',
                     title: '评价管理',
                 },
-                {
-                    path: '/mall/order/complain',
-                    title: '投诉管理',
-                },
             ],
             icon: 'plus',
             title: '订单',
