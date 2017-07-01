@@ -64,10 +64,12 @@ import StatisticsMember from '../pages/StatisticsMember.vue';
 import StatisticsSales from '../pages/StatisticsSales.vue';
 import StatisticsStore from '../pages/StatisticsStore.vue';
 import Store from '../pages/Store.vue';
+import StoreEdit from '../pages/StoreEdit.vue';
+import StoreLook from '../pages/StoreLook.vue';
+import StoreLookEdit from '../pages/StoreLookEdit.vue';
 import StoreCategory from '../pages/StoreCategory.vue';
 import StoreCategorySet from '../pages/StoreCategorySet.vue';
 import StoreCategoryAdd from '../pages/StoreCategoryAdd.vue';
-import StoreEdit from '../pages/StoreEdit.vue';
 import StoreDynamics from '../pages/StoreDynamics.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
 import StoreLevel from '../pages/StoreLevel.vue';
@@ -410,6 +412,16 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: Store,
                     path: 'store',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StoreLook,
+                    path: 'store/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StoreLookEdit,
+                    path: 'store/look/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
