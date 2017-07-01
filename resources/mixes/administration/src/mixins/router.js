@@ -50,6 +50,8 @@ import OrderView from '../pages/OrderView.vue';
 import OrderComplain from '../pages/OrderComplain.vue';
 import OrderEvaluation from '../pages/OrderEvaluation.vue';
 import OrderRefund from '../pages/OrderRefund.vue';
+import OrderRefundAllLook from '../pages/OrderRefundAllLook.vue';
+import OrderRefundAllHandel from '../pages/OrderRefundAllHandel.vue';
 import OrderRefundProcess from '../pages/OrderRefundProcess.vue';
 import OrderRefundReedit from '../pages/OrderRefundReedit.vue';
 import OrderRefundAdd from '../pages/OrderRefundAdd.vue';
@@ -312,6 +314,16 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: OrderRefund,
                     path: 'order/refund',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRefundAllLook,
+                    path: 'order/refund/all/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRefundAllHandel,
+                    path: 'order/refund/all/handel',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

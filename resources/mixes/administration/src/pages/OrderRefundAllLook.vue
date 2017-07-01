@@ -24,6 +24,10 @@
                     refundMoney: '99.00',
                     refundReason: '不要',
                     remarks: '',
+                    showAccount: '0.00',
+                    showMoney: '99.00',
+                    showMount: '0.00',
+                    showStyle: '在线支付',
                 },
                 ruleValidate: {
                     remarks: [
@@ -60,13 +64,13 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="order-refund-process">
+        <div class="order-refund-all-look">
             <div class="store-refund-process">
                 <div class="edit-link-title">
                     <i-button type="text" @click.native="goBack">
                         <icon type="chevron-left"></icon>
                     </i-button>
-                    <span>退款管理—处理</span>
+                    <span>所有记录—查看</span>
                 </div>
                 <div class="refund-process-content store-information">
                     <card :bordered="false">
@@ -145,54 +149,59 @@
                                 </div>
                             </div>
                             <div class="order-information">
-                                <h5>订单支付信息</h5>
+                                <h5>平台退款审核</h5>
                                 <div class="order-pay-content refund-module">
                                     <row>
                                         <i-col span="18">
-                                            <form-item label="支付方式">
+                                            <form-item label="平台确认">
                                                 {{refundDetail.payStyle}}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
-                                            <form-item label="订单总额">
+                                            <form-item label="处理备注">
                                                 ￥{{refundDetail.orderCounts}}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
-                                            <form-item label="在线支付金额">
+                                            <form-item label="处理时间">
                                                 ￥{{refundDetail.linePay}}
                                             </form-item>
                                         </i-col>
                                     </row>
                                 </div>
                             </div>
-                            <div class="refund-review">
-                                <h5>平台退款审核</h5>
-                                <div class="review-content refund-module">
+                            <div class="order-information">
+                                <h5>退款详细</h5>
+                                <div class="order-pay-content refund-module">
                                     <row>
                                         <i-col span="18">
-                                            <form-item label="备注信息" prop="remarks" class="remark-input">
-                                                <i-input v-model="refundDetail.remarks" type="textarea"
-                                                     :autosize="{minRows: 3,maxRows: 5}"></i-input>
-                                                <span class="tip">
-                                                    系统默认退款到"站内余额"，如果"在线退款"到原支付账号，
-                                                    建议在备注里说明，方便核对。
-                                                </span>
+                                            <form-item label="支付方式">
+                                                {{refundDetail.showStyle}}
                                             </form-item>
-                                            <p></p>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
-                                            <form-item label="">
-                                                <i-button :loading="loading" type="primary" @click.native="submit">
-                                                    <span v-if="!loading">确认提交</span>
-                                                    <span v-else>正在提交…</span>
-                                                </i-button>
+                                            <form-item label="在线退款金额">
+                                                ￥{{refundDetail.showMoney}}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="18">
+                                            <form-item label="预存款金额">
+                                                ￥{{refundDetail.showAccount}}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="18">
+                                            <form-item label="充值卡金额">
+                                                ￥{{refundDetail.showMount}}
                                             </form-item>
                                         </i-col>
                                     </row>
