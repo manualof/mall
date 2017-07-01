@@ -10,20 +10,6 @@
         data() {
             return {
                 managementSearch: '',
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '订单编号',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
                 self: this,
                 typeColumns: [
                     {
@@ -32,26 +18,32 @@
                         width: 100,
                     },
                     {
+                        align: 'center',
                         key: 'level',
                         title: '级别',
                     },
                     {
+                        align: 'center',
                         key: 'levelName',
                         title: '等级名称',
                     },
                     {
+                        align: 'center',
                         key: 'goodsNum',
                         title: '可发布商品数',
                     },
                     {
+                        align: 'center',
                         key: 'pictureNum',
                         title: '可上传图片数',
                     },
                     {
+                        align: 'center',
                         key: 'charges',
                         title: '收费标准',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button type="ghost" class="delete-ad" @click.native="edit">编辑</i-button>
@@ -122,14 +114,10 @@
                     <card :bordered="false">
                         <div class="advertisement-action">
                             <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
-                            <i-button class="add-data" type="ghost" @click.native="deleteData">批量删除</i-button>
+                            <i-button type="ghost" @click.native="deleteData">批量删除</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                             <div class="goods-body-header-right">
-                                <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                    <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                        <i-option v-for="item in searchList"
-                                                  :value="item.value">{{ item.label }}</i-option>
-                                    </i-select>
+                                <i-input v-model="managementWord" placeholder="等级名称">
                                     <i-button slot="append" type="primary">搜索</i-button>
                                 </i-input>
                             </div>
