@@ -67,7 +67,7 @@
                     <i-button type="text" @click.native="goBack">
                         <icon type="chevron-left"></icon>
                     </i-button>
-                    <span>所有记录—处理</span>
+                    <span>退款记录—处理</span>
                 </div>
                 <div class="refund-process-content store-information">
                     <card :bordered="false">

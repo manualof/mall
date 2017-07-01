@@ -57,7 +57,9 @@ import OrderRefundReedit from '../pages/OrderRefundReedit.vue';
 import OrderRefundAdd from '../pages/OrderRefundAdd.vue';
 import OrderRejected from '../pages/OrderRejected.vue';
 import OrderRejectedLook from '../pages/OrderRejectedLook.vue';
+import OrderRejectedLookReject from '../pages/OrderRejectedLookReject.vue';
 import OrderRejectedHandel from '../pages/OrderRejectedHandel.vue';
+import OrderRejectedAllHandel from '../pages/OrderRejectedAllHandel.vue';
 import Statistics from '../pages/Statistics.vue';
 import StatisticsAftersales from '../pages/StatisticsAftersales.vue';
 import StatisticsAnalysis from '../pages/StatisticsAnalysis.vue';
@@ -352,8 +354,18 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRejectedLookReject,
+                    path: 'order/rejected/look/reject',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
                     component: OrderRejectedHandel,
                     path: 'order/rejected/handel',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRejectedAllHandel,
+                    path: 'order/rejected/all/handel',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
