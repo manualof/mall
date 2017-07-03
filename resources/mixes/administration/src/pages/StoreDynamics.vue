@@ -146,13 +146,11 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>当店主添加商品时可选择商品品牌，用户可根据品牌查询商品列表
-                                被推荐品牌，将在前台品牌推荐模块显示</p>
-                            <p>在品牌列表页面，品牌将按类别分组，即具有相同类别的品牌为一组，品牌类别与品牌分类无联系</p>
+                            <p>如果动态信息存在不合法内容您可以将其状态设置为屏蔽或者直接删除</p>
+                            <p>动态删除后其对应的评论也一并删除，请慎重</p>
                         </div>
                         <div class="brand-management">
-                            <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
-                            <i-button class="export-btn" @click="exportData" type="ghost">导出数据</i-button>
+                            <i-button class="add-data" type="ghost" @click.native="newAddData">全部评论</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                         </div>
                         <i-table :columns="brandColumns"
