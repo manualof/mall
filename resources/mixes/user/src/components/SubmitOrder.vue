@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="pay-method">
-                <h5 class="select-title">确认商品信息</h5>
+                <h5 class="select-title">支付方式</h5>
                 <div class="methods">
                     <label class="form-control-radio" v-for="method in methods">
                         <input type="radio" name="method">
@@ -54,8 +54,12 @@
                     </label>
                 </div>
             </div>
+            <div class="pay-method invoice-info">
+                <h5 class="select-title">发票信息</h5>
+                <p>不需要发票 <a>修改</a></p>
+            </div>
             <div class="ensure-information">
-                <p class="select-title">支付方式</p>
+                <p class="select-title">确认商品信息</p>
                 <div class="product-information" v-for="item in submitOrder.productList">
                     <p class="name">{{ item.shop }}</p>
                     <table width="100%">
