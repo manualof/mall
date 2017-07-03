@@ -8,8 +8,18 @@
             <div  v-for="(item, index) in goods" v-if="item.collector" class="col-sm-3">
                 <div>
                     <img :src="item.imgsrc" alt="">
-                    <div>
-
+                    <div class="goods-msg">
+                        <div class="price">
+                            <i>￥</i><span>{{ item.pricle }}</span>
+                            <span class="old-price">￥{{ item.oldprice }}</span>
+                        </div>
+                        <div class="goods-name">
+                            {{ item.name }}
+                        </div>
+                        <div class="xiaoliang">
+                            <div class="month-xiaoliang">本月销量 <b>{{ item.num }}</b>件</div>
+                            <div class="quxiao">取消收藏</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -24,7 +34,7 @@
             return {
                 goods: [
                     {
-                        name: '11',
+                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
                         imgsrc: image1,
                         pricle: 3299,
                         oldprice: 46.88,
@@ -32,7 +42,7 @@
                         collector: true,
                     },
                     {
-                        name: '11',
+                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
                         imgsrc: image1,
                         pricle: 3299,
                         oldprice: 46.88,
@@ -40,7 +50,7 @@
                         collector: true,
                     },
                     {
-                        name: '11',
+                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
                         imgsrc: image1,
                         pricle: 3299,
                         oldprice: 46.88,
@@ -48,7 +58,7 @@
                         collector: true,
                     },
                     {
-                        name: '11',
+                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
                         imgsrc: image1,
                         pricle: 3299,
                         oldprice: 46.88,
@@ -56,7 +66,7 @@
                         collector: true,
                     },
                     {
-                        name: '11',
+                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
                         imgsrc: image1,
                         pricle: 3299,
                         oldprice: 46.88,
@@ -64,7 +74,7 @@
                         collector: true,
                     },
                     {
-                        name: '11',
+                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
                         imgsrc: image1,
                         pricle: 3299,
                         oldprice: 46.88,
@@ -72,7 +82,7 @@
                         collector: true,
                     },
                     {
-                        name: '11',
+                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
                         imgsrc: image1,
                         pricle: 3299,
                         oldprice: 46.88,
