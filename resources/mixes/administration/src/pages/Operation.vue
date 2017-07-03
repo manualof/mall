@@ -9,20 +9,19 @@
         },
         data() {
             return {
-                btnStatus: true,
                 managementSearch: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '订单编号',
+                        label: '账单编号',
+                        value: '1',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
+                        label: '原账单编号',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '商家名称',
+                        value: '3',
                     },
                 ],
                 self: this,
@@ -100,9 +99,9 @@
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button class="delete-ad" @click.native="handel(${index})"
-                                    type="ghost" v-if="btnStatus === true">处理</i-button>
+                                    size="small" type="ghost" v-if="row.params === 1 || row.params === 4">处理</i-button>
                                     <i-button class="delete-ad" @click.native="look(${index})"
-                                    type="ghost" v-if="btnStatus === false">查看</i-button>`;
+                                    size="small" type="ghost" v-if="row.params === 2 || row.params === 3">查看</i-button>`;
                         },
                         title: '操作',
                         width: 150,
@@ -115,6 +114,7 @@
                         commission: '37.00',
                         distribution: '10.00',
                         freight: '12.00',
+                        params: 1,
                         refund: '0.00',
                         number: '01',
                         orderMoney: '999.00',
@@ -128,12 +128,13 @@
                         commission: '37.00',
                         distribution: '10.00',
                         freight: '12.00',
+                        params: 2,
                         refund: '0.00',
                         number: '01',
                         orderMoney: '999.00',
                         settlement: '865.00',
                         shopCosts: '30.00',
-                        status: '已出账',
+                        status: '商家已确认',
                     },
                     {
                         accountData: '2017-5-9',
@@ -141,12 +142,13 @@
                         commission: '37.00',
                         distribution: '10.00',
                         freight: '12.00',
+                        params: 3,
                         refund: '0.00',
                         number: '01',
                         orderMoney: '999.00',
                         settlement: '865.00',
                         shopCosts: '30.00',
-                        status: '已出账',
+                        status: '平台已审核',
                     },
                     {
                         accountData: '2017-5-9',
@@ -154,12 +156,13 @@
                         commission: '37.00',
                         distribution: '10.00',
                         freight: '12.00',
+                        params: 4,
                         refund: '0.00',
                         number: '01',
                         orderMoney: '999.00',
                         settlement: '865.00',
                         shopCosts: '30.00',
-                        status: '已出账',
+                        status: '结算完成',
                     },
                 ],
             };
@@ -177,7 +180,10 @@
                 });
             },
             look() {
-
+                const self = this;
+                self.$router.push({
+                    path: 'operation/settlement',
+                });
             },
             remove(index) {
                 this.typeData.splice(index, 1);

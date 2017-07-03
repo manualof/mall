@@ -12,16 +12,20 @@
                 managementSearch: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '订单编号',
+                        label: '订单号',
+                        value: '1',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
+                        label: '运单号',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '收货人',
+                        value: '3',
+                    },
+                    {
+                        label: '手机号',
+                        value: '4',
                     },
                 ],
                 self: this,
