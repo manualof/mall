@@ -17,7 +17,7 @@
                             {{ item.name }}
                         </div>
                         <div class="xiaoliang">
-                            <div class="month-xiaoliang">本月销量 <b>{{ item.num }}</b>件</div>
+                            <div class="month-xiaoliang">本月销量 <b>{{ item.num }} </b>件</div>
                             <div @click="quxiao(index)" class="quxiao">取消收藏</div>
                         </div>
                     </div>
