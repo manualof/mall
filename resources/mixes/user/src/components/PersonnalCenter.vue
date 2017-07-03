@@ -35,7 +35,7 @@
                     },
                     {
                         to: { name: 'collect-store' },
-                        text: '我的收藏',
+                        text: '店铺关注',
                     },
                     {
                         to: { name: 'account-security' },

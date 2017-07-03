@@ -1,44 +1,42 @@
 .submit-order {
-    border-bottom: 1px solid #d0d0d0;
     background-color: #fff;
+    border-bottom: 1px solid #d0d0d0;
     .select-address {
         .select-title {
             font-size: 18px;
-            padding-top: 20px;
             font-weight: 500;
+            padding-top: 20px;
         }
         .address-selected {
             .form-control-radio {
-                position: relative;
-                margin-right: 16px;
-                width: 100%;
                 margin-bottom: 10px;
+                margin-right: 16px;
+                position: relative;
+                width: 100%;
                 & > input {
-                    position: absolute;
-                    top: 0;
                     bottom: 0;
-                    left: 0;
-                    right: 0;
                     display: block;
+                    left: 0;
                     margin: 0;
                     padding: 0;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
                     visibility: hidden;
                 }
                 & > input + .address {
+                    border: solid 1px #d0d0d0;
                     font-weight: normal;
                     height: 160px;
-                    border: solid 1px #d0d0d0;
                     .address-detail {
                         width: 50%;
                     }
                 }
-
                 & > input:checked + .address {
                     border: solid 2px #de2634;
                 }
             }
         }
-
         .address {
             padding: 0 20px;
             p:first-child {
@@ -48,52 +46,48 @@
                     float: left;
                 }
                 i {
-                    float: right;
                     color: #999;
+                    float: right;
                 }
             }
         }
     }
-
     .select-btn {
-        width: 124px;
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
         border: solid 1px #d0d0d0;
         color: #444;
         display: block;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        width: 124px;
         &:hover {
             color: #de2634;
         }
     }
 }
-
 .submit-order .ensure-information {
     .select-title {
         font-size: 18px;
+        font-weight: 500;
         padding-top: 26px;
         margin-bottom: -4px;
-        font-weight: 500;
     }
-
     .order-submit {
-        width: 100%;
-        height: 232px;
         background-color: #f7f7f7;
         border: solid 1px #d0d0d0;
+        height: 232px;
         margin-top: 30px;
         padding-top: 34px;
         padding-right: 40px;
-
+        width: 100%;
         .order-submit-content {
             text-align: right;
             .name {
                 display: inline-block;
-                width: 140px;
+                float: right;
                 height: 30px;
                 line-height: 30px;
-                float: right;
+                width: 140px;
                 .integral {
                     float: right;
                     margin-left: 10px;
@@ -104,40 +98,36 @@
             }
             .order-price {
                 display: inline-block;
-                width: 130px;
+                float: right;
                 height: 30px;
                 line-height: 30px;
-                float: right;
+                width: 130px;
             }
             .price {
-                font-size: 18px;
                 color: #de2634;
+                font-size: 18px;
             }
-
         }
     }
 }
-
 .order-btn {
-    width: 140px;
+    background-color: #de2634;
+    border: 0 none;
+    color: #fff;
+    font-size: 16px;
     height: 42px;
     line-height: 42px;
     text-align: center;
-    background-color: #de2634;
-    font-size: 16px;
-    color: #fff;
-    border: 0 none;
     outline: none;
+    width: 140px;
     &:hover {
         color: #fff;
     }
 }
-
 .submit-btn {
     float: right;
     margin-top: 20px;
 }
-
 .product-information {
     .name {
         margin-top: 20px;
@@ -145,22 +135,21 @@
     table {
         border: solid 1px #d0d0d0;
         thead {
-            height: 40px;
             color: #999;
+            height: 40px;
             tr {
                 border-bottom: solid 1px #d0d0d0;
             }
             th {
                 height: 40px;
                 line-height: 40px;
-                text-align: center;
                 padding: 0 40px;
+                text-align: center;
                 &.th-information {
                     width: 490px;
                 }
             }
         }
-
         tbody {
             tr {
                 height: 72px;

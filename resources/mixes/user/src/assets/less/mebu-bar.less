@@ -1,19 +1,19 @@
 .menu {
     display: none;
     .menu-bar {
+        background-color: rgba(0, 0, 0, 0.6);
+        height: 480px;
         position: absolute;
         z-index: 99;
-        height: 480px;
-        background-color: rgba(0, 0, 0, 0.6);
         > li {
-            width: 182px;
             height: 40px;
+            width: 182px;
             span {
                 font-size: 14px;
             }
             .triangle {
-                padding-left: 35px;
                 font-size: 10px;
+                padding-left: 35px;
             }
             &:hover {
                 background-color: rgba(255, 255, 255, 1);
@@ -22,23 +22,22 @@
             &:hover > .menu-content {
                 display: block;
             }
-
         }
     }
     li .menu-content {
+        display: none;
+        left: 182px;
         position: absolute;
         top: 0;
-        left: 182px;
-        z-index: 99;
         width: 1010px;
-        display: none;
+        z-index: 99;
     }
     li .menu-box {
-        width: 710px;
-        height: 480px;
         background-color: #ffffff;
-        padding: 15px 32px 0 40px;
         color: #666666;
+        height: 480px;
+        padding: 15px 32px 0 40px;
+        width: 710px;
         .recommend {
             li {
                 float: left;
@@ -56,9 +55,9 @@
         }
         .content-list {
             h5 {
+                border-bottom: 1px solid #e5e5e5;
                 font-weight: 600;
                 line-height: 2.57;
-                border-bottom: 1px solid #e5e5e5;
                 margin-bottom: 0;
             }
             ul {
@@ -68,8 +67,8 @@
                     padding: 0;
                     width: auto;
                     a {
-                        font-size: 14px;
                         color: #666666;
+                        font-size: 14px;
                         &:hover {
                             color: #ff2342;
                         }
@@ -98,9 +97,9 @@
         ul {
             padding: 19px 20px;
             li {
-                width: 49%;
                 margin-right: 2px;
                 margin-bottom: 2px;
+                width: 49%;
                 &:nth-child(even) {
                     margin-right: 0;
                 }
@@ -129,6 +128,5 @@
             }
         }
     }
-
 }
 

@@ -4,20 +4,17 @@
     .container {
         padding-left: 0;
         padding-right: 0;
-
         .dashboard-sidebar {
-            width: 144px;
-            margin-right: 40px;
             color: #444;
             float: left;
-
+            margin-right: 40px;
+            width: 144px;
             .dashboard-brand {
+                border-bottom: 1px solid #e5e5e5;
                 font-size: 18px;
                 font-weight: 500;
                 padding: 35px 0 18px;
-                border-bottom: 1px solid #e5e5e5;
             }
-
             .dashboard-sidebar-nav {
                 li {
                     padding-top: 22px;
@@ -28,14 +25,14 @@
                             color: #de2634;
                         }
                         &.active:before {
+                            background-color: #de2634;
                             content: '';
                             display: inline-block;
-                            width: 2px;
                             height: 18px;
-                            background-color: #de2634;
-                            position: absolute;
                             left: 0;
+                            position: absolute;
                             top: 0;
+                            width: 2px;
                         }
                     }
                     &:nth-child(4) {
@@ -45,11 +42,9 @@
                 }
             }
         }
-
         .dashboard-view {
-            width: 1006px;
             float: left;
+            width: 1006px;
         }
     }
-
 }

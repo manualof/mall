@@ -1,28 +1,25 @@
 .cart-settlement {
     background-color: #fff;
     border-bottom: 1px solid #d0d0d0;
-
     .select-title {
         font-size: 18px;
-        padding-top: 34px;
         font-weight: 500;
+        padding-top: 34px;
         margin-bottom: 16px;
     }
-
     table {
         font-size: 12px;
         .select-all {
             margin-top: -7px;
         }
     }
-
     .product-information {
         .freight {
             .name {
                 float: left;
-                width: 400px;
                 margin-bottom: 6px;
                 margin-top: 30px;
+                width: 400px;
                 span {
                     float: left;
                     margin-left: 20px;
@@ -33,39 +30,37 @@
             }
             .money {
                 float: right;
-                padding-right: 20px;
+                font-size: 12px;
                 margin-top: 30px;
+                padding-right: 20px;
             }
         }
-
         .offer-tr {
             background-color: #fff;
+            color: #666;
             height: 32px;
             line-height: 32px;
             text-align: center;
-            color: #666;
-
         }
         .offer {
-            width: 100%;
             height: 32px;
             text-align: left;
             padding-left: 20px;
+            width: 100%;
             span {
                 border: 1px solid #ff2342;
-                padding: 0 6px;
                 color: #ff2342;
                 margin-right: 10px;
+                padding: 0 6px;
             }
         }
-
         thead {
             background-color: #f7f7f7;
             th.select {
+                color: #999999;
                 padding-right: 2px;
                 padding-top: 15px;
                 padding-left: 12px;
-                color: #999999;
             }
             th.select-all {
                 padding: 0;
@@ -73,14 +68,13 @@
                 width: 80px;
             }
         }
-
         tbody {
-            height: 120px;
             border-top: 1px solid #d0d0d0;
+            height: 120px;
             tr {
+                border-bottom: 1px solid #d0d0d0;
                 height: 120px;
                 text-align: center;
-                border-bottom: 1px solid #d0d0d0;
                 td {
                     padding: 0 10px;
                     &.td-select {
@@ -88,19 +82,19 @@
                         width: 20px;
                     }
                     &:nth-child(n+3){
-                        vertical-align: top;
                         padding-top: 20px;
+                        vertical-align: top;
                     }
                     &.td-information {
-                        width: 490px;
-                        text-align: left;
                         padding-left: 20px;
                         padding-right: 0;
+                        text-align: left;
+                        width: 490px;
                         a {
                             display: block;
                             overflow: hidden;
-                            white-space: nowrap;
                             text-overflow: ellipsis;
+                            white-space: nowrap;
                         }
                         p {
                             &:last-child {
@@ -115,36 +109,34 @@
                     &.td-img {
                         padding: 0;
                         img {
-                            width: 80px;
                             height: 80px;
+                            width: 80px;
                         }
                     }
                     &.delete:hover {
                         cursor: pointer;
                         color: #ff2342;
                     }
-
                 }
                 td .num-input {
                     span {
+                        cursor: pointer;
                         float: left;
                         height: 24px;
-                        cursor: pointer;
                         &.num {
-                            width: 20px;
                             border: 1px solid #d0d0d0;
+                            width: 20px;
                         }
                         &.input {
-
                             input {
-                                width: 82px;
                                 border: 0 none;
-                                outline: none;
-                                border-top: 1px solid #d0d0d0;
                                 border-bottom: 1px solid #d0d0d0;
+                                border-top: 1px solid #d0d0d0;
                                 height: 24px;
                                 line-height: 24px;
+                                outline: none;
                                 text-align: center;
+                                width: 82px;
                             }
                         }
                     }
@@ -152,7 +144,6 @@
             }
         }
     }
-
     .cart-select-model {
         thead {
             color: #666;
@@ -162,37 +153,31 @@
             }
         }
     }
-
     .cart-pay {
         margin-top: 30px;
         margin-bottom: 20px;
-
         thead {
-            height: 64px;
             color: #999;
+            height: 64px;
             tr {
                 text-align: center;
             }
-
             th {
+                color: #999999;
                 height: 64px;
                 line-height: 34px;
                 padding: 0;
-                color: #999999;
-
                 &.select {
                     padding-left: 20px;
                 }
-
                 &.delete-product {
-                    width: 300px;
                     padding-left: 10px;
                     text-align: left;
+                    width: 300px;
                     span {
-                        margin-right: 20px;
                         cursor: pointer;
+                        margin-right: 20px;
                     }
-
                     .select-delete-all {
                         margin-right: 18px;
                     }
@@ -201,30 +186,28 @@
                     width: 300px;
                 }
                 &.num-price {
+                    color: #de2634;
+                    font-size: 24px;
                     padding-top: 12px;
                     padding-right: 33px;
-                    font-size: 24px;
                     text-align: right;
-                    color: #de2634;
                     p {
-                        margin-top: -11px;
-                        font-size: 14px;
                         color: #666;
+                        font-size: 14px;
+                        margin-top: -11px;
                     }
                 }
                 &.mount {
                     padding-left: 77px;
                 }
-
                 .order-btn {
+                    float: right;
                     height: 80px;
                     margin-top: 0;
-                    float: right;
                 }
             }
         }
     }
-
     .browse-content {
         border: 1px solid #e5e5e5;
     }
