@@ -9,65 +9,7 @@
         },
         data() {
             return {
-                allOrderData: [
-                    {
-                        applyImg: '899（含运费10.00）',
-                        applyReason: '2017-03-21 16:45:45',
-                        applyTime: '交易完成',
-                        buyerID: '455646544',
-                        handlingNotes: 'ddqwd',
-                        involvingGoods: '45654646',
-                        merchantID: '4565464',
-                        orderAmount: '移动端',
-                        orderId: '钻石店铺',
-                        orderID: '65454654546',
-                        orderNumber: '5464546',
-                        processingTime: '2017-03-21 16:45:45',
-                    },
-                    {
-                        applyImg: '899（含运费10.00）',
-                        applyReason: '2017-03-21 16:45:45',
-                        applyTime: '交易完成',
-                        buyerID: '455646544',
-                        handlingNotes: 'ddqwd',
-                        involvingGoods: '45654646',
-                        merchantID: '4565464',
-                        orderAmount: '移动端',
-                        orderId: '钻石店铺',
-                        orderID: '65454654546',
-                        orderNumber: '5464546',
-                        processingTime: '2017-03-21 16:45:45',
-                    },
-                    {
-                        applyImg: '899（含运费10.00）',
-                        applyReason: '2017-03-21 16:45:45',
-                        applyTime: '交易完成',
-                        buyerID: '455646544',
-                        handlingNotes: 'ddqwd',
-                        involvingGoods: '45654646',
-                        merchantID: '4565464',
-                        orderAmount: '移动端',
-                        orderId: '钻石店铺',
-                        orderID: '65454654546',
-                        orderNumber: '5464546',
-                        processingTime: '2017-03-21 16:45:45',
-                    },
-                    {
-                        applyImg: '899（含运费10.00）',
-                        applyReason: '2017-03-21 16:45:45',
-                        applyTime: '交易完成',
-                        buyerID: '455646544',
-                        handlingNotes: 'ddqwd',
-                        involvingGoods: '45654646',
-                        merchantID: '4565464',
-                        orderAmount: '移动端',
-                        orderId: '钻石店铺',
-                        orderID: '65454654546',
-                        orderNumber: '5464546',
-                        processingTime: '2017-03-21 16:45:45',
-                    },
-                ],
-                managementColumns: [
+                allOrderColumns: [
                     {
                         align: 'center',
                         fixed: 'left',
@@ -151,6 +93,157 @@
                         fixed: 'right',
                         key: 'action',
                         render() {
+                            return `<i-button @click.native="handelOrder" size="small"
+                                    type="ghost" v-if="row.applyTime === '待处理'">处理</i-button>
+                                    <i-button @click.native="look" size="small"
+                                    type="ghost" v-if="row.applyTime === '已完成'">查看</i-button>`;
+                        },
+                        title: '操作',
+                        width: 140,
+                    },
+                ],
+                allOrderData: [
+                    {
+                        applyImg: '图片',
+                        applyReason: '2017-03-21 16:45:45',
+                        applyTime: '已完成',
+                        buyerID: '455646544',
+                        handlingNotes: 'ddqwd',
+                        involvingGoods: '45654646',
+                        merchantID: '4565464',
+                        orderAmount: '移动端',
+                        orderId: '钻石店铺',
+                        orderID: '65454654546',
+                        orderNumber: '5464546',
+                        processingTime: '2017-03-21 16:45:45',
+                    },
+                    {
+                        applyImg: '图片',
+                        applyReason: '2017-03-21 16:45:45',
+                        applyTime: '已完成',
+                        buyerID: '455646544',
+                        handlingNotes: 'ddqwd',
+                        involvingGoods: '45654646',
+                        merchantID: '4565464',
+                        orderAmount: '移动端',
+                        orderId: '钻石店铺',
+                        orderID: '65454654546',
+                        orderNumber: '5464546',
+                        processingTime: '2017-03-21 16:45:45',
+                    },
+                    {
+                        applyImg: '图片',
+                        applyReason: '2017-03-21 16:45:45',
+                        applyTime: '待处理',
+                        buyerID: '455646544',
+                        handlingNotes: 'ddqwd',
+                        involvingGoods: '45654646',
+                        merchantID: '4565464',
+                        orderAmount: '移动端',
+                        orderId: '钻石店铺',
+                        orderID: '65454654546',
+                        orderNumber: '5464546',
+                        processingTime: '2017-03-21 16:45:45',
+                    },
+                    {
+                        applyImg: '图片',
+                        applyReason: '2017-03-21 16:45:45',
+                        applyTime: '待处理',
+                        buyerID: '455646544',
+                        handlingNotes: 'ddqwd',
+                        involvingGoods: '45654646',
+                        merchantID: '4565464',
+                        orderAmount: '移动端',
+                        orderId: '钻石店铺',
+                        orderID: '65454654546',
+                        orderNumber: '5464546',
+                        processingTime: '2017-03-21 16:45:45',
+                    },
+                ],
+                pendingColumns: [
+                    {
+                        align: 'center',
+                        fixed: 'left',
+                        type: 'selection',
+                        width: 60,
+                    },
+                    {
+                        align: 'center',
+                        key: 'orderID',
+                        title: '退单编号',
+                        width: 190,
+                    },
+                    {
+                        align: 'center',
+                        key: 'orderAmount',
+                        title: '退款金额',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        key: 'applyReason',
+                        title: '申请原因',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        key: 'applyImg',
+                        title: '申请图片',
+                        width: 170,
+                    },
+                    {
+                        align: 'center',
+                        key: 'applyTime',
+                        title: '申请时间',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        key: 'involvingGoods',
+                        title: '涉及商品',
+                        width: 170,
+                    },
+                    {
+                        align: 'center',
+                        key: 'orderId',
+                        title: '商品ID',
+                        width: 150,
+                    },
+                    {
+                        align: 'center',
+                        key: 'orderNumber',
+                        title: '订单编号',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        key: 'processingTime',
+                        title: '商家处理时间',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        key: 'handlingNotes',
+                        title: '商家处理备注',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        key: 'merchantID',
+                        title: '商家ID',
+                        width: 200,
+                    },
+                    {
+                        align: 'left',
+                        key: 'buyerID',
+                        title: '买家ID',
+                        width: 200,
+                    },
+                    {
+                        align: 'center',
+                        fixed: 'right',
+                        key: 'action',
+                        render() {
                             return '<i-button @click.native="refundHandel" size="small" type="ghost">处理</i-button>';
                         },
                         title: '操作',
@@ -159,7 +252,21 @@
                 ],
                 pendingData: [
                     {
-                        applyImg: '899（含运费10.00）',
+                        applyImg: '图片',
+                        applyReason: '2017-03-21 16:45:45',
+                        applyTime: '已完成',
+                        buyerID: '455646544',
+                        handlingNotes: 'ddqwd',
+                        involvingGoods: '45654646',
+                        merchantID: '4565464',
+                        orderAmount: '移动端',
+                        orderId: '钻石店铺',
+                        orderID: '65454654546',
+                        orderNumber: '5464546',
+                        processingTime: '2017-03-21 16:45:45',
+                    },
+                    {
+                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '交易完成',
                         buyerID: '455646544',
@@ -173,7 +280,7 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '899（含运费10.00）',
+                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '交易完成',
                         buyerID: '455646544',
@@ -187,7 +294,7 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '899（含运费10.00）',
+                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '交易完成',
                         buyerID: '455646544',
@@ -201,7 +308,7 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '899（含运费10.00）',
+                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '交易完成',
                         buyerID: '455646544',
@@ -215,21 +322,7 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '899（含运费10.00）',
-                        applyReason: '2017-03-21 16:45:45',
-                        applyTime: '交易完成',
-                        buyerID: '455646544',
-                        handlingNotes: 'ddqwd',
-                        involvingGoods: '45654646',
-                        merchantID: '4565464',
-                        orderAmount: '移动端',
-                        orderId: '钻石店铺',
-                        orderID: '65454654546',
-                        orderNumber: '5464546',
-                        processingTime: '2017-03-21 16:45:45',
-                    },
-                    {
-                        applyImg: '899（含运费10.00）',
+                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '交易完成',
                         buyerID: '455646544',
@@ -262,7 +355,6 @@
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render() {
                             return '<i-button @click.native="reasonEdit" size="small" type="ghost">编辑</i-button>';
@@ -288,16 +380,24 @@
                 searchCategory: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '订单编号',
+                        label: '退单编号',
+                        value: '1',
                     },
                     {
                         label: '商品名称',
-                        value: '商品名称',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '买家账号',
+                        value: '3',
+                    },
+                    {
+                        label: '店铺名称',
+                        value: '4',
+                    },
+                    {
+                        label: '订单编号',
+                        value: '5',
                     },
                 ],
                 searchWord: '',
@@ -322,6 +422,18 @@
                     });
                 }
             },
+            look() {
+                const self = this;
+                self.$router.push({
+                    path: 'refund/all/look',
+                });
+            },
+            handelOrder() {
+                const self = this;
+                self.$router.push({
+                    path: 'refund/all/handel',
+                });
+            },
             reasonEdit() {
                 const self = this;
                 self.$router.push({
@@ -339,7 +451,7 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="store">
+        <div class="order-refund">
             <tabs value="name1">
                 <tab-pane label="待处理" name="name1">
                     <card :bordered="false">
@@ -361,8 +473,11 @@
                                     </i-input>
                                 </div>
                             </div>
-                            <i-table highlight-row ref="pendingTable" class="shop-table"
-                                     :columns="managementColumns" :context="self" :data="pendingData"></i-table>
+                            <i-table ref="pendingTable"
+                                     class="shop-table"
+                                     :columns="pendingColumns"
+                                     :context="self"
+                                     :data="pendingData"></i-table>
                         </div>
                         <div class="page">
                             <page :total="100" show-elevator></page>
@@ -391,9 +506,10 @@
                                 </div>
                             </div>
                             <i-table class="shop-table"
-                                     :columns="managementColumns"
+                                     :context="self"
+                                     :columns="allOrderColumns"
                                      :data="allOrderData"
-                                     highlight-row ref="allOrderTable" ></i-table>
+                                     ref="allOrderTable" ></i-table>
                         </div>
                         <div class="page">
                             <page :total="100" show-elevator></page>
@@ -410,8 +526,10 @@
                         <div class="store-body">
                             <i-button class="add-data" @click.native="addData"
                                       type="ghost">新增数据</i-button>
-                            <i-table highlight-row class="shop-table" :columns="reasonColumns"
-                                     :context="self" :data="reasonData" ></i-table>
+                            <i-table class="shop-table"
+                                     :columns="reasonColumns"
+                                     :context="self"
+                                     :data="reasonData" ></i-table>
                         </div>
                     </card>
                 </tab-pane>

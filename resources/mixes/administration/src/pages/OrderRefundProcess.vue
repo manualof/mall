@@ -76,7 +76,7 @@
                                 <div class="application-content refund-module">
                                     <row>
                                         <i-col span="18">
-                                            <form-item label="店主账号">
+                                            <form-item label="申请时间">
                                                 {{refundDetail.applyTime}}
                                             </form-item>
                                         </i-col>

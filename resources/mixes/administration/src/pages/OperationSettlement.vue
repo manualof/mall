@@ -160,31 +160,31 @@
                 ],
                 refundDataList: [
                     {
-                        label: '店铺名称',
-                        value: '订单编号',
+                        label: '账单编号',
+                        value: '1',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
+                        label: '原账单编号',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '商家名称',
+                        value: '3',
                     },
                 ],
                 refundSearchData: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '订单编号',
+                        label: '账单编号',
+                        value: '1',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
+                        label: '原账单编号',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '商家名称',
+                        value: '3',
                     },
                 ],
                 self: this,

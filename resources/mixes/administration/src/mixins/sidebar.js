@@ -44,14 +44,10 @@ export default function (injection) {
                     path: '/mall/store/category',
                     title: '店铺分类',
                 },
-                {
-                    path: '/mall/store/dynamics',
-                    title: '店铺动态',
-                },
-                {
-                    path: '/mall/store/postal',
-                    title: '包邮',
-                },
+                // {
+                //     path: '/mall/store/dynamics',
+                //     title: '店铺动态',
+                // },
             ],
             icon: 'plus',
             title: '店铺',
@@ -73,10 +69,6 @@ export default function (injection) {
                 {
                     path: '/mall/order/evaluation',
                     title: '评价管理',
-                },
-                {
-                    path: '/mall/order/complain',
-                    title: '投诉管理',
                 },
             ],
             icon: 'plus',

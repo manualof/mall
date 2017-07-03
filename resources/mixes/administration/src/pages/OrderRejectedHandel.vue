@@ -22,6 +22,7 @@
                     refundDescription: 'mm',
                     refundImg: '',
                     refundMoney: '99.00',
+                    refundNum: 2,
                     refundReason: '不要',
                     remarks: '',
                 },
@@ -66,7 +67,7 @@
                     <i-button type="text" @click.native="goBack">
                         <icon type="chevron-left"></icon>
                     </i-button>
-                    <span>所有记录—处理</span>
+                    <span>退款记录—处理</span>
                 </div>
                 <div class="refund-process-content store-information">
                     <card :bordered="false">
@@ -99,6 +100,13 @@
                                         <i-col span="12">
                                             <form-item label="退货原因">
                                                 {{rejectedDetail.refundReason}}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="12">
+                                            <form-item label="退货数量">
+                                                {{rejectedDetail.refundNum}}
                                             </form-item>
                                         </i-col>
                                     </row>

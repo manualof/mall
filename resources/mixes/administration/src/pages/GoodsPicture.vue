@@ -105,11 +105,14 @@
             lookData() {
                 const self = this;
                 self.$router.push({
-                    path: 'picture/look',
+                    path: 'picture/look/all',
                 });
             },
             look() {
-
+                const self = this;
+                self.$router.push({
+                    path: 'picture/look',
+                });
             },
             remove(index) {
                 this.typeData.splice(index, 1);

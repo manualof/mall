@@ -81,7 +81,7 @@
                         fixed: 'right',
                         key: 'action',
                         render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
+                            return '<i-button size="small" type="ghost" @click="look">查看</i-button>';
                         },
                         title: '操作',
                         width: 90,
@@ -270,15 +270,15 @@
                 searchList: [
                     {
                         label: '店铺名称',
-                        value: '店铺名称',
+                        value: '1',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
+                        label: '店主账号',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '商家账号',
+                        value: '3',
                     },
                 ],
                 self: this,
@@ -288,6 +288,12 @@
             exportData() {
                 this.$refs.managementTable.exportCsv({
                     filename: '店铺管理数据',
+                });
+            },
+            look() {
+                const self = this;
+                self.$router.push({
+                    path: 'store/look',
                 });
             },
             remove(index) {
@@ -304,7 +310,7 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="store">
+        <div class="store-wrap">
             <tabs value="name1">
                 <tab-pane label="店铺管理" name="name1">
                     <card :bordered="false">

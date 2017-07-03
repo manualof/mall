@@ -141,16 +141,12 @@
                 searchCategory: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '店铺名称',
+                        label: '评价人',
+                        value: '1',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '被评商品',
+                        value: '2',
                     },
                 ],
                 searchWord: '',

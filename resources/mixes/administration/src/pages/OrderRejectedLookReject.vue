@@ -15,24 +15,11 @@
                     handelResult: '同意',
                     handelText: 'jahwuiha',
                     handelTime: '2016-12-21  10:31:59',
-                    linePay: '99.00',
-                    orderCounts: '99.00',
-                    payStyle: '在线支付',
                     refundDescription: 'mm',
                     refundImg: '',
                     refundMoney: '99.00',
                     refundNum: 2,
                     refundReason: '不要',
-                    remarks: '',
-                },
-                ruleValidate: {
-                    remarks: [
-                        {
-                            message: '信息不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
                 },
             };
         },
@@ -41,21 +28,12 @@
                 const self = this;
                 self.$router.go(-1);
             },
-            handleSubmit(name) {
-                this.$refs[name].validate(valid => {
-                    if (valid) {
-                        this.$Message.success('提交成功!');
-                    } else {
-                        this.$Message.error('表单验证失败!');
-                    }
-                });
-            },
         },
     };
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="order-rejected-look">
+        <div class="order-rejected-look-reject">
             <div class="store-refund-process">
                 <div class="edit-link-title">
                     <i-button type="text" @click.native="goBack">
@@ -141,51 +119,6 @@
                                         <i-col span="18">
                                             <form-item label="处理时间">
                                                 {{returnDetail.handelTime}}
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                </div>
-                            </div>
-                            <div class="order-information">
-                                <h5>订单退款审核</h5>
-                                <div class="order-pay-content refund-module">
-                                    <row>
-                                        <i-col span="18">
-                                            <form-item label="平台确认">
-                                                {{returnDetail.payStyle}}
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="18">
-                                            <form-item label="处理备注">
-                                                {{returnDetail.orderCounts}}
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="18">
-                                            <form-item label="处理时间">
-                                                {{returnDetail.linePay}}
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                </div>
-                            </div>
-                            <div class="refund-review">
-                                <h5>退款详细</h5>
-                                <div class="review-content refund-module">
-                                    <row>
-                                        <i-col span="18">
-                                            <form-item label="支付方式">
-                                                {{returnDetail.orderCounts}}
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="18">
-                                            <form-item label="在线退款金额">
-                                                ￥{{returnDetail.linePay}}
                                             </form-item>
                                         </i-col>
                                     </row>

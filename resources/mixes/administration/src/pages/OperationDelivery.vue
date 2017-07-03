@@ -81,9 +81,9 @@
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button class="delete-ad" @click.native="edit(${index})"
-                                    type="ghost">编辑</i-button>
+                                    size="small" type="ghost">编辑</i-button>
                                     <i-button class="delete-ad" @click.native="look(${index})"
-                                     type="ghost">查看订单</i-button>`;
+                                    size="small" type="ghost">查看订单</i-button>`;
                         },
                         title: '操作',
                         width: 200,
@@ -114,7 +114,7 @@
                         area: '陕西省西安市',
                         reallyName: '王琦铭',
                         serviceName: '财富中心自提点',
-                        status: false,
+                        status: true,
                         userName: '克罗地亚',
                     },
                     {
@@ -159,8 +159,7 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>提示
-                                物流自提服务站关闭后，被用户选择设置成收货地址的记录会被删除，请谨慎操作</p>
+                            <p>提示物流自提服务站关闭后，被用户选择设置成收货地址的记录会被删除，请谨慎操作</p>
                         </div>
                         <div class="album-action">
                             <i-button class="add-data" type="ghost" @click.native="addData">+新增数据</i-button>
