@@ -17,7 +17,6 @@
                         <div class="goods-msg">
                             <div class="price">
                                 <i>￥</i><span>{{ item.pricle }}</span>
-                                <span class="old-price">￥{{ item.oldprice }}</span>
                             </div>
                             <div class="goods-name">
                                 {{ item.name }}
