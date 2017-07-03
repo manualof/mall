@@ -143,6 +143,7 @@
                 font-size: 12px;
                 font-weight: 300;
                 line-height: 24px;
+                color: #fff;
             }
         }
         .goods-list-title{
@@ -153,6 +154,7 @@
             font-size: 12px;
             color: #999;
             width: 100%;
+            background: #f7f7f7;
             & > div{
                 float: left;
                 width: 107px;
@@ -182,9 +184,10 @@
                 }
             }
             .goods-list-title{
-                height: 140px;
+                height: 120px;
                 border: none;
                 margin-top: 0;
+                background: #fff;
                 &>div{
                     padding-top: 30px;
                     height: 100%;
@@ -201,6 +204,9 @@
                         overflow: hidden;
                         img{
                             max-width: 100%;
+                            max-height: 100%;
+                            height: 100%;
+                            width: 100%;
                         }
                     }
                     .goods-msg{

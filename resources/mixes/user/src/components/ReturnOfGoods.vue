@@ -21,7 +21,7 @@
 
             <div v-if="status === 6" class="col-sm-3">
                 <div class="bar bar-left" :class="{barxuanzhong :  status === 6 }">2</div>
-                <div class="tuikuanliucheng" :class="{tuikuanliuchengxuanzhong : status === 6 }">退货失败</div>
+                <div class="tuikuanliucheng" :class="{tuikuanliuchengxuanzhong : status === 6 }">商家拒绝</div>
             </div>
         </div>
         <div class="container bottom">
@@ -132,8 +132,8 @@
                             <span class="jinggao">!</span>
                             <span class="jinggao-msg">商家已同意，请尽快填写退货信息</span>
                         </p>
-                        <p class="msg-main">商家收货信息：王某某  139995554545 <br>
-                            陕西省西安市雁塔区科技四路中段国土资源大厦公寓楼2304</p>
+                        <p class="msg-main">商家收货信息：王某某  139995554545 </p>
+                        <p class="msg-address">陕西省西安市雁塔区科技四路中段国土资源大厦公寓楼2304</p>
 
                     </div>
                     <div class="maijia-main border-none ">
@@ -205,8 +205,8 @@
 
                     </div>
                     <div class="maijia-main border-none ">
-                        <p><span class="msg-title">退款原因</span><span class="msg-main">{{ refund.reason }}</span></p>
-                        <p><span class="msg-title">退款金额</span><span class="msg-main price">￥{{ refund.price }}</span></p>
+                        <p><span class="msg-title">物流公司</span><span class="msg-main">顺丰速运</span></p>
+                        <p><span class="msg-title">物流单号</span><span class="msg-main">23565465416326564</span></p>
                     </div>
                 </div>
             </div>
@@ -258,7 +258,7 @@
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
-                status: 3,
+                status: 5,
                 message: '已超时',
                 endTime: '2018-10-08 10:06:00',
                 imgsrc: img,
