@@ -34,12 +34,20 @@
                         text: '我的积分',
                     },
                     {
+                        to: { name: 'footprint' },
+                        text: '我的足迹',
+                    },
+                    {
                         to: { name: 'collect-store' },
                         text: '我的收藏',
                     },
                     {
                         to: { name: 'account-security' },
                         text: '账户安全',
+                    },
+                    {
+                        to: { name: 'my-account' },
+                        text: '我的账户',
                     },
                     {
                         to: { name: 'selaes-return' },

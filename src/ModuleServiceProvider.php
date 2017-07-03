@@ -47,34 +47,6 @@ class ModuleServiceProvider extends Module
     }
 
     /**
-     * Register module extra providers.
-     */
-    public function register()
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public static function alias()
-    {
-        return [
-            'notadd/mall',
-            'notadd/seller',
-        ];
-    }
-
-    /**
-     * Description of module
-     *
-     * @return string
-     */
-    public static function description()
-    {
-        return 'Notadd 商城模块';
-    }
-
-    /**
      * Install for module.
      *
      * @return string
@@ -92,53 +64,5 @@ class ModuleServiceProvider extends Module
     public static function uninstall()
     {
         return Uninstaller::class;
-    }
-
-    /**
-     * Name of module.
-     *
-     * @return string
-     */
-    public static function name()
-    {
-        return '商城';
-    }
-
-    /**
-     * Version of module.
-     *
-     * @return string
-     */
-    public static function version()
-    {
-        return '1.0.0';
-    }
-
-    /**
-     * Get script of extension.
-     *
-     * @return string|array
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
-     */
-    public static function script()
-    {
-        return [
-            asset('assets/mall/administration/js/module.min.js'),
-            asset('assets/mall/seller/js/module.min.js'),
-        ];
-    }
-
-    /**
-     * Get stylesheet of extension.
-     *
-     * @return array
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
-     */
-    public static function stylesheet()
-    {
-        return [
-            asset('assets/mall/administration/css/module.min.css'),
-            asset('assets/mall/seller/css/module.min.css'),
-        ];
     }
 }
