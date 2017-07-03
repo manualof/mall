@@ -85,6 +85,13 @@
             }
         }
     }
+    .self-take-select{
+        border-bottom: 1px solid #d0d0d0;
+        padding-bottom: 4px;
+        h5 {
+            font-size: 12px;
+        }
+    }
     .address {
         padding: 0 20px;
         p:first-child {
@@ -112,10 +119,44 @@
             color: #de2634;
         }
     }
+    .pay-method {
+        h5 {
+            color: #444444;
+            font-size: 14px;
+            line-height: 52px;
+            margin-top: 10px;
+        }
+        .methods {
+            label {
+                margin-right: 10px;
+                position: relative;
+                span {
+                    border: 1px solid #e5e5e5;
+                    box-sizing: border-box;
+                    display: inline-block;
+                    font-size: 12px;
+                    height: 40px;
+                    line-height: 38px;
+                    text-align: center;
+                    width: 124px;
+                }
+                input {
+                    height: 100%;
+                    position: absolute;
+                    visibility: hidden;
+                    width: 100%;
+                    &:checked + span {
+                        border: 2px #de2634 solid;
+                        line-height: 36px;
+                    }
+                }
+            }
+        }
+    }
 }
 .submit-order .ensure-information {
     .select-title {
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 500;
         padding-top: 26px;
         margin-bottom: -4px;

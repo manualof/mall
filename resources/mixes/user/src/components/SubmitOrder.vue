@@ -29,7 +29,7 @@
                 </div>
                 <router-link class="select-btn" to="/personnal-center/shipping-address">新增收货地址</router-link>
             </div>
-            <div class="address-selected">
+            <div class="address-selected self-take-select">
                 <h5>使用自提门店</h5>
                 <div>
                     <label class="form-control-radio">
@@ -45,8 +45,17 @@
                     </label>
                 </div>
             </div>
+            <div class="pay-method">
+                <h5 class="select-title">确认商品信息</h5>
+                <div class="methods">
+                    <label class="form-control-radio" v-for="method in methods">
+                        <input type="radio" name="method">
+                        <span>{{ method.name }}</span>
+                    </label>
+                </div>
+            </div>
             <div class="ensure-information">
-                <p class="select-title">确认商品信息</p>
+                <p class="select-title">支付方式</p>
                 <div class="product-information" v-for="item in submitOrder.productList">
                     <p class="name">{{ item.shop }}</p>
                     <table width="100%">
@@ -114,6 +123,14 @@
                         isdefault: false,
                         name: '王茂',
                         phone: 12345676543,
+                    },
+                ],
+                methods: [
+                    {
+                        name: '在线支付',
+                    },
+                    {
+                        name: '货到付款',
                     },
                 ],
                 selfTake: {
