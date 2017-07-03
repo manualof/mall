@@ -134,6 +134,8 @@
         },
         data() {
             return {
+                endTime: '2018-10-08 10:06:00',
+                imgsrc: img,
                 goods: {
                     freight: 10,
                     price: 99,
@@ -142,16 +144,14 @@
                     msg: '女装 夏季自然腰宽松九分裤休闲长裤麻混纺',
                     taocan: '官方套餐一',
                 },
+                message: '已超时',
                 refund: {
                     reason: '物品有瑕疵',
                     price: 99,
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
-                status: 1,
-                message: '已超时',
-                endTime: '2018-10-08 10:06:00',
-                imgsrc: img,
+                status: 2,
                 onOff: true,
             };
         },
