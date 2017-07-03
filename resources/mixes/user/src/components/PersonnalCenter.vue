@@ -46,6 +46,10 @@
                         text: '账户安全',
                     },
                     {
+                        to: { name: 'my-account' },
+                        text: '我的账户',
+                    },
+                    {
                         to: { name: 'selaes-return' },
                         text: '退货退款',
                     },

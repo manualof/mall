@@ -31,6 +31,7 @@ import ShippingAddress from '../components/personnal-center/ShippingAddress';
 import CollectStore from '../components/personnal-center/CollectStore';
 import SelaesReturn from '../components/personnal-center/SelaesReturn';
 import Footprint from '../components/personnal-center/Footprint';
+import MyAccount from '../components/personnal-center/MyAccount';
 
 import ShoppingProcess from '../components/ShoppingProcess';
 import ShopProcess from '../components/ShoppingProcess/ShopProcess';
@@ -124,6 +125,11 @@ export default [
                         path: 'footprint',
                         name: 'footprint',
                         component: Footprint,
+                    },
+                    {
+                        path: 'my-account',
+                        name: 'my-account',
+                        component: MyAccount,
                     },
                 ],
             },
