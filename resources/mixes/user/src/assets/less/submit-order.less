@@ -2,14 +2,34 @@
     background-color: #fff;
     border-bottom: 1px solid #d0d0d0;
     .select-address {
+        > div {
+            &:first-child {
+                border-bottom: 1px solid #e5e5e5;
+                padding-bottom: 20px;
+            }
+        }
         .select-title {
+            color: #444;
             font-size: 18px;
             font-weight: 500;
             padding-top: 20px;
+            & + p {
+                color: #999999;
+                font-size: 12px;
+            }
         }
         .address-selected {
+            margin-top: 10px;
+            h5 {
+                color: #444444;
+                font-weight: 500;
+                line-height: 52px;
+            }
+            > div {
+                height: 40px;
+                margin-bottom: 16px;
+            }
             .form-control-radio {
-                margin-bottom: 10px;
                 margin-right: 16px;
                 position: relative;
                 width: 100%;
@@ -25,11 +45,34 @@
                     visibility: hidden;
                 }
                 & > input + .address {
+                    box-sizing: border-box;
                     border: solid 1px #d0d0d0;
                     font-weight: normal;
-                    height: 160px;
+                    height: 40px;
                     .address-detail {
-                        width: 50%;
+                        margin-left: 39px;
+                    }
+
+                    &:hover{
+                        background: #f7f7f7;
+                        p > span:last-child {
+                            display: block;
+                        }
+                    }
+                    p {
+                        span:nth-child(2) {
+                            margin-left: 20px;
+                        }
+                        i {
+                            font-style: normal;
+                        }
+                        > span:last-child {
+                            color: #62bdff;
+                            display: none;
+                            span {
+                                margin-left: 20px;
+                            }
+                        }
                     }
                 }
                 & > input:checked + .address {
@@ -40,8 +83,8 @@
         .address {
             padding: 0 20px;
             p:first-child {
-                border-bottom: 1px solid #e5e5e5;
-                padding: 10px 0;
+                font-size: 12px;
+                line-height: 38px;
                 span {
                     float: left;
                 }

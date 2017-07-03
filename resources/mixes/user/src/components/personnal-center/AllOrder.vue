@@ -77,7 +77,7 @@
                             <ul class="clearfix shop-info">
                                 <li>{{ order.time }}</li>
                                 <li>{{ order.order_code }}</li>
-                                <li>{{ order.shop_name }}</li>
+                                <!--<li>{{ order.shop_name }}</li>-->
                                 <li @click="deleteProduct(order)"><a><i class="icon iconfont icon-icon_shanchu"></i></a>
                                 </li>
                             </ul>
@@ -85,13 +85,13 @@
                     </tr>
                     <tr v-for="product in order.products">
                         <td>
-                            <router-link :to="{name: 'product-details'}">
+                            <router-link :to="{ name: 'product-details' }">
                                 <img :src="product.img">
                             </router-link>
                         </td>
                         <td>
                             <p>
-                                <router-link :to="{name: 'product-details'}">{{ product.name }}</router-link>
+                                <router-link :to="{ name: 'product-details' }">{{ product.name }}</router-link>
                             </p>
                             <p class="size">尺码：{{ product.size }}</p>
                         </td>
@@ -115,16 +115,18 @@
                                 <a>查看物流</a>
                                 <div class="logistics">
                                     <i class="sanjiao"> </i>
-                                    <p class="text-left logistics-name">{{ product.logistics.name }} <span
-                                        class="waybill-num">运单号：{{ product.logistics.transport_code }}</span></p>
+                                    <p class="text-left logistics-name">
+                                        <!--{{ product.logistics.name }}-->
+                                        <!--<span class="waybill-num">运单号：{{ product.logistics.transport_code }}</span>-->
+                                    </p>
                                     <ul class="clearfix">
-                                        <li class="clearfix" v-for="log in product.logistics.logisticsList">
-                                            <i class="cricle pull-left active"> </i>
-                                            <div class="waybill-info pull-left">
-                                                <p>{{ log.address }} 已收入</p>
-                                                <p class="text-left">{{ log.time }}</p>
-                                            </div>
-                                        </li>
+                                        <!--<li class="clearfix" v-for="log in product.logistics.logisticsList">-->
+                                            <!--<i class="cricle pull-left active"> </i>-->
+                                            <!--<div class="waybill-info pull-left">-->
+                                                <!--<p>{{ log.address }} 已收入</p>-->
+                                                <!--<p class="text-left">{{ log.time }}</p>-->
+                                            <!--</div>-->
+                                        <!--</li>-->
                                     </ul>
                                 </div>
                             </div>

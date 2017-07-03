@@ -1152,7 +1152,7 @@
             },
         },
         mounted() {
-            window.jQuery('body').scrollspy({ target: '.bs-js-navbar-scrollspy' });
+//            window.jQuery('body').scrollspy({ target: '.bs-js-navbar-scrollspy' });
         },
     };
 </script>

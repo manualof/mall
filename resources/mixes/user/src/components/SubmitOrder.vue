@@ -2,21 +2,29 @@
     <div class="submit-order padding-attribute">
         <div class="container">
             <div class="select-address">
-                <p class="select-title">选择收货地址</p>
+                <div>
+                    <p class="select-title">确认订单</p>
+                    <p>请仔细核对填写收货，发票等信息，以确保物流快递及时准确投递</p>
+                </div>
                 <div class="address-selected">
-                    <div class="row">
-                        <div class="col-md-4" v-for="(item, index) in addressSelect">
-                            <label class="form-control-radio">
-                                <input type="radio" name="address" :checked="index == 0">
-                                <div class="address">
-                                    <p class="clearfix">
-                                        <span>{{ item.name }} &nbsp; &nbsp; {{ item.phone }}</span> <i>{{ item.isdefault
-                                        }}</i>
-                                    </p>
-                                    <p class="address-detail">{{ item.address }}</p>
-                                </div>
-                            </label>
-                        </div>
+                    <h5>收货人信息</h5>
+                    <div v-for="(item, index) in addressSelect">
+                        <label class="form-control-radio">
+                            <input type="radio" name="address" :checked="index == 0">
+                            <div class="address clearfix">
+                                <p>
+                                    <span>{{ item.name }}</span>
+                                    <span>{{ item.phone }}</span>
+                                    <span class="address-detail">{{ item.address }}</span>
+                                    <i v-if="item.isdefault">默认地址</i>
+                                    <span class="pull-right" v-if="item.isdefault === false">
+                                        <span>设为默认地址</span>
+                                        <span>编辑</span>
+                                        <span>删除</span>
+                                    </span>
+                                </p>
+                            </div>
+                        </label>
                     </div>
                 </div>
                 <router-link class="select-btn" to="/personnal-center/shipping-address">新增收货地址</router-link>
@@ -81,12 +89,13 @@
                 addressSelect: [
                     {
                         address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
-                        isdefault: '默认地址',
+                        isdefault: true,
                         name: '王茂',
                         phone: 12345676543,
                     },
                     {
                         address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
+                        isdefault: false,
                         name: '王茂',
                         phone: 12345676543,
                     },
