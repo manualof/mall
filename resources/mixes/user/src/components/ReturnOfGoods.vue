@@ -80,7 +80,8 @@
                         <div class="group-input">
                             <div class="lable">上传凭证</div>
                             <div class="input-main">
-                                <div class="img"></div>
+                                <div class="img">
+                                </div>
                                 <div class="tishixinxi">每张图片大小不超过5M，最多3张，支持GIF、JPG、PNG、BMP格式</div>
                             </div>
                         </div>
@@ -258,7 +259,7 @@
                     number: '3265646123655',
                     illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
                 },
-                status: 5,
+                status: 1,
                 message: '已超时',
                 endTime: '2018-10-08 10:06:00',
                 imgsrc: img,
