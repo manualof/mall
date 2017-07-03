@@ -29,6 +29,22 @@
                 </div>
                 <router-link class="select-btn" to="/personnal-center/shipping-address">新增收货地址</router-link>
             </div>
+            <div class="address-selected">
+                <h5>使用自提门店</h5>
+                <div>
+                    <label class="form-control-radio">
+                        <input type="radio" name="address" :checked="index == 0">
+                        <div class="address clearfix">
+                            <p>
+                                <span>{{ selfTake.name }}</span>
+                                <span>{{ selfTake.phone }}</span>
+                                <span class="address-detail">{{ selfTake.address }}</span>
+                                <router-link to="/" class="self-take pull-right">修改自提信息</router-link>
+                            </p>
+                        </div>
+                    </label>
+                </div>
+            </div>
             <div class="ensure-information">
                 <p class="select-title">确认商品信息</p>
                 <div class="product-information" v-for="item in submitOrder.productList">
@@ -100,6 +116,11 @@
                         phone: 12345676543,
                     },
                 ],
+                selfTake: {
+                    address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
+                    name: '王茂',
+                    phone: 12345676543,
+                },
                 submitOrder: {
                     integral_num: 1660,
                     integral_price: 16.6,

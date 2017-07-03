@@ -2,6 +2,8 @@
     background-color: #fff;
     border-bottom: 1px solid #d0d0d0;
     .select-address {
+        border-bottom: 1px solid #d0d0d0;
+        padding-bottom: 20px;
         > div {
             &:first-child {
                 border-bottom: 1px solid #e5e5e5;
@@ -18,80 +20,82 @@
                 font-size: 12px;
             }
         }
-        .address-selected {
-            margin-top: 10px;
-            h5 {
-                color: #444444;
-                font-weight: 500;
-                line-height: 52px;
+    }
+    .address-selected {
+        margin-top: 10px;
+        h5 {
+            color: #444444;
+            font-weight: 500;
+            line-height: 52px;
+        }
+        > div {
+            height: 40px;
+            margin-bottom: 16px;
+        }
+        .form-control-radio {
+            margin-right: 16px;
+            position: relative;
+            width: 100%;
+            & > input {
+                bottom: 0;
+                display: block;
+                left: 0;
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                visibility: hidden;
             }
-            > div {
+            & > input + .address {
+                box-sizing: border-box;
+                border: solid 1px #d0d0d0;
+                font-weight: normal;
                 height: 40px;
-                margin-bottom: 16px;
-            }
-            .form-control-radio {
-                margin-right: 16px;
-                position: relative;
-                width: 100%;
-                & > input {
-                    bottom: 0;
-                    display: block;
-                    left: 0;
-                    margin: 0;
-                    padding: 0;
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    visibility: hidden;
+                .address-detail {
+                    margin-left: 39px;
                 }
-                & > input + .address {
-                    box-sizing: border-box;
-                    border: solid 1px #d0d0d0;
-                    font-weight: normal;
-                    height: 40px;
-                    .address-detail {
-                        margin-left: 39px;
+                .self-take {
+                    color: #62bdff;
+                }
+                &:hover{
+                    background: #f7f7f7;
+                    p > span:last-child {
+                        display: block;
                     }
-
-                    &:hover{
-                        background: #f7f7f7;
-                        p > span:last-child {
-                            display: block;
-                        }
+                }
+                p {
+                    span:nth-child(2) {
+                        margin-left: 20px;
                     }
-                    p {
-                        span:nth-child(2) {
+                    i {
+                        font-style: normal;
+                    }
+                    > span:last-child {
+                        color: #62bdff;
+                        display: none;
+                        span {
                             margin-left: 20px;
                         }
-                        i {
-                            font-style: normal;
-                        }
-                        > span:last-child {
-                            color: #62bdff;
-                            display: none;
-                            span {
-                                margin-left: 20px;
-                            }
-                        }
                     }
                 }
-                & > input:checked + .address {
-                    border: solid 2px #de2634;
-                }
+            }
+            & > input:checked + .address {
+                border: solid 2px #de2634;
             }
         }
-        .address {
-            padding: 0 20px;
-            p:first-child {
-                font-size: 12px;
-                line-height: 38px;
-                span {
-                    float: left;
-                }
-                i {
-                    color: #999;
-                    float: right;
-                }
+    }
+    .address {
+        padding: 0 20px;
+        p:first-child {
+            font-size: 12px;
+            line-height: 38px;
+            span {
+                float: left;
+            }
+            i {
+                color: #999;
+                float: right;
             }
         }
     }
@@ -99,6 +103,7 @@
         border: solid 1px #d0d0d0;
         color: #444;
         display: block;
+        font-size: 12px;
         height: 40px;
         line-height: 40px;
         text-align: center;
