@@ -9,16 +9,18 @@
         <div class="box">
             <div v-if="status === 1" class="jiben-msg">
                 <form action="">
-                    <div class="group-input">
+                    <div class="group-input first-group">
                         <div class="label-l">真实姓名</div>
                         <div class="msg">ibenchu</div>
                     </div>
                     <div class="group-input">
                         <div class="label-l">性别</div>
                         <div class="msg">
-                            <input name="sex" type="radio">男
-                            <input name="sex" type="radio">女
-                            <input name="sex" type="radio">保密
+                            <Radio-group v-model="sex">
+                                <Radio label="男"></Radio>
+                                <Radio label="女"></Radio>
+                                <Radio label="保密"></Radio>
+                            </Radio-group>
                         </div>
                     </div>
                     <div class="group-input">
@@ -45,7 +47,9 @@
                     </div>
                     <div class="group-input">
                         <div class="label-l"></div>
-                        <div class="msg">保存修改</div>
+                        <div class="msg">
+                                <div class="submit"> 保存修改</div>
+                        </div>
                     </div>
                 </form>
 
@@ -64,11 +68,12 @@
     import Ascader from 'iview/src/components/cascader';
     import Radio from 'iview/src/components/radio';
     import DatePicker from 'iview/src/components/date-picker';
+    import RadioGroup from 'iview/src/components/radio/radio-group';
 
 
     export default{
         components: {
-            Ascader, Radio, DatePicker,
+            Ascader, Radio, DatePicker, RadioGroup,
         },
         data() {
             return {
@@ -122,6 +127,7 @@
                     ],
                 }],
                 value2: '2016-01-01',
+                sex: '男',
             };
         },
         methods: {
