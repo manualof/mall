@@ -34,6 +34,10 @@
                         text: '我的积分',
                     },
                     {
+                        to: { name: 'footprint' },
+                        text: '我的足迹',
+                    },
+                    {
                         to: { name: 'collect-store' },
                         text: '我的收藏',
                     },
