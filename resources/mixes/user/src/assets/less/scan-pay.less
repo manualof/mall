@@ -2,23 +2,32 @@
     background: url(../images/item-point.png) repeat-x;
     margin-top: 20px;
     padding-top: 40px;
+    padding-left: 40px;
     .scan-pay-title{
+        font-size: 14px;
+        color: #666;
         span{
             font-size: 24px;
             font-weight: 500;
-
         }
     }
     .scan{
         margin-top: 80px;
         .scan-left{
             float: left;
+            margin-left: 140px;
             .two-bar-codes{
                 float: left;
                 width: 282px;
                 height: 282px;
                 border: 2px solid #e5e5e5;
-
+                margin-bottom: 20px;
+            }
+            &>p{
+                color: #666;
+                text-align: center;
+                font-size: 14px;
+                font-weight: bold;
             }
         }
         .scan-right{
@@ -28,5 +37,19 @@
             height:335px;
         }
 
+    }
+    .chose-pay{
+        margin-top: 40px;
+        color: #62bdff;
+        i{
+            float: left;
+            font-size: 25px;
+        }
+        span{
+            float: left;
+            margin-top: 6px;
+            margin-left: 10px;
+            font-size: 14px;
+        }
     }
 }

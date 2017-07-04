@@ -1,8 +1,10 @@
 <script>
+    import saoyisao from '../assets/images/sao.png';
+
     export default{
         data() {
             return {
-                msg: '111',
+                img: saoyisao,
             };
         },
     };
@@ -19,8 +21,14 @@
                 <div class="two-bar-codes"></div>
                 <p>请使用微信扫一扫，扫描二维码支付</p>
             </div>
-            <div class="scan-right"></div>
+            <div class="scan-right">
+                <img :src="img" alt="">
+            </div>
         </div>
-        <p>选择其他支付方式</p>
+        <div class="clearfix"></div>
+        <div class="chose-pay">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            <span>选择其他支付方式</span>
+        </div>
     </div>
 </template>
