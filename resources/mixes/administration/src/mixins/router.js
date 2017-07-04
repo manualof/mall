@@ -76,6 +76,7 @@ import StoreCategorySet from '../pages/StoreCategorySet.vue';
 import StoreCategoryAdd from '../pages/StoreCategoryAdd.vue';
 import StoreDynamics from '../pages/StoreDynamics.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
+import SalesActive from '../pages/SalesActive.vue';
 import StoreLevel from '../pages/StoreLevel.vue';
 import StoreLevelAdd from '../pages/StoreLevelAdd.vue';
 import StoreLevelEdit from '../pages/StoreLevelEdit.vue';
@@ -501,6 +502,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: SalesSpikesLook,
                     path: 'sales/spikes/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesActive,
+                    path: 'sales/active',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

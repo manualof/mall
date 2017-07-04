@@ -129,6 +129,10 @@ export default function (injection) {
                     title: '秒杀活动',
                 },
                 {
+                    path: '/mall/sales/active',
+                    title: '预售活动',
+                },
+                {
                     path: '/mall/sales/fulldown',
                     title: '满减活动',
                 },
