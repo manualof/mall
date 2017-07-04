@@ -254,21 +254,7 @@
                                                     建议使用尺寸800*800像素以上，大小不超过4M的正方形图片，单击选中图片，
                                                     可进行上传，替换和删除
                                                 </p>
-                                                <upload class="upload-picture-button"
-                                                        :action="action"
-                                                        :before-upload="uploadBefore"
-                                                        :format="['jpg','jpeg','png']"
-                                                        :headers="{
-                                                            Authorization: `Bearer ${$store.state.token.access_token}`
-                                                        }"
-                                                        :max-size="2048"
-                                                        :on-error="uploadError"
-                                                        :on-format-error="uploadFormatError"
-                                                        :on-success="uploadSuccess"
-                                                        ref="upload"
-                                                        :show-upload-list="false">
-                                                    <i-button type="ghost">从图片空间上传</i-button>
-                                                </upload>
+                                                <i-button type="ghost">从图片空间上传</i-button>
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -369,27 +355,13 @@
                                                                                         文字不得超过500字</span>
                                                                                 </div>
                                                                                 <div class="pro-bg2">
-                                                                                    <upload :action="action"
-                                                                                            :before-upload="uploadBefore"
-                                                                                            :format="['jpg','jpeg','png']"
-                                                                                            :headers="{
-                                                                                                Authorization: `Bearer ${$store.state.token.access_token}`
-                                                                                            }"
-                                                                                            :max-size="2048"
-                                                                                            :on-error="uploadError"
-                                                                                            :on-format-error="uploadErrorPicture"
-                                                                                            :on-success="uploadSuccessPicture"
-                                                                                            ref="upload"
-                                                                                            :show-upload-list="false">
-                                                                                        <i-button type="ghost">插入图片</i-button>
-                                                                                    </upload>
+                                                                                    <i-button type="ghost">插入图片</i-button>
                                                                                     <i-button @click.native="addText" class="ivu-button-text"
                                                                                               type="ghost">添加文字</i-button>
                                                                                 </div>
                                                                                 <div class="pro-content">
-                                                                                    <div class="image-preview" v-if="goodsEdit.picture">
-                                                                                        <img :src="goodsEdit.picture">
-                                                                                        <icon type="close" @click.native="removePicture"></icon>
+                                                                                    <div class="image-preview">
+
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
