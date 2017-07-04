@@ -135,7 +135,7 @@
                         </div>
                         <div class="brand-management">
                             <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
-                            <i-button class="export-btn" @click="exportData" type="ghost">导出数据</i-button>
+                            <i-button @click="exportData" type="ghost">导出数据</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                         </div>
                         <i-table :columns="brandColumns"
