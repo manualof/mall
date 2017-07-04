@@ -30,7 +30,7 @@ class CreateMallStoresTable extends Migration
             $table->timestamp('open_at')->nullable()->comment('开店时间');
             $table->timestamp('end_at')->nullable()->comment('有效期至');
             $table->tinyInteger('level')->default(0)->comment('店铺等级');
-            $table->enum('status', ['review', 'opening', 'closed', 'banned'])->default('review')->comment('状态');
+            $table->enum('status', ['review', 'opening', 'closed', 'banned'])->default('review')->comment('店铺状态');
             $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
