@@ -18,7 +18,7 @@
                                     <span class="address-detail">{{ item.address }}</span>
                                     <i v-if="item.isdefault">默认地址</i>
                                     <span class="pull-right" v-if="item.isdefault === false">
-                                        <span>设为默认地址</span>
+                                        <span @click="editDefault(item)" >设为默认地址</span>
                                         <span>编辑</span>
                                         <span>删除</span>
                                     </span>
@@ -71,7 +71,7 @@
                         </label>
                         <div class="btn-div">
                             <a class="order-btn submit-btn pull-left" @click="saveAddress">保存地址</a>
-                            <a>取消</a>
+                            <a @click="cancelAdd">取消</a>
                         </div>
                     </div>
                 </div>
@@ -288,6 +288,15 @@
         methods: {
             addAddress() {
                 this.addStatus = 2;
+            },
+            cancelAdd() {
+                this.addStatus = 1;
+            },
+            editDefault(item) {
+                this.addressSelect.forEach(address => {
+                    address.isdefault = false;
+                });
+                item.isdefault = true;
             },
             saveAddress() {
                 this.addressSelect.push(this.address);
