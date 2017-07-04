@@ -9,64 +9,46 @@
         },
         data() {
             return {
+                activeModal: false,
+                form: {
+                    name: '春季家电家具买疯狂优惠',
+                    rule: ['单笔订单满200元  立减现金20', '单笔订单满500元  立减现金50', '单笔订单满1000元  立减现金200'],
+                    shop: '爱拍数码',
+                    time: '2017-04-01至2017-04-02',
+                },
                 goodsColumns: [
                     {
                         align: 'center',
-                        key: 'goodsName',
-                        title: '商品名称',
-                        width: 240,
+                        key: 'num',
+                        title: '编号',
+                        width: 120,
+                    },
+                    {
+                        key: 'name',
+                        title: '活动名称',
                     },
                     {
                         align: 'center',
-                        key: 'goodsImg',
-                        render() {
-                            return '<icon type="image"></icon>';
-                        },
-                        title: '商品图片',
-                        width: 180,
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsPrice',
-                        title: '活动价格',
-                        width: 180,
-                    },
-                    {
-                        align: 'center',
-                        key: 'prePrice',
-                        title: '原价',
-                        width: 180,
+                        key: 'shopName',
+                        title: '店铺名称',
                     },
                     {
                         align: 'center',
                         key: 'startTime',
                         title: '开始时间',
-                        width: 180,
                     },
                     {
                         align: 'center',
                         key: 'endTime',
                         title: '结束时间',
-                        width: 180,
                     },
                     {
                         align: 'center',
-                        key: 'status',
-                        render() {
-                            return `<i-switch size="large" v-model="row.status">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span>
-                                    </i-switch>`;
-                        },
-                        title: '状态',
-                        width: 240,
-                    },
-                    {
-                        align: 'center',
-                        fixed: 'right',
                         key: 'action',
-                        render() {
-                            return '<i-button class="delete-ad" size="small" type="ghost">屏蔽</i-button>';
+                        render(row, column, index) {
+                            return `<i-button size="small" type="ghost" @click.native="look">查看</i-button>
+                                    <i-button class="delete-ad" size="small" type="ghost"
+                                    @click.native="remove(${index})">删除</i-button>`;
                         },
                         title: '操作',
                         width: 180,
@@ -74,36 +56,32 @@
                 ],
                 goodsData: [
                     {
-                        endTime: '2017-2-02',
-                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
-                        goodsPrice: '99.00',
-                        prePrice: '199.00',
-                        startTime: '2017-2-02',
-                        status: true,
+                        endTime: '2016-12-23',
+                        shopName: '店铺名称',
+                        name: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
+                        num: 222,
+                        startTime: '2016-12-23',
                     },
                     {
-                        endTime: '2017-2-02',
-                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
-                        goodsPrice: '99.00',
-                        prePrice: '199.00',
-                        startTime: '2017-2-02',
-                        status: true,
+                        endTime: '2016-12-23',
+                        shopName: '店铺名称',
+                        name: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
+                        num: 222,
+                        startTime: '2016-12-23',
                     },
                     {
-                        endTime: '2017-2-02',
-                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
-                        goodsPrice: '99.00',
-                        prePrice: '199.00',
-                        startTime: '2017-2-02',
-                        status: true,
+                        endTime: '2016-12-23',
+                        shopName: '店铺名称',
+                        name: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
+                        num: 222,
+                        startTime: '2016-12-23',
                     },
                     {
-                        endTime: '2017-2-02',
-                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
-                        goodsPrice: '99.00',
-                        prePrice: '199.00',
-                        startTime: '2017-2-02',
-                        status: true,
+                        endTime: '2016-12-23',
+                        shopName: '店铺名称',
+                        name: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
+                        num: 222,
+                        startTime: '2016-12-23',
                     },
                 ],
                 searchList: [
@@ -120,11 +98,11 @@
             };
         },
         methods: {
+            remove(index) {
+                this.goodsData.splice(index, 1);
+            },
             look() {
-                const self = this;
-                self.$router.push({
-                    path: 'spikes/look',
-                });
+                this.activeModal = true;
             },
         },
     };
@@ -158,6 +136,42 @@
                                  :data="goodsData"
                                  ref="goodsList">
                         </i-table>
+                        <modal
+                                v-model="activeModal"
+                                title="活动详情" class="refund-attribute-modal">
+                            <div class="sales-fulldown-modal">
+                                <i-form ref="form" :model="form" :rules="formValidate" :label-width="100">
+                                    <row>
+                                        <i-col span="18">
+                                            <form-item label="活动名称">
+                                                {{ form.name }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="18">
+                                            <form-item label="活动店铺">
+                                                {{ form.shop }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="18">
+                                            <form-item label="活动时间">
+                                                {{ form.time }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="18">
+                                            <form-item label="活动规则">
+                                                <p v-for="item in form.rule">{{ item }}</p>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                </i-form>
+                            </div>
+                        </modal>
                     </card>
                 </tab-pane>
             </tabs>
