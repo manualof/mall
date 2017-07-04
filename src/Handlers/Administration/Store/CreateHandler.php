@@ -23,10 +23,37 @@ class CreateHandler extends Handler
      */
     public function execute()
     {
-        if (Store::query()->create($this->request->all())) {
-            $this->withCode(200)->withMessage('');
+        $this->validate($this->request, [
+            'category_id' => 'numeric',
+            'name'        => 'required',
+            'status'      => 'in:review,opening,closed,banned',
+            'user_id'     => 'numeric',
+        ], [
+            'category_id.numeric' => '所属分类 ID 必须为数值',
+            'name.required'       => '店铺名称必须填写',
+            'user_id.numeric'     => '店铺所有者 ID 必须为数值',
+            'status.in'           => '店铺状态不在允许的范围内',
+        ]);
+        $this->beginTransaction();
+        $data = $this->request->only([
+            'address',
+            'category_id',
+            'company',
+            'end_at',
+            'flow_marketing',
+            'level',
+            'location',
+            'name',
+            'open_at',
+            'status',
+            'user_id',
+        ]);
+        if (Store::query()->create($data)) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('创建店铺成功！');
         } else {
-            $this->withCode(500)->withError('');
+            $this->rollBackTransaction();
+            $this->withCode(500)->withError('创建店铺失败！');
         }
     }
 }
