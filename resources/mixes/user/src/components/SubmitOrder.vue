@@ -8,7 +8,7 @@
                 </div>
                 <div class="address-selected">
                     <h5>收货人信息</h5>
-                    <div v-for="(item, index) in addressSelect">
+                    <div class="address-list" v-for="(item, index) in addressSelect">
                         <label class="form-control-radio">
                             <input type="radio" name="address" :checked="index == 0">
                             <div class="address clearfix">
@@ -25,6 +25,50 @@
                                 </p>
                             </div>
                         </label>
+                    </div>
+                    <div class="add-address">
+                        <div class="clearfix">
+                            <span class="text-right pull-left">收货人姓名</span>
+                            <input
+                                class="form-control pull-left"
+                                type="text"
+                                placeholder="请输入收货人姓名"
+                                v-model="address.name">
+                        </div>
+                        <div class="clearfix">
+                            <span class="text-right pull-left">手机号码</span>
+                            <input
+                                class="form-control pull-left"
+                                type="text"
+                                placeholder="手机号码为必填项"
+                                v-model="address.phone">
+                        </div>
+                        <div class="clearfix">
+                            <span class="text-right pull-left">所在地区</span>
+                            <Cascader class="destination pull-left"
+                                      :data="data"
+                                      v-model="address.area">
+                            </Cascader>
+                        </div>
+                        <div class="clearfix">
+                            <span class="text-right pull-left">详细地址</span>
+                            <textarea
+                                class="form-control pull-left"
+                                placeholder="无需重复填写省市区，小于50个字"
+                                v-model="address.detail">
+                            </textarea>
+                        </div>
+                        <label class="clearfix">
+                            <div class="pull-left">
+                                <input type="checkbox" v-model="address.isdefault">
+                                <span></span>
+                            </div>
+                            <span class="pull-left">设为默认地址</span>
+                        </label>
+                        <div class="btn">
+                            <a class="order-btn submit-btn pull-left">保存地址</a>
+                            <a>取消</a>
+                        </div>
                     </div>
                 </div>
                 <router-link class="select-btn" to="/personnal-center/shipping-address">新增收货地址</router-link>
@@ -106,12 +150,24 @@
 </template>
 
 <script>
+    import Cascader from 'iview/src/components/cascader';
     import order from '../assets/images/details/order.png';
     import RightSide from './dashboard/RightSide';
 
     export default {
+        components: {
+            RightSide,
+            Cascader,
+        },
         data() {
             return {
+                address: {
+                    name: '',
+                    phone: '',
+                    area: [],
+                    detail: '',
+                    isdefault: false,
+                },
                 addressSelect: [
                     {
                         address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
@@ -124,6 +180,56 @@
                         isdefault: false,
                         name: '王茂',
                         phone: 12345676543,
+                    },
+                ],
+                data: [
+                    {
+                        children: [
+                            {
+                                label: '故宫',
+                                value: 'gugong',
+                            },
+                            {
+                                label: '天坛',
+                                value: 'tiantan',
+                            },
+                            {
+                                label: '王府井',
+                                value: 'wangfujing',
+                            },
+                        ],
+                        label: '北京',
+                        value: 'beijing',
+                    },
+                    {
+                        children: [
+                            {
+                                value: 'nanjing',
+                                label: '南京',
+                                children: [
+                                    {
+                                        value: 'fuzimiao',
+                                        label: '夫子庙',
+                                    },
+                                ],
+                            },
+                            {
+                                value: 'suzhou',
+                                label: '苏州',
+                                children: [
+                                    {
+                                        value: 'zhuozhengyuan',
+                                        label: '拙政园',
+                                    },
+                                    {
+                                        value: 'shizilin',
+                                        label: '狮子林',
+                                    },
+                                ],
+                            },
+                        ],
+                        label: '江苏',
+                        value: 'jiangsu',
                     },
                 ],
                 methods: [
@@ -165,9 +271,6 @@
                     ],
                 },
             };
-        },
-        components: {
-            RightSide,
         },
         computed: {
             total_price() {
