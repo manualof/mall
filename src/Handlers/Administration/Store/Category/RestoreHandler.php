@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Store\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\StoreCategory;
 
 /**
  * Class RestoreHandler.
@@ -22,6 +23,20 @@ class RestoreHandler extends Handler
      */
     public function execute()
     {
-        $id = $this->request->input('id');
+        $this->validate($this->request, [
+            'id' => 'required|numeric',
+        ], [
+            'id.numeric'  => '分类 ID 必须为数值',
+            'id.required' => '分类 ID 必须填写',
+        ]);
+        $this->beginTransaction();
+        $category = StoreCategory::query()->onlyTrashed()->find($this->request->input('id'));
+        if ($category instanceof StoreCategory && $category->restore()) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('恢复店铺分类成功！');
+        } else {
+            $this->rollBackTransaction();
+            $this->withCode(500)->withError('没有对应的店铺分类信息！');
+        }
     }
 }
