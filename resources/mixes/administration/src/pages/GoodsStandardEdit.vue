@@ -9,6 +9,8 @@
         },
         data() {
             return {
+                editCategory: false,
+                editBtn: true,
                 loading: false,
                 ruleValidate: {
                     type: [
@@ -129,6 +131,10 @@
             };
         },
         methods: {
+            edit() {
+                this.editBtn = false;
+                this.editCategory = true;
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
@@ -150,6 +156,12 @@
                         });
                     }
                 });
+            },
+            visibleChange(status) {
+                if (status === false) {
+                    this.editCategory = false;
+                    this.editBtn = true;
+                }
             },
         },
     };
@@ -181,10 +193,14 @@
                                 <form-item label="快捷定位">
                                     <div class="flex-module">
                                         {{ standardData.position }}
+                                        <i-button class="edit-btn" size="small" type="ghost"
+                                                  @click.native="edit" v-if="editBtn">编辑</i-button>
                                         <cascader :data="styleData"
+                                                  change-on-select
                                                   @on-change="handleChange"
-                                                  trigger="hover"
-                                                  v-model="standardData.position">
+                                                  @on-visible-change="visibleChange"
+                                                  v-model="standardData.position"
+                                                  v-if="editCategory">
                                         </cascader>
                                     </div>
                                     <p class="tip">选择分类，可关联到任意级分类 （只在后台快捷定位中起作用）</p>
