@@ -10,8 +10,16 @@
         data() {
             return {
                 goods: {
-                    endPrice: '',
-                    startPrice: '',
+                    preForm: [
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                    ],
                 },
                 goodsColumns: [
                     {
@@ -121,8 +129,16 @@
                 ],
                 loading: false,
                 orders: {
-                    endPrice: '',
-                    startPrice: '',
+                    preForm: [
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                    ],
                 },
                 salesTrend: {
                     legend: {
@@ -204,8 +220,27 @@
             };
         },
         methods: {
-            deleteArea(e) {
-                console.log(e);
+            addpreArea() {
+                this.goods.preForm.push(
+                    {
+                        endPrice: '',
+                        startPrice: '',
+                    },
+                );
+            },
+            addOrderArea() {
+                this.orders.preForm.push(
+                    {
+                        endPrice: '',
+                        startPrice: '',
+                    },
+                );
+            },
+            deleteArea(index) {
+                this.goods.preForm.splice(index, 1);
+            },
+            deleteOrderArea(index) {
+                this.orders.preForm.splice(index, 1);
             },
             lookGoods() {},
             lookShop() {},
@@ -304,42 +339,26 @@
                         </div>
                         <div class="goods-price-area">
                             <i-form ref="goods" :model="goods" :rules="ruleValidate" :label-width="180">
-                                <form-item>
+                                <form-item v-for="(item, index) in goods.preForm">
                                     <row>
                                         <i-col span="2" class="price-width">起始额</i-col>
                                         <i-col span="2" class="input-width">
-                                            <i-input v-model="startPrice"></i-input>
+                                            <i-input v-model="item.startPrice"></i-input>
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="2" class="price-width">结束额</i-col>
                                         <i-col span="2" class="input-width">
-                                            <i-input v-model="endPrice"></i-input>
+                                            <i-input v-model="item.endPrice"></i-input>
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="14">
-                                            <i-button @click.native="deleteArea($event)"
-                                                      class="delete-color" type="ghost">刪除</i-button>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="2" class="price-width">起始额</i-col>
-                                        <i-col span="2" class="input-width">
-                                            <i-input v-model="goods.startPrice"></i-input>
-                                        </i-col>
-                                        <i-col span="1">元</i-col>
-                                        <i-col span="2" class="price-width">结束额</i-col>
-                                        <i-col span="2" class="input-width">
-                                            <i-input v-model="goods.endPrice"></i-input>
-                                        </i-col>
-                                        <i-col span="1">元</i-col>
-                                        <i-col span="14">
-                                            <i-button @click.native="deleteArea"
+                                            <i-button @click.native="deleteArea(index)"
                                                       class="delete-color" type="ghost">刪除</i-button>
                                         </i-col>
                                     </row>
                                 </form-item>
                                 <form-item>
-                                    <i-button @click.native="addArea"  class="button-style"
+                                    <i-button @click.native="addpreArea"  class="button-style"
                                               type="ghost">+添加区间</i-button>
                                 </form-item>
                                 <form-item>
@@ -363,42 +382,26 @@
                         </div>
                         <div class="goods-price-area">
                             <i-form ref="orders" :model="orders" :rules="ruleValidate" :label-width="180">
-                                <form-item>
+                                <form-item v-for="(item, index) in orders.preForm">
                                     <row>
                                         <i-col span="2" class="price-width">起始额</i-col>
                                         <i-col span="2" class="input-width">
-                                            <i-input v-model="startPrice"></i-input>
+                                            <i-input v-model="item.startPrice"></i-input>
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="2" class="price-width">结束额</i-col>
                                         <i-col span="2" class="input-width">
-                                            <i-input v-model="endPrice"></i-input>
+                                            <i-input v-model="item.endPrice"></i-input>
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="14">
-                                            <i-button class="delete-color" @click.native="deleteArea"
-                                                      type="ghost">刪除</i-button>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="2" class="price-width">起始额</i-col>
-                                        <i-col span="2" class="input-width">
-                                            <i-input v-model="orders.startPrice"></i-input>
-                                        </i-col>
-                                        <i-col span="1">元</i-col>
-                                        <i-col span="2" class="price-width">结束额</i-col>
-                                        <i-col span="2" class="input-width">
-                                            <i-input v-model="orders.endPrice"></i-input>
-                                        </i-col>
-                                        <i-col span="1">元</i-col>
-                                        <i-col span="14">
-                                            <i-button class="delete-color" @click.native="deleteArea"
+                                            <i-button class="delete-color" @click.native="deleteOrderArea(index)"
                                                       type="ghost">刪除</i-button>
                                         </i-col>
                                     </row>
                                 </form-item>
                                 <form-item>
-                                    <i-button class="button-style" @click.native="addArea"
+                                    <i-button class="button-style" @click.native="addOrderArea"
                                               type="ghost" >+添加区间</i-button>
                                 </form-item>
                                 <form-item>
