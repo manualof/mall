@@ -43,9 +43,9 @@
                             <span class="text-right pull-left">手机号码</span>
                             <input
                                 class="form-control pull-left"
-                                type="text"
+                                type="number"
                                 placeholder="手机号码为必填项"
-                                v-model="address.phone">
+                                v-model.number="address.phone">
                         </div>
                         <div class="clearfix">
                             <span class="text-right pull-left">所在地区</span>
@@ -102,25 +102,40 @@
                         <form class="signup-form">
                             <div class="signup-form-group clearfix">
                                 <label class="form-title">收货人姓名</label>
-                                <input type="text" class="signup-form-control" name="username" placeholder="请输入收货人姓名">
+                                <input type="text"
+                                       class="signup-form-control"
+                                       name="username"
+                                       placeholder="请输入收货人姓名"
+                                       v-model="newSelfTake.name">
                             </div>
                             <div class="signup-form-group clearfix">
                                 <label class="form-title">手机号码</label>
-                                <input type="text" class="signup-form-control" name="telphone" placeholder="手机号码为必填项">
+                                <input type="number"
+                                       class="signup-form-control"
+                                       name="telphone"
+                                       placeholder="手机号码为必填项"
+                                       v-model.number="newSelfTake.phone">
                             </div>
                             <div class="signup-form-group clearfix">
                                 <label class="form-title">门店</label>
                                 <Cascader class="destination pull-left"
                                           :data="data"
-                                          v-model="address.area">
+                                          v-model="newSelfTake.address">
                                 </Cascader>
-                                <Select v-model="model1" style="width:200px">
-                                    <Option v-for="item in cityList" :value="item.value" :key="item">{{ item.label }}</Option>
+                                <Select v-model="newSelfTake.city"  style="width:200px">
+                                    <Option v-for="item in cityList"
+                                            :value="item.value"
+                                            :key="item">
+                                        {{ item.label }}
+                                    </Option>
                                 </Select>
                             </div>
                         </form>
                     </div>
-                    <button type="button" class="order-btn" slot="save_address">保存门店</button>
+                    <button type="button"
+                            class="order-btn"
+                            @click="selfTakeAdd"
+                            slot="save_address">保存门店</button>
                 </modal>
             </div>
             <div class="pay-method">
@@ -318,6 +333,12 @@
                     },
                 ],
                 modalTitle: '',
+                newSelfTake: {
+                    address: [],
+                    city: '',
+                    name: '',
+                    phone: '',
+                },
                 selfTake: [
 //                    {
 //                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
@@ -368,6 +389,10 @@
                     address.isdefault = false;
                 });
                 item.isdefault = true;
+            },
+            selfTakeAdd() {
+                this.selfTake.push(this.newSelfTake);
+                this.$refs.modal.close();
             },
             saveAddress() {
                 this.addressSelect.push(this.address);
