@@ -149,7 +149,49 @@
             </div>
             <div class="pay-method invoice-info">
                 <h5 class="select-title">发票信息</h5>
-                <p>不需要发票 <a>修改</a></p>
+                <p>{{ invoice }} <a @click="modifyInvoice">修改</a></p>
+                <modal ref="invoice">
+                    <div slot="title">
+                        <h4 class="modal-title">发票信息</h4>
+                    </div>
+                    <div slot="body">
+                        <form class="signup-form">
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">收货人姓名</label>
+                                <label class="form-control-radio">
+                                    <input type="radio" name="invoice" value="普通发票" v-model="invoice.invoice">
+                                    <span>普通发票</span>
+                                </label>
+                                <label class="form-control-radio">
+                                    <input type="radio" name="invoice" value="不需要发票" v-model="invoice.invoice">
+                                    <span>不需要发票</span>
+                                </label>
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">发票抬头</label>
+                                <Select v-model="invoice.title" class="invoice-select" style="width:200px">
+                                    <Option v-for="item in cityList"
+                                            :value="item.value"
+                                            :key="item">
+                                        {{ item.label }}
+                                    </Option>
+                                </Select>
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">发票内容</label>
+                                <input class="form-control invoice-content" type="text" v-model="invoice.info">
+                            </div>
+                        </form>
+                    </div>
+                    <button type="button"
+                            class="order-btn"
+                            @click="selfTakeAdd"
+                            slot="save_address">保存发票信息</button>
+                    <button type="button"
+                            class="order-btn notNeed"
+                            @click="selfTakeAdd"
+                            slot="save_address">不需要发票</button>
+                </modal>
             </div>
             <div class="ensure-information">
                 <p class="select-title">商品清单</p>
@@ -324,6 +366,15 @@
                         value: 'jiangsu',
                     },
                 ],
+                invoice: '',
+                invoices: [
+                    {
+                        type: '个人',
+                    },
+                    {
+                        type: '公司',
+                    },
+                ],
                 methods: [
                     {
                         name: '在线支付',
@@ -389,6 +440,9 @@
                     address.isdefault = false;
                 });
                 item.isdefault = true;
+            },
+            modifyInvoice() {
+                this.$refs.invoice.open();
             },
             selfTakeAdd() {
                 this.selfTake.push(this.newSelfTake);
