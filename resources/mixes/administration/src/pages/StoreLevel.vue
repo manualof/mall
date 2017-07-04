@@ -46,7 +46,7 @@
                         align: 'center',
                         key: 'action',
                         render(row, column, index) {
-                            return `<i-button size="small" type="ghost" class="delete-ad" @click.native="edit">编辑</i-button>
+                            return `<i-button size="small" type="ghost" @click.native="edit">编辑</i-button>
                                     <i-button size="small" class="delete-ad" @click.native="remove(${index})"
                                      type="ghost">删除</i-button>`;
                         },

@@ -23,22 +23,22 @@
                 payModal: {
                     billInformation: '',
                     billNum: '213624925721571',
-                    endDate: '2016-12-23',
-                    startDate: '2016-12-22',
+                    endDate: '',
+                    startDate: '',
                 },
                 payValidate: {
                     endDate: [
                         {
                             message: '日期不能为空',
                             required: true,
-                            trigger: 'blur',
+                            trigger: 'change',
                         },
                     ],
                     startDate: [
                         {
                             message: '日期不能为空',
                             required: true,
-                            trigger: 'blur',
+                            trigger: 'change',
                         },
                     ],
                 },
@@ -347,9 +347,15 @@
                         window.console.log(valid);
                     } else {
                         self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
+                        if (this.payValidate.startDate === '' || this.payValidate.endDate === '') {
+                            self.$notice.error({
+                                title: '请选择日期',
+                            });
+                        } else {
+                            self.$notice.error({
+                                title: '请填写正确信息',
+                            });
+                        }
                     }
                 });
             },
@@ -467,7 +473,7 @@
                                 </form-item>
                             </i-col>
                         </row>
-                        <form-item label="起止日期" prop="startDate">
+                        <form-item label="起止日期">
                             <row>
                                 <i-col span="8">
                                     <date-picker type="date" placeholder="选择日期"
@@ -483,7 +489,8 @@
                         <row>
                             <i-col span="20">
                                 <form-item label="出账信息" prop="">
-                                    <i-input type="textarea" v-model="payModal.billInformation"></i-input>
+                                    <i-input type="textarea" :autosize="{minRows: 3,maxRows: 5}"
+                                             v-model="payModal.billInformation"></i-input>
                                     <p class="tip">
                                         请输入汇款单号、支付方式等付款凭证
                                     </p>
