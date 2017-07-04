@@ -50,12 +50,6 @@
                     },
                     {
                         align: 'center',
-                        key: 'typeColor',
-                        title: '规格颜色',
-                        width: 160,
-                    },
-                    {
-                        align: 'center',
                         key: 'positionId',
                         title: '快捷定位ID',
                         width: 120,
@@ -71,7 +65,7 @@
                             return `<i-button @click.native="edit"
                                     size="small" type="ghost">编辑</i-button>
                                     <i-button class="delete-ad" @click.native="remove(${index})"
-                                    size="small" type="ghost">删除</i-button>`;
+                                    size="small" type="ghost" v-if="row.typeName !== '颜色'">删除</i-button>`;
                         },
                         title: '操作',
                         width: 180,
@@ -82,25 +76,22 @@
                         positionId: '22',
                         positionName: '液晶电视',
                         sort: '6',
-                        typeColor: '颜色',
                         typeId: '0001',
-                        typeName: '迪卡侬',
+                        typeName: '颜色',
                     },
                     {
                         positionId: '22',
                         positionName: '液晶电视',
                         sort: '6',
-                        typeColor: '颜色',
                         typeId: '0001',
-                        typeName: '迪卡侬',
+                        typeName: '尺码',
                     },
                     {
                         positionId: '22',
                         positionName: '液晶电视',
                         sort: '6',
-                        typeColor: '颜色',
                         typeId: '0001',
-                        typeName: '迪卡侬',
+                        typeName: '重量',
                     },
                 ],
             };

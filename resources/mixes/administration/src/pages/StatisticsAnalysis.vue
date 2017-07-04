@@ -333,7 +333,7 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>在“提示”下可以选择不同的商品分类和时间查询数据</p>
+                            <p>可以选择不同的商品分类和时间查询数据</p>
                             <p>统计某行业子分类在不同时间段的下单金额、下单商品数、下单量，为分析行业销量提供依据</p>
                         </div>
                         <div class="analysis-content">
@@ -439,7 +439,7 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>在“提示”下可以选择不同的商品分类和时间查询数据</p>
+                            <p>可以选择不同的商品分类和时间查询数据</p>
                             <p>统计某行业在不同时间段下单量前50名商品和前30名店铺</p>
                         </div>
                         <div class="analysis-content">
