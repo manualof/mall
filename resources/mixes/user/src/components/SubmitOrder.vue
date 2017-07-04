@@ -79,18 +79,49 @@
             <div class="address-selected self-take-select">
                 <h5>使用自提门店</h5>
                 <div>
-                    <label class="form-control-radio">
+                    <label class="form-control-radio" v-for="take in selfTake">
                         <input type="radio" name="address">
                         <div class="address clearfix">
                             <p>
-                                <span>{{ selfTake.name }}</span>
-                                <span>{{ selfTake.phone }}</span>
-                                <span class="address-detail">{{ selfTake.address }}</span>
+                                <span>{{ take.name }}</span>
+                                <span>{{ take.phone }}</span>
+                                <span class="address-detail">{{ take.address }}</span>
                                 <router-link to="/" class="self-take pull-right">修改自提信息</router-link>
                             </p>
                         </div>
                     </label>
                 </div>
+                <a class="select-btn add-self-take"
+                    @click="addSelfTake"
+                    v-if="selfTake.length === 0">+添加自提点</a>
+                <modal ref="modal">
+                    <div slot="title">
+                        <h4 class="modal-title" v-text="modalTitle"></h4>
+                    </div>
+                    <div slot="body">
+                        <form class="signup-form">
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">收货人姓名</label>
+                                <input type="text" class="signup-form-control" name="username" placeholder="请输入收货人姓名">
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">手机号码</label>
+                                <input type="text" class="signup-form-control" name="telphone" placeholder="手机号码为必填项">
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">门店</label>
+                                <Cascader class="destination pull-left"
+                                          :data="data"
+                                          v-model="address.area">
+                                </Cascader>
+                                <Select v-model="model1" style="width:200px">
+                                    <Option v-for="item in cityList" :value="item.value" :key="item">{{ item.label }}</Option>
+                                </Select>
+                            </div>
+                        </form>
+                    </div>
+                    <button type="button" class="order-btn" slot="save_address">保存门店</button>
+                </modal>
             </div>
             <div class="pay-method">
                 <h5 class="select-title">支付方式</h5>
@@ -154,13 +185,19 @@
 
 <script>
     import Cascader from 'iview/src/components/cascader';
+    import { Select, Option, OptionGroup } from 'iview/src/components/select';
+    import Modal from './personnal-center/Modal';
     import order from '../assets/images/details/order.png';
     import RightSide from './dashboard/RightSide';
 
     export default {
         components: {
-            RightSide,
             Cascader,
+            Modal,
+            Option,
+            OptionGroup,
+            RightSide,
+            Select,
         },
         computed: {
             total_price() {
@@ -195,6 +232,33 @@
                         phone: 12345676543,
                     },
                 ],
+                cityList: [
+                    {
+                        value: 'beijing',
+                        label: '北京市',
+                    },
+                    {
+                        value: 'shanghai',
+                        label: '上海市',
+                    },
+                    {
+                        value: 'shenzhen',
+                        label: '深圳市',
+                    },
+                    {
+                        value: 'hangzhou',
+                        label: '杭州市',
+                    },
+                    {
+                        value: 'nanjing',
+                        label: '南京市',
+                    },
+                    {
+                        value: 'chongqing',
+                        label: '重庆市',
+                    },
+                ],
+                model1: '',
                 data: [
                     {
                         children: [
@@ -253,11 +317,14 @@
                         name: '货到付款',
                     },
                 ],
-                selfTake: {
-                    address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
-                    name: '王茂',
-                    phone: 12345676543,
-                },
+                modalTitle: '',
+                selfTake: [
+//                    {
+//                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
+//                        name: '王茂',
+//                        phone: 12345676543,
+//                    },
+                ],
                 submitOrder: {
                     integral_num: 1660,
                     integral_price: 16.6,
@@ -288,6 +355,10 @@
         methods: {
             addAddress() {
                 this.addStatus = 2;
+            },
+            addSelfTake() {
+                this.$refs.modal.open();
+                this.modalTitle = '添加自提门店';
             },
             cancelAdd() {
                 this.addStatus = 1;
