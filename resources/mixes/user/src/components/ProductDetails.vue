@@ -145,25 +145,61 @@
         <!--产品相关-->
         <div class="product-about container clearfix">
             <!--看了又看-->
-            <div class="see-again-box">
-                <h4>看了又看</h4>
-                <ul>
-                    <router-link tag="li" to="/" v-for="(item, index) in seeAgain_products" :key="index">
-                        <a href="javascript:void (0)">
-                            <img :src="item.img"/>
-                        </a>
-                        <p>{{ item.name }}
-                        </p>
-                        <p>
-                            <span class="price">￥{{ item.price }}</span>
-                            <span class="sales">销量：{{ item.sales }}</span>
-                        </p>
-                    </router-link>
-                </ul>
+            <div class="left-box">
+                <div class="see-again-box follow">
+                     <div class="img">
+                         <img :src="img" alt="">
+                     </div>
+                    <p class="name">xxx旗舰店</p>
+                    <router-link to="/" class="shop">关注店铺</router-link>
+                </div>
+                <div class="see-again-box talked">
+                    <h4>店铺客服</h4>
+                    <div class="talkes">
+                        <div class="talkeds" v-for="talk in kefu">
+                            <p class="talk-name">{{ talk.name }}</p>
+                           <div class="chilrd" v-for="item in talk.items">
+                               {{item}}&nbsp;&nbsp;&nbsp;<img :src="talked" alt="">
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-kind">
+                    <h4>商品分类</h4>
+                    <ul class="goods-list">
+                        <li class="goods-li" v-for="(good, index) in goodskind">
+                            <span @click="change(index)" class="goods-btn" v-if="!good.onoff">+</span>
+                            <span @click="change(index)" v-if="good.onoff" class="goods-btn">-</span>
+                            <div class="goods-item">{{ good.kind }}</div>
+                            <div class="clearfix"></div>
+                            <ul class="goods-items" v-if="good.onoff && good.item.length > 0">
+                                <li v-for="item in good.item">{{ item }}</li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="see-again-box">
+                    <h4>看了又看</h4>
+                    <ul>
+                        <router-link tag="li" to="/" v-for="(item, index) in seeAgain_products" :key="index">
+                            <a href="javascript:void (0)">
+                                <img :src="item.img"/>
+                            </a>
+                            <p>{{ item.name }}
+                            </p>
+                            <p>
+                                <span class="price">￥{{ item.price }}</span>
+                                <span class="sales">销量：{{ item.sales }}</span>
+                            </p>
+                        </router-link>
+                    </ul>
+                </div>
             </div>
+
             <!--商品详情及用户评价-->
             <div class="details-evaluation pull-left">
-                <ul class="clearfix nav">
+                <ul class="clearfix nav" role="tablist">
                     <li class="pull-left active text-center">
                         <i></i>
                         <a class="text-center a-block" href="#details" data-toggle="tab">
@@ -172,7 +208,7 @@
                     </li>
                     <li class="pull-left">
                         <i></i>
-                        <a class="text-center a-block" href="#evaluation" data-toggle="tab">
+                        <a class="text-center a-block" href="#evaluation"  aria-controls="evaluation" role="tab" data-toggle="tab">
                             用户评价
                         </a>
                     </li>
@@ -283,11 +319,15 @@
     import user from '../assets/images/details/user-img.png';
     import img7 from '../assets/images/img_07.png';
     import stool from '../assets/images/details/stool.png';
+    import logo from '../assets/images/img_lofo.png';
+    import talk from '../assets/images/service.png';
 
     export default {
         data() {
             return {
-                activeImg: '',
+                img: logo,
+                talked: talk,
+                activeImg: img1,
                 bigImg: [stool, stool, stool, stool, stool],
                 data: [
                     {
@@ -466,6 +506,42 @@
                 selectRecommends: [],
                 show: 0,
                 smallImgs: [img1, img2, img1, img2, img1, img1, img1],
+                kefu: [
+                    {
+                        name: '售前客服',
+                        items: [
+                            '客服依依', '客服依依', '客服依依', '客服依依',
+                        ],
+                    },
+                    {
+                        name: '售后客服',
+                        items: [
+                            '客服依依', '客服依依', '客服依依',
+                        ],
+                    },
+                ],
+                goodskind: [
+                    {
+                        onoff: true,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                ],
             };
         },
         components: {
@@ -511,6 +587,9 @@
                 } else {
                     item.bigImg = source;
                 }
+            },
+            change(num) {
+                this.goodskind[num].onoff = !this.goodskind[num].onoff;
             },
 //            imgBigbox1() {
 //                this.show = 1;
