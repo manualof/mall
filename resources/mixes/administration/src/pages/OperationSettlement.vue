@@ -23,10 +23,17 @@
                 payModal: {
                     billInformation: '',
                     billNum: '213624925721571',
-                    endDate: '2016-12-22',
+                    endDate: '2016-12-23',
                     startDate: '2016-12-22',
                 },
                 payValidate: {
+                    endDate: [
+                        {
+                            message: '日期不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
                     startDate: [
                         {
                             message: '日期不能为空',
