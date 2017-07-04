@@ -199,7 +199,7 @@
 
             <!--商品详情及用户评价-->
             <div class="details-evaluation pull-left">
-                <ul class="clearfix nav">
+                <ul class="clearfix nav" role="tablist">
                     <li class="pull-left active text-center">
                         <i></i>
                         <a class="text-center a-block" href="#details" data-toggle="tab">
@@ -208,7 +208,7 @@
                     </li>
                     <li class="pull-left">
                         <i></i>
-                        <a class="text-center a-block" href="#evaluation" data-toggle="tab">
+                        <a class="text-center a-block" href="#evaluation"  aria-controls="evaluation" role="tab" data-toggle="tab">
                             用户评价
                         </a>
                     </li>
