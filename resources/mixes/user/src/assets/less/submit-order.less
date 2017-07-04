@@ -411,6 +411,36 @@
             z-index: 1050;
             padding-right: 0 !important;
             .address-content {
+                .invoice-content {
+                    border-radius: 0;
+                    display: inline-block;
+                    height: 40px;
+                    width: 520px;
+                }
+                .form-control-radio {
+                    margin-right: 10px;
+                    position: relative;
+                    span {
+                        border: 1px solid #e5e5e5;
+                        box-sizing: border-box;
+                        display: inline-block;
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 38px;
+                        text-align: center;
+                        width: 124px;
+                    }
+                    input {
+                        height: 100%;
+                        position: absolute;
+                        visibility: hidden;
+                        width: 100%;
+                        &:checked + span {
+                            border: 2px #de2634 solid;
+                            line-height: 36px;
+                        }
+                    }
+                }
                 .modal-title {
                     height: 94px;
                     line-height: 94px;
@@ -424,6 +454,14 @@
                 }
                 .ivu-select-single .ivu-select-selection {
                     margin-left: 10px;
+                    height: 40px;
+                }
+                .ivu-select-single .ivu-select-selection .ivu-select-placeholder,
+                .ivu-select-single .ivu-select-selection .ivu-select-selected-value {
+                    line-height: 40px;
+                }
+                .invoice-select .ivu-select-selection{
+                    margin-left: 0;
                 }
                 .signup-form {
                     padding-left: 54px;
@@ -480,7 +518,7 @@
     background-color: #de2634;
     border: 0 none;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     height: 42px;
     line-height: 42px;
     text-align: center;
@@ -488,6 +526,16 @@
     width: 140px;
     &:hover {
         color: #fff;
+    }
+}
+.notNeed {
+    background: none;
+    border: 1px solid #e5e5e5;
+    color: #444444;
+    font-size: 14px;
+    margin-left: 10px;
+    &:hover {
+        color: #444444;
     }
 }
 
