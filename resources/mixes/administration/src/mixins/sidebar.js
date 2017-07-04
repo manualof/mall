@@ -130,7 +130,7 @@ export default function (injection) {
                 },
                 {
                     path: '/mall/sales/fulldown',
-                    title: '满减（暂空）',
+                    title: '满减活动',
                 },
             ],
             icon: 'plus',
