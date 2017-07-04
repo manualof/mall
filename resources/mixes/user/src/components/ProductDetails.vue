@@ -1,6 +1,7 @@
 <template>
     <div class="product-details">
         <div class="basic-intro container clearfix">
+            <div class="miaobaoxie">首页  >  xx旗舰店 > 尿不湿</div>
             <div class="product-img">
                 <div>
                     <!--<div id="preview" class="spec-preview">
@@ -64,9 +65,22 @@
                 <div class="distribution">
                     <p>配送<span class="origin-adress">西安</span>至
                         <Cascader class="destination" :data="data" v-model="distribution_address"></Cascader>
-                        运费：<span class="freigh">&nbsp;{{ product_intro.transport_price }}</span></p>
-                    <p class="stock">{{ product_intro.status }}</p>
+                        运费：<span class="freigh">&nbsp;￥ {{ product_intro.transport_price }}</span></p>
+                    <!--<p class="stock">{{ product_intro.status }}</p>-->
                 </div>
+                <dl class="product-type-select clearfix">
+                    <dt>尺码</dt>
+                    <dd>
+                        <ul>
+                            <li v-for="size in product_intro.size">
+                                <label class="form-control-radio">
+                                    <input type="radio" name="size" :value="size">
+                                    <span>{{ size }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
                 <dl class="product-type-select clearfix">
                     <dt>类型</dt>
                     <dd>
@@ -94,20 +108,20 @@
                     <li class="buy"><a class="text-center">立刻购买</a></li>
                     <li class="basket"><a class="text-center">加入购物车</a></li>
                 </ul>
-                <p class="prompt">温馨提示&nbsp;本产品不支持货到付款</p>
+                <!--<p class="prompt">温馨提示&nbsp;本产品不支持货到付款</p>-->
             </div>
-            <div class="shop-info">
-                <div class="shop-img">
-                    <router-link :to="{ name: 'shop-home'}">
-                        <img src="../assets/images/details/shop.png"/>
-                    </router-link>
-                </div>
-                <h5 class="shop-name">xxx母婴用品店<span class="shop-type text-center">自荐</span></h5>
-                <p class="shop-score">店铺评分：<span>9.2</span></p>
-                <p class="shop-serve">服务：七天无理由退换货</p>
-                <a class="shop-btn text-center contact" href="javascript:void (0)">联系客服</a>
-                <a class="shop-btn text-center" href="javascript:void (0)">关注店家</a>
-            </div>
+            <!--<div class="shop-info">-->
+                <!--<div class="shop-img">-->
+                    <!--<router-link :to="{ name: 'shop-home'}">-->
+                        <!--<img src="../assets/images/details/shop.png"/>-->
+                    <!--</router-link>-->
+                <!--</div>-->
+                <!--<h5 class="shop-name">xxx母婴用品店<span class="shop-type text-center">自荐</span></h5>-->
+                <!--<p class="shop-score">店铺评分：<span>9.2</span></p>-->
+                <!--<p class="shop-serve">服务：七天无理由退换货</p>-->
+                <!--<a class="shop-btn text-center contact" href="javascript:void (0)">联系客服</a>-->
+                <!--<a class="shop-btn text-center" href="javascript:void (0)">关注店家</a>-->
+            <!--</div>-->
         </div>
         <!--推荐购买-->
         <ul class="combination-buy container">
@@ -376,6 +390,7 @@
                     original_price: 488.00,
                     price: 239.00,
                     transport_price: 12.00,
+                    size: ['S', 'M', 'L', 'XL', 'XXL'],
                     type: ['套餐一', '套餐二', '套餐三'],
                     sales_num: 7764,
                     status: '有货，今天下单预计1月22送到',
