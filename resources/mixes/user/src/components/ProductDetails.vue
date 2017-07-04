@@ -159,7 +159,7 @@
                         <div class="talkeds" v-for="talk in kefu">
                             <p class="talk-name">{{ talk.name }}</p>
                            <div class="chilrd" v-for="item in talk.items">
-                               客服依依&nbsp;&nbsp;&nbsp;<img :src="talked" alt="">
+                               {{item}}&nbsp;&nbsp;&nbsp;<img :src="talked" alt="">
                            </div>
                         </div>
                     </div>
@@ -167,12 +167,15 @@
                 <div class="goods-kind">
                     <h4>商品分类</h4>
                     <ul class="goods-list">
-                        <li>
-                            <span class="goods-btn">+</span> <div class="goods-item">查看所有商品</div>
+                        <li class="goods-li" v-for="(good, index) in goodskind">
+                            <span @click="change(index)" class="goods-btn" v-if="!good.onoff">+</span>
+                            <span @click="change(index)" v-if="good.onoff" class="goods-btn">-</span>
+                            <div class="goods-item">{{ good.kind }}</div>
                             <div class="clearfix"></div>
-                            <ul>
-                                <li></li>
+                            <ul class="goods-items" v-if="good.onoff && good.item.length > 0">
+                                <li v-for="item in good.item">{{ item }}</li>
                             </ul>
+                            <div class="clearfix"></div>
                         </li>
                     </ul>
                 </div>
@@ -517,6 +520,28 @@
                         ],
                     },
                 ],
+                goodskind: [
+                    {
+                        onoff: true,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                ],
             };
         },
         components: {
@@ -562,6 +587,9 @@
                 } else {
                     item.bigImg = source;
                 }
+            },
+            change(num) {
+                this.goodskind[num].onoff = !this.goodskind[num].onoff;
             },
 //            imgBigbox1() {
 //                this.show = 1;

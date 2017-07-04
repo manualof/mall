@@ -535,7 +535,11 @@
                     margin: 0;
                 }
                 ul{
+                    color: #444;
                     padding: 25px 20px;
+                    .goods-li{
+                        margin-bottom: 20px;
+                    }
                     .goods-btn{
                         float: left;
                         width: 12px;
@@ -543,9 +547,20 @@
                         border: 1px solid #e5e5e5;
                         text-align: center;
                         line-height: 12px;
+                        margin-top: 2px;
                     }
                     .goods-item{
-                        
+                        float: left;
+                        margin-left:10px ;
+                    }
+                    .goods-items{
+                        margin-left: 24px;
+                        padding: 0;
+                        &>li{
+                            float: left;
+                            width: 33%;
+                            margin-top: 12px;
+                        }
                     }
                 }
             }
