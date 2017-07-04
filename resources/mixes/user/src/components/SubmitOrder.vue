@@ -33,7 +33,7 @@
                 <h5>使用自提门店</h5>
                 <div>
                     <label class="form-control-radio">
-                        <input type="radio" name="address" :checked="index == 0">
+                        <input type="radio" name="address">
                         <div class="address clearfix">
                             <p>
                                 <span>{{ selfTake.name }}</span>
@@ -59,29 +59,35 @@
                 <p>不需要发票 <a>修改</a></p>
             </div>
             <div class="ensure-information">
-                <p class="select-title">确认商品信息</p>
-                <div class="product-information" v-for="item in submitOrder.productList">
-                    <p class="name">{{ item.shop }}</p>
-                    <table width="100%">
-                        <thead>
-                        <tr>
-                            <th class="th-information">商品信息</th>
-                            <th>单价</th>
-                            <th>数量</th>
-                            <th>金额</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{{ item.name }}</td>
-                            <td><s>&yen;{{ item.price1 }}</s>
-                                <p>&yen;{{ item.price2 }}</p></td>
-                            <td>{{ item.num }}</td>
-                            <td class="price">&yen;{{ item.price2 * item.num }}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <p class="select-title">商品清单</p>
+                <ul class="product-head clearfix">
+                    <li class="pull-left">商品信息</li>
+                    <li class="pull-left text-center">单价(元)</li>
+                    <li class="pull-left text-center">数量</li>
+                    <li class="pull-left text-center">金额</li>
+                </ul>
+                <ul class="product-list">
+                    <li v-for="order in submitOrder.productList">
+                        <h5>店铺{{ order.shop }}</h5>
+                        <ul class="order-detail clearfix">
+                            <li class="pull-left clearfix">
+                                <img class="pull-left" :src="order.img" alt="">
+                                <div class="pull-left">
+                                    <p>{{ order.name }}</p>
+                                    <p>颜色: {{ order.color }} 尺码: {{ order-size }}</p>
+                                </div>
+                            </li>
+                            <li class="pull-left text-center">￥{{ order.price }}</li>
+                            <li class="pull-left text-center">{{ order.num }}</li>
+                            <li class="pull-left text-center">￥{{ order.price * order.num }}</li>
+                        </ul>
+                        <div>
+                            买家留言： <input class="form-control"
+                                         type="text"
+                                         placeholder="限50字（对本次交易的说明，建议填写已经和商家达成一致的说明）">
+                        </div>
+                    </li>
+                </ul>
                 <div class="order-submit submit-btn">
                     <div class="order-submit-content clearfix">
                         <span class="order-price">-&yen;{{ submitOrder.integral_price }}</span>
@@ -110,6 +116,7 @@
 </template>
 
 <script>
+    import order from '../assets/images/details/order.png';
     import RightSide from './dashboard/RightSide';
 
     export default {
@@ -148,31 +155,21 @@
                     freight: 20,
                     productList: [
                         {
+                            color: '白色',
+                            img: order,
                             name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
                             num: 2,
-                            price1: 126.07,
-                            price2: 39.9,
+                            price: 39.9,
+                            size: 'L',
                             shop: 'XXX母婴用品店',
                         },
                         {
+                            color: '白色',
+                            img: order,
                             name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
                             num: 2,
-                            price1: 126.07,
-                            price2: 39.9,
-                            shop: 'XXX母婴用品店',
-                        },
-                        {
-                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
-                            num: 2,
-                            price1: 126.07,
-                            price2: 39.9,
-                            shop: 'XXX母婴用品店',
-                        },
-                        {
-                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
-                            num: 2,
-                            price1: 126.07,
-                            price2: 39.9,
+                            price: 126.07,
+                            size: 'M',
                             shop: 'XXX母婴用品店',
                         },
                     ],
