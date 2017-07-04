@@ -1,6 +1,7 @@
 <template>
     <div class="product-details">
         <div class="basic-intro container clearfix">
+            <div class="miaobaoxie">首页  >  xx旗舰店 > 尿不湿</div>
             <div class="product-img">
                 <div>
                     <!--<div id="preview" class="spec-preview">
@@ -64,9 +65,22 @@
                 <div class="distribution">
                     <p>配送<span class="origin-adress">西安</span>至
                         <Cascader class="destination" :data="data" v-model="distribution_address"></Cascader>
-                        运费：<span class="freigh">&nbsp;{{ product_intro.transport_price }}</span></p>
-                    <p class="stock">{{ product_intro.status }}</p>
+                        运费：<span class="freigh">&nbsp;￥ {{ product_intro.transport_price }}</span></p>
+                    <!--<p class="stock">{{ product_intro.status }}</p>-->
                 </div>
+                <dl class="product-type-select clearfix">
+                    <dt>尺码</dt>
+                    <dd>
+                        <ul>
+                            <li v-for="size in product_intro.size">
+                                <label class="form-control-radio">
+                                    <input type="radio" name="size" :value="size">
+                                    <span>{{ size }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
                 <dl class="product-type-select clearfix">
                     <dt>类型</dt>
                     <dd>
@@ -94,20 +108,20 @@
                     <li class="buy"><a class="text-center">立刻购买</a></li>
                     <li class="basket"><a class="text-center">加入购物车</a></li>
                 </ul>
-                <p class="prompt">温馨提示&nbsp;本产品不支持货到付款</p>
+                <!--<p class="prompt">温馨提示&nbsp;本产品不支持货到付款</p>-->
             </div>
-            <div class="shop-info">
-                <div class="shop-img">
-                    <router-link :to="{ name: 'shop-home'}">
-                        <img src="../assets/images/details/shop.png"/>
-                    </router-link>
-                </div>
-                <h5 class="shop-name">xxx母婴用品店<span class="shop-type text-center">自荐</span></h5>
-                <p class="shop-score">店铺评分：<span>9.2</span></p>
-                <p class="shop-serve">服务：七天无理由退换货</p>
-                <a class="shop-btn text-center contact" href="javascript:void (0)">联系客服</a>
-                <a class="shop-btn text-center" href="javascript:void (0)">关注店家</a>
-            </div>
+            <!--<div class="shop-info">-->
+                <!--<div class="shop-img">-->
+                    <!--<router-link :to="{ name: 'shop-home'}">-->
+                        <!--<img src="../assets/images/details/shop.png"/>-->
+                    <!--</router-link>-->
+                <!--</div>-->
+                <!--<h5 class="shop-name">xxx母婴用品店<span class="shop-type text-center">自荐</span></h5>-->
+                <!--<p class="shop-score">店铺评分：<span>9.2</span></p>-->
+                <!--<p class="shop-serve">服务：七天无理由退换货</p>-->
+                <!--<a class="shop-btn text-center contact" href="javascript:void (0)">联系客服</a>-->
+                <!--<a class="shop-btn text-center" href="javascript:void (0)">关注店家</a>-->
+            <!--</div>-->
         </div>
         <!--推荐购买-->
         <ul class="combination-buy container">
@@ -131,25 +145,61 @@
         <!--产品相关-->
         <div class="product-about container clearfix">
             <!--看了又看-->
-            <div class="see-again-box">
-                <h4>看了又看</h4>
-                <ul>
-                    <router-link tag="li" to="/" v-for="(item, index) in seeAgain_products" :key="index">
-                        <a href="javascript:void (0)">
-                            <img :src="item.img"/>
-                        </a>
-                        <p>{{ item.name }}
-                        </p>
-                        <p>
-                            <span class="price">￥{{ item.price }}</span>
-                            <span class="sales">销量：{{ item.sales }}</span>
-                        </p>
-                    </router-link>
-                </ul>
+            <div class="left-box">
+                <div class="see-again-box follow">
+                     <div class="img">
+                         <img :src="img" alt="">
+                     </div>
+                    <p class="name">xxx旗舰店</p>
+                    <router-link to="/" class="shop">关注店铺</router-link>
+                </div>
+                <div class="see-again-box talked">
+                    <h4>店铺客服</h4>
+                    <div class="talkes">
+                        <div class="talkeds" v-for="talk in kefu">
+                            <p class="talk-name">{{ talk.name }}</p>
+                           <div class="chilrd" v-for="item in talk.items">
+                               {{item}}&nbsp;&nbsp;&nbsp;<img :src="talked" alt="">
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-kind">
+                    <h4>商品分类</h4>
+                    <ul class="goods-list">
+                        <li class="goods-li" v-for="(good, index) in goodskind">
+                            <span @click="change(index)" class="goods-btn" v-if="!good.onoff">+</span>
+                            <span @click="change(index)" v-if="good.onoff" class="goods-btn">-</span>
+                            <div class="goods-item">{{ good.kind }}</div>
+                            <div class="clearfix"></div>
+                            <ul class="goods-items" v-if="good.onoff && good.item.length > 0">
+                                <li v-for="item in good.item">{{ item }}</li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="see-again-box">
+                    <h4>看了又看</h4>
+                    <ul>
+                        <router-link tag="li" to="/" v-for="(item, index) in seeAgain_products" :key="index">
+                            <a href="javascript:void (0)">
+                                <img :src="item.img"/>
+                            </a>
+                            <p>{{ item.name }}
+                            </p>
+                            <p>
+                                <span class="price">￥{{ item.price }}</span>
+                                <span class="sales">销量：{{ item.sales }}</span>
+                            </p>
+                        </router-link>
+                    </ul>
+                </div>
             </div>
+
             <!--商品详情及用户评价-->
             <div class="details-evaluation pull-left">
-                <ul class="clearfix nav">
+                <ul class="clearfix nav" role="tablist">
                     <li class="pull-left active text-center">
                         <i></i>
                         <a class="text-center a-block" href="#details" data-toggle="tab">
@@ -158,7 +208,7 @@
                     </li>
                     <li class="pull-left">
                         <i></i>
-                        <a class="text-center a-block" href="#evaluation" data-toggle="tab">
+                        <a class="text-center a-block" href="#evaluation"  aria-controls="evaluation" role="tab" data-toggle="tab">
                             用户评价
                         </a>
                     </li>
@@ -269,11 +319,15 @@
     import user from '../assets/images/details/user-img.png';
     import img7 from '../assets/images/img_07.png';
     import stool from '../assets/images/details/stool.png';
+    import logo from '../assets/images/img_lofo.png';
+    import talk from '../assets/images/service.png';
 
     export default {
         data() {
             return {
-                activeImg: '',
+                img: logo,
+                talked: talk,
+                activeImg: img1,
                 bigImg: [stool, stool, stool, stool, stool],
                 data: [
                     {
@@ -376,6 +430,7 @@
                     original_price: 488.00,
                     price: 239.00,
                     transport_price: 12.00,
+                    size: ['S', 'M', 'L', 'XL', 'XXL'],
                     type: ['套餐一', '套餐二', '套餐三'],
                     sales_num: 7764,
                     status: '有货，今天下单预计1月22送到',
@@ -451,6 +506,42 @@
                 selectRecommends: [],
                 show: 0,
                 smallImgs: [img1, img2, img1, img2, img1, img1, img1],
+                kefu: [
+                    {
+                        name: '售前客服',
+                        items: [
+                            '客服依依', '客服依依', '客服依依', '客服依依',
+                        ],
+                    },
+                    {
+                        name: '售后客服',
+                        items: [
+                            '客服依依', '客服依依', '客服依依',
+                        ],
+                    },
+                ],
+                goodskind: [
+                    {
+                        onoff: true,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                ],
             };
         },
         components: {
@@ -496,6 +587,9 @@
                 } else {
                     item.bigImg = source;
                 }
+            },
+            change(num) {
+                this.goodskind[num].onoff = !this.goodskind[num].onoff;
             },
 //            imgBigbox1() {
 //                this.show = 1;

@@ -22,6 +22,7 @@ import OrderSuccess from '../components/OrderSuccess';
 import PayResult from '../components/PayResult';
 import CartSettlement from '../components/CartSettlement';
 import PaymentSuccess from '../components/PaymentSuccess';
+import ScanPay from '../components/ScanPay';
 
 import AllOrder from '../components/personnal-center/AllOrder';
 import Coupon from '../components/personnal-center/Coupon';
@@ -79,6 +80,11 @@ export default [
                 path: 'order',
                 name: 'order',
                 component: MyOrder,
+            },
+            {
+                path: 'scan-pay',
+                name: 'scan-pay',
+                component: ScanPay,
             },
             {
                 path: 'personnal-center',

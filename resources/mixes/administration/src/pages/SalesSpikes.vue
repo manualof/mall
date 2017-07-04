@@ -41,8 +41,8 @@
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button class="delete-ad" @click.native="look(${index})"
-                                    type="ghost">查看</i-button>
-                                    <i-button class="delete-ad" type="ghost">屏蔽</i-button>`;
+                                    size="small" type="ghost">查看</i-button>
+                                    <i-button class="delete-ad" size="small" type="ghost">屏蔽</i-button>`;
                         },
                         title: '操作',
                         width: 180,
@@ -135,7 +135,7 @@
                         fixed: 'right',
                         key: 'action',
                         render() {
-                            return '<i-button class="delete-ad" type="ghost">屏蔽</i-button>';
+                            return '<i-button class="delete-ad" size="small" type="ghost">屏蔽</i-button>';
                         },
                         title: '操作',
                         width: 180,
@@ -177,16 +177,22 @@
                 ],
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '店铺名称',
-                    },
-                    {
                         label: '商品名称',
-                        value: '商品名称',
+                        value: '1',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '商品ID',
+                        value: '2',
+                    },
+                ],
+                searchListBusis: [
+                    {
+                        label: '商家名称',
+                        value: '1',
+                    },
+                    {
+                        label: '商家ID',
+                        value: '2',
                     },
                 ],
                 self: this,
@@ -253,7 +259,7 @@
                                         <div class="goods-body-header-right">
                                             <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
                                                 <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
+                                                    <i-option v-for="item in searchListBusis"
                                                               :value="item.value">{{ item.label }}</i-option>
                                                 </i-select>
                                                 <i-button slot="append" type="primary">搜索</i-button>

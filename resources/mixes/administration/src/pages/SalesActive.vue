@@ -11,36 +11,43 @@
             return {
                 activeModal: false,
                 form: {
-                    name: '春季家电家具买疯狂优惠',
-                    rule: ['单笔订单满200元  立减现金20', '单笔订单满500元  立减现金50', '单笔订单满1000元  立减现金200'],
-                    shop: '爱拍数码',
-                    time: '2017-04-01至2017-04-02',
+                    id: 5424367,
+                    name: 'SONY索尼SFGHGKHJKH平板电脑 16G 官方标配',
+                    price: '5463.00',
+                    shopName: '店铺名称',
+                    sku: 133,
+                    time: '1235-32-3',
                 },
                 goodsColumns: [
                     {
                         align: 'center',
-                        key: 'num',
-                        title: '编号',
+                        key: 'sku',
+                        title: '商品SKU',
                         width: 120,
                     },
                     {
                         key: 'name',
-                        title: '活动名称',
+                        title: '商品名称',
+                    },
+                    {
+                        align: 'center',
+                        key: 'time',
+                        title: '发货时间',
+                    },
+                    {
+                        align: 'center',
+                        key: 'price',
+                        title: '商品价格',
+                    },
+                    {
+                        align: 'center',
+                        key: 'id',
+                        title: '店铺ID',
                     },
                     {
                         align: 'center',
                         key: 'shopName',
                         title: '店铺名称',
-                    },
-                    {
-                        align: 'center',
-                        key: 'startTime',
-                        title: '开始时间',
-                    },
-                    {
-                        align: 'center',
-                        key: 'endTime',
-                        title: '结束时间',
                     },
                     {
                         align: 'center',
@@ -56,32 +63,36 @@
                 ],
                 goodsData: [
                     {
-                        endTime: '2016-12-23',
+                        id: 5424367,
+                        name: 'SONY索尼SFGHGKHJKH平板电脑 16G 官方标配',
+                        price: '5463.00',
                         shopName: '店铺名称',
-                        name: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
-                        num: 222,
-                        startTime: '2016-12-23',
+                        sku: 133,
+                        time: '1235-32-3',
                     },
                     {
-                        endTime: '2016-12-23',
+                        id: 5424367,
+                        name: 'SONY索尼SFGHGKHJKH平板电脑 16G 官方标配',
+                        price: '5463.00',
                         shopName: '店铺名称',
-                        name: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
-                        num: 222,
-                        startTime: '2016-12-23',
+                        sku: 133,
+                        time: '1235-32-3',
                     },
                     {
-                        endTime: '2016-12-23',
+                        id: 5424367,
+                        name: 'SONY索尼SFGHGKHJKH平板电脑 16G 官方标配',
+                        price: '5463.00',
                         shopName: '店铺名称',
-                        name: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
-                        num: 222,
-                        startTime: '2016-12-23',
+                        sku: 133,
+                        time: '1235-32-3',
                     },
                     {
-                        endTime: '2016-12-23',
+                        id: 5424367,
+                        name: 'SONY索尼SFGHGKHJKH平板电脑 16G 官方标配',
+                        price: '5463.00',
                         shopName: '店铺名称',
-                        name: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
-                        num: 222,
-                        startTime: '2016-12-23',
+                        sku: 133,
+                        time: '1235-32-3',
                     },
                 ],
                 searchList: [
@@ -109,14 +120,14 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="sales-fulldown">
+        <div class="sales-active">
             <tabs value="name1">
-                <tab-pane label="满减活动" name="name1">
+                <tab-pane label="预售活动" name="name1">
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>商家发布的满减活动列表</p>
-                            <p>删除操作不可恢复，请慎重操作</p>
+                            <p>商家发布的预售商品列表</p>
+                            <p>可进行添加,编辑,修改,删除等操作,查看预售活动订单</p>
                         </div>
                         <div class="goods-body-header">
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
@@ -143,29 +154,43 @@
                                 <i-form ref="form" :model="form" :rules="formValidate" :label-width="100">
                                     <row>
                                         <i-col span="18">
-                                            <form-item label="活动名称">
+                                            <form-item label="商品SKU">
+                                                {{ form.sku }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="18">
+                                            <form-item label="商品名称">
                                                 {{ form.name }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
-                                            <form-item label="活动店铺">
-                                                {{ form.shop }}
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="18">
-                                            <form-item label="活动时间">
+                                            <form-item label="发货时间">
                                                 {{ form.time }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
-                                            <form-item label="活动规则">
-                                                <p v-for="item in form.rule">{{ item }}</p>
+                                            <form-item label="商品价格">
+                                                {{ form.price }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="18">
+                                            <form-item label="店铺ID">
+                                                {{ form.id }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="18">
+                                            <form-item label="店铺名称">
+                                                {{ form.shopName }}
                                             </form-item>
                                         </i-col>
                                     </row>

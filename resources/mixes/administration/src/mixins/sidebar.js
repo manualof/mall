@@ -129,8 +129,12 @@ export default function (injection) {
                     title: '秒杀活动',
                 },
                 {
+                    path: '/mall/sales/active',
+                    title: '预售活动',
+                },
+                {
                     path: '/mall/sales/fulldown',
-                    title: '满减（暂空）',
+                    title: '满减活动',
                 },
             ],
             icon: 'plus',
@@ -145,10 +149,6 @@ export default function (injection) {
                 {
                     path: '/mall/configuration/search',
                     title: '搜索设置',
-                },
-                {
-                    path: '/mall/configuration/advertisement',
-                    title: '广告设置',
                 },
                 {
                     path: '/mall/configuration/image',

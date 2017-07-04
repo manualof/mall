@@ -36,7 +36,7 @@
                     </div>
                     <div class="group-input">
                         <div class="label-l">邮箱</div>
-                        <div class="msg">{{ emil }}
+                        <div class="msg">{{ emil.replace(reg, "$1****$2") }}
                         <span class="xiugai">修改</span>
                         </div>
                     </div>
@@ -107,6 +107,7 @@
         },
         data() {
             return {
+                reg: /(.{2}).+(.{2}@.+)/g,
                 status: 1,
                 value1: [],
                 emil: '857159145@qq.com',

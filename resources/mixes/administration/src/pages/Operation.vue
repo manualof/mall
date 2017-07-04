@@ -28,46 +28,39 @@
                 typeColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         key: 'number',
                         title: '账单编号',
-                        width: 150,
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'orderMoney',
                         title: '订单金额（含运费）',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'freight',
                         title: '运费',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'commission',
                         title: '收取佣金',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'refund',
                         title: '退单金额',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'shopCosts',
                         title: '店铺费用',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'distribution',
                         title: '分销佣金',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -79,23 +72,19 @@
                         align: 'center',
                         key: 'accountData',
                         title: '出账日期',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'status',
                         title: '帐单状态',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'businessName',
                         title: '商家名称',
-                        width: 150,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button class="delete-ad" @click.native="handel(${index})"
@@ -104,7 +93,7 @@
                                     size="small" type="ghost" v-if="row.params === 2 || row.params === 3">查看</i-button>`;
                         },
                         title: '操作',
-                        width: 150,
+                        width: 120,
                     },
                 ],
                 typeData: [

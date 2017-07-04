@@ -28,34 +28,29 @@
                 typeColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         key: 'userName',
                         title: '用户名',
-                        width: 150,
+                        width: 120,
                     },
                     {
                         align: 'center',
                         key: 'reallyName',
                         title: '真实姓名',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'serviceName',
                         title: '服务站名称',
-                        width: 200,
                     },
                     {
                         align: 'center',
                         key: 'area',
                         title: '所在地区',
-                        width: 200,
                     },
                     {
                         align: 'center',
                         key: 'address',
                         title: '详细地址',
-                        width: 300,
                     },
                     {
                         align: 'center',
@@ -67,17 +62,14 @@
                                     </i-switch>`;
                         },
                         title: '状态',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'applicationTime',
                         title: '申请时间',
-                        width: 250,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button class="delete-ad" @click.native="edit(${index})"
