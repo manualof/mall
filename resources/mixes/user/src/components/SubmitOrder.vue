@@ -74,7 +74,7 @@
                                 <img class="pull-left" :src="order.img" alt="">
                                 <div class="pull-left">
                                     <p>{{ order.name }}</p>
-                                    <p>颜色: {{ order.color }} 尺码: {{ order-size }}</p>
+                                    <p>颜色: {{ order.color }} 尺码: {{ order.size }}</p>
                                 </div>
                             </li>
                             <li class="pull-left text-center">￥{{ order.price }}</li>
@@ -90,22 +90,12 @@
                 </ul>
                 <div class="order-submit submit-btn">
                     <div class="order-submit-content clearfix">
-                        <span class="order-price">-&yen;{{ submitOrder.integral_price }}</span>
-                        <div class="name">
-                            <span class="integral">积分兑换({{ submitOrder.integral_num }})：</span>
-                            <div class="check-box select">
-                                <span><input type="checkbox" class="input_check" id="check1"><label
-                                    for="check1"></label></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="order-submit-content clearfix">
                         <span class="order-price">-&yen;{{ submitOrder.freight }}</span>
                         <span class="name">运费：</span>
                     </div>
                     <div class="order-submit-content clearfix">
                         <span class="order-price price">&yen;{{ total_price}}</span>
-                        <span class="name">金额：</span>
+                        <span class="name">金额(不含运费)：</span>
                     </div>
                     <router-link :to="{ name: 'order-success' }" class="order-btn submit-btn">提交订单</router-link>
                 </div>
@@ -183,7 +173,7 @@
             total_price() {
                 let totalPrice = 0;
                 this.submitOrder.productList.forEach(item => {
-                    totalPrice += item.price2 * item.num;
+                    totalPrice += item.price * item.num;
                 });
                 return totalPrice.toFixed(2);
             },
