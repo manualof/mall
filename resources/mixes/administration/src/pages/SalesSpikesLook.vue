@@ -58,7 +58,7 @@
                                     <span slot="close">关闭</span>
                                     </i-switch>`;
                         },
-                        title: '状态',
+                        title: '推荐',
                         width: 240,
                     },
                     {
@@ -66,7 +66,7 @@
                         fixed: 'right',
                         key: 'action',
                         render() {
-                            return '<i-button class="delete-ad" type="ghost">屏蔽</i-button>';
+                            return '<i-button class="delete-ad" size="small" type="ghost">屏蔽</i-button>';
                         },
                         title: '操作',
                         width: 180,
@@ -121,6 +121,7 @@
                         value: '商品分类',
                     },
                 ],
+                self: this,
             };
         },
         methods: {
@@ -160,6 +161,7 @@
                     </div>
                     <i-table class="goods-table"
                              :columns="goodsColumns"
+                             :context="self"
                              :data="goodsData"
                              ref="goodsList">
                     </i-table>
