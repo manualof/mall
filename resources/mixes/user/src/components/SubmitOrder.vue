@@ -8,7 +8,7 @@
                 </div>
                 <div class="address-selected">
                     <h5>收货人信息</h5>
-                    <div class="address-list" v-for="(item, index) in addressSelect">
+                    <div class="address-list" v-if="addStatus === 1" v-for="(item, index) in addressSelect">
                         <label class="form-control-radio">
                             <input type="radio" name="address" :checked="index == 0">
                             <div class="address clearfix">
@@ -26,7 +26,11 @@
                             </div>
                         </label>
                     </div>
-                    <div class="add-address">
+                    <a
+                        class="select-btn"
+                        @click="addAddress"
+                        v-if="addStatus === 1">新增收货地址</a>
+                    <div class="add-address" v-if="addStatus === 2">
                         <div class="clearfix">
                             <span class="text-right pull-left">收货人姓名</span>
                             <input
@@ -65,13 +69,12 @@
                             </div>
                             <span class="pull-left">设为默认地址</span>
                         </label>
-                        <div class="btn">
-                            <a class="order-btn submit-btn pull-left">保存地址</a>
+                        <div class="btn-div">
+                            <a class="order-btn submit-btn pull-left" @click="saveAddress">保存地址</a>
                             <a>取消</a>
                         </div>
                     </div>
                 </div>
-                <router-link class="select-btn" to="/personnal-center/shipping-address">新增收货地址</router-link>
             </div>
             <div class="address-selected self-take-select">
                 <h5>使用自提门店</h5>
@@ -159,6 +162,15 @@
             RightSide,
             Cascader,
         },
+        computed: {
+            total_price() {
+                let totalPrice = 0;
+                this.submitOrder.productList.forEach(item => {
+                    totalPrice += item.price * item.num;
+                });
+                return totalPrice.toFixed(2);
+            },
+        },
         data() {
             return {
                 address: {
@@ -168,6 +180,7 @@
                     detail: '',
                     isdefault: false,
                 },
+                addStatus: 1,
                 addressSelect: [
                     {
                         address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
@@ -272,13 +285,13 @@
                 },
             };
         },
-        computed: {
-            total_price() {
-                let totalPrice = 0;
-                this.submitOrder.productList.forEach(item => {
-                    totalPrice += item.price * item.num;
-                });
-                return totalPrice.toFixed(2);
+        methods: {
+            addAddress() {
+                this.addStatus = 2;
+            },
+            saveAddress() {
+                this.addressSelect.push(this.address);
+                this.addStatus = 1;
             },
         },
     };
