@@ -25,18 +25,16 @@ class Store extends Model
      */
     protected $fillable = [
         'address',
-        'avatar',
         'category_id',
         'company',
         'end_at',
         'flow_marketing',
-        'identification',
         'level',
         'location',
-        'logo',
         'name',
         'open_at',
         'status',
+        'user_id',
     ];
 
     /**
