@@ -20,7 +20,6 @@
                         align: 'center',
                         key: 'name',
                         title: '商品名称',
-                        width: 200,
                     },
                     {
                         align: 'center',
@@ -33,47 +32,40 @@
                                     </tooltip>`;
                         },
                         title: '商品图片',
-                        width: 170,
+                        width: 120,
                     },
                     {
                         align: 'left',
                         key: 'advertising',
                         title: '广告词',
-                        width: 170,
                     },
                     {
                         align: 'center',
                         key: 'configurationID',
                         title: '分类ID',
-                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'configurationName',
                         title: '分类名称',
-                        width: 200,
                     },
                     {
                         align: 'center',
                         key: 'brandID',
                         title: '品牌ID',
-                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'brandName',
                         title: '品牌名称',
-                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'time',
                         title: '发布时间',
-                        width: 250,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render(row, column, index) {
                             return `<i-button class="first-btn" @click.native="toEdit"
@@ -82,7 +74,7 @@
                                     size="small" type="ghost">删除</i-button>`;
                         },
                         title: '操作',
-                        width: 180,
+                        width: 160,
                     },
                 ],
                 libraryData: [
