@@ -23,12 +23,20 @@ class RemoveHandler extends Handler
      */
     public function execute()
     {
-        $id = $this->request->input('id');
-        $shop = Store::query()->find($id);
-        if ($shop && $shop->delete()) {
-            $this->withCode(200)->withMessage('');
+        $this->validate($this->request, [
+            'id' => 'required|numeric',
+        ], [
+            'id.numeric'  => '店铺 ID 必须填写',
+            'id.required' => '店铺 ID 必须为数值',
+        ]);
+        $this->beginTransaction();
+        $store = Store::query()->find($this->request->input('id'));
+        if ($store && $store->delete()) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('删除店铺信息成功！');
         } else {
-            $this->withCode(500)->withError('');
+            $this->rollBackTransaction();
+            $this->withCode(500)->withError('没有对应的店铺信息！');
         }
     }
 }

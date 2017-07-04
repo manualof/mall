@@ -54,10 +54,10 @@ class EditHandler extends Handler
         $store = Store::query()->find($this->request->input('id'));
         if ($store instanceof Store && $store->update($data)) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('');
+            $this->withCode(200)->withMessage('编辑店铺信息成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('');
+            $this->withCode(500)->withError('没有对应的店铺信息！');
         }
     }
 }
