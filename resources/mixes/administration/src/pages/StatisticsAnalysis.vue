@@ -9,6 +9,48 @@
         },
         data() {
             return {
+                filter: {
+                    dataType: '',
+                    goodsType: [],
+                    goodsTypeList: [
+                        {
+                            children: [
+                                {
+                                    label: '面部护理',
+                                    value: '1',
+                                },
+                                {
+                                    label: '口腔护理',
+                                    value: '2',
+                                },
+                                {
+                                    label: '身体护理',
+                                    value: '3',
+                                },
+                            ],
+                            label: '个护化妆',
+                            value: '1',
+                        },
+                        {
+                            children: [
+                                {
+                                    label: '生活电器',
+                                    value: '1',
+                                },
+                                {
+                                    label: '厨房电器',
+                                    value: '2',
+                                },
+                                {
+                                    label: '大家电',
+                                    value: '3',
+                                },
+                            ],
+                            label: '家用电器',
+                            value: '2',
+                        },
+                    ],
+                },
                 goodsColumns: [
                     {
                         key: 'num',
@@ -323,6 +365,7 @@
                 ],
             };
         },
+        methods: {},
     };
 </script>
 <template>
@@ -344,20 +387,21 @@
                                             <ul>
                                                 <li>
                                                     商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
+                                                    <cascader :data="filter.goodsTypeList" style="width: 148px"
+                                                              trigger="hover" v-model="filter.goodsType"></cascader>
                                                 </li>
                                                 <li>
                                                     时间周期
-                                                    <i-select v-model="model2" style="width:124px">
+                                                    <i-select style="width:124px" v-model="filter.dataType">
                                                         <i-option v-for="item in timeList" :value="item.value"
                                                                 :key="item">{{ item.label }}</i-option>
                                                     </i-select>
                                                 </li>
                                                 <li>
-                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                    <date-picker type="date" placeholder="选择日期"
+                                                                 v-show="filter.dataType === '3'"></date-picker>
+                                                    <date-picker type="month" placeholder="选择日期"
+                                                                 v-show="filter.dataType === '1'"></date-picker>
                                                 </li>
                                             </ul>
                                         </div>
