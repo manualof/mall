@@ -15,7 +15,7 @@
                     disabledGroup: '图片',
                     initials: '',
                     logo: '',
-                    selectStyle: '母婴用品',
+                    selectStyle: ['个护化妆', '营养辅食'],
                     sort: '',
                     switch1: true,
                 },
@@ -254,9 +254,6 @@
                 const self = this;
                 self.$router.go(-1);
             },
-            handleChange(value, selectedData) {
-                this.addData.selectStyle = selectedData.map(o => o.label).join('>');
-            },
             removeLogo() {
                 this.addData.logo = '';
             },
@@ -339,20 +336,19 @@
                             </i-col>
                         </row>
                         <row>
-                            <i-col span="20">
+                            <i-col span="12">
                                 <form-item label="所属分类">
                                     <div class="flex-module">
-                                        {{ addData.selectStyle }}
                                         <cascader :data="styleData"
                                                   change-on-select
-                                                  @on-change="handleChange"
                                                   v-model="addData.selectStyle"></cascader>
                                     </div>
-                                    <div class="contact-classification"
-                                         v-for="(item, index) in styleDataList" v-if="addType">
-                                        <cascader :data="item.styleData"
-                                                  change-on-select></cascader>
-                                        <i-button type="error" @click.native="deleteType(index)">删除</i-button>
+                                    <div v-for="(item, index) in styleDataList" v-if="addType" class="contact-margin">
+                                        <div class="contact-classification">
+                                            <cascader :data="item.styleData"
+                                                      change-on-select></cascader>
+                                            <i-button type="error" @click.native="deleteType(index)">删除</i-button>
+                                        </div>
                                     </div>
                                     <p class="tip">
                                         请选择分类，可关联大分类或更具体的下级分类
