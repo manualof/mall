@@ -69,6 +69,7 @@ use Notadd\Mall\Controllers\Api\User\IntegralController as IntegralControllerFor
 use Notadd\Mall\Controllers\Api\User\IntegralLogController as IntegralLogControllerForUser;
 use Notadd\Mall\Controllers\Api\User\OrderController as OrderControllerForUser;
 use Notadd\Mall\Controllers\Api\User\RateController as RateControllerForUser;
+use Notadd\Mall\Controllers\Api\User\SubscribeController as SubscribeControllerForUser;
 use Notadd\Mall\Controllers\Api\User\UserController as UserControllerForUser;
 use Notadd\Mall\Controllers\Api\User\FollowController as FollowControllerForUser;
 use Notadd\Mall\Controllers\Api\User\VipController as VipControllerForUser;
@@ -311,6 +312,10 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('rate/edit', RateControllerForUser::class . '@edit');
             $this->router->post('rate/list', RateControllerForUser::class . '@list');
             $this->router->post('rate/remove', RateControllerForUser::class . '@remove');
+            $this->router->post('subscribe', SubscribeControllerForUser::class . '@subscribe');
+            $this->router->post('subscribe/create', SubscribeControllerForUser::class . '@create');
+            $this->router->post('subscribe/list', SubscribeControllerForUser::class . '@list');
+            $this->router->post('subscribe/remove', SubscribeControllerForUser::class . '@remove');
             $this->router->post('vip', VipControllerForUser::class . '@vip');
         });
         $this->router->group(['middleware' => ['web'], 'prefix' => 'mall'], function () {
