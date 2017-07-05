@@ -10,95 +10,15 @@
             <div class="pay-success-model">
                 <div class="top-status bottom-line">
                     <ul class="clearfix">
-                        <li class="clearfix already">
-                            <div class="step">
-                                <i class="icon iconfont icon-icon"> </i>
-                                <p>提交订单</p>
+                        <li class="clearfix" v-for="(step, index) in steps" :class="{ already:status>index }">
+                            <div class="step pull-left">
+                                <i class="icon iconfont" :class="step.icon"> </i>
+                                <p>{{ step.name }}</p>
+                                <p>{{ step.time }}</p>
                             </div>
-                        </li>
-                        <li class="clearfix already">
-                            <ul class="clearfix cricle-box">
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
+                            <ul class="clearfix cricle-box pull-left">
+                                <li class="cricle" v-for="item in 13"></li>
                             </ul>
-                            <div class="step">
-                                <i class="icon iconfont icon-fukuan"> </i>
-                                <p>付款成功</p>
-                            </div>
-                        </li>
-                        <li class="clearfix">
-                            <ul class="clearfix cricle-box">
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                            </ul>
-                            <div class="step">
-                                <i class="icon iconfont icon-feiji"> </i>
-                                <p>等待收货</p>
-                            </div>
-                        </li>
-                        <li class="clearfix">
-                            <ul class="clearfix cricle-box">
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                            </ul>
-                            <div class="step">
-                                <i class="icon iconfont icon-shouhuo"> </i>
-                                <p>确认收货</p>
-                            </div>
                         </li>
                     </ul>
                 </div>
@@ -232,6 +152,34 @@
             HeaderBar,
             MyselfBrowse,
             RightSide,
+        },
+        data() {
+            return {
+                status: 1,
+                steps: [
+                    {
+                        icon: 'icon-icon',
+                        name: '提交订单',
+                        time: '2017-05-10 12:30:10',
+                    },
+                    {
+                        icon: 'icon-fukuan',
+                        name: '付款成功',
+                    },
+                    {
+                        icon: 'icon-feiji',
+                        name: '商家发货',
+                    },
+                    {
+                        icon: 'icon-shouhuo',
+                        name: '确认收货',
+                    },
+                    {
+                        icon: 'icon-pingjia',
+                        name: '评价',
+                    },
+                ],
+            };
         },
     };
 </script>

@@ -15,14 +15,24 @@
         .top-status {
             height: 201px;
             & > ul {
-                padding-top: 73px;
-                padding-left: 74px;
+                display: flex;
+                display: -webkit-flex;
+                height: 100%;
+                -webkit-justify-content: space-around;
+                justify-content: space-around;
+                padding-top: 75px;
+                padding-left: 30px;
+                padding-right: 30px;
+                width: 100%;
                 & > li {
                     float: left;
                     text-align: center;
+                    &:last-child {
+                        .cricle-box {
+                            display: none;
+                        }
+                    }
                     .step {
-                        float: left;
-                        width: 56px;
                         i {
                             color: #d0d0d0;
                             font-size: 30px;
@@ -33,7 +43,8 @@
                     }
                     .cricle-box {
                         float: left;
-                        margin-top: 20px;
+                        margin-top: 25px;
+                        width: 150px;
                         .cricle {
                             background-color: #d0d0d0;
                             border-radius: 50%;
@@ -41,6 +52,9 @@
                             height: 4px;
                             margin-right: 8px;
                             width: 4px;
+                            &:last-child {
+                                margin-right: 0;
+                            }
                         }
                     }
                 }
