@@ -49,11 +49,15 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render() {
+                        render(row, column, index) {
                             return `<i-button type="ghost" @click.native="toView" class="first-btn"
                                     size="small">查看</i-button>
-                                    <i-button v-if="row.orderStatus !== '交易完成'" size="small"
-                                    type="ghost" >设置</i-button>`;
+                                    <dropdown v-if="row.orderStatus === '代付款'">
+                                    <i-button size="small" type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
+                                    <dropdown-menu slot="list">
+                                    <dropdown-item @click.native="cancelOrder(row)">取消订单</dropdown-item>
+                                    <dropdown-item v-if="row.status === 1" @click.native="receiveGoods(row)">收到货款</dropdown-item>
+                                    </dropdown-menu></dropdown>`;
                         },
                         title: '操作',
                         width: 180,
@@ -68,6 +72,7 @@
                         ownerTime: '2017-03-21 16:45:45',
                         paymentMethod: '钻石店铺',
                         payNumber: '45654646',
+                        status: 1,
                     },
                     {
                         orderAmount: '899（含运费10.00）',
@@ -118,10 +123,11 @@
                         orderAmount: '899（含运费10.00）',
                         orderID: '65454654546',
                         orderSource: '移动端',
-                        orderStatus: '交易完成',
+                        orderStatus: '代付款',
                         ownerTime: '2017-03-21 16:45:45',
                         paymentMethod: '钻石店铺',
                         payNumber: '45654646',
+                        status: 2,
                     },
                     {
                         orderAmount: '899（含运费10.00）',
@@ -175,10 +181,16 @@
             };
         },
         methods: {
+            cancelOrder(row) {
+                row.orderStatus = '已取消';
+            },
             exportData() {
                 this.$refs.orderTable.exportCsv({
                     filename: '商品订单数据',
                 });
+            },
+            receiveGoods(row) {
+                row.orderStatus = '交易完成';
             },
             toView() {
                 const self = this;
