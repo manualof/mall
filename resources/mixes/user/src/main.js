@@ -7,7 +7,7 @@ import router from './router';
 
 import RouterLink from './directives/router-link';
 import './assets/less/main.less';
-import '../node_modules/iview/dist/styles/iview.css';
+// import '../node_modules/iview/dist/styles/iview.css';
 
 global.window.jQuery = jQuery;
 
