@@ -15,7 +15,7 @@
                     disabledGroup: '图片',
                     initials: '',
                     logo: '',
-                    selectStyle: '母婴用品',
+                    selectStyle: ['个护化妆', '营养辅食'],
                     sort: '',
                     switch1: true,
                 },
@@ -254,9 +254,6 @@
                 const self = this;
                 self.$router.go(-1);
             },
-            handleChange(value, selectedData) {
-                this.addData.selectStyle = selectedData.map(o => o.label).join('>');
-            },
             removeLogo() {
                 this.addData.logo = '';
             },
@@ -339,16 +336,12 @@
                             </i-col>
                         </row>
                         <row>
-                            <i-col span="20">
+                            <i-col span="12">
                                 <form-item label="所属分类">
-                                    <div>
-                                        <div class="flex-module">
-                                            {{ addData.selectStyle }}
-                                            <cascader :data="styleData"
-                                                      change-on-select
-                                                      @on-change="handleChange"
-                                                      v-model="addData.selectStyle"></cascader>
-                                        </div>
+                                    <div class="flex-module">
+                                        <cascader :data="styleData"
+                                                  change-on-select
+                                                  v-model="addData.selectStyle"></cascader>
                                     </div>
                                     <div v-for="(item, index) in styleDataList" v-if="addType" class="contact-margin">
                                         <div class="contact-classification">
