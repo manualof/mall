@@ -145,6 +145,15 @@
             MyselfBrowse,
             RightSide,
         },
+        computed: {
+            total_price() {
+                let totalPrice = 0;
+                this.submitOrder.productList.forEach(item => {
+                    totalPrice += item.price * item.num;
+                });
+                return totalPrice.toFixed(2);
+            },
+        },
         data() {
             return {
                 logisticsInfo: {
