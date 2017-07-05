@@ -13,7 +13,7 @@ use Notadd\Foundation\Database\Model;
 /**
  * Class UserFollow.
  */
-class UserFollow extends Model
+class UserCollection extends Model
 {
     /**
      * @var array
@@ -27,7 +27,7 @@ class UserFollow extends Model
     /**
      * @var string
      */
-    protected $table = 'mall_user_follows';
+    protected $table = 'mall_user_collections';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

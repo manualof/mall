@@ -71,7 +71,7 @@ use Notadd\Mall\Controllers\Api\User\OrderController as OrderControllerForUser;
 use Notadd\Mall\Controllers\Api\User\RateController as RateControllerForUser;
 use Notadd\Mall\Controllers\Api\User\SubscribeController as SubscribeControllerForUser;
 use Notadd\Mall\Controllers\Api\User\UserController as UserControllerForUser;
-use Notadd\Mall\Controllers\Api\User\FollowController as FollowControllerForUser;
+use Notadd\Mall\Controllers\Api\User\CollectionController as FollowControllerForUser;
 use Notadd\Mall\Controllers\Api\User\VipController as VipControllerForUser;
 use Notadd\Mall\Controllers\MallController as MallControllerForForeground;
 use Notadd\Mall\Controllers\StoreController as StoreControllerForForeground;
