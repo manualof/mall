@@ -66,6 +66,7 @@ use Notadd\Mall\Controllers\Api\Store\StoreController as StoreControllerForStore
 use Notadd\Mall\Controllers\Api\User\CardController as CardControllerForUser;
 use Notadd\Mall\Controllers\Api\User\CouponController as CouponControllerForUser;
 use Notadd\Mall\Controllers\Api\User\IntegralController as IntegralControllerForUser;
+use Notadd\Mall\Controllers\Api\User\IntegralLogController as IntegralLogControllerForUser;
 use Notadd\Mall\Controllers\Api\User\OrderController as OrderControllerForUser;
 use Notadd\Mall\Controllers\Api\User\RateController as RateControllerForUser;
 use Notadd\Mall\Controllers\Api\User\UserController as UserControllerForUser;
@@ -298,7 +299,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('footprint/list', OrderControllerForUser::class . '@list');
             $this->router->post('footprint/remove', OrderControllerForUser::class . '@remove');
             $this->router->post('integral', IntegralControllerForUser::class . '@integral');
-            $this->router->post('integral/log', IntegralControllerForUser::class . '@log');
+            $this->router->post('integral/log/create', IntegralLogControllerForUser::class . '@create');
             $this->router->post('order', OrderControllerForUser::class . '@order');
             $this->router->post('order/cancel', OrderControllerForUser::class . '@cancel');
             $this->router->post('order/edit', OrderControllerForUser::class . '@edit');
