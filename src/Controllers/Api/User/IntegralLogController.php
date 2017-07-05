@@ -10,6 +10,7 @@ namespace Notadd\Mall\Controllers\Api\User;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\User\Integral\Log\CreateHandler;
+use Notadd\Mall\Handlers\User\Integral\Log\ListHandler;
 
 /**
  * Class IntegralLogController.
@@ -23,6 +24,17 @@ class IntegralLogController extends Controller
      * @throws \Exception
      */
     public function create(CreateHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\User\Integral\Log\ListHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function list(ListHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
