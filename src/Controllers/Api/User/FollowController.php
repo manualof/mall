@@ -10,7 +10,6 @@ namespace Notadd\Mall\Controllers\Api\User;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\User\Follow\CreateHandler;
-use Notadd\Mall\Handlers\User\Follow\EditHandler;
 use Notadd\Mall\Handlers\User\Follow\ListHandler;
 use Notadd\Mall\Handlers\User\Follow\RemoveHandler;
 
@@ -26,17 +25,6 @@ class FollowController extends Controller
      * @throws \Exception
      */
     public function create(CreateHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
-     * @param \Notadd\Mall\Handlers\User\Follow\EditHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function edit(EditHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
