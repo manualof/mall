@@ -11,11 +11,28 @@
         }
         .ivu-card {
             .ivu-form {
-                .edit-btn {
-                    margin-left: 10px;
-                    margin-top: 5px;
-                    width: 46px;
-                    height: 24px;
+                .contact-margin {
+                    margin-bottom: 10px;
+                    .contact-classification {
+                        display: inline-flex;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                        .ivu-cascader {
+                            padding-right: 20px;
+                            input {
+                                width: 270px;
+                            }
+                        }
+                        .ivu-btn-error {
+                            background-color: #fff;
+                            color: #ed3f14;
+                            padding: 5px 15px;
+                        }
+                    }
+                }
+                .add-contact-type {
+                    margin-top: 10px;
                 }
                 .tip {
                     color: rgba(101, 113, 128, 0.5);
@@ -50,8 +67,8 @@
                 .ivu-form-item-content {
                     .flex-module {
                         display: inline-flex;
+                        margin-bottom: 10px;
                         .ivu-cascader {
-                            margin-left: 10px;
                             input {
                                 width: 270px;
                             }

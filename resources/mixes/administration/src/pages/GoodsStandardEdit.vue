@@ -9,8 +9,6 @@
         },
         data() {
             return {
-                editCategory: false,
-                editBtn: true,
                 loading: false,
                 ruleValidate: {
                     type: [
@@ -22,7 +20,7 @@
                     ],
                 },
                 standardData: {
-                    position: '平板电视',
+                    position: ['个护化妆'],
                     sort: '',
                     type: '',
                 },
@@ -131,17 +129,9 @@
             };
         },
         methods: {
-            edit() {
-                this.editBtn = false;
-                this.editCategory = true;
-            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
-            },
-            handleChange(value, selectedData) {
-                this.style = true;
-                this.standardData.position = selectedData.map(o => o.label).join('>');
             },
             submit() {
                 const self = this;
@@ -156,12 +146,6 @@
                         });
                     }
                 });
-            },
-            visibleChange(status) {
-                if (status === false) {
-                    this.editCategory = false;
-                    this.editBtn = true;
-                }
             },
         },
     };
@@ -189,18 +173,12 @@
                             </i-col>
                         </row>
                         <row>
-                            <i-col span="20">
+                            <i-col span="12">
                                 <form-item label="快捷定位">
                                     <div class="flex-module">
-                                        {{ standardData.position }}
-                                        <i-button class="edit-btn" size="small" type="ghost"
-                                                  @click.native="edit" v-if="editBtn">编辑</i-button>
                                         <cascader :data="styleData"
                                                   change-on-select
-                                                  @on-change="handleChange"
-                                                  @on-visible-change="visibleChange"
-                                                  v-model="standardData.position"
-                                                  v-if="editCategory">
+                                                  v-model="standardData.position">
                                         </cascader>
                                     </div>
                                     <p class="tip">选择分类，可关联到任意级分类 （只在后台快捷定位中起作用）</p>

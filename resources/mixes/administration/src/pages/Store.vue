@@ -210,9 +210,9 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="first-btn" @click.native="remove(${index})"
-                                    type="ghost" size="small">删除</i-button>
+                        render() {
+                            return `<i-button class="first-btn" @click.native="lookShop"
+                                    type="ghost" size="small">查看</i-button>
                                     <i-button @click.native="toEdit" type="ghost" size="small">编辑</i-button>`;
                         },
                         title: '操作',
@@ -267,6 +267,16 @@
                 ],
                 managementWord: '',
                 managementSearch: '',
+                searchApplicationList:[
+                    {
+                        label: '会员账号',
+                        value: '1',
+                    },
+                    {
+                        label: '会员ID',
+                        value: '2',
+                    },
+                ],
                 searchList: [
                     {
                         label: '店铺名称',
@@ -296,9 +306,7 @@
                     path: 'store/look',
                 });
             },
-            remove(index) {
-                this.managementData.splice(index, 1);
-            },
+            lookShop() {},
             toEdit() {
                 const self = this;
                 self.$router.push({
@@ -355,7 +363,7 @@
                                         <i-select v-model="applicationSearch" slot="prepend" style="width: 100px;">
                                             <i-option :key="item"
                                                       :value="item.value"
-                                                      v-for="item in searchList">
+                                                      v-for="item in searchApplicationList">
                                                 {{ item.label }}</i-option>
                                         </i-select>
                                         <i-button slot="append" type="primary">搜索</i-button>

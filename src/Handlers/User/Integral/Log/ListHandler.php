@@ -2,14 +2,14 @@
 /**
  * This file is part of Notadd.
  *
- * @author        TwilRoad <heshudong@ibenchu.com>
+ * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime      2017-05-24 17:29
+ * @datetime 2017-07-05 14:56
  */
-namespace Notadd\Mall\Handlers\User\Rate;
+namespace Notadd\Mall\Handlers\User\Integral\Log;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\ProductRate;
+use Notadd\Mall\Models\UserIntegralLog;
 
 /**
  * Class ListHandler.
@@ -35,11 +35,11 @@ class ListHandler extends Handler
             'user_id.numeric'  => '用户 ID 必须为数值',
             'user_id.required' => '用户 ID 必须填写',
         ]);
-        $builder = ProductRate::query();
-        $builder->where('user_id', $this->request->input('user_id'));
+        $builder = UserIntegralLog::query();
+        $builder->where('user_id', $this->request->input('id'));
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
-        $builder = $builder->paginate($this->request->input('', 20));
-        $this->withCode(200)->withData($builder->items())->withMessage('获取订单评论列表成功！')->withExtra([
+        $builder = $builder->paginate($this->request->input('paginate', 20));
+        $this->withCode(200)->withData($builder->items())->withMessage('获取用户积分列表成功！')->withExtra([
             'pagination' => [
                 'total'         => $builder->total(),
                 'per_page'      => $builder->perPage(),

@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -36,7 +37,14 @@
                     },
                     {
                         align: 'center',
-                        key: 'shopLength',
+                        key: 'goodsImg',
+                        render() {
+                            return `<tooltip placement="right-end">
+                                    <icon type="image"></icon>
+                                    <div slot="content">
+                                    <img :src="row.goodsImg">
+                                    </tooltip>`;
+                        },
                         title: '申请图片',
                         width: 150,
                     },
@@ -140,7 +148,7 @@
                         memberID: '65454654546',
                         platform: '',
                         platformMessage: '',
-                        shopLength: '3年',
+                        goodsImg: image1,
                     },
                     {
                         applicationStatus: '等待审核',
@@ -159,7 +167,7 @@
                         memberID: '65454654546',
                         platform: '',
                         platformMessage: '',
-                        shopLength: '3年',
+                        goodsImg: image1,
                     },
                     {
                         applicationStatus: '等待审核',
@@ -178,7 +186,7 @@
                         memberID: '65454654546',
                         platform: '',
                         platformMessage: '',
-                        shopLength: '3年',
+                        goodsImg: image1,
                     },
                     {
                         applicationStatus: '等待审核',
@@ -197,7 +205,7 @@
                         memberID: '65454654546',
                         platform: '',
                         platformMessage: '',
-                        shopLength: '3年',
+                        goodsImg: image1,
                     },
                 ],
                 pendingColumns: [
@@ -227,14 +235,15 @@
                     },
                     {
                         align: 'center',
-                        key: 'shopLength',
+                        key: 'goodsImg',
+                        render() {
+                            return `<tooltip placement="right-end">
+                                    <icon type="image"></icon>
+                                    <div slot="content">
+                                    <img :src="row.goodsImg">
+                                    </tooltip>`;
+                        },
                         title: '申请图片',
-                        width: 150,
-                    },
-                    {
-                        align: 'center',
-                        key: 'contactName',
-                        title: '申请原因',
                         width: 100,
                     },
                     {
@@ -311,9 +320,9 @@
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        goodsImg: image1,
                         memberAccount: '465465445',
                         memberID: '65454654546',
-                        shopLength: '3年',
                     },
                     {
                         applicationStatus: '等待审核',
@@ -323,9 +332,9 @@
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        goodsImg: image1,
                         memberAccount: '465465445',
                         memberID: '65454654546',
-                        shopLength: '3年',
                     },
                     {
                         applicationStatus: '等待审核',
@@ -335,9 +344,9 @@
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        goodsImg: image1,
                         memberAccount: '465465445',
                         memberID: '65454654546',
-                        shopLength: '3年',
                     },
                     {
                         applicationStatus: '等待审核',
@@ -347,9 +356,9 @@
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        goodsImg: image1,
                         memberAccount: '465465445',
                         memberID: '65454654546',
-                        shopLength: '3年',
                     },
                 ],
                 searchCategory: '',
@@ -440,8 +449,11 @@
                                  </i-input>
                              </div>
                          </div>
-                         <i-table class="shop-table" :columns="pendingColumns" :data="pendingData"
-                                  :context="self" highlight-row ref="pendingTable"></i-table>
+                         <i-table class="shop-table"
+                                  :columns="pendingColumns"
+                                  :data="pendingData"
+                                  :context="self"
+                                  ref="pendingTable"></i-table>
                      </div>
                      <div class="page">
                          <page :total="100" show-elevator></page>

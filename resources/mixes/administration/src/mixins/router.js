@@ -28,7 +28,6 @@ import GoodsCategoryLookUnderEdit from '../pages/GoodsCategoryLookUnderEdit.vue'
 import GoodsLibrary from '../pages/GoodsLibrary.vue';
 import GoodsLibraryEdit from '../pages/GoodsLibraryEdit.vue';
 import GoodsLibraryAdd from '../pages/GoodsLibraryAdd.vue';
-import GoodsLibraryEditCategory from '../pages/GoodsLibraryEditCategory.vue';
 import GoodsPicture from '../pages/GoodsPicture.vue';
 import GoodsPictureLook from '../pages/GoodsPictureLook.vue';
 import GoodsPictureLookAll from '../pages/GoodsPictureLookAll.vue';
@@ -172,11 +171,6 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: GoodsLibraryAdd,
                     path: 'goods/library/add',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsLibraryEditCategory,
-                    path: 'goods/library/edit/category',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

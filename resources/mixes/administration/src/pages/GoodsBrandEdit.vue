@@ -15,12 +15,11 @@
                     disabledGroup: '图片',
                     initials: '',
                     logo: '',
-                    selectStyle: '母婴用品',
+                    selectStyle: ['个护化妆', '营养辅食'],
                     sort: '',
                     switch1: true,
                 },
-                editCategory: false,
-                editBtn: true,
+                addType: false,
                 defaultList: [],
                 loading: false,
                 ruleValidate: {
@@ -135,20 +134,125 @@
                         value: '家用电器',
                     },
                 ],
+                styleDataList: [],
             };
         },
         methods: {
-            edit() {
-                this.editBtn = false;
-                this.editCategory = true;
+            addContactType() {
+                this.addType = true;
+                this.styleDataList.push(
+                    {
+                        styleData: [
+                            {
+                                children: [
+                                    {
+                                        value: '童车童床',
+                                        label: '童车童床',
+                                        children: [
+                                            {
+                                                label: '婴儿推车',
+                                                value: '婴儿推车',
+                                            },
+                                            {
+                                                label: '自行车',
+                                                value: '自行车',
+                                            },
+                                            {
+                                                label: '婴儿推车',
+                                                value: '婴儿推车',
+                                            },
+                                            {
+                                                label: '电动车',
+                                                value: '电动车',
+                                            },
+                                            {
+                                                label: '安全座椅',
+                                                value: '安全座椅',
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        label: '营养辅食',
+                                        value: '营养辅食',
+                                    },
+                                    {
+                                        label: '尿裤湿巾',
+                                        value: '尿裤湿巾',
+                                    },
+                                ],
+                                label: '个护化妆',
+                                value: '个护化妆',
+                            },
+                            {
+                                children: [
+                                    {
+                                        children: [
+                                            {
+                                                label: '婴儿推车1',
+                                                value: '婴儿推车1',
+                                            },
+                                            {
+                                                label: '自行车2',
+                                                value: '自行车2',
+                                            },
+                                            {
+                                                label: '婴儿推车3',
+                                                value: '婴儿推车3',
+                                            },
+                                            {
+                                                label: '电动车',
+                                                value: '电动车',
+                                            },
+                                            {
+                                                label: '安全座椅4',
+                                                value: '安全座椅4',
+                                            },
+                                        ],
+                                        label: '服饰寝居',
+                                        value: '服饰寝居',
+                                    },
+                                    {
+                                        children: [
+                                            {
+                                                label: '婴儿推车1',
+                                                value: '婴儿推车1',
+                                            },
+                                            {
+                                                label: '自行车2',
+                                                value: '自行车2',
+                                            },
+                                        ],
+                                        label: '营养辅食',
+                                        value: '营养辅食',
+                                    },
+                                    {
+                                        children: [
+                                            {
+                                                label: '车1',
+                                                value: '车1',
+                                            },
+                                            {
+                                                label: '自行车2',
+                                                value: '自行车2',
+                                            },
+                                        ],
+                                        label: '尿裤湿巾',
+                                        value: '尿裤湿巾',
+                                    },
+                                ],
+                                label: '家用电器',
+                                value: '家用电器',
+                            },
+                        ],
+                    },
+                );
+            },
+            deleteType(index) {
+                this.styleDataList.splice(index, 1);
             },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
-            },
-            handleChange(value, selectedData) {
-                this.style = true;
-                this.addData.selectStyle = selectedData.map(o => o.label).join('>');
             },
             removeLogo() {
                 this.addData.logo = '';
@@ -199,12 +303,6 @@
                 });
                 self.addData.logo = data.data.path;
             },
-            visibleChange(status) {
-                if (status === false) {
-                    this.editCategory = false;
-                    this.editBtn = true;
-                }
-            },
         },
     };
 </script>
@@ -238,22 +336,25 @@
                             </i-col>
                         </row>
                         <row>
-                            <i-col span="20">
+                            <i-col span="12">
                                 <form-item label="所属分类">
                                     <div class="flex-module">
-                                        {{ addData.selectStyle }}
-                                        <i-button class="edit-btn" size="small" type="ghost"
-                                                  @click.native="edit" v-if="editBtn">编辑</i-button>
                                         <cascader :data="styleData"
                                                   change-on-select
-                                                  @on-change="handleChange"
-                                                  @on-visible-change="visibleChange"
-                                                  v-model="addData.selectStyle"
-                                                  v-if="editCategory"></cascader>
+                                                  v-model="addData.selectStyle"></cascader>
+                                    </div>
+                                    <div v-for="(item, index) in styleDataList" v-if="addType" class="contact-margin">
+                                        <div class="contact-classification">
+                                            <cascader :data="item.styleData"
+                                                      change-on-select></cascader>
+                                            <i-button type="error" @click.native="deleteType(index)">删除</i-button>
+                                        </div>
                                     </div>
                                     <p class="tip">
                                         请选择分类，可关联大分类或更具体的下级分类
                                     </p>
+                                    <i-button class="add-contact-type" type="ghost"
+                                              @click.native="addContactType">增加关联分类</i-button>
                                 </form-item>
                             </i-col>
                         </row>

@@ -9,18 +9,17 @@
 namespace Notadd\Mall\Controllers\Api\User;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\User\Follow\CreateHandler;
-use Notadd\Mall\Handlers\User\Follow\EditHandler;
-use Notadd\Mall\Handlers\User\Follow\ListHandler;
-use Notadd\Mall\Handlers\User\Follow\RemoveHandler;
+use Notadd\Mall\Handlers\User\Collection\CreateHandler;
+use Notadd\Mall\Handlers\User\Collection\ListHandler;
+use Notadd\Mall\Handlers\User\Collection\RemoveHandler;
 
 /**
  * Class FollowController.
  */
-class FollowController extends Controller
+class CollectionController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\User\Collection\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -31,18 +30,7 @@ class FollowController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\EditHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     * @throws \Exception
-     */
-    public function edit(EditHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
-    /**
-     * @param \Notadd\Mall\Handlers\User\Follow\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\User\Collection\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -53,7 +41,7 @@ class FollowController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\User\Collection\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
