@@ -312,6 +312,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('rate/edit', RateControllerForUser::class . '@edit');
             $this->router->post('rate/list', RateControllerForUser::class . '@list');
             $this->router->post('rate/remove', RateControllerForUser::class . '@remove');
+            $this->router->post('subscribe', SubscribeControllerForUser::class . '@subscribe');
             $this->router->post('subscribe/create', SubscribeControllerForUser::class . '@create');
             $this->router->post('subscribe/list', SubscribeControllerForUser::class . '@vip');
             $this->router->post('vip', VipControllerForUser::class . '@vip');
