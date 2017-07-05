@@ -4,7 +4,7 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-07-05 18:06
+ * @datetime 2017-07-05 14:15
  */
 namespace Notadd\Mall\Models;
 
@@ -13,20 +13,29 @@ use Notadd\Foundation\Database\Model;
 /**
  * Class UserFollow.
  */
-class UserFollow extends Model
+class UserCollection extends Model
 {
     /**
      * @var array
      */
     protected $fillable = [
-        'user_id',
+        'product_id',
         'store_id',
+        'user_id',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_user_follows';
+    protected $table = 'mall_user_collections';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

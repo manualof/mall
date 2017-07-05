@@ -6,10 +6,10 @@
  * @copyright (c) 2017, notadd.com
  * @datetime      2017-05-24 16:52
  */
-namespace Notadd\Mall\Handlers\User\Follow;
+namespace Notadd\Mall\Handlers\User\Collection;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\UserFollow;
+use Notadd\Mall\Models\UserCollection;
 
 /**
  * Class RemoveHandler.
@@ -30,8 +30,8 @@ class RemoveHandler extends Handler
             'id.required' => '足迹 ID 必须填写',
         ]);
         $this->beginTransaction();
-        $follow = UserFollow::query()->find($this->request->input('id'));
-        if ($follow instanceof UserFollow && $follow->delete()) {
+        $follow = UserCollection::query()->find($this->request->input('id'));
+        if ($follow instanceof UserCollection && $follow->delete()) {
             $this->commitTransaction();
             $this->withCode(200)->withMessage('删除用户收藏信息成功！');
         } else {

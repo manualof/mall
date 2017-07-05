@@ -4,14 +4,13 @@
  *
  * @datetime 2017-07-05 14:09:34
  */
-
 use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
 /**
  * Class CreateMallUserFollowsTable.
  */
-class CreateMallUserFollowsTable extends Migration
+class CreateMallUserCollectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +19,7 @@ class CreateMallUserFollowsTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('mall_user_follows', function (Blueprint $table) {
+        $this->schema->create('mall_user_collections', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->comment('用户 ID');
             $table->integer('store_id')->comment('店铺 ID');
@@ -36,6 +35,6 @@ class CreateMallUserFollowsTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('mall_user_follows');
+        $this->schema->drop('mall_user_collections');
     }
 }

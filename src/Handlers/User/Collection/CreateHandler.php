@@ -6,10 +6,10 @@
  * @copyright (c) 2017, notadd.com
  * @datetime      2017-05-24 16:50
  */
-namespace Notadd\Mall\Handlers\User\Follow;
+namespace Notadd\Mall\Handlers\User\Collection;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\UserFollow;
+use Notadd\Mall\Models\UserCollection;
 
 /**
  * Class CreateHandler.
@@ -41,7 +41,7 @@ class CreateHandler extends Handler
             'store_id',
             'user_id',
         ]);
-        if (UserFollow::query()->create($data)) {
+        if (UserCollection::query()->create($data)) {
             $this->commitTransaction();
             $this->withCode(200)->withMessage('创建用户收藏信息成功！');
         } else {
