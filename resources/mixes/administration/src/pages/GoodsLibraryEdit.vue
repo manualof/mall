@@ -33,8 +33,8 @@
                     picture: '',
                     price: '',
                     remarks: '',
+                    selectStyle: ['个护化妆', '营养辅食'],
                     sellPoint: '',
-                    type: '数码办公>时尚影音>智能设备',
                 },
                 goodStyle: [
                     {
@@ -81,6 +81,108 @@
                         value: '2',
                     },
                 ],
+                styleData: [
+                    {
+                        children: [
+                            {
+                                value: '童车童床',
+                                label: '童车童床',
+                                children: [
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '自行车',
+                                        value: '自行车',
+                                    },
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅',
+                                        value: '安全座椅',
+                                    },
+                                ],
+                            },
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '个护化妆',
+                        value: '个护化妆',
+                    },
+                    {
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                    {
+                                        label: '婴儿推车3',
+                                        value: '婴儿推车3',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅4',
+                                        value: '安全座椅4',
+                                    },
+                                ],
+                                label: '服饰寝居',
+                                value: '服饰寝居',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '车1',
+                                        value: '车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '家用电器',
+                        value: '家用电器',
+                    },
+                ],
             };
         },
         methods: {
@@ -103,12 +205,6 @@
             closePhoneAlbum() {
                 this.isPhonePicture = false;
                 this.addPhoneAlbum = true;
-            },
-            editInformation() {
-                const self = this;
-                self.$router.push({
-                    path: 'edit/category',
-                });
             },
             goBack() {
                 const self = this;
@@ -200,8 +296,9 @@
                                     <row>
                                         <i-col span="12">
                                             <form-item label="商品分类">
-                                                {{ goodsEdit.type }}&nbsp; &nbsp;&nbsp;
-                                                <i-button type="ghost" @click.native="editInformation">编辑</i-button>
+                                                <cascader :data="styleData"
+                                                          change-on-select
+                                                          v-model="goodsEdit.selectStyle"></cascader>
                                             </form-item>
                                         </i-col>
                                     </row>
