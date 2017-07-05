@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Store\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\StoreCategory;
 
 /**
  * Class CategoryHandler.
@@ -22,6 +23,17 @@ class CategoryHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'id' => 'required|numeric',
+        ], [
+            'id.numeric'  => '分类 ID 必须为数值',
+            'id.required' => '分类 ID 必须填写',
+        ]);
+        $category = StoreCategory::query()->find($this->request->input('id'));
+        if ($category instanceof StoreCategory) {
+            $this->withCode(200)->withData($category)->withMessage('获取店铺分类信息成功！');
+        } else {
+            $this->withCode(500)->withError('没有对应的店铺分类信息！');
+        }
     }
 }
