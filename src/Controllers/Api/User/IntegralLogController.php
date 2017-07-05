@@ -2,24 +2,24 @@
 /**
  * This file is part of Notadd.
  *
- * @author        TwilRoad <heshudong@ibenchu.com>
+ * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime      2017-05-24 16:48
+ * @datetime 2017-07-05 14:52
  */
 namespace Notadd\Mall\Controllers\Api\User;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\User\Follow\CreateHandler;
-use Notadd\Mall\Handlers\User\Follow\ListHandler;
-use Notadd\Mall\Handlers\User\Follow\RemoveHandler;
+use Notadd\Mall\Handlers\User\Integral\Log\CreateHandler;
+use Notadd\Mall\Handlers\User\Integral\Log\ListHandler;
+use Notadd\Mall\Handlers\User\Integral\Log\LogHandler;
 
 /**
- * Class FollowController.
+ * Class IntegralLogController.
  */
-class FollowController extends Controller
+class IntegralLogController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\CreateHandler $handler
+     * @param \Notadd\Mall\Handlers\User\Integral\Log\CreateHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -30,7 +30,7 @@ class FollowController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\ListHandler $handler
+     * @param \Notadd\Mall\Handlers\User\Integral\Log\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -41,12 +41,12 @@ class FollowController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Follow\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\User\Integral\Log\LogHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
      */
-    public function remove(RemoveHandler $handler)
+    public function log(LogHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

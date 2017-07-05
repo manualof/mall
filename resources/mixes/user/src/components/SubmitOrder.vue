@@ -8,7 +8,7 @@
                 </div>
                 <div class="address-selected">
                     <h5>收货人信息</h5>
-                    <div v-for="(item, index) in addressSelect">
+                    <div class="address-list" v-if="addStatus === 1" v-for="(item, index) in addressSelect">
                         <label class="form-control-radio">
                             <input type="radio" name="address" :checked="index == 0">
                             <div class="address clearfix">
@@ -18,7 +18,7 @@
                                     <span class="address-detail">{{ item.address }}</span>
                                     <i v-if="item.isdefault">默认地址</i>
                                     <span class="pull-right" v-if="item.isdefault === false">
-                                        <span>设为默认地址</span>
+                                        <span @click="editDefault(item)" >设为默认地址</span>
                                         <span>编辑</span>
                                         <span>删除</span>
                                     </span>
@@ -26,24 +26,117 @@
                             </div>
                         </label>
                     </div>
+                    <a
+                        class="select-btn"
+                        @click="addAddress"
+                        v-if="addStatus === 1">新增收货地址</a>
+                    <div class="add-address" v-if="addStatus === 2">
+                        <div class="clearfix">
+                            <span class="text-right pull-left">收货人姓名</span>
+                            <input
+                                class="form-control pull-left"
+                                type="text"
+                                placeholder="请输入收货人姓名"
+                                v-model="address.name">
+                        </div>
+                        <div class="clearfix">
+                            <span class="text-right pull-left">手机号码</span>
+                            <input
+                                class="form-control pull-left"
+                                type="number"
+                                placeholder="手机号码为必填项"
+                                v-model.number="address.phone">
+                        </div>
+                        <div class="clearfix">
+                            <span class="text-right pull-left">所在地区</span>
+                            <Cascader class="destination pull-left"
+                                      :data="data"
+                                      v-model="address.area">
+                            </Cascader>
+                        </div>
+                        <div class="clearfix">
+                            <span class="text-right pull-left">详细地址</span>
+                            <textarea
+                                class="form-control pull-left"
+                                placeholder="无需重复填写省市区，小于50个字"
+                                v-model="address.detail">
+                            </textarea>
+                        </div>
+                        <label class="clearfix">
+                            <div class="pull-left">
+                                <input type="checkbox" v-model="address.isdefault">
+                                <span></span>
+                            </div>
+                            <span class="pull-left">设为默认地址</span>
+                        </label>
+                        <div class="btn-div">
+                            <a class="order-btn submit-btn pull-left" @click="saveAddress">保存地址</a>
+                            <a @click="cancelAdd">取消</a>
+                        </div>
+                    </div>
                 </div>
-                <router-link class="select-btn" to="/personnal-center/shipping-address">新增收货地址</router-link>
             </div>
             <div class="address-selected self-take-select">
                 <h5>使用自提门店</h5>
                 <div>
-                    <label class="form-control-radio">
-                        <input type="radio" name="address" :checked="index == 0">
+                    <label class="form-control-radio" v-for="take in selfTake">
+                        <input type="radio" name="address">
                         <div class="address clearfix">
                             <p>
-                                <span>{{ selfTake.name }}</span>
-                                <span>{{ selfTake.phone }}</span>
-                                <span class="address-detail">{{ selfTake.address }}</span>
+                                <span>{{ take.name }}</span>
+                                <span>{{ take.phone }}</span>
+                                <span class="address-detail">{{ take.address }}</span>
                                 <router-link to="/" class="self-take pull-right">修改自提信息</router-link>
                             </p>
                         </div>
                     </label>
                 </div>
+                <a class="select-btn add-self-take"
+                    @click="addSelfTake"
+                    v-if="selfTake.length === 0">+添加自提点</a>
+                <modal ref="modal">
+                    <div slot="title">
+                        <h4 class="modal-title" v-text="modalTitle"></h4>
+                    </div>
+                    <div slot="body">
+                        <form class="signup-form">
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">收货人姓名</label>
+                                <input type="text"
+                                       class="signup-form-control"
+                                       name="username"
+                                       placeholder="请输入收货人姓名"
+                                       v-model="newSelfTake.name">
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">手机号码</label>
+                                <input type="number"
+                                       class="signup-form-control"
+                                       name="telphone"
+                                       placeholder="手机号码为必填项"
+                                       v-model.number="newSelfTake.phone">
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">门店</label>
+                                <Cascader class="destination pull-left"
+                                          :data="data"
+                                          v-model="newSelfTake.address">
+                                </Cascader>
+                                <Select v-model="newSelfTake.city"  style="width:200px">
+                                    <Option v-for="item in cityList"
+                                            :value="item.value"
+                                            :key="item">
+                                        {{ item.label }}
+                                    </Option>
+                                </Select>
+                            </div>
+                        </form>
+                    </div>
+                    <button type="button"
+                            class="order-btn"
+                            @click="selfTakeAdd"
+                            slot="save_address">保存门店</button>
+                </modal>
             </div>
             <div class="pay-method">
                 <h5 class="select-title">支付方式</h5>
@@ -56,50 +149,88 @@
             </div>
             <div class="pay-method invoice-info">
                 <h5 class="select-title">发票信息</h5>
-                <p>不需要发票 <a>修改</a></p>
+                <p>{{ invoice }} <a @click="modifyInvoice">修改</a></p>
+                <modal ref="invoice">
+                    <div slot="title">
+                        <h4 class="modal-title">发票信息</h4>
+                    </div>
+                    <div slot="body">
+                        <form class="signup-form">
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">收货人姓名</label>
+                                <label class="form-control-radio">
+                                    <input type="radio" name="invoice" value="普通发票" v-model="invoice.invoice">
+                                    <span>普通发票</span>
+                                </label>
+                                <label class="form-control-radio">
+                                    <input type="radio" name="invoice" value="不需要发票" v-model="invoice.invoice">
+                                    <span>不需要发票</span>
+                                </label>
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">发票抬头</label>
+                                <Select v-model="invoice.title" class="invoice-select" style="width:200px">
+                                    <Option v-for="item in cityList"
+                                            :value="item.value"
+                                            :key="item">
+                                        {{ item.label }}
+                                    </Option>
+                                </Select>
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">发票内容</label>
+                                <input class="form-control invoice-content" type="text" v-model="invoice.info">
+                            </div>
+                        </form>
+                    </div>
+                    <button type="button"
+                            class="order-btn"
+                            @click="selfTakeAdd"
+                            slot="save_address">保存发票信息</button>
+                    <button type="button"
+                            class="order-btn notNeed"
+                            @click="selfTakeAdd"
+                            slot="save_address">不需要发票</button>
+                </modal>
             </div>
             <div class="ensure-information">
-                <p class="select-title">确认商品信息</p>
-                <div class="product-information" v-for="item in submitOrder.productList">
-                    <p class="name">{{ item.shop }}</p>
-                    <table width="100%">
-                        <thead>
-                        <tr>
-                            <th class="th-information">商品信息</th>
-                            <th>单价</th>
-                            <th>数量</th>
-                            <th>金额</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{{ item.name }}</td>
-                            <td><s>&yen;{{ item.price1 }}</s>
-                                <p>&yen;{{ item.price2 }}</p></td>
-                            <td>{{ item.num }}</td>
-                            <td class="price">&yen;{{ item.price2 * item.num }}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="order-submit submit-btn">
-                    <div class="order-submit-content clearfix">
-                        <span class="order-price">-&yen;{{ submitOrder.integral_price }}</span>
-                        <div class="name">
-                            <span class="integral">积分兑换({{ submitOrder.integral_num }})：</span>
-                            <div class="check-box select">
-                                <span><input type="checkbox" class="input_check" id="check1"><label
-                                    for="check1"></label></span>
-                            </div>
+                <p class="select-title">商品清单</p>
+                <ul class="product-head clearfix">
+                    <li class="pull-left">商品信息</li>
+                    <li class="pull-left text-center">单价(元)</li>
+                    <li class="pull-left text-center">数量</li>
+                    <li class="pull-left text-center">金额</li>
+                </ul>
+                <ul class="product-list">
+                    <li v-for="order in submitOrder.productList">
+                        <h5>店铺{{ order.shop }}</h5>
+                        <ul class="order-detail clearfix">
+                            <li class="pull-left clearfix">
+                                <img class="pull-left" :src="order.img" alt="">
+                                <div class="pull-left">
+                                    <p>{{ order.name }}</p>
+                                    <p>颜色: {{ order.color }} 尺码: {{ order.size }}</p>
+                                </div>
+                            </li>
+                            <li class="pull-left text-center">￥{{ order.price }}</li>
+                            <li class="pull-left text-center">{{ order.num }}</li>
+                            <li class="pull-left text-center">￥{{ order.price * order.num }}</li>
+                        </ul>
+                        <div>
+                            买家留言： <input class="form-control"
+                                         type="text"
+                                         placeholder="限50字（对本次交易的说明，建议填写已经和商家达成一致的说明）">
                         </div>
-                    </div>
+                    </li>
+                </ul>
+                <div class="order-submit submit-btn">
                     <div class="order-submit-content clearfix">
                         <span class="order-price">-&yen;{{ submitOrder.freight }}</span>
                         <span class="name">运费：</span>
                     </div>
                     <div class="order-submit-content clearfix">
                         <span class="order-price price">&yen;{{ total_price}}</span>
-                        <span class="name">金额：</span>
+                        <span class="name">金额(不含运费)：</span>
                     </div>
                     <router-link :to="{ name: 'order-success' }" class="order-btn submit-btn">提交订单</router-link>
                 </div>
@@ -110,11 +241,40 @@
 </template>
 
 <script>
+    import Cascader from 'iview/src/components/cascader';
+    import { Select, Option, OptionGroup } from 'iview/src/components/select';
+    import Modal from './personnal-center/Modal';
+    import order from '../assets/images/details/order.png';
     import RightSide from './dashboard/RightSide';
 
     export default {
+        components: {
+            Cascader,
+            Modal,
+            Option,
+            OptionGroup,
+            RightSide,
+            Select,
+        },
+        computed: {
+            total_price() {
+                let totalPrice = 0;
+                this.submitOrder.productList.forEach(item => {
+                    totalPrice += item.price * item.num;
+                });
+                return totalPrice.toFixed(2);
+            },
+        },
         data() {
             return {
+                address: {
+                    name: '',
+                    phone: '',
+                    area: [],
+                    detail: '',
+                    isdefault: false,
+                },
+                addStatus: 1,
                 addressSelect: [
                     {
                         address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
@@ -129,6 +289,92 @@
                         phone: 12345676543,
                     },
                 ],
+                cityList: [
+                    {
+                        value: 'beijing',
+                        label: '北京市',
+                    },
+                    {
+                        value: 'shanghai',
+                        label: '上海市',
+                    },
+                    {
+                        value: 'shenzhen',
+                        label: '深圳市',
+                    },
+                    {
+                        value: 'hangzhou',
+                        label: '杭州市',
+                    },
+                    {
+                        value: 'nanjing',
+                        label: '南京市',
+                    },
+                    {
+                        value: 'chongqing',
+                        label: '重庆市',
+                    },
+                ],
+                model1: '',
+                data: [
+                    {
+                        children: [
+                            {
+                                label: '故宫',
+                                value: 'gugong',
+                            },
+                            {
+                                label: '天坛',
+                                value: 'tiantan',
+                            },
+                            {
+                                label: '王府井',
+                                value: 'wangfujing',
+                            },
+                        ],
+                        label: '北京',
+                        value: 'beijing',
+                    },
+                    {
+                        children: [
+                            {
+                                value: 'nanjing',
+                                label: '南京',
+                                children: [
+                                    {
+                                        value: 'fuzimiao',
+                                        label: '夫子庙',
+                                    },
+                                ],
+                            },
+                            {
+                                value: 'suzhou',
+                                label: '苏州',
+                                children: [
+                                    {
+                                        value: 'zhuozhengyuan',
+                                        label: '拙政园',
+                                    },
+                                    {
+                                        value: 'shizilin',
+                                        label: '狮子林',
+                                    },
+                                ],
+                            },
+                        ],
+                        label: '江苏',
+                        value: 'jiangsu',
+                    },
+                ],
+                invoice: '',
+                invoices: [
+                    {
+                        type: '个人',
+                    },
+                    {
+                        type: '公司',
+                    },
+                ],
                 methods: [
                     {
                         name: '在线支付',
@@ -137,58 +383,74 @@
                         name: '货到付款',
                     },
                 ],
-                selfTake: {
-                    address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
-                    name: '王茂',
-                    phone: 12345676543,
+                modalTitle: '',
+                newSelfTake: {
+                    address: [],
+                    city: '',
+                    name: '',
+                    phone: '',
                 },
+                selfTake: [
+//                    {
+//                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
+//                        name: '王茂',
+//                        phone: 12345676543,
+//                    },
+                ],
                 submitOrder: {
                     integral_num: 1660,
                     integral_price: 16.6,
                     freight: 20,
                     productList: [
                         {
+                            color: '白色',
+                            img: order,
                             name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
                             num: 2,
-                            price1: 126.07,
-                            price2: 39.9,
+                            price: 39.9,
+                            size: 'L',
                             shop: 'XXX母婴用品店',
                         },
                         {
+                            color: '白色',
+                            img: order,
                             name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
                             num: 2,
-                            price1: 126.07,
-                            price2: 39.9,
-                            shop: 'XXX母婴用品店',
-                        },
-                        {
-                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
-                            num: 2,
-                            price1: 126.07,
-                            price2: 39.9,
-                            shop: 'XXX母婴用品店',
-                        },
-                        {
-                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
-                            num: 2,
-                            price1: 126.07,
-                            price2: 39.9,
+                            price: 126.07,
+                            size: 'M',
                             shop: 'XXX母婴用品店',
                         },
                     ],
                 },
             };
         },
-        components: {
-            RightSide,
-        },
-        computed: {
-            total_price() {
-                let totalPrice = 0;
-                this.submitOrder.productList.forEach(item => {
-                    totalPrice += item.price2 * item.num;
+        methods: {
+            addAddress() {
+                this.addStatus = 2;
+            },
+            addSelfTake() {
+                this.$refs.modal.open();
+                this.modalTitle = '添加自提门店';
+            },
+            cancelAdd() {
+                this.addStatus = 1;
+            },
+            editDefault(item) {
+                this.addressSelect.forEach(address => {
+                    address.isdefault = false;
                 });
-                return totalPrice.toFixed(2);
+                item.isdefault = true;
+            },
+            modifyInvoice() {
+                this.$refs.invoice.open();
+            },
+            selfTakeAdd() {
+                this.selfTake.push(this.newSelfTake);
+                this.$refs.modal.close();
+            },
+            saveAddress() {
+                this.addressSelect.push(this.address);
+                this.addStatus = 1;
             },
         },
     };

@@ -24,12 +24,8 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'page'     => 'numeric',
-            'paginate' => 'numeric',
             'store_id' => 'required|numeric',
         ], [
-            'page.numeric'     => '当前页面必须为数值',
-            'paginate.numeric' => '分页数必须为数值',
             'store_id.numeric'  => '店铺 ID 必须为数值',
             'store_id.required' => '店铺 ID 必须填写',
         ]);
