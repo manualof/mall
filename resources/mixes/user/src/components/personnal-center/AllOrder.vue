@@ -48,13 +48,13 @@
                             <ul class="clearfix shop-info">
                                 <li>{{ order.time }}</li>
                                 <li>{{ order.order_code }}</li>
-                                <!--<li>{{ order.shop_name }}</li>-->
+                                <li>{{ order.shop_name }}</li>
                                 <li @click="deleteProduct(order)"><a><i class="icon iconfont icon-icon_shanchu"></i></a>
                                 </li>
                             </ul>
                         </td>
                     </tr>
-                    <tr v-for="product in order.products">
+                    <tr v-for="(product,index) in order.products">
                         <td>
                             <router-link :to="{ name: 'product-details' }">
                                 <img :src="product.img">
@@ -74,35 +74,35 @@
                         <td>
                             <p><a>申请售后</a></p>
                         </td>
-                        <td :rowspan="order.products.length">
+                        <td :rowspan="order.products.length" v-show="index===0">
                             <p>￥{{ product.num * product.price }}</p>
                             <p class="freight">（含运费{{ order.transport_price }}）</p>
                         </td>
-                        <td :rowspan="order.products.length">
+                        <td :rowspan="order.products.length" v-show="index===0">
                             <p v-if="order.status.indexOf(1) != -1">等待买家付款</p>
                             <p v-if="order.status.indexOf(2) != -1"><a>订单详情</a></p>
                             <p v-if="order.status.indexOf(3) != -1"><a>再次购买</a></p>
                             <div v-if="order.status.indexOf(4) != -1" class="logistics-box">
-                                <a>查看物流</a>
+                                <a class="a-logistics">查看物流</a>
                                 <div class="logistics">
                                     <i class="sanjiao"> </i>
                                     <p class="text-left logistics-name">
-                                        <!--{{ order.logistics.name }}-->
-                                        <!--<span class="waybill-num">运单号：{{ order.logistics.transport_code }}</span>-->
+                                        {{ order.logistics.name }}
+                                        <span class="waybill-num">运单号：{{ order.logistics.transport_code }}</span>
                                     </p>
                                     <ul class="clearfix">
-                                        <!--<li class="clearfix" v-for="log in order.logistics.logisticsList">-->
-                                            <!--<i class="cricle pull-left active"> </i>-->
-                                            <!--<div class="waybill-info pull-left">-->
-                                                <!--<p>{{ log.address }} 已收入</p>-->
-                                                <!--<p class="text-left">{{ log.time }}</p>-->
-                                            <!--</div>-->
-                                        <!--</li>-->
+                                        <li class="clearfix" v-for="log in order.logistics.logisticsList">
+                                            <i class="cricle pull-left active"> </i>
+                                            <div class="waybill-info pull-left">
+                                                <p>{{ log.address }} 已收入</p>
+                                                <p class="text-left">{{ log.time }}</p>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </td>
-                        <td :rowspan="order.products.length">
+                        <td :rowspan="order.products.length" v-show="index===0">
                             <p class="remind" v-if="order.operating.indexOf(1)">请在19分25秒内完成付款</p>
                             <p v-if="order.operating.indexOf(2)!=-1"><a href="#">再次购买</a></p>
                             <p v-if="order.operating.indexOf(3)!=-1"><a href="#">取消订单</a></p>
