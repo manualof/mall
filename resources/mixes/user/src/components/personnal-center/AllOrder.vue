@@ -2,40 +2,11 @@
     <div class="all-order">
         <div class="clearfix nav-box">
             <ul id="myTab" class="tab-nav clearfix">
-                <li class="active">
-                    <a href="#all" data-toggle="tab">
-                        所有订单
+                <li :class="{active:index===activeTab}" @click="tabSwitch(index)" v-for="(tab, index) in tabs">
+                    <a>
+                        {{ tab.name }}{{ tab.num }}
                         <span class="product-num"></span>
                     </a>
-                    <i></i>
-                </li>
-                <li>
-                    <a href="#whit-pay" data-toggle="tab">
-                        待付款
-                        <span class="product-num">5</span>
-                    </a>
-                    <i></i>
-                </li>
-                <li>
-                    <a href="#ios" data-toggle="tab">
-                        待发货
-                        <span class="product-num">0</span>
-                    </a>
-                    <i></i>
-                </li>
-                <li>
-                    <a href="#ios" data-toggle="tab">
-                        待收货
-                        <span class="product-num">0</span>
-                    </a>
-                    <i></i>
-                </li>
-                <li>
-                    <a href="#ios" data-toggle="tab">
-                        待评价
-                        <span class="product-num">5</span>
-                    </a>
-                    <i></i>
                 </li>
             </ul>
         </div>
@@ -154,6 +125,7 @@
     export default{
         data() {
             return {
+                activeTab: 1,
                 allOrder: [
                     {
                         time: '2017-02-09',
@@ -279,12 +251,40 @@
                         ],
                     },
                 ],
+                tabs: [
+                    {
+                        name: '所有订单',
+                        num: '',
+                    },
+                    {
+                        name: '待付款',
+                        num: '5',
+                    },
+                    {
+                        name: '代发货',
+                        num: '0',
+                    },
+                    {
+                        name: '待收货',
+                        num: '0',
+                    },
+                    {
+                        name: '待评价',
+                        num: '5',
+                    },
+                    {
+                        name: '订单回收站',
+                    },
+                ],
             };
         },
         methods: {
             deleteProduct(item) {
                 const index = this.allOrder.indexOf(item);
                 this.allOrder.splice(index, 1);
+            },
+            tabSwitch(index) {
+                this.activeTab = index;
             },
         },
     };
