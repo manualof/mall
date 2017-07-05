@@ -502,6 +502,8 @@
                                                 <li>
                                                     <date-picker type="date" placeholder="选择日期"
                                                                  v-show="filter.dataType === '3'"></date-picker>
+                                                    <date-picker type="date" placeholder="选择日期"
+                                                                 v-show="filter.dataType === '2'"></date-picker>
                                                     <date-picker type="month" placeholder="选择日期"
                                                                  v-show="filter.dataType === '1'"></date-picker>
                                                 </li>
