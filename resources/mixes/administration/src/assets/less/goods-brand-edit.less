@@ -12,12 +12,16 @@
         .ivu-card {
             .ivu-form {
                 .contact-classification {
+                    display: inline-flex;
                     margin-bottom: 10px;
                     &:last-child {
                         margin-bottom: 0;
                     }
                     .ivu-cascader {
                         padding-right: 20px;
+                        input {
+                            width: 270px;
+                        }
                     }
                     .ivu-btn-error {
                         background-color: #fff;
@@ -62,10 +66,9 @@
                 .ivu-form-item-content {
                     .flex-module {
                         display: inline-flex;
-                        &:first-child {
-                            .ivu-cascader {
-                                margin-left: 10px;
-                            }
+                        margin-bottom: 10px;
+                        .ivu-cascader {
+                            margin-left: 10px;
                         }
                         .ivu-cascader {
                             input {
