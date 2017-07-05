@@ -19,8 +19,6 @@
                     sort: '',
                     switch1: true,
                 },
-                editCategory: false,
-                editBtn: true,
                 defaultList: [],
                 loading: false,
                 ruleValidate: {
@@ -138,10 +136,6 @@
             };
         },
         methods: {
-            edit() {
-                this.editBtn = false;
-                this.editCategory = true;
-            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
@@ -199,12 +193,6 @@
                 });
                 self.addData.logo = data.data.path;
             },
-            visibleChange(status) {
-                if (status === false) {
-                    this.editCategory = false;
-                    this.editBtn = true;
-                }
-            },
         },
     };
 </script>
@@ -242,14 +230,10 @@
                                 <form-item label="所属分类">
                                     <div class="flex-module">
                                         {{ addData.selectStyle }}
-                                        <i-button class="edit-btn" size="small" type="ghost"
-                                                  @click.native="edit" v-if="editBtn">编辑</i-button>
                                         <cascader :data="styleData"
                                                   change-on-select
                                                   @on-change="handleChange"
-                                                  @on-visible-change="visibleChange"
-                                                  v-model="addData.selectStyle"
-                                                  v-if="editCategory"></cascader>
+                                                  v-model="addData.selectStyle"></cascader>
                                     </div>
                                     <p class="tip">
                                         请选择分类，可关联大分类或更具体的下级分类

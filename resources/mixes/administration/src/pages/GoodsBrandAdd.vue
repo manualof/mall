@@ -247,6 +247,9 @@
                     },
                 );
             },
+            deleteType(index) {
+                this.styleDataList.splice(index, 1);
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
@@ -336,10 +339,18 @@
                             </i-col>
                         </row>
                         <row>
-                            <i-col span="12">
+                            <i-col span="14">
                                 <form-item label="所属分类">
-                                    <cascader :data="item.styleData" v-for="item in styleDataList"
-                                              change-on-select></cascader>
+                                    <row v-for="(item, index) in styleDataList" class="contact-classification">
+                                        <i-col span="18">
+                                           <cascader :data="item.styleData"
+                                                     change-on-select></cascader>
+                                        </i-col>
+                                        <i-col span="6">
+                                           <i-button type="error" v-if="index !== 0"
+                                                     @click.native="deleteType(index)">删除</i-button>
+                                        </i-col>
+                                    </row>
                                     <p class="tip">
                                         请选择分类，可关联大分类或更具体的下级分类
                                     </p>
