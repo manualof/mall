@@ -48,12 +48,12 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="store-look">
+        <div class="store-look-application">
             <div class="edit-link-title">
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
-                <span>店铺管理—查看</span>
+                <span>开店申请—查看</span>
             </div>
             <div class="store-information">
                 <card :bordered="false">
@@ -174,7 +174,7 @@
                                                     <row>
                                                         <i-col span="10">
                                                             <form-item label="公司电话">
-                                                               {{ storeDetail.company_phone }}
+                                                                {{ storeDetail.company_phone }}
                                                             </form-item>
                                                         </i-col>
                                                         <i-col span="10">
@@ -216,7 +216,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="license-information border-color">
+                                <div class="company-information border-color">
                                     <div>
                                         <h5>营业执照信息（副本）</h5>
                                         <div class="license-content">
@@ -270,6 +270,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                <i-button type="ghost" class="first-btn">审核通过</i-button>
+                                <i-button type="error" class="first-btn">拒绝</i-button>
                             </div>
                         </div>
                     </i-form>

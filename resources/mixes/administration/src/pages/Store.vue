@@ -267,7 +267,7 @@
                 ],
                 managementWord: '',
                 managementSearch: '',
-                searchApplicationList:[
+                searchApplicationList: [
                     {
                         label: '会员账号',
                         value: '1',
@@ -303,10 +303,15 @@
             look() {
                 const self = this;
                 self.$router.push({
+                    path: 'store/look/application',
+                });
+            },
+            lookShop() {
+                const self = this;
+                self.$router.push({
                     path: 'store/look',
                 });
             },
-            lookShop() {},
             toEdit() {
                 const self = this;
                 self.$router.push({
@@ -341,8 +346,11 @@
                                     </i-input>
                                 </div>
                             </div>
-                            <i-table ref="managementTable" highlight-row class="shop-table"
-                                     :columns="managementColumns" :context="self" :data="managementData"></i-table>
+                            <i-table ref="managementTable"
+                                     class="shop-table"
+                                     :context="self"
+                                     :columns="managementColumns"
+                                     :data="managementData"></i-table>
                         </div>
                         <div class="page">
                             <page :total="100" show-elevator></page>
