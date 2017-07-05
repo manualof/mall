@@ -24,16 +24,19 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
+            'order'    => 'in:asc,desc',
             'page'     => 'numeric',
             'paginate' => 'numeric',
             'store_id' => 'required|numeric',
         ], [
+            'order.in'         => '排序规则错误',
             'page.numeric'      => '当前页面必须为数值',
             'paginate.numeric'  => '分页数必须为数值',
             'store_id.numeric'  => '店铺 ID 必须为数值',
             'store_id.required' => '店铺 ID 必须填写',
         ]);
         $builder = StoreDynamic::query();
+        $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder->where('store_id', $this->request->input('store_id'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)->withData($builder->items())->withMessage('获取产品列表成功！')->withExtra([

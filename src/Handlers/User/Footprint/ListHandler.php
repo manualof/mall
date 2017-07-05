@@ -24,10 +24,12 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
+            'order'    => 'in:asc,desc',
             'page'     => 'numeric',
             'paginate' => 'numeric',
-            'user_id' => 'required|numeric',
+            'user_id'  => 'required|numeric',
         ], [
+            'order.in'         => '排序规则错误',
             'page.numeric'     => '当前页面必须为数值',
             'paginate.numeric' => '分页数必须为数值',
             'user_id.numeric'  => '用户 ID 必须为数值',
@@ -35,6 +37,7 @@ class ListHandler extends Handler
         ]);
         $builder = UserFootprint::query();
         $builder->where('user_id', $this->request->input('id'));
+        $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)->withData($builder->items())->withMessage('获取订单列表成功！')->withExtra([
             'pagination' => [
