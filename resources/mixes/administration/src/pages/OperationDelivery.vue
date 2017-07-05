@@ -151,7 +151,7 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>提示物流自提服务站关闭后，被用户选择设置成收货地址的记录会被删除，请谨慎操作</p>
+                            <p>仅展示已拥有自提点商家,无自提点商家可通过搜索查询</p>
                         </div>
                         <div class="album-action">
                             <i-button class="add-data" type="ghost" @click.native="addData">+新增数据</i-button>
