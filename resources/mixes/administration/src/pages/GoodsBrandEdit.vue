@@ -254,6 +254,7 @@
                                     <p class="tip">
                                         请选择分类，可关联大分类或更具体的下级分类
                                     </p>
+                                    <i-button class="add-contact-type" type="ghost">增加关联分类</i-button>
                                 </form-item>
                             </i-col>
                         </row>
