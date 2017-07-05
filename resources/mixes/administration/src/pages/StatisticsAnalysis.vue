@@ -271,97 +271,97 @@
                 },
                 isPriceArea: false,
                 profileOrderGoods: {
-                    legend: {
-                        bottom: 'auto',
-                        data: ['昨天', '今天'],
-                    },
+                    color: ['#3398DB'],
                     series: [
                         {
-                            data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '今天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                        {
-                            data: [220, 182, 191, 234, 290, 330, 310],
-                            name: '昨天',
-                            stack: '下单金额',
-                            type: 'line',
+                            barWidth: '60%',
+                            data: [10, 52, 200, 334, 390, 330, 220],
+                            name: '直接访问',
+                            type: 'bar',
                         },
                     ],
                     tooltip: {
+                        axisPointer: {
+                            type: 'line',
+                        },
                         trigger: 'axis',
                     },
-                    xAxis: {
-                        boundaryGap: false,
-                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                        type: 'category',
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
+                    xAxis: [
+                        {
+                            axisTick: {
+                                alignWithLabel: true,
+                            },
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            type: 'category',
+                        },
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                        },
+                    ],
                 },
                 profileOrderMoney: {
-                    legend: {
-                        bottom: 'auto',
-                        data: ['昨天', '今天'],
-                    },
+                    color: ['#3398DB'],
                     series: [
                         {
-                            data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '今天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                        {
-                            data: [220, 182, 191, 234, 290, 330, 310],
-                            name: '昨天',
-                            stack: '下单金额',
-                            type: 'line',
+                            barWidth: '60%',
+                            data: [10, 52, 200, 334, 390, 330, 220],
+                            name: '直接访问',
+                            type: 'bar',
                         },
                     ],
                     tooltip: {
+                        axisPointer: {
+                            type: 'line',
+                        },
                         trigger: 'axis',
                     },
-                    xAxis: {
-                        boundaryGap: false,
-                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                        type: 'category',
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
+                    xAxis: [
+                        {
+                            axisTick: {
+                                alignWithLabel: true,
+                            },
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            type: 'category',
+                        },
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                        },
+                    ],
                 },
                 profileOrderNum: {
-                    legend: {
-                        bottom: 'auto',
-                        data: ['昨天', '今天'],
-                    },
+                    color: ['#3398DB'],
                     series: [
                         {
-                            data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '今天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                        {
-                            data: [220, 182, 191, 234, 290, 330, 310],
-                            name: '昨天',
-                            stack: '下单金额',
-                            type: 'line',
+                            barWidth: '60%',
+                            data: [10, 52, 200, 334, 390, 330, 220],
+                            name: '直接访问',
+                            type: 'bar',
                         },
                     ],
                     tooltip: {
+                        axisPointer: {
+                            type: 'line',
+                        },
                         trigger: 'axis',
                     },
-                    xAxis: {
-                        boundaryGap: false,
-                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                        type: 'category',
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
+                    xAxis: [
+                        {
+                            axisTick: {
+                                alignWithLabel: true,
+                            },
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            type: 'category',
+                        },
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                        },
+                    ],
                 },
                 orderAccount: {
                     series: [
