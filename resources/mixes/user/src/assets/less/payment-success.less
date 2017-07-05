@@ -63,6 +63,9 @@
                         i {
                             color: #de2634;
                         }
+                        > p:last-child {
+                            color: #999999;
+                        }
                     }
                     .cricle-box {
                         .cricle {
@@ -72,43 +75,45 @@
                 }
             }
         }
-        .current-status {
+        .step-status {
             h4 {
                 color: #444;
                 font-weight: 500;
                 font-size: 20px;
-                padding-top: 26px;
+                padding-top: 40px;
             }
-            p {
-                span {
-                    color: #de2634;
+            > p:nth-child(2) {
+                margin-top: 12px;
+            }
+            .time {
+                color: #de2634;
+            }
+            .remind-btn {
+                margin-top: 18px;
+                margin-bottom: 40px;
+                .order-btn {
+                    font-size: 14px;
                 }
-                &.remind-btn {
-                    margin-top: 18px;
-                    margin-bottom: 40px;
-                    .order-btn {
-                        font-size: 18px;
-                    }
-                    a {
-                        margin-left: 18px;
+                a {
+                    margin-left: 18px;
 
-                    }
                 }
             }
         }
+        .current-status {
+        }
+        .wait-pay {
+        }
         .wait-receipt {
-            display: none;
-            h4 {
-                color: #444;
-                font-size: 20px;
-                font-weight: 500;
-                padding-top: 26px;
-            }
             .order-btn {
-                background-color: #55b7ea;
-                margin: 10px 0 20px;
+                background-color: #62bdff;
+                margin-bottom: 20px;
+            }
+            > p {
+                line-height: 2.5;
             }
             .logistics-information {
+                line-height: 2.5;
                 margin-bottom: 30px;
                 span {
                     display: block;
@@ -127,7 +132,7 @@
                             height: 6px;
                             margin-right: 10px;
                             margin-left: 2px;
-                            margin-top: 6px;
+                            margin-top: 12px;
                             position: relative;
                             width: 6px;
                             &:after {
@@ -158,7 +163,6 @@
             }
         }
         .transaction {
-            display: none;
             .click {
                 color: #444;
                 margin-top: 14px;

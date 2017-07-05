@@ -22,40 +22,38 @@
                         </li>
                     </ul>
                 </div>
-                <div class="current-status bottom-line">
-                    <h4>当前状态：等待卖家发货</h4>
-                    <p>卖家承诺将于 <span class="time">72小时0分07秒</span> 内发货，若未及时发货，买家可取消订单</p>
+                <div class="wait-pay bottom-line step-status" v-if="status===1">
+                    <h4>当前状态：等待买家付款</h4>
+                    <p>请于<span class="time"> 0小时30分07秒 </span>内进行付款，若未及时付款，系统将自动取消订单</p>
                     <p class="remind-btn">
-                        <button class="order-btn">提醒卖家发货</button>
+                        <button class="order-btn">立即付款</button>
                         <a href="">取消订单</a>
                     </p>
                 </div>
-
-                <div class="wait-receipt bottom-line">
+                <div class="current-status bottom-line step-status"  v-if="status===2">
+                    <h4>当前状态：待发货</h4>
+                    <p>订单已提交，商家进行备货发货准备。若您想取消购买，可与商家沟通后申请退款。</p>
+                    <p class="remind-btn">
+                        <button class="order-btn">申请退款</button>
+                    </p>
+                </div>
+                <div class="bottom-line step-status wait-receipt">
                     <h4>当前状态：卖家已发货，请查看页面下方物流信息了解宝贝寄送情况</h4>
-                    <button class="order-btn">确认收货</button>
+                    <button class="remind-btn order-btn">确认收货</button>
                     <p>物流公司： 顺丰速运</p>
                     <p>运单号码： 2017020615400000710016792</p>
                     <div class="logistics-information clearfix">
                         <span>物流信息： </span>
                         <ul class="right-content">
-                            <li class="address active">
-                                <span class="point active"></span>
-                                <span>2016-12-29  13:06:03&nbsp;&nbsp;&nbsp;北京海淀区xx大道  已收入</span>
-                            </li>
-                            <li>
-                                <span class="point"></span>
-                                <span>2016-12-29  13:06:03&nbsp;&nbsp;&nbsp;北京海淀区xx大道  已收入</span>
-                            </li>
-                            <li>
-                                <span class="point"></span>
-                                <span>2016-12-29  13:06:03&nbsp;&nbsp;&nbsp;北京海淀区xx大道  已收入</span>
+                            <li class="address" v-for="logic in logisticsInfo" :class="{active:logic.current}">
+                                <span class="point" :class="{active:logic.current}"></span>
+                                <span>{{ logic.time }}&nbsp;&nbsp;&nbsp;{{ logic.address }}  {{ logic.status }}</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="wait-receipt bottom-line transaction">
+                <div class="wait-receipt bottom-line transaction step-status">
                     <h4>当前状态：交易成功</h4>
                     <p class="click">若对此订单有异议，可点击 <a href="">申请售后</a></p>
                     <p>物流公司： 顺丰速运</p>
@@ -63,17 +61,9 @@
                     <div class="logistics-information clearfix">
                         <span>物流信息： </span>
                         <ul class="right-content">
-                            <li class="address active">
-                                <span class="point active"></span>
-                                <span>2016-12-29  13:06:03&nbsp;&nbsp;&nbsp;北京海淀区xx大道  已收入</span>
-                            </li>
-                            <li>
-                                <span class="point"></span>
-                                <span>2016-12-29  13:06:03&nbsp;&nbsp;&nbsp;北京海淀区xx大道  已收入</span>
-                            </li>
-                            <li>
-                                <span class="point"></span>
-                                <span>2016-12-29  13:06:03&nbsp;&nbsp;&nbsp;北京海淀区xx大道  已收入</span>
+                            <li class="address" v-for="logic in logisticsInfo" :class="{active:logic.current}">
+                                <span class="point" :class="{active:logic.current}"></span>
+                                <span>{{ logic.time }}&nbsp;&nbsp;&nbsp;{{ logic.address }}  {{ logic.status }}</span>
                             </li>
                         </ul>
                     </div>
@@ -155,6 +145,32 @@
         },
         data() {
             return {
+                logisticsInfo: [
+                    {
+                        address: '北京海淀区xx大道',
+                        current: true,
+                        time: '2016-12-29  13:06:03',
+                        status: '已收入',
+                    },
+                    {
+                        address: '北京海淀区xx大道',
+                        current: false,
+                        time: '2016-12-29  13:06:03',
+                        status: '已收入',
+                    },
+                    {
+                        address: '北京海淀区xx大道',
+                        current: false,
+                        time: '2016-12-29  13:06:03',
+                        status: '已收入',
+                    },
+                    {
+                        address: '北京海淀区xx大道',
+                        current: false,
+                        time: '2016-12-29  13:06:03',
+                        status: '已收入',
+                    },
+                ],
                 status: 1,
                 steps: [
                     {
