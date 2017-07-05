@@ -9,6 +9,160 @@
         },
         data() {
             return {
+                filter: {
+                    dataType: '',
+                    goodsType: [],
+                    goodsTypeList: [
+                        {
+                            children: [
+                                {
+                                    label: '面部护理',
+                                    value: '1',
+                                },
+                                {
+                                    label: '口腔护理',
+                                    value: '2',
+                                },
+                                {
+                                    label: '身体护理',
+                                    value: '3',
+                                },
+                            ],
+                            label: '个护化妆',
+                            value: '1',
+                        },
+                        {
+                            children: [
+                                {
+                                    label: '生活电器',
+                                    value: '1',
+                                },
+                                {
+                                    label: '厨房电器',
+                                    value: '2',
+                                },
+                                {
+                                    label: '大家电',
+                                    value: '3',
+                                },
+                            ],
+                            label: '家用电器',
+                            value: '2',
+                        },
+                    ],
+                    industryGoodsType: [],
+                    industryList: [
+                        {
+                            children: [
+                                {
+                                    label: '面部护理',
+                                    value: '1',
+                                },
+                                {
+                                    label: '口腔护理',
+                                    value: '2',
+                                },
+                                {
+                                    label: '身体护理',
+                                    value: '3',
+                                },
+                            ],
+                            label: '个护化妆',
+                            value: '1',
+                        },
+                        {
+                            children: [
+                                {
+                                    children: [
+                                        {
+                                            label: '冰箱',
+                                            value: '1',
+                                        },
+                                        {
+                                            label: '空调',
+                                            value: '2',
+                                        },
+                                    ],
+                                    label: '生活电器',
+                                    value: '1',
+                                },
+                                {
+                                    children: [
+                                        {
+                                            label: '热水器',
+                                            value: '1',
+                                        },
+                                    ],
+                                    label: '厨房电器',
+                                    value: '2',
+                                },
+                                {
+                                    label: '大家电',
+                                    value: '3',
+                                },
+                            ],
+                            label: '家用电器',
+                            value: '2',
+                        },
+                    ],
+                    industryType: '',
+                    priceGoodsType: [],
+                    priceList: [
+                        {
+                            children: [
+                                {
+                                    label: '面部护理',
+                                    value: '1',
+                                },
+                                {
+                                    label: '口腔护理',
+                                    value: '2',
+                                },
+                                {
+                                    label: '身体护理',
+                                    value: '3',
+                                },
+                            ],
+                            label: '个护化妆',
+                            value: '1',
+                        },
+                        {
+                            children: [
+                                {
+                                    children: [
+                                        {
+                                            label: '冰箱',
+                                            value: '1',
+                                        },
+                                        {
+                                            label: '空调',
+                                            value: '2',
+                                        },
+                                    ],
+                                    label: '生活电器',
+                                    value: '1',
+                                },
+                                {
+                                    children: [
+                                        {
+                                            label: '热水器',
+                                            value: '1',
+                                        },
+                                    ],
+                                    label: '厨房电器',
+                                    value: '2',
+                                },
+                                {
+                                    label: '大家电',
+                                    value: '3',
+                                },
+                            ],
+                            label: '家用电器',
+                            value: '2',
+                        },
+                    ],
+                    priceType: '',
+                },
                 goodsColumns: [
                     {
                         key: 'num',
@@ -51,16 +205,6 @@
                         amount: 99,
                         goodsName: 'xxx旗舰店',
                         num: 4,
-                    },
-                ],
-                goodsList: [
-                    {
-                        label: '商品1',
-                        value: '1',
-                    },
-                    {
-                        label: '商品2',
-                        value: '2',
                     },
                 ],
                 industryGoods: {
@@ -323,6 +467,7 @@
                 ],
             };
         },
+        methods: {},
     };
 </script>
 <template>
@@ -344,20 +489,21 @@
                                             <ul>
                                                 <li>
                                                     商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
+                                                    <cascader :data="filter.goodsTypeList" style="width: 148px"
+                                                              trigger="hover" v-model="filter.goodsType"></cascader>
                                                 </li>
                                                 <li>
                                                     时间周期
-                                                    <i-select v-model="model2" style="width:124px">
+                                                    <i-select style="width:124px" v-model="filter.dataType">
                                                         <i-option v-for="item in timeList" :value="item.value"
                                                                 :key="item">{{ item.label }}</i-option>
                                                     </i-select>
                                                 </li>
                                                 <li>
-                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                    <date-picker type="date" placeholder="选择日期"
+                                                                 v-show="filter.dataType === '3'"></date-picker>
+                                                    <date-picker type="month" placeholder="选择日期"
+                                                                 v-show="filter.dataType === '1'"></date-picker>
                                                 </li>
                                             </ul>
                                         </div>
@@ -375,20 +521,21 @@
                                             <ul>
                                                 <li>
                                                     商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
+                                                    <cascader :data="filter.goodsTypeList" style="width: 148px"
+                                                              trigger="hover" v-model="filter.goodsType"></cascader>
                                                 </li>
                                                 <li>
                                                     时间周期
-                                                    <i-select v-model="model2" style="width:124px">
+                                                    <i-select style="width:124px" v-model="filter.dataType">
                                                         <i-option v-for="item in timeList" :value="item.value"
                                                                   :key="item">{{ item.label }}</i-option>
                                                     </i-select>
                                                 </li>
                                                 <li>
-                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                    <date-picker type="date" placeholder="选择日期"
+                                                                 v-show="filter.dataType === '3'"></date-picker>
+                                                    <date-picker type="month" placeholder="选择日期"
+                                                                 v-show="filter.dataType === '1'"></date-picker>
                                                 </li>
                                             </ul>
                                         </div>
@@ -406,20 +553,21 @@
                                             <ul>
                                                 <li>
                                                     商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
+                                                    <cascader :data="filter.goodsTypeList" style="width: 148px"
+                                                              trigger="hover" v-model="filter.goodsType"></cascader>
                                                 </li>
                                                 <li>
                                                     时间周期
-                                                    <i-select v-model="model2" style="width:124px">
+                                                    <i-select style="width:124px" v-model="filter.dataType">
                                                         <i-option v-for="item in timeList" :value="item.value"
                                                                   :key="item">{{ item.label }}</i-option>
                                                     </i-select>
                                                 </li>
                                                 <li>
-                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                    <date-picker type="date" placeholder="选择日期"
+                                                                 v-show="filter.dataType === '3'"></date-picker>
+                                                    <date-picker type="month" placeholder="选择日期"
+                                                                 v-show="filter.dataType === '1'"></date-picker>
                                                 </li>
                                             </ul>
                                         </div>
@@ -449,20 +597,21 @@
                                     <ul>
                                         <li>
                                             商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
+                                            <cascader :data="filter.industryList" style="width: 190px"
+                                                      trigger="hover" v-model="filter.industryGoodsType"></cascader>
                                         </li>
                                         <li>
                                             时间周期
-                                            <i-select v-model="model2" style="width:124px">
+                                            <i-select style="width:124px" v-model="filter.industryType">
                                                 <i-option v-for="item in timeList" :value="item.value"
                                                           :key="item">{{ item.label }}</i-option>
                                             </i-select>
                                         </li>
                                         <li>
-                                            <date-picker type="date" placeholder="选择日期"></date-picker>
+                                            <date-picker type="date" placeholder="选择日期"
+                                                         v-show="filter.industryType === '3'"></date-picker>
+                                            <date-picker type="month" placeholder="选择日期"
+                                                         v-show="filter.industryType === '1'"></date-picker>
                                         </li>
                                     </ul>
                                 </div>
@@ -532,20 +681,21 @@
                                     <ul>
                                         <li>
                                             商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
+                                            <cascader :data="filter.priceList" style="width: 190px"
+                                                      trigger="hover" v-model="filter.priceGoodsType"></cascader>
                                         </li>
                                         <li>
                                             时间周期
-                                            <i-select v-model="model2" style="width:124px">
+                                            <i-select style="width:124px" v-model="filter.priceType">
                                                 <i-option v-for="item in timeList" :value="item.value"
                                                           :key="item">{{ item.label }}</i-option>
                                             </i-select>
                                         </li>
                                         <li>
-                                            <date-picker type="date" placeholder="选择日期"></date-picker>
+                                            <date-picker type="date" placeholder="选择日期"
+                                                         v-show="filter.priceType === '3'"></date-picker>
+                                            <date-picker type="month" placeholder="选择日期"
+                                                         v-show="filter.priceType === '1'"></date-picker>
                                         </li>
                                     </ul>
                                 </div>

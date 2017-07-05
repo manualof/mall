@@ -151,10 +151,6 @@ export default function (injection) {
                     title: '搜索设置',
                 },
                 {
-                    path: '/mall/configuration/advertisement',
-                    title: '广告设置',
-                },
-                {
                     path: '/mall/configuration/image',
                     title: '图片设置',
                 },

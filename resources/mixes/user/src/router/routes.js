@@ -284,7 +284,7 @@ export default [
         ],
     },
     {
-        path: 'order-success',
+        path: '/order-success',
         name: 'order-success',
         component: OrderSuccess,
     },

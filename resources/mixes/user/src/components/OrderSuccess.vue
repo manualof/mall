@@ -1,5 +1,5 @@
 <template>
-    <div class="order-success  ">
+    <div class="order-success">
         <header-bar></header-bar>
         <div class="header-bar-logo header-bar-line">
             <div class="container">
