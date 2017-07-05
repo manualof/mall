@@ -74,24 +74,24 @@
                         <td>
                             <p><a>申请售后</a></p>
                         </td>
-                        <td>
+                        <td :rowspan="order.products.length">
                             <p>￥{{ product.num * product.price }}</p>
-                            <p class="freight">（含运费{{ product.transport_price }}）</p>
+                            <p class="freight">（含运费{{ order.transport_price }}）</p>
                         </td>
-                        <td>
-                            <p v-if="product.status.indexOf(1) != -1">等待买家付款</p>
-                            <p v-if="product.status.indexOf(2) != -1"><a>订单详情</a></p>
-                            <p v-if="product.status.indexOf(3) != -1"><a>再次购买</a></p>
-                            <div v-if="product.status.indexOf(4) != -1" class="logistics-box">
+                        <td :rowspan="order.products.length">
+                            <p v-if="order.status.indexOf(1) != -1">等待买家付款</p>
+                            <p v-if="order.status.indexOf(2) != -1"><a>订单详情</a></p>
+                            <p v-if="order.status.indexOf(3) != -1"><a>再次购买</a></p>
+                            <div v-if="order.status.indexOf(4) != -1" class="logistics-box">
                                 <a>查看物流</a>
                                 <div class="logistics">
                                     <i class="sanjiao"> </i>
                                     <p class="text-left logistics-name">
-                                        <!--{{ product.logistics.name }}-->
-                                        <!--<span class="waybill-num">运单号：{{ product.logistics.transport_code }}</span>-->
+                                        <!--{{ order.logistics.name }}-->
+                                        <!--<span class="waybill-num">运单号：{{ order.logistics.transport_code }}</span>-->
                                     </p>
                                     <ul class="clearfix">
-                                        <!--<li class="clearfix" v-for="log in product.logistics.logisticsList">-->
+                                        <!--<li class="clearfix" v-for="log in order.logistics.logisticsList">-->
                                             <!--<i class="cricle pull-left active"> </i>-->
                                             <!--<div class="waybill-info pull-left">-->
                                                 <!--<p>{{ log.address }} 已收入</p>-->
@@ -102,12 +102,12 @@
                                 </div>
                             </div>
                         </td>
-                        <td>
-                            <p class="remind" v-if="product.operating.indexOf(1)">请在19分25秒内完成付款</p>
-                            <p v-if="product.operating.indexOf(2)!=-1"><a href="#">再次购买</a></p>
-                            <p v-if="product.operating.indexOf(3)!=-1"><a href="#">取消订单</a></p>
-                            <p v-if="product.operating.indexOf(4)!=-1"><a class="pay operating">立即付款</a></p>
-                            <p v-if="product.operating.indexOf(5)!=-1"><a class="receipt operating">确认收货</a></p>
+                        <td :rowspan="order.products.length">
+                            <p class="remind" v-if="order.operating.indexOf(1)">请在19分25秒内完成付款</p>
+                            <p v-if="order.operating.indexOf(2)!=-1"><a href="#">再次购买</a></p>
+                            <p v-if="order.operating.indexOf(3)!=-1"><a href="#">取消订单</a></p>
+                            <p v-if="order.operating.indexOf(4)!=-1"><a class="pay operating">立即付款</a></p>
+                            <p v-if="order.operating.indexOf(5)!=-1"><a class="receipt operating">确认收货</a></p>
                         </td>
                     </tr>
                     </tbody>
@@ -131,6 +131,27 @@
                         time: '2017-02-09',
                         order_code: 11052616584585,
                         shop_name: 'xxx母婴用品店',
+                        logistics: {
+                            name: '顺丰速运',
+                            transport_code: 11265445952,
+                            logisticsList: [
+                                {
+                                    address: '北京海淀区xx大道',
+                                    time: '2016-12-29 13:06:03',
+                                },
+                                {
+                                    address: '北京海淀区xx大道',
+                                    time: '2016-12-29 13:06:03',
+                                },
+                                {
+                                    address: '北京海淀区xx大道',
+                                    time: '2016-12-29 13:06:03',
+                                },
+                            ],
+                        },
+                        transport_price: 10.00,
+                        status: [3, 4],
+                        operating: [3, 4],
                         products: [
                             {
                                 img: img1,
@@ -139,38 +160,15 @@
                                 num: 1,
                                 price: 39.9,
                                 old_price: 123.9,
-                                transport_price: 10.00,
-                                status: [3, 4],
-                                operating: [3, 4],
-                                logistics: {
-                                    name: '顺丰速运',
-                                    transport_code: 11265445952,
-                                    logisticsList: [
-                                        {
-                                            address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03',
-                                        },
-                                        {
-                                            address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03',
-                                        },
-                                        {
-                                            address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03',
-                                        },
-                                    ],
-                                },
                             },
                             {
                                 img: img1,
                                 name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
                                 num: 1,
                                 old_price: 123.9,
-                                operating: [1, 3],
                                 price: 39.9,
                                 product_size: 'M',
                                 transport_price: 10.00,
-                                status: [2, 3],
                             },
                         ],
                     },
@@ -182,13 +180,13 @@
                                 name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
                                 num: 1,
                                 old_price: 123.9,
-                                operating: [1, 2],
                                 price: 39.9,
-                                transport_price: 10.00,
                                 size: 'M',
-                                status: [1, 2],
                             },
                         ],
+                        operating: [1, 2],
+                        status: [1, 2],
+                        transport_price: 10.00,
                         time: '2017-02-09',
                         shop_name: 'xxx母婴用品店',
                     },
@@ -196,57 +194,51 @@
                         time: '2017-02-09',
                         order_code: 11052616584585,
                         shop_name: 'xxx母婴用品店',
+                        operating: [1, 2],
+                        transport_price: 10.00,
+                        status: [3, 4],
+                        logistics: {
+                            name: '顺丰速运',
+                            transport_code: 11265445952,
+                            logisticsList: [
+                                {
+                                    address: '北京海淀区xx大道',
+                                    time: '2016-12-29 13:06:03',
+                                },
+                                {
+                                    address: '北京海淀区xx大道',
+                                    time: '2016-12-29 13:06:03',
+                                },
+                                {
+                                    address: '北京海淀区xx大道',
+                                    time: '2016-12-29 13:06:03',
+                                },
+                            ],
+                        },
                         products: [
                             {
                                 img: img1,
-                                logistics: {
-                                    name: '顺丰速运',
-                                    transport_code: 11265445952,
-                                    logisticsList: [
-                                        {
-                                            address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03',
-                                        },
-                                        {
-                                            address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03',
-                                        },
-                                        {
-                                            address: '北京海淀区xx大道',
-                                            time: '2016-12-29 13:06:03',
-                                        },
-                                    ],
-                                },
                                 name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
                                 num: 1,
                                 old_price: 123.9,
-                                operating: [1, 2],
                                 price: 39.9,
                                 product_size: 'M',
-                                transport_price: 10.00,
-                                status: [3, 4],
                             },
                             {
                                 img: img1,
                                 name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
                                 num: 1,
                                 old_price: 123.9,
-                                operating: [1, 2],
                                 price: 39.9,
                                 product_size: 'M',
-                                transport_price: 10.00,
-                                status: [3, 4],
                             },
                             {
                                 img: img1,
                                 name: 'Ｐurrfect diary 咕噜日记1-7岁儿童 可爱短袜5双装',
                                 num: 1,
                                 old_price: 123.9,
-                                operating: [1, 2],
                                 price: 39.9,
                                 product_size: 'M',
-                                transport_price: 10.00,
-                                status: [3, 4],
                             },
                         ],
                     },
