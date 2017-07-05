@@ -303,7 +303,7 @@
             look() {
                 const self = this;
                 self.$router.push({
-                    path: 'store/look',
+                    path: 'store/look/application',
                 });
             },
             lookShop() {

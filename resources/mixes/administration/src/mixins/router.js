@@ -69,6 +69,7 @@ import StatisticsStore from '../pages/StatisticsStore.vue';
 import Store from '../pages/Store.vue';
 import StoreEdit from '../pages/StoreEdit.vue';
 import StoreLook from '../pages/StoreLook.vue';
+import StoreLookApplication from '../pages/StoreLookApplication.vue';
 import StoreLookEdit from '../pages/StoreLookEdit.vue';
 import StoreCategory from '../pages/StoreCategory.vue';
 import StoreCategorySet from '../pages/StoreCategorySet.vue';
@@ -436,6 +437,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StoreLook,
                     path: 'store/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StoreLookApplication,
+                    path: 'store/look/application',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
