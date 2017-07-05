@@ -299,6 +299,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('footprint/list', OrderControllerForUser::class . '@list');
             $this->router->post('footprint/remove', OrderControllerForUser::class . '@remove');
             $this->router->post('integral', IntegralControllerForUser::class . '@integral');
+            $this->router->post('integral/list', IntegralLogControllerForUser::class . '@list');
             $this->router->post('integral/log', IntegralLogControllerForUser::class . '@log');
             $this->router->post('integral/log/create', IntegralLogControllerForUser::class . '@create');
             $this->router->post('integral/log/list', IntegralLogControllerForUser::class . '@list');

@@ -10,6 +10,7 @@ namespace Notadd\Mall\Controllers\Api\User;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\User\Integral\IntegralHandler;
+use Notadd\Mall\Handlers\User\Integral\ListHandler;
 
 /**
  * Class IntegralController.
@@ -23,6 +24,17 @@ class IntegralController extends Controller
      * @throws \Exception
      */
     public function integral(IntegralHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\User\Integral\ListHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function list(ListHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
