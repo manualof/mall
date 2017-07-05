@@ -30,111 +30,226 @@
                     ],
                 },
                 self: this,
-                styleData: [
+                styleDataList: [
                     {
-                        children: [
+                        styleData: [
                             {
-                                value: '童车童床',
-                                label: '童车童床',
                                 children: [
                                     {
-                                        label: '婴儿推车',
-                                        value: '婴儿推车',
+                                        value: '童车童床',
+                                        label: '童车童床',
+                                        children: [
+                                            {
+                                                label: '婴儿推车',
+                                                value: '婴儿推车',
+                                            },
+                                            {
+                                                label: '自行车',
+                                                value: '自行车',
+                                            },
+                                            {
+                                                label: '婴儿推车',
+                                                value: '婴儿推车',
+                                            },
+                                            {
+                                                label: '电动车',
+                                                value: '电动车',
+                                            },
+                                            {
+                                                label: '安全座椅',
+                                                value: '安全座椅',
+                                            },
+                                        ],
                                     },
                                     {
-                                        label: '自行车',
-                                        value: '自行车',
+                                        label: '营养辅食',
+                                        value: '营养辅食',
                                     },
                                     {
-                                        label: '婴儿推车',
-                                        value: '婴儿推车',
-                                    },
-                                    {
-                                        label: '电动车',
-                                        value: '电动车',
-                                    },
-                                    {
-                                        label: '安全座椅',
-                                        value: '安全座椅',
+                                        label: '尿裤湿巾',
+                                        value: '尿裤湿巾',
                                     },
                                 ],
+                                label: '个护化妆',
+                                value: '个护化妆',
                             },
                             {
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
+                                children: [
+                                    {
+                                        children: [
+                                            {
+                                                label: '婴儿推车1',
+                                                value: '婴儿推车1',
+                                            },
+                                            {
+                                                label: '自行车2',
+                                                value: '自行车2',
+                                            },
+                                            {
+                                                label: '婴儿推车3',
+                                                value: '婴儿推车3',
+                                            },
+                                            {
+                                                label: '电动车',
+                                                value: '电动车',
+                                            },
+                                            {
+                                                label: '安全座椅4',
+                                                value: '安全座椅4',
+                                            },
+                                        ],
+                                        label: '服饰寝居',
+                                        value: '服饰寝居',
+                                    },
+                                    {
+                                        children: [
+                                            {
+                                                label: '婴儿推车1',
+                                                value: '婴儿推车1',
+                                            },
+                                            {
+                                                label: '自行车2',
+                                                value: '自行车2',
+                                            },
+                                        ],
+                                        label: '营养辅食',
+                                        value: '营养辅食',
+                                    },
+                                    {
+                                        children: [
+                                            {
+                                                label: '车1',
+                                                value: '车1',
+                                            },
+                                            {
+                                                label: '自行车2',
+                                                value: '自行车2',
+                                            },
+                                        ],
+                                        label: '尿裤湿巾',
+                                        value: '尿裤湿巾',
+                                    },
+                                ],
+                                label: '家用电器',
+                                value: '家用电器',
                             },
                         ],
-                        label: '个护化妆',
-                        value: '个护化妆',
-                    },
-                    {
-                        children: [
-                            {
-                                children: [
-                                    {
-                                        label: '婴儿推车1',
-                                        value: '婴儿推车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                    {
-                                        label: '婴儿推车3',
-                                        value: '婴儿推车3',
-                                    },
-                                    {
-                                        label: '电动车',
-                                        value: '电动车',
-                                    },
-                                    {
-                                        label: '安全座椅4',
-                                        value: '安全座椅4',
-                                    },
-                                ],
-                                label: '服饰寝居',
-                                value: '服饰寝居',
-                            },
-                            {
-                                children: [
-                                    {
-                                        label: '婴儿推车1',
-                                        value: '婴儿推车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                ],
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                children: [
-                                    {
-                                        label: '车1',
-                                        value: '车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                ],
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
-                            },
-                        ],
-                        label: '家用电器',
-                        value: '家用电器',
                     },
                 ],
             };
         },
         methods: {
+            addContactType() {
+                this.styleDataList.push(
+                    {
+                        styleData: [
+                            {
+                                children: [
+                                    {
+                                        value: '童车童床',
+                                        label: '童车童床',
+                                        children: [
+                                            {
+                                                label: '婴儿推车',
+                                                value: '婴儿推车',
+                                            },
+                                            {
+                                                label: '自行车',
+                                                value: '自行车',
+                                            },
+                                            {
+                                                label: '婴儿推车',
+                                                value: '婴儿推车',
+                                            },
+                                            {
+                                                label: '电动车',
+                                                value: '电动车',
+                                            },
+                                            {
+                                                label: '安全座椅',
+                                                value: '安全座椅',
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        label: '营养辅食',
+                                        value: '营养辅食',
+                                    },
+                                    {
+                                        label: '尿裤湿巾',
+                                        value: '尿裤湿巾',
+                                    },
+                                ],
+                                label: '个护化妆',
+                                value: '个护化妆',
+                            },
+                            {
+                                children: [
+                                    {
+                                        children: [
+                                            {
+                                                label: '婴儿推车1',
+                                                value: '婴儿推车1',
+                                            },
+                                            {
+                                                label: '自行车2',
+                                                value: '自行车2',
+                                            },
+                                            {
+                                                label: '婴儿推车3',
+                                                value: '婴儿推车3',
+                                            },
+                                            {
+                                                label: '电动车',
+                                                value: '电动车',
+                                            },
+                                            {
+                                                label: '安全座椅4',
+                                                value: '安全座椅4',
+                                            },
+                                        ],
+                                        label: '服饰寝居',
+                                        value: '服饰寝居',
+                                    },
+                                    {
+                                        children: [
+                                            {
+                                                label: '婴儿推车1',
+                                                value: '婴儿推车1',
+                                            },
+                                            {
+                                                label: '自行车2',
+                                                value: '自行车2',
+                                            },
+                                        ],
+                                        label: '营养辅食',
+                                        value: '营养辅食',
+                                    },
+                                    {
+                                        children: [
+                                            {
+                                                label: '车1',
+                                                value: '车1',
+                                            },
+                                            {
+                                                label: '自行车2',
+                                                value: '自行车2',
+                                            },
+                                        ],
+                                        label: '尿裤湿巾',
+                                        value: '尿裤湿巾',
+                                    },
+                                ],
+                                label: '家用电器',
+                                value: '家用电器',
+                            },
+                        ],
+                    },
+                );
+            },
+            deleteType(index) {
+                this.styleDataList.splice(index, 1);
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
@@ -224,12 +339,23 @@
                             </i-col>
                         </row>
                         <row>
-                            <i-col span="12">
+                            <i-col span="14">
                                 <form-item label="所属分类">
-                                    <cascader :data="styleData" trigger="hover"></cascader>
+                                    <row v-for="(item, index) in styleDataList" class="contact-classification">
+                                        <i-col span="18">
+                                           <cascader :data="item.styleData"
+                                                     change-on-select></cascader>
+                                        </i-col>
+                                        <i-col span="6">
+                                           <i-button type="error" v-if="index !== 0"
+                                                     @click.native="deleteType(index)">删除</i-button>
+                                        </i-col>
+                                    </row>
                                     <p class="tip">
                                         请选择分类，可关联大分类或更具体的下级分类
                                     </p>
+                                    <i-button class="add-contact-type" type="ghost"
+                                    @click.native="addContactType">增加关联分类</i-button>
                                 </form-item>
                             </i-col>
                         </row>

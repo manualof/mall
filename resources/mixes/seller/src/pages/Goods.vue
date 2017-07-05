@@ -65,9 +65,10 @@
                         align: 'center',
                         key: 'action',
                         render(row, column, index) {
-                            return `<i-button @click.native="editGoods(${index})" type="ghost">编辑</i-button>
+                            return `<i-button @click.native="editGoods(${index})"
+                                    size="small" type="ghost">编辑</i-button>
                                     <i-button @click.native="removeGoods(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                                    size="small" type="ghost">删除</i-button>`;
                         },
                         title: '操作',
                         width: 180,
@@ -162,9 +163,9 @@
                         align: 'center',
                         key: 'action',
                         render(row, column, index) {
-                            return `<i-button type="ghost">还原</i-button>
+                            return `<i-button size="small" type="ghost">还原</i-button>
                                     <i-button @click.native="removeRecoverGoods(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                                    size="small" type="ghost">删除</i-button>`;
                         },
                         title: '操作',
                         width: 180,
@@ -267,9 +268,9 @@
                         align: 'center',
                         key: 'action',
                         render(row, column, index) {
-                            return `<i-button @click.native="editGoods(${index})" type="ghost">编辑</i-button>
+                            return `<i-button @click.native="editGoods(${index})" size="small" type="ghost">编辑</i-button>
                                     <i-button @click.native="removeReviewGoods(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                                    size="small" type="ghost">删除</i-button>`;
                         },
                         title: '操作',
                         width: 180,
@@ -382,9 +383,9 @@
                         align: 'center',
                         key: 'action',
                         render(row, column, index) {
-                            return `<i-button @click.native="editGoods(${index})" type="ghost">编辑</i-button>
+                            return `<i-button @click.native="editGoods(${index})" size="small" type="ghost">编辑</i-button>
                                     <i-button @click.native="removeSellerGoods(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                                    size="small" type="ghost">删除</i-button>`;
                         },
                         title: '操作',
                         width: 180,
@@ -480,9 +481,9 @@
                         align: 'center',
                         key: 'action',
                         render(row, column, index) {
-                            return `<i-button type="ghost">还原</i-button>
+                            return `<i-button size="small" type="ghost">还原</i-button>
                                     <i-button @click.native="removeViolationGoods(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                                    size="small" type="ghost">删除</i-button>`;
                         },
                         title: '操作',
                         width: 180,
