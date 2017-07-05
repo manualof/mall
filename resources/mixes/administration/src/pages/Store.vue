@@ -306,7 +306,12 @@
                     path: 'store/look',
                 });
             },
-            lookShop() {},
+            lookShop() {
+                const self = this;
+                self.$router.push({
+                    path: 'store/look',
+                });
+            },
             toEdit() {
                 const self = this;
                 self.$router.push({
@@ -341,8 +346,11 @@
                                     </i-input>
                                 </div>
                             </div>
-                            <i-table ref="managementTable" highlight-row class="shop-table"
-                                     :columns="managementColumns" :context="self" :data="managementData"></i-table>
+                            <i-table ref="managementTable"
+                                     class="shop-table"
+                                     :context="self"
+                                     :columns="managementColumns"
+                                     :data="managementData"></i-table>
                         </div>
                         <div class="page">
                             <page :total="100" show-elevator></page>

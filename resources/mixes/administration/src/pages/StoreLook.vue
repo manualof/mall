@@ -9,169 +9,153 @@
         },
         data() {
             return {
-                managementColumns: [
+                action: `${window.api}/mall/admin/upload`,
+                classification: [
                     {
-                        align: 'center',
-                        fixed: 'left',
-                        type: 'selection',
-                        width: 60,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopID',
-                        title: '店铺ID',
-                        width: 190,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopName',
-                        title: '店铺名称',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'ownerId',
-                        title: '店主账号',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'businessNumber',
-                        title: '商家账号',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopImg',
-                        render() {
-                            return '<icon type="image"></icon>';
-                        },
-                        title: '店铺头像',
-                        width: 100,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopLogo',
-                        render() {
-                            return '<icon type="image"></icon>';
-                        },
-                        title: '店铺LOGO',
-                        width: 100,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopLevel',
-                        title: '店铺等级',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopTime',
-                        title: '开店时间',
-                        width: 170,
-                    },
-                    {
-                        align: 'left',
-                        key: 'endTime',
-                        title: '到期时间',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        fixed: 'right',
-                        key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="first-btn" @click.native="remove(${index})"
-                                    type="ghost" size="small">删除</i-button>
-                                    <i-button @click.native="toEdit" type="ghost" size="small">编辑</i-button>`;
-                        },
-                        title: '操作',
-                        width: 180,
-                    },
-                ],
-                managementData: [
-                    {
-                        businessNumber: '爱拍数码',
-                        endTime: '2017-12-5',
-                        ownerId: '545464554',
-                        shopID: '65454654546',
-                        shopImg: '541',
-                        shopLevel: '钻石店铺',
-                        shopLogo: '454',
-                        shopName: '默认',
-                        shopTime: '2017-12-5',
-                    },
-                    {
-                        businessNumber: '爱拍数码',
-                        endTime: '2017-12-5',
-                        ownerId: '545464554',
-                        shopID: '65454654546',
-                        shopImg: '541',
-                        shopLevel: '钻石店铺',
-                        shopLogo: '454',
-                        shopName: '默认',
-                        shopTime: '2017-12-5',
-                    },
-                    {
-                        businessNumber: '爱拍数码',
-                        endTime: '2017-12-5',
-                        ownerId: '545464554',
-                        shopID: '65454654546',
-                        shopImg: '541',
-                        shopLevel: '钻石店铺',
-                        shopLogo: '454',
-                        shopName: '默认',
-                        shopTime: '2017-12-5',
-                    },
-                    {
-                        businessNumber: '爱拍数码',
-                        endTime: '2017-12-5',
-                        ownerId: '545464554',
-                        shopID: '65454654546',
-                        shopImg: '541',
-                        shopLevel: '钻石店铺',
-                        shopLogo: '454',
-                        shopName: '默认',
-                        shopTime: '2017-12-5',
-                    },
-                ],
-                managementWord: '',
-                managementSearch: '',
-                searchList: [
-                    {
-                        label: '店铺名称',
+                        label: '分类1',
                         value: '1',
                     },
                     {
-                        label: '店主账号',
+                        label: '分类2',
                         value: '2',
                     },
+                ],
+                companyPlace: [
                     {
-                        label: '商家账号',
-                        value: '3',
+                        label: '上海市',
+                        value: '1',
+                    },
+                    {
+                        label: '北京市',
+                        value: '2',
                     },
                 ],
+                defaultList: [],
+                imgName: '',
+                level: [
+                    {
+                        label: '等级1',
+                        value: '1',
+                    },
+                    {
+                        label: '等级2',
+                        value: '2',
+                    },
+                ],
+                licensePlace: [
+                    {
+                        label: '上海市',
+                        value: '1',
+                    },
+                    {
+                        label: '北京市',
+                        value: '2',
+                    },
+                ],
+                loading: false,
+                options2: {
+                    disabledDate(date) {
+                        return date && date.valueOf() < Date.now();
+                    },
+                },
+                province: [
+                    {
+                        label: '上海市',
+                        value: '1',
+                    },
+                    {
+                        label: '北京市',
+                        value: '2',
+                    },
+                ],
+                ruleValidate: {
+                    storeName: [
+                        {
+                            message: '名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 self: this,
+                storeDetail: {
+                    account: 'hjhjkhjk',
+                    classification: '',
+                    companyName: '',
+                    companyPlace: '',
+                    company_detail_name: '',
+                    company_email: '',
+                    company_person_num: '',
+                    company_phone: '',
+                    contact_name: '',
+                    contact_phone: '',
+                    createTime: '2016-12-23',
+                    level: '',
+                    licensePlace: '',
+                    logo: '',
+                    province: '',
+                    register_money: '',
+                    storeAddress: '',
+                    storeName: '',
+                    switch1: true,
+                },
+                uploadList: [],
+                visible: false,
             };
         },
         methods: {
-            exportData() {
-                this.$refs.managementTable.exportCsv({
-                    filename: '店铺管理数据',
-                });
-            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
             },
-            remove(index) {
-                this.managementData.splice(index, 1);
+            removeLogo() {
+                this.storeDetail.logo = '';
             },
-            toEdit() {
+            submit() {
                 const self = this;
-                self.$router.push({
-                    path: 'look/edit',
+                self.loading = true;
+                self.$refs.storeDetail.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
                 });
+            },
+            uploadBefore() {
+                injection.loading.start();
+            },
+            uploadError(error, data) {
+                const self = this;
+                injection.loading.error();
+                if (typeof data.message === 'object') {
+                    for (const p in data.message) {
+                        self.$notice.error({
+                            title: data.message[p],
+                        });
+                    }
+                } else {
+                    self.$notice.error({
+                        title: data.message,
+                    });
+                }
+            },
+            uploadFormatError(file) {
+                this.$notice.warning({
+                    title: '文件格式不正确',
+                    desc: `文件 ${file.name} 格式不正确`,
+                });
+            },
+            uploadSuccess(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.storeDetail.logo = data.data.path;
             },
         },
     };
@@ -183,39 +167,290 @@
                 <i-button type="text" @click.native="goBack">
                     <icon type="chevron-left"></icon>
                 </i-button>
-                <span>开店申请—查看</span>
+                <span>店铺管理—查看</span>
             </div>
-            <card :bordered="false">
-                <div class="prompt-box">
-                    <p>提示</p>
-                    <p>如果当前时间超过店铺有效期或店铺处于关闭状态，前台将不能继续浏览该店铺，
-                        但是店主仍然可以编辑该店铺</p>
-                </div>
-                <div class="store-body">
-                    <div class="store-body-header">
-                        <i-button class="export-btn" @click="exportData" type="ghost">导出数据</i-button>
-                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                        <div class="store-body-header-right">
-                            <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                    <i-option v-for="item in searchList"
-                                              :value="item.value">{{ item.label }}</i-option>
-                                </i-select>
-                                <i-button slot="append" type="primary">搜索</i-button>
-                            </i-input>
+            <div class="store-information">
+                <card :bordered="false">
+                    <p slot="title">店铺信息</p>
+                    <i-form ref="storeDetail" :model="storeDetail" :rules="ruleValidate" :label-width="200">
+                        <div class="basic-information">
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="店主账号">
+                                        {{storeDetail.account}}
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="店铺名称" prop="storeName">
+                                        <i-input v-model="storeDetail.storeName"></i-input>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="公司名称">
+                                        <i-input v-model="storeDetail.companyName"></i-input>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="所在地区">
+                                        <i-select placeholder="请选择" v-model="storeDetail.province">
+                                            <i-option v-for="item in province" :value="item.value"
+                                                      :key="item">{{ item.label }}</i-option>
+                                        </i-select>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="店铺地址">
+                                        <i-input v-model="storeDetail.storeAddress"></i-input>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="开店时间">
+                                        {{storeDetail.createTime}}
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="所属分类">
+                                        <i-select v-model="storeDetail.classification" placeholder="请选择">
+                                            <i-option v-for="item in classification" :value="item.value"
+                                                      :key="item">{{ item.label }}</i-option>
+                                        </i-select>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="所属等级">
+                                        <i-select v-model="storeDetail.level" placeholder="请选择">
+                                            <i-option v-for="item in level" :value="item.value"
+                                                      :key="item">{{ item.label }}</i-option>
+                                        </i-select>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="12" class="data-picker-input picker-input">
+                                    <form-item label="有效期至">
+                                        <date-picker type="date" :options="options2"
+                                                     placeholder="选择日期"></date-picker>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="状态"  class="switch-status">
+                                        <i-switch size="large" v-model="storeDetail.switch1">
+                                            <span slot="open">开启</span>
+                                            <span slot="close">关闭</span>
+                                        </i-switch>
+                                    </form-item>
+                                </i-col>
+                            </row>
                         </div>
-                    </div>
-                    <i-table ref="managementTable"
-                             highlight-row
-                             class="shop-table"
-                             :columns="managementColumns"
-                             :context="self"
-                             :data="managementData"></i-table>
-                </div>
-                <div class="page">
-                    <page :total="100" show-elevator></page>
-                </div>
-            </card>
+                    </i-form>
+                </card>
+                <card :bordered="false">
+                    <p slot="title">注册信息</p>
+                    <i-form ref="storeDetail" :model="storeDetail" :rules="ruleValidate" :label-width="200">
+                        <div class="register-information">
+                            <div class="register-content">
+                                <div class="company-information border-color">
+                                    <div>
+                                        <h5>公司及联系人信息</h5>
+                                        <div class="company-content">
+                                            <ul>
+                                                <li>
+                                                    <row>
+                                                        <i-col span="12">
+                                                            <form-item label="公司名称">
+                                                                <i-input v-model="storeDetail.companyName"></i-input>
+                                                            </form-item>
+                                                        </i-col>
+                                                    </row>
+                                                </li>
+                                                <li>
+                                                    <row>
+                                                        <i-col span="12">
+                                                            <form-item label="公司所在地">
+                                                                <i-select placeholder="请选择"
+                                                                          v-model="storeDetail.companyPlace">
+                                                                    <i-option :key="item"
+                                                                              :value="item.value"
+                                                                              v-for="item in companyPlace">
+                                                                        {{ item.label }}
+                                                                    </i-option>
+                                                                </i-select>
+                                                            </form-item>
+                                                        </i-col>
+                                                    </row>
+                                                </li>
+                                                <li>
+                                                    <row>
+                                                        <i-col span="12">
+                                                            <form-item label="公司详细地址" class="company-name">
+                                                                <i-input v-model="storeDetail.company_detail_name"></i-input>
+                                                            </form-item>
+                                                        </i-col>
+                                                    </row>
+                                                </li>
+                                                <li>
+                                                    <row>
+                                                        <i-col span="10">
+                                                            <form-item label="公司电话">
+                                                                <i-input v-model="storeDetail.company_phone"></i-input>
+                                                            </form-item>
+                                                        </i-col>
+                                                        <i-col span="10">
+                                                            <form-item label="电子邮箱">
+                                                                <i-input v-model="storeDetail.company_email"></i-input>
+                                                            </form-item>
+                                                        </i-col>
+                                                    </row>
+                                                </li>
+                                                <li>
+                                                    <row>
+                                                        <i-col span="10">
+                                                            <form-item label="员工总数">
+                                                                <i-input v-model="storeDetail.company_person_num"
+                                                                         class="input-param"></i-input>
+                                                            </form-item>
+                                                        </i-col>
+                                                        <i-col span="10">
+                                                            <form-item label="注册资金">
+                                                                <i-input v-model="storeDetail.register_money"
+                                                                         class="input-param"></i-input>
+                                                            </form-item>
+                                                        </i-col>
+                                                    </row>
+                                                </li>
+                                                <li>
+                                                    <row>
+                                                        <i-col span="10">
+                                                            <form-item label="联系人姓名">
+                                                                <i-input v-model="storeDetail.contact_name"></i-input>
+                                                            </form-item>
+                                                        </i-col>
+                                                        <i-col span="10">
+                                                            <form-item label="联系人电话">
+                                                                <i-input v-model="storeDetail.contact_phone"></i-input>
+                                                            </form-item>
+                                                        </i-col>
+                                                    </row>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="license-information border-color">
+                                    <div>
+                                        <h5>营业执照信息（副本）</h5>
+                                        <div class="license-content">
+                                            <ul>
+                                                <li>
+                                                    <row>
+                                                        <i-col span="12">
+                                                            <form-item label="营业执照号">
+                                                                <i-input v-model="storeDetail.license"></i-input>
+                                                            </form-item>
+                                                        </i-col>
+                                                    </row>
+                                                </li>
+                                                <li>
+                                                    <row>
+                                                        <i-col span="12">
+                                                            <form-item label="营业执照所在地">
+                                                                <i-select placeholder="请选择"
+                                                                          v-model="storeDetail.licensePlace">
+                                                                    <i-option :value="item.value"
+                                                                              :key="item"
+                                                                              v-for="item in licensePlace">
+                                                                        {{ item.label }}
+                                                                    </i-option>
+                                                                </i-select>
+                                                            </form-item>
+                                                        </i-col>
+                                                    </row>
+                                                </li>
+                                                <li>
+                                                    <row>
+                                                        <i-col span="18" class="data-picker-input">
+                                                            <form-item label="营业执照有效期">
+                                                                <row>
+                                                                    <i-col span="8">
+                                                                        <date-picker type="date" :options="options1"
+                                                                                     placeholder="选择日期"></date-picker>
+                                                                    </i-col>
+                                                                    <i-col span="2" style="text-align: center">-</i-col>
+                                                                    <i-col span="8">
+                                                                        <date-picker type="date" :options="options2"
+                                                                                     placeholder="选择日期"></date-picker>
+                                                                    </i-col>
+                                                                </row>
+                                                            </form-item>
+                                                        </i-col>
+                                                    </row>
+                                                </li>
+                                                <li>
+                                                    <row>
+                                                        <i-col span="12">
+                                                            <form-item label="法定经营范围">
+                                                                <i-input v-model="storeDetail.license"></i-input>
+                                                            </form-item>
+                                                        </i-col>
+                                                    </row>
+                                                </li>
+                                                <li>
+                                                    <row>
+                                                        <i-col span="12">
+                                                            <form-item label="营业执照电子版" prop="logo">
+                                                                <div class="image-preview" v-if="storeDetail.logo">
+                                                                    <img :src="storeDetail.logo">
+                                                                    <icon type="close" @click.native="removeLogo"></icon>
+                                                                </div>
+                                                                <upload :action="action"
+                                                                        :before-upload="uploadBefore"
+                                                                        :format="['jpg','jpeg','png']"
+                                                                        :headers="{
+                                                                            Authorization: `Bearer ${$store.state.token.access_token}`
+                                                                        }"
+                                                                        :max-size="2048"
+                                                                        :on-error="uploadError"
+                                                                        :on-format-error="uploadFormatError"
+                                                                        :on-success="uploadSuccess"
+                                                                        ref="upload"
+                                                                        :show-upload-list="false"
+                                                                        v-if="storeDetail.logo === '' || storeDetail.logo === null">
+                                                                </upload>
+                                                            </form-item>
+                                                        </i-col>
+                                                    </row>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="submit-btn">
+                            <i-button :loading="loading" type="primary" @click.native="submit">
+                                <span v-if="!loading">确认提交</span>
+                                <span v-else>正在提交…</span>
+                            </i-button>
+                        </div>
+                    </i-form>
+                </card>
+            </div>
         </div>
     </div>
 </template>
