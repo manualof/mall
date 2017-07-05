@@ -9,8 +9,6 @@
         },
         data() {
             return {
-                defaultList: [],
-                imgName: '',
                 loading: false,
                 self: this,
                 storeDetail: {
@@ -38,28 +36,12 @@
                     storeName: '店铺名称',
                     switch1: '开启',
                 },
-                uploadList: [],
-                visible: false,
             };
         },
         methods: {
             goBack() {
                 const self = this;
                 self.$router.go(-1);
-            },
-            submit() {
-                const self = this;
-                self.loading = true;
-                self.$refs.storeDetail.validate(valid => {
-                    if (valid) {
-                        window.console.log(valid);
-                    } else {
-                        self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
-                    }
-                });
             },
         },
     };

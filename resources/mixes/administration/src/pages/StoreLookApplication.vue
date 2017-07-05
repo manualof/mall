@@ -9,8 +9,6 @@
         },
         data() {
             return {
-                defaultList: [],
-                imgName: '',
                 loading: false,
                 self: this,
                 storeDetail: {
@@ -38,28 +36,12 @@
                     storeName: '店铺名称',
                     switch1: '开启',
                 },
-                uploadList: [],
-                visible: false,
             };
         },
         methods: {
             goBack() {
                 const self = this;
                 self.$router.go(-1);
-            },
-            submit() {
-                const self = this;
-                self.loading = true;
-                self.$refs.storeDetail.validate(valid => {
-                    if (valid) {
-                        window.console.log(valid);
-                    } else {
-                        self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
-                    }
-                });
             },
         },
     };
@@ -234,7 +216,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="license-information border-color">
+                                <div class="company-information border-color">
                                     <div>
                                         <h5>营业执照信息（副本）</h5>
                                         <div class="license-content">
@@ -288,6 +270,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                <i-button type="ghost" class="first-btn">审核通过</i-button>
+                                <i-button type="error" class="first-btn">拒绝</i-button>
                             </div>
                         </div>
                     </i-form>
