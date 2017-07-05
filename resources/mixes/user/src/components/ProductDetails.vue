@@ -200,21 +200,21 @@
             <!--商品详情及用户评价-->
             <div class="details-evaluation pull-left">
                 <ul class="clearfix nav" role="tablist">
-                    <li class="pull-left active text-center">
+                    <li class="pull-left text-center" :class="{active:activeTab===1}">
                         <i></i>
-                        <a class="text-center a-block" href="#details" data-toggle="tab">
+                        <a class="text-center a-block" name="details" @click="tabSWitch(1)">
                             商品详情
                         </a>
                     </li>
-                    <li class="pull-left">
+                    <li class="pull-left" :class="{active:activeTab===2}">
                         <i></i>
-                        <a class="text-center a-block" href="#evaluation"  aria-controls="evaluation" role="tab" data-toggle="tab">
+                        <a class="text-center a-block" name="evaluation" @click="tabSWitch(2)">
                             用户评价
                         </a>
                     </li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane in active" id="details">
+                    <div class="tab-pane in active" id="details" v-if="activeTab===1">
                         <ul class="product-info row">
                             <li class="product-option  col-md-4">
                                 <span class="option">品牌：</span>
@@ -241,7 +241,7 @@
                             <img src="../assets/images/details/details-img.png"/>
                         </div>
                     </div>
-                    <div class="tab-pane" id="evaluation">
+                    <div class="tab-pane" id="evaluation" v-if="activeTab===2">
                         <div class="evaluation-sorce">
                             <p>评分：<span class="sorce">9.98</span>
                                 <span class="evaluation-count">评价人数：2290</span>
@@ -325,6 +325,7 @@
     export default {
         data() {
             return {
+                activeTab: 1,
                 img: logo,
                 talked: talk,
                 activeImg: img1,
@@ -472,13 +473,6 @@
                         old_price: 60,
                         price: 46.88,
                     },
-                    {
-                        id: 1,
-                        img: img7,
-                        name: '西部母婴推荐哆啦荐哆啦A梦可爱儿A梦可荐哆啦A梦可爱儿爱儿...',
-                        old_price: 60,
-                        price: 46.88,
-                    },
                 ],
                 seeAgain_products: [
                     {
@@ -587,6 +581,9 @@
                 } else {
                     item.bigImg = source;
                 }
+            },
+            tabSWitch(index) {
+                this.activeTab = index;
             },
             change(num) {
                 this.goodskind[num].onoff = !this.goodskind[num].onoff;
