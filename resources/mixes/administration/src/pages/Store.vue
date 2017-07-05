@@ -267,7 +267,7 @@
                 ],
                 managementWord: '',
                 managementSearch: '',
-                searchApplicationList:[
+                searchApplicationList: [
                     {
                         label: '会员账号',
                         value: '1',

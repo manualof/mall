@@ -49,7 +49,7 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
+                        render() {
                             return `<i-button type="ghost" @click.native="toView" class="first-btn"
                                     size="small">查看</i-button>
                                     <dropdown v-if="row.orderStatus === '代付款'">
