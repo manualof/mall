@@ -235,8 +235,15 @@
                     },
                     {
                         align: 'center',
-                        key: 'contactName',
-                        title: '申请原因',
+                        key: 'goodsImg',
+                        render() {
+                            return `<tooltip placement="right-end">
+                                    <icon type="image"></icon>
+                                    <div slot="content">
+                                    <img :src="row.goodsImg">
+                                    </tooltip>`;
+                        },
+                        title: '申请图片',
                         width: 100,
                     },
                     {
@@ -313,6 +320,7 @@
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        goodsImg: image1,
                         memberAccount: '465465445',
                         memberID: '65454654546',
                     },
@@ -324,6 +332,7 @@
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        goodsImg: image1,
                         memberAccount: '465465445',
                         memberID: '65454654546',
                     },
@@ -335,6 +344,7 @@
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        goodsImg: image1,
                         memberAccount: '465465445',
                         memberID: '65454654546',
                     },
@@ -346,6 +356,7 @@
                         contactEmail: '105454354@qq.com',
                         contactName: '王',
                         contactPhone: '15434354534',
+                        goodsImg: image1,
                         memberAccount: '465465445',
                         memberID: '65454654546',
                     },
