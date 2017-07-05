@@ -11,6 +11,7 @@ namespace Notadd\Mall\Controllers\Api\User;
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\User\Subscribe\CreateHandler;
 use Notadd\Mall\Handlers\User\Subscribe\ListHandler;
+use Notadd\Mall\Handlers\User\Subscribe\RemoveHandler;
 use Notadd\Mall\Handlers\User\Subscribe\SubscribeHandler;
 
 /**
@@ -47,6 +48,17 @@ class SubscribeController extends Controller
      * @throws \Exception
      */
     public function subscribe(SubscribeHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\User\Subscribe\RemoveHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function remove(RemoveHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

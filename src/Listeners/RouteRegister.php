@@ -314,7 +314,8 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('rate/remove', RateControllerForUser::class . '@remove');
             $this->router->post('subscribe', SubscribeControllerForUser::class . '@subscribe');
             $this->router->post('subscribe/create', SubscribeControllerForUser::class . '@create');
-            $this->router->post('subscribe/list', SubscribeControllerForUser::class . '@vip');
+            $this->router->post('subscribe/list', SubscribeControllerForUser::class . '@list');
+            $this->router->post('subscribe/remove', SubscribeControllerForUser::class . '@remove');
             $this->router->post('vip', VipControllerForUser::class . '@vip');
         });
         $this->router->group(['middleware' => ['web'], 'prefix' => 'mall'], function () {
