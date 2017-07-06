@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Subscribe;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\ProductSubscribe;
 
@@ -24,16 +25,24 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'order'    => 'in:asc,desc',
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
             'page'     => 'numeric',
             'paginate' => 'numeric',
-            'store'    => 'required|numeric',
+            'store_id' => [
+                Rule::exists('mall_stores'),
+                'numeric',
+                'required',
+            ],
         ], [
-            'order.in'         => '排序规则错误',
-            'page.numeric'     => '当前页面必须为数值',
-            'paginate.numeric' => '分页数必须为数值',
-            'store.required'   => '店铺 ID 必须填写',
-            'store.numeric'    => '店铺 ID 必须为数值',
+            'order.in'          => '排序规则错误',
+            'page.numeric'      => '当前页面必须为数值',
+            'paginate.numeric'  => '分页数必须为数值',
+            'store_id.exists'   => '没有对应的店铺分类信息',
+            'store_id.numeric'  => '店铺 ID 必须为数值',
+            'store_id.required' => '店铺 ID 必须填写',
         ]);
         $builder = ProductSubscribe::query();
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));

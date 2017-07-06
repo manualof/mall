@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Subscribe;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\ProductSubscribe;
 
@@ -24,8 +25,13 @@ class RemoveHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_product_categories'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'id.exists'   => 'mall_product_subscribes',
             'id.required' => '订阅 ID 必须填写',
             'id.numeric'  => '订阅 ID 必须为数值',
         ]);
