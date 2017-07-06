@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\User\Integral\Log;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\UserIntegralLog;
 
@@ -27,11 +28,16 @@ class ListHandler extends Handler
             'order'    => 'in:asc,desc',
             'page'     => 'numeric',
             'paginate' => 'numeric',
-            'user_id'  => 'required|numeric',
+            'user_id'  => [
+                Rule::exists('mall_users'),
+                'numeric',
+                'required',
+            ],
         ], [
             'order.in'         => '排序规则错误',
             'page.numeric'     => '当前页面必须为数值',
             'paginate.numeric' => '分页数必须为数值',
+            'user_id.exists'   => '没有对应的用户信息',
             'user_id.numeric'  => '用户 ID 必须为数值',
             'user_id.required' => '用户 ID 必须填写',
         ]);

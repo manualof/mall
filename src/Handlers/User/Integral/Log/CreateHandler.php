@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\User\Integral\Log;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\UserIntegralLog;
 
@@ -26,11 +27,16 @@ class CreateHandler extends Handler
         $this->validate($this->request, [
             'comment'  => 'required',
             'integral' => 'required|numeric',
-            'user_id'  => 'required|numeric',
+            'user_id'  => [
+                Rule::exists('mall_users'),
+                'numeric',
+                'required',
+            ],
         ], [
             'comment.required'  => '注释必填填写',
             'integral.required' => '积分必须填写',
             'integral.numeric'  => '积分必须为数值',
+            'user_id.exists'   => '没有对应的用户信息',
             'user_id.numeric'   => '用户 ID 必须为数值',
             'user_id.required'  => '用户 ID 必须填写',
         ]);
