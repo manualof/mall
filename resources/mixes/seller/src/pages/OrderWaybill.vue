@@ -75,6 +75,7 @@
                                     size="small" type="ghost">删除</i-button>`;
                         },
                         title: '操作',
+                        width: 330,
                     },
                 ],
                 selfTemplateData: [
@@ -150,7 +151,7 @@
                                     @click.native="selectTemplate(${index})">选择模板</i-button>`;
                         },
                         title: '操作',
-                        width: 160,
+                        width: 180,
                     },
                 ],
                 templateData: [

@@ -14,14 +14,14 @@
                 templateColumns: [
                     {
                         align: 'center',
-                        key: 'company',
-                        title: '物流公司',
+                        key: 'template',
+                        title: '模版名称',
                         width: 160,
                     },
                     {
                         align: 'center',
-                        key: 'template',
-                        title: '运单模版',
+                        key: 'company',
+                        title: '物流公司',
                         width: 160,
                     },
                     {
@@ -51,7 +51,7 @@
                                      <i-button size="small" type="ghost">绑定</i-button>`;
                         },
                         title: '操作',
-                        width: 160,
+                        width: 180,
                     },
                 ],
                 templateData: [
