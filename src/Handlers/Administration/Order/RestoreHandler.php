@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Administration\Order;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\Order;
 
@@ -23,11 +24,24 @@ class RestoreHandler extends Handler
      */
     public function execute()
     {
-        $id = $this->request->input('id');
-        $order = Order::onlyTrashed()->find($id);
+        $this->validate($this->request, [
+            'id' => [
+                Rule::exists('mall_orders'),
+                'numeric',
+                'required',
+            ],
+        ], [
+            'id.exists'   => '没有对应的订单信息',
+            'id.required' => '订单 ID 必须填写',
+            'id.numeric'  => '订单 ID 必须为数值',
+        ]);
+        $this->beginTransaction();
+        $order = Order::onlyTrashed()->find($this->request->input('id'));
         if ($order && $order->restore()) {
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('');
         } else {
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('');
         }
     }
