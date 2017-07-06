@@ -400,7 +400,7 @@
                                 <row>
                                     <i-col span="12">
                                         <form-item label="">
-                                            <i-button @click.native="submitRenewal" type="primary">
+                                            <i-button :loading="loading" @click.native="submitRenewal" type="primary">
                                                 <span v-if="!loading">确认提交</span>
                                                 <span v-else>正在提交…</span>
                                             </i-button>
