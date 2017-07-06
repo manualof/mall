@@ -26,7 +26,7 @@ class CancelHandler extends Handler
     {
         $this->validate($this->request, [
             'id' => [
-                Rule::exists('mall_user_collections'),
+                Rule::exists('mall_orders'),
                 'numeric',
                 'required',
             ],
