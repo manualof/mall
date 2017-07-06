@@ -111,15 +111,15 @@
                             <tbody v-for="(item, index) in evaluation">
                             <tr>
                                 <td>
-                                    商品: {{ item.name }}&nbsp;&nbsp;
-                                    评分: <rate disabled v-model="item.valueDisabled"></rate>&nbsp;&nbsp;
-                                    买家: {{ item.buyer }}&nbsp;&nbsp;
-                                    时间: {{ item.createTime }}&nbsp;&nbsp;
+                                    商品：{{ item.name }}&nbsp;&nbsp;
+                                    评分：<rate disabled v-model="item.valueDisabled"></rate>&nbsp;&nbsp;
+                                    买家：{{ item.buyer }}&nbsp;&nbsp;
+                                    时间：{{ item.createTime }}&nbsp;&nbsp;
                                 </td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>买家评价: {{ item.assess }}</td>
+                                <td>买家评价：{{ item.assess }}</td>
                                 <td>
                                     <i-button type="ghost" size="small" @click="replay(item)">回复</i-button>
                                 </td>

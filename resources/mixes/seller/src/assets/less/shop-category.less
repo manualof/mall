@@ -25,26 +25,14 @@
                     margin-left: 6px;
                 }
                 .ivu-table-expanded-cell {
-                    padding: 10px 0;
+                    padding: 0;
+                    .ivu-table-wrapper {
+                        border-top: 0 !important;
+                    }
                     .expand-row {
-                        line-height: 39px;
-                        height: 42px;
-                        > div {
-                            &:first-child {
-                                padding-left: 128px;
-                                width: 30.6%;
-                            }
-                            &:nth-child(2) {
-                                width: 22.6%;
-                                text-align: center;
-                            }
-                            &:nth-child(3) {
-                                width: 24.6%;
-                                padding-left: 20px;
-                            }
-                            &:nth-child(4) {
-                                width: 21.2%;
-                                text-align: center;
+                        .ivu-table {
+                            td {
+                                border: 0 none;
                             }
                         }
                     }

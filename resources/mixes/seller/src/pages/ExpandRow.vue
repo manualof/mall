@@ -1,6 +1,13 @@
 <template>
     <div>
-        <row class="expand-row" v-for="item in row.subordinate">
+        <i-table class="expand-row"
+                 :columns="columns"
+                 :context="self"
+                 :data="row.subordinate"
+                 ref="categoryList"
+                 :show-header="false">
+        </i-table>
+        <!--<row class="expand-row" v-for="item in row.subordinate">
             <i-col span="6">
                 <span class="expand-value">{{ item.name }}</span>
             </i-col>
@@ -23,11 +30,52 @@
                               type="ghost">删除</i-button>
                 </span>
             </i-col>
-        </row>
+        </row>-->
     </div>
 </template>
 <script>
     export default {
+        data() {
+            return {
+                self: this,
+                columns: [
+                    {
+                        key: 'space',
+                        title: '',
+                        width: 110,
+                    },
+                    {
+                        key: 'name',
+                        title: '分类名称',
+                    },
+                    {
+                        align: 'center',
+                        key: 'sort',
+                        title: '排序',
+                    },
+                    {
+                        key: 'shelves',
+                        render() {
+                            return `<i-switch size="large" v-model="row.status">
+                                    <span slot="open">开启</span>
+                                    <span slot="close">关闭</span>
+                                    </i-switch>`;
+                        },
+                        title: '上架',
+                    },
+                    {
+                        align: 'center',
+                        key: 'action',
+                        render(row, column, index) {
+                            return `<i-button @click.native="edit(${index})" size="small" type="ghost">编辑</i-button>
+                                    <i-button @click.native="remove(${index})" class="delete-ad"
+                                    size="small" type="ghost">删除</i-button>`;
+                        },
+                        title: '操作',
+                    },
+                ],
+            };
+        },
         props: {
             row: Object,
         },
