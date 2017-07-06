@@ -390,40 +390,89 @@
                 </i-form>
                 <tabs type="card">
                     <tab-pane label="订单列表">
-                        <div class="album-action">
-                            <i-button class="add-data" type="ghost" @click.native="exportData">导出数据</i-button>
-                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                            <div class="goods-body-header-right">
-                                <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                    <i-select v-model="managementSearch" slot="prepend" style="width: 150px;">
-                                        <i-option v-for="item in searchList"
-                                                  :value="item.value">{{ item.label }}</i-option>
-                                    </i-select>
-                                    <i-button slot="append" type="primary">搜索</i-button>
-                                </i-input>
-                            </div>
+                        <div class="select-content ">
+                           <div>
+                               <i-button class="add-data" type="ghost" @click.native="exportData">导出数据</i-button>
+                               <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                           </div>
+                            <ul>
+                                <li>成交时间</li>
+                                <li>
+                                    <date-picker type="date" placeholder="起始时间"></date-picker>
+                                </li>
+                                <li>-</li>
+                                <li>
+                                    <date-picker type="date" placeholder="截止时间"></date-picker>
+                                </li>
+                                <li class="goods-body-header-right">
+                                    <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                        <i-select v-model="managementSearch" slot="prepend" style="width: 124px;">
+                                            <i-option v-for="item in searchList"
+                                                      :value="item.value">{{ item.label }}</i-option>
+                                        </i-select>
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </li>
+                            </ul>
                         </div>
                         <i-table highlight-row :columns="typeColumns" :context="self"
                                  :data="typeData" ref="orderTable"></i-table>
                     </tab-pane>
                     <tab-pane label="退款订单">
-                        <div class="album-action">
-                            <i-button class="add-data" type="ghost" @click.native="exportRefundData">导出数据</i-button>
-                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                            <div class="goods-body-header-right">
-                                <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                    <i-select v-model="refundSearchData" slot="prepend" style="width: 150px;">
-                                        <i-option v-for="item in refundDataList"
-                                                  :value="item.value">{{ item.label }}</i-option>
-                                    </i-select>
-                                    <i-button slot="append" type="primary">搜索</i-button>
-                                </i-input>
+                        <div class="select-content ">
+                            <div>
+                                <i-button class="add-data" type="ghost" @click.native="exportData">导出数据</i-button>
+                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                             </div>
+                            <ul>
+                                <li>成交时间</li>
+                                <li>
+                                    <date-picker type="date" placeholder="起始时间"></date-picker>
+                                </li>
+                                <li>-</li>
+                                <li>
+                                    <date-picker type="date" placeholder="截止时间"></date-picker>
+                                </li>
+                                <li class="goods-body-header-right">
+                                    <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                        <i-select v-model="managementSearch" slot="prepend" style="width: 124px;">
+                                            <i-option v-for="item in searchList"
+                                                      :value="item.value">{{ item.label }}</i-option>
+                                        </i-select>
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </li>
+                            </ul>
                         </div>
                         <i-table highlight-row :columns="refundColumns" :context="self"
                                  :data="refundData" ref="refundTable"></i-table>
                     </tab-pane>
                     <tab-pane label="促销费用">
+                        <div class="select-content ">
+                            <div>
+                                <i-button class="add-data" type="ghost" @click.native="exportData">导出数据</i-button>
+                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                            </div>
+                            <ul>
+                                <li>成交时间</li>
+                                <li>
+                                    <date-picker type="date" placeholder="起始时间"></date-picker>
+                                </li>
+                                <li>-</li>
+                                <li>
+                                    <date-picker type="date" placeholder="截止时间"></date-picker>
+                                </li>
+                                <li class="goods-body-header-right">
+                                    <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                        <i-select v-model="managementSearch" slot="prepend" style="width: 124px;">
+                                            <i-option v-for="item in searchList"
+                                                      :value="item.value">{{ item.label }}</i-option>
+                                        </i-select>
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </li>
+                            </ul>
+                        </div>
                         <i-table highlight-row
                                  :columns="promotionColumns"
                                  :context="self"
@@ -431,6 +480,31 @@
                                  class="margin-table"></i-table>
                     </tab-pane>
                     <tab-pane label="分销佣金">
+                        <div class="select-content ">
+                            <div>
+                                <i-button class="add-data" type="ghost" @click.native="exportData">导出数据</i-button>
+                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                            </div>
+                            <ul>
+                                <li>成交时间</li>
+                                <li>
+                                    <date-picker type="date" placeholder="起始时间"></date-picker>
+                                </li>
+                                <li>-</li>
+                                <li>
+                                    <date-picker type="date" placeholder="截止时间"></date-picker>
+                                </li>
+                                <li class="goods-body-header-right">
+                                    <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                        <i-select v-model="managementSearch" slot="prepend" style="width: 124px;">
+                                            <i-option v-for="item in searchList"
+                                                      :value="item.value">{{ item.label }}</i-option>
+                                        </i-select>
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </li>
+                            </ul>
+                        </div>
                         <i-table highlight-row
                                  :columns="commissionColumns"
                                  :context="self"
