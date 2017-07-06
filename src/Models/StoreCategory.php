@@ -34,7 +34,7 @@ class StoreCategory extends Model
     /**
      * @var string
      */
-    protected $table = 'mall_shop_categories';
+    protected $table = 'mall_store_categories';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
