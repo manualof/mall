@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\User\Collection;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\UserCollection;
 
@@ -24,8 +25,13 @@ class RemoveHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_user_collections'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'id.exists'   => '没有对应的用户收藏信息',
             'id.numeric'  => '足迹 ID 必须为数值',
             'id.required' => '足迹 ID 必须填写',
         ]);

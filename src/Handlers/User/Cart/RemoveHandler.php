@@ -26,7 +26,7 @@ class RemoveHandler extends Handler
     {
         $this->validate($this->request, [
             'id' => [
-                Rule::exists(''),
+                Rule::exists('mall_user_carts'),
                 'numeric',
                 'required',
             ],
