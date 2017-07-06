@@ -1,75 +1,108 @@
 .collect-store {
-    .saases-title{
+    padding-top: 10px;
+    color: #444;
+    dl {
+        margin-bottom: 0;
+    }
+    .store-title {
         border-bottom: 1px solid #e5e5e5;
-        font-size:18px;
-        font-weight: 500;
-        height: 77px;
-        padding-top:20px;
-        text-align: left;
-        span{
+        h4 {
+            font-size: 18px;
             color: #444;
-            float: left;
-            height: 58px;
-            line-height: 57px;
-            width: 144px;
+            font-weight: 500;
+            padding: 17px 0 12px;
         }
     }
-    .row{
-        margin: 20px -5px;
-        .col-sm-3{
-            margin-bottom: 10px;
-            padding-left: 5px;
-            padding-right: 5px;
-            &>div{
+
+    .attention-store {
+        border-bottom: 0;
+        width: 100%;
+        height: 300px;
+        margin-top: 20px;
+
+        .left-store {
+            float: left;
+            width: 320px;
+            height: 100%;
+            .store {
                 border: 1px solid #e5e5e5;
-                height: 344px;
-                padding: 20px 20px 10px 20px;
-                img{
-                    display: block;
-                    height: 202px;
-                    width: 202px;
+                border-bottom: 0;
+                dt {
+                    margin: 20px auto 18px;
+                    width: 160px;
+                    height: 160px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+
+                    }
                 }
-                .goods-msg{
-                    margin-top: 20px;
-                    .price{
-                        font-size: 12px;
-                        span{
-                            font-size: 18px;
-                        }
-                        .old-price{
-                            color: #d0d0d0;
+                dd {
+                    .name {
+                        font-size: 18px;
+                        font-weight: 500;
+                        margin-bottom: 0;
+                        padding-bottom: 34px;
+                        span {
                             font-size: 12px;
-                            padding-left: 10px;
-                            text-decoration: line-through;
+                            color: #de2634;
+                            padding: 2px 8px;
+                            border: 1px solid #de2634;
+                            margin-left: 5px;
                         }
                     }
-                    .goods-name{
-                        color: #444;
-                        font-size: 14px;
-                        height: 32px;
-                        line-height: 1.29;
+                }
+            }
+
+            .store-btn {
+                button {
+                    float: left;
+                    width: 160px;
+                    height: 42px;
+                    background-color: #ffffff;
+                    border: solid 1px #d0d0d0;
+                    &:hover {
+                        color: #de2634;
                     }
-                    .xiaoliang{
-                        margin-top: 5px;
-                        .month-xiaoliang{
-                            color: #999;
-                            float: left;
-                            font-size: 12px;
-                            b{
-                                color: #666;
-                            }
-                        }
-                        .quxiao{
-                            border: 1px solid #e5e5e5;
-                            cursor: pointer;
-                            float: right;
-                            font-size: 12px;
-                            height: 24px;
-                            line-height: 22px;
-                            text-align: center;
-                            width: 64px;
-                        }
+                }
+            }
+        }
+
+        .store-product {
+            float: left;
+            height: 100%;
+            border: 1px solid #e5e5e5;
+            border-left: 0;
+
+            .store-product-model {
+                float: left;
+                padding-left: 20px;
+                dt {
+                    margin: 20px auto 18px;
+                    width: 202px;
+                    height: 202px;
+                    img {
+                        width: 100%;
+                        height: 100%;
                     }
+                }
+
+                dd {
+                    .name {
+                        width: 196px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        margin-bottom: 2px;
+                    }
+                    .new-price {
+                        font-size: 18px;
+                        font-weight: 500;
+                        color: #de2634;
+                    }
+                }
+                &:last-child {
+                    padding-right: 19px;
                 }
             }
         }
