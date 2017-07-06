@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\User\Card;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\UserCart;
 
@@ -24,8 +25,13 @@ class CardHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'user_id' => 'required|numeric',
+            'user_id' => [
+                Rule::exists('mall_users'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'user_id.exists'   => '没有对应的用户信息',
             'user_id.numeric'  => '用户 ID 必须为数值',
             'user_id.required' => '用户 ID 必须填写',
         ]);
