@@ -31,6 +31,6 @@ class ListHandler extends Handler
         ]);
         $builder = StoreCategory::query();
         $builder->where('store_id', $this->request->input('store_id'));
-        $this->withCode(200)->withData($builder->get())->withMessage('获取产品列表成功！');
+        $this->withCode(200)->withData($builder->get())->withMessage('获取商品列表成功！');
     }
 }

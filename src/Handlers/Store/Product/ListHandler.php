@@ -35,7 +35,7 @@ class ListHandler extends Handler
         $builder = Product::query();
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
-        $this->withCode(200)->withData($builder->items())->withMessage('获取产品列表成功！')->withExtra([
+        $this->withCode(200)->withData($builder->items())->withMessage('获取商品列表成功！')->withExtra([
             'pagination' => [
                 'total'         => $builder->total(),
                 'per_page'      => $builder->perPage(),

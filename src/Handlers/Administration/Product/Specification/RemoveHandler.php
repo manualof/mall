@@ -33,10 +33,10 @@ class RemoveHandler extends Handler
         $specification = ProductSpecification::query()->find($this->request->input('id'));
         if ($specification instanceof ProductSpecification && $specification->delete()) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('删除产品规格成功！');
+            $this->withCode(200)->withMessage('删除商品规格成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('没有对应的产品规格！');
+            $this->withCode(500)->withError('没有对应的商品规格！');
         }
     }
 }

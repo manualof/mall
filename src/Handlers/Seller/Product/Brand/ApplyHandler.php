@@ -55,10 +55,10 @@ class ApplyHandler extends Handler
         ]);
         if (ProductBrand::query()->create($data)) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('申请产品成功！');
+            $this->withCode(200)->withMessage('申请商品成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withError(500)->withError('申请产品失败！');
+            $this->withError(500)->withError('申请商品失败！');
         }
     }
 }

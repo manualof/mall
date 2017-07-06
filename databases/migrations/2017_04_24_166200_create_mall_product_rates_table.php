@@ -22,7 +22,7 @@ class CreateMallProductRatesTable extends Migration
         $this->schema->create('mall_product_rates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('order_id')->comment('订单 ID');
-            $table->integer('product_id')->comment('产品 ID');
+            $table->integer('product_id')->comment('商品 ID');
             $table->integer('user_id')->comment('用户 ID');
             $table->text('comment')->nullable()->comment('评论内容');
             $table->tinyInteger('rate')->default(0)->comment('星星评分');

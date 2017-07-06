@@ -65,10 +65,10 @@ class CreateHandler extends Handler
         ]);
         if (Product::query()->create($data)) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('添加产品成功！');
+            $this->withCode(200)->withMessage('添加商品成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('添加产品失败！');
+            $this->withCode(500)->withError('添加商品失败！');
         }
     }
 }
