@@ -101,14 +101,12 @@
                                     <form-item label="退款金额">
                                         &yen;{{ refund.money }}
                                     </form-item>
-                                    <row>
-                                        <form-item label="退款说明">
-                                            {{ refund.state }}
-                                        </form-item>
-                                        <form-item label="凭证上传">
-                                            <img :src="refund.picture" alt="">
-                                        </form-item>
-                                    </row>
+                                    <form-item label="退款说明">
+                                        {{ refund.state }}
+                                    </form-item>
+                                    <form-item label="凭证上传" class="form-border">
+                                        <img :src="refund.picture" alt="">
+                                    </form-item>
                                 </i-form>
                             </i-col>
                             <!--商家处理意见-->
