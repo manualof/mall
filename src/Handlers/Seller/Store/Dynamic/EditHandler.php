@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Dynamic;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreDynamic;
 
@@ -24,22 +25,32 @@ class EditHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'deposit'   => 'required|numeric',
-            'id'        => 'required|numeric',
-            'name'      => 'required',
-            'parent_id' => 'numeric',
-            'order'     => 'numeric',
+            'content'  => 'required',
+            'id'       => [
+                Rule::exists('mall_shop_dynamics'),
+                'numeric',
+                'required',
+            ],
+            'show'     => 'required|numeric',
+            'store_id' => [
+                Rule::exists('mall_stores'),
+                'numeric',
+                'required',
+            ],
+            'title'    => 'required',
         ], [
-            'deposit.numeric'   => '保证金数额必须为数值',
-            'deposit.required'  => '保证金数额必须填写',
-            'id.numeric'        => '动态 ID 必须为数值',
-            'id.required'       => '动态 ID 必须填写',
-            'name.required'     => '分类名称必须填写',
-            'parent_id.numeric' => '父级分类 ID 必须为数值',
-            'order.numeric'     => '排序必须为数值',
+            'content.required'  => '动态内容必须填写',
+            'id.exists'         => '没有对应的店铺动态信息',
+            'id.numeric'        => '店铺动态 ID 必须为数值',
+            'id.required'       => '店铺动态 ID 必须填写',
+            'show.numeric'      => '是否显示必须为数值',
+            'show.required'     => '是否显示必须填写',
+            'store_id.exists'   => '没有对应的店铺信息',
+            'store_id.required' => '店铺 ID 必须填写',
+            'store_id.numeric'  => '店铺 ID 必须为数值',
+            'title.required'    => '动态标题必须填写',
         ]);
         $this->beginTransaction();
-        $dynamic = StoreDynamic::query()->find($this->request->input('id'));
         $data = $this->request->only([
             'content',
             'show',
@@ -47,6 +58,7 @@ class EditHandler extends Handler
             'thumbnail',
             'title',
         ]);
+        $dynamic = StoreDynamic::query()->find($this->request->input('id'));
         if ($dynamic instanceof StoreDynamic && $dynamic->update($data)) {
             $this->commitTransaction();
             $this->withCode(200)->withMessage('编辑店铺动态成功！');
