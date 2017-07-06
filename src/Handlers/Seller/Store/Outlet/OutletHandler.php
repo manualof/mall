@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Outlet;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreOutlet;
 
@@ -24,10 +25,15 @@ class OutletHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_store_outlets'),
+                'numeric',
+                'required',
+            ],
         ], [
-            'id.numeric'  => '门店 ID 必须为数值',
-            'id.required' => '门店 ID 必须填写',
+            'id.exists'   => '没有对应的店铺门店信息',
+            'id.required' => '店铺门店 ID 必须填写',
+            'id.numeric'  => '店铺门店 ID 必须为数值',
         ]);
         $outlet = StoreOutlet::query()->find($this->request->input('id'));
         if ($outlet instanceof StoreOutlet) {
