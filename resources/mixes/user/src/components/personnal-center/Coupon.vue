@@ -3,7 +3,7 @@
         <h4>我的优惠券</h4>
         <div class="exchange">
             输入兑换码:
-            <input class="exchange-code" type="text">
+            <input class="form-control exchange-code" type="text">
             <button class="exchange-btn order-btn">兑换</button>
         </div>
         <div class="clearfix nav-box">
@@ -30,7 +30,7 @@
                             <li>使用时间：{{ coupon.startTime }}-{{ coupon.endTime }}</li>
                             <li>其他说明：{{ coupon.other }}</li>
                         </ul>
-                        <button class="use">立即使用</button>
+                        <a class="use">立即使用</a>
                     </div>
                 </li>
             </ul>
