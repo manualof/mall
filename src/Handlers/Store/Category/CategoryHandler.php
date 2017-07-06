@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Store\Category;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreCategory;
 
@@ -24,8 +25,13 @@ class CategoryHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_shop_categories'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'id.exists'   => '没有对应的店铺分类信息',
             'id.numeric'  => '分类 ID 必须为数值',
             'id.required' => '分类 ID 必须填写',
         ]);

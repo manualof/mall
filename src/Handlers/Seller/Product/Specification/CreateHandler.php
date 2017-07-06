@@ -48,10 +48,10 @@ class CreateHandler extends Handler
         ]);
         if (ProductSpecification::query()->create($data)) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('添加产品规格成功！');
+            $this->withCode(200)->withMessage('添加商品规格成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('添加产品规格失败！');
+            $this->withCode(500)->withError('添加商品规格失败！');
         }
     }
 }

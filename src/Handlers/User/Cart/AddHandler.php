@@ -4,18 +4,18 @@
  *
  * @author        TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime      2017-05-24 16:50
+ * @datetime      2017-05-24 13:34
  */
-namespace Notadd\Mall\Handlers\User\Collection;
+namespace Notadd\Mall\Handlers\User\Cart;
 
 use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\UserCollection;
+use Notadd\Mall\Models\UserCart;
 
 /**
- * Class CreateHandler.
+ * Class AddHandler.
  */
-class CreateHandler extends Handler
+class AddHandler extends Handler
 {
     /**
      * Execute Handler.
@@ -53,16 +53,17 @@ class CreateHandler extends Handler
         ]);
         $this->beginTransaction();
         $data = $this->request->only([
+            'price',
             'product_id',
             'store_id',
             'user_id',
         ]);
-        if (UserCollection::query()->create($data)) {
+        if (UserCart::query()->create($data)) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('创建用户收藏信息成功！');
+            $this->withCode(200)->withMessage('添加商品到购物车成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('创建用户收藏信息失败！');
+            $this->withCode(500)->withError('添加商品到购物车失败！');
         }
     }
 }

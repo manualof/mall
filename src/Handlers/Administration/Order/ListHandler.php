@@ -37,7 +37,7 @@ class ListHandler extends Handler
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)
             ->withData($builder->items())
-            ->withMessage('获取产品列表成功！')
+            ->withMessage('获取商品列表成功！')
             ->withExtra([
                 'pagination' => [
                     'total'         => $builder->total(),

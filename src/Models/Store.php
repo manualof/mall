@@ -40,7 +40,7 @@ class Store extends Model
     /**
      * @var string
      */
-    protected $table = 'mall_shops';
+    protected $table = 'mall_stores';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

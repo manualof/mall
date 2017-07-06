@@ -26,13 +26,13 @@ class ProductHandler extends Handler
         $this->validate($this->request, [
             'id' => 'required',
         ], [
-            'id.required' => '产品 ID 必须填写',
+            'id.required' => '商品 ID 必须填写',
         ]);
         $product = Product::query()->find($this->request->input('id'));
         if ($product instanceof Product) {
-            $this->withCode(200)->withData($product)->withMessage('获取产品信息成功！');
+            $this->withCode(200)->withData($product)->withMessage('获取商品信息成功！');
         } else {
-            $this->withCode(500)->withError('没有对应的产品信息！');
+            $this->withCode(500)->withError('没有对应的商品信息！');
         }
     }
 }
