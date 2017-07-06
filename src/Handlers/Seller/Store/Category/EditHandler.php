@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Category;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreCategory;
 
@@ -24,14 +25,19 @@ class EditHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id'       => 'required|numeric',
-            'name'     => 'required',
-            'status'   => 'numeric',
+            'id'     => [
+                Rule::exists('mall_store_categories'),
+                'numeric',
+                'required',
+            ],
+            'name'   => 'required',
+            'status' => 'numeric',
         ], [
-            'id.numeric'        => '分类 ID 必须为数值',
-            'id.required'       => '分类 ID 必须填写',
-            'name.required'     => '分类名称必须填写',
-            'status.numeric'    => '状态值必须数值',
+            'id.exists'      => '没有对应的店铺分类信息',
+            'id.numeric'     => '分类 ID 必须为数值',
+            'id.required'    => '分类 ID 必须填写',
+            'name.required'  => '分类名称必须填写',
+            'status.numeric' => '状态值必须数值',
         ]);
         $this->beginTransaction();
         $category = StoreCategory::query()->find($this->request->input('id'));

@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Outlet;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreOutlet;
 
@@ -27,12 +28,21 @@ class ListHandler extends Handler
             'order'    => 'in:asc,desc',
             'page'     => 'numeric',
             'paginate' => 'numeric',
+            'store_id' => [
+                Rule::exists('mall_stores'),
+                'numeric',
+                'required',
+            ],
         ], [
-            'order.in'         => '排序规则错误',
-            'page.numeric'     => '当前页面必须为数值',
-            'paginate.numeric' => '分页数必须为数值',
+            'order.in'          => '排序规则错误',
+            'page.numeric'      => '当前页面必须为数值',
+            'paginate.numeric'  => '分页数必须为数值',
+            'store_id.exists'   => '没有对应的店铺信息',
+            'store_id.numeric'  => '店铺 ID 必须为数值',
+            'store_id.required' => '店铺 ID 必须填写',
         ]);
         $builder = StoreOutlet::query();
+        $builder->where('store_id', $this->request->input('store_id'));
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)->withData($builder->items())->withMessage('获取门店列表成功！')->withExtra([

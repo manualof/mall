@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Brand;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\ProductBrand;
 
@@ -24,8 +25,13 @@ class RevokeHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_product_brands'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'id.exists'   => '没有对应的品牌信息',
             'id.numeric'  => '品牌 ID 必须为数值',
             'id.required' => '品牌 ID 必须填写',
         ]);

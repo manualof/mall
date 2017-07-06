@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\User\Order;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\Order;
 
@@ -24,8 +25,13 @@ class EditHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_orders'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'id.exists'   => '没有对应的订单信息',
             'id.required' => '订单 ID 必须填写',
             'id.numeric'  => '订单 ID 必须为数值',
         ]);

@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Outlet;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreOutlet;
 
@@ -25,15 +26,25 @@ class EditHandler extends Handler
     {
         $this->validate($this->request, [
             'address'   => 'required',
-            'id'        => 'required|numeric',
+            'id'        => [
+                Rule::exists('mall_store_outlets'),
+                'numeric',
+                'required',
+            ],
             'name'      => 'required',
-            'store_id'  => 'required|numeric',
+            'store_id'  => [
+                Rule::exists('mall_stores'),
+                'numeric',
+                'required',
+            ],
             'telephone' => 'required',
         ], [
             'address.required'   => '详细地址必须填写',
-            'id.numeric'         => '门店 ID 必须为数值',
-            'id.required'        => '门店 ID 必须填写',
+            'id.exists'          => '店铺门店 ID 必须为数值',
+            'id.numeric'         => '店铺门店 ID 必须为数值',
+            'id.required'        => '店铺门店 ID 必须填写',
             'name.required'      => '门店名称必须填写',
+            'store_id.exists'    => '没有对应的店铺信息',
             'store_id.numeric'   => '店铺 ID 必须为数值',
             'store_id.required'  => '店铺 ID 必须填写',
             'telephone.required' => '公交信息必须填写',
