@@ -249,12 +249,18 @@
                         </div>
                         <div class="evaluation-select">
                             <div class="select">
-                                <input type="radio" id="all-evaluation" name="evaluation-select"/>
-                                <label for="all-evaluation">全部评价</label>
+                                <label>
+                                    <input type="radio" name="evaluation-select"/>
+                                    <span></span>
+                                    全部评价
+                                </label>
                             </div>
                             <div class="select">
-                                <input type="radio" id="img-evaluation" name="evaluation-select"/>
-                                <label for="img-evaluation">图片</label>
+                                <label>
+                                    <input type="radio" name="evaluation-select"/>
+                                    <span></span>
+                                    图片
+                                </label>
                             </div>
                             <ul class="sorting">
                                 <li class="time-sorting"><a>按时间排序</a></li>

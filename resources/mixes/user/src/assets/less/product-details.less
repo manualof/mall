@@ -154,6 +154,8 @@
             }
             .offer {
                 color: #de2634;
+                margin-top: 10px;
+                margin-bottom: 14px;
             }
             .price-box {
                 background-color: #f7f7f7;
@@ -566,7 +568,10 @@
             }
 
         }
-
+        #evaluation {
+            font-size: 14px;
+            line-height: 1.71;
+        }
         .details-evaluation {
             border: 1px solid #d0d0d0;
             margin-left: 20px;
@@ -660,16 +665,36 @@
                 height: 60px;
                 label {
                     font-weight: normal;
+                    input {
+                        visibility: hidden;
+                        &:checked + span {
+                            border-color: #de2634;
+                            position: relative;
+                            &:after {
+                                background: #de2634;
+                                border-radius: 50%;
+                                content: '';
+                                height: 8px;
+                                left: 2px;
+                                position: absolute;
+                                top: 2px;
+                                width: 8px;
+                            }
+                        }
+                    }
+                    span {
+                        background: #ffffff;
+                        border: 1px solid #e5e5e5;
+                        border-radius: 50%;
+                        display: inline-block;
+                        height: 14px;
+                        width: 14px;
+                    }
                 }
                 .select {
                     float: left;
                     height: 60px;
                     line-height: 60px;
-                    input:checked {
-                        & + label {
-                            color: #de2634;
-                        }
-                    }
                     &:nth-child(2) {
                         margin-left: 19px;
                     }
@@ -695,7 +720,10 @@
                             float: left;
                             width: 60px;
                             p {
+                                color: #999999;
+                                font-size: 12px;
                                 line-height: 1.71;
+                                margin-top: 5px;
                             }
                         }
                         .user-say {
@@ -732,6 +760,7 @@
                                 margin-top: 10px;
                             }
                             .buy-img {
+                                margin-top: 10px;
                                 li {
                                     float: left;
                                     height: 60px;
