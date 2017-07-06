@@ -122,6 +122,8 @@
                         },
                     ],
                     goodsSort: '',
+                    positionType: [],
+                    positionStandard: [],
                     quotaRatio: '',
                     showStyle: '',
                     typeName: '',
@@ -138,6 +140,22 @@
                 ],
                 loading: false,
                 ruleValidate: {
+                    positionStandard: [
+                        {
+                            message: '关联规格不能为空',
+                            required: true,
+                            trigger: 'blur',
+                            type: 'array',
+                        },
+                    ],
+                    positionType: [
+                        {
+                            message: '关联品牌不能为空',
+                            required: true,
+                            trigger: 'blur',
+                            type: 'array',
+                        },
+                    ],
                     quotaRatio: [
                         {
                             message: '分佣比例不能为空',
@@ -145,15 +163,22 @@
                             trigger: 'blur',
                         },
                     ],
+                    showStyle: [
+                        {
+                            message: '商品展示方式不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
                     typeName: [
                         {
-                            message: '名称名称不能为空',
+                            message: '分类名称不能为空',
                             required: true,
                             trigger: 'blur',
                         },
                     ],
                 },
-                showStyle: [
+                showStyles: [
                     {
                         label: 'SPU',
                         value: '1',
@@ -320,16 +345,16 @@
                     <div class="basic-information">
                         <row>
                             <i-col span="12">
-                                <form-item label="分类名称">
+                                <form-item label="分类名称" prop="typeName">
                                     <i-input v-model="editDetail.typeName"></i-input>
                                 </form-item>
                             </i-col>
                         </row>
                         <row>
                             <i-col span="12">
-                                <form-item label="商品展示方式">
+                                <form-item label="商品展示方式" prop="showStyle">
                                     <i-select placeholder="请选择" v-model="editDetail.showStyle">
-                                        <i-option v-for="item in showStyle" :value="item.value"
+                                        <i-option v-for="item in showStyles" :value="item.value"
                                                   :key="item">{{ item.label }}</i-option>
                                     </i-select>
                                     <p class="tip">在商品列表页的展示方式</p>
@@ -351,10 +376,11 @@
                         </row>
                         <row>
                             <i-col span="20">
-                                <form-item label="关联品牌" class="quike-position">
+                                <form-item label="关联品牌" class="quike-position" prop="positionType">
                                     <div class="flex-position">
                                         <span class="title">快捷定位</span>
-                                        <cascader :data="styleData" trigger="hover" @on-change="handleChange"></cascader>
+                                        <cascader :data="styleData" trigger="hover" v-model="editDetail.positionType"
+                                                  @on-change="handleChange" :value="editDetail.positionType"></cascader>
                                         <span class="intro">分类下对应的品牌</span>
                                     </div>
                                     <div class="recommended-classification recommended-brand">
@@ -372,10 +398,11 @@
                         </row>
                         <row>
                             <i-col span="20">
-                                <form-item label="关联规格" class="quike-position">
+                                <form-item label="关联规格" class="quike-position" prop="positionStandard">
                                     <div class="flex-position">
                                         <span class="title">快捷定位</span>
-                                        <cascader :data="styleData" trigger="hover" @on-change="handleChange"></cascader>
+                                        <cascader :data="styleData" trigger="hover" v-model="editDetail.positionStandard"
+                                                  @on-change="handleChange1"></cascader>
                                         <span class="intro">分类下对应的规格</span>
                                     </div>
                                     <div class="recommended-classification recommended-brand">

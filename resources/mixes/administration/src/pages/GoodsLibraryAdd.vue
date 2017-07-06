@@ -81,6 +81,22 @@
                         value: '2',
                     },
                 ],
+                ruleValidate: {
+                    logo: [
+                        {
+                            message: '商品图片不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '商品名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 styleData: [
                     {
                         children: [
@@ -222,7 +238,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.activityValidate.validate(valid => {
+                self.$refs.goodsEdit.validate(valid => {
                     if (valid) {
                         self.$Message.success('提交成功!');
                     } else {
@@ -309,7 +325,7 @@
                                     </row>
                                     <row>
                                         <i-col span="12">
-                                            <form-item label="商品名称">
+                                            <form-item label="商品名称" prop="name">
                                                 <i-input v-model="goodsEdit.name"></i-input>
                                             </form-item>
                                         </i-col>
@@ -333,7 +349,7 @@
                                     </row>
                                     <row class="row-goods-upload">
                                         <i-col span="24">
-                                            <form-item label="商品图片">
+                                            <form-item label="商品图片" prop="logo">
                                                 <div class="image-preview" v-if="goodsEdit.logo">
                                                     <img :src="goodsEdit.logo">
                                                     <icon type="close" @click.native="removeLogo"></icon>
@@ -595,7 +611,7 @@
                             <row>
                                 <i-col span="18">
                                     <form-item label="">
-                                        <i-button @click.native="submit" type="primary">
+                                        <i-button :loading="loading" @click.native="submit" type="primary">
                                             <span v-if="!loading">确认提交</span>
                                             <span v-else>正在提交…</span>
                                         </i-button>
