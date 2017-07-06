@@ -25,56 +25,6 @@
             </tr>
             </tbody>
         </table>
-        <!---->
-        <!-- <div class="address-modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-           <div class="modal-dialog" role="document">
-             <div class="address-content">
-               <h4 class="modal-title" id="myModalLabel">新增收货地址</h4>
-               <div class="address-body">
-                 <form class="signup-form">
-                   <div class="signup-form-group clearfix">
-                     <label class="form-title">收货人姓名</label>
-                     <input type="text" class="signup-form-control" name="username" placeholder="请输入收货人姓名">
-                   </div>
-                   <div class="signup-form-group clearfix">
-                     <label class="form-title">手机号码</label>
-                     <input type="text" class="signup-form-control" name="telphone" placeholder="手机号码为必填项">
-                   </div>
-                   <div class="signup-form-group clearfix">
-                     <label class="form-title">所在地区</label>
-                     <div class="signup-form-control select-province">
-                       <select>
-                         <option value="0">请选择省份</option>
-                       </select>
-                       <select>
-                         <option value="0">请选择市</option>
-                       </select>
-                       <select>
-                         <option value="0">请选择区</option>
-                       </select>
-                     </div>
-                   </div>
-                   <div class="signup-form-group clearfix group-address">
-                     <label class="form-title">详细地址</label>
-                     <textarea type="text" class="signup-form-control details-address" name="address" placeholder="无需重复填写省市区，小于50个字"></textarea>
-                   </div>
-                   <div class="signup-form-group default-address clearfix">
-                     <label class="form-title"></label>
-                     <div class="check-box">
-                       <span><input type="checkbox" class="input_check" id="check46"><label for="check46"> </label></span>
-                     </div>
-                     <span class="default">设为默认地址</span>
-                   </div>
-                   <div class="signup-form-group">
-                     <label class="form-title"></label>
-                     <button type="button" class="order-btn">保存地址</button>
-                     <button type="button" class="close-btn" data-dismiss="modal">取消</button>
-                   </div>
-                 </form>
-               </div>
-             </div>
-           </div>
-         </div>-->
         <modal ref="modal">
             <div slot="title">
                 <h4 class="modal-title" v-text="modalTitle"></h4>

@@ -159,7 +159,7 @@
                         <div class="talkeds" v-for="talk in kefu">
                             <p class="talk-name">{{ talk.name }}</p>
                            <div class="chilrd" v-for="item in talk.items">
-                               {{item}}&nbsp;&nbsp;&nbsp;<img :src="talked" alt="">
+                               {{ item }}&nbsp;&nbsp;&nbsp;<img :src="talked" alt="">
                            </div>
                         </div>
                     </div>
@@ -249,12 +249,18 @@
                         </div>
                         <div class="evaluation-select">
                             <div class="select">
-                                <input type="radio" id="all-evaluation" name="evaluation-select"/>
-                                <label for="all-evaluation">全部评价</label>
+                                <label>
+                                    <input type="radio" name="evaluation-select"/>
+                                    <span></span>
+                                    全部评价
+                                </label>
                             </div>
                             <div class="select">
-                                <input type="radio" id="img-evaluation" name="evaluation-select"/>
-                                <label for="img-evaluation">图片</label>
+                                <label>
+                                    <input type="radio" name="evaluation-select"/>
+                                    <span></span>
+                                    图片
+                                </label>
                             </div>
                             <ul class="sorting">
                                 <li class="time-sorting"><a>按时间排序</a></li>
@@ -562,6 +568,9 @@
             },
         },
         methods: {
+            change(num) {
+                this.goodskind[num].onoff = !this.goodskind[num].onoff;
+            },
             preview($event) {
                 const index = $event.target.getAttribute('index');
                 this.bigImg = this.smallImgs[index];
@@ -584,9 +593,6 @@
             },
             tabSWitch(index) {
                 this.activeTab = index;
-            },
-            change(num) {
-                this.goodskind[num].onoff = !this.goodskind[num].onoff;
             },
 //            imgBigbox1() {
 //                this.show = 1;

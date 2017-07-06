@@ -15,7 +15,6 @@
         </div>
     </div>
 </template>
-
 <script>
     export default {
         data() {
@@ -26,36 +25,44 @@
                         text: '我的订单',
                     },
                     {
-                        to: { name: 'coupon' },
-                        text: '我的优惠券',
+                        to: { name: '' },
+                        text: '预约/到货通知',
                     },
                     {
-                        to: { name: 'integral' },
-                        text: '我的积分',
+                        to: { name: 'selaes-return' },
+                        text: '退款退货',
                     },
                     {
-                        to: { name: 'footprint' },
-                        text: '我的足迹',
+                        to: { name: 'my-collect' },
+                        text: '我的收藏',
                     },
                     {
                         to: { name: 'collect-store' },
                         text: '店铺关注',
                     },
                     {
+                        to: { name: 'footprint' },
+                        text: '我的足迹',
+                    },
+                    {
+                        to: { name: 'my-account' },
+                        text: '账户信息',
+                    },
+                    {
                         to: { name: 'account-security' },
                         text: '账户安全',
                     },
                     {
-                        to: { name: 'my-account' },
-                        text: '我的账户',
-                    },
-                    {
-                        to: { name: 'selaes-return' },
-                        text: '退货退款',
-                    },
-                    {
                         to: { name: 'shipping-address' },
-                        text: '管理收货地址',
+                        text: '收货地址',
+                    },
+                    {
+                        to: { name: 'integral' },
+                        text: '我的积分',
+                    },
+                    {
+                        to: { name: 'coupon' },
+                        text: '优惠券',
                     },
                 ],
             };

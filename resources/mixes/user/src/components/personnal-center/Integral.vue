@@ -1,7 +1,7 @@
 <template>
     <div class="my-integral">
         <h4>我的积分</h4>
-        <div class="integral-count">积分 <span>179</span></div>
+        <div class="integral-count">积分 <span>{{ totalIntegrals }}</span></div>
         <h4>推荐兑换</h4>
         <div class="recommend-model">
             <div class="browse-content">
@@ -30,20 +30,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>2016-12-24  13:17:40</td>
-                    <td>+60</td>
-                    <td>购物赠送积分</td>
-                </tr>
-                <tr>
-                    <td>2016-12-24  13:17:40</td>
-                    <td>+60</td>
-                    <td>购物赠送积分</td>
-                </tr>
-                <tr>
-                    <td>2016-12-24  13:17:40</td>
-                    <td>+60</td>
-                    <td>购物赠送积分</td>
+                <tr v-for="integral in integrals">
+                    <td>{{ integral.time }}</td>
+                    <td>{{ integral.recording }}</td>
+                    <td>{{ integral.detail }}</td>
                 </tr>
                 </tbody>
             </table>
@@ -87,6 +77,29 @@
                         price: 48.88,
                     },
                 ],
+                integrals: [
+                    {
+                        time: '2016-12-24 13:17:40',
+                        recording: '+60',
+                        detail: '购物赠送积分',
+                    },
+                    {
+                        time: '2016-12-24 13:17:40',
+                        recording: '+60',
+                        detail: '购物赠送积分',
+                    },
+                    {
+                        time: '2016-12-24 13:17:40',
+                        recording: '+60',
+                        detail: '购物赠送积分',
+                    },
+                    {
+                        time: '2016-12-24 13:17:40',
+                        recording: '+60',
+                        detail: '购物赠送积分',
+                    },
+                ],
+                totalIntegrals: '114',
             };
         },
     };
