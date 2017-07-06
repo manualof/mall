@@ -25,6 +25,7 @@ class CreateMallUserCartsTable extends Migration
             $table->integer('store_id')->comment('店铺 ID');
             $table->integer('user_id')->comment('用户 ID');
             $table->integer('price')->comment('加入时的商品价格');
+            $table->tinyInteger('count')->default(1)->comment('商品数量');
             $table->timestamps();
         });
     }

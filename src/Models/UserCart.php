@@ -19,6 +19,7 @@ class UserCart extends Model
      * @var array
      */
     protected $fillable = [
+        'count',
         'price',
         'product_id',
         'store_id',
