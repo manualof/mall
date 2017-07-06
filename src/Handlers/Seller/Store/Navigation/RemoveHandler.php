@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Navigation;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreNavigation;
 
@@ -24,10 +25,15 @@ class RemoveHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_store_navigations'),
+                'numeric',
+                'required',
+            ],
         ], [
-            'id.required' => '导航 ID 必须填写',
-            'id.numeric'  => '导航 ID 必须为数值',
+            'id.exists'   => '没有对应的店铺导航信息',
+            'id.required' => '店铺导航 ID 必须填写',
+            'id.numeric'  => '店铺导航 ID 必须为数值',
         ]);
         $this->commitTransaction();
         $navigation = StoreNavigation::query()->find($this->request->input('id'));
