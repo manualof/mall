@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Store\Product;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\Product;
 
@@ -24,8 +25,12 @@ class ProductHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required',
+            'id' => [
+                'required',
+                Rule::exists('mall_products'),
+            ],
         ], [
+            'id.exists'   => '没有对应的商品信息',
             'id.required' => '商品 ID 必须填写',
         ]);
         $product = Product::query()->find($this->request->input('id'));
