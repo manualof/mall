@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Supplier;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreSupplier;
 
@@ -26,11 +27,16 @@ class CreateHandler extends Handler
         $this->validate($this->request, [
             'contacts'  => 'required',
             'name'      => 'required',
-            'store_id'  => 'required|numeric',
+            'store_id'  => [
+                Rule::exists('mall_stores'),
+                'numeric',
+                'required',
+            ],
             'telephone' => 'required',
         ], [
             'contacts.required'  => '联系人必须填写',
             'name.required'      => '供货商名称必须填写',
+            'store_id.exists'    => '没有对应的店铺信息',
             'store_id.numeric'   => '店铺 ID 必须为数值',
             'store_id.required'  => '店铺 ID 必须填写',
             'telephone.required' => '联系电话必须填写',
