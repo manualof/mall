@@ -375,7 +375,7 @@
                                                     :show-upload-list="false"
                                                     v-if="goods.logo === '' || goods.logo === null">
                                             </upload>
-                                            <p class="tip">建议上传大小为150*50的品牌图片</p>
+                                            <p class="tip">建议上传大小为150*150的品牌图片</p>
                                             <p class="tip">申请品牌的目的是方便买家通过品牌索引页查找商品，
                                                 申请时请填写品牌所属的类别，方便平台归类</p>
                                             <p class="tip">在平台审核前，您可以编辑或撤销申请</p>
