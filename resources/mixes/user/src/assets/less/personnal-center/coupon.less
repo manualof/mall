@@ -74,18 +74,8 @@
     }
     .tab-pane {
         padding-top: 20px;
-        &#usable {
-            .pane {
-                background: url("../../images/semicircle.png") repeat-x;
-            }
-        }
-        &#used, &#failure {
-            .pane {
-                background: url("../../images/semicircle1.png") repeat-x;
-                .use {
-                    display: none;
-                }
-            }
+        .pane {
+            background: url("../../images/semicircle.png") repeat-x;
         }
         & > .pane {
             margin-bottom: 20px;
@@ -125,6 +115,14 @@
                     height: 32px;
                     width: 94px;
                 }
+            }
+        }
+    }
+    .used {
+        .pane {
+            background: url("../../images/semicircle1.png") repeat-x;
+            .use {
+                display: none;
             }
         }
     }
