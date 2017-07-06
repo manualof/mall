@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -36,7 +37,14 @@
                     },
                     {
                         align: 'center',
-                        key: 'applyImg',
+                        key: 'goodsImg',
+                        render() {
+                            return `<tooltip placement="right-end">
+                                    <icon type="image"></icon>
+                                    <div slot="content">
+                                    <img :src="row.goodsImg">
+                                    </tooltip>`;
+                        },
                         title: '申请图片',
                         width: 170,
                     },
@@ -104,10 +112,10 @@
                 ],
                 allOrderData: [
                     {
-                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '已完成',
                         buyerID: '455646544',
+                        goodsImg: image1,
                         handlingNotes: 'ddqwd',
                         involvingGoods: '45654646',
                         merchantID: '4565464',
@@ -118,10 +126,10 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '已完成',
                         buyerID: '455646544',
+                        goodsImg: image1,
                         handlingNotes: 'ddqwd',
                         involvingGoods: '45654646',
                         merchantID: '4565464',
@@ -132,10 +140,10 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '待处理',
                         buyerID: '455646544',
+                        goodsImg: image1,
                         handlingNotes: 'ddqwd',
                         involvingGoods: '45654646',
                         merchantID: '4565464',
@@ -146,10 +154,10 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '待处理',
                         buyerID: '455646544',
+                        goodsImg: image1,
                         handlingNotes: 'ddqwd',
                         involvingGoods: '45654646',
                         merchantID: '4565464',
@@ -187,7 +195,14 @@
                     },
                     {
                         align: 'center',
-                        key: 'applyImg',
+                        key: 'goodsImg',
+                        render() {
+                            return `<tooltip placement="right-end">
+                                    <icon type="image"></icon>
+                                    <div slot="content">
+                                    <img :src="row.goodsImg">
+                                    </tooltip>`;
+                        },
                         title: '申请图片',
                         width: 170,
                     },
@@ -252,10 +267,10 @@
                 ],
                 pendingData: [
                     {
-                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '已完成',
                         buyerID: '455646544',
+                        goodsImg: image1,
                         handlingNotes: 'ddqwd',
                         involvingGoods: '45654646',
                         merchantID: '4565464',
@@ -266,10 +281,10 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '交易完成',
                         buyerID: '455646544',
+                        goodsImg: image1,
                         handlingNotes: 'ddqwd',
                         involvingGoods: '45654646',
                         merchantID: '4565464',
@@ -280,10 +295,10 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '交易完成',
                         buyerID: '455646544',
+                        goodsImg: image1,
                         handlingNotes: 'ddqwd',
                         involvingGoods: '45654646',
                         merchantID: '4565464',
@@ -294,10 +309,10 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '交易完成',
                         buyerID: '455646544',
+                        goodsImg: image1,
                         handlingNotes: 'ddqwd',
                         involvingGoods: '45654646',
                         merchantID: '4565464',
@@ -308,10 +323,10 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '交易完成',
                         buyerID: '455646544',
+                        goodsImg: image1,
                         handlingNotes: 'ddqwd',
                         involvingGoods: '45654646',
                         merchantID: '4565464',
@@ -322,10 +337,10 @@
                         processingTime: '2017-03-21 16:45:45',
                     },
                     {
-                        applyImg: '图片',
                         applyReason: '2017-03-21 16:45:45',
                         applyTime: '交易完成',
                         buyerID: '455646544',
+                        goodsImg: image1,
                         handlingNotes: 'ddqwd',
                         involvingGoods: '45654646',
                         merchantID: '4565464',

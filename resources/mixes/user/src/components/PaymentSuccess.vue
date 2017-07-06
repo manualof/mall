@@ -11,14 +11,14 @@
                 <div class="top-status bottom-line">
                     <ul class="clearfix">
                         <li class="clearfix" v-for="(step, index) in steps" :class="{ already:status>index }">
+                            <ul class="clearfix cricle-box pull-left">
+                                <li class="cricle" v-for="item in 13"></li>
+                            </ul>
                             <div class="step pull-left">
                                 <i class="icon iconfont" :class="step.icon"> </i>
                                 <p>{{ step.name }}</p>
                                 <p>{{ step.time }}</p>
                             </div>
-                            <ul class="clearfix cricle-box pull-left">
-                                <li class="cricle" v-for="item in 13"></li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -114,7 +114,6 @@
                             <span class="order-price price">&yen;{{ total_price}}</span>
                             <span class="name">金额(不含运费)：</span>
                         </div>
-                        <router-link :to="{ name: 'order-success' }" class="order-btn submit-btn">提交订单</router-link>
                     </div>
                 </div>
             </div>

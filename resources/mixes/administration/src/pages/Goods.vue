@@ -13,7 +13,6 @@
                 goodsColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         type: 'selection',
                         width: 60,
                     },
@@ -21,31 +20,26 @@
                         align: 'center',
                         key: 'goodsName',
                         title: '商品名称',
-                        width: 190,
                     },
                     {
                         align: 'center',
                         key: 'spu',
                         title: 'spu',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'goodsPrice',
                         title: '商品价格',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'goodsStatus',
                         title: '商品状态',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'reviewStatus',
                         title: '审核状态',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -58,29 +52,24 @@
                                     </tooltip>`;
                         },
                         title: '商品图片',
-                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'adWord',
                         title: '广告词',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'styleId',
                         title: '分类ID',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'styleName',
                         title: '分类名称',
-                        width: 200,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render(row, column, index) {
                             return `<dropdown>
@@ -160,7 +149,6 @@
                 goodsShelfColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         type: 'selection',
                         width: 60,
                     },
@@ -168,31 +156,26 @@
                         align: 'center',
                         key: 'goodsName',
                         title: '商品名称',
-                        width: 190,
                     },
                     {
                         align: 'center',
                         key: 'spu',
                         title: 'spu',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'goodsPrice',
                         title: '商品价格',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'goodsStatus',
                         title: '商品状态',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'reviewStatus',
                         title: '审核状态',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -205,29 +188,24 @@
                                     </tooltip>`;
                         },
                         title: '商品图片',
-                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'adWord',
                         title: '广告词',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'styleId',
                         title: '分类ID',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'styleName',
                         title: '分类名称',
-                        width: 200,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render(row, column, index) {
                             return `<dropdown>
@@ -305,16 +283,32 @@
                 modal: false,
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '店铺名称',
+                        label: 'SPU',
+                        value: '1',
                     },
                     {
                         label: '商品名称',
-                        value: '商品名称',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '分类ID',
+                        value: '3',
+                    },
+                    {
+                        label: '店铺ID',
+                        value: '4',
+                    },
+                    {
+                        label: '店铺名称',
+                        value: '5',
+                    },
+                    {
+                        label: '品牌ID',
+                        value: '6',
+                    },
+                    {
+                        label: '品牌名称',
+                        value: '7',
                     },
                 ],
                 self: this,
