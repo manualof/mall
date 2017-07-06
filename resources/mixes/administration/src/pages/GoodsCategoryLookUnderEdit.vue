@@ -155,11 +155,11 @@
                 },
                 showStyle: [
                     {
-                        label: '颜色',
+                        label: 'SPU',
                         value: '1',
                     },
                     {
-                        label: '类型',
+                        label: 'SKU',
                         value: '2',
                     },
                 ],
@@ -265,6 +265,7 @@
                         value: '家用电器',
                     },
                 ],
+                checkboxSelect: false,
             };
         },
         methods: {
@@ -277,6 +278,9 @@
                         type: '',
                     },
                 );
+            },
+            checkChange() {
+                this.checkboxSelect = true;
             },
             deletePreForm(index) {
                 this.editDetail.attributes.splice(index, 1);
@@ -392,7 +396,7 @@
                                 <form-item label="添加属性" class="form-item-attribute">
                                     <row v-for="(item, index) in editDetail.attributes" class="row-attributes">
                                         <i-col span="2" style="width: 50px">
-                                            <i-input></i-input>
+                                            <i-input :value="index+1"></i-input>
                                         </i-col>
                                         <i-col span="3">
                                             <i-input v-model="item.type"></i-input>
@@ -404,7 +408,14 @@
                                             <checkbox v-model="item.single">显示</checkbox>
                                         </i-col>
                                         <i-col span="4" style="width: 80px">
-                                            <checkbox v-model="item.spu">SKU展示</checkbox>
+                                            <!--<label class="ivu-checkbox-wrapper">
+                                                <span class="ivu-checkbox" :class="{'ivu-checkbox-checked': checkboxSelect === true}">
+                                                    <span class="ivu-checkbox-inner"></span>
+                                                    <input type="radio" name="sku" class="ivu-checkbox-input"
+                                                           @change="checkChange">
+                                                </span> SKU展示
+                                            </label>-->
+                                            <checkbox v-model="item.sku" >SKU展示</checkbox>
                                         </i-col>
                                         <i-col span="2" style="width: 56px">
                                             <i-button type="ghost">编辑</i-button>
