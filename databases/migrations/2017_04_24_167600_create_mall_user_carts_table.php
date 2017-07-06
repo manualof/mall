@@ -2,15 +2,15 @@
 /**
  * This file is part of Notadd.
  *
- * @datetime 2017-05-09 12:31:57
+ * @datetime 2017-07-06 11:06:55
  */
 use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
 /**
- * Class CreateMallOrderRatesTable.
+ * Class CreateMallUserCartsTable.
  */
-class CreateMallProductRatesTable extends Migration
+class CreateMallUserCartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,16 +19,14 @@ class CreateMallProductRatesTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('mall_product_rates', function (Blueprint $table) {
+        $this->schema->create('mall_user_carts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('order_id')->comment('订单 ID');
             $table->integer('product_id')->comment('商品 ID');
+            $table->integer('store_id')->comment('店铺 ID');
             $table->integer('user_id')->comment('用户 ID');
-            $table->text('comment')->nullable()->comment('评论内容');
-            $table->tinyInteger('rate')->default(0)->comment('星星评分');
-            $table->string('flow_marketing')->nullable();
+            $table->integer('price')->comment('加入时的商品价格');
+            $table->tinyInteger('count')->default(1)->comment('商品数量');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -39,6 +37,6 @@ class CreateMallProductRatesTable extends Migration
      */
     public function down()
     {
-        $this->schema->drop('mall_product_rates');
+        $this->schema->drop('mall_user_carts');
     }
 }

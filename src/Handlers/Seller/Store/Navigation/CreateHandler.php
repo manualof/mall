@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Navigation;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreNavigation;
 
@@ -28,12 +29,17 @@ class CreateHandler extends Handler
             'name'          => 'required',
             'order'         => 'numeric',
             'parent_target' => 'numeric',
-            'store_id' => 'required|numeric',
+            'store_id' => [
+                Rule::exists('mall_stores'),
+                'numeric',
+                'required',
+            ],
         ], [
             'is_show.numeric'       => '是否显示的值必须为数值',
             'name.required'         => '导航名称必须填写',
             'order.numeric'         => '排序的值必须为数值',
             'parent_target.numeric' => '新窗口打开的值必须为数值',
+            'store_id.exists'   => '没有对应的店铺信息',
             'store_id.numeric'  => '店铺 ID 必须为数值',
             'store_id.required' => '店铺 ID 必须填写',
         ]);

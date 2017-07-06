@@ -25,8 +25,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -48,8 +46,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -88,8 +84,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -107,8 +101,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -130,8 +122,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -170,8 +160,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -189,8 +177,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -212,8 +198,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -252,8 +236,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -447,7 +429,7 @@
                                 <td colspan="2">
                                     <span>订单号:{{ item.num }}</span>
                                     <span>下单时间:{{ item.createTime }}</span>
-                                    <button class="print-btn">打印发货单</button>
+                                    <button class="print-btn">打印运单</button>
                                 </td>
                             </tr>
                             <tr>
@@ -463,9 +445,6 @@
                                                     <p>&yen;{{ item.price }} X {{ item.amount }}件</p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="goods-gifts" v-if="item.isGifts">
-                                            赠品<img :src="item.image" alt="">
                                         </div>
                                     </div>
                                 </td>
@@ -563,9 +542,6 @@
                                                     <p>&yen;{{ item.price }} X {{ item.amount }}件</p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="goods-gifts" v-if="item.isGifts">
-                                            赠品<img :src="item.image" alt="">
                                         </div>
                                     </div>
                                 </td>

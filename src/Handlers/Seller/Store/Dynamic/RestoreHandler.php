@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Dynamic;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreDynamic;
 
@@ -24,10 +25,15 @@ class RestoreHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id'     => [
+                Rule::exists('mall_shop_dynamics'),
+                'numeric',
+                'required',
+            ],
         ], [
-            'id.numeric'  => '动态 ID 必须为数值',
-            'id.required' => '动态 ID 必须填写',
+            'id.exists'   => '没有对应的店铺动态信息',
+            'id.numeric'  => '店铺动态 ID 必须为数值',
+            'id.required' => '店铺动态 ID 必须填写',
         ]);
         $this->beginTransaction();
         $dynamic = StoreDynamic::query()->onlyTrashed()->find($this->request->input('id'));

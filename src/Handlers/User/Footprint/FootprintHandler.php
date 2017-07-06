@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\User\Footprint;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\UserFootprint;
 
@@ -24,8 +25,13 @@ class FootprintHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_user_footprints'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'id.exists'   => '没有对应的足迹信息',
             'id.numeric'  => '足迹 ID 必须为数值',
             'id.required' => '足迹 ID 必须填写',
         ]);

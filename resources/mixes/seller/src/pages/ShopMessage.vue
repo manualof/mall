@@ -93,6 +93,7 @@
                     businessScope: '服饰',
                     companyAddress: '高新二路220号国土资源大厦公寓楼',
                     companyEmail: '336645564@qq.com',
+                    companyLogo: image,
                     companyName: '本初网络',
                     companyPhone: '029-2222365',
                     companyPlace: '陕西省西安市雁塔区',
@@ -298,7 +299,7 @@
                                     <row>
                                         <i-col  span="12">
                                             <form-item label="营业执照电子版">
-                                                {{ shopMessage.companyPhone }}
+                                                <img :src="shopMessage.companyLogo" alt="">
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -399,7 +400,7 @@
                                 <row>
                                     <i-col span="12">
                                         <form-item label="">
-                                            <i-button @click.native="submitRenewal" type="primary">
+                                            <i-button :loading="loading" @click.native="submitRenewal" type="primary">
                                                 <span v-if="!loading">确认提交</span>
                                                 <span v-else>正在提交…</span>
                                             </i-button>

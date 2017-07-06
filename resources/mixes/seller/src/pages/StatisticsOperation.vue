@@ -848,14 +848,6 @@
                         key: 'amount',
                         title: '下单量',
                     },
-                    {
-                        key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
-                        },
-                        title: '操作',
-                        width: 120,
-                    },
                 ],
                 provinceCountData: [
                     {
@@ -900,14 +892,6 @@
                         key: 'amount',
                         title: '下单量',
                     },
-                    {
-                        key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
-                        },
-                        title: '操作',
-                        width: 120,
-                    },
                 ],
                 provinceMoneyData: [
                     {
@@ -951,14 +935,6 @@
                     {
                         key: 'amount',
                         title: '下单商品数',
-                    },
-                    {
-                        key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
-                        },
-                        title: '操作',
-                        width: 120,
                     },
                 ],
                 provinceNumberData: [

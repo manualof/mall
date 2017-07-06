@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Specification;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\ProductSpecification;
 
@@ -24,7 +25,10 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'order'    => 'in:asc,desc',
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
             'page'     => 'numeric',
             'paginate' => 'numeric',
         ], [
@@ -37,7 +41,7 @@ class ListHandler extends Handler
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)
             ->withData($builder->items())
-            ->withMessage('获取产品规格列表成功！')
+            ->withMessage('获取商品规格列表成功！')
             ->withExtra([
                 'pagination' => [
                     'total'         => $builder->total(),

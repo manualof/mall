@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Specification;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\ProductSpecification;
 
@@ -24,19 +25,24 @@ class RemoveHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_product_categories'),
+                'numeric',
+                'required',
+            ],
         ], [
-            'id.numeric'  => '规格 ID 必须为数值',
-            'id.required' => '规格 ID 必须填写',
+            'id.exists'   => '没有对应的商品规格信息',
+            'id.numeric'  => '商品规格 ID 必须为数值',
+            'id.required' => '商品规格 ID 必须填写',
         ]);
         $this->beginTransaction();
         $specification = ProductSpecification::query()->find($this->request->input('id'));
         if ($specification instanceof ProductSpecification && $specification->delete()) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('删除产品规格成功！');
+            $this->withCode(200)->withMessage('删除商品规格成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('没有对应的产品规格信息！');
+            $this->withCode(500)->withError('没有对应的商品规格信息！');
         }
     }
 }

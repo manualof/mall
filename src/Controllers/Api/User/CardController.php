@@ -9,10 +9,10 @@
 namespace Notadd\Mall\Controllers\Api\User;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
-use Notadd\Mall\Handlers\User\Card\AddHandler;
-use Notadd\Mall\Handlers\User\Card\CardHandler;
-use Notadd\Mall\Handlers\User\Card\EmptyHandler;
-use Notadd\Mall\Handlers\User\Card\RemoveHandler;
+use Notadd\Mall\Handlers\User\Cart\AddHandler;
+use Notadd\Mall\Handlers\User\Cart\CardHandler;
+use Notadd\Mall\Handlers\User\Cart\EmptyHandler;
+use Notadd\Mall\Handlers\User\Cart\RemoveHandler;
 
 /**
  * Class CardController.
@@ -20,7 +20,7 @@ use Notadd\Mall\Handlers\User\Card\RemoveHandler;
 class CardController extends Controller
 {
     /**
-     * @param \Notadd\Mall\Handlers\User\Card\AddHandler $handler
+     * @param \Notadd\Mall\Handlers\User\Cart\AddHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -31,7 +31,7 @@ class CardController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Card\CardHandler $handler
+     * @param \Notadd\Mall\Handlers\User\Cart\CardHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -42,7 +42,7 @@ class CardController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Card\EmptyHandler $handler
+     * @param \Notadd\Mall\Handlers\User\Cart\EmptyHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception
@@ -53,7 +53,7 @@ class CardController extends Controller
     }
 
     /**
-     * @param \Notadd\Mall\Handlers\User\Card\RemoveHandler $handler
+     * @param \Notadd\Mall\Handlers\User\Cart\RemoveHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      * @throws \Exception

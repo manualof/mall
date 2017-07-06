@@ -4,13 +4,13 @@
  *
  * @author        TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime      2017-05-24 16:52
+ * @datetime      2017-05-24 13:35
  */
-namespace Notadd\Mall\Handlers\User\Collection;
+namespace Notadd\Mall\Handlers\User\Cart;
 
 use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\UserCollection;
+use Notadd\Mall\Models\UserCart;
 
 /**
  * Class RemoveHandler.
@@ -26,23 +26,23 @@ class RemoveHandler extends Handler
     {
         $this->validate($this->request, [
             'id' => [
-                Rule::exists('mall_user_collections'),
+                Rule::exists('mall_user_carts'),
                 'numeric',
                 'required',
             ],
         ], [
-            'id.exists'   => '没有对应的用户收藏信息',
-            'id.numeric'  => '足迹 ID 必须为数值',
-            'id.required' => '足迹 ID 必须填写',
+            'id.exists'   => '没有对应的购物车信息',
+            'id.numeric'  => '购物车 ID 必须为数值',
+            'id.required' => '购物车 ID 必须填写',
         ]);
         $this->beginTransaction();
-        $follow = UserCollection::query()->find($this->request->input('id'));
-        if ($follow instanceof UserCollection && $follow->delete()) {
+        $cart = UserCart::query()->find($this->request->input('id'));
+        if ($cart instanceof UserCart && $cart->delete()) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('删除用户收藏信息成功！');
+            $this->withCode(200)->withMessage('删除购物车新词信息成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('没有对应的用户收藏信息！');
+            $this->withCode(500)->withError('没有对应的购物车信息！');
         }
     }
 }

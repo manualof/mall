@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\Product;
 
@@ -25,9 +26,15 @@ class CreateHandler extends Handler
     {
         $this->validate($this->request, [
             'barcode'           => 'numeric',
-            'brand_id'          => 'numeric',
+            'brand_id'          => [
+                Rule::exists('mall_product_brands'),
+                'numeric',
+            ],
             'business_item'     => 'numeric',
-            'category_id'       => 'numeric',
+            'category_id'       => [
+                Rule::exists('mall_product_categories'),
+                'numeric',
+            ],
             'description'       => 'required',
             'name'              => 'required',
             'price'             => 'required|numeric',
@@ -37,9 +44,11 @@ class CreateHandler extends Handler
             'inventory_warning' => 'numeric',
         ], [
             'barcode.numeric'           => '商品条形码必须为数值',
+            'brand_id.exists'           => '没有对应的品牌信息',
             'brand_id.numeric'          => '品牌 ID 必须为数值',
             'business_item.numeric'     => '商家货号必须为数值',
-            'category_id.numeric'       => '分类 ID 必须为数值',
+            'category_id.exists'        => '没有对应的商品分类信息',
+            'category_id.numeric'       => '商品分类 ID 必须为数值',
             'name.required'             => '商品名称必须填写',
             'price.numeric'             => '价格必须为数值',
             'price.required'            => '价格必须填写',
@@ -65,10 +74,10 @@ class CreateHandler extends Handler
         ]);
         if (Product::query()->create($data)) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('添加产品成功！');
+            $this->withCode(200)->withMessage('添加商品成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('添加产品失败！');
+            $this->withCode(500)->withError('添加商品失败！');
         }
     }
 }

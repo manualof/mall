@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Store\Category;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreCategory;
 
@@ -24,13 +25,18 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'store_id' => 'required|numeric',
+            'store_id' => [
+                Rule::exists('mall_stores'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'store_id.exists'   => '没有对应的店铺信息',
             'store_id.required' => '店铺 ID 必须填写',
             'store_id.numeric'  => '店铺 ID 必须为数值',
         ]);
         $builder = StoreCategory::query();
         $builder->where('store_id', $this->request->input('store_id'));
-        $this->withCode(200)->withData($builder->get())->withMessage('获取产品列表成功！');
+        $this->withCode(200)->withData($builder->get())->withMessage('获取商品列表成功！');
     }
 }

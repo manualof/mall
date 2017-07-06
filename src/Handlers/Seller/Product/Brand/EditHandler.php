@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Brand;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\ProductBrand;
 
@@ -24,17 +25,31 @@ class EditHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'category_id' => 'required|numeric',
-            'id'          => 'required|numeric',
+            'category_id' => [
+                Rule::exists('mall_product_categories'),
+                'numeric',
+                'required',
+            ],
+            'id' => [
+                Rule::exists('mall_product_brands'),
+                'numeric',
+                'required',
+            ],
             'logo'        => 'required',
             'name'        => 'required',
             'order'       => 'numeric',
             'recommend'   => 'numeric',
             'show'        => 'required|in:image,text',
-            'store_id'    => 'required|numeric',
+            'store_id'    => [
+                Rule::exists('mall_stores'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'category_id.exists'   => '没有对应的商品分类信息',
             'category_id.numeric'  => '分类 ID 必须为数值',
             'category_id.required' => '分类 ID 必须填写',
+            'id.exists'   => '没有对应的品牌信息',
             'id.numeric'           => '品牌 ID 必须为数值',
             'id.required'          => '品牌 ID 必须填写',
             'logo.required'        => '品牌 Logo 必须填写',
@@ -43,6 +58,7 @@ class EditHandler extends Handler
             'recommend.numeric'    => '是否推荐为数值',
             'show.in'              => '显示方式值超越限制',
             'show.required'        => '显示方式必须填写',
+            'store_id.exists'      => '没有对应的店铺信息',
             'store_id.numeric'     => '店铺 ID 必须为数值',
             'store_id.required'    => '店铺 ID 必须填写',
         ]);

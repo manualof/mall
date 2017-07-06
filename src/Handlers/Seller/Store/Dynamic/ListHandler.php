@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Dynamic;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreDynamic;
 
@@ -27,19 +28,24 @@ class ListHandler extends Handler
             'order'    => 'in:asc,desc',
             'page'     => 'numeric',
             'paginate' => 'numeric',
-            'store_id' => 'required|numeric',
+            'store_id' => [
+                Rule::exists('mall_stores'),
+                'numeric',
+                'required',
+            ],
         ], [
             'order.in'          => '排序规则错误',
             'page.numeric'      => '当前页面必须为数值',
             'paginate.numeric'  => '分页数必须为数值',
-            'store_id.numeric'  => '店铺 ID 必须为数值',
+            'store_id.exists'   => '没有对应的店铺信息',
             'store_id.required' => '店铺 ID 必须填写',
+            'store_id.numeric'  => '店铺 ID 必须为数值',
         ]);
         $builder = StoreDynamic::query();
         $builder->where('store_id', $this->request->input('store_id'));
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
-        $this->withCode(200)->withData($builder->items())->withMessage('获取产品列表成功！')->withExtra([
+        $this->withCode(200)->withData($builder->items())->withMessage('获取商品列表成功！')->withExtra([
             'pagination' => [
                 'total'         => $builder->total(),
                 'per_page'      => $builder->perPage(),

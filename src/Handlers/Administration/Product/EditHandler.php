@@ -70,10 +70,10 @@ class EditHandler extends Handler
         $product = Product::query()->find($this->request->input('id'));
         if ($product instanceof Product && $product->update($data)) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('修改产品信息成功！');
+            $this->withCode(200)->withMessage('修改商品信息成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('没有对应的产品信息！');
+            $this->withCode(500)->withError('没有对应的商品信息！');
         }
     }
 }

@@ -40,7 +40,7 @@
                         key: 'categoryName',
                         render() {
                             return `<span>{{ row.categoryName }}</span>
-                                    <i-button type="ghost" type="small" @click.native="addSubordinate">新增下级</i-button>`;
+                                    <i-button type="ghost" size="small" @click.native="addSubordinate">新增下级</i-button>`;
                         },
                         title: '分类名称',
                     },
@@ -63,8 +63,8 @@
                         align: 'center',
                         key: 'action',
                         render(row, column, index) {
-                            return `<i-button @click.native="edit(${index})" type="ghost">编辑</i-button>
-                                    <i-button @click.native="remove(${index})" class="delete-ad"
+                            return `<i-button @click.native="edit(${index})" size="small" type="ghost">编辑</i-button>
+                                    <i-button @click.native="remove(${index})" size="small" class="delete-ad"
                                      type="ghost">删除</i-button>`;
                         },
                         title: '操作',

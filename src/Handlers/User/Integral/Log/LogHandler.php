@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\User\Integral\Log;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\UserIntegralLog;
 
@@ -24,8 +25,13 @@ class LogHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_user_integral_logs'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'id.exists'   => '没有对应的用户积分日志信息',
             'id.numeric'  => '积分日志 ID 必须为数值',
             'id.required' => '积分日志 ID 必须填写',
         ]);

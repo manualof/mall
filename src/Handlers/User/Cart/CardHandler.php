@@ -2,20 +2,20 @@
 /**
  * This file is part of Notadd.
  *
- * @author TwilRoad <269044570@qq.com>
+ * @author        TwilRoad <heshudong@ibenchu.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-06-29 15:28
+ * @datetime      2017-05-24 13:37
  */
-namespace Notadd\Mall\Handlers\User\Integral;
+namespace Notadd\Mall\Handlers\User\Cart;
 
 use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
-use Notadd\Mall\Models\UserIntegral;
+use Notadd\Mall\Models\UserCart;
 
 /**
- * Class IntegralHandler.
+ * Class CardHandler.
  */
-class IntegralHandler extends Handler
+class CardHandler extends Handler
 {
     /**
      * Execute Handler.
@@ -35,11 +35,7 @@ class IntegralHandler extends Handler
             'user_id.numeric'  => '用户 ID 必须为数值',
             'user_id.required' => '用户 ID 必须填写',
         ]);
-        $integral = UserIntegral::query()->where('user', $this->request->input('user_id'))->first();
-        if ($integral instanceof UserIntegral) {
-            $this->withCode(200)->withData($integral)->withMessage('获取用户积分信息成功！');
-        } else {
-            $this->withCode(500)->withError('没有对应的用户积分信息！');
-        }
+        $cart = UserCart::query()->where('user_id', $this->request->input('user_id'))->get();
+        $this->withCode(200)->withData($cart)->withMessage('获取购物车信息成功！');
     }
 }

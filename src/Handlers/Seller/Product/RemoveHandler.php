@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\Product;
 
@@ -24,18 +25,24 @@ class RemoveHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required',
+            'id' => [
+                Rule::exists('mall_products'),
+                'numeric',
+                'required',
+            ],
         ], [
-            'id.required' => '产品 ID 必须填写',
+            'id.exists'   => '没有对应的商品信息',
+            'id.numeric'  => '商品 ID 必须为数值',
+            'id.required' => '商品 ID 必须填写',
         ]);
         $this->beginTransaction();
         $product = Product::query()->find($this->request->input('id'));
         if ($product instanceof Product && $product->delete()) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('删除产品成功！');
+            $this->withCode(200)->withMessage('删除商品成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('没有对应的产品信息！');
+            $this->withCode(500)->withError('没有对应的商品信息！');
         }
     }
 }

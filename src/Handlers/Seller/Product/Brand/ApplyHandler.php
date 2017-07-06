@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Brand;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\ProductBrand;
 
@@ -24,14 +25,23 @@ class ApplyHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'category_id' => 'required|numeric',
+            'category_id' => [
+                Rule::exists('mall_product_categories'),
+                'numeric',
+                'required',
+            ],
             'logo'        => 'required',
             'name'        => 'required',
             'order'       => 'numeric',
             'recommend'   => 'numeric',
             'show'        => 'required|in:image,text',
-            'store_id'    => 'required|numeric',
+            'store_id'    => [
+                Rule::exists('mall_stores'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'category_id.exists'   => '没有对应的商品分类信息',
             'category_id.numeric'  => '分类 ID 必须为数值',
             'category_id.required' => '分类 ID 必须填写',
             'logo.required'        => '品牌 Logo 必须填写',
@@ -40,6 +50,7 @@ class ApplyHandler extends Handler
             'recommend.numeric'    => '是否推荐为数值',
             'show.in'              => '显示方式值超越限制',
             'show.required'        => '显示方式必须填写',
+            'store_id.exists'      => '没有对应的店铺信息',
             'store_id.numeric'     => '店铺 ID 必须为数值',
             'store_id.required'    => '店铺 ID 必须填写',
         ]);
@@ -55,10 +66,10 @@ class ApplyHandler extends Handler
         ]);
         if (ProductBrand::query()->create($data)) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('申请产品成功！');
+            $this->withCode(200)->withMessage('申请商品品牌成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withError(500)->withError('申请产品失败！');
+            $this->withError(500)->withError('申请商品品牌失败！');
         }
     }
 }

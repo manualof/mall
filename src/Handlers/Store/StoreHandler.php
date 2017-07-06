@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Store;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\Store;
 
@@ -24,8 +25,13 @@ class StoreHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_stores'),
+                'numeric',
+                'required',
+            ],
         ], [
+            'id.exists'   => '没有对应的店铺信息',
             'id.numeric'  => '店铺 ID 必须为数值',
             'id.required' => '店铺 ID 必须填写！',
         ]);
