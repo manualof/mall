@@ -196,16 +196,13 @@
                 inventoryColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         key: 'type',
                         title: '套餐类型',
-                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'version',
                         title: '选择版本',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -214,7 +211,6 @@
                             return '<i-input style="width: 64px"></i-input>';
                         },
                         title: '商品价格（元）',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -223,7 +219,6 @@
                             return '<i-input style="width: 64px"></i-input>';
                         },
                         title: '市场价（元）',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -232,7 +227,6 @@
                             return '<i-input style="width: 64px"></i-input>';
                         },
                         title: '库存',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -241,7 +235,6 @@
                             return '<i-input style="width: 64px"></i-input>';
                         },
                         title: '预警值',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -250,7 +243,7 @@
                             return '<i-input style="width: 124px"></i-input>';
                         },
                         title: '商家货号',
-                        width: 200,
+                        width: 160,
                     },
                     {
                         align: 'center',
@@ -259,7 +252,7 @@
                             return '<i-input style="width: 124px"></i-input>';
                         },
                         title: '商品条形码',
-                        width: 300,
+                        width: 160,
                     },
                 ],
                 inventoryData: [
@@ -318,6 +311,7 @@
                     },
                 ],
                 selectVersion: ['256GB', '128GB', '64GB', '32GB'],
+                self: this,
                 shopStyle: [
                     {
                         label: '新增分类1',
@@ -534,7 +528,7 @@
                                         </i-col>
                                     </row>
                                     <row>
-                                        <i-col span="24">
+                                        <i-col span="23">
                                             <form-item label="库存配置">
                                                 <i-table class="goods-table"
                                                          :columns="inventoryColumns"
