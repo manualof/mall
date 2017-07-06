@@ -1142,6 +1142,10 @@
                     autoplay: 5000,
                     loop: true,
                     pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    paginationBulletRender(s, index, className) {
+                        return `<span class="${className}">${(index + 1)}</span>`;
+                    },
                 },
                 yearOfferList: [
                     {
