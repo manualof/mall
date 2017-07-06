@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Brand;
 
+use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\ProductBrand;
 
@@ -24,7 +25,10 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'order'    => 'in:asc,desc',
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
             'page'     => 'numeric',
             'paginate' => 'numeric',
         ], [
