@@ -13,7 +13,17 @@
                 addData: {
                     brandName: '',
                     disabledGroup: '图片',
-                    initials: '',
+                    initial: 'A',
+                    initials: [
+                        {
+                            label: 'A',
+                            value: '1',
+                        },
+                        {
+                            label: 'B',
+                            value: '2',
+                        },
+                    ],
                     logo: '',
                     selectStyle: ['个护化妆', '营养辅食'],
                     sort: '',
@@ -26,6 +36,13 @@
                     brandName: [
                         {
                             message: '名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    initial: [
+                        {
+                            message: '名称首字母不能为空',
                             required: true,
                             trigger: 'blur',
                         },
@@ -327,9 +344,9 @@
                         </row>
                         <row>
                             <i-col span="12">
-                                <form-item label="名称首字母">
-                                    <i-select placeholder="请选择" v-model="addData.initials">
-                                        <i-option v-for="item in initials" :value="item.value"
+                                <form-item label="名称首字母" prop="initial">
+                                    <i-select :placeholder="addData.initial">
+                                        <i-option v-for="item in addData.initials" :value="item.value"
                                                   :key="item">{{ item.label }}</i-option>
                                     </i-select>
                                 </form-item>
