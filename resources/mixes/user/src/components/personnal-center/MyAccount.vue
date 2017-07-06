@@ -16,11 +16,21 @@
                     <div class="group-input">
                         <div class="label-l">性别</div>
                         <div class="msg">
-                            <Radio-group v-model="sex">
-                                <Radio label="男"></Radio>
-                                <Radio label="女"></Radio>
-                                <Radio label="保密"></Radio>
-                            </Radio-group>
+                            <label class="radio-box">
+                                <input type="radio" name="sex">
+                                <span></span>
+                                男
+                            </label>
+                            <label class="radio-box">
+                                <input type="radio" name="sex">
+                                <span></span>
+                                女
+                            </label>
+                            <label class="radio-box">
+                                <input type="radio" name="sex">
+                                <span></span>
+                                保密
+                            </label>
                         </div>
                     </div>
                     <div class="group-input">

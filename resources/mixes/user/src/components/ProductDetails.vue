@@ -249,14 +249,14 @@
                         </div>
                         <div class="evaluation-select">
                             <div class="select">
-                                <label>
+                                <label class="radio-box">
                                     <input type="radio" name="evaluation-select"/>
                                     <span></span>
                                     全部评价
                                 </label>
                             </div>
                             <div class="select">
-                                <label>
+                                <label class="radio-box">
                                     <input type="radio" name="evaluation-select"/>
                                     <span></span>
                                     图片
