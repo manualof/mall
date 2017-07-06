@@ -159,7 +159,7 @@
                         <div class="talkeds" v-for="talk in kefu">
                             <p class="talk-name">{{ talk.name }}</p>
                            <div class="chilrd" v-for="item in talk.items">
-                               {{item}}&nbsp;&nbsp;&nbsp;<img :src="talked" alt="">
+                               {{ item }}&nbsp;&nbsp;&nbsp;<img :src="talked" alt="">
                            </div>
                         </div>
                     </div>
@@ -568,6 +568,9 @@
             },
         },
         methods: {
+            change(num) {
+                this.goodskind[num].onoff = !this.goodskind[num].onoff;
+            },
             preview($event) {
                 const index = $event.target.getAttribute('index');
                 this.bigImg = this.smallImgs[index];
@@ -590,9 +593,6 @@
             },
             tabSWitch(index) {
                 this.activeTab = index;
-            },
-            change(num) {
-                this.goodskind[num].onoff = !this.goodskind[num].onoff;
             },
 //            imgBigbox1() {
 //                this.show = 1;
