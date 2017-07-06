@@ -5,20 +5,22 @@
         </div>
         <div class="clearfix"></div>
         <div class="row">
-            <div  v-for="(item, index) in goods" v-if="item.collector" class="col-sm-3">
+            <div  v-for="(item, index) in goods" class="col-sm-3">
                 <div>
-                    <img :src="item.imgsrc" alt="">
+                    <router-link to="/search/product-details">
+                        <img :src="item.imgsrc" alt="">
+                    </router-link>
                     <div class="goods-msg">
                         <div class="price">
                             <i>￥</i><span>{{ item.pricle }}</span>
                             <span class="old-price">￥{{ item.oldprice }}</span>
                         </div>
-                        <div class="goods-name">
+                        <router-link to="/search/product-details" class="goods-name">
                             {{ item.name }}
-                        </div>
+                        </router-link>
                         <div class="xiaoliang">
                             <div class="month-xiaoliang">本月销量 <b>{{ item.num }} </b>件</div>
-                            <div @click="quxiao(index)" class="quxiao">取消收藏</div>
+                            <div @click.self="cancel(index)" class="quxiao">取消收藏</div>
                         </div>
                     </div>
                 </div>
@@ -93,8 +95,8 @@
             };
         },
         methods: {
-            quxiao(num) {
-                this.goods[num].collector = false;
+            cancel(num) {
+                this.goods.splice(num, 1);
             },
         },
     };
