@@ -2,21 +2,6 @@
     <div class="home padding-attribute">
         <!---->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!--<ul class="carousel-indicators">-->
-                <!--<li data-target="#myCarousel" data-slide-to="0" class="active">1</li>-->
-                <!--<li data-target="#myCarousel" data-slide-to="1">2</li>-->
-                <!--<li data-target="#myCarousel" data-slide-to="2">3</li>-->
-                <!--<li data-target="#myCarousel" data-slide-to="3">4</li>-->
-            <!--</ul>-->
-            <!--<div class="carousel-inner">-->
-                <!--<div class="item" v-for="(item, index) in slideList" :class="{active: index == 0}">-->
-                    <!--<img :src="item.img" alt="First slide">-->
-                    <!--<div class="slide-img-content container text-center">-->
-                        <!--<h1>{{ item.title }}</h1>-->
-                        <!--<p class="content">{{ item.intro }} <span>{{ item.discount }}</span>。</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
             <swiper :options="swiperOption" ref="mySwiperA">
                 <swiper-slide v-for="(item, index) in slideList" :key="item.Id">
                     <router-link to="/">
@@ -1138,9 +1123,9 @@
                     },
                 },
                 swiperOption: {
-                    notNextTick: true,
                     autoplay: 5000,
                     loop: true,
+                    notNextTick: true,
                     pagination: '.swiper-pagination',
                     paginationClickable: true,
                     paginationBulletRender(s, index, className) {

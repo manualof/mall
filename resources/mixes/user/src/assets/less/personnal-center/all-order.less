@@ -284,4 +284,43 @@
             }
         }
     }
+    .checkProduct {
+        position: relative;
+        input {
+            left: 0;
+            position: absolute;
+            top: 0;
+            visibility: hidden;
+            &:checked {
+                & + span {
+                    border-color: #de2634;
+                    position: relative;
+                    &:after {
+                        border: 2px solid #de2634;
+                        border-top-color: transparent;
+                        border-right-color: transparent;
+                        bottom: 10px;
+                        content: "";
+                        height: 8px;
+                        left: 1px;
+                        position: absolute;
+                        -ms-transform: rotate(-60deg);
+                        -moz-transform: rotate(-60deg);
+                        -webkit-transform: rotate(-60deg);
+                        transform: rotate(-45deg);
+                        top: 0;
+                        width: 13px;
+                    }
+                }
+            }
+        }
+        span {
+            background-color: #ffffff;
+            border: 1px solid #d0d0d0;
+            display: inline-block;
+            height: 16px;
+            margin-bottom: 0;
+            width: 16px;
+        }
+    }
 }

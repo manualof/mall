@@ -46,6 +46,12 @@
                     <tr>
                         <td colspan="8">
                             <ul class="clearfix shop-info">
+                                <li>
+                                    <label class="checkProduct">
+                                        <input type="checkbox" name="product">
+                                        <span></span>
+                                    </label>
+                                </li>
                                 <li>{{ order.time }}</li>
                                 <li>{{ order.order_code }}</li>
                                 <li>{{ order.shop_name }}</li>
