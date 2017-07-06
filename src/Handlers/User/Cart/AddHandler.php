@@ -6,7 +6,7 @@
  * @copyright (c) 2017, notadd.com
  * @datetime      2017-05-24 13:34
  */
-namespace Notadd\Mall\Handlers\User\Card;
+namespace Notadd\Mall\Handlers\User\Cart;
 
 use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
