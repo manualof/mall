@@ -1,13 +1,13 @@
 <template>
     <div class="my-account">
         <div class="saases-title">
-            <span @click="qiehuan1" :class="{xuanzhong: status === 1}">基本信息</span>
-            <span @click="qiehuan2" :class="{xuanzhong: status === 2}">账号绑定</span>
-            <span @click="qiehuan3" :class="{xuanzhong: status === 3}">更换头像</span>
+            <span @click="qiehuan1" :class="{selected: status === 1}">基本信息</span>
+            <span @click="qiehuan2" :class="{selected: status === 2}">账号绑定</span>
+            <span @click="qiehuan3" :class="{selected: status === 3}">更换头像</span>
         </div>
         <div class="clearfix"></div>
         <div class="box">
-            <div v-if="status === 1" class="jiben-msg">
+            <div v-if="status === 1">
                 <form action="">
                     <div class="group-input first-group">
                         <div class="label-l">真实姓名</div>
@@ -27,7 +27,7 @@
                                 女
                             </label>
                             <label class="radio-box">
-                                <input type="radio" name="sex" value="全部" v-model="info.sex">
+                                <input type="radio" name="sex" value="保密" v-model="info.sex">
                                 <span></span>
                                 保密
                             </label>
@@ -36,12 +36,9 @@
                     <div class="group-input">
                         <div class="label-l">生日</div>
                         <div class="msg">
-                            <Date-picker
-                                    :value="value2"
-                                    format="yyyy年MM月dd日"
-                                    type="date"
-                                    placeholder="选择日期">
-                            </Date-picker>
+                            <datepicker language="zh" v-model="info.birthday" name="birthday"
+                                        format="yyyy MMM dd">
+                            </datepicker>
                         </div>
                     </div>
                     <div class="group-input">
@@ -69,10 +66,8 @@
                         </div>
                     </div>
                 </form>
-
-
             </div>
-            <div v-if="status === 2" class="zhanghao">
+            <div v-if="status === 2">
                 <div class="bangding">
                     <span>绑定QQ帐号</span>
                     <span class="weibangding">未绑定（绑定后即可用QQ账号登录）</span>
@@ -84,7 +79,7 @@
                     <div class="jiebang"><router-link to="">解绑</router-link></div>
                 </div>
             </div>
-            <div v-if="status === 3" class="genghuan">
+            <div v-if="status === 3">
                 <div class="group-input">
                     <div class="label-l">头像预览</div>
                     <div class="msg">
@@ -104,16 +99,17 @@
     </div>
 </template>
 <script>
+    import Datepicker from 'vuejs-datepicker';
     import Ascader from 'iview/src/components/cascader';
-    import Radio from 'iview/src/components/radio';
-    import DatePicker from 'iview/src/components/date-picker';
-    import RadioGroup from 'iview/src/components/radio/radio-group';
     import Upload from 'iview/src/components/upload/upload';
     import IButton from 'iview/src/components/button';
 
     export default{
         components: {
-            Ascader, Radio, DatePicker, RadioGroup, Upload, IButton,
+            Ascader,
+            Datepicker,
+            Upload,
+            IButton,
         },
         data() {
             return {
@@ -169,6 +165,7 @@
                 info: {
                     address: [],
                     ali: '',
+                    birthday: new Date(),
                     email: '10507822722@qq.com',
                     imgsrc: '',
                     realName: 'ibenchu',
