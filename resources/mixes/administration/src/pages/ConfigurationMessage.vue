@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 merchantColumns: [
                     {
@@ -22,39 +23,82 @@
                     {
                         align: 'center',
                         key: 'stationLetter',
-                        render() {
-                            return `<i-switch size="large" v-model="row.stationLetter">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span></i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.stationLetter,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '站内信',
                     },
                     {
                         align: 'center',
                         key: 'smsStatus',
-                        render() {
-                            return `<i-switch size="large" v-model="row.smsStatus">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span> </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.smsStatus,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '手机短信',
                     },
                     {
                         align: 'center',
                         key: 'mailStatus',
-                        render() {
-                            return `<i-switch size="large" v-model="row.mailStatus">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span> </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.mailStatus,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '邮件',
                     },
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="editor-btn" @click.native="toEdit(${index})"
-                                    size="small"  type="ghost">编辑</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.toEdit(data.index);
+                                    },
+                                },
+                                props: {
+                                    class: 'editor-btn',
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '编辑');
                         },
                         title: '操作',
                         width: '140',
@@ -112,39 +156,82 @@
                     {
                         align: 'center',
                         key: 'stationLetter',
-                        render() {
-                            return `<i-switch size="large" v-model="row.stationLetter">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span> </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.stationLetter,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '站内信',
                     },
                     {
                         align: 'center',
                         key: 'smsStatus',
-                        render() {
-                            return `<i-switch size="large" v-model="row.smsStatus">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span> </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.smsStatus,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '手机短信',
                     },
                     {
                         align: 'center',
                         key: 'mailStatus',
-                        render() {
-                            return `<i-switch size="large" v-model="row.mailStatus">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span> </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.mailStatus,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '邮件',
                     },
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="editor-btn" @click="remove(${index})"
-                                    size="small" type="ghost">编辑</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.toEdit(data.index);
+                                    },
+                                },
+                                props: {
+                                    class: 'editor-btn',
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '编辑');
                         },
                         title: '操作',
                         width: 140,
