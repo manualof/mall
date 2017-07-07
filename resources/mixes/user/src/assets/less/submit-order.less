@@ -1,3 +1,4 @@
+//@import "../../../node_modules/iview/src/styles/mixins/select.less";
 .submit-order {
     background-color: #fff;
     border-bottom: 1px solid #d0d0d0;
@@ -449,19 +450,28 @@
                 }
                 .ivu-cascader .ivu-input,
                 .ivu-select-single .ivu-select-selection {
+                    border: 1px solid #e5e5e5;
                     border-radius: 0;
+                    height: 40px;
+                    padding: 0 10px 0 20px;
                     width: 180px;
                 }
+                .ivu-icon-load-c {
+                    left: 150px;
+                    top: 18px;
+                }
                 .ivu-select-single .ivu-select-selection {
-                    margin-left: 10px;
+                    border: 0;
+                    border: 1px solid #e5e5e5;
+                    margin-left: 280px;
                     height: 40px;
                 }
                 .ivu-select-single .ivu-select-selection .ivu-select-placeholder,
                 .ivu-select-single .ivu-select-selection .ivu-select-selected-value {
                     line-height: 40px;
                 }
-                .invoice-select .ivu-select-selection{
-                    margin-left: 0;
+                .invoice-select .ivu-select-selection {
+                    margin-left: 90px;
                 }
                 .signup-form {
                     padding-left: 54px;
@@ -506,7 +516,6 @@
                 }
             }
         }
-
         .address-footer {
             .signup-form-group {
                 padding-left: 142px;
@@ -514,6 +523,7 @@
         }
     }
 }
+
 .order-btn {
     background-color: #de2634;
     border: 0 none;
@@ -528,6 +538,88 @@
         color: #fff;
     }
 }
+
+.ivu-select-arrow {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    line-height: 1;
+    margin-top: -7px;
+    font-size: 14px;
+    color: #80848f;
+    transition: all .2s ease-in-out;
+}
+.ivu-select-selection .ivu-select-arrow:first-of-type {
+    display: none;
+    cursor: pointer;
+}
+.ivu-icon-arrow-down-b:before {
+    content: "\F104";
+}
+.ivu-select-selection {
+    display: block;
+    box-sizing: border-box;
+    outline: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #dddee1;
+    transition: all .2s ease-in-out;
+}
+.ivu-select-visible .ivu-select-selection {
+    border-color: #57a3f3;
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(45,140,240,.2);
+}
+.ivu-select-dropdown {
+    width: inherit;
+    max-height: 200px;
+    overflow: auto;
+    margin: 5px 0;
+    padding: 5px 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    position: absolute;
+    z-index: 900;
+}
+.ivu-article .ivu-select ul {
+    padding-left: 0!important;
+    list-style-type: none;
+}
+.ivu-article li:not([class^=ivu-]) {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.ivu-select-not-found li:not([class^=ivu-]) {
+    margin-bottom: 0;
+}
+.ivu-article .ivu-select ul {
+    padding-left: 0!important;
+    list-style-type: none;
+}
+.ivu-select-item-focus, .ivu-select-item:hover {
+    background: #f3f3f3;
+}
+.ivu-select-item {
+    margin: 0;
+    line-height: normal;
+    padding: 7px 16px;
+    clear: both;
+    color: #495060;
+    font-size: 12px!important;
+    white-space: nowrap;
+    list-style: none;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
 .notNeed {
     background: none;
     border: 1px solid #e5e5e5;
