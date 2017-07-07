@@ -9,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 returnsColumns: [
                     {
@@ -58,9 +59,31 @@
                     {
                         align: 'center',
                         key: 'complaintAction',
-                        render(row, column, index) {
-                            return `<i-button @click.native="check(${index})" size="small" type="ghost" v-if="row.isLook">查看</i-button>
-                                     <i-button  @click.native="deal(${index})" size="small" type="ghost" v-if="!row.isLook">处理</i-button>`;
+                        render(h, data) {
+                            if (data.row.isLook) {
+                                return h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.check(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '查看');
+                            }
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.deal(data.index);
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '处理');
                         },
                         title: '操作',
                         width: 120,
