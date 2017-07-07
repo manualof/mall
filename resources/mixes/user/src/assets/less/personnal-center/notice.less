@@ -1,0 +1,44 @@
+.notice {
+    h4 {
+        border-bottom: 1px solid #e5e5e5;
+        color: #444;
+        font-size: 18px;
+        font-weight: 500;
+        height: 77px;
+        line-height: 95px;
+        padding-left: 18px;
+        position: relative;
+        &:after {
+            background: #de2634;
+            bottom: 0;
+            content: '';
+            height: 2px;
+            left: 0;
+            margin-bottom: -1px;
+            position: absolute;
+            width: 144px;
+        }
+    }
+    .list-head {
+        background: #f7f7f7;
+        border: 1px solid #e5e5e5;
+        margin-top: 20px;
+        li {
+            color: #999999;
+            float: right;
+            line-height: 38px;
+            padding: 0 20px;
+            text-align: center;
+            &:first-child {
+                float: left;
+                text-align: left;
+            }
+            &:last-child {
+                width: 120px;
+            }
+            &:nth-child(2) {
+                width: 160px;
+            }
+        }
+    }
+}
