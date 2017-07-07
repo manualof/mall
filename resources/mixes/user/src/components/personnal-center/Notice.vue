@@ -7,11 +7,11 @@
             <li class="table-li">添加时间</li>
         </ul>
         <ul class="notice-list">
-            <li v-for="notice in noticeList">
+            <li v-for="(notice,index) in noticeList">
                 <ul class="clearfix">
                     <li class="pull-left table-li">{{ notice.goods }}</li>
                     <li class="pull-right table-li">
-                        <a class="delete-btn">删除</a>
+                        <a class="delete-btn" @click="deleteNotice(index)">删除</a>
                     </li>
                     <li class="pull-right table-li">{{ notice.time }}</li>
                 </ul>
@@ -38,6 +38,11 @@
                     },
                 ],
             };
+        },
+        methods: {
+            deleteNotice(index) {
+                this.noticeList.splice(index, 1);
+            },
         },
     };
 </script>
