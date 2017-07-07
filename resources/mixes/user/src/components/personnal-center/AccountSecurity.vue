@@ -49,23 +49,7 @@
                         </li>
                         <li class="clearfix" :class="{ already: temp >= 2 }">
                             <ul class="clearfix cricle-box">
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
+                                <li class="cricle" v-for="item in 17"></li>
                             </ul>
                             <div class="step">
                                 <i class="step-list">2</i>
@@ -74,23 +58,7 @@
                         </li>
                         <li class="clearfix" :class="{ already: temp >= 3 }">
                             <ul class="clearfix cricle-box">
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
-                                <li class="cricle"></li>
+                                <li class="cricle" v-for="item in 17"></li>
                             </ul>
                             <div class="step">
                                 <i class="step-list">3</i>
@@ -109,12 +77,12 @@
                     </div>
                     <div class="signup-form-group group-code clearfix">
                         <label class="form-title float-left">请填写手机验证码</label>
-                        <input type="text" class="signup-form-control signup-form-code float-left" name="verification">
+                        <input type="text" class="form-control signup-form-control signup-form-code float-left" name="verification">
                         <div class="signup-form-control signup-form-obtain-code float-left">获取短信验证码</div>
                     </div>
                     <div class="signup-form-group clearfix">
                         <label class="form-title float-left">验证码</label>
-                        <input type="text" class="signup-form-control signup-form-code float-left" name="verification">
+                        <input type="text" class=" form-control signup-form-control signup-form-code float-left" name="verification">
                         <div class="signup-form-control verification-code float-left">1234</div>
                         <a class="float-left">看不清?换一张</a>
                     </div>

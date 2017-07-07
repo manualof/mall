@@ -77,69 +77,35 @@
                             {
                                 children: [
                                     {
-                                        label: '婴儿推车',
-                                        value: '婴儿推车',
+                                        label: '耀县',
+                                        value: '1',
                                     },
                                     {
-                                        label: '自行车',
-                                        value: '自行车',
+                                        label: '王益区',
+                                        value: '2',
                                     },
                                     {
-                                        label: '婴儿推车',
-                                        value: '婴儿推车',
-                                    },
-                                    {
-                                        label: '电动车',
-                                        value: '电动车',
-                                    },
-                                    {
-                                        label: '安全座椅',
-                                        value: '安全座椅',
+                                        label: '印台区',
+                                        value: '3',
                                     },
                                 ],
-                                label: '童车童床',
-                                value: '童车童床',
+                                label: '铜川市',
+                                value: '1',
                             },
                             {
-                                label: '营养辅食',
-                                value: '营养辅食',
+                                label: '咸阳市',
+                                value: '2',
                             },
                             {
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
+                                label: '宝鸡市',
+                                value: '3',
                             },
                         ],
-                        label: '个护化妆',
-                        value: '个护化妆',
+                        label: '陕西',
+                        value: '1',
                     },
                     {
                         children: [
-                            {
-                                children: [
-                                    {
-                                        label: '婴儿推车1',
-                                        value: '婴儿推车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                    {
-                                        label: '婴儿推车3',
-                                        value: '婴儿推车3',
-                                    },
-                                    {
-                                        label: '电动车',
-                                        value: '电动车',
-                                    },
-                                    {
-                                        label: '安全座椅4',
-                                        value: '安全座椅4',
-                                    },
-                                ],
-                                label: '服饰寝居',
-                                value: '服饰寝居',
-                            },
                             {
                                 children: [
                                     {
@@ -169,8 +135,8 @@
                                 value: '尿裤湿巾',
                             },
                         ],
-                        label: '家用电器',
-                        value: '家用电器',
+                        label: '北京市',
+                        value: '2',
                     },
                 ],
                 goodStyle: [
@@ -196,16 +162,13 @@
                 inventoryColumns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         key: 'type',
                         title: '套餐类型',
-                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'version',
                         title: '选择版本',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -214,7 +177,6 @@
                             return '<i-input style="width: 64px"></i-input>';
                         },
                         title: '商品价格（元）',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -223,7 +185,6 @@
                             return '<i-input style="width: 64px"></i-input>';
                         },
                         title: '市场价（元）',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -232,7 +193,6 @@
                             return '<i-input style="width: 64px"></i-input>';
                         },
                         title: '库存',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -241,7 +201,6 @@
                             return '<i-input style="width: 64px"></i-input>';
                         },
                         title: '预警值',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -250,7 +209,7 @@
                             return '<i-input style="width: 124px"></i-input>';
                         },
                         title: '商家货号',
-                        width: 200,
+                        width: 160,
                     },
                     {
                         align: 'center',
@@ -259,7 +218,7 @@
                             return '<i-input style="width: 124px"></i-input>';
                         },
                         title: '商品条形码',
-                        width: 300,
+                        width: 160,
                     },
                 ],
                 inventoryData: [
@@ -318,6 +277,7 @@
                     },
                 ],
                 selectVersion: ['256GB', '128GB', '64GB', '32GB'],
+                self: this,
                 shopStyle: [
                     {
                         label: '新增分类1',
@@ -534,7 +494,7 @@
                                         </i-col>
                                     </row>
                                     <row>
-                                        <i-col span="24">
+                                        <i-col span="23">
                                             <form-item label="库存配置">
                                                 <i-table class="goods-table"
                                                          :columns="inventoryColumns"
@@ -620,8 +580,7 @@
                                                     建议使用尺寸800*800像素以上，大小不超过4M的正方形图片，单击选中图片，
                                                     可进行上传，替换和删除
                                                 </p>
-                                                <i-button type="ghost">图片上传</i-button>
-                                                <i-button type="ghost">从图片空间删除</i-button>
+                                                <i-button type="ghost">从图片空间上传</i-button>
                                             </form-item>
                                         </i-col>
                                     </row>

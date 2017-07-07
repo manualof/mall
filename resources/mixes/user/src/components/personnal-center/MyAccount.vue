@@ -11,16 +11,26 @@
                 <form action="">
                     <div class="group-input first-group">
                         <div class="label-l">真实姓名</div>
-                        <div class="msg">ibenchu</div>
+                        <div class="msg">{{ info.realName }}</div>
                     </div>
                     <div class="group-input">
                         <div class="label-l">性别</div>
                         <div class="msg">
-                            <Radio-group v-model="sex">
-                                <Radio label="男"></Radio>
-                                <Radio label="女"></Radio>
-                                <Radio label="保密"></Radio>
-                            </Radio-group>
+                            <label class="radio-box">
+                                <input type="radio" name="sex" value="男" v-model="info.sex">
+                                <span></span>
+                                男
+                            </label>
+                            <label class="radio-box">
+                                <input type="radio" name="sex" value="女" v-model="info.sex">
+                                <span></span>
+                                女
+                            </label>
+                            <label class="radio-box">
+                                <input type="radio" name="sex" value="全部" v-model="info.sex">
+                                <span></span>
+                                保密
+                            </label>
                         </div>
                     </div>
                     <div class="group-input">
@@ -36,21 +46,21 @@
                     </div>
                     <div class="group-input">
                         <div class="label-l">邮箱</div>
-                        <div class="msg">{{ emil.replace(reg, "$1****$2") }}
+                        <div class="msg">{{ info.email.replace(reg, "$1****$2") }}
                         <span class="xiugai">修改</span>
                         </div>
                     </div>
                     <div class="group-input">
                         <div class="label-l">所在地区</div>
-                        <div class="msg"><Ascader :data="data" v-model="value1"></Ascader></div>
+                        <div class="msg"><Ascader :data="data" v-model="info.address"></Ascader></div>
                     </div>
                     <div class="group-input">
                         <div class="label-l">QQ</div>
-                        <div class="msg"><input type="text"></div>
+                        <div class="msg"><input type="text" class="form-control" v-model="info.qq"></div>
                     </div>
                     <div class="group-input">
                         <div class="label-l">阿里旺旺</div>
-                        <div class="msg"><input type="text"></div>
+                        <div class="msg"><input type="text" class="form-control" v-model="info.ali"></div>
                     </div>
                     <div class="group-input">
                         <div class="label-l"></div>
@@ -79,7 +89,7 @@
                     <div class="label-l">头像预览</div>
                     <div class="msg">
                         <div class="tupian">
-                            <img :src="imgsrc" alt="">
+                            <img :src="info.imgsrc" alt="">
                         </div>
                         <div class="tishi">头像默认尺寸为120*120px，请根据系统操作提示进行裁剪并生效</div>
                         <Upload
@@ -108,9 +118,6 @@
         data() {
             return {
                 reg: /(.{2}).+(.{2}@.+)/g,
-                status: 1,
-                value1: [],
-                emil: '857159145@qq.com',
                 data: [{
                     value: 'beijing',
                     label: '北京',
@@ -158,12 +165,20 @@
                         },
                     ],
                 }],
-                value2: '2016-01-01',
-                sex: '男',
                 imgName: '',
-                visible: false,
+                info: {
+                    address: [],
+                    ali: '',
+                    email: '10507822722@qq.com',
+                    imgsrc: '',
+                    realName: 'ibenchu',
+                    sex: '男',
+                    qq: '1050782272',
+                },
                 uploadList: [],
-                imgsrc: '',
+                status: 1,
+                value1: [],
+                visible: false,
             };
         },
         methods: {

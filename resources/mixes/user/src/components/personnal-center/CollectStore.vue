@@ -1,27 +1,33 @@
 <template>
     <div class="collect-store">
-        <div class="saases-title">
-            <span>我的收藏</span>
+        <div class="store-title">
+            <h4>我关注的店铺</h4>
         </div>
-        <div class="clearfix"></div>
-        <div class="row">
-            <div  v-for="(item, index) in goods" v-if="item.collector" class="col-sm-3">
-                <div>
-                    <img :src="item.imgsrc" alt="">
-                    <div class="goods-msg">
-                        <div class="price">
-                            <i>￥</i><span>{{ item.pricle }}</span>
-                            <span class="old-price">￥{{ item.oldprice }}</span>
-                        </div>
-                        <div class="goods-name">
-                            {{ item.name }}
-                        </div>
-                        <div class="xiaoliang">
-                            <div class="month-xiaoliang">本月销量 <b>{{ item.num }} </b>件</div>
-                            <div @click="quxiao(index)" class="quxiao">取消收藏</div>
-                        </div>
-                    </div>
+        <div class="attention-store clearfix" v-for="(store, index) in attentionStore" ref="store">
+            <div class="left-store text-center">
+                <router-link :to="{name: 'shop-home'}">
+                    <dl class="store">
+                        <dt><img :src="store.store_img"></dt>
+                        <dd>
+                            <p class="name">{{ store.store_name }} <span>自营</span></p>
+                        </dd>
+                    </dl>
+                </router-link>
+                <div class="store-btn clearfix">
+                    <button class="customer-service">联系客服</button>
+                    <button class="unsubscribe" @click="cancelAttention(store)">取消关注</button>
                 </div>
+            </div>
+            <div class="store-product clearfix">
+                <router-link :to="{name: 'product-details'}">
+                    <dl class="store-product-model " v-for="item in store.storeList">
+                        <dt><img :src="item.img"></dt>
+                        <dd>
+                            <p class="name">{{ item.name }}</p>
+                            <p class="new-price">￥{{ item.price }}</p>
+                        </dd>
+                    </dl>
+                </router-link>
             </div>
         </div>
     </div>
@@ -32,69 +38,79 @@
     export default {
         data() {
             return {
-                goods: [
+                attentionStore: [
                     {
-                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                        imgsrc: image1,
-                        pricle: 3299,
-                        oldprice: 46.88,
-                        num: 3324,
-                        collector: true,
+                        store_img: image1,
+                        store_name: 'XXX母婴用品店1',
+                        storeList: [
+                            {
+                                img: image1,
+                                name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                                price: 48.88,
+                            },
+                            {
+                                img: image1,
+                                name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                                price: 48.88,
+                            },
+                            {
+                                img: image1,
+                                name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                                price: 48.88,
+                            },
+                        ],
                     },
                     {
-                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                        imgsrc: image1,
-                        pricle: 3299,
-                        oldprice: 46.88,
-                        num: 3324,
-                        collector: true,
+                        store_img: image1,
+                        store_name: 'XXX母婴用品店2',
+                        storeList: [
+                            {
+                                img: image1,
+                                name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                                price: 48.88,
+                            },
+                            {
+                                img: image1,
+                                name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                                price: 48.88,
+                            },
+                            {
+                                img: image1,
+                                name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                                price: 48.88,
+                            },
+                        ],
                     },
                     {
-                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                        imgsrc: image1,
-                        pricle: 3299,
-                        oldprice: 46.88,
-                        num: 3324,
-                        collector: true,
-                    },
-                    {
-                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                        imgsrc: image1,
-                        pricle: 3299,
-                        oldprice: 46.88,
-                        num: 3324,
-                        collector: true,
-                    },
-                    {
-                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                        imgsrc: image1,
-                        pricle: 3299,
-                        oldprice: 46.88,
-                        num: 3324,
-                        collector: true,
-                    },
-                    {
-                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                        imgsrc: image1,
-                        pricle: 3299,
-                        oldprice: 46.88,
-                        num: 3324,
-                        collector: true,
-                    },
-                    {
-                        name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                        imgsrc: image1,
-                        pricle: 3299,
-                        oldprice: 46.88,
-                        num: 3324,
-                        collector: true,
+                        store_img: image1,
+                        store_name: 'XXX母婴用品店3',
+                        storeList: [
+                            {
+                                img: image1,
+                                name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                                price: 48.88,
+                            },
+                            {
+                                img: image1,
+                                name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                                price: 48.88,
+                            },
+                            {
+                                img: image1,
+                                name: '西部母婴推荐哆啦A梦可爱儿童玩具',
+                                price: 48.88,
+                            },
+                        ],
                     },
                 ],
             };
         },
         methods: {
-            quxiao(num) {
-                this.goods[num].collector = false;
+            cancelAttention(store) {
+                const index = this.attentionStore.indexOf(store);
+                if (index !== -1) {
+                    this.attentionStore.splice(index, 1);
+                }
             },
         },
     };

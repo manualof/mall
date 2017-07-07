@@ -25,7 +25,7 @@
             return {
                 navigation: [
                     {
-                        to: { name: 'order' },
+                        to: { name: 'all-order' },
                         text: '我的订单',
                     },
                     {

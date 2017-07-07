@@ -131,8 +131,6 @@
                         <div class="analysis-content">
                             <div class="order-money-content">
                                 <div class="select-content">
-                                    <i-button type="ghost" class="export-btn export-sales-btn"
-                                              @click="exportSalesData">导出数据</i-button>
                                     <ul>
                                         <li>
                                             账单状态

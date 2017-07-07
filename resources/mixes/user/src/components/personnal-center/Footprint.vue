@@ -4,14 +4,14 @@
             <span>我的足迹</span>
         </div>
         <div class="clearfix"></div>
-        <div class="goods-list" v-for="(goods, index) in goods " v-if="goods.onoff">
+        <div class="goods-list" v-for="(goods, index) in goods">
             <div class="data">
                 <div class="data-main">{{ goods.name }}</div>
-                <div class="delete" @click="quxiao(index)">删除</div>
+                <div class="delete" @click="deleteItem(index)">删除</div>
             </div>
             <div class="clearfix"></div>
             <div class="row" >
-                <div  v-for="item in goods.childern"  class="col-sm-3">
+                <router-link to="/"  v-for="(item,ind) in goods.childern"  class="col-sm-3" :key="ind">
                     <div>
                         <img :src="item.imgsrc" alt="">
                         <div class="goods-msg">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </router-link>
             </div>
         </div>
 
@@ -38,33 +38,7 @@
                 goods: [
                     {
                         name: '6-25 今天',
-                        onoff: true,
                         childern: [
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
                             {
                                 name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
                                 imgsrc: image1,
@@ -79,38 +53,7 @@
                     },
                     {
                         name: '6-25 今天',
-                        onoff: true,
                         childern: [
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
                             {
                                 name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
                                 imgsrc: image1,
@@ -120,23 +63,7 @@
                     },
                     {
                         name: '6-25 今天',
-                        onoff: true,
                         childern: [
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
-                            {
-                                name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
-                                imgsrc: image1,
-                                pricle: 3299,
-                            },
                             {
                                 name: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
                                 imgsrc: image1,
@@ -163,8 +90,8 @@
             };
         },
         methods: {
-            quxiao(num) {
-                this.goods[num].onoff = false;
+            deleteItem(num) {
+                this.goods.splice(num, 1);
             },
         },
     };

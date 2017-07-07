@@ -22,6 +22,7 @@ i {
     margin: 0;
     padding: 0;
     font-weight: normal;
+    font-style: normal;
 }
 a {
     text-decoration: none;
@@ -249,5 +250,33 @@ button:focus {
                 text-align: center;
             }
         }
+    }
+}
+.radio-box {
+    font-weight: normal;
+    input {
+        visibility: hidden;
+        &:checked + span {
+            border-color: #de2634;
+            position: relative;
+            &:after {
+                background: #de2634;
+                border-radius: 50%;
+                content: '';
+                height: 8px;
+                left: 2px;
+                position: absolute;
+                top: 2px;
+                width: 8px;
+            }
+        }
+    }
+    span {
+        background: #ffffff;
+        border: 1px solid #e5e5e5;
+        border-radius: 50%;
+        display: inline-block;
+        height: 14px;
+        width: 14px;
     }
 }
