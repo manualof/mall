@@ -44,7 +44,7 @@
                     <div class="group-input">
                         <div class="label-l">邮箱</div>
                         <div class="msg">{{ info.email.replace(reg, "$1****$2") }}
-                        <span class="xiugai">修改</span>
+                        <span class="modify">修改</span>
                         </div>
                     </div>
                     <div class="group-input">
@@ -67,31 +67,31 @@
                     </div>
                 </form>
             </div>
-            <div v-if="status === 2">
-                <div class="bangding">
+            <div v-if="status === 2" class="account-bind">
+                <div class="bind">
                     <span>绑定QQ帐号</span>
-                    <span class="weibangding">未绑定（绑定后即可用QQ账号登录）</span>
-                    <div class="jiebang"><router-link to="">绑定</router-link></div>
+                    <span class="wechat-bind">未绑定（绑定后即可用QQ账号登录）</span>
+                    <div class="bind-cancel"><router-link to="">绑定</router-link></div>
                 </div>
-                <div class="bangding">
+                <div class="bind">
                     <span>绑定微信账号</span>
-                    <span class="weibangding">已绑定</span>
-                    <div class="jiebang"><router-link to="">解绑</router-link></div>
+                    <span class="wechat-bind">已绑定</span>
+                    <div class="bind-cancel"><router-link to="">解绑</router-link></div>
                 </div>
             </div>
             <div v-if="status === 3">
                 <div class="group-input">
                     <div class="label-l">头像预览</div>
                     <div class="msg">
-                        <div class="tupian">
+                        <div class="head-img">
                             <img :src="info.imgsrc" alt="">
                         </div>
-                        <div class="tishi">头像默认尺寸为120*120px，请根据系统操作提示进行裁剪并生效</div>
+                        <div class="prompt">头像默认尺寸为120*120px，请根据系统操作提示进行裁剪并生效</div>
                         <Upload
                              :on-success="handleSuccess"
                              action="//jsonplaceholder.typicode.com/posts/">
-                            <i-button class="shangchuan" type="ghost" >图片上传</i-button>
                         </Upload>
+                        <a class="upload-btn" type="ghost" >图片上传</a>
                     </div>
                 </div>
             </div>
