@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 classificationData: [
                     {
@@ -35,16 +36,30 @@
                     },
                     {
                         key: 'sort',
-                        render() {
-                            return '<i-input type="ghost" style="width: 64px;"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '64px',
+                                },
+                            });
                         },
                         title: '排序',
                         width: 150,
                     },
                     {
                         key: 'typeName',
-                        render() {
-                            return '<i-input type="ghost" style="width: 128px;"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '128px',
+                                },
+                            });
                         },
                         title: '分类名称',
                         width: 200,
@@ -61,17 +76,62 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<dropdown>
-                                    <i-button size="small" type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
-                                    <dropdown-menu slot="list">
-                                    <dropdown-item @click.native="editType">编辑分类信息</dropdown-item>
-                                    <dropdown-item @click.native="addSubordinate">新增下级分类</dropdown-item>
-                                    <dropdown-item @click.native="lookSubordinate">查看下级分类</dropdown-item>
-                                    </dropdown-menu>
-                                    </dropdown>
-                                    <i-button class="delete-ad" @click.native="remove(${index})"
-                                    size="small" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('dropdown', {
+                                    scopedSlots: {
+                                        list() {
+                                            return h('dropdown-menu', [
+                                                h('dropdown-item', {
+                                                    on: {
+                                                        click() {
+                                                            self.editType();
+                                                        },
+                                                    },
+                                                }, '编辑分类信息'),
+                                                h('dropdown-item', {
+                                                    on: {
+                                                        click() {
+                                                            self.addSubordinate();
+                                                        },
+                                                    },
+                                                }, '新增下级分类'),
+                                                h('dropdown-item', {
+                                                    on: {
+                                                        click() {
+                                                            self.lookSubordinate();
+                                                        },
+                                                    },
+                                                }, '查看下级分类'),
+                                            ]);
+                                        },
+                                    },
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            type: 'ghost',
+                                        },
+                                    }, [
+                                        '设置',
+                                        h('icon', {
+                                            props: {
+                                                type: 'arrow-down-b',
+                                            },
+                                        }),
+                                    ]),
+                                ]),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 200,

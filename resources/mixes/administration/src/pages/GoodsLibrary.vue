@@ -24,12 +24,28 @@
                     {
                         align: 'center',
                         key: 'pic',
-                        render() {
-                            return `<tooltip placement="right-end">
-                                    <icon type="image"></icon>
-                                    <div slot="content">
-                                    <img :src="row.pic">
-                                    </tooltip>`;
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            props: {
+                                                src: data.row.pic,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
                         },
                         title: '商品图片',
                         width: 120,
@@ -67,11 +83,33 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="first-btn" @click.native="toEdit"
-                                    type="ghost" size="small">编辑</i-button>
-                                    <i-button class="first-btn" @click.native="remove(${index})"
-                                    size="small" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.toEdit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'first-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'first-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 160,

@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 classificationData: [
                     {
@@ -35,16 +36,30 @@
                     },
                     {
                         key: 'sort',
-                        render() {
-                            return '<i-input type="ghost" style="width: 64px;"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '64px',
+                                },
+                            });
                         },
                         title: '排序',
                         width: 150,
                     },
                     {
                         key: 'typeName',
-                        render() {
-                            return '<i-input type="ghost" style="width: 128px;"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '128px',
+                                },
+                            });
                         },
                         title: '分类名称',
                         width: 200,
@@ -61,11 +76,32 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="delete-ad" @click.native="remove(${index})"
-                                    size="small" type="ghost">删除</i-button>
-                                    <i-button @click.native="edit"
-                                    size="small" type="ghost">编辑</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                            ]);
                         },
                         title: '操作',
                         width: 200,

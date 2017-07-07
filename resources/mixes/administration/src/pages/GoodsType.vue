@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 managementSearch: '',
                 searchList: [
@@ -50,10 +51,33 @@
                         key: 'action',
                         title: '操作',
                         width: 180,
-                        render(row, column, index) {
-                            return `<i-button class="delete-ad" @click.native="edit" type="ghost">编辑</i-button>
-                                    <i-button class="delete-ad" @click.native="remove(${index})"
-                                    type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                     },
                 ],
@@ -106,27 +130,28 @@
         <div class="goods-type">
             <tabs value="name1">
                 <tab-pane label="类型管理" name="name1">
-                   <card :bordered="false">
-                       <div class="prompt-box">
-                           <p>提示</p>
-                           <p>当管理员添加商品分类时需选择类型。前台分类下商品列表页通过类型生成商品检索，
-                               方便用户搜索需要的商品</p>
-                       </div>
-                       <div class="advertisement-action">
-                           <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
-                           <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                           <div class="goods-body-header-right">
-                               <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                   <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                       <i-option v-for="item in searchList"
-                                                 :value="item.value">{{ item.label }}</i-option>
-                                   </i-select>
-                                   <i-button slot="append" type="primary">搜索</i-button>
-                               </i-input>
-                           </div>
-                       </div>
-                       <i-table :columns="typeColumns" :context="self" :data="typeData" highlight-row></i-table>
-                   </card>
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>当管理员添加商品分类时需选择类型。前台分类下商品列表页通过类型生成商品检索，
+                                方便用户搜索需要的商品</p>
+                        </div>
+                        <div class="advertisement-action">
+                            <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
+                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                            <div class="goods-body-header-right">
+                                <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                    <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
+                                        <i-option v-for="item in searchList"
+                                                  :value="item.value">{{ item.label }}
+                                        </i-option>
+                                    </i-select>
+                                    <i-button slot="append" type="primary">搜索</i-button>
+                                </i-input>
+                            </div>
+                        </div>
+                        <i-table :columns="typeColumns" :context="self" :data="typeData" highlight-row></i-table>
+                    </card>
                 </tab-pane>
             </tabs>
         </div>
