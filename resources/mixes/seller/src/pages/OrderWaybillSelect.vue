@@ -46,9 +46,32 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render() {
-                            return `<i-button class="edit-btn" size="small" type="ghost">测试</i-button>
-                                     <i-button size="small" type="ghost">绑定</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.editGoods(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'edit-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '测试'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.removeReviewGoods(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '绑定'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
