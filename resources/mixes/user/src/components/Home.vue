@@ -1123,7 +1123,7 @@
                     },
                 },
                 swiperOption: {
-                    autoplay: 5000,
+                    autoplay: 3000,
                     loop: true,
                     notNextTick: true,
                     pagination: '.swiper-pagination',

@@ -83,7 +83,7 @@
                             <td class="td-information">
                                 <router-link :to="{name: 'product-details'}"> {{ product.name }}</router-link>
                                 <p>尺码：{{ product.size }}</p>
-                                <p>本商品 <i v-if="item.mention">支持</i><i v-if="!item.mention">不支持</i>门店自提</p>
+                                <p><i class="mention" :class="{support:item.mention}">提</i>本商品 <i v-if="item.mention">支持</i><i v-if="!item.mention">不支持</i>门店自提</p>
                             </td>
                             <td>
                                 <s>&yen;{{ product.old_price }}</s>
@@ -252,9 +252,7 @@
             totalPrice() {
                 const tPrice = 0;
                 this.productList.forEach(item => {
-                    item.selected.forEach(pro => {
-                        console.log(pro);
-                    });
+                    item.selected.forEach();
                 });
                 return tPrice;
             },
@@ -312,8 +310,8 @@
             price(num, price) {
                 return (price * num).toFixed(2);
             },
-            reduce(item) {
-                console.log(item);
+            reduce() {
+//                console.log(item);
             },
         },
     };

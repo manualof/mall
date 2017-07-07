@@ -876,7 +876,6 @@
                 };
                 reader.readAsDataURL(file);
                 arr.push(image);
-                console.log(this.lincenseInfo.account_imgs);
             },
             deleteImg(arr, item) {
                 arr.splice(arr.indexOf(item));
