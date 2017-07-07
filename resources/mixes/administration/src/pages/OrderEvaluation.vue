@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 evaluationListColumns: [
                     {
@@ -24,12 +25,49 @@
                     },
                     {
                         align: 'center',
-                        render() {
-                            return `<icon type="star" style="color:#f7d55f;"></icon>
-                                    <icon type="star" style="color:#f7d55f;"></icon>
-                                    <icon type="star" style="color:#f7d55f;"></icon>
-                                    <icon type="star" style="color:#f7d55f;"></icon>
-                                    <icon type="star" style="color:#f7d55f;"></icon>`;
+                        render(h) {
+                            return h('div', [
+                                h('icon', {
+                                    props: {
+                                        type: 'star',
+                                    },
+                                    style: {
+                                        color: '#f7d55f',
+                                    },
+                                }),
+                                h('icon', {
+                                    props: {
+                                        type: 'star',
+                                    },
+                                    style: {
+                                        color: '#f7d55f',
+                                    },
+                                }),
+                                h('icon', {
+                                    props: {
+                                        type: 'star',
+                                    },
+                                    style: {
+                                        color: '#f7d55f',
+                                    },
+                                }),
+                                h('icon', {
+                                    props: {
+                                        type: 'star',
+                                    },
+                                    style: {
+                                        color: '#f7d55f',
+                                    },
+                                }),
+                                h('icon', {
+                                    props: {
+                                        type: 'star',
+                                    },
+                                    style: {
+                                        color: '#f7d55f',
+                                    },
+                                }),
+                            ]);
                         },
                         title: '评分',
                         width: 150,
@@ -43,8 +81,12 @@
                     {
                         align: 'center',
                         key: 'baskImage',
-                        render() {
-                            return '<icon type="image"></icon>';
+                        render(h) {
+                            return h('icon', {
+                                props: {
+                                    type: 'image',
+                                },
+                            });
                         },
                         title: '晒单图片',
                         width: 300,
@@ -65,9 +107,18 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="remove(${index})" size="small"
-                                    type="ghost" >删除</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.remove(data.index);
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            });
                         },
                         title: '操作',
                         width: 150,

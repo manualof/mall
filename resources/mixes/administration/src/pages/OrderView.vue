@@ -25,9 +25,20 @@
                     {
                         align: 'center',
                         key: 'orderName',
-                        render(row) {
-                            return `<img class="orderImg" src="${row.img}">
-                                    <span class="orderName">${row.orderName}</span>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('img', {
+                                    props: {
+                                        class: 'orderImg',
+                                        src: data.row.img,
+                                    },
+                                }),
+                                h('span', {
+                                    props: {
+                                        class: 'orderName',
+                                    },
+                                }, data.row.orderName),
+                            ]);
                         },
                         title: '商品',
                         width: 650,
