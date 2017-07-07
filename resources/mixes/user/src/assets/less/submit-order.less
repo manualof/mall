@@ -522,6 +522,9 @@
             }
         }
     }
+    .ivu-icon-load-c {
+        display: none;
+    }
 }
 
 .order-btn {
@@ -541,13 +544,13 @@
 
 .ivu-select-arrow {
     position: absolute;
-    top: 50%;
-    right: 8px;
+    top: 61%;
+    right: 20px;
     line-height: 1;
     margin-top: -7px;
     font-size: 14px;
-    color: #80848f;
-    transition: all .2s ease-in-out;
+    color: #9ea7b4;
+    transition: all 0.2s ease-in-out;
 }
 .ivu-select-selection .ivu-select-arrow:first-of-type {
     display: none;
@@ -555,6 +558,18 @@
 }
 .ivu-icon-arrow-down-b:before {
     content: "\F104";
+}
+.ivu-cascader-arrow {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    line-height: 1;
+    margin-top: -7px;
+    font-size: 14px;
+    color: #9ea7b4;
+    transition: all 0.2s ease-in-out;
+    width: 12px;
+    height: 12px;
 }
 .ivu-select-selection {
     display: block;
@@ -619,7 +634,17 @@
     cursor: pointer;
     transition: background .2s ease-in-out;
 }
-
+.ivu-icon-arrow-down-b:before {
+    content: '';
+    border-width: 6px;
+    border-style: solid dashed dashed dashed;
+    border-color: #444444 transparent transparent transparent;
+    height: 0;
+    left: 4%;
+    position: absolute;
+    top: 36%;
+    width: 0
+}
 .notNeed {
     background: none;
     border: 1px solid #e5e5e5;
