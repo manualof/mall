@@ -34,6 +34,7 @@ import SelaesReturn from '../components/personnal-center/SelaesReturn';
 import Footprint from '../components/personnal-center/Footprint';
 import MyAccount from '../components/personnal-center/MyAccount';
 import MyCollect from '../components/personnal-center/MyCollect';
+import Notice from '../components/personnal-center/Notice';
 
 import ShoppingProcess from '../components/ShoppingProcess';
 import ShopProcess from '../components/ShoppingProcess/ShopProcess';
@@ -142,6 +143,11 @@ export default [
                         path: 'my-collect',
                         name: 'my-collect',
                         component: MyCollect,
+                    },
+                    {
+                        path: 'notice',
+                        name: 'notice',
+                        component: Notice,
                     },
                 ],
             },

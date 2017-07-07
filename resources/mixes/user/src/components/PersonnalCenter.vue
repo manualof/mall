@@ -25,7 +25,7 @@
                         text: '我的订单',
                     },
                     {
-                        to: { name: '' },
+                        to: { name: 'notice' },
                         text: '预约/到货通知',
                     },
                     {
