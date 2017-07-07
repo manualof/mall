@@ -35,8 +35,18 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render() {
-                            return '<i-button @click.native="toEdit" size="small" type="ghost">+设置商品</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.toEdit();
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '+设置商品');
                         },
                         title: '操作',
                         width: 140,

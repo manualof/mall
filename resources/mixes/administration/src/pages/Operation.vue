@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 managementSearch: '',
                 searchList: [
@@ -86,11 +87,33 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="delete-ad" @click.native="handel(${index})"
-                                    size="small" type="ghost" v-if="row.params === 1 || row.params === 4">处理</i-button>
-                                    <i-button class="delete-ad" @click.native="look(${index})"
-                                    size="small" type="ghost" v-if="row.params === 2 || row.params === 3">查看</i-button>`;
+                        render(h, data) {
+                            if (data.row.params === 1 || data.row.params === 4) {
+                                return h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.handel(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '处理');
+                            }
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.look(data.index);
+                                    },
+                                },
+                                props: {
+                                    class: 'delete-ad',
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                         title: '操作',
                         width: 120,

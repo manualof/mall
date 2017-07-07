@@ -61,11 +61,32 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="edit"
-                                    size="small" type="ghost">编辑</i-button>
-                                    <i-button class="delete-ad" @click.native="remove(${index})"
-                                    size="small" type="ghost" v-if="row.typeName !== '颜色'">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,

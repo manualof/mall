@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 announceColumns: [
                     {
@@ -51,11 +52,31 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="delete-ad" @click.native="look(${index})"
-                                    type="ghost">查看</i-button>
-                                    <i-button @click.native="remove(${index})"
-                                    type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.look(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        type: 'ghost',
+                                    },
+                                }, '查看'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 280,
@@ -95,11 +116,21 @@
                     {
                         align: 'center',
                         key: 'disabled',
-                        render() {
-                            return `<i-switch size="large" v-model="row.disabled">
-                                        <span slot="open">开启</span>
-                                        <span slot="close">关闭</span>
-                                    </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.disabled,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '是否接收',
                         width: 200,

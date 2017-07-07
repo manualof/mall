@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 managementColumns: [
                     {
@@ -49,15 +50,60 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render() {
-                            return `<i-button type="ghost" @click.native="toView" class="first-btn"
-                                    size="small">查看</i-button>
-                                    <dropdown v-if="row.orderStatus === '代付款'">
-                                    <i-button size="small" type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
-                                    <dropdown-menu slot="list">
-                                    <dropdown-item @click.native="cancelOrder(row)">取消订单</dropdown-item>
-                                    <dropdown-item v-if="row.status === 1" @click.native="receiveGoods(row)">收到货款</dropdown-item>
-                                    </dropdown-menu></dropdown>`;
+                        render(h, data) {
+                            const items = [];
+                            items.push(h('i-button', {
+                                on: {
+                                    click() {
+                                        self.remove(data.index);
+                                    },
+                                },
+                                props: {
+                                    class: 'first-ad',
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看'));
+                            if (data.row.orderStatus === '代付款') {
+                                items.push(h('dropdown', {
+                                    scopedSlots: {
+                                        list() {
+                                            const menus = [];
+                                            menus.push(h('dropdown-item', {
+                                                on: {
+                                                    click() {
+                                                        self.cancelOrder();
+                                                    },
+                                                },
+                                            }, '取消订单'));
+                                            if (data.row.status === 1) {
+                                                menus.push(h('dropdown-item', {
+                                                    on: {
+                                                        click() {
+                                                            self.receiveGoods();
+                                                        },
+                                                    },
+                                                }, '收到货款'));
+                                            }
+                                            return h('dropdown-menu', menus);
+                                        },
+                                    },
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            type: 'ghost',
+                                        },
+                                    }, [
+                                        '设置',
+                                        h('icon', {
+                                            props: {
+                                                type: 'arrow-down-b',
+                                            },
+                                        }),
+                                    ]),
+                                ]));
+                            }
+                            return h('div', items);
                         },
                         title: '操作',
                         width: 180,

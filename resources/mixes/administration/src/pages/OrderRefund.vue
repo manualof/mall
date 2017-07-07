@@ -9,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 allOrderColumns: [
                     {
@@ -38,12 +39,28 @@
                     {
                         align: 'center',
                         key: 'goodsImg',
-                        render() {
-                            return `<tooltip placement="right-end">
-                                    <icon type="image"></icon>
-                                    <div slot="content">
-                                    <img :src="row.goodsImg">
-                                    </tooltip>`;
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            props: {
+                                                src: data.row.goodsImage,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
                         },
                         title: '申请图片',
                         width: 170,
@@ -100,11 +117,31 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render() {
-                            return `<i-button @click.native="handelOrder" size="small"
-                                    type="ghost" v-if="row.applyTime === '待处理'">处理</i-button>
-                                    <i-button @click.native="look" size="small"
-                                    type="ghost" v-if="row.applyTime === '已完成'">查看</i-button>`;
+                        render(h, data) {
+                            if (data.row.applyTime === '已完成') {
+                                return h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.handelOrder();
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '处理');
+                            }
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.look();
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                         title: '操作',
                         width: 140,
@@ -196,12 +233,28 @@
                     {
                         align: 'center',
                         key: 'goodsImg',
-                        render() {
-                            return `<tooltip placement="right-end">
-                                    <icon type="image"></icon>
-                                    <div slot="content">
-                                    <img :src="row.goodsImg">
-                                    </tooltip>`;
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            props: {
+                                                src: data.row.goodsImage,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
                         },
                         title: '申请图片',
                         width: 170,
@@ -258,8 +311,18 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render() {
-                            return '<i-button @click.native="refundHandel" size="small" type="ghost">处理</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.refundHandel();
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '处理');
                         },
                         title: '操作',
                         width: 140,
@@ -371,8 +434,18 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render() {
-                            return '<i-button @click.native="reasonEdit" size="small" type="ghost">编辑</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.reasonEdit();
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '编辑');
                         },
                         title: '操作',
                         width: 140,

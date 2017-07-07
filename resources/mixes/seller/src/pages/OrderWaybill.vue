@@ -9,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 self: this,
                 selfTemplateColumns: [
@@ -53,11 +54,21 @@
                     {
                         align: 'center',
                         key: 'default',
-                        render() {
-                            return `<i-switch size="large" v-model="row.status">
-                                        <span slot="open">开启</span>
-                                        <span slot="close">关闭</span>
-                                    </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '启用',
                         width: 120,
@@ -65,14 +76,57 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="action-btn" @click.native="design"
-                                    size="small" type="ghost">设计</i-button>
-                                    <i-button class="action-btn" size="small" type="ghost">测试</i-button>
-                                    <i-button class="action-btn" @click.native="edit"
-                                    size="small" type="ghost">编辑</i-button>
-                                    <i-button class="action-btn" @click.native="remove(${index})"
-                                    size="small" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.design(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'action-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '设计'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.design(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'action-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '测试'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'action-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'action-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 330,
@@ -131,11 +185,24 @@
                     },
                     {
                         key: 'default',
-                        render() {
-                            return `<i-switch size="large" v-model="row.status" v-if="row.isTemplate">
-                                        <span slot="open">开启</span>
-                                        <span slot="close">关闭</span>
-                                    </i-switch>`;
+                        render(h, data) {
+                            if (data.row.isTemplate) {
+                                return h('i-switch', {
+                                    props: {
+                                        size: 'large',
+                                        value: data.row.status,
+                                    },
+                                    scopedSlots: {
+                                        close() {
+                                            return h('span', '关闭');
+                                        },
+                                        open() {
+                                            return h('span', '开启');
+                                        },
+                                    },
+                                });
+                            }
+                            return '';
                         },
                         title: '默认',
                     },

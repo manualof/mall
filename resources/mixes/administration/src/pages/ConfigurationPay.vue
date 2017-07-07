@@ -21,19 +21,33 @@
                     },
                     {
                         key: 'status',
-                        render() {
-                            return `<i-switch size="large" v-model="switch1">
-                                        <span slot="open">开启</span>
-                                        <span slot="close">关闭</span>
-                                    </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '当前状态',
                     },
                     {
                         align: 'center',
                         key: 'action',
-                        render() {
-                            return '<i-button type="ghost">编辑</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                            }, '编辑');
                         },
                         title: '操作',
                         width: 150,

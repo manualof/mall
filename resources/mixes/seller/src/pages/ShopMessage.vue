@@ -9,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 action: `${window.api}/mall/admin/upload`,
                 applyColumns: [
@@ -54,9 +55,18 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="remove(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.remove(data.index);
+                                    },
+                                },
+                                props: {
+                                    class: 'delete-ad',
+                                    type: 'ghost',
+                                },
+                            }, '删除');
                         },
                         title: '操作',
                     },

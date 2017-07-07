@@ -53,8 +53,12 @@
                     {
                         align: 'center',
                         key: 'coverImg',
-                        render() {
-                            return '<icon type="image"></icon>';
+                        render(h) {
+                            return h('icon', {
+                                props: {
+                                    type: 'image',
+                                },
+                            });
                         },
                         title: '封面图片',
                     },
@@ -68,11 +72,32 @@
                         key: 'action',
                         title: '操作',
                         width: 180,
-                        render(row, column, index) {
-                            return `<i-button @click.native="look" size="small"
-                                    type="ghost">查看</i-button>
-                                    <i-button class="delete-ad" size="small" @click.native="remove(${index})"
-                                    type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.look(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '查看'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                     },
                 ],

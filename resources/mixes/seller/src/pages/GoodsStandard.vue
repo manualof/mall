@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 firstType: [
                     {
@@ -27,34 +28,65 @@
                     {
                         align: 'center',
                         key: 'sort',
-                        render() {
-                            return `<input-number :max="10" :min="1" v-model="row.sortNum"
-                                    style="width: 64px"></input-number> `;
+                        render(h, data) {
+                            return h('input-number', {
+                                props: {
+                                    max: 10,
+                                    min: 1,
+                                    value: data.row.sortNum,
+                                },
+                                style: {
+                                    width: '64px',
+                                },
+                            });
                         },
                         title: '排序',
                         width: 150,
                     },
                     {
                         key: 'standardName',
-                        render() {
-                            return '<i-input style="width: 268px"></i-input> ';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '269px',
+                                },
+                            });
                         },
                         title: '规格值名称',
                         width: 400,
                     },
                     {
                         key: 'color',
-                        render() {
-                            return '<i-input style="width: 124px"></i-input> ';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '124px',
+                                },
+                            });
                         },
                         title: '颜色色块',
                     },
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="removeColorGoods(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.removeColorGoods(data.index);
+                                    },
+                                },
+                                props: {
+                                    class: 'delete-ad',
+                                    type: 'ghost',
+                                },
+                            }, '删除');
                         },
                         title: '操作',
                         width: 150,
@@ -69,34 +101,65 @@
                     {
                         align: 'center',
                         key: 'sort',
-                        render() {
-                            return `<input-number :max="10" :min="1" v-model="row.sortNum"
-                                    style="width: 64px"></input-number> `;
+                        render(h, data) {
+                            return h('input-number', {
+                                props: {
+                                    max: 10,
+                                    min: 1,
+                                    value: data.row.sortNum,
+                                },
+                                style: {
+                                    width: '64px',
+                                },
+                            });
                         },
                         title: '排序',
                         width: 150,
                     },
                     {
                         key: 'standardName',
-                        render() {
-                            return '<i-input style="width: 268px"></i-input> ';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '268px',
+                                },
+                            });
                         },
                         title: '规格值名称',
                         width: 400,
                     },
                     {
                         key: 'size',
-                        render() {
-                            return '<i-input style="width: 124px"></i-input> ';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '124px',
+                                },
+                            });
                         },
                         title: '尺码大小',
                     },
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="removeSizeGoods(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.removeSizeGoods(data.index);
+                                    },
+                                },
+                                props: {
+                                    class: 'delete-ad',
+                                    type: 'ghost',
+                                },
+                            }, '删除');
                         },
                         title: '操作',
                         width: 150,

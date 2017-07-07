@@ -178,8 +178,13 @@
                     },
                     {
                         key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                         title: '操作',
                         width: 120,
@@ -423,8 +428,13 @@
                         key: 'action',
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                     },
                 ],

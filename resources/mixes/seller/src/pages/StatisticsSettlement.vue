@@ -43,8 +43,18 @@
                     },
                     {
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button size="small" type="ghost" @click.native="look(${index})">查看</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.look(data.index);
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                         title: '操作',
                         width: 120,

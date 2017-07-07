@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 activeModal: false,
                 form: {
@@ -52,10 +53,32 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button size="small" type="ghost" @click.native="look">查看</i-button>
-                                    <i-button class="delete-ad" size="small" type="ghost"
-                                    @click.native="remove(${index})">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.look();
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '查看'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,

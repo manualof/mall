@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 self: this,
                 spikeActivity: [
@@ -39,11 +40,29 @@
                     },
                     {
                         key: 'isstatus',
-                        render(row) {
-                            return `<span class="status-check" v-if="${row.status} === true">
-                                    <icon type="checkmark-circled"></icon>开启</span>
-                                    <span v-if="${row.status} === false">
-                                    <icon type="close-circled"></icon>关闭</span>`;
+                        render(h, data) {
+                            if (data.row.status) {
+                                return h('span', {
+                                    props: {
+                                        class: 'status-check',
+                                    },
+                                }, [
+                                    h('icon', {
+                                        props: {
+                                            type: 'checkmark-circled',
+                                        },
+                                    }),
+                                    '开启',
+                                ]);
+                            }
+                            return h('span', [
+                                h('icon', {
+                                    props: {
+                                        type: 'close-circled',
+                                    },
+                                }),
+                                '关闭',
+                            ]);
                         },
                         title: '状态',
                         width: 500,
@@ -52,18 +71,49 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<dropdown>
-                                    <i-button type="ghost">设置
-                                    <icon type="arrow-down-b"></icon>
-                                    </i-button>
-                                    <dropdown-menu slot="list">
-                                    <dropdown-item>活动设置</dropdown-item>
-                                    <dropdown-item @click.native="toGoodsSet">商品设置</dropdown-item>
-                                    </dropdown-menu>
-                                    </dropdown>
-                                    <i-button class="delete-ad" @click.native="removeAd(${index})"
-                                    type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('dropdown', {
+                                    scopedSlots: {
+                                        list() {
+                                            return h('dropdown-menu', [
+                                                h('dropdown-item', '活动设置'),
+                                                h('dropdown-item', {
+                                                    on: {
+                                                        click() {
+                                                            self.toGoodsSet();
+                                                        },
+                                                    },
+                                                }, '商品设置'),
+                                            ]);
+                                        },
+                                    },
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            type: 'ghost',
+                                        },
+                                    }, [
+                                        '设置',
+                                        h('icon', {
+                                            props: {
+                                                type: 'arrow-down-b',
+                                            },
+                                        }),
+                                    ]),
+                                ]),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.removeAd(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 200,

@@ -44,8 +44,12 @@
                     {
                         align: 'center',
                         key: 'number',
-                        render() {
-                            return '<i-input v-model="row.number"></i-input>';
+                        render(h, data) {
+                            return h('i-input', {
+                                props: {
+                                    value: data.row.number,
+                                },
+                            }, '查看');
                         },
                         title: '物流单号',
                         width: 300,
@@ -53,15 +57,24 @@
                     {
                         align: 'center',
                         key: 'message',
-                        render() {
-                            return '<i-input v-model="row.message"></i-input>';
+                        render(h, data) {
+                            return h('i-input', {
+                                props: {
+                                    value: data.row.message,
+                                },
+                            }, '查看');
                         },
                         title: '备忘',
                     },
                     {
                         align: 'center',
-                        render() {
-                            return '<i-button type="ghost">确认</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '确认');
                         },
                         title: '操作',
                         width: 160,
@@ -99,8 +112,12 @@
                     {
                         align: 'center',
                         key: 'number',
-                        render() {
-                            return '<i-input v-model="row.number"></i-input>';
+                        render(h, data) {
+                            return h('i-input', {
+                                props: {
+                                    value: data.row.number,
+                                },
+                            }, '查看');
                         },
                         title: '物流单号',
                         width: 300,
@@ -108,15 +125,23 @@
                     {
                         align: 'center',
                         key: 'message',
-                        render() {
-                            return '<i-input v-model="row.message"></i-input>';
+                        render(h, data) {
+                            return h('i-input', {
+                                props: {
+                                    value: data.row.message,
+                                },
+                            }, '查看');
                         },
                         title: '备忘',
                     },
                     {
                         align: 'center',
-                        render() {
-                            return '<i-button type="ghost">确认</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                            }, '确认');
                         },
                         title: '操作',
                         width: 160,

@@ -19,8 +19,12 @@
                     {
                         align: 'center',
                         key: 'goodsImg',
-                        render() {
-                            return '<icon type="image"></icon>';
+                        render(h) {
+                            return h('icon', {
+                                props: {
+                                    type: 'image',
+                                },
+                            });
                         },
                         title: '商品图片',
                         width: 180,
@@ -52,11 +56,21 @@
                     {
                         align: 'center',
                         key: 'status',
-                        render() {
-                            return `<i-switch size="large" v-model="row.status">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span>
-                                    </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '推荐',
                         width: 240,
@@ -65,8 +79,14 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render() {
-                            return '<i-button class="delete-ad" size="small" type="ghost">屏蔽</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    class: 'delete-ad',
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '屏蔽');
                         },
                         title: '操作',
                         width: 180,
@@ -153,7 +173,8 @@
                             <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
                                 <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
                                     <i-option v-for="item in searchList"
-                                              :value="item.value">{{ item.label }}</i-option>
+                                              :value="item.value">{{ item.label }}
+                                    </i-option>
                                 </i-select>
                                 <i-button slot="append" type="primary">搜索</i-button>
                             </i-input>

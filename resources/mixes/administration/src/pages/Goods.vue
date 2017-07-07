@@ -9,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 goodsColumns: [
                     {
@@ -44,12 +45,28 @@
                     {
                         align: 'center',
                         key: 'goodsImg',
-                        render() {
-                            return `<tooltip placement="right-end">
-                                    <icon type="image"></icon>
-                                    <div slot="content">
-                                    <img :src="row.goodsImg">
-                                    </tooltip>`;
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            props: {
+                                                src: data.row.goodsImage,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
                         },
                         title: '商品图片',
                     },
@@ -71,16 +88,53 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<dropdown>
-                                    <i-button size="small" type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
-                                    <dropdown-menu slot="list">
-                                    <dropdown-item>查看商品详情</dropdown-item>
-                                    <dropdown-item name="goodSku" @click.native="lookGoodsSku">查看商品SKU</dropdown-item>
-                                    <dropdown-item>加入商品库</dropdown-item>
-                                    </dropdown-menu></dropdown>
-                                    <i-button @click.native="remove(${index})" class="delete-ad"
-                                     size="small" type="ghost">下架</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('dropdown', {
+                                    scopedSlots: {
+                                        list() {
+                                            return h('dropdown-menu', [
+                                                h('dropdown-item', '查看商品详情'),
+                                                h('dropdown-item', {
+                                                    on: {
+                                                        click() {
+                                                            self.lookGoodsSku();
+                                                        },
+                                                    },
+                                                    props: {
+                                                        name: 'goodSku',
+                                                    },
+                                                }, '查看商品SKU'),
+                                                h('dropdown-item', '加入商品库'),
+                                            ]);
+                                        },
+                                    },
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            type: 'ghost',
+                                        },
+                                    }, [
+                                        '设置',
+                                        h('icon', {
+                                            props: {
+                                                type: 'arrow-down-b',
+                                            },
+                                        }),
+                                    ]),
+                                ]),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        type: 'ghost',
+                                    },
+                                }, '下架'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
@@ -180,12 +234,28 @@
                     {
                         align: 'center',
                         key: 'goodsImg',
-                        render() {
-                            return `<tooltip placement="right-end">
-                                    <icon type="image"></icon>
-                                    <div slot="content">
-                                    <img :src="row.goodsImg">
-                                    </tooltip>`;
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            props: {
+                                                src: data.row.goodsImage,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
                         },
                         title: '商品图片',
                     },
@@ -207,16 +277,53 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<dropdown>
-                                    <i-button size="small" type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
-                                    <dropdown-menu slot="list">
-                                    <dropdown-item>查看商品详情</dropdown-item>
-                                    <dropdown-item name="goodSku" @click.native="lookGoodsSku">查看商品SKU</dropdown-item>
-                                    <dropdown-item>加入商品库</dropdown-item>
-                                    </dropdown-menu></dropdown>
-                                    <i-button @click.native="removeShelf(${index})" class="delete-ad"
-                                     size="small" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('dropdown', {
+                                    scopedSlots: {
+                                        list() {
+                                            return h('dropdown-menu', [
+                                                h('dropdown-item', '查看商品详情'),
+                                                h('dropdown-item', {
+                                                    on: {
+                                                        click() {
+                                                            self.lookGoodsSku();
+                                                        },
+                                                    },
+                                                    props: {
+                                                        name: 'goodSku',
+                                                    },
+                                                }, '查看商品SKU'),
+                                                h('dropdown-item', '加入商品库'),
+                                            ]);
+                                        },
+                                    },
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            type: 'ghost',
+                                        },
+                                    }, [
+                                        '设置',
+                                        h('icon', {
+                                            props: {
+                                                type: 'arrow-down-b',
+                                            },
+                                        }),
+                                    ]),
+                                ]),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.removeShelf(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
@@ -322,8 +429,12 @@
                     {
                         align: 'center',
                         key: 'goodsImg',
-                        render() {
-                            return '<icon type="image"></icon>';
+                        render(h) {
+                            return h('icon', {
+                                props: {
+                                    type: 'image',
+                                },
+                            });
                         },
                         title: '商品图片',
                         width: 185,
