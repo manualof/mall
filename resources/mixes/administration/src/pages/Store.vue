@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 applicationColumns: [
                     {
@@ -80,8 +81,18 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost" @click="look">查看</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.look();
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                         title: '操作',
                         width: 90,
@@ -173,8 +184,12 @@
                     {
                         align: 'center',
                         key: 'shopImg',
-                        render() {
-                            return '<icon type="image"></icon>';
+                        render(h) {
+                            return h('icon', {
+                                props: {
+                                    type: 'image',
+                                },
+                            });
                         },
                         title: '店铺头像',
                         width: 100,
@@ -182,8 +197,12 @@
                     {
                         align: 'center',
                         key: 'shopLogo',
-                        render() {
-                            return '<icon type="image"></icon>';
+                        render(h) {
+                            return h('icon', {
+                                props: {
+                                    type: 'image',
+                                },
+                            });
                         },
                         title: '店铺LOGO',
                         width: 100,
@@ -210,10 +229,32 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render() {
-                            return `<i-button class="first-btn" @click.native="lookShop"
-                                    type="ghost" size="small">查看</i-button>
-                                    <i-button @click.native="toEdit" type="ghost" size="small">编辑</i-button>`;
+                        render(h) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.lookShop();
+                                        },
+                                    },
+                                    props: {
+                                        class: 'first-btn',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '查看'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.toEdit();
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,

@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 self: this,
                 storeCategoryColumns: [
@@ -18,15 +19,29 @@
                     },
                     {
                         align: 'center',
-                        render() {
-                            return '<i-input type="ghost" style="width: 48px;"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '48px',
+                                },
+                            });
                         },
                         title: '排序',
                     },
                     {
                         align: 'center',
-                        render() {
-                            return '<i-input type="ghost" style="width: 168px;"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '168px',
+                                },
+                            });
                         },
                         title: '分类名称',
                     },
@@ -38,10 +53,32 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="first-btn" @click.native="remove(${index})"
-                                    type="ghost" size="small">删除</i-button>
-                                    <i-button @click.native="toSet" type="ghost" size="small">设置</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'first-btn',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.toSet();
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '设置'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,

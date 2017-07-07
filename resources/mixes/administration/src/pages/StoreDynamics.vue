@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 brandColumns: [
                     {
@@ -35,11 +36,29 @@
                     {
                         align: 'center',
                         key: 'isshow',
-                        render(row) {
-                            return `<span v-if="${row.status} === true" class="status-check">
-                                    <icon type="checkmark-circled"></icon>是</span>
-                                    <span v-if="${row.status} === false">
-                                    <icon type="close-circled"></icon>否</span>`;
+                        render(h, data) {
+                            if (data.row.status) {
+                                return h('span', {
+                                    props: {
+                                        class: 'status-check',
+                                    },
+                                }, [
+                                    h('icon', {
+                                        props: {
+                                            type: 'checkmark-circled',
+                                        },
+                                    }),
+                                    '是',
+                                ]);
+                            }
+                            return h('span', [
+                                h('icon', {
+                                    props: {
+                                        type: 'close-circled',
+                                    },
+                                }),
+                                '否',
+                            ]);
                         },
                         title: '是否推荐品牌',
                     },
@@ -61,9 +80,31 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button size="small" type="ghost" @click.native="remove(${index})">删除</i-button>
-                                    <i-button size="small" type="ghost" @click.native="edit">设置</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit();
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '设置'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
