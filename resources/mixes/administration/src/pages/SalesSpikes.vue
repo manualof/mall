@@ -39,10 +39,33 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="delete-ad" @click.native="look(${index})"
-                                    size="small" type="ghost">查看</i-button>
-                                    <i-button class="delete-ad" size="small" type="ghost">屏蔽</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.look(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '查看'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.toEdit();
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '屏蔽'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
@@ -88,8 +111,12 @@
                     {
                         align: 'center',
                         key: 'goodsImg',
-                        render() {
-                            return '<icon type="image"></icon>';
+                        render(h) {
+                            return h('icon', {
+                                props: {
+                                    type: 'image',
+                                },
+                            });
                         },
                         title: '商品图片',
                         width: 180,
@@ -121,11 +148,21 @@
                     {
                         align: 'center',
                         key: 'status',
-                        render() {
-                            return `<i-switch size="large" v-model="row.status">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span>
-                                    </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '状态',
                         width: 240,
@@ -134,8 +171,14 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render() {
-                            return '<i-button class="delete-ad" size="small" type="ghost">屏蔽</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    class: 'delete-ad',
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '屏蔽');
                         },
                         title: '操作',
                         width: 180,
