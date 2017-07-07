@@ -191,11 +191,7 @@
             qiehuan3() {
                 this.status = 3;
             },
-            handleSuccess(res, file) {
-                // 因为上传过程为实例，这里模拟添加 url
-                console.log(file);
-                console.log(res);
-            },
+            handleSuccess() {},
         },
     };
 </script>
