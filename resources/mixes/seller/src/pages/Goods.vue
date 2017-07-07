@@ -9,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 goodsColumns: [
                     {
@@ -18,16 +19,39 @@
                     },
                     {
                         key: 'goodsName',
-                        render() {
-                            return `<div class="goods-name-row">
-                                    <div class="img"><img :src="row.goodsImg" alt=""></div>
-                                    <div class="right-text">
-                                        <p>{{ row.goodsName }}</p>
-                                        <div>
-                                            <span class="left-num">商家货号：{{ row.sellNum }}</span>
-                                            <span>SPU：{{ row.sellSpu }}</span>
-                                        </div>
-                                    </div><div class="clear"></div></div>`;
+                        render(h, data) {
+                            return h('div', {
+                                props: {
+                                    class: 'goods-name-row',
+                                },
+                            }, [
+                                h('div', {
+                                    props: {
+                                        class: 'img',
+                                    },
+                                }, [
+                                    h('img', {
+                                        props: {
+                                            src: data.row.goodsImg,
+                                        },
+                                    }),
+                                ]),
+                                h('div', {
+                                    props: {
+                                        class: 'right-text',
+                                    },
+                                }, [
+                                    h('p', data.row.goodsName),
+                                    h('div', [
+                                        h('span', {
+                                            props: {
+                                                class: 'left-num',
+                                            },
+                                        }, `商家货号：${data.row.sellNum}`),
+                                        h('span', `SPU：${data.row.sellSpu}`),
+                                    ]),
+                                ]),
+                            ]);
                         },
                         title: '商品名称',
                     },
@@ -46,11 +70,21 @@
                     {
                         align: 'center',
                         key: 'shelves',
-                        render() {
-                            return `<i-switch size="large" v-model="row.status">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span>
-                                    </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '上架',
                         width: 100,
@@ -64,11 +98,32 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="editGoods(${index})"
-                                    size="small" type="ghost">编辑</i-button>
-                                    <i-button @click.native="removeGoods(${index})" class="delete-ad"
-                                    size="small" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.editGoods(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.removeGoods(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
@@ -134,16 +189,39 @@
                     },
                     {
                         key: 'goodsName',
-                        render() {
-                            return `<div class="goods-name-row">
-                                    <div class="img"><img :src="row.goodsImg" alt=""></div>
-                                    <div class="right-text">
-                                        <p>{{ row.goodsName }}</p>
-                                        <div>
-                                            <span class="left-num">商家货号：{{ row.sellNum }}</span>
-                                            <span>SPU：{{ row.sellSpu }}</span>
-                                        </div>
-                                    </div><div class="clear"></div></div>`;
+                        render(h, data) {
+                            return h('div', {
+                                props: {
+                                    class: 'goods-name-row',
+                                },
+                            }, [
+                                h('div', {
+                                    props: {
+                                        class: 'img',
+                                    },
+                                }, [
+                                    h('img', {
+                                        props: {
+                                            src: data.row.goodsImg,
+                                        },
+                                    }),
+                                ]),
+                                h('div', {
+                                    props: {
+                                        class: 'right-text',
+                                    },
+                                }, [
+                                    h('p', data.row.goodsName),
+                                    h('div', [
+                                        h('span', {
+                                            props: {
+                                                class: 'left-num',
+                                            },
+                                        }, `商家货号：${data.row.sellNum}`),
+                                        h('span', `SPU：${data.row.sellSpu}`),
+                                    ]),
+                                ]),
+                            ]);
                         },
                         title: '商品名称',
                     },
@@ -162,10 +240,32 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button size="small" type="ghost">还原</i-button>
-                                    <i-button @click.native="removeRecoverGoods(${index})" class="delete-ad"
-                                    size="small" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '还原'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.removeRecoverGoods(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
@@ -221,16 +321,39 @@
                     },
                     {
                         key: 'goodsName',
-                        render() {
-                            return `<div class="goods-name-row">
-                                    <div class="img"><img :src="row.goodsImg" alt=""></div>
-                                    <div class="right-text">
-                                        <p>{{ row.goodsName }}</p>
-                                        <div>
-                                            <span class="left-num">商家货号：{{ row.sellNum }}</span>
-                                            <span>SPU：{{ row.sellSpu }}</span>
-                                        </div>
-                                    </div><div class="clear"></div></div>`;
+                        render(h, data) {
+                            return h('div', {
+                                props: {
+                                    class: 'goods-name-row',
+                                },
+                            }, [
+                                h('div', {
+                                    props: {
+                                        class: 'img',
+                                    },
+                                }, [
+                                    h('img', {
+                                        props: {
+                                            src: data.row.goodsImg,
+                                        },
+                                    }),
+                                ]),
+                                h('div', {
+                                    props: {
+                                        class: 'right-text',
+                                    },
+                                }, [
+                                    h('p', data.row.goodsName),
+                                    h('div', [
+                                        h('span', {
+                                            props: {
+                                                class: 'left-num',
+                                            },
+                                        }, `商家货号：${data.row.sellNum}`),
+                                        h('span', `SPU：${data.row.sellSpu}`),
+                                    ]),
+                                ]),
+                            ]);
                         },
                         title: '商品名称',
                     },
@@ -249,11 +372,21 @@
                     {
                         align: 'center',
                         key: 'shelves',
-                        render() {
-                            return `<i-switch size="large" v-model="row.status">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span>
-                                    </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '上架',
                         width: 100,
@@ -267,10 +400,32 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="editGoods(${index})" size="small" type="ghost">编辑</i-button>
-                                    <i-button @click.native="removeReviewGoods(${index})" class="delete-ad"
-                                    size="small" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.editGoods(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.removeReviewGoods(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
@@ -336,16 +491,39 @@
                     },
                     {
                         key: 'goodsName',
-                        render() {
-                            return `<div class="goods-name-row">
-                                    <div class="img"><img :src="row.goodsImg" alt=""></div>
-                                    <div class="right-text">
-                                        <p>{{ row.goodsName }}</p>
-                                        <div>
-                                            <span class="left-num">商家货号：{{ row.sellNum }}</span>
-                                            <span>SPU：{{ row.sellSpu }}</span>
-                                        </div>
-                                    </div><div class="clear"></div></div>`;
+                        render(h, data) {
+                            return h('div', {
+                                props: {
+                                    class: 'goods-name-row',
+                                },
+                            }, [
+                                h('div', {
+                                    props: {
+                                        class: 'img',
+                                    },
+                                }, [
+                                    h('img', {
+                                        props: {
+                                            src: data.row.goodsImg,
+                                        },
+                                    }),
+                                ]),
+                                h('div', {
+                                    props: {
+                                        class: 'right-text',
+                                    },
+                                }, [
+                                    h('p', data.row.goodsName),
+                                    h('div', [
+                                        h('span', {
+                                            props: {
+                                                class: 'left-num',
+                                            },
+                                        }, `商家货号：${data.row.sellNum}`),
+                                        h('span', `SPU：${data.row.sellSpu}`),
+                                    ]),
+                                ]),
+                            ]);
                         },
                         title: '商品名称',
                     },
@@ -364,11 +542,21 @@
                     {
                         align: 'center',
                         key: 'shelves',
-                        render() {
-                            return `<i-switch size="large" v-model="row.status">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span>
-                                    </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '上架',
                         width: 100,
@@ -382,10 +570,32 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="editGoods(${index})" size="small" type="ghost">编辑</i-button>
-                                    <i-button @click.native="removeSellerGoods(${index})" class="delete-ad"
-                                    size="small" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.editGoods(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.removeSellerGoods(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
@@ -451,16 +661,39 @@
                     },
                     {
                         key: 'goodsName',
-                        render() {
-                            return `<div class="goods-name-row">
-                                    <div class="img"><img :src="row.goodsImg" alt=""></div>
-                                    <div class="right-text">
-                                        <p>{{ row.goodsName }}</p>
-                                        <div>
-                                            <span class="left-num">商家货号：{{ row.sellNum }}</span>
-                                            <span>SPU：{{ row.sellSpu }}</span>
-                                        </div>
-                                    </div><div class="clear"></div></div>`;
+                        render(h, data) {
+                            return h('div', {
+                                props: {
+                                    class: 'goods-name-row',
+                                },
+                            }, [
+                                h('div', {
+                                    props: {
+                                        class: 'img',
+                                    },
+                                }, [
+                                    h('img', {
+                                        props: {
+                                            src: data.row.goodsImg,
+                                        },
+                                    }),
+                                ]),
+                                h('div', {
+                                    props: {
+                                        class: 'right-text',
+                                    },
+                                }, [
+                                    h('p', data.row.goodsName),
+                                    h('div', [
+                                        h('span', {
+                                            props: {
+                                                class: 'left-num',
+                                            },
+                                        }, `商家货号：${data.row.sellNum}`),
+                                        h('span', `SPU：${data.row.sellSpu}`),
+                                    ]),
+                                ]),
+                            ]);
                         },
                         title: '商品名称',
                     },
@@ -480,10 +713,32 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button size="small" type="ghost">还原</i-button>
-                                    <i-button @click.native="removeViolationGoods(${index})" class="delete-ad"
-                                    size="small" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.editGoods(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '还原'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.removeReviewGoods(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'delete-ad',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,

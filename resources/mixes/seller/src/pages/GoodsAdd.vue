@@ -311,8 +311,15 @@
                     {
                         align: 'center',
                         key: 'goodPrice',
-                        render() {
-                            return '<i-input style="width: 64px"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '64px',
+                                },
+                            });
                         },
                         title: '商品价格（元）',
                         width: 150,
@@ -320,8 +327,15 @@
                     {
                         align: 'center',
                         key: 'marketPrice',
-                        render() {
-                            return '<i-input style="width: 64px"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '64px',
+                                },
+                            });
                         },
                         title: '市场价（元）',
                         width: 150,
@@ -329,8 +343,15 @@
                     {
                         align: 'center',
                         key: 'stock',
-                        render() {
-                            return '<i-input style="width: 64px"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '64px',
+                                },
+                            });
                         },
                         title: '库存',
                         width: 150,
@@ -338,8 +359,15 @@
                     {
                         align: 'center',
                         key: 'warnValue',
-                        render() {
-                            return '<i-input style="width: 64px"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '64px',
+                                },
+                            });
                         },
                         title: '预警值',
                         width: 150,
@@ -347,8 +375,15 @@
                     {
                         align: 'center',
                         key: 'sellNumber',
-                        render() {
-                            return '<i-input style="width: 124px"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '124px',
+                                },
+                            });
                         },
                         title: '商家货号',
                         width: 200,
@@ -356,8 +391,15 @@
                     {
                         align: 'center',
                         key: 'barCode',
-                        render() {
-                            return '<i-input style="width: 124px"></i-input>';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '124px',
+                                },
+                            });
                         },
                         title: '商品条形码',
                         width: 300,
