@@ -23,21 +23,40 @@
         background: #f7f7f7;
         border: 1px solid #e5e5e5;
         margin-top: 20px;
-        li {
-            color: #999999;
-            float: right;
-            line-height: 38px;
+        padding: 0 20px;
+    }
+    .table-li {
+        color: #999999;
+        float: right;
+        line-height: 38px;
+        text-align: center;
+        &:first-child {
+            float: left;
+            text-align: left;
+        }
+        &:last-child {
+            width: 160px;
+        }
+        &:nth-child(2) {
+            width: 120px;
+        }
+    }
+    > .notice-list {
+        font-size: 12px;
+        > li {
+            border-bottom: 1px solid #e5e5e5;
             padding: 0 20px;
-            text-align: center;
-            &:first-child {
-                float: left;
-                text-align: left;
-            }
-            &:last-child {
-                width: 120px;
-            }
-            &:nth-child(2) {
-                width: 160px;
+            > ul {
+                > li {
+                    line-height: 48px;
+                    .delete-btn {
+                        border: 1px solid #e5e5e5;
+                        display: inline-block;
+                        line-height: 24px;
+                        text-align: center;
+                        width: 48px;
+                    }
+                }
             }
         }
     }

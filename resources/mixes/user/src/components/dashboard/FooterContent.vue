@@ -2,28 +2,28 @@
     <div class="footer-content">
         <div class="container">
             <ul class="footer-serve">
-                <li class="col-md-3 text-center">
+                <li class="col-md-3 col-xs-3 col-sm-3 text-center">
                     <i class="icon iconfont icon-yingerfushi"></i>
                     <div class="icon-content">
                         <h3>优质商品</h3>
                         <p>呵护幼儿健康成长</p>
                     </div>
                 </li>
-                <li class="col-md-3 text-center">
+                <li class="col-md-3 col-xs-3 col-sm-3 text-center">
                     <i class="icon iconfont icon-wuliu"></i>
                     <div class="icon-content">
                         <h3>便捷运输</h3>
                         <p>官方认证快速安全</p>
                     </div>
                 </li>
-                <li class="col-md-3 text-center">
+                <li class="col-md-3 col-xs-3 col-sm-3 text-center">
                     <i class="icon iconfont icon-shanghuo"></i>
                     <div class="icon-content">
                         <h3>售后无忧</h3>
                         <p>快速处理各种需求</p>
                     </div>
                 </li>
-                <li class="col-md-3 text-center">
+                <li class="col-md-3 col-xs-3 col-sm-3 text-center">
                     <i class="icon iconfont icon-jifen"></i>
                     <div class="icon-content">
                         <h3>积分抵现</h3>
@@ -32,8 +32,8 @@
                 </li>
             </ul>
             <div class="process-info clearfix">
-                <div class="process-info-left clearfix col-md-9">
-                    <ul class="col-md-3">
+                <div class="process-info-left clearfix col-md-9 col-xs-9 col-sm-9">
+                    <ul class="col-md-3 col-xs-3 col-sm-3">
                         <!--<li><a href="javascript: void(0)">购物流程</a></li>-->
                         <li><span>购物流程</span></li>
                         <li>
@@ -46,7 +46,7 @@
                             <router-link to="common-problem">常见问题</router-link>
                         </li>
                     </ul>
-                    <ul class="col-md-3">
+                    <ul class="col-md-3 col-xs-3 col-sm-3">
                         <li><span>退货流程</span></li>
                         <li>
                             <router-link to="return-process">退货流程</router-link>
@@ -58,7 +58,7 @@
                             <router-link to="contact-service">联系客服</router-link>
                         </li>
                     </ul>
-                    <ul class="col-md-3">
+                    <ul class="col-md-3 col-xs-3 col-sm-3">
                         <li><span>配送方式</span></li>
                         <li>
                             <router-link to="delivery-method">配送方式</router-link>
@@ -70,7 +70,7 @@
                             <router-link to="delivery-track">物流跟踪</router-link>
                         </li>
                     </ul>
-                    <ul class="col-md-3">
+                    <ul class="col-md-3 col-xs-3 col-sm-3">
                         <li><span>关于我们</span></li>
                         <li>
                             <router-link to="about-us">关于我们</router-link>
@@ -83,7 +83,7 @@
                         </li>
                     </ul>
                 </div>
-                <ul class="process-info-right col-md-3">
+                <ul class="process-info-right col-md-3 col-xs-3 col-sm-3">
                     <li>联系我们</li>
                     <li>029-88221133</li>
                     <li>仅收市话费</li>

@@ -16,7 +16,9 @@
     .product-information {
         .freight {
             .name {
+                color: #666666;
                 float: left;
+                font-size: 14px;
                 margin-bottom: 6px;
                 margin-top: 30px;
                 width: 400px;
@@ -32,7 +34,7 @@
                 float: right;
                 font-size: 12px;
                 margin-top: 30px;
-                padding-right: 20px;
+                padding-right: 40px;
             }
         }
         .offer-tr {
@@ -56,20 +58,26 @@
         }
         thead {
             background-color: #f7f7f7;
+            border: 1px solid #d0d0d0;
             th.select {
                 color: #999999;
-                padding-right: 2px;
+                padding-right: 14px;
                 padding-top: 15px;
-                padding-left: 12px;
+                padding-left: 20px;
+            }
+            th {
+                text-align: center;
             }
             th.select-all {
                 padding: 0;
                 text-align: left;
-                width: 80px;
+                width: 120px;
             }
         }
         tbody {
             border-top: 1px solid #d0d0d0;
+            border-left: 1px solid #d0d0d0;
+            border-right: 1px solid #d0d0d0;
             height: 120px;
             tr {
                 border-bottom: 1px solid #d0d0d0;
@@ -149,7 +157,7 @@
     }
     .cart-select-model {
         thead {
-            color: #666;
+            color: #999;
             height: 60px;
             th {
                 height: 60px;
@@ -213,5 +221,22 @@
     }
     .browse-content {
         border: 1px solid #e5e5e5;
+    }
+    .price {
+        font-size: 14px;
+    }
+    .mention {
+        background: #d0d0d0;
+        border-radius: 2px;
+        color: #ffffff;
+        display: inline-block;
+        height: 16px;
+        line-height: 16px;
+        margin-right: 6px;
+        text-align: center;
+        width: 16px;
+        &.support {
+            background: #52b8ff;
+        }
     }
 }

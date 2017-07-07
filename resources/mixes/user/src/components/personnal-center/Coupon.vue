@@ -68,7 +68,6 @@
             tabSwitch(index) {
                 this.activeNav = index;
                 if (index) {
-                    console.log(index);
                     this.used = true;
                 } else {
                     this.used = false;

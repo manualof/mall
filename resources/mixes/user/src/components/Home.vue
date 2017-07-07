@@ -15,7 +15,7 @@
         <div class="new-product">
             <div class="container">
                 <div>
-                    <router-link :to="{ name: 'product-details' }" class="col-sm-3 row-content row-margin"
+                    <router-link :to="{ name: 'product-details' }" class="col-sm-3 col-xs-3 row-content row-margin"
                                  v-for="(item, index) in newProduct" :key="index">
                         <div class="img-box">
                             <img :src="item.img" alt="">
@@ -1123,7 +1123,7 @@
                     },
                 },
                 swiperOption: {
-                    autoplay: 5000,
+                    autoplay: 3000,
                     loop: true,
                     notNextTick: true,
                     pagination: '.swiper-pagination',
