@@ -149,7 +149,7 @@
             </div>
             <div class="pay-method invoice-info">
                 <h5 class="select-title">发票信息</h5>
-                <p>{{ invoice }} <a @click="modifyInvoice">修改</a></p>
+                <p>{{ invoice.invoice }} <a @click="modifyInvoice">修改</a></p>
                 <modal ref="invoice">
                     <div slot="title">
                         <h4 class="modal-title">发票信息</h4>
