@@ -22,12 +22,28 @@
                     {
                         align: 'center',
                         key: 'goodsLogo',
-                        render() {
-                            return `<tooltip placement="right-end">
-                                    <icon type="image"></icon>
-                                    <div slot="content">
-                                    <img :src="row.goodsLogo">
-                                    </tooltip>`;
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            props: {
+                                                src: data.row.goodsLogo,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
                         },
                         title: '品牌图标',
                         width: 150,

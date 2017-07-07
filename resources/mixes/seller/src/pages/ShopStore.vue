@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 addStore: {
                     address: '',
@@ -44,9 +45,29 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="edit(${index})" type="ghost">编辑</i-button>
-                                    <i-button @click.native="remove(${index})" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
