@@ -83,21 +83,21 @@
                                         list() {
                                             return h('dropdown-menu', [
                                                 h('dropdown-item', {
-                                                    on: {
+                                                    nativeOn: {
                                                         click() {
                                                             self.editType();
                                                         },
                                                     },
                                                 }, '编辑分类信息'),
                                                 h('dropdown-item', {
-                                                    on: {
+                                                    nativeOn: {
                                                         click() {
                                                             self.addSubordinate();
                                                         },
                                                     },
                                                 }, '新增下级分类'),
                                                 h('dropdown-item', {
-                                                    on: {
+                                                    nativeOn: {
                                                         click() {
                                                             self.lookSubordinate();
                                                         },
@@ -109,6 +109,7 @@
                                 }, [
                                     h('i-button', {
                                         props: {
+                                            size: 'small',
                                             type: 'ghost',
                                         },
                                     }, [
@@ -127,8 +128,11 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
+                                        size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '删除'),
                             ]);

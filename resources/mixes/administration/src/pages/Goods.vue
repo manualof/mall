@@ -96,7 +96,7 @@
                                             return h('dropdown-menu', [
                                                 h('dropdown-item', '查看商品详情'),
                                                 h('dropdown-item', {
-                                                    on: {
+                                                    nativeOn: {
                                                         click() {
                                                             self.lookGoodsSku();
                                                         },
