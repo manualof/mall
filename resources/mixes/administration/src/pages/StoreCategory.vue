@@ -62,7 +62,6 @@
                                         },
                                     },
                                     props: {
-                                        class: 'first-btn',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -76,6 +75,9 @@
                                     props: {
                                         size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '设置'),
                             ]);

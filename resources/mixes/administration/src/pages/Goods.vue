@@ -99,7 +99,6 @@
                                                 h('dropdown-item', {
                                                     on: {
                                                         click() {
-                                                            console.log(self);
                                                             self.lookGoodsSku();
                                                         },
                                                     },
