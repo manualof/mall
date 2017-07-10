@@ -27,7 +27,7 @@ export default function (injection) {
                     title: '图片空间',
                 },
             ],
-            icon: 'plus',
+            icon: 'pricetags',
             title: '商品',
         },
         {
@@ -49,7 +49,7 @@ export default function (injection) {
                 //     title: '店铺动态',
                 // },
             ],
-            icon: 'plus',
+            icon: 'ios-analytics',
             title: '店铺',
         },
         {
@@ -71,7 +71,7 @@ export default function (injection) {
                     title: '评价管理',
                 },
             ],
-            icon: 'plus',
+            icon: 'ios-paper',
             title: '订单',
         },
         {
@@ -85,7 +85,7 @@ export default function (injection) {
                     title: '自提点',
                 },
             ],
-            icon: 'plus',
+            icon: 'android-playstore',
             title: '运营',
         },
         {
@@ -119,7 +119,7 @@ export default function (injection) {
                     title: '售后分析',
                 },
             ],
-            icon: 'plus',
+            icon: 'stats-bars',
             title: '统计',
         },
         {
@@ -137,7 +137,7 @@ export default function (injection) {
                     title: '满减活动',
                 },
             ],
-            icon: 'plus',
+            icon: 'speakerphone',
             title: '促销',
         },
         {
@@ -163,7 +163,7 @@ export default function (injection) {
                     title: '支付方式',
                 },
             ],
-            icon: 'plus',
+            icon: 'ios-gear',
             title: '设置',
         },
     ]);

@@ -37,7 +37,6 @@
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render(h, data) {
                             return h('div', [
@@ -48,7 +47,6 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -60,9 +58,11 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '屏蔽'),
                             ]);
@@ -119,31 +119,26 @@
                             });
                         },
                         title: '商品图片',
-                        width: 180,
                     },
                     {
                         align: 'center',
                         key: 'goodsPrice',
                         title: '活动价格',
-                        width: 180,
                     },
                     {
                         align: 'center',
                         key: 'prePrice',
                         title: '原价',
-                        width: 180,
                     },
                     {
                         align: 'center',
                         key: 'startTime',
                         title: '开始时间',
-                        width: 180,
                     },
                     {
                         align: 'center',
                         key: 'endTime',
                         title: '结束时间',
-                        width: 180,
                     },
                     {
                         align: 'center',
@@ -165,23 +160,20 @@
                             });
                         },
                         title: '状态',
-                        width: 240,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
                                 props: {
-                                    class: 'delete-ad',
                                     size: 'small',
                                     type: 'ghost',
                                 },
                             }, '屏蔽');
                         },
                         title: '操作',
-                        width: 180,
+                        width: 120,
                     },
                 ],
                 goodsData: [

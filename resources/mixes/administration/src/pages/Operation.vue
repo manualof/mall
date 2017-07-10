@@ -96,7 +96,6 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },

@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 brandColumns: [
                     {
@@ -101,6 +102,9 @@
                                     props: {
                                         size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '删除'),
                             ]);

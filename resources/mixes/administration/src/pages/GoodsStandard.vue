@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 managementSearch: '',
                 searchList: [
@@ -81,9 +82,11 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '删除'),
                             ]);

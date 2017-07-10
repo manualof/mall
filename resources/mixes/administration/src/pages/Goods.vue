@@ -131,9 +131,11 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '下架'),
                             ]);
@@ -322,9 +324,11 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '删除'),
                             ]);

@@ -55,11 +55,10 @@
                             items.push(h('i-button', {
                                 on: {
                                     click() {
-                                        self.remove(data.index);
+                                        self.toView(data.index);
                                     },
                                 },
                                 props: {
-                                    class: 'first-ad',
                                     size: 'small',
                                     type: 'ghost',
                                 },
@@ -72,7 +71,8 @@
                                             menus.push(h('dropdown-item', {
                                                 on: {
                                                     click() {
-                                                        self.cancelOrder();
+                                                        console.log(data);
+                                                        self.cancelOrder(data.row);
                                                     },
                                                 },
                                             }, '取消订单'));
@@ -80,7 +80,7 @@
                                                 menus.push(h('dropdown-item', {
                                                     on: {
                                                         click() {
-                                                            self.receiveGoods();
+                                                            self.receiveGoods(data.row);
                                                         },
                                                     },
                                                 }, '收到货款'));
@@ -93,6 +93,9 @@
                                         props: {
                                             size: 'small',
                                             type: 'ghost',
+                                        },
+                                        style: {
+                                            marginLeft: '10px',
                                         },
                                     }, [
                                         '设置',
