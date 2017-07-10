@@ -94,6 +94,9 @@
                                             size: 'small',
                                             type: 'ghost',
                                         },
+                                        style: {
+                                            marginLeft: '10px',
+                                        },
                                     }, [
                                         '设置',
                                         h('icon', {
