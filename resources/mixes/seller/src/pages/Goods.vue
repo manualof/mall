@@ -21,31 +21,31 @@
                         key: 'goodsName',
                         render(h, data) {
                             return h('div', {
-                                props: {
-                                    class: 'goods-name-row',
+                                class: {
+                                    'goods-name-row': true,
                                 },
                             }, [
                                 h('div', {
-                                    props: {
-                                        class: 'img',
+                                    class: {
+                                        img: true,
                                     },
                                 }, [
                                     h('img', {
-                                        props: {
+                                        domProps: {
                                             src: data.row.goodsImg,
                                         },
                                     }),
                                 ]),
                                 h('div', {
-                                    props: {
-                                        class: 'right-text',
+                                    class: {
+                                        'right-text': true,
                                     },
                                 }, [
                                     h('p', data.row.goodsName),
                                     h('div', [
                                         h('span', {
-                                            props: {
-                                                class: 'left-num',
+                                            class: {
+                                                'left-num': true,
                                             },
                                         }, `商家货号：${data.row.sellNum}`),
                                         h('span', `SPU：${data.row.sellSpu}`),
@@ -112,13 +112,15 @@
                                     },
                                 }, '编辑'),
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.removeGoods(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -191,31 +193,31 @@
                         key: 'goodsName',
                         render(h, data) {
                             return h('div', {
-                                props: {
-                                    class: 'goods-name-row',
+                                class: {
+                                    'goods-name-row': true,
                                 },
                             }, [
                                 h('div', {
-                                    props: {
-                                        class: 'img',
+                                    class: {
+                                        img: true,
                                     },
                                 }, [
                                     h('img', {
-                                        props: {
+                                        domProps: {
                                             src: data.row.goodsImg,
                                         },
                                     }),
                                 ]),
                                 h('div', {
-                                    props: {
-                                        class: 'right-text',
+                                    class: {
+                                        'right-text': true,
                                     },
                                 }, [
                                     h('p', data.row.goodsName),
                                     h('div', [
                                         h('span', {
-                                            props: {
-                                                class: 'left-num',
+                                            class: {
+                                                'left-num': true,
                                             },
                                         }, `商家货号：${data.row.sellNum}`),
                                         h('span', `SPU：${data.row.sellSpu}`),
@@ -254,13 +256,15 @@
                                     },
                                 }, '还原'),
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.removeRecoverGoods(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -323,31 +327,31 @@
                         key: 'goodsName',
                         render(h, data) {
                             return h('div', {
-                                props: {
-                                    class: 'goods-name-row',
+                                class: {
+                                    'goods-name-row': true,
                                 },
                             }, [
                                 h('div', {
-                                    props: {
-                                        class: 'img',
+                                    class: {
+                                        img: true,
                                     },
                                 }, [
                                     h('img', {
-                                        props: {
+                                        domProps: {
                                             src: data.row.goodsImg,
                                         },
                                     }),
                                 ]),
                                 h('div', {
-                                    props: {
-                                        class: 'right-text',
+                                    class: {
+                                        'right-text': true,
                                     },
                                 }, [
                                     h('p', data.row.goodsName),
                                     h('div', [
                                         h('span', {
-                                            props: {
-                                                class: 'left-num',
+                                            class: {
+                                                'left-num': true,
                                             },
                                         }, `商家货号：${data.row.sellNum}`),
                                         h('span', `SPU：${data.row.sellSpu}`),
@@ -414,13 +418,15 @@
                                     },
                                 }, '编辑'),
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.removeReviewGoods(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -493,31 +499,31 @@
                         key: 'goodsName',
                         render(h, data) {
                             return h('div', {
-                                props: {
-                                    class: 'goods-name-row',
+                                class: {
+                                    'goods-name-row': true,
                                 },
                             }, [
                                 h('div', {
-                                    props: {
-                                        class: 'img',
+                                    class: {
+                                        img: true,
                                     },
                                 }, [
                                     h('img', {
-                                        props: {
+                                        domProps: {
                                             src: data.row.goodsImg,
                                         },
                                     }),
                                 ]),
                                 h('div', {
-                                    props: {
-                                        class: 'right-text',
+                                    class: {
+                                        'right-text': true,
                                     },
                                 }, [
                                     h('p', data.row.goodsName),
                                     h('div', [
                                         h('span', {
-                                            props: {
-                                                class: 'left-num',
+                                            class: {
+                                                'left-num': true,
                                             },
                                         }, `商家货号：${data.row.sellNum}`),
                                         h('span', `SPU：${data.row.sellSpu}`),
@@ -584,13 +590,15 @@
                                     },
                                 }, '编辑'),
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.removeSellerGoods(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -663,31 +671,31 @@
                         key: 'goodsName',
                         render(h, data) {
                             return h('div', {
-                                props: {
-                                    class: 'goods-name-row',
+                                class: {
+                                    'goods-name-row': true,
                                 },
                             }, [
                                 h('div', {
-                                    props: {
-                                        class: 'img',
+                                    class: {
+                                        img: true,
                                     },
                                 }, [
                                     h('img', {
-                                        props: {
+                                        domProps: {
                                             src: data.row.goodsImg,
                                         },
                                     }),
                                 ]),
                                 h('div', {
-                                    props: {
-                                        class: 'right-text',
+                                    class: {
+                                        'right-text': true,
                                     },
                                 }, [
                                     h('p', data.row.goodsName),
                                     h('div', [
                                         h('span', {
-                                            props: {
-                                                class: 'left-num',
+                                            class: {
+                                                'left-num': true,
                                             },
                                         }, `商家货号：${data.row.sellNum}`),
                                         h('span', `SPU：${data.row.sellSpu}`),
@@ -727,13 +735,15 @@
                                     },
                                 }, '还原'),
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.removeReviewGoods(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
