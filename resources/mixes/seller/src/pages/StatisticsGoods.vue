@@ -183,6 +183,7 @@
                         title: '近30天下单金额',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {

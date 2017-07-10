@@ -55,6 +55,7 @@
                                         },
                                     },
                                     props: {
+                                        size: 'small',
                                         type: 'ghost',
                                     },
                                 }, '编辑'),
@@ -66,6 +67,7 @@
                                     },
                                     props: {
                                         class: 'delete-ad',
+                                        size: 'small',
                                         type: 'ghost',
                                     },
                                 }, '删除'),
