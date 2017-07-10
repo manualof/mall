@@ -203,6 +203,24 @@
         height: 538px;
         float: left;
         width: 382px;
+        margin-right: 21px;
+        &:nth-child(2) {
+            .recommend-name {
+                background: #f99a6b;
+                &:before {
+                    background: #ce754a;
+                }
+            }
+        }
+        &:last-child {
+            margin-right: 0;
+            .recommend-name {
+                background: #797bbc;
+                &:before {
+                    background: #565892;
+                }
+            }
+        }
         .recommend-name {
             background-color: #6abfae;
             color: #fff;
@@ -268,71 +286,6 @@
 
                     }
                 }
-            }
-        }
-    }
-    .product-recommen {
-        margin-right: 21px;
-        .content-model .name {
-            color: #6abfae;
-        }
-    }
-    .product-offer {
-        margin-right: 21px;
-        .content-model .name {
-            color: #f99a6b;
-        }
-        .recommend-name {
-            background-color: #f99a6b;
-            &:before {
-                background-color: #ce754a;
-                content: '';
-                display: block;
-            }
-        }
-        .recommend-content {
-            background-color: #f7f7f7;
-            padding: 0;
-            .recommend-content-model {
-                height: 202px;
-                &:nth-child(1),
-                &:nth-child(2) {
-                    border: 0;
-                }
-                &:nth-child(1) {
-                    border-right: 0;
-                }
-            }
-            .content-top {
-                background-color: #fff;
-                height: 242px;
-                padding: 20px;
-                .recommend-content-model:first-child {
-                    border-right: 1px solid #e5e5e5;
-                }
-            }
-            .content-img {
-                background-color: #f7f7f7;
-                height: 242px;
-                margin-top: 4px;
-                width: 382px;
-                img {
-                    height: 100%;
-                    width: 100%;
-                }
-            }
-        }
-    }
-    .product-kinds {
-        .content-model .name {
-            color: #797bbc;
-        }
-        .recommend-name {
-            background-color: #797bbc;
-            &:before {
-                background-color: #565892;
-                content: '';
-                display: block;
             }
         }
     }
