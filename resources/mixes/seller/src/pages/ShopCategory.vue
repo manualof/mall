@@ -39,9 +39,21 @@
                     },
                     {
                         key: 'categoryName',
-                        render() {
-                            return `<span>{{ row.categoryName }}</span>
-                                    <i-button type="ghost" size="small" @click.native="addSubordinate">新增下级</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('span', data.row.categoryName),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.addSubordinate(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '新增下级'),
+                            ]);
                         },
                         title: '分类名称',
                     },
