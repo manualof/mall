@@ -601,20 +601,20 @@
         <!--需要 浏览推荐-->
         <need-browse></need-browse>
         <!--楼层导航-->
-        <nav class="bs-js-navbar-scrollspy">
+        <nav class="bs-js-navbar-scrollspy" v-if="show">
             <ul class="floor nav">
-                <li><a href="#wowen-clothing">女装外套</a></li>
-                <li><a href="#baby-place">母婴专区</a></li>
-                <li><a href="#cotton-material">棉品寝卧</a></li>
-                <li><a href="#care-makeups">护理美妆</a></li>
-                <li><a href="#underwear-clothing">内衣服饰</a></li>
-                <li><a href="#baby-food">婴儿食品</a></li>
-                <li><a href="#baby-paper">婴儿纸品</a></li>
-                <li><a href="#baby-toys">幼儿玩具</a></li>
-                <li><a href="#baby-experience">育婴心得</a></li>
-                <li><a href="#ios">其他分类</a></li>
+                <li><a >女装外套</a></li>
+                <li><a >母婴专区</a></li>
+                <li><a >棉品寝卧</a></li>
+                <li><a >护理美妆</a></li>
+                <li><a >内衣服饰</a></li>
+                <li><a >婴儿食品</a></li>
+                <li><a >婴儿纸品</a></li>
+                <li><a >幼儿玩具</a></li>
+                <li><a >育婴心得</a></li>
+                <li><a >其他分类</a></li>
                 <li @click="toTop">
-                    <a href="javascript:void (0)">
+                    <a>
                         <p>TOP</p>
                         <i class="icon iconfont icon-top"></i>
                     </a>
@@ -1122,6 +1122,7 @@
                         ],
                     },
                 },
+                show: false,
                 swiperOption: {
                     autoplay: 3000,
                     loop: true,
@@ -1153,17 +1154,29 @@
         },
         methods: {
             toTop() {
-                let timeOut;
-                if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
-                    window.scrollBy(0, -50);
-                    timeOut = setTimeout(this.toTop(), 10);
-                } else {
-                    clearTimeout(timeOut);
-                }
+                const timeOut = setInterval(() => {
+                    if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
+                        window.scrollBy(0, -20);
+                    } else {
+                        clearInterval(timeOut);
+                    }
+                }, 5);
             },
         },
         mounted() {
-//            window.jQuery('body').scrollspy({ target: '.bs-js-navbar-scrollspy' });
+            window.onscroll = () => {
+                let scrollTop;
+                if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) {
+                    scrollTop = document.documentElement.scrollTop;
+                } else {
+                    scrollTop = document.body.scrollTop;
+                }
+                if (scrollTop > 1300) {
+                    this.show = true;
+                } else {
+                    this.show = false;
+                }
+            };
         },
     };
 </script>

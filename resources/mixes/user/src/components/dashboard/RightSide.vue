@@ -33,13 +33,13 @@
         },
         methods: {
             toTop() {
-                let timeOut;
-                if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
-                    window.scrollBy(0, -20);
-                    timeOut = setTimeout(this.toTop(), 1000);
-                } else {
-                    clearTimeout(timeOut);
-                }
+                const timeOut = setInterval(() => {
+                    if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
+                        window.scrollBy(0, -20);
+                    } else {
+                        clearInterval(timeOut);
+                    }
+                }, 5);
             },
         },
         mounted() {
