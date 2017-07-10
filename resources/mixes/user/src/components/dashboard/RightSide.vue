@@ -1,5 +1,5 @@
 <template>
-    <ul class="right-side">
+    <ul class="right-side" :class="{fixed:show}">
         <li>
             <router-link class="text-center" :to="{ name: 'personnal-center' }">
                 <i class="icon iconfont icon-denglu"></i>我的
@@ -15,7 +15,7 @@
                 <i class="icon iconfont icon-kefu"></i>客服
             </router-link>
         </li>
-        <li @click="toTop" class="toTop">
+        <li @click="toTop" class="toTop" v-if="show">
             <a class="text-center" href="javascript:void (0)">
                 <p>TOP</p>
                 <i class="icon iconfont icon-top"> </i>
@@ -26,6 +26,11 @@
 
 <script>
     export default {
+        data() {
+            return {
+                show: false,
+            };
+        },
         methods: {
             toTop() {
                 let timeOut;
@@ -38,36 +43,19 @@
             },
         },
         mounted() {
-//            window.jQuery('.right-side').css({
-//                position: 'absolute',
-//                top: '800px',
-//            });
-//            window.jQuery('.toTop').fadeOut();
-//            window.jQuery(window).scroll(
-//                () => {
-//                    if (window.jQuery(window).scrollTop() > 800) {
-//                        window.jQuery('.toTop').fadeIn(1500);
-//                        window.jQuery('.right-side').css(
-//                            {
-//                                position: 'fixed',
-//                                top: '50%',
-//                            },
-//                        );
-//                        if (window.jQuery(window).scrollTop() > 2000) {
-//                            window.jQuery('.floor').fadeIn(300);
-//                        }
-//                    } else {
-//                        window.jQuery('.toTop').fadeOut(1500);
-//                        window.jQuery('.floor').fadeOut(1000);
-//                        window.jQuery('.right-side').css(
-//                            {
-//                                position: 'absolute',
-//                                top: '800px',
-//                            },
-//                        );
-//                    }
-//                },
-//            );
+            window.onscroll = () => {
+                let scrollTop;
+                if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) {
+                    scrollTop = document.documentElement.scrollTop;
+                } else {
+                    scrollTop = document.body.scrollTop;
+                }
+                if (scrollTop > 800) {
+                    this.show = true;
+                } else {
+                    this.show = false;
+                }
+            };
         },
     };
 </script>
