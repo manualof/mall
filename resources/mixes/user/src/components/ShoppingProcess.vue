@@ -5,7 +5,7 @@
                 <div class="item-group" id="accordion">
                     <div class="item-content" v-for="side in sides">
                         <div class="item-heading">
-                            <h4 class="item-title">
+                            <h4 class="item-title" @click="showSub(side)">
                                 <a>{{ side.title }}</a>
                             </h4>
                         </div>
@@ -106,6 +106,14 @@
                     },
                 ],
             };
+        },
+        methods: {
+            showSub(item) {
+                this.sides.forEach(side => {
+                    side.show = false;
+                });
+                item.show = !item.show;
+            },
         },
     };
 </script>

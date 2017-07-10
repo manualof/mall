@@ -63,4 +63,16 @@
             }
         }
     }
+    .slide-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-enter {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    .slide-leave-to {
+        transform: translateY(50px);
+        opacity: 1;
+    }
+
 }
