@@ -35,6 +35,7 @@
                         title: '退款金额',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -119,6 +120,7 @@
                         title: '退款金额',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {

@@ -24,6 +24,7 @@
                         title: '下单量',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -73,6 +74,7 @@
                         title: '下单金额',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -122,6 +124,7 @@
                         title: '下单商品数',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -177,6 +180,7 @@
                         title: '同比',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -938,6 +942,7 @@
                         title: '下单量',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -995,6 +1000,7 @@
                         title: '下单量',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -1052,6 +1058,7 @@
                         title: '下单商品数',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
