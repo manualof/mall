@@ -1153,8 +1153,13 @@
         },
         methods: {
             toTop() {
-                window.jQuery('body').animate({ scrollTop: 0 }, 1000);
-                return false;
+                let timeOut;
+                if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
+                    window.scrollBy(0, -50);
+                    timeOut = setTimeout(this.toTop(), 10);
+                } else {
+                    clearTimeout(timeOut);
+                }
             },
         },
         mounted() {

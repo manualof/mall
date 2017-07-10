@@ -28,41 +28,46 @@
     export default {
         methods: {
             toTop() {
-                window.jQuery('body').animate({ scrollTop: 0 }, 1080);
-                return false;
+                let timeOut;
+                if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
+                    window.scrollBy(0, -20);
+                    timeOut = setTimeout(this.toTop(), 1000);
+                } else {
+                    clearTimeout(timeOut);
+                }
             },
         },
         mounted() {
-            window.jQuery('.right-side').css({
-                position: 'absolute',
-                top: '800px',
-            });
-            window.jQuery('.toTop').fadeOut();
-            window.jQuery(window).scroll(
-                () => {
-                    if (window.jQuery(window).scrollTop() > 800) {
-                        window.jQuery('.toTop').fadeIn(1500);
-                        window.jQuery('.right-side').css(
-                            {
-                                position: 'fixed',
-                                top: '50%',
-                            },
-                        );
-                        if (window.jQuery(window).scrollTop() > 2000) {
-                            window.jQuery('.floor').fadeIn(300);
-                        }
-                    } else {
-                        window.jQuery('.toTop').fadeOut(1500);
-                        window.jQuery('.floor').fadeOut(1000);
-                        window.jQuery('.right-side').css(
-                            {
-                                position: 'absolute',
-                                top: '800px',
-                            },
-                        );
-                    }
-                },
-            );
+//            window.jQuery('.right-side').css({
+//                position: 'absolute',
+//                top: '800px',
+//            });
+//            window.jQuery('.toTop').fadeOut();
+//            window.jQuery(window).scroll(
+//                () => {
+//                    if (window.jQuery(window).scrollTop() > 800) {
+//                        window.jQuery('.toTop').fadeIn(1500);
+//                        window.jQuery('.right-side').css(
+//                            {
+//                                position: 'fixed',
+//                                top: '50%',
+//                            },
+//                        );
+//                        if (window.jQuery(window).scrollTop() > 2000) {
+//                            window.jQuery('.floor').fadeIn(300);
+//                        }
+//                    } else {
+//                        window.jQuery('.toTop').fadeOut(1500);
+//                        window.jQuery('.floor').fadeOut(1000);
+//                        window.jQuery('.right-side').css(
+//                            {
+//                                position: 'absolute',
+//                                top: '800px',
+//                            },
+//                        );
+//                    }
+//                },
+//            );
         },
     };
 </script>
