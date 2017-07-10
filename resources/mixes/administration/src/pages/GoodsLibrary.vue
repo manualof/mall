@@ -92,7 +92,6 @@
                                         },
                                     },
                                     props: {
-                                        class: 'first-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -104,9 +103,11 @@
                                         },
                                     },
                                     props: {
-                                        class: 'first-ad',
                                         size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '删除'),
                             ]);

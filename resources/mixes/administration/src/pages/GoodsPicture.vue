@@ -92,9 +92,11 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '删除'),
                             ]);
