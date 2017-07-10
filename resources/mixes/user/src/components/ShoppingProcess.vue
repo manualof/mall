@@ -3,89 +3,21 @@
         <div class="container clearfix">
             <div class="side-bar">
                 <div class="item-group" id="accordion">
-                    <div class="item-content ">
+                    <div class="item-content" v-for="side in sides">
                         <div class="item-heading">
-                            <h4 class="item-title">
-                                <a data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseOne">购物流程</a>
+                            <h4 class="item-title" @click="showSub(side)">
+                                <a>{{ side.title }}</a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="item-collapse collapse in">
-                            <ul class="item-body" id="myTab1">
-                                <li>
-                                    <router-link to='shop-process'>购物流程</router-link>
-                                </li>
-                                <li>
-                                    <router-link to='pay-method'>支付方式</router-link>
-                                </li>
-                                <li>
-                                    <router-link to='common-problem'>常见问题</router-link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="item-content ">
-                        <div class="item-heading">
-                            <h4 class="item-title">
-                                <a data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseTwo">退货流程</a>
-                            </h4>
-                        </div>
-                        <div id="collapseTwo" class="item-collapse collapse ">
-                            <ul class="item-body">
-                                <li>
-                                    <router-link to='return-process'>退货流程</router-link>
-                                </li>
-                                <li>
-                                    <router-link to='return-money'>退款说明</router-link>
-                                </li>
-                                <li>
-                                    <router-link to='contact-service'>联系客服</router-link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="item-content ">
-                        <div class="item-heading">
-                            <h4 class="item-title">
-                                <a data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseThree">配送方式</a>
-                            </h4>
-                        </div>
-                        <div id="collapseThree" class="item-collapse collapse">
-                            <ul class="item-body">
-                                <li>
-                                    <router-link to='delivery-method'>配送方式</router-link>
-                                </li>
-                                <li>
-                                    <router-link to='delivery-sevice'>配送服务</router-link>
-                                </li>
-                                <li>
-                                    <router-link to='delivery-track'>物流跟踪</router-link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="item-content ">
-                        <div class="item-heading">
-                            <h4 class="item-title">
-                                <a data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseFour">关于我们</a>
-                            </h4>
-                        </div>
-                        <div id="collapseFour" class="item-collapse collapse">
-                            <ul class="item-body">
-                                <li>
-                                    <router-link to="about-us">关于我们</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="contact-us">联系我们</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="cooperation">招商合作</router-link>
-                                </li>
-                            </ul>
-                        </div>
+                        <transition name="slide">
+                            <div class="item-collapse collapse in" v-show="side.show">
+                                <ul class="item-body" id="myTab1">
+                                    <li v-for="sub in side.children">
+                                        <router-link :to='sub.router'>{{ sub.name }}</router-link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </transition>
                     </div>
                 </div>
             </div>
@@ -95,3 +27,93 @@
         </div>
     </div>
 </template>
+<script>
+    export default {
+        data() {
+            return {
+                sides: [
+                    {
+                        children: [
+                            {
+                                name: '购物流程',
+                                router: 'shop-process',
+                            },
+                            {
+                                name: '支付方式',
+                                router: 'pay-method',
+                            },
+                            {
+                                name: '常见问题',
+                                router: 'common-problem',
+                            },
+                        ],
+                        show: true,
+                        title: '购物流程',
+                    },
+                    {
+                        children: [
+                            {
+                                name: '退货流程',
+                                router: 'return-process',
+                            },
+                            {
+                                name: '退款说明',
+                                router: 'return-money',
+                            },
+                            {
+                                name: '联系客服',
+                                router: 'contact-service',
+                            },
+                        ],
+                        show: false,
+                        title: '退货流程',
+                    },
+                    {
+                        children: [
+                            {
+                                name: '配送方式',
+                                router: 'delivery-method',
+                            },
+                            {
+                                name: '配送服务',
+                                router: 'delivery-sevice',
+                            },
+                            {
+                                name: '物流跟踪',
+                                router: 'delivery-track',
+                            },
+                        ],
+                        show: false,
+                        title: '配送方式',
+                    },
+                    {
+                        children: [
+                            {
+                                name: '关于我们',
+                                router: 'about-us',
+                            },
+                            {
+                                name: '联系我们',
+                                router: 'contact-us',
+                            },
+                            {
+                                name: '招商合作',
+                                router: 'cooperation',
+                            },
+                        ],
+                        show: false,
+                        title: '关于我们',
+                    },
+                ],
+            };
+        },
+        methods: {
+            showSub(item) {
+                this.sides.forEach(side => {
+                    side.show = false;
+                });
+                item.show = !item.show;
+            },
+        },
+    };
+</script>
