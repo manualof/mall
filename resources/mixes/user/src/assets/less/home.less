@@ -55,6 +55,9 @@
         }
 
     }
+    .intro span:first-child {
+        font-size: 14px;
+    }
 }
 .home .new-product {
     margin-top: 20px;
@@ -89,6 +92,9 @@
             }
             .intro {
                 position: relative;
+                span {
+                    font-size: 14px;
+                }
                 .money {
                     color: #de2634;
                     position: absolute;
@@ -169,6 +175,13 @@
         .spike-content {
             margin-top: 50px;
             padding: 0 15px;
+            a {
+                &:last-child {
+                    dl {
+                        border-right: 0;
+                    }
+                }
+            }
             .col {
                 float: left;
                 height: 242px;
@@ -180,6 +193,11 @@
                     line-height: 158px;
                     text-align: center;
                     width: 153px;
+                }
+                dd {
+                    .name {
+                        font-size: 14px;
+                    }
                 }
                 .new-price {
                     color: #de2634;
@@ -274,6 +292,7 @@
                     }
                     .intro {
                         color: #999;
+                        font-size: 14px;
                         margin-bottom: 20px;
                     }
                 }
@@ -345,7 +364,7 @@
     }
 }
 .home .wowen-clothing {
-    margin-top: 40px;
+    margin-top: 20px;
     .wowen-clothing-model {
         float: left;
         height: 450px;
@@ -468,6 +487,11 @@
                                 }
                                 .intro {
                                     position: relative;
+                                    span {
+                                        &:first-child {
+                                            font-size: 14px;
+                                        }
+                                    }
                                 }
                             }
 
@@ -546,6 +570,7 @@
         text-align: center;
         line-height: 40px;
         a {
+            font-size: 14px;
             padding: 0 15px;
         }
         &:hover {

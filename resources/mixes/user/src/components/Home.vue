@@ -897,6 +897,21 @@
                                 intro: '舒适耐实用儿童睡椅',
                                 title: '新品上架',
                             },
+                            {
+                                img: picture2,
+                                intro: '舒适耐实用儿童睡椅',
+                                title: '新品上架',
+                            },
+                            {
+                                img: picture2,
+                                intro: '舒适耐实用儿童睡椅',
+                                title: '新品上架',
+                            },
+                            {
+                                img: picture2,
+                                intro: '舒适耐实用儿童睡椅',
+                                title: '新品上架',
+                            },
                         ],
                         offerList: [
                             {
@@ -965,6 +980,16 @@
                                 intro: '舒适耐实用儿童睡椅',
                                 title: '新品上架',
                             },
+                            {
+                                img: picture2,
+                                intro: '舒适耐实用儿童睡椅',
+                                title: '新品上架',
+                            },
+                            {
+                                img: picture2,
+                                intro: '舒适耐实用儿童睡椅',
+                                title: '新品上架',
+                            },
                         ],
                         offerList: [
                             {
@@ -1023,6 +1048,11 @@
                         module_img: picture1,
                         module_item: ['大衣', '卫衣', '针织', '打底', '大衣1'],
                         newProduct: [
+                            {
+                                img: picture2,
+                                intro: '舒适耐实用儿童睡椅',
+                                title: '新品上架',
+                            },
                             {
                                 img: picture2,
                                 intro: '舒适耐实用儿童睡椅',
