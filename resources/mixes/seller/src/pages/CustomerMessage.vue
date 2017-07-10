@@ -62,6 +62,7 @@
                                     },
                                     props: {
                                         class: 'delete-ad',
+                                        size: 'small',
                                         type: 'ghost',
                                     },
                                 }, '查看'),
@@ -73,6 +74,7 @@
                                     },
                                     props: {
                                         class: 'delete-ad',
+                                        size: 'small',
                                         type: 'ghost',
                                     },
                                 }, '删除'),
