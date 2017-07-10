@@ -9,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 libraryColumns: [
                     {

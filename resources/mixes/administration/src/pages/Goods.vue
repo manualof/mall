@@ -46,7 +46,6 @@
                         align: 'center',
                         key: 'goodsImg',
                         render(h, data) {
-                            console.log(data);
                             return h('tooltip', {
                                 props: {
                                     placement: 'right-end',
