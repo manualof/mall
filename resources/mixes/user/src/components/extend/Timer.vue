@@ -1,5 +1,5 @@
 <template>
-    <p class="inherit">{{time}}</p>
+    <p class="inherit">{{ time }}</p>
 </template>
 
 <script>

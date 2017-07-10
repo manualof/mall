@@ -222,12 +222,18 @@
         float: left;
         width: 382px;
         margin-right: 21px;
+        .name {
+            color: #6abfae;
+        }
         &:nth-child(2) {
             .recommend-name {
                 background: #f99a6b;
                 &:before {
                     background: #ce754a;
                 }
+            }
+            .name {
+                color: #f99a6b;
             }
         }
         &:last-child {
@@ -237,6 +243,9 @@
                 &:before {
                     background: #565892;
                 }
+            }
+            .name {
+                color: #797bbc;
             }
         }
         .recommend-name {
@@ -537,22 +546,47 @@
 
 //改变颜色
 .home {
-    .baby-place .wowen-clothing-model .recommend-name {
-        background-color: #f2ae99;
-        &:before {
-            background-color: #d58167;
+    .baby-place {
+        .name {
+            color: #f2ae99 !important;
+        }
+        .wowen-clothing-model .recommend-name {
+            background-color: #f2ae99;
+            &:before {
+                background-color: #d58167;
+            }
+            .product {
+                .name {
+                    color: #f2ae99;
+                }
+            }
+    }
+    }
+    .cotton-material {s
+        .name {
+            color: #5ec0a1 !important;
+        }
+        .wowen-clothing-model .recommend-name {
+            background-color: #5ec0a1;
+            &:before {
+                background-color: #30a983;
+            }
         }
     }
-    .cotton-material .wowen-clothing-model .recommend-name {
-        background-color: #5ec0a1;
-        &:before {
-            background-color: #30a983;
+    .care-makeups{
+        .name {
+            color: #ffb763 !important;
         }
-    }
-    .care-makeups .wowen-clothing-model .recommend-name {
-        background-color: #ffb763;
-        &:before {
-            background-color: #de841b;
+        .wowen-clothing-model .recommend-name {
+            background-color: #ffb763;
+            &:before {
+                background-color: #de841b;
+            }
+            .product {
+                .name {
+                    color: #ffb763;
+                }
+            }
         }
     }
 }
