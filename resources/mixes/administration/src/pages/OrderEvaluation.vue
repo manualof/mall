@@ -118,7 +118,7 @@
                                     size: 'small',
                                     type: 'ghost',
                                 },
-                            });
+                            }, '删除');
                         },
                         title: '操作',
                         width: 150,

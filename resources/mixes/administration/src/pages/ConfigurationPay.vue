@@ -45,6 +45,7 @@
                         render(h) {
                             return h('i-button', {
                                 props: {
+                                    size: 'small',
                                     type: 'ghost',
                                 },
                             }, '编辑');
