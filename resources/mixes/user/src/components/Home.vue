@@ -51,12 +51,14 @@
         <!--品质推荐-->
         <div class="product-recommend">
             <div class="container">
-                <div class="product-recommend-model product-recommen">
-                    <div class="recommend-name"><i class="icon iconfont icon-dianzan"></i>{{ recommendList.title1 }}
+                <div class="product-recommend-model product-recommen" v-for="recommend in recommendList">
+                    <div class="recommend-name">
+                        <i class="icon iconfont" :class="recommend.icon"></i>
+                        {{ recommend.title }}
                     </div>
                     <div class="recommend-content clearfix">
-                        <router-link class="recommend-content-model" v-for="(item, index) in recommendList.recommen1" :key="index"
-                                     :to="{name: 'product-details'}">
+                        <router-link class="recommend-content-model" v-for="(item, index) in recommend.recommend" :key="index"
+                                     :to="{ name: 'product-details' }">
                             <div class="content-model text-center">
                                 <p class="name">{{ item.title }}</p>
                                 <p class="intro">{{ item.intro }}</p>
@@ -67,58 +69,6 @@
                         </router-link>
                     </div>
                 </div>
-                <div class="product-recommend-model product-offer">
-                    <div class="recommend-name"><i class="icon iconfont icon-tejiache"></i>{{ recommendList.title2 }}
-                    </div>
-                    <div class="recommend-content">
-                        <div class="content-top clearfix">
-                            <router-link class="recommend-content-model" v-for="(item, index) in recommendList.recommen2" :key="index"
-                                         :to="{ name: 'product-details' }">
-                                <div class="content-model text-center">
-                                    <p class="name">年末特惠</p>
-                                    <p class="intro">满300减50优惠折扣</p>
-                                </div>
-                                <div class="intro-img">
-                                    <img src="../assets/images/img_04.png" alt="">
-                                </div>
-                            </router-link>
-                        </div>
-                        <div class="content-img">
-                            <img src="../assets/images/product-offer-img.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="product-recommend-model product-kinds">
-                    <div class="recommend-name"><i class="icon iconfont icon-xing"></i>{{ recommendList.title3 }}</div>
-                    <div class="recommend-content clearfix">
-                        <router-link class="recommend-content-model" v-for="(item, index) in recommendList.recommen3" :key="index"
-                                     :to="{name: 'product-details'}">
-                            <div class="content-model text-center">
-                                <p class="name">年末特惠</p>
-                                <p class="intro">满300减50优惠折扣</p>
-                            </div>
-                            <div class="intro-img">
-                                <img src="../assets/images/img_04.png" alt="">
-                            </div>
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--年末特惠-->
-        <div class="year-offer">
-            <div class="container">
-                <router-link class="year-offer-model offer-margin" v-for="(item, index) in yearOfferList" to="/" :key="index">
-                    <div class="offer-content">
-                        <span class="top-line"></span>
-                        <p class="name">{{ item.title }}</p>
-                        <p class="intro">{{ item.intro }}</p>
-                        <p class="more"><a href="">MORE>></a></p>
-                    </div>
-                    <div class="offer-img">
-                        <img :src="item.img" alt="">
-                    </div>
-                </router-link>
             </div>
         </div>
         <div  v-scroll-spy="scrollPos">
@@ -629,7 +579,6 @@
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import image1 from '../assets/images/img_04.png';
-    import image2 from '../assets/images/offer-img.png';
     import image3 from '../assets/images/img_06-1.png';
     import image4 from '../assets/images/kitty.png';
     import slideImg from '../assets/images/slide-img.png';
@@ -676,67 +625,86 @@
                         title: '新品上架',
                     },
                 ],
-                recommendList: {
-                    recommen1: [
-                        {
-                            img: image1,
-                            intro: '满300减50优惠折扣',
-                            title: '年末特惠',
-                        },
-                        {
-                            img: image1,
-                            intro: '满300减50优惠折扣',
-                            title: '年末特惠',
-                        },
-                        {
-                            img: image1,
-                            intro: '满300减50优惠折扣',
-                            title: '年末特惠',
-                        },
-                        {
-                            img: image1,
-                            intro: '满300减50优惠折扣',
-                            title: '年末特惠',
-                        },
-                    ],
-                    recommen2: [
-                        {
-                            img: image1,
-                            intro: '满300减50优惠折扣',
-                            title: '年末特惠',
-                        },
-                        {
-                            img: image1,
-                            intro: '满300减50优惠折扣',
-                            title: '年末特惠',
-                        },
-                    ],
-                    recommen3: [
-                        {
-                            img: image1,
-                            intro: '满300减50优惠折扣',
-                            title: '年末特惠',
-                        },
-                        {
-                            img: image1,
-                            intro: '满300减50优惠折扣',
-                            title: '年末特惠',
-                        },
-                        {
-                            img: image1,
-                            intro: '满300减50优惠折扣',
-                            title: '年末特惠',
-                        },
-                        {
-                            img: image1,
-                            intro: '满300减50优惠折扣',
-                            title: '年末特惠',
-                        },
-                    ],
-                    title1: '品质推荐',
-                    title2: '特价优惠',
-                    title3: '精选分类',
-                },
+                recommendList: [
+                    {
+                        icon: 'icon-dianzan',
+                        title: '品质推荐',
+                        recommend: [
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                        ],
+                    },
+                    {
+                        icon: 'icon-dianzan',
+                        title: '特价优惠',
+                        recommend: [
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                        ],
+                    },
+                    {
+                        icon: 'icon-dianzan',
+                        title: '精选分类',
+                        recommend: [
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                            {
+                                img: image1,
+                                intro: '满300减50优惠折扣',
+                                title: '年末特惠',
+                            },
+                        ],
+                    },
+                ],
                 slideList: [
                     {
                         discount: '2折',
@@ -1136,23 +1104,6 @@
                         return `<span class="${className}">${(index + 1)}</span>`;
                     },
                 },
-                yearOfferList: [
-                    {
-                        img: image2,
-                        intro: '满300减50优惠折扣',
-                        title: '年末特惠',
-                    },
-                    {
-                        img: image2,
-                        intro: '满300减50优惠折扣',
-                        title: '年末特惠',
-                    },
-                    {
-                        img: image2,
-                        intro: '满300减50优惠折扣',
-                        title: '年末特惠',
-                    },
-                ],
             };
         },
         methods: {
