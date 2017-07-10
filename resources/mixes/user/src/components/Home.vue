@@ -121,498 +121,500 @@
                 </router-link>
             </div>
         </div>
-        <!--女装外套1-->
-        <div id="wowen-clothing" class="wowen-clothing">
-            <div class="container">
-                <div class="wowen-clothing-model">
-                    <div class="recommend-name">
-                        <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList1.module
-                            }}
-                        </div>
-                        <div class="model-content">
-                            <ul class="product-kinds">
-                                <li v-for="(item, index) in typeList.typeList1.module_item">
-                                    <a href="">{{ item }}<span>|</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clothing-content">
-                        <router-link class="content-left-img" to="/home">
-                            <img :src="typeList.typeList1.module_img" alt="">
-                        </router-link>
-                        <div class="content-right-model">
-                            <div class="content">
-                                <ul class="model-content">
-                                    <li class="content-item item-line" v-for="(item, index) in typeList.typeList1.newProduct" :key="index">
-                                        <router-link :to="{name: 'product-details'}">
-                                            <div class="img-box">
-                                                <img :src="item.img" alt="">
-                                            </div>
-                                            <div class="product">
-                                                <p class="name">{{ item.title }}</p>
-                                                <p class="intro"><span>{{ item.intro }}</span> <span
-                                                    class="money"></span></p>
-                                            </div>
-                                        </router-link>
+        <div  v-scroll-spy="scrollPos">
+            <!--女装外套1-->
+            <div id="wowen-clothing" class="wowen-clothing">
+                <div class="container">
+                    <div class="wowen-clothing-model">
+                        <div class="recommend-name">
+                            <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList1.module
+                                }}
+                            </div>
+                            <div class="model-content">
+                                <ul class="product-kinds">
+                                    <li v-for="(item, index) in typeList.typeList1.module_item">
+                                        <a href="">{{ item }}<span>|</span></a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="content-offer">
-                                <div class="content-item item-line" v-for="item in typeList.typeList1.offerList">
-                                    <router-link class="product" :to="{name: 'product-details'}">
-                                        <p class="name">{{ item.title }}</p>
-                                        <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
-                                    </router-link>
-                                    <router-link class="img-box" :to="{name: 'product-details'}">
-                                        <img :src="item.img" alt="">
-                                    </router-link>
+                        </div>
+                        <div class="clothing-content">
+                            <router-link class="content-left-img" to="/home">
+                                <img :src="typeList.typeList1.module_img" alt="">
+                            </router-link>
+                            <div class="content-right-model">
+                                <div class="content">
+                                    <ul class="model-content">
+                                        <li class="content-item item-line" v-for="(item, index) in typeList.typeList1.newProduct" :key="index">
+                                            <router-link :to="{name: 'product-details'}">
+                                                <div class="img-box">
+                                                    <img :src="item.img" alt="">
+                                                </div>
+                                                <div class="product">
+                                                    <p class="name">{{ item.title }}</p>
+                                                    <p class="intro"><span>{{ item.intro }}</span> <span
+                                                        class="money"></span></p>
+                                                </div>
+                                            </router-link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="content-offer">
+                                    <div class="content-item item-line" v-for="item in typeList.typeList1.offerList">
+                                        <router-link class="product" :to="{name: 'product-details'}">
+                                            <p class="name">{{ item.title }}</p>
+                                            <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
+                                        </router-link>
+                                        <router-link class="img-box" :to="{name: 'product-details'}">
+                                            <img :src="item.img" alt="">
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--2-->
-        <div id="baby-place" class="wowen-clothing baby-place">
-            <div class="container">
-                <div class="wowen-clothing-model">
-                    <div class="recommend-name">
-                        <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList2.module
-                            }}
-                        </div>
-                        <div class="model-content">
-                            <ul class="product-kinds">
-                                <li v-for="(item, index) in typeList.typeList2.module_item">
-                                    <a href="">{{ item }}<span>|</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clothing-content">
-                        <router-link class="content-left-img" to="/home">
-                            <img :src="typeList.typeList2.module_img" alt="">
-                        </router-link>
-                        <div class="content-right-model">
-                            <div class="content">
-                                <ul class="model-content">
-                                    <li class="content-item item-line" v-for="item in typeList.typeList2.newProduct">
-                                        <router-link :to="{name: 'product-details'}">
-                                            <div class="img-box">
-                                                <img :src="item.img" alt="">
-                                            </div>
-                                            <div class="product">
-                                                <p class="name">{{ item.title }}</p>
-                                                <p class="intro"><span>{{ item.intro }}</span> <span
-                                                    class="money"></span></p>
-                                            </div>
-                                        </router-link>
+            <!--2-->
+            <div id="baby-place" class="wowen-clothing baby-place">
+                <div class="container">
+                    <div class="wowen-clothing-model">
+                        <div class="recommend-name">
+                            <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList2.module
+                                }}
+                            </div>
+                            <div class="model-content">
+                                <ul class="product-kinds">
+                                    <li v-for="(item, index) in typeList.typeList2.module_item">
+                                        <a href="">{{ item }}<span>|</span></a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="content-offer">
-                                <div class="content-item item-line" v-for="item in typeList.typeList2.offerList">
-                                    <router-link class="product" :to="{name: 'product-details'}">
-                                        <p class="name">{{ item.title }}</p>
-                                        <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
-                                    </router-link>
-                                    <router-link class="img-box" :to="{name: 'product-details'}">
-                                        <img :src="item.img" alt="">
-                                    </router-link>
+                        </div>
+                        <div class="clothing-content">
+                            <router-link class="content-left-img" to="/home">
+                                <img :src="typeList.typeList2.module_img" alt="">
+                            </router-link>
+                            <div class="content-right-model">
+                                <div class="content">
+                                    <ul class="model-content">
+                                        <li class="content-item item-line" v-for="item in typeList.typeList2.newProduct">
+                                            <router-link :to="{name: 'product-details'}">
+                                                <div class="img-box">
+                                                    <img :src="item.img" alt="">
+                                                </div>
+                                                <div class="product">
+                                                    <p class="name">{{ item.title }}</p>
+                                                    <p class="intro"><span>{{ item.intro }}</span> <span
+                                                        class="money"></span></p>
+                                                </div>
+                                            </router-link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="content-offer">
+                                    <div class="content-item item-line" v-for="item in typeList.typeList2.offerList">
+                                        <router-link class="product" :to="{name: 'product-details'}">
+                                            <p class="name">{{ item.title }}</p>
+                                            <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
+                                        </router-link>
+                                        <router-link class="img-box" :to="{name: 'product-details'}">
+                                            <img :src="item.img" alt="">
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--3-->
-        <div id="cotton-material" class="wowen-clothing cotton-material">
-            <div class="container">
-                <div class="wowen-clothing-model">
-                    <div class="recommend-name">
-                        <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList3.module
-                            }}
-                        </div>
-                        <div class="model-content">
-                            <ul class="product-kinds">
-                                <li v-for="(item, index) in typeList.typeList3.module_item">
-                                    <a href="">{{ item }}<span>|</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clothing-content">
-                        <router-link class="content-left-img" to="/home">
-                            <img :src="typeList.typeList3.module_img" alt="">
-                        </router-link>
-                        <div class="content-right-model">
-                            <div class="content">
-                                <ul class="model-content">
-                                    <li class="content-item item-line" v-for="item in typeList.typeList3.newProduct">
-                                        <router-link :to="{name: 'product-details'}">
-                                            <div class="img-box">
-                                                <img :src="item.img" alt="">
-                                            </div>
-                                            <div class="product">
-                                                <p class="name">{{ item.title }}</p>
-                                                <p class="intro"><span>{{ item.intro }}</span> <span
-                                                    class="money"></span></p>
-                                            </div>
-                                        </router-link>
+            <!--3-->
+            <div id="cotton-material" class="wowen-clothing cotton-material">
+                <div class="container">
+                    <div class="wowen-clothing-model">
+                        <div class="recommend-name">
+                            <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList3.module
+                                }}
+                            </div>
+                            <div class="model-content">
+                                <ul class="product-kinds">
+                                    <li v-for="(item, index) in typeList.typeList3.module_item">
+                                        <a href="">{{ item }}<span>|</span></a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="content-offer">
-                                <div class="content-item item-line" v-for="item in typeList.typeList3.offerList">
-                                    <router-link class="product" :to="{name: 'product-details'}">
-                                        <p class="name">{{ item.title }}</p>
-                                        <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
-                                    </router-link>
-                                    <router-link class="img-box" :to="{name: 'product-details'}">
-                                        <img :src="item.img" alt="">
-                                    </router-link>
+                        </div>
+                        <div class="clothing-content">
+                            <router-link class="content-left-img" to="/home">
+                                <img :src="typeList.typeList3.module_img" alt="">
+                            </router-link>
+                            <div class="content-right-model">
+                                <div class="content">
+                                    <ul class="model-content">
+                                        <li class="content-item item-line" v-for="item in typeList.typeList3.newProduct">
+                                            <router-link :to="{name: 'product-details'}">
+                                                <div class="img-box">
+                                                    <img :src="item.img" alt="">
+                                                </div>
+                                                <div class="product">
+                                                    <p class="name">{{ item.title }}</p>
+                                                    <p class="intro"><span>{{ item.intro }}</span> <span
+                                                        class="money"></span></p>
+                                                </div>
+                                            </router-link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="content-offer">
+                                    <div class="content-item item-line" v-for="item in typeList.typeList3.offerList">
+                                        <router-link class="product" :to="{name: 'product-details'}">
+                                            <p class="name">{{ item.title }}</p>
+                                            <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
+                                        </router-link>
+                                        <router-link class="img-box" :to="{name: 'product-details'}">
+                                            <img :src="item.img" alt="">
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--4-->
-        <div id="care-makeups" class="wowen-clothing care-makeups">
-            <div class="container">
-                <div class="wowen-clothing-model">
-                    <div class="recommend-name">
-                        <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList4.module
-                            }}
-                        </div>
-                        <div class="model-content">
-                            <ul class="product-kinds">
-                                <li v-for="(item, index) in typeList.typeList4.module_item">
-                                    <a href="">{{ item }}<span>|</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clothing-content">
-                        <router-link class="content-left-img" to="/home">
-                            <img :src="typeList.typeList4.module_img" alt="">
-                        </router-link>
-                        <div class="content-right-model">
-                            <div class="content">
-                                <ul class="model-content">
-                                    <li class="content-item item-line" v-for="item in typeList.typeList4.newProduct">
-                                        <router-link :to="{name: 'product-details'}">
-                                            <div class="img-box">
-                                                <img :src="item.img" alt="">
-                                            </div>
-                                            <div class="product">
-                                                <p class="name">{{ item.title }}</p>
-                                                <p class="intro"><span>{{ item.intro }}</span> <span
-                                                    class="money"></span></p>
-                                            </div>
-                                        </router-link>
+            <!--4-->
+            <div id="care-makeups" class="wowen-clothing care-makeups">
+                <div class="container">
+                    <div class="wowen-clothing-model">
+                        <div class="recommend-name">
+                            <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList4.module
+                                }}
+                            </div>
+                            <div class="model-content">
+                                <ul class="product-kinds">
+                                    <li v-for="(item, index) in typeList.typeList4.module_item">
+                                        <a href="">{{ item }}<span>|</span></a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="content-offer">
-                                <div class="content-item item-line" v-for="item in typeList.typeList4.offerList">
-                                    <router-link class="product" :to="{name: 'product-details'}">
-                                        <p class="name">{{ item.title }}</p>
-                                        <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
-                                    </router-link>
-                                    <router-link class="img-box" :to="{name: 'product-details'}">
-                                        <img :src="item.img" alt="">
-                                    </router-link>
+                        </div>
+                        <div class="clothing-content">
+                            <router-link class="content-left-img" to="/home">
+                                <img :src="typeList.typeList4.module_img" alt="">
+                            </router-link>
+                            <div class="content-right-model">
+                                <div class="content">
+                                    <ul class="model-content">
+                                        <li class="content-item item-line" v-for="item in typeList.typeList4.newProduct">
+                                            <router-link :to="{name: 'product-details'}">
+                                                <div class="img-box">
+                                                    <img :src="item.img" alt="">
+                                                </div>
+                                                <div class="product">
+                                                    <p class="name">{{ item.title }}</p>
+                                                    <p class="intro"><span>{{ item.intro }}</span> <span
+                                                        class="money"></span></p>
+                                                </div>
+                                            </router-link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="content-offer">
+                                    <div class="content-item item-line" v-for="item in typeList.typeList4.offerList">
+                                        <router-link class="product" :to="{name: 'product-details'}">
+                                            <p class="name">{{ item.title }}</p>
+                                            <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
+                                        </router-link>
+                                        <router-link class="img-box" :to="{name: 'product-details'}">
+                                            <img :src="item.img" alt="">
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--5-->
-        <div id="underwear-clothing" class="wowen-clothing underwear-clothing">
-            <div class="container">
-                <div class="wowen-clothing-model">
-                    <div class="recommend-name">
-                        <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList5.module
-                            }}
-                        </div>
-                        <div class="model-content">
-                            <ul class="product-kinds">
-                                <li v-for="(item, index) in typeList.typeList5.module_item">
-                                    <a href="">{{ item }}<span>|</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clothing-content">
-                        <router-link class="content-left-img" to="/home">
-                            <img :src="typeList.typeList5.module_img" alt="">
-                        </router-link>
-                        <div class="content-right-model">
-                            <div class="content">
-                                <ul class="model-content">
-                                    <li class="content-item item-line" v-for="item in typeList.typeList5.newProduct">
-                                        <router-link :to="{name: 'product-details'}">
-                                            <div class="img-box">
-                                                <img :src="item.img" alt="">
-                                            </div>
-                                            <div class="product">
-                                                <p class="name">{{ item.title }}</p>
-                                                <p class="intro"><span>{{ item.intro }}</span> <span
-                                                    class="money"></span></p>
-                                            </div>
-                                        </router-link>
+            <!--5-->
+            <div id="underwear-clothing" class="wowen-clothing underwear-clothing">
+                <div class="container">
+                    <div class="wowen-clothing-model">
+                        <div class="recommend-name">
+                            <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList5.module
+                                }}
+                            </div>
+                            <div class="model-content">
+                                <ul class="product-kinds">
+                                    <li v-for="(item, index) in typeList.typeList5.module_item">
+                                        <a href="">{{ item }}<span>|</span></a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="content-offer">
-                                <div class="content-item item-line" v-for="item in typeList.typeList5.offerList">
-                                    <router-link class="product" :to="{name: 'product-details'}">
-                                        <p class="name">{{ item.title }}</p>
-                                        <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
-                                    </router-link>
-                                    <router-link class="img-box" :to="{name: 'product-details'}">
-                                        <img :src="item.img" alt="">
-                                    </router-link>
+                        </div>
+                        <div class="clothing-content">
+                            <router-link class="content-left-img" to="/home">
+                                <img :src="typeList.typeList5.module_img" alt="">
+                            </router-link>
+                            <div class="content-right-model">
+                                <div class="content">
+                                    <ul class="model-content">
+                                        <li class="content-item item-line" v-for="item in typeList.typeList5.newProduct">
+                                            <router-link :to="{name: 'product-details'}">
+                                                <div class="img-box">
+                                                    <img :src="item.img" alt="">
+                                                </div>
+                                                <div class="product">
+                                                    <p class="name">{{ item.title }}</p>
+                                                    <p class="intro"><span>{{ item.intro }}</span> <span
+                                                        class="money"></span></p>
+                                                </div>
+                                            </router-link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="content-offer">
+                                    <div class="content-item item-line" v-for="item in typeList.typeList5.offerList">
+                                        <router-link class="product" :to="{name: 'product-details'}">
+                                            <p class="name">{{ item.title }}</p>
+                                            <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
+                                        </router-link>
+                                        <router-link class="img-box" :to="{name: 'product-details'}">
+                                            <img :src="item.img" alt="">
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--6-->
-        <div id="baby-food" class="wowen-clothing baby-food">
-            <div class="container">
-                <div class="wowen-clothing-model">
-                    <div class="recommend-name">
-                        <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList6.module
-                            }}
-                        </div>
-                        <div class="model-content">
-                            <ul class="product-kinds">
-                                <li v-for="(item, index) in typeList.typeList6.module_item">
-                                    <a href="">{{ item }}<span>|</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clothing-content">
-                        <router-link class="content-left-img" to="/home">
-                            <img :src="typeList.typeList6.module_img" alt="">
-                        </router-link>
-                        <div class="content-right-model">
-                            <div class="content">
-                                <ul class="model-content">
-                                    <li class="content-item item-line" v-for="item in typeList.typeList6.newProduct">
-                                        <router-link :to="{name: 'product-details'}">
-                                            <div class="img-box">
-                                                <img :src="item.img" alt="">
-                                            </div>
-                                            <div class="product">
-                                                <p class="name">{{ item.title }}</p>
-                                                <p class="intro"><span>{{ item.intro }}</span> <span
-                                                    class="money"></span></p>
-                                            </div>
-                                        </router-link>
+            <!--6-->
+            <div id="baby-food" class="wowen-clothing baby-food">
+                <div class="container">
+                    <div class="wowen-clothing-model">
+                        <div class="recommend-name">
+                            <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList6.module
+                                }}
+                            </div>
+                            <div class="model-content">
+                                <ul class="product-kinds">
+                                    <li v-for="(item, index) in typeList.typeList6.module_item">
+                                        <a href="">{{ item }}<span>|</span></a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="content-offer">
-                                <div class="content-item item-line" v-for="item in typeList.typeList6.offerList">
-                                    <router-link class="product" :to="{name: 'product-details'}">
-                                        <p class="name">{{ item.title }}</p>
-                                        <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
-                                    </router-link>
-                                    <router-link class="img-box" :to="{name: 'product-details'}">
-                                        <img :src="item.img" alt="">
-                                    </router-link>
+                        </div>
+                        <div class="clothing-content">
+                            <router-link class="content-left-img" to="/home">
+                                <img :src="typeList.typeList6.module_img" alt="">
+                            </router-link>
+                            <div class="content-right-model">
+                                <div class="content">
+                                    <ul class="model-content">
+                                        <li class="content-item item-line" v-for="item in typeList.typeList6.newProduct">
+                                            <router-link :to="{name: 'product-details'}">
+                                                <div class="img-box">
+                                                    <img :src="item.img" alt="">
+                                                </div>
+                                                <div class="product">
+                                                    <p class="name">{{ item.title }}</p>
+                                                    <p class="intro"><span>{{ item.intro }}</span> <span
+                                                        class="money"></span></p>
+                                                </div>
+                                            </router-link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="content-offer">
+                                    <div class="content-item item-line" v-for="item in typeList.typeList6.offerList">
+                                        <router-link class="product" :to="{name: 'product-details'}">
+                                            <p class="name">{{ item.title }}</p>
+                                            <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
+                                        </router-link>
+                                        <router-link class="img-box" :to="{name: 'product-details'}">
+                                            <img :src="item.img" alt="">
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--7-->
-        <div id="baby-paper" class="wowen-clothing baby-paper">
-            <div class="container">
-                <div class="wowen-clothing-model">
-                    <div class="recommend-name">
-                        <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList7.module
-                            }}
-                        </div>
-                        <div class="model-content">
-                            <ul class="product-kinds">
-                                <li v-for="(item, index) in typeList.typeList7.module_item">
-                                    <a href="">{{ item }}<span>|</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clothing-content">
-                        <router-link class="content-left-img" to="/home">
-                            <img :src="typeList.typeList7.module_img" alt="">
-                        </router-link>
-                        <div class="content-right-model">
-                            <div class="content">
-                                <ul class="model-content">
-                                    <li class="content-item item-line" v-for="item in typeList.typeList7.newProduct">
-                                        <router-link :to="{name: 'product-details'}">
-                                            <div class="img-box">
-                                                <img :src="item.img" alt="">
-                                            </div>
-                                            <div class="product">
-                                                <p class="name">{{ item.title }}</p>
-                                                <p class="intro"><span>{{ item.intro }}</span> <span
-                                                    class="money"></span></p>
-                                            </div>
-                                        </router-link>
+            <!--7-->
+            <div id="baby-paper" class="wowen-clothing baby-paper">
+                <div class="container">
+                    <div class="wowen-clothing-model">
+                        <div class="recommend-name">
+                            <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList7.module
+                                }}
+                            </div>
+                            <div class="model-content">
+                                <ul class="product-kinds">
+                                    <li v-for="(item, index) in typeList.typeList7.module_item">
+                                        <a href="">{{ item }}<span>|</span></a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="content-offer">
-                                <div class="content-item item-line" v-for="item in typeList.typeList7.offerList">
-                                    <router-link class="product" :to="{name: 'product-details'}">
-                                        <p class="name">{{ item.title }}</p>
-                                        <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
-                                    </router-link>
-                                    <router-link class="img-box" :to="{name: 'product-details'}">
-                                        <img :src="item.img" alt="">
-                                    </router-link>
+                        </div>
+                        <div class="clothing-content">
+                            <router-link class="content-left-img" to="/home">
+                                <img :src="typeList.typeList7.module_img" alt="">
+                            </router-link>
+                            <div class="content-right-model">
+                                <div class="content">
+                                    <ul class="model-content">
+                                        <li class="content-item item-line" v-for="item in typeList.typeList7.newProduct">
+                                            <router-link :to="{name: 'product-details'}">
+                                                <div class="img-box">
+                                                    <img :src="item.img" alt="">
+                                                </div>
+                                                <div class="product">
+                                                    <p class="name">{{ item.title }}</p>
+                                                    <p class="intro"><span>{{ item.intro }}</span> <span
+                                                        class="money"></span></p>
+                                                </div>
+                                            </router-link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="content-offer">
+                                    <div class="content-item item-line" v-for="item in typeList.typeList7.offerList">
+                                        <router-link class="product" :to="{name: 'product-details'}">
+                                            <p class="name">{{ item.title }}</p>
+                                            <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
+                                        </router-link>
+                                        <router-link class="img-box" :to="{name: 'product-details'}">
+                                            <img :src="item.img" alt="">
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--8-->
-        <div id="baby-toys" class="wowen-clothing baby-toys">
-            <div class="container">
-                <div class="wowen-clothing-model">
-                    <div class="recommend-name">
-                        <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList8.module
-                            }}
-                        </div>
-                        <div class="model-content">
-                            <ul class="product-kinds">
-                                <li v-for="(item, index) in typeList.typeList8.module_item">
-                                    <a href="">{{ item }}<span>|</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clothing-content">
-                        <router-link class="content-left-img" to="/home">
-                            <img :src="typeList.typeList8.module_img" alt="">
-                        </router-link>
-                        <div class="content-right-model">
-                            <div class="content">
-                                <ul class="model-content">
-                                    <li class="content-item item-line" v-for="item in typeList.typeList8.newProduct">
-                                        <router-link :to="{name: 'product-details'}">
-                                            <div class="img-box">
-                                                <img :src="item.img" alt="">
-                                            </div>
-                                            <div class="product">
-                                                <p class="name">{{ item.title }}</p>
-                                                <p class="intro"><span>{{ item.intro }}</span> <span
-                                                    class="money"></span></p>
-                                            </div>
-                                        </router-link>
+            <!--8-->
+            <div id="baby-toys" class="wowen-clothing baby-toys">
+                <div class="container">
+                    <div class="wowen-clothing-model">
+                        <div class="recommend-name">
+                            <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList8.module
+                                }}
+                            </div>
+                            <div class="model-content">
+                                <ul class="product-kinds">
+                                    <li v-for="(item, index) in typeList.typeList8.module_item">
+                                        <a href="">{{ item }}<span>|</span></a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="content-offer">
-                                <div class="content-item item-line" v-for="item in typeList.typeList8.offerList">
-                                    <router-link class="product" :to="{name: 'product-details'}">
-                                        <p class="name">{{ item.title }}</p>
-                                        <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
-                                    </router-link>
-                                    <router-link class="img-box" :to="{name: 'product-details'}">
-                                        <img :src="item.img" alt="">
-                                    </router-link>
+                        </div>
+                        <div class="clothing-content">
+                            <router-link class="content-left-img" to="/home">
+                                <img :src="typeList.typeList8.module_img" alt="">
+                            </router-link>
+                            <div class="content-right-model">
+                                <div class="content">
+                                    <ul class="model-content">
+                                        <li class="content-item item-line" v-for="item in typeList.typeList8.newProduct">
+                                            <router-link :to="{name: 'product-details'}">
+                                                <div class="img-box">
+                                                    <img :src="item.img" alt="">
+                                                </div>
+                                                <div class="product">
+                                                    <p class="name">{{ item.title }}</p>
+                                                    <p class="intro"><span>{{ item.intro }}</span> <span
+                                                        class="money"></span></p>
+                                                </div>
+                                            </router-link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="content-offer">
+                                    <div class="content-item item-line" v-for="item in typeList.typeList8.offerList">
+                                        <router-link class="product" :to="{name: 'product-details'}">
+                                            <p class="name">{{ item.title }}</p>
+                                            <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
+                                        </router-link>
+                                        <router-link class="img-box" :to="{name: 'product-details'}">
+                                            <img :src="item.img" alt="">
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--9-->
-        <div id="baby-experience" class="wowen-clothing baby-experience">
-            <div class="container">
-                <div class="wowen-clothing-model">
-                    <div class="recommend-name">
-                        <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList9.module
-                            }}
-                        </div>
-                        <div class="model-content">
-                            <ul class="product-kinds">
-                                <li v-for="(item, index) in typeList.typeList9.module_item">
-                                    <a href="">{{ item }}<span>|</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clothing-content">
-                        <router-link class="content-left-img" to="/home">
-                            <img :src="typeList.typeList9.module_img" alt="">
-                        </router-link>
-                        <div class="content-right-model">
-                            <div class="content">
-                                <ul class="model-content">
-                                    <li class="content-item item-line" v-for="item in typeList.typeList9.newProduct">
-                                        <router-link :to="{name: 'product-details'}">
-                                            <div class="img-box">
-                                                <img :src="item.img" alt="">
-                                            </div>
-                                            <div class="product">
-                                                <p class="name">{{ item.title }}</p>
-                                                <p class="intro"><span>{{ item.intro }}</span> <span
-                                                    class="money"></span></p>
-                                            </div>
-                                        </router-link>
+            <!--9-->
+            <div id="baby-experience" class="wowen-clothing baby-experience">
+                <div class="container">
+                    <div class="wowen-clothing-model">
+                        <div class="recommend-name">
+                            <div class="model-name"><i class="icon iconfont icon-nvzhuang"></i>{{ typeList.typeList9.module
+                                }}
+                            </div>
+                            <div class="model-content">
+                                <ul class="product-kinds">
+                                    <li v-for="(item, index) in typeList.typeList9.module_item">
+                                        <a href="">{{ item }}<span>|</span></a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="content-offer">
-                                <div class="content-item item-line" v-for="item in typeList.typeList9.offerList">
-                                    <router-link class="product" :to="{name: 'product-details'}">
-                                        <p class="name">{{ item.title }}</p>
-                                        <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
-                                    </router-link>
-                                    <router-link class="img-box" :to="{name: 'product-details'}">
-                                        <img :src="item.img" alt="">
-                                    </router-link>
+                        </div>
+                        <div class="clothing-content">
+                            <router-link class="content-left-img" to="/home">
+                                <img :src="typeList.typeList9.module_img" alt="">
+                            </router-link>
+                            <div class="content-right-model">
+                                <div class="content">
+                                    <ul class="model-content">
+                                        <li class="content-item item-line" v-for="item in typeList.typeList9.newProduct">
+                                            <router-link :to="{name: 'product-details'}">
+                                                <div class="img-box">
+                                                    <img :src="item.img" alt="">
+                                                </div>
+                                                <div class="product">
+                                                    <p class="name">{{ item.title }}</p>
+                                                    <p class="intro"><span>{{ item.intro }}</span> <span
+                                                        class="money"></span></p>
+                                                </div>
+                                            </router-link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="content-offer">
+                                    <div class="content-item item-line" v-for="item in typeList.typeList9.offerList">
+                                        <router-link class="product" :to="{name: 'product-details'}">
+                                            <p class="name">{{ item.title }}</p>
+                                            <p class="intro"><span>{{ item.intro }}</span> <span class="money"></span></p>
+                                        </router-link>
+                                        <router-link class="img-box" :to="{name: 'product-details'}">
+                                            <img :src="item.img" alt="">
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!--需要 浏览推荐-->
+            <need-browse></need-browse>
+            <!--楼层导航-->
         </div>
-        <!--需要 浏览推荐-->
-        <need-browse></need-browse>
-        <!--楼层导航-->
         <nav class="bs-js-navbar-scrollspy" v-if="show">
             <ul class="floor nav">
-                <li><a >女装外套</a></li>
-                <li><a >母婴专区</a></li>
-                <li><a >棉品寝卧</a></li>
-                <li><a >护理美妆</a></li>
-                <li><a >内衣服饰</a></li>
-                <li><a >婴儿食品</a></li>
-                <li><a >婴儿纸品</a></li>
-                <li><a >幼儿玩具</a></li>
-                <li><a >育婴心得</a></li>
-                <li><a >其他分类</a></li>
+                <li :class="{active:scrollPos == 0}"><a @click="$scrollTo(0)">女装外套</a></li>
+                <li :class="{active:scrollPos == 1}"><a @click="$scrollTo(1)">母婴专区</a></li>
+                <li :class="{active:scrollPos == 2}"><a @click="$scrollTo(2)">棉品寝卧</a></li>
+                <li :class="{active:scrollPos == 3}"><a @click="$scrollTo(3)">护理美妆</a></li>
+                <li :class="{active:scrollPos == 4}"><a @click="$scrollTo(4)">内衣服饰</a></li>
+                <li :class="{active:scrollPos == 5}"><a @click="$scrollTo(5)">婴儿食品</a></li>
+                <li :class="{active:scrollPos == 6}"><a @click="$scrollTo(6)">婴儿纸品</a></li>
+                <li :class="{active:scrollPos == 7}"><a @click="$scrollTo(7)">幼儿玩具</a></li>
+                <li :class="{active:scrollPos == 8}"><a @click="$scrollTo(8)">育婴心得</a></li>
+                <li :class="{active:scrollPos == 9}"><a @click="$scrollTo(9)">其他分类</a></li>
                 <li @click="toTop">
                     <a>
                         <p>TOP</p>
@@ -1122,6 +1124,7 @@
                         ],
                     },
                 },
+                scrollPos: 0,
                 show: false,
                 swiperOption: {
                     autoplay: 3000,
