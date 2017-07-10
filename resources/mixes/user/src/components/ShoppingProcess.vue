@@ -29,6 +29,9 @@
 </template>
 <script>
     export default {
+        mounted() {
+            this.catchRoute();
+        },
         data() {
             return {
                 sides: [
@@ -36,15 +39,15 @@
                         children: [
                             {
                                 name: '购物流程',
-                                router: 'shop-process',
+                                router: '/shop-process',
                             },
                             {
                                 name: '支付方式',
-                                router: 'pay-method',
+                                router: '/pay-method',
                             },
                             {
                                 name: '常见问题',
-                                router: 'common-problem',
+                                router: '/common-problem',
                             },
                         ],
                         show: true,
@@ -54,15 +57,15 @@
                         children: [
                             {
                                 name: '退货流程',
-                                router: 'return-process',
+                                router: '/return-process',
                             },
                             {
                                 name: '退款说明',
-                                router: 'return-money',
+                                router: '/return-money',
                             },
                             {
                                 name: '联系客服',
-                                router: 'contact-service',
+                                router: '/contact-service',
                             },
                         ],
                         show: false,
@@ -72,15 +75,15 @@
                         children: [
                             {
                                 name: '配送方式',
-                                router: 'delivery-method',
+                                router: '/delivery-method',
                             },
                             {
                                 name: '配送服务',
-                                router: 'delivery-sevice',
+                                router: '/delivery-sevice',
                             },
                             {
                                 name: '物流跟踪',
-                                router: 'delivery-track',
+                                router: '/delivery-track',
                             },
                         ],
                         show: false,
@@ -90,15 +93,15 @@
                         children: [
                             {
                                 name: '关于我们',
-                                router: 'about-us',
+                                router: '/about-us',
                             },
                             {
                                 name: '联系我们',
-                                router: 'contact-us',
+                                router: '/contact-us',
                             },
                             {
                                 name: '招商合作',
-                                router: 'cooperation',
+                                router: '/cooperation',
                             },
                         ],
                         show: false,
@@ -108,11 +111,27 @@
             };
         },
         methods: {
+            catchRoute() {
+                const currentRoute = this.$route.path;
+                this.sides.forEach(item => {
+                    item.show = false;
+                    item.children.forEach(side => {
+                        if (side.router === currentRoute) {
+                            item.show = true;
+                        }
+                    });
+                });
+            },
             showSub(item) {
                 this.sides.forEach(side => {
                     side.show = false;
                 });
                 item.show = !item.show;
+            },
+        },
+        watch: {
+            $route() {
+                this.catchRoute();
             },
         },
     };
