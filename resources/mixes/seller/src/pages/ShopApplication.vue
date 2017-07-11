@@ -145,6 +145,22 @@
                 },
                 loading: false,
                 modify: false,
+                ruleValidate: {
+                    initials: [
+                        {
+                            message: '名称首字母不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '品牌名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 self: this,
                 styleData: [
                     {
@@ -370,17 +386,17 @@
                             v-model="goodsApplication"
                             title="品牌申请" class="upload-picture-modal">
                         <div>
-                            <i-form ref="goods" :model="goods" :rules="pictureValidate" :label-width="100">
+                            <i-form ref="goods" :model="goods" :rules="ruleValidate" :label-width="100">
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="品牌名称">
+                                        <form-item label="品牌名称" prop="name">
                                             <i-input v-model="goods.name"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="名称首字母">
+                                        <form-item label="名称首字母" prop="initials">
                                             <i-input v-model="goods.initials"></i-input>
                                         </form-item>
                                     </i-col>
@@ -393,7 +409,7 @@
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="20">
+                                    <i-col span="24">
                                         <form-item label="品牌LOGO" prop="logo">
                                             <div class="image-preview" v-if="goods.logo">
                                                 <img :src="goods.logo">
@@ -413,7 +429,7 @@
                                                     :show-upload-list="false"
                                                     v-if="goods.logo === '' || goods.logo === null">
                                             </upload>
-                                            <p class="tip">建议上传大小为150*150的品牌图片</p>
+                                            <p class="tip">建议上传大小为150*50的品牌图片</p>
                                             <p class="tip">申请品牌的目的是方便买家通过品牌索引页查找商品，
                                                 申请时请填写品牌所属的类别，方便平台归类</p>
                                             <p class="tip">在平台审核前，您可以编辑或撤销申请</p>
