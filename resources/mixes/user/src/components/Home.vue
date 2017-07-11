@@ -32,11 +32,16 @@
         <div class="time-spike">
             <div class="container">
                 <div class="title clearfix">
-                    <h3><i class="icon iconfont icon-miaosha"></i>限时秒杀</h3>
-                    <p>还有&nbsp;<span>13</span><i>:</i><span>22</span><i>:</i><span>07</span>&nbsp;结束</p>
+                    <h3>
+                        <i class="icon iconfont icon-miaosha"></i>
+                        <a @click="switchTab(0)" :class="{active:activeTab === 0}">限时秒杀</a>
+                        <a @click="switchTab(1)" :class="{active:activeTab === 1}">新品预售</a>
+                        <a @click="switchTab(2)" :class="{active:activeTab === 2}">满减活动</a>
+                    </h3>
+                    <p class="cutDown">还有&nbsp;<span>{{ hours }}</span><i>:</i><span>{{ minutes }}</span><i>:</i><span>{{ seconds }}</span>&nbsp;结束</p>
                 </div>
                 <div class="spike-content row">
-                    <router-link :to="{ name: 'product-details' }" v-for="(item, index) in spikeList" :key="index">
+                    <router-link :to="{ name: 'product-details' }" v-for="(item, index) in spikeInfo.spikeList" :key="index">
                         <dl class="col col-line">
                             <dt><img :src="item.img"></dt>
                             <dd>
@@ -597,8 +602,27 @@
             swiper,
             swiperSlide,
         },
+        computed: {
+            hours() {
+                const time = this.deviationTime / 1000;
+                const hour = this.formate(parseInt((time / 3600) % 24, 10));
+                return hour;
+            },
+            minutes() {
+                const time = this.deviationTime / 1000;
+                const minutes = this.formate(parseInt((time / 60) % 60, 10));
+                return minutes;
+            },
+            seconds() {
+                const time = this.deviationTime / 1000;
+                const second = this.formate(parseInt(time % 60, 10));
+                return second;
+            },
+        },
         data() {
             return {
+                activeTab: 0,
+                deviationTime: null,
                 newProduct: [
                     {
                         img: image3,
@@ -731,44 +755,47 @@
                         title: '品质生活',
                     },
                 ],
-                spikeList: [
-                    {
-                        img: image4,
-                        name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
-                        price1: 34.00,
-                        price2: 98.00,
-                    },
-                    {
-                        img: image4,
-                        name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
-                        price1: 34.00,
-                        price2: 98.00,
-                    },
-                    {
-                        img: image4,
-                        name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
-                        price1: 34.00,
-                        price2: 98.00,
-                    },
-                    {
-                        img: image4,
-                        name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
-                        price1: 34.00,
-                        price2: 98.00,
-                    },
-                    {
-                        img: image4,
-                        name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
-                        price1: 34.00,
-                        price2: 98.00,
-                    },
-                    {
-                        img: image4,
-                        name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
-                        price1: 34.00,
-                        price2: 98.00,
-                    },
-                ],
+                spikeInfo: {
+                    endTime: '2017-07-15 10:06:00',
+                    spikeList: [
+                        {
+                            img: image4,
+                            name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
+                            price1: 34.00,
+                            price2: 98.00,
+                        },
+                        {
+                            img: image4,
+                            name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
+                            price1: 34.00,
+                            price2: 98.00,
+                        },
+                        {
+                            img: image4,
+                            name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
+                            price1: 34.00,
+                            price2: 98.00,
+                        },
+                        {
+                            img: image4,
+                            name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
+                            price1: 34.00,
+                            price2: 98.00,
+                        },
+                        {
+                            img: image4,
+                            name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
+                            price1: 34.00,
+                            price2: 98.00,
+                        },
+                        {
+                            img: image4,
+                            name: '舒适耐用儿童睡椅舒适耐用儿童睡椅',
+                            price1: 34.00,
+                            price2: 98.00,
+                        },
+                    ],
+                },
                 typeList: {
                     typeList1: {
                         module: '女装外套',
@@ -1137,6 +1164,9 @@
             };
         },
         methods: {
+            switchTab(index) {
+                this.activeTab = index;
+            },
             toTop() {
                 const timeOut = setInterval(() => {
                     if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
@@ -1146,8 +1176,28 @@
                     }
                 }, 5);
             },
+            formate(time) {
+                if (time >= 10) {
+                    return time;
+                }
+                return `0${time}`;
+            },
+            cutDown() {
+                const endTime = new Date(this.spikeInfo.endTime).getTime();
+                const nowTime = new Date().getTime();
+                const deviationTime = (endTime - nowTime);
+                this.deviationTime = deviationTime;
+            },
         },
         mounted() {
+            this.cutDown();
+            const countdown = setInterval(() => {
+                if (this.deviationTime > 0) {
+                    this.deviationTime = this.deviationTime - 1000;
+                } else {
+                    clearInterval(countdown);
+                }
+            }, 1000);
             window.onscroll = () => {
                 let scrollTop;
                 if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) {
