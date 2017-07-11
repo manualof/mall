@@ -15,6 +15,7 @@
             const self = this;
             return {
                 addCategory: {
+                    category: '',
                     enable: true,
                     name: '',
                     sort: '',
@@ -347,6 +348,13 @@
                                     <i-col span="12">
                                         <form-item label="分类名称">
                                             <i-input v-model="addCategory.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="上级分类">
+                                            <i-input v-model="addCategory.category"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>

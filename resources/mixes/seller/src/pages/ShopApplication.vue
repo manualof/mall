@@ -56,7 +56,7 @@
                     {
                         align: 'center',
                         key: 'show',
-                        title: '显示',
+                        title: '所属类别',
                     },
                     {
                         align: 'center',
@@ -145,20 +145,6 @@
                 },
                 loading: false,
                 modify: false,
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '店铺名称',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
                 self: this,
                 styleData: [
                     {
@@ -363,10 +349,7 @@
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                                 <div class="goods-body-header-right">
                                     <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                        <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                            <i-option v-for="item in searchList"
-                                                      :value="item.value">{{ item.label }}</i-option>
-                                        </i-select>
+                                        <span slot="prepend">品牌名称</span>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>
                                 </div>
