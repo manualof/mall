@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -30,10 +31,26 @@
                     {
                         align: 'center',
                         key: 'brandPicture',
-                        render(h) {
-                            return h('icon', {
+                        render(h, data) {
+                            return h('tooltip', {
                                 props: {
-                                    type: 'image',
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.pic,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
                                 },
                             });
                         },
@@ -50,8 +67,8 @@
                         render(h, data) {
                             if (data.row.status === true) {
                                 return h('span', {
-                                    props: {
-                                        class: 'status-check',
+                                    class: {
+                                        'status-check': true,
                                     },
                                 }, [
                                     h('icon', {
@@ -119,6 +136,7 @@
                         initials: 'Y',
                         isshow: '是',
                         name: '迪卡侬',
+                        pic: image1,
                         sort: 4,
                         status: true,
                         showStyle: '图片',
@@ -128,6 +146,7 @@
                         initials: 'Y',
                         isshow: '是',
                         name: '迪卡侬',
+                        pic: image1,
                         sort: 4,
                         status: false,
                         showStyle: '图片',
@@ -137,6 +156,7 @@
                         initials: 'Y',
                         isshow: '是',
                         name: '迪卡侬',
+                        pic: image1,
                         sort: 4,
                         status: true,
                         showStyle: '图片',

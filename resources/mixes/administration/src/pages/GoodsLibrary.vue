@@ -33,7 +33,7 @@
                                 scopedSlots: {
                                     content() {
                                         return h('img', {
-                                            props: {
+                                            domProps: {
                                                 src: data.row.pic,
                                             },
                                         });

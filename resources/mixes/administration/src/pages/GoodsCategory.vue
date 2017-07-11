@@ -83,21 +83,21 @@
                                         list() {
                                             return h('dropdown-menu', [
                                                 h('dropdown-item', {
-                                                    on: {
+                                                    nativeOn: {
                                                         click() {
                                                             self.editType();
                                                         },
                                                     },
                                                 }, '编辑分类信息'),
                                                 h('dropdown-item', {
-                                                    on: {
+                                                    nativeOn: {
                                                         click() {
                                                             self.addSubordinate();
                                                         },
                                                     },
                                                 }, '新增下级分类'),
                                                 h('dropdown-item', {
-                                                    on: {
+                                                    nativeOn: {
                                                         click() {
                                                             self.lookSubordinate();
                                                         },
@@ -209,8 +209,12 @@
                                 <i-button @click="deleteData" type="ghost">批量删除</i-button>
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                             </div>
-                            <i-table ref="goodTable" highlight-row :context="self" class="shop-table"
-                                     :columns="goodColumns" :data="classificationData"></i-table>
+                            <i-table class="shop-table"
+                                     :context="self"
+                                     :columns="goodColumns"
+                                     :data="classificationData"
+                                     highlight-row
+                                     ref="goodTable"></i-table>
                         </div>
                         <div class="page">
                             <page :total="100" show-elevator></page>

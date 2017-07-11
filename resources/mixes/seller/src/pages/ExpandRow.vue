@@ -91,13 +91,15 @@
                                     },
                                 }, '编辑'),
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.remove(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },

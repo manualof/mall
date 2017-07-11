@@ -69,16 +69,15 @@
                                         list() {
                                             const menus = [];
                                             menus.push(h('dropdown-item', {
-                                                on: {
+                                                nativeOn: {
                                                     click() {
-                                                        console.log(data);
                                                         self.cancelOrder(data.row);
                                                     },
                                                 },
                                             }, '取消订单'));
                                             if (data.row.status === 1) {
                                                 menus.push(h('dropdown-item', {
-                                                    on: {
+                                                    nativeOn: {
                                                         click() {
                                                             self.receiveGoods(data.row);
                                                         },

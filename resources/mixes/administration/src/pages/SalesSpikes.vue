@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -111,10 +112,26 @@
                     {
                         align: 'center',
                         key: 'goodsImg',
-                        render(h) {
-                            return h('icon', {
+                        render(h, data) {
+                            return h('tooltip', {
                                 props: {
-                                    type: 'image',
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.goodsImg,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
                                 },
                             });
                         },
@@ -179,6 +196,7 @@
                 goodsData: [
                     {
                         endTime: '2017-2-02',
+                        goodsImg: image1,
                         goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
                         goodsPrice: '99.00',
                         prePrice: '199.00',
@@ -187,6 +205,7 @@
                     },
                     {
                         endTime: '2017-2-02',
+                        goodsImg: image1,
                         goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
                         goodsPrice: '99.00',
                         prePrice: '199.00',
@@ -195,6 +214,7 @@
                     },
                     {
                         endTime: '2017-2-02',
+                        goodsImg: image1,
                         goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
                         goodsPrice: '99.00',
                         prePrice: '199.00',
@@ -203,6 +223,7 @@
                     },
                     {
                         endTime: '2017-2-02',
+                        goodsImg: image1,
                         goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
                         goodsPrice: '99.00',
                         prePrice: '199.00',

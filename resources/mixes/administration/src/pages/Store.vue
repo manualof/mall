@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -184,10 +185,26 @@
                     {
                         align: 'center',
                         key: 'shopImg',
-                        render(h) {
-                            return h('icon', {
+                        render(h, data) {
+                            return h('tooltip', {
                                 props: {
-                                    type: 'image',
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.shopImg,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
                                 },
                             });
                         },
@@ -197,10 +214,26 @@
                     {
                         align: 'center',
                         key: 'shopLogo',
-                        render(h) {
-                            return h('icon', {
+                        render(h, data) {
+                            return h('tooltip', {
                                 props: {
-                                    type: 'image',
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.shopLogo,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
                                 },
                             });
                         },
@@ -268,9 +301,9 @@
                         endTime: '2017-12-5',
                         ownerId: '545464554',
                         shopID: '65454654546',
-                        shopImg: '541',
+                        shopImg: image1,
                         shopLevel: '钻石店铺',
-                        shopLogo: '454',
+                        shopLogo: image1,
                         shopName: '默认',
                         shopTime: '2017-12-5',
                     },
@@ -279,9 +312,9 @@
                         endTime: '2017-12-5',
                         ownerId: '545464554',
                         shopID: '65454654546',
-                        shopImg: '541',
+                        shopImg: image1,
                         shopLevel: '钻石店铺',
-                        shopLogo: '454',
+                        shopLogo: image1,
                         shopName: '默认',
                         shopTime: '2017-12-5',
                     },
@@ -290,9 +323,9 @@
                         endTime: '2017-12-5',
                         ownerId: '545464554',
                         shopID: '65454654546',
-                        shopImg: '541',
+                        shopImg: image1,
                         shopLevel: '钻石店铺',
-                        shopLogo: '454',
+                        shopLogo: image1,
                         shopName: '默认',
                         shopTime: '2017-12-5',
                     },
@@ -301,9 +334,9 @@
                         endTime: '2017-12-5',
                         ownerId: '545464554',
                         shopID: '65454654546',
-                        shopImg: '541',
+                        shopImg: image1,
                         shopLevel: '钻石店铺',
-                        shopLogo: '454',
+                        shopLogo: image1,
                         shopName: '默认',
                         shopTime: '2017-12-5',
                     },

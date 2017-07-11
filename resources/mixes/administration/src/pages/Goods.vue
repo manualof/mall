@@ -53,8 +53,8 @@
                                 scopedSlots: {
                                     content() {
                                         return h('img', {
-                                            props: {
-                                                src: data.row.goodsImage,
+                                            domProps: {
+                                                src: data.row.goodsImg,
                                             },
                                         });
                                     },
@@ -96,7 +96,7 @@
                                             return h('dropdown-menu', [
                                                 h('dropdown-item', '查看商品详情'),
                                                 h('dropdown-item', {
-                                                    on: {
+                                                    nativeOn: {
                                                         click() {
                                                             self.lookGoodsSku();
                                                         },
@@ -246,8 +246,8 @@
                                 scopedSlots: {
                                     content() {
                                         return h('img', {
-                                            props: {
-                                                src: data.row.goodsImage,
+                                            domProps: {
+                                                src: data.row.goodsImg,
                                             },
                                         });
                                     },

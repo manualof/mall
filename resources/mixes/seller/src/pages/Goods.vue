@@ -21,31 +21,31 @@
                         key: 'goodsName',
                         render(h, data) {
                             return h('div', {
-                                props: {
-                                    class: 'goods-name-row',
+                                class: {
+                                    'goods-name-row': true,
                                 },
                             }, [
                                 h('div', {
-                                    props: {
-                                        class: 'img',
+                                    class: {
+                                        img: true,
                                     },
                                 }, [
                                     h('img', {
-                                        props: {
+                                        domProps: {
                                             src: data.row.goodsImg,
                                         },
                                     }),
                                 ]),
                                 h('div', {
-                                    props: {
-                                        class: 'right-text',
+                                    class: {
+                                        'right-text': true,
                                     },
                                 }, [
                                     h('p', data.row.goodsName),
                                     h('div', [
                                         h('span', {
-                                            props: {
-                                                class: 'left-num',
+                                            class: {
+                                                'left-num': true,
                                             },
                                         }, `商家货号：${data.row.sellNum}`),
                                         h('span', `SPU：${data.row.sellSpu}`),
@@ -91,12 +91,6 @@
                     },
                     {
                         align: 'center',
-                        key: 'reviewStatus',
-                        title: '审核',
-                        width: 100,
-                    },
-                    {
-                        align: 'center',
                         key: 'action',
                         render(h, data) {
                             return h('div', [
@@ -112,13 +106,15 @@
                                     },
                                 }, '编辑'),
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.removeGoods(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -135,7 +131,6 @@
                         goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
                         goodsPrice: '￥4826.07',
                         goodsStock: '54',
-                        reviewStatus: '已通过',
                         sellNum: 54277777777,
                         sellSpu: 324356,
                         status: true,
@@ -145,7 +140,6 @@
                         goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
                         goodsPrice: '￥4826.07',
                         goodsStock: '54',
-                        reviewStatus: '未通过',
                         sellNum: 54277777777,
                         sellSpu: 324356,
                         status: false,
@@ -155,7 +149,6 @@
                         goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
                         goodsPrice: '￥4826.07',
                         goodsStock: '54',
-                        reviewStatus: '未通过',
                         sellNum: 54277777777,
                         sellSpu: 324356,
                         status: false,
@@ -165,7 +158,6 @@
                         goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
                         goodsPrice: '￥4826.07',
                         goodsStock: '54',
-                        reviewStatus: '未通过',
                         sellNum: 54277777777,
                         sellSpu: 324356,
                         status: false,
@@ -175,7 +167,6 @@
                         goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
                         goodsPrice: '￥4826.07',
                         goodsStock: '54',
-                        reviewStatus: '未通过',
                         sellNum: 54277777777,
                         sellSpu: 324356,
                         status: false,
@@ -191,31 +182,31 @@
                         key: 'goodsName',
                         render(h, data) {
                             return h('div', {
-                                props: {
-                                    class: 'goods-name-row',
+                                class: {
+                                    'goods-name-row': true,
                                 },
                             }, [
                                 h('div', {
-                                    props: {
-                                        class: 'img',
+                                    class: {
+                                        img: true,
                                     },
                                 }, [
                                     h('img', {
-                                        props: {
+                                        domProps: {
                                             src: data.row.goodsImg,
                                         },
                                     }),
                                 ]),
                                 h('div', {
-                                    props: {
-                                        class: 'right-text',
+                                    class: {
+                                        'right-text': true,
                                     },
                                 }, [
                                     h('p', data.row.goodsName),
                                     h('div', [
                                         h('span', {
-                                            props: {
-                                                class: 'left-num',
+                                            class: {
+                                                'left-num': true,
                                             },
                                         }, `商家货号：${data.row.sellNum}`),
                                         h('span', `SPU：${data.row.sellSpu}`),
@@ -254,13 +245,15 @@
                                     },
                                 }, '还原'),
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.removeRecoverGoods(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -313,176 +306,6 @@
                         sellSpu: 324356,
                     },
                 ],
-                goodsReviewColumns: [
-                    {
-                        align: 'center',
-                        type: 'selection',
-                        width: 60,
-                    },
-                    {
-                        key: 'goodsName',
-                        render(h, data) {
-                            return h('div', {
-                                props: {
-                                    class: 'goods-name-row',
-                                },
-                            }, [
-                                h('div', {
-                                    props: {
-                                        class: 'img',
-                                    },
-                                }, [
-                                    h('img', {
-                                        props: {
-                                            src: data.row.goodsImg,
-                                        },
-                                    }),
-                                ]),
-                                h('div', {
-                                    props: {
-                                        class: 'right-text',
-                                    },
-                                }, [
-                                    h('p', data.row.goodsName),
-                                    h('div', [
-                                        h('span', {
-                                            props: {
-                                                class: 'left-num',
-                                            },
-                                        }, `商家货号：${data.row.sellNum}`),
-                                        h('span', `SPU：${data.row.sellSpu}`),
-                                    ]),
-                                ]),
-                            ]);
-                        },
-                        title: '商品名称',
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsPrice',
-                        title: '价格',
-                        width: 100,
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsStock',
-                        title: '库存',
-                        width: 100,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shelves',
-                        render(h, data) {
-                            return h('i-switch', {
-                                props: {
-                                    size: 'large',
-                                    value: data.row.status,
-                                },
-                                scopedSlots: {
-                                    close() {
-                                        return h('span', '关闭');
-                                    },
-                                    open() {
-                                        return h('span', '开启');
-                                    },
-                                },
-                            });
-                        },
-                        title: '上架',
-                        width: 100,
-                    },
-                    {
-                        align: 'center',
-                        key: 'reviewStatus',
-                        title: '审核',
-                        width: 100,
-                    },
-                    {
-                        align: 'center',
-                        key: 'action',
-                        render(h, data) {
-                            return h('div', [
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.editGoods(data.index);
-                                        },
-                                    },
-                                    props: {
-                                        size: 'small',
-                                        type: 'ghost',
-                                    },
-                                }, '编辑'),
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.removeReviewGoods(data.index);
-                                        },
-                                    },
-                                    props: {
-                                        class: 'delete-ad',
-                                        size: 'small',
-                                        type: 'ghost',
-                                    },
-                                }, '删除'),
-                            ]);
-                        },
-                        title: '操作',
-                        width: 180,
-                    },
-                ],
-                goodsReviewData: [
-                    {
-                        goodsImg: image1,
-                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
-                        goodsPrice: '￥4826.07',
-                        goodsStock: '54',
-                        reviewStatus: '已通过',
-                        sellNum: 54277777777,
-                        sellSpu: 324356,
-                        status: true,
-                    },
-                    {
-                        goodsImg: image1,
-                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
-                        goodsPrice: '￥4826.07',
-                        goodsStock: '54',
-                        reviewStatus: '未通过',
-                        sellNum: 54277777777,
-                        sellSpu: 324356,
-                        status: false,
-                    },
-                    {
-                        goodsImg: image1,
-                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
-                        goodsPrice: '￥4826.07',
-                        goodsStock: '54',
-                        reviewStatus: '未通过',
-                        sellNum: 54277777777,
-                        sellSpu: 324356,
-                        status: false,
-                    },
-                    {
-                        goodsImg: image1,
-                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
-                        goodsPrice: '￥4826.07',
-                        goodsStock: '54',
-                        reviewStatus: '未通过',
-                        sellNum: 54277777777,
-                        sellSpu: 324356,
-                        status: false,
-                    },
-                    {
-                        goodsImg: image1,
-                        goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
-                        goodsPrice: '￥4826.07',
-                        goodsStock: '54',
-                        reviewStatus: '未通过',
-                        sellNum: 54277777777,
-                        sellSpu: 324356,
-                        status: false,
-                    },
-                ],
                 goodsSellerColumns: [
                     {
                         align: 'center',
@@ -493,31 +316,31 @@
                         key: 'goodsName',
                         render(h, data) {
                             return h('div', {
-                                props: {
-                                    class: 'goods-name-row',
+                                class: {
+                                    'goods-name-row': true,
                                 },
                             }, [
                                 h('div', {
-                                    props: {
-                                        class: 'img',
+                                    class: {
+                                        img: true,
                                     },
                                 }, [
                                     h('img', {
-                                        props: {
+                                        domProps: {
                                             src: data.row.goodsImg,
                                         },
                                     }),
                                 ]),
                                 h('div', {
-                                    props: {
-                                        class: 'right-text',
+                                    class: {
+                                        'right-text': true,
                                     },
                                 }, [
                                     h('p', data.row.goodsName),
                                     h('div', [
                                         h('span', {
-                                            props: {
-                                                class: 'left-num',
+                                            class: {
+                                                'left-num': true,
                                             },
                                         }, `商家货号：${data.row.sellNum}`),
                                         h('span', `SPU：${data.row.sellSpu}`),
@@ -584,13 +407,15 @@
                                     },
                                 }, '编辑'),
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.removeSellerGoods(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -663,31 +488,31 @@
                         key: 'goodsName',
                         render(h, data) {
                             return h('div', {
-                                props: {
-                                    class: 'goods-name-row',
+                                class: {
+                                    'goods-name-row': true,
                                 },
                             }, [
                                 h('div', {
-                                    props: {
-                                        class: 'img',
+                                    class: {
+                                        img: true,
                                     },
                                 }, [
                                     h('img', {
-                                        props: {
+                                        domProps: {
                                             src: data.row.goodsImg,
                                         },
                                     }),
                                 ]),
                                 h('div', {
-                                    props: {
-                                        class: 'right-text',
+                                    class: {
+                                        'right-text': true,
                                     },
                                 }, [
                                     h('p', data.row.goodsName),
                                     h('div', [
                                         h('span', {
-                                            props: {
-                                                class: 'left-num',
+                                            class: {
+                                                'left-num': true,
                                             },
                                         }, `商家货号：${data.row.sellNum}`),
                                         h('span', `SPU：${data.row.sellSpu}`),
@@ -727,13 +552,15 @@
                                     },
                                 }, '还原'),
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.removeReviewGoods(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -788,16 +615,16 @@
                 ],
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '店铺名称',
+                        label: 'SPU',
+                        value: '1',
                     },
                     {
                         label: '商品名称',
-                        value: '商品名称',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '商家货号',
+                        value: '3',
                     },
                 ],
                 self: this,
@@ -902,41 +729,10 @@
                         </div>
                     </card>
                 </tab-pane>
-                <tab-pane label="等待审核" name="name3">
+                <tab-pane label="违规商品" name="name3">
                     <card :bordered="false">
                         <div class="goods-list">
                             <div class="goods-body-header">
-                                <i-button type="ghost" class="first-btn">发布新商品</i-button>
-                                <i-button type="ghost">批量删除</i-button>
-                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                                <div class="goods-body-header-right">
-                                    <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                        <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                            <i-option v-for="item in searchList"
-                                                      :value="item.value">{{ item.label }}</i-option>
-                                        </i-select>
-                                        <i-button slot="append" type="primary">搜索</i-button>
-                                    </i-input>
-                                </div>
-                            </div>
-                            <i-table class="goods-table"
-                                     :columns="goodsReviewColumns"
-                                     :context="self"
-                                     :data="goodsReviewData"
-                                     ref="goodsReviewList"
-                                     highlight-row>
-                            </i-table>
-                        </div>
-                        <div class="page">
-                            <page :total="100" show-elevator></page>
-                        </div>
-                    </card>
-                </tab-pane>
-                <tab-pane label="违规商品" name="name4">
-                    <card :bordered="false">
-                        <div class="goods-list">
-                            <div class="goods-body-header">
-                                <i-button type="ghost" class="first-btn">批量还原</i-button>
                                 <i-button type="ghost">批量删除</i-button>
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                                 <div class="goods-body-header-right">
@@ -962,7 +758,7 @@
                         </div>
                     </card>
                 </tab-pane>
-                <tab-pane label="商品回收站" name="name5">
+                <tab-pane label="商品回收站" name="name4">
                     <card :bordered="false">
                         <div class="goods-list">
                             <div class="goods-body-header">
