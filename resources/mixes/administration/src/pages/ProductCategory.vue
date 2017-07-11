@@ -3,32 +3,30 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/product/category/list`).then(response => {
+                const data = response.data.data;
+                const pagination = response.data.pagination;
+                next(vm => {
+                    vm.list = data;
+                    vm.pagination = pagination;
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
             const self = this;
             return {
-                classificationData: [
-                    {
-                        commissionRate: '5%',
-                        goodShow: '颜色',
-                    },
-                    {
-                        commissionRate: '5%',
-                        goodShow: '颜色',
-                    },
-                    {
-                        commissionRate: '5%',
-                        goodShow: '颜色',
-                    },
-                    {
-                        commissionRate: '5%',
-                        goodShow: '颜色',
-                    },
+                list: [
+//                    {
+//                        commissionRate: '5%',
+//                        goodShow: '颜色',
+//                    },
                 ],
-                goodColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
@@ -143,7 +141,6 @@
                 ],
                 searchCategory: '',
                 searchWord: '',
-                self: this,
             };
         },
         methods: {
@@ -183,7 +180,7 @@
                 });
             },
             remove(index) {
-                this.classificationData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -210,14 +207,16 @@
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                             </div>
                             <i-table class="shop-table"
-                                     :context="self"
-                                     :columns="goodColumns"
-                                     :data="classificationData"
+                                     :columns="columns"
+                                     :data="list"
                                      highlight-row
                                      ref="goodTable"></i-table>
                         </div>
                         <div class="page">
-                            <page :total="100" show-elevator></page>
+                            <page :current="pagination.current_page"
+                                  :page-size="pagination.per_page"
+                                  :total="pagination.total"
+                                  show-elevator></page>
                         </div>
                     </card>
                 </tab-pane>
