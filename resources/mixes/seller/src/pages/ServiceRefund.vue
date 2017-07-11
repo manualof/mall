@@ -15,14 +15,23 @@
                     {
                         align: 'left',
                         key: 'refundTotal',
-                        render() {
-                            return `<div class="refund-total">
-                                        <img :src="row.img">
-                                        <div>
-                                            <p>{{ row.goodsName }}</p>
-                                            <p>订单编号：{{ row.orderNum }}</p>
-                                            <p>退款编号：{{ row.refundNum }}</p>
-                                        </div>`;
+                        render(h, data) {
+                            return h('div', {
+                                class: {
+                                    'refund-total': true,
+                                },
+                            }, [
+                                h('img', {
+                                    domProps: {
+                                        src: data.row.img,
+                                    },
+                                }),
+                                h('div', [
+                                    h('p', data.row.goodsName),
+                                    h('p', `订单编号：${data.row.orderNum}`),
+                                    h('p', `退款编号：${data.row.refundNum}`),
+                                ]),
+                            ]);
                         },
                         title: '商品/订单号/退款号',
                     },

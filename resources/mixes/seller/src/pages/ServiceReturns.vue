@@ -15,14 +15,26 @@
                     {
                         align: 'left',
                         key: 'returnsTotal',
-                        render() {
-                            return `<div class="returns-total" v-if="row.isReturns">
-                                        <img :src="row.img">
-                                        <div>
-                                            <p>MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD</p>
-                                            <p>订单编号：340789789895609</p>
-                                            <p>退货编号：340789789895609</p>
-                                        </div>`;
+                        render(h, data) {
+                            if (data.row.isReturns) {
+                                return h('div', {
+                                    class: {
+                                        'returns-total': true,
+                                    },
+                                }, [
+                                    h('img', {
+                                        domProps: {
+                                            src: data.row.img,
+                                        },
+                                    }),
+                                    h('div', [
+                                        h('p', data.row.goodsName),
+                                        h('p', `订单编号：${data.row.orderNum}`),
+                                        h('p', `退款编号：${data.row.refundNum}`),
+                                    ]),
+                                ]);
+                            }
+                            return '';
                         },
                         title: '商品/订单号/退货编号',
                     },
@@ -91,8 +103,11 @@
                 ],
                 returnsData: [
                     {
+                        goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                         img: image,
                         isReturns: true,
+                        orderNum: '3232656564988',
+                        refundNum: 341236512,
                         returnsMoney: '1999.00',
                         returnsName: 'ibenchu',
                         returnsPlatform: '无',
@@ -101,9 +116,12 @@
                         isLook: false,
                     },
                     {
+                        goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                         img: image,
                         isLook: true,
                         isReturns: true,
+                        orderNum: '3232656564988',
+                        refundNum: 341236512,
                         returnsMoney: '1999.00',
                         returnsName: 'ibenchu',
                         returnsPlatform: '已完成',
@@ -111,9 +129,12 @@
                         returnsTime: '2017-04-01  16:30:31',
                     },
                     {
+                        goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                         img: image,
                         isLook: true,
                         isReturns: true,
+                        orderNum: '3232656564988',
+                        refundNum: 341236512,
                         returnsMoney: '1999.00',
                         returnsName: 'ibenchu',
                         returnsPlatform: '无',
