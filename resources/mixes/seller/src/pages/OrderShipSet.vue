@@ -102,73 +102,6 @@
                         message: '',
                     },
                 ],
-                noLogisticsColumns: [
-                    {
-                        align: 'center',
-                        key: 'name',
-                        title: '公司名称',
-                        width: 200,
-                    },
-                    {
-                        align: 'center',
-                        key: 'number',
-                        render(h, data) {
-                            return h('i-input', {
-                                props: {
-                                    value: data.row.number,
-                                },
-                            }, '查看');
-                        },
-                        title: '物流单号',
-                        width: 300,
-                    },
-                    {
-                        align: 'center',
-                        key: 'message',
-                        render(h, data) {
-                            return h('i-input', {
-                                props: {
-                                    value: data.row.message,
-                                },
-                            }, '查看');
-                        },
-                        title: '备忘',
-                    },
-                    {
-                        align: 'center',
-                        render(h) {
-                            return h('i-button', {
-                                props: {
-                                    type: 'ghost',
-                                },
-                            }, '确认');
-                        },
-                        title: '操作',
-                        width: 160,
-                    },
-                ],
-                noLogisticsData: [
-                    {
-                        name: '顺丰速运',
-                        number: '4444444',
-                        message: '',
-                    },
-                    {
-                        name: '顺丰速运',
-                        number: '4444444',
-                        message: '',
-                    },
-                    {
-                        name: '顺丰速运',
-                        number: '4444444',
-                        message: '',
-                    },
-                    {
-                        name: '顺丰速运',
-                        number: '4444444',
-                        message: '',
-                    },
-                ],
                 order: {
                     address: '陕西省西安市雁塔区科技四路中段陕西国土资源大厦公寓楼2304',
                     amount: 2,
@@ -470,11 +403,8 @@
                             </i-form>
                         </tab-pane>
                         <tab-pane label="无需物流运输" name="name2">
-                            <i-form ref="logistics" :model="logistics" :rules="ruleValidate" :label-width="120">
-                                <i-table :context="self"
-                                         :columns="noLogisticsColumns"
-                                         :data="noLogisticsData"
-                                         ref="noLogistics"></i-table>
+                            <i-form ref="logistics" :model="logistics" :rules="ruleValidate" class="no-logistics-module">
+                                <p>如果订单中的商品无需物流运送,您可以直接点击确认</p>
                                 <i-button class="submit-btn" type="primary">确认提交</i-button>
                             </i-form>
                         </tab-pane>

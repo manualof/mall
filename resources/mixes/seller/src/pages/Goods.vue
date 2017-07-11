@@ -386,12 +386,6 @@
                     },
                     {
                         align: 'center',
-                        key: 'reviewStatus',
-                        title: '审核',
-                        width: 100,
-                    },
-                    {
-                        align: 'center',
                         key: 'action',
                         render(h, data) {
                             return h('div', [
@@ -432,7 +426,6 @@
                         goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
                         goodsPrice: '￥4826.07',
                         goodsStock: '54',
-                        reviewStatus: '已通过',
                         sellNum: 54277777777,
                         sellSpu: 324356,
                         status: true,
@@ -442,7 +435,6 @@
                         goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
                         goodsPrice: '￥4826.07',
                         goodsStock: '54',
-                        reviewStatus: '未通过',
                         sellNum: 54277777777,
                         sellSpu: 324356,
                         status: false,
@@ -452,7 +444,6 @@
                         goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
                         goodsPrice: '￥4826.07',
                         goodsStock: '54',
-                        reviewStatus: '未通过',
                         sellNum: 54277777777,
                         sellSpu: 324356,
                         status: false,
@@ -462,7 +453,6 @@
                         goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
                         goodsPrice: '￥4826.07',
                         goodsStock: '54',
-                        reviewStatus: '未通过',
                         sellNum: 54277777777,
                         sellSpu: 324356,
                         status: false,
@@ -472,7 +462,6 @@
                         goodsName: 'MIUI/小米 小米手机4 小米4代 MI4智能4G手机包邮 黑色 D-LTE（4G）/TD-SCD',
                         goodsPrice: '￥4826.07',
                         goodsStock: '54',
-                        reviewStatus: '未通过',
                         sellNum: 54277777777,
                         sellSpu: 324356,
                         status: false,
