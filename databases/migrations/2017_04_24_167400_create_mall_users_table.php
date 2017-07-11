@@ -8,9 +8,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Notadd\Foundation\Database\Migrations\Migration;
 
 /**
- * Class CreateMallMembersTable.
+ * Class CreateMallUsersTable.
  */
-class CreateMallMembersTable extends Migration
+class CreateMallUsersTable extends Migration
 {
     /**
      * Run the migrations.
