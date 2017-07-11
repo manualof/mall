@@ -53,8 +53,8 @@
                                 scopedSlots: {
                                     content() {
                                         return h('img', {
-                                            props: {
-                                                src: data.row.goodsImage,
+                                            domProps: {
+                                                src: data.row.goodsImg,
                                             },
                                         });
                                     },
@@ -246,8 +246,8 @@
                                 scopedSlots: {
                                     content() {
                                         return h('img', {
-                                            props: {
-                                                src: data.row.goodsImage,
+                                            domProps: {
+                                                src: data.row.goodsImg,
                                             },
                                         });
                                     },
