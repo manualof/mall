@@ -27,15 +27,7 @@
                     phone: '',
                     type: '',
                 },
-                shopValidate: {
-                    type: [
-                        {
-                            message: '店铺分类不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
-                },
+                shopValidate: {},
                 slideImg: {
                     img: 0,
                     list: [image, image, image, image],
@@ -164,7 +156,7 @@
                             </row>
                             <row>
                                 <i-col span="14">
-                                    <form-item label="店铺分类" prop="type">
+                                    <form-item label="主营商品" prop="type">
                                         <i-input v-model="shop.type"></i-input>
                                         <p class="tip">关键字最多可输入50字，请用","进行分隔，例如，"男装，女装，童装"</p>
                                     </form-item>

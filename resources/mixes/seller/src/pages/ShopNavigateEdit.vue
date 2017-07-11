@@ -82,6 +82,8 @@
                         <i-col span="14">
                             <form-item label="链接地址">
                                 <i-input v-model="navigate.address"></i-input>
+                                <p class="tip">如果是本站的网址，可缩写为与商城根目录相对地址，如index.php；
+                                    其他情况请填写包含http://的完整URL地址</p>
                             </form-item>
                         </i-col>
                     </row>
