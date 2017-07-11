@@ -41,7 +41,7 @@
                                 },
                             });
                         },
-                        title: '上架',
+                        title: '是否显示',
                     },
                     {
                         align: 'center',

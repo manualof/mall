@@ -10,33 +10,6 @@ import ConfigurationSearch from '../pages/ConfigurationSearch.vue';
 import ConfigurationSearchEditor from '../pages/ConfigurationSearchEditor.vue';
 import ConfigurationSearchAdd from '../pages/ConfigurationSearchAdd.vue';
 import Dashboard from '../pages/Dashboard.vue';
-import Goods from '../pages/Goods.vue';
-import GoodsBrand from '../pages/GoodsBrand.vue';
-import GoodsBrandAdd from '../pages/GoodsBrandAdd.vue';
-import GoodsBrandEdit from '../pages/GoodsBrandEdit.vue';
-import GoodsCategory from '../pages/GoodsCategory.vue';
-import GoodsCategoryEdit from '../pages/GoodsCategoryEdit.vue';
-import GoodsCategoryAdd from '../pages/GoodsCategoryAdd.vue';
-import GoodsCategoryAddUnder from '../pages/GoodsCategoryAddUnder.vue';
-import GoodsCategoryLook from '../pages/GoodsCategoryLook.vue';
-import GoodsCategoryLookAdd from '../pages/GoodsCategoryLookAdd.vue';
-import GoodsCategoryLookAddUnder from '../pages/GoodsCategoryLookAddUnder.vue';
-import GoodsCategoryLookEdit from '../pages/GoodsCategoryLookEdit.vue';
-import GoodsCategoryLookUnder from '../pages/GoodsCategoryLookUnder.vue';
-import GoodsCategoryLookUnderAdd from '../pages/GoodsCategoryLookUnderAdd.vue';
-import GoodsCategoryLookUnderEdit from '../pages/GoodsCategoryLookUnderEdit.vue';
-import GoodsLibrary from '../pages/GoodsLibrary.vue';
-import GoodsLibraryEdit from '../pages/GoodsLibraryEdit.vue';
-import GoodsLibraryAdd from '../pages/GoodsLibraryAdd.vue';
-import GoodsPicture from '../pages/GoodsPicture.vue';
-import GoodsPictureLook from '../pages/GoodsPictureLook.vue';
-import GoodsPictureLookAll from '../pages/GoodsPictureLookAll.vue';
-import GoodsStandard from '../pages/GoodsStandard.vue';
-import GoodsStandardAdd from '../pages/GoodsStandardAdd.vue';
-import GoodsStandardEdit from '../pages/GoodsStandardEdit.vue';
-import GoodsType from '../pages/GoodsType.vue';
-import GoodsTypeAdd from '../pages/GoodsTypeAdd.vue';
-import GoodsTypeEdit from '../pages/GoodsTypeEdit.vue';
 import Layout from '../layouts/Layout.vue';
 import Operation from '../pages/Operation.vue';
 import OperationDelivery from '../pages/OperationDelivery.vue';
@@ -59,6 +32,33 @@ import OrderRejectedLook from '../pages/OrderRejectedLook.vue';
 import OrderRejectedLookReject from '../pages/OrderRejectedLookReject.vue';
 import OrderRejectedHandel from '../pages/OrderRejectedHandel.vue';
 import OrderRejectedAllHandel from '../pages/OrderRejectedAllHandel.vue';
+import Product from '../pages/Product.vue';
+import ProductBrand from '../pages/ProductBrand.vue';
+import ProductBrandAdd from '../pages/ProductBrandAdd.vue';
+import ProductBrandEdit from '../pages/ProductBrandEdit.vue';
+import ProductCategory from '../pages/ProductCategory.vue';
+import ProductCategoryEdit from '../pages/ProductCategoryEdit.vue';
+import ProductCategoryAdd from '../pages/ProductCategoryAdd.vue';
+import ProductCategoryAddUnder from '../pages/ProductCategoryAddUnder.vue';
+import ProductCategoryLook from '../pages/ProductCategoryLook.vue';
+import ProductCategoryLookAdd from '../pages/ProductCategoryLookAdd.vue';
+import ProductCategoryLookAddUnder from '../pages/ProductCategoryLookAddUnder.vue';
+import ProductCategoryLookEdit from '../pages/ProductCategoryLookEdit.vue';
+import ProductCategoryLookUnder from '../pages/ProductCategoryLookUnder.vue';
+import ProductCategoryLookUnderAdd from '../pages/ProductCategoryLookUnderAdd.vue';
+import ProductCategoryLookUnderEdit from '../pages/ProductCategoryLookUnderEdit.vue';
+import ProductLibrary from '../pages/ProductLibrary.vue';
+import ProductLibraryEdit from '../pages/ProductLibraryEdit.vue';
+import ProductLibraryAdd from '../pages/ProductLibraryAdd.vue';
+import ProductPicture from '../pages/ProductPicture.vue';
+import ProductPictureLook from '../pages/ProductPictureLook.vue';
+import ProductPictureLookAll from '../pages/ProductPictureLookAll.vue';
+import ProductStandard from '../pages/ProductStandard.vue';
+import ProductStandardAdd from '../pages/ProductStandardAdd.vue';
+import ProductStandardEdit from '../pages/ProductStandardEdit.vue';
+import ProductType from '../pages/ProductType.vue';
+import ProductTypeAdd from '../pages/ProductTypeAdd.vue';
+import ProductTypeEdit from '../pages/ProductTypeEdit.vue';
 import Statistics from '../pages/Statistics.vue';
 import StatisticsAftersales from '../pages/StatisticsAftersales.vue';
 import StatisticsAnalysis from '../pages/StatisticsAnalysis.vue';
@@ -154,137 +154,137 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: Goods,
+                    component: Product,
                     path: 'goods',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsLibrary,
+                    component: ProductLibrary,
                     path: 'goods/library',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsLibraryEdit,
+                    component: ProductLibraryEdit,
                     path: 'goods/library/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsLibraryAdd,
+                    component: ProductLibraryAdd,
                     path: 'goods/library/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategory,
+                    component: ProductCategory,
                     path: 'goods/category',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryEdit,
+                    component: ProductCategoryEdit,
                     path: 'goods/category/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryAdd,
+                    component: ProductCategoryAdd,
                     path: 'goods/category/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryAddUnder,
+                    component: ProductCategoryAddUnder,
                     path: 'goods/category/add/under',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryLook,
+                    component: ProductCategoryLook,
                     path: 'goods/category/look',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryLookAdd,
+                    component: ProductCategoryLookAdd,
                     path: 'goods/category/look/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryLookAddUnder,
+                    component: ProductCategoryLookAddUnder,
                     path: 'goods/category/look/add/under',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryLookEdit,
+                    component: ProductCategoryLookEdit,
                     path: 'goods/category/look/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryLookUnder,
+                    component: ProductCategoryLookUnder,
                     path: 'goods/category/look/under',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryLookUnderAdd,
+                    component: ProductCategoryLookUnderAdd,
                     path: 'goods/category/look/under/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryLookUnderEdit,
+                    component: ProductCategoryLookUnderEdit,
                     path: 'goods/category/look/under/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsBrand,
+                    component: ProductBrand,
                     path: 'goods/brand',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsBrandAdd,
+                    component: ProductBrandAdd,
                     path: 'goods/brand/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsBrandEdit,
+                    component: ProductBrandEdit,
                     path: 'goods/brand/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsType,
+                    component: ProductType,
                     path: 'goods/type',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsTypeEdit,
+                    component: ProductTypeEdit,
                     path: 'goods/type/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsTypeAdd,
+                    component: ProductTypeAdd,
                     path: 'goods/type/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsStandard,
+                    component: ProductStandard,
                     path: 'goods/standard',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsStandardAdd,
+                    component: ProductStandardAdd,
                     path: 'goods/standard/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsStandardEdit,
+                    component: ProductStandardEdit,
                     path: 'goods/standard/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsPicture,
+                    component: ProductPicture,
                     path: 'goods/picture',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsPictureLook,
+                    component: ProductPictureLook,
                     path: 'goods/picture/look',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsPictureLookAll,
+                    component: ProductPictureLookAll,
                     path: 'goods/picture/look/all',
                 },
                 {

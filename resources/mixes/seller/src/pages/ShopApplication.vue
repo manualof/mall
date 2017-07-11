@@ -56,7 +56,7 @@
                     {
                         align: 'center',
                         key: 'show',
-                        title: '显示',
+                        title: '所属类别',
                     },
                     {
                         align: 'center',
@@ -145,20 +145,22 @@
                 },
                 loading: false,
                 modify: false,
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '店铺名称',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
+                ruleValidate: {
+                    initials: [
+                        {
+                            message: '名称首字母不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '品牌名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 self: this,
                 styleData: [
                     {
@@ -363,10 +365,7 @@
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                                 <div class="goods-body-header-right">
                                     <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                        <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                            <i-option v-for="item in searchList"
-                                                      :value="item.value">{{ item.label }}</i-option>
-                                        </i-select>
+                                        <span slot="prepend">品牌名称</span>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>
                                 </div>
@@ -387,17 +386,17 @@
                             v-model="goodsApplication"
                             title="品牌申请" class="upload-picture-modal">
                         <div>
-                            <i-form ref="goods" :model="goods" :rules="pictureValidate" :label-width="100">
+                            <i-form ref="goods" :model="goods" :rules="ruleValidate" :label-width="100">
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="品牌名称">
+                                        <form-item label="品牌名称" prop="name">
                                             <i-input v-model="goods.name"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="名称首字母">
+                                        <form-item label="名称首字母" prop="initials">
                                             <i-input v-model="goods.initials"></i-input>
                                         </form-item>
                                     </i-col>
@@ -410,7 +409,7 @@
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="20">
+                                    <i-col span="24">
                                         <form-item label="品牌LOGO" prop="logo">
                                             <div class="image-preview" v-if="goods.logo">
                                                 <img :src="goods.logo">
@@ -430,7 +429,7 @@
                                                     :show-upload-list="false"
                                                     v-if="goods.logo === '' || goods.logo === null">
                                             </upload>
-                                            <p class="tip">建议上传大小为150*150的品牌图片</p>
+                                            <p class="tip">建议上传大小为150*50的品牌图片</p>
                                             <p class="tip">申请品牌的目的是方便买家通过品牌索引页查找商品，
                                                 申请时请填写品牌所属的类别，方便平台归类</p>
                                             <p class="tip">在平台审核前，您可以编辑或撤销申请</p>
