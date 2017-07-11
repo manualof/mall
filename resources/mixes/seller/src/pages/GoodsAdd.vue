@@ -460,6 +460,43 @@
                         name: '3.文字要求',
                     },
                 ],
+                ruleValidate: {
+                    goodInventory: [
+                        {
+                            message: '商品库存不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    goodPrice: [
+                        {
+                            message: '商品价格不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    logo: [
+                        {
+                            message: '商品图片不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    marketPrice: [
+                        {
+                            message: '市场价格不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '商品名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 selectVersion: ['256GB', '128GB', '64GB', '32GB'],
                 shopStyle: [
                     {
@@ -576,7 +613,7 @@
                                     </row>
                                     <row>
                                         <i-col span="12">
-                                            <form-item label="商品名称">
+                                            <form-item label="商品名称" prop="name">
                                                 <i-input v-model="goodsEdit.name"></i-input>
                                             </form-item>
                                         </i-col>
@@ -592,7 +629,7 @@
                                     </row>
                                     <row class="freight-style-module">
                                         <i-col span="16">
-                                            <form-item label="商品价格">
+                                            <form-item label="商品价格" prop="goodPrice">
                                                 <row class="freight-style">
                                                     <i-col span="4">
                                                         <i-input v-model="goodsEdit.goodPrice"></i-input>
@@ -606,7 +643,7 @@
                                     </row>
                                     <row class="freight-style-module">
                                         <i-col span="16">
-                                            <form-item label="市场价格">
+                                            <form-item label="市场价格" prop="marketPrice">
                                                 <row class="freight-style">
                                                     <i-col span="4">
                                                         <i-input v-model="goodsEdit.marketPrice"></i-input>
@@ -684,7 +721,7 @@
                                     </row>
                                     <row class="freight-style-module">
                                         <i-col span="16">
-                                            <form-item label="商品库存">
+                                            <form-item label="商品库存" prop="goodInventory">
                                                 <row class="freight-style">
                                                     <i-col span="4">
                                                         <i-input v-model="goodsEdit.goodInventory"></i-input>
@@ -734,7 +771,7 @@
                                     </row>
                                     <row>
                                         <i-col span="24">
-                                            <form-item label="商品图片">
+                                            <form-item label="商品图片" prop="logo">
                                                 <div class="image-preview" v-if="goodsEdit.logo">
                                                     <img :src="goodsEdit.logo">
                                                     <icon type="close" @click.native="removeLogo"></icon>
@@ -753,9 +790,9 @@
                                                         :show-upload-list="false"
                                                         v-if="goodsEdit.logo === '' || goodsEdit.logo === null">
                                                 </upload>
-                                                <p class="tip">第一张图片为默认主图，图片支持JPG、gif、png格式上传或从图片空间中选择，
-                                                    建议使用尺寸800*800像素以上，大小不超过4M的正方形图片，单击选中图片，
-                                                    可进行上传，替换和删除
+                                                <p class="tip">上传商品默认主图，如多规格值时将默认使用该图或分规格上传各规格主图；
+                                                    支持jpg、gif、png格式上传或从图片空间中选择，建议使用尺寸800x800像素以上、
+                                                    大小不超过1M的正方形图片，上传后的图片将会自动保存在图片空间的默认分类中
                                                 </p>
                                                 <i-button type="ghost">图片上传</i-button>
                                                 <i-button type="ghost">从图片空间删除</i-button>
@@ -964,6 +1001,11 @@
                                             </form-item>
                                         </i-col>
                                     </row>
+                                </div>
+                            </div>
+                            <div class="library-application">
+                                <h5>其他信息</h5>
+                                <div class="application-content refund-module">
                                     <row>
                                         <i-col span="12">
                                             <form-item label="本店分类">
@@ -1020,7 +1062,7 @@
                             <row>
                                 <i-col span="18">
                                     <form-item label="">
-                                        <i-button @click.native="submit" type="primary">
+                                        <i-button :loading="loading" @click.native="submit" type="primary">
                                             <span v-if="!loading">确认提交</span>
                                             <span v-else>正在提交…</span>
                                         </i-button>

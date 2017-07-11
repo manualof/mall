@@ -16,8 +16,31 @@
             background-color: #f5f7f9;
             padding: 0 20px;
         }
+        .stock-module {
+            .ivu-table {
+                .ivu-table-header {
+                    tr {
+                        th {
+                            &:nth-child(3) span:before,
+                            &:nth-child(4) span:before,
+                            &:nth-child(5) span:before {
+                                content: "*";
+                                display: inline-block;
+                                margin-right: 4px;
+                                line-height: 1;
+                                font-family: SimSun;
+                                font-size: 12px;
+                                color: #ed3f14;
+                                font-weight: 300;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         .ivu-form-item {
             margin-bottom: 0;
+
             padding: 8px 0;
             .image-preview {
                 border: 2px solid #ccc;
@@ -62,6 +85,9 @@
                 .ivu-input {
                     height: 24px;
                 }
+            }
+            .ivu-form-item-error-tip {
+                position: inherit;
             }
         }
         .good-edit-style {
