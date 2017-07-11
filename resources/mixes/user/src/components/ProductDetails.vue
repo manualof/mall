@@ -132,8 +132,11 @@
                 <p class="intro">{{ product.name }}</p>
                 <p class="price">￥{{　product.price　}}</p>
                 <div class="check-box select">
-                    <span><input @change="selectRecommend(product,$event)" name="recommend" type="checkbox"
-                                 class="input_check" :id="product.id"><label :for="product.id"> </label></span>
+                    <label>
+                        <input @change="selectRecommend(product,$event)" name="recommend" type="checkbox"
+                                 class="input_check" :id="product.id">
+                        <span></span>
+                    </label>
                 </div>
             </router-link>
             <li>
