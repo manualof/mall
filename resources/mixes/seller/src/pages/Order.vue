@@ -136,8 +136,6 @@
                                 version: 'D-LTE（4G）/TD-SCDMA',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
@@ -157,8 +155,6 @@
                                 version: 'D-LTE（4G）/TD-SCDMA',
                             },
                         ],
-                        image: image1,
-                        isGifts: false,
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
@@ -178,8 +174,6 @@
                                 version: 'D-LTE（4G）/TD-SCDMA',
                             },
                         ],
-                        image: image1,
-                        isGifts: false,
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
@@ -199,8 +193,6 @@
                                 version: 'D-LTE（4G）/TD-SCDMA',
                             },
                         ],
-                        image: image1,
-                        isGifts: false,
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
@@ -423,7 +415,7 @@
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
-                        status: 1,
+                        status: 2,
                     },
                     {
                         buyer: 'maijiaming',
@@ -444,7 +436,7 @@
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
-                        status: 1,
+                        status: 2,
                     },
                     {
                         buyer: 'maijiaming',
@@ -465,7 +457,7 @@
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
-                        status: 3,
+                        status: 2,
                     },
                     {
                         buyer: 'maijiaming',
@@ -486,7 +478,7 @@
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
-                        status: 4,
+                        status: 2,
                     },
                 ],
                 orderPrePay: [
@@ -583,20 +575,6 @@
                         status: 4,
                     },
                 ],
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '店铺名称',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
                 self: this,
             };
         },
@@ -617,6 +595,12 @@
                 const self = this;
                 self.$router.push({
                     path: 'order/detail',
+                });
+            },
+            orderSetting() {
+                const self = this;
+                self.$router.push({
+                    path: 'order/setting/ship',
                 });
             },
             submitCancelOrder() {
@@ -656,10 +640,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
@@ -711,9 +692,6 @@
                                             <div class="goods-td-border">&yen;{{ item.price }}</div>
                                             <div class="goods-td-border">{{ item.amount }}</div>
                                         </div>
-                                        <div class="goods-gifts" v-if="item.isGifts">
-                                            赠品<img :src="item.image" alt="">
-                                        </div>
                                     </div>
                                 </td>
                                 <td>{{ item.buyer }}</td>
@@ -732,7 +710,8 @@
                                 <td>
                                     <i-button type="error" v-if="item.status === 1"
                                               @click.native="cancelOrders(index)">取消订单</i-button>
-                                    <i-button type="primary" v-if="item.status === 2">设置发货</i-button>
+                                    <i-button type="primary" v-if="item.status === 2"
+                                              @click.native="orderSetting">设置发货</i-button>
                                 </td>
                             </tr>
                             <tr class="space-bg">
@@ -796,10 +775,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
@@ -893,10 +869,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
@@ -964,7 +937,8 @@
                                     <p><a>订单详情</a></p>
                                 </td>
                                 <td>
-                                    <i-button type="primary" v-if="item.status === 2">设置发货</i-button>
+                                    <i-button type="primary" v-if="item.status === 2"
+                                              @click.native="orderSetting">设置发货</i-button>
                                 </td>
                             </tr>
                             <tr class="space-bg">
@@ -990,10 +964,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
@@ -1087,10 +1058,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
@@ -1182,10 +1150,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
