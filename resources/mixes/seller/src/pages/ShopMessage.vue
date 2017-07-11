@@ -41,9 +41,28 @@
                     {
                         align: 'center',
                         key: 'voucher',
-                        render() {
-                            return `<icon type="image" class="shop-voucher"></icon>
-                                    <img :src="row.voucher" style="display: none"/>`;
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.voucher,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
                         },
                         title: '付款凭证',
                     },
