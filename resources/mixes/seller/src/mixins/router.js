@@ -30,7 +30,9 @@ import StatisticsSettlementLook from '../pages/StatisticsSettlementLook.vue';
 import Order from '../pages/Order.vue';
 import OrderLogistics from '../pages/OrderLogistics.vue';
 import OrderDatail from '../pages/OrderDatail.vue';
+import OrderSettingShip from '../pages/OrderSettingShip.vue';
 import OrderShip from '../pages/OrderShip.vue';
+import OrderShipLook from '../pages/OrderShipLook.vue';
 import OrderShipSet from '../pages/OrderShipSet.vue';
 import OrderSetting from '../pages/OrderSetting.vue';
 import OrderWaybill from '../pages/OrderWaybill.vue';
@@ -211,8 +213,18 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
+                    component: OrderSettingShip,
+                    path: 'order/setting/ship',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
                     component: OrderShip,
                     path: 'order/ship',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderShipLook,
+                    path: 'order/ship/look',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

@@ -258,6 +258,12 @@
             };
         },
         methods: {
+            lookLogistics() {
+                const self = this;
+                self.$router.push({
+                    path: 'ship/look',
+                });
+            },
             settingShip() {
                 const self = this;
                 self.$router.push({
@@ -309,10 +315,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
@@ -409,10 +412,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
@@ -426,10 +426,13 @@
                         <table class="order-table">
                             <tbody v-for="(item, index) in shiping">
                             <tr class="space">
-                                <td colspan="2">
+                                <td colspan="2" class="clearfix">
                                     <span>订单号:{{ item.num }}</span>
                                     <span>下单时间:{{ item.createTime }}</span>
-                                    <button class="print-btn">打印运单</button>
+                                    <div class="look-shipping">
+                                        <button class="print-btn" @click="lookLogistics">查看物流</button>
+                                        <button class="print-btn">打印运单</button>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -469,7 +472,7 @@
                                         </row>
                                         <row>
                                             <i-col>
-                                                <i-button type="primary">设置发货</i-button>
+                                                <i-button type="primary">延迟收货</i-button>
                                             </i-col>
                                         </row>
                                     </i-form>
@@ -506,10 +509,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>

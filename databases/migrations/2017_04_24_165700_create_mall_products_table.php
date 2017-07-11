@@ -27,7 +27,7 @@ class CreateMallProductsTable extends Migration
             $table->integer('category_id')->default(0)->comment('分类 ID');
             $table->text('description')->nullable()->comment('商品描述');
             $table->string('name')->comment('商品名称');
-            $table->string('price')->deault('0.00')->comment('价格');
+            $table->decimal('price', 12, 2)->deault('0.00')->comment('价格');
             $table->string('price_cost')->deault('0.00')->comment('成本价格');
             $table->string('price_market')->deault('0.00')->comment('市场价格');
             $table->integer('inventory')->defualt(0)->comment('库存');
