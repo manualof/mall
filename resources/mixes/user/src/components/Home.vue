@@ -605,7 +605,7 @@
         computed: {
             hours() {
                 const time = this.deviationTime / 1000;
-                const hour = this.formate(parseInt((time / 3600) % 24, 10));
+                const hour = this.formate(parseInt((time / 3600), 10));
                 return hour;
             },
             minutes() {
@@ -795,6 +795,18 @@
                             price2: 98.00,
                         },
                     ],
+                },
+                scrollPos: 0,
+                show: false,
+                swiperOption: {
+                    autoplay: 3000,
+                    loop: true,
+                    notNextTick: true,
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    paginationBulletRender(s, index, className) {
+                        return `<span class="${className}">${(index + 1)}</span>`;
+                    },
                 },
                 typeList: {
                     typeList1: {
@@ -1147,18 +1159,6 @@
                                 title: '满减优惠',
                             },
                         ],
-                    },
-                },
-                scrollPos: 0,
-                show: false,
-                swiperOption: {
-                    autoplay: 3000,
-                    loop: true,
-                    notNextTick: true,
-                    pagination: '.swiper-pagination',
-                    paginationClickable: true,
-                    paginationBulletRender(s, index, className) {
-                        return `<span class="${className}">${(index + 1)}</span>`;
                     },
                 },
             };
