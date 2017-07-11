@@ -32,8 +32,13 @@
         <div class="time-spike">
             <div class="container">
                 <div class="title clearfix">
-                    <h3><i class="icon iconfont icon-miaosha"></i>限时秒杀</h3>
-                    <p>还有&nbsp;<span>13</span><i>:</i><span>22</span><i>:</i><span>07</span>&nbsp;结束</p>
+                    <h3>
+                        <i class="icon iconfont icon-miaosha"></i>
+                        <a @click="switchTab(0)" :class="{active:activeTab === 0}">限时秒杀</a>
+                        <a @click="switchTab(1)" :class="{active:activeTab === 1}">新品预售</a>
+                        <a @click="switchTab(2)" :class="{active:activeTab === 2}">满减活动</a>
+                    </h3>
+                    <p class="cutDown">还有&nbsp;<span>13</span><i>:</i><span>22</span><i>:</i><span>07</span>&nbsp;结束</p>
                 </div>
                 <div class="spike-content row">
                     <router-link :to="{ name: 'product-details' }" v-for="(item, index) in spikeList" :key="index">
@@ -599,6 +604,7 @@
         },
         data() {
             return {
+                activeTab: 0,
                 newProduct: [
                     {
                         img: image3,
@@ -1137,6 +1143,9 @@
             };
         },
         methods: {
+            switchTab(index) {
+                this.activeTab = index;
+            },
             toTop() {
                 const timeOut = setInterval(() => {
                     if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
