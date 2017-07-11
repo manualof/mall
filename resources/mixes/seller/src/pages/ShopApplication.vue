@@ -30,7 +30,7 @@
                                 scopedSlots: {
                                     content() {
                                         return h('img', {
-                                            props: {
+                                            domProps: {
                                                 src: data.row.goodsLogo,
                                             },
                                         });
@@ -66,13 +66,52 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<div v-if="row.status === '待审核'">
-                                    <i-button @click.native="edit(${index})" type="ghost">修改</i-button>
-                                    <i-button @click.native="revoked(${index})" class="delete-ad"
-                                     type="ghost">撤销</i-button></div>
-                                    <i-button @click.native="remove(${index})" v-if="row.status === '审核通过'"
-                                    type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            if (data.row.status === '待审核') {
+                                return h('div', [
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.edit(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '修改'),
+                                    h('i-button', {
+                                        class: {
+                                            'delete-ad': true,
+                                        },
+                                        on: {
+                                            click() {
+                                                self.revoked(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '撤销'),
+                                ]);
+                            }
+                            if (data.row.status === '审核通过') {
+                                return h('div', [
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.remove(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '删除'),
+                                ]);
+                            }
+                            return '';
                         },
                         title: '操作',
                         width: 180,

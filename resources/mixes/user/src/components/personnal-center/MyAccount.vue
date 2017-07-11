@@ -90,8 +90,8 @@
                         <Upload
                              :on-success="handleSuccess"
                              action="//jsonplaceholder.typicode.com/posts/">
+                            图片上传
                         </Upload>
-                        <a class="upload-btn" type="ghost" >图片上传</a>
                     </div>
                 </div>
             </div>

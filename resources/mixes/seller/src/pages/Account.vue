@@ -47,6 +47,7 @@
                                     },
                                 },
                                 props: {
+                                    size: 'small',
                                     type: 'ghost',
                                 },
                             }, '删除');

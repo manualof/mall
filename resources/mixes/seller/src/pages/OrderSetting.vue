@@ -361,7 +361,8 @@
                                     <span>{{ item.phone }}</span>
                                     <span>
                                         <i-button type="ghost" size="small" @click.native="edit(index)">编辑</i-button>
-                                        <i-button type="ghost" size="small" @click.native="remove(index)">删除</i-button>
+                                        <i-button class="delete-ad" type="ghost" size="small"
+                                                  @click.native="remove(index)">删除</i-button>
                                     </span>
                                 </radio>
                             </radio-group>

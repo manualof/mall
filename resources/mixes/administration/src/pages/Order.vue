@@ -55,11 +55,10 @@
                             items.push(h('i-button', {
                                 on: {
                                     click() {
-                                        self.remove(data.index);
+                                        self.toView(data.index);
                                     },
                                 },
                                 props: {
-                                    class: 'first-ad',
                                     size: 'small',
                                     type: 'ghost',
                                 },
@@ -70,17 +69,17 @@
                                         list() {
                                             const menus = [];
                                             menus.push(h('dropdown-item', {
-                                                on: {
+                                                nativeOn: {
                                                     click() {
-                                                        self.cancelOrder();
+                                                        self.cancelOrder(data.row);
                                                     },
                                                 },
                                             }, '取消订单'));
                                             if (data.row.status === 1) {
                                                 menus.push(h('dropdown-item', {
-                                                    on: {
+                                                    nativeOn: {
                                                         click() {
-                                                            self.receiveGoods();
+                                                            self.receiveGoods(data.row);
                                                         },
                                                     },
                                                 }, '收到货款'));
@@ -91,7 +90,11 @@
                                 }, [
                                     h('i-button', {
                                         props: {
+                                            size: 'small',
                                             type: 'ghost',
+                                        },
+                                        style: {
+                                            marginLeft: '10px',
                                         },
                                     }, [
                                         '设置',

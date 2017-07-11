@@ -27,14 +27,25 @@
                     {
                         align: 'center',
                         key: 'example',
-                        render() {
-                            return `<div class="example-module" v-if="row.isTemplate">
-                                        <img :src="row.img" alt="">
-                                        <div>
-                                            <p>宽度: {{ row.width }}</p>
-                                            <p>高度: {{ row.height }}</p>
-                                        </div>
-                                    </div>`;
+                        render(h, data) {
+                            if (data.row.isTemplate) {
+                                return h('div', {
+                                    class: {
+                                        'example-module': true,
+                                    },
+                                }, [
+                                    h('img', {
+                                        domProps: {
+                                            src: data.row.img,
+                                        },
+                                    }),
+                                    h('div', [
+                                        h('p', `宽度：${data.row.width}`),
+                                        h('p', `宽度：${data.row.height}`),
+                                    ]),
+                                ]);
+                            }
+                            return '';
                         },
                         title: '运单图例',
                     },
@@ -49,13 +60,15 @@
                         render(h, data) {
                             return h('div', [
                                 h('i-button', {
+                                    class: {
+                                        'edit-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.editGoods(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'edit-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },

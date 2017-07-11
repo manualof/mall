@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -8,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 managementSearch: '',
                 searchList: [
@@ -53,10 +55,26 @@
                     {
                         align: 'center',
                         key: 'coverImg',
-                        render(h) {
-                            return h('icon', {
+                        render(h, data) {
+                            return h('tooltip', {
                                 props: {
-                                    type: 'image',
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.coverImg,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
                                 },
                             });
                         },
@@ -92,9 +110,11 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '删除'),
                             ]);
@@ -106,6 +126,7 @@
                         albumId: '01',
                         albumName: '默认相册',
                         albumNum: 50,
+                        coverImg: image1,
                         shopId: '336',
                         shopName: 'Rey吕官方旗舰店',
                     },
@@ -113,6 +134,7 @@
                         albumId: '01',
                         albumName: '默认相册',
                         albumNum: 50,
+                        coverImg: image1,
                         shopId: '336',
                         shopName: 'Rey吕官方旗舰店',
                     },
@@ -120,6 +142,7 @@
                         albumId: '01',
                         albumName: '默认相册',
                         albumNum: 50,
+                        coverImg: image1,
                         shopId: '336',
                         shopName: 'Rey吕官方旗舰店',
                     },

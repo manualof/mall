@@ -191,6 +191,7 @@
                         title: '下单金额（元）',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {

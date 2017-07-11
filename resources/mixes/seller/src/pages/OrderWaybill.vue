@@ -28,14 +28,22 @@
                     {
                         align: 'center',
                         key: 'example',
-                        render() {
-                            return `<div class="example-module">
-                                        <img :src="row.img" alt="">
-                                        <div>
-                                            <p>宽度: {{ row.width }}</p>
-                                            <p>高度: {{ row.height }}</p>
-                                        </div>
-                                    </div>`;
+                        render(h, data) {
+                            return h('div', {
+                                class: {
+                                    'example-module': true,
+                                },
+                            }, [
+                                h('img', {
+                                    domProps: {
+                                        src: data.row.img,
+                                    },
+                                }),
+                                h('div', [
+                                    h('p', `宽度：${data.row.width}`),
+                                    h('p', `宽度：${data.row.height}`),
+                                ]),
+                            ]);
                         },
                         title: '运单图例',
                     },
@@ -79,37 +87,43 @@
                         render(h, data) {
                             return h('div', [
                                 h('i-button', {
+                                    class: {
+                                        'action-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.design(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'action-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
                                 }, '设计'),
                                 h('i-button', {
+                                    class: {
+                                        'action-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.design(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'action-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
                                 }, '测试'),
                                 h('i-button', {
+                                    class: {
+                                        'action-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.edit(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'action-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -121,7 +135,6 @@
                                         },
                                     },
                                     props: {
-                                        class: 'action-ad',
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -172,14 +185,25 @@
                     {
                         align: 'center',
                         key: 'example',
-                        render() {
-                            return `<div class="example-module" v-if="row.isTemplate">
-                                        <img :src="row.img" alt="">
-                                        <div>
-                                            <p>宽度: {{ row.width }}</p>
-                                            <p>高度: {{ row.height }}</p>
-                                        </div>
-                                    </div>`;
+                        render(h, data) {
+                            if (data.row.isTemplate) {
+                                return h('div', {
+                                    class: {
+                                        'example-module': true,
+                                    },
+                                }, [
+                                    h('img', {
+                                        domProps: {
+                                            src: data.row.img,
+                                        },
+                                    }),
+                                    h('div', [
+                                        h('p', `宽度：${data.row.width}`),
+                                        h('p', `宽度：${data.row.height}`),
+                                    ]),
+                                ]);
+                            }
+                            return '';
                         },
                         title: '运单图例',
                     },
@@ -209,13 +233,47 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<div v-if="row.isTemplate">
-                                        <i-button class="edit-btn" size="small" type="ghost">编辑</i-button>
-                                        <i-button size="small" type="ghost">解绑</i-button>
-                                    </div>
-                                    <i-button size="small" type="ghost" v-if="!row.isTemplate"
-                                    @click.native="selectTemplate(${index})">选择模板</i-button>`;
+                        render(h, data) {
+                            const items = [];
+                            if (data.row.isTemplate) {
+                                items.push(h('div', [
+                                    h('i-button', {
+                                        class: {
+                                            'edit-btn': true,
+                                        },
+                                        on: {
+                                            click() {},
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '编辑'),
+                                    h('i-button', {
+                                        on: {
+                                            click() {},
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '解绑'),
+                                ]));
+                            }
+                            if (!data.row.isTemplate) {
+                                items.push(h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.selectTemplate(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '选择模板'));
+                            }
+                            return h('div', items);
                         },
                         title: '操作',
                         width: 180,

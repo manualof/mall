@@ -53,8 +53,8 @@
                                 scopedSlots: {
                                     content() {
                                         return h('img', {
-                                            props: {
-                                                src: data.row.goodsImage,
+                                            domProps: {
+                                                src: data.row.goodsImg,
                                             },
                                         });
                                     },
@@ -96,7 +96,7 @@
                                             return h('dropdown-menu', [
                                                 h('dropdown-item', '查看商品详情'),
                                                 h('dropdown-item', {
-                                                    on: {
+                                                    nativeOn: {
                                                         click() {
                                                             self.lookGoodsSku();
                                                         },
@@ -112,6 +112,7 @@
                                 }, [
                                     h('i-button', {
                                         props: {
+                                            size: 'small',
                                             type: 'ghost',
                                         },
                                     }, [
@@ -130,8 +131,11 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
+                                        size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '下架'),
                             ]);
@@ -242,8 +246,8 @@
                                 scopedSlots: {
                                     content() {
                                         return h('img', {
-                                            props: {
-                                                src: data.row.goodsImage,
+                                            domProps: {
+                                                src: data.row.goodsImg,
                                             },
                                         });
                                     },
@@ -301,6 +305,7 @@
                                 }, [
                                     h('i-button', {
                                         props: {
+                                            size: 'small',
                                             type: 'ghost',
                                         },
                                     }, [
@@ -319,8 +324,11 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
+                                        size: 'small',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '删除'),
                             ]);

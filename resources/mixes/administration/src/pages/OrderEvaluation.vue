@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -81,10 +82,26 @@
                     {
                         align: 'center',
                         key: 'baskImage',
-                        render(h) {
-                            return h('icon', {
+                        render(h, data) {
+                            return h('tooltip', {
                                 props: {
-                                    type: 'image',
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.baskImage,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
                                 },
                             });
                         },
@@ -118,7 +135,7 @@
                                     size: 'small',
                                     type: 'ghost',
                                 },
-                            });
+                            }, '删除');
                         },
                         title: '操作',
                         width: 150,
@@ -126,63 +143,63 @@
                 ],
                 evaluationListData: [
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',

@@ -116,8 +116,10 @@
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
                                         type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
                                     },
                                 }, '删除'),
                             ]);

@@ -67,6 +67,7 @@
                         title: '该地区店铺数量',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -120,6 +121,7 @@
                         title: '同比',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -391,6 +393,7 @@
                         title: '升降幅度',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -448,6 +451,7 @@
                         title: '升降幅度',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -505,6 +509,7 @@
                         title: '升降幅度',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -562,6 +567,7 @@
                         title: '升降幅度',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h) {
                             return h('i-button', {
@@ -619,6 +625,7 @@
                         title: '下单金额（元）',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         title: '操作',
                         width: 120,

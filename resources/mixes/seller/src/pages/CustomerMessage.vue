@@ -55,24 +55,30 @@
                         render(h, data) {
                             return h('div', [
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.look(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
+                                        size: 'small',
                                         type: 'ghost',
                                     },
                                 }, '查看'),
                                 h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
                                     on: {
                                         click() {
                                             self.remove(data.index);
                                         },
                                     },
                                     props: {
-                                        class: 'delete-ad',
+                                        size: 'small',
                                         type: 'ghost',
                                     },
                                 }, '删除'),
