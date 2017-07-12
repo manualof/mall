@@ -35,6 +35,7 @@
                     sortType: '',
                 },
                 loading: false,
+                modalTitle: '创建相册',
                 pictureList: [
                     {
                         img: image,
@@ -88,6 +89,11 @@
         methods: {
             createAlbumModal() {
                 this.createModal = true;
+                this.modalTitle = '创建相册';
+            },
+            editImage() {
+                this.createModal = true;
+                this.modalTitle = '编辑相册';
             },
             pictureManage() {
                 const self = this;
@@ -190,10 +196,10 @@
                             </div>
                             <div class="picture-group">
                                 <ul class="clearfix">
-                                    <li v-for="item in pictureList">
-                                        <div class="img" @click="pictureManage">
-                                            <img :src="item.img" alt="">
-                                            <i-button type="text" @click.native="removeImage">
+                                    <li v-for="(item, index) in pictureList">
+                                        <div class="img">
+                                            <img :src="item.img" alt="" @click="pictureManage">
+                                            <i-button type="text" @click.native="removeImage(index)">
                                                 <icon type="trash-a"></icon>
                                             </i-button>
                                         </div>
@@ -268,7 +274,7 @@
                     </modal>
                     <modal
                             v-model="createModal"
-                            title="创建相册" class="upload-picture-modal">
+                            :title="modalTitle" class="upload-picture-modal">
                         <div>
                             <i-form ref="createAlbum" :model="createAlbum" :rules="createValidate" :label-width="100">
                                 <row>

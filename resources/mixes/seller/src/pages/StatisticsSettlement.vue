@@ -33,6 +33,7 @@
                         title: '付款日期',
                     },
                     {
+                        align: 'center',
                         key: 'action',
                         render(h, data) {
                             return h('i-button', {

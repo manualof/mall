@@ -455,7 +455,7 @@
                                     <span>下单时间:{{ item.createTime }}</span>
                                     <div class="look-shipping">
                                         <button class="print-btn" @click="lookLogistics">查看物流</button>
-                                        <button class="print-btn">打印运单</button>
+                                        <button class="print-btn">打印发货单</button>
                                     </div>
                                 </td>
                             </tr>
