@@ -20,37 +20,42 @@
                 goodsPicture: {
                     sortType: '',
                 },
-                indeterminate: true,
+                indeterminate: false,
                 loading: false,
                 pictureList: [
                     {
                         img: image,
                         name: '商品rey的主图1',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图2',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图3',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图4',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图5',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                 ],
@@ -68,16 +73,20 @@
             };
         },
         methods: {
-            checkAllGroupChange(data) {
-                if (data.length === this.pictureList.length) {
+            checkAllGroupChange() {
+                this.indeterminate = false;
+                this.checkAll = true;
+                const select = [];
+                this.pictureList.forEach(item => {
+                    if (item.single === false) {
+                        this.checkAll = false;
+                        this.indeterminate = true;
+                    } else {
+                        select.push(item);
+                    }
+                });
+                if (select.length === 0) {
                     this.indeterminate = false;
-                    this.checkAll = true;
-                } else if (data.length > 0) {
-                    this.indeterminate = true;
-                    this.checkAll = false;
-                } else {
-                    this.indeterminate = false;
-                    this.checkAll = false;
                 }
             },
             goBack() {
@@ -85,16 +94,15 @@
                 self.$router.go(-1);
             },
             handleCheckAll() {
-                if (this.indeterminate) {
-                    this.checkAll = false;
-                } else {
-                    this.checkAll = !this.checkAll;
-                }
-                this.indeterminate = false;
                 if (this.checkAll) {
-                    this.checkAllGroup = this.pictureList;
+                    this.pictureList.forEach(item => {
+                        item.single = true;
+                    });
                 } else {
-                    this.checkAllGroup = [];
+                    this.pictureList.forEach(item => {
+                        item.single = false;
+                    });
+                    this.indeterminate = false;
                 }
             },
             removeImage(index) {
@@ -170,8 +178,8 @@
                     <div class="btn-group">
                         <checkbox
                                 :indeterminate="indeterminate"
-                                :value="checkAll"
-                                @click.prevent.native="handleCheckAll">全选</checkbox>
+                                v-model="checkAll"
+                                @on-change="handleCheckAll">全选</checkbox>
                         <i-button class="first-btn" type="ghost" @click.native="uploadPicture">上传图片</i-button>
                         <i-button type="ghost" class="first-btn">添加水印</i-button>
                         <i-button type="ghost">批量删除</i-button>
@@ -186,17 +194,16 @@
                             </i-col>
                         </row>
                     </div>
-                    <checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
-                        <checkbox :label="item" v-for="(item, index) in pictureList">
-                            <img :src="item.img" alt="">
-                            <i-button type="text" @click.native="removeImage">
-                                <icon type="trash-a"></icon>
-                            </i-button>
-                            <p>{{ item.name}}</p>
-                            <p class="tip">{{ item.uploadTime}}</p>
-                            <p class="tip">{{ item.size}}</p>
-                        </checkbox>
-                    </checkbox-group>
+                    <div v-for="(item, index) in pictureList" class="picture-check">
+                        <img :src="item.img" alt="" @click="lookPicture()">
+                        <i-button type="text" @click.native="removeImage">
+                            <icon type="trash-a"></icon>
+                        </i-button>
+                        <checkbox v-model="item.single" @on-change="checkAllGroupChange()"></checkbox>
+                        <p>{{ item.name}}</p>
+                        <p class="tip">{{ item.uploadTime}}</p>
+                        <p class="tip">{{ item.size}}</p>
+                    </div>
                 </div>
                 <div class="page">
                     <page :total="100" show-elevator></page>
@@ -231,8 +238,8 @@
                                             :before-upload="uploadBefore"
                                             :format="['jpg','jpeg','png']"
                                             :headers="{
-                                                        Authorization: `Bearer ${$store.state.token.access_token}`
-                                                    }"
+                                                Authorization: `Bearer ${$store.state.token.access_token}`
+                                            }"
                                             multiple
                                             :max-size="2048"
                                             :on-error="uploadError"

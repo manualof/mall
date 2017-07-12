@@ -28,46 +28,45 @@
                     }
                 }
             }
-            .ivu-checkbox-group {
-                .ivu-checkbox-wrapper {
-                    width: 236px;
-                    padding: 6px;
-                    border: solid 1px #e3e8ee;
-                    margin-bottom: 20px;
-                    margin-right: 20px;
-                    position: relative;
-                    &:hover {
-                        button {
-                            display: block;
-                        }
-                    }
-                    .ivu-checkbox {
-                        position: absolute;
-                        top: 12px;
-                        left: 12px;
-                    }
+            .picture-check {
+                display: inline-block;
+                width: 236px;
+                padding: 6px;
+                border: solid 1px #e3e8ee;
+                margin-bottom: 20px;
+                margin-right: 20px;
+                position: relative;
+                &:hover {
                     button {
-                        display: none;
-                        position: absolute;
-                        right: 6px;
-                        top: 6px;
-                        padding: 0;
-                        width: 24px;
-                        height: 24px;
-                        border-radius: 50%;
-                        background: rgba(0, 0, 0, .3);
-                        color: #fff;
-                        z-index: 100;
-                        i {
-                            font-size: 18px;
-                        }
+                        display: block;
                     }
-                    img {
-                        width: 100%;
+                }
+                .ivu-checkbox-wrapper {
+                    position: absolute;
+                    top: 12px;
+                    left: 12px;
+                }
+                button {
+                    display: none;
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                    padding: 0;
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background: rgba(0, 0, 0, .3);
+                    color: #fff;
+                    z-index: 100;
+                    i {
+                        font-size: 18px;
                     }
-                    p {
-                        line-height: 22px;
-                    }
+                }
+                img {
+                    width: 100%;
+                }
+                p {
+                    line-height: 22px;
                 }
             }
         }
