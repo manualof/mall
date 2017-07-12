@@ -8,17 +8,8 @@
             });
         },
         data() {
+            const self = this;
             return {
-                goodsList: [
-                    {
-                        label: '商品1',
-                        value: '1',
-                    },
-                    {
-                        label: '商品2',
-                        value: '2',
-                    },
-                ],
                 loading: false,
                 salesColumns: [
                     {
@@ -101,12 +92,20 @@
                 style: 'height: 400px',
                 timeList: [
                     {
-                        label: '按照月统计',
+                        label: '已出账',
                         value: '1',
                     },
                     {
-                        label: '按照周统计',
+                        label: '商家已确认',
                         value: '2',
+                    },
+                    {
+                        label: '平台已审核',
+                        value: '3',
+                    },
+                    {
+                        label: '结算完成',
+                        value: '4',
                     },
                 ],
             };

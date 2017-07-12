@@ -9,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 action: `${window.api}/mall/admin/upload`,
                 goods: {
@@ -145,6 +146,22 @@
                 },
                 loading: false,
                 modify: false,
+                modifyValidate: {
+                    initials: [
+                        {
+                            message: '名称首字母不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '品牌名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 ruleValidate: {
                     initials: [
                         {
@@ -453,17 +470,17 @@
                             v-model="modify"
                             title="品牌修改" class="upload-picture-modal">
                         <div>
-                            <i-form ref="goodsModify" :model="goodsModify" :rules="ruleValidate" :label-width="100">
+                            <i-form ref="goodsModify" :model="goodsModify" :rules="modifyValidate" :label-width="100">
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="品牌名称">
+                                        <form-item label="品牌名称" prop="name">
                                             <i-input v-model="goodsModify.name"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="名称首字母">
+                                        <form-item label="名称首字母" prop="initials">
                                             <i-input v-model="goodsModify.initials"></i-input>
                                         </form-item>
                                     </i-col>
@@ -476,7 +493,7 @@
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="20">
+                                    <i-col span="24">
                                         <form-item label="品牌LOGO" prop="logo">
                                             <div class="image-preview" v-if="goodsModify.logo">
                                                 <img :src="goodsModify.logo">

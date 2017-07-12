@@ -9,16 +9,6 @@
         },
         data() {
             return {
-                goodsList: [
-                    {
-                        label: '商品1',
-                        value: '1',
-                    },
-                    {
-                        label: '商品2',
-                        value: '2',
-                    },
-                ],
                 industryGoods: {
                     color: ['#3398DB'],
                     series: [
@@ -127,13 +117,6 @@
                                 <div class="select-content" style="top: -10px">
                                     <ul>
                                         <li>
-                                            商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
                                             时间周期
                                             <i-select v-model="model2" style="width:124px">
                                                 <i-option v-for="item in timeList" :value="item.value"
@@ -165,13 +148,6 @@
                             <div class="order-money-content">
                                 <div class="select-content" style="top: -10px">
                                     <ul>
-                                        <li>
-                                            商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
                                         <li>
                                             时间周期
                                             <i-select v-model="model2" style="width:124px">
