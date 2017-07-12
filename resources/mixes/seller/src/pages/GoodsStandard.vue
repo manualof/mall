@@ -121,7 +121,7 @@
                                 props: {
                                     max: 10,
                                     min: 1,
-                                    value: data.row.sortNum,
+                                    value: data.index + 1,
                                 },
                                 style: {
                                     width: '64px',
@@ -182,7 +182,7 @@
                 ],
                 goodsColorData: [
                     {
-                        sortNum: 1,
+                        sortNum: '',
                     },
                 ],
                 goodsSizeColumns: [
@@ -194,7 +194,7 @@
                                 props: {
                                     max: 10,
                                     min: 1,
-                                    value: data.row.sortNum,
+                                    value: data.index + 1,
                                 },
                                 style: {
                                     width: '64px',
@@ -244,7 +244,7 @@
                                     },
                                 },
                                 props: {
-                                    class: 'delete-ad',
+                                    size: 'small',
                                     type: 'ghost',
                                 },
                             }, '删除');
@@ -255,7 +255,7 @@
                 ],
                 goodsSizeData: [
                     {
-                        sortNum: 1,
+                        sortNum: '',
                     },
                 ],
                 goodsStyle: {
@@ -266,7 +266,18 @@
         },
         methods: {
             addColorStandard() {
-                this.goodsColorData.push();
+                this.goodsColorData.push(
+                    {
+                        sortNum: '',
+                    },
+                );
+            },
+            addSizeStandard() {
+                this.goodsSizeData.push(
+                    {
+                        sortNum: '',
+                    },
+                );
             },
             removeColorGoods(index) {
                 this.goodsColorData.splice(index, 1);
@@ -294,8 +305,8 @@
                         </div>
                         <div class="goods-list">
                             <row>
-                                <i-col span="3">选择经营的商品分类</i-col>
-                                <i-col span="4">
+                                <i-col span="3">选择商品分类</i-col>
+                                <i-col span="6">
                                     <cascader :data="firstType"
                                               trigger="hover"
                                               v-model="goodsStyle.firstType"></Cascader>
