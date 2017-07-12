@@ -25,8 +25,14 @@ class RemoveHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => Rule::required(),
+            'id' => [
+                Rule::exists('mall_product_libraries'),
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
+            'id.exists'   => '没有对应的商品信息',
+            'id.numeric'  => '商品 ID 必须为数值',
             'id.required' => '商品 ID 必须填写',
         ]);
         $product = ProductLibrary::query()->find($this->request->input('id'));
