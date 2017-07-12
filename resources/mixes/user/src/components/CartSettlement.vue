@@ -140,7 +140,7 @@
                             <label for="all-select2" class="select-delete-all">
                                 全选
                             </label>
-                            <span>删除选中的商品</span>
+                            <span @click="deleteSelected">删除选中的商品</span>
                         </th>
                         <th class="th-information"></th>
                         <th>已选商品 {{ selectNum }}</th>
@@ -183,7 +183,7 @@
                             {
                                 id: 1,
                                 img: productImg,
-                                selected: true,
+                                selected: false,
                                 name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童 可爱短袜5双装',
                                 num: 1,
                                 now_price: 39.9,
@@ -315,6 +315,18 @@
                         this.isAllChecked = false;
                     }
                 });
+            },
+            deleteSelected() {
+                for (const a in this.productList) {
+                    if (this.productList[a].selected) {
+                        this.productList.splice(a, 1);
+                    }
+                    for (const i in this.productList[a]) {
+                        if (this.productList[a].products[i].selected) {
+                            this.productList[a].products.splice(i, 1);
+                        }
+                    }
+                }
             },
             plus(item) {
                 item.num += 1;
