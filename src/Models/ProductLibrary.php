@@ -18,7 +18,20 @@ class ProductLibrary extends Model
     /**
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'barcode',
+        'brand_id',
+        'business_item',
+        'category_id',
+        'description',
+        'flow_marketing',
+        'name',
+        'price',
+        'price_cost',
+        'price_market',
+        'inventory',
+        'inventory_warning',
+    ];
 
     /**
      * @var string
