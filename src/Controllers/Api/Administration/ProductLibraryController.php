@@ -12,6 +12,7 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Administration\Product\Library\CreateHandler;
 use Notadd\Mall\Handlers\Administration\Product\Library\EditHandler;
 use Notadd\Mall\Handlers\Administration\Product\Library\ListHandler;
+use Notadd\Mall\Handlers\Administration\Product\Library\RemoveHandler;
 
 /**
  * Class ProductLibraryController.
@@ -47,6 +48,17 @@ class ProductLibraryController extends Controller
      * @throws \Exception
      */
     public function list(ListHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Administration\Product\Library\RemoveHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function remove(RemoveHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
