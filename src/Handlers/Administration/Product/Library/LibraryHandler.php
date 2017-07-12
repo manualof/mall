@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Product\Library;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Mall\Models\ProductLibrary;
 
 /**
  * Class LibraryHandler.
@@ -22,6 +23,16 @@ class LibraryHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'id' => 'required',
+        ], [
+            'id.required' => '商品 ID 必须填写',
+        ]);
+        $product = ProductLibrary::query()->find($this->request->input('id'));
+        if ($product instanceof ProductLibrary) {
+            $this->withCode(200)->withData($product)->withMessage('获取商品信息成功！');
+        } else {
+            $this->withCode(500)->withError('没有对应的商品信息！');
+        }
     }
 }
