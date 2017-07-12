@@ -267,16 +267,18 @@
                 return num;
             },
             totalPrice() {
-                const tPrice = 0;
-//                this.productList.forEach(item => {
-//                    item.selected.forEach(i => {
-//                        console.log(i);
-//                    });
-//                });
-                return tPrice;
+                let tPrice = 0;
+                this.selectPro.forEach(item => {
+                    tPrice += item.num * item.now_price;
+                });
+                return tPrice.toFixed(2);
             },
             totalFreight() {
-                return 0;
+                let tFreight = 0;
+                this.selectPro.forEach(item => {
+                    tFreight += item.num;
+                });
+                return tFreight.toFixed(2);
             },
         },
         methods: {
@@ -323,13 +325,14 @@
                 arr.products.splice(num, 1);
             },
             deleteSelected() {
-                for (const a in this.productList) {
-                    if (this.productList[a].selected) {
-                        this.productList.splice(a, 1);
+                const self = this;
+                for (const a in self.productList) {
+                    if (self.productList[a].selected) {
+                        self.productList.splice(a, 1);
                     }
-                    for (const i in this.productList[a]) {
-                        if (this.productList[a].products[i].selected) {
-                            this.productList[a].products.splice(i, 1);
+                    for (const i in self.productList[a].products) {
+                        if (self.productList[a].products[i].selected) {
+                            self.productList[a].products.splice(i, 1);
                         }
                     }
                 }
