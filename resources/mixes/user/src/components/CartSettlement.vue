@@ -268,15 +268,34 @@
             },
             totalPrice() {
                 let tPrice = 0;
-                this.selectPro.forEach(item => {
-                    tPrice += item.num * item.now_price;
+                this.productList.forEach(item => {
+                    item.products.forEach(product => {
+                        if (product.selected) {
+                            tPrice += product.num * product.now_price;
+                        }
+                    });
                 });
                 return tPrice.toFixed(2);
             },
+
             totalFreight() {
                 let tFreight = 0;
-                this.selectPro.forEach(item => {
-                    tFreight += item.num;
+                this.productList.forEach(item => {
+                    if (item.selected) {
+                        tFreight += item.pay_transform;
+                    } else {
+                        let select = false;
+                        if (item.products.length > 1) {
+                            item.products.forEach(product => {
+                                if (product.selected) {
+                                    select = true;
+                                }
+                            });
+                        }
+                        if (select) {
+                            tFreight += item.pay_transform;
+                        }
+                    }
                 });
                 return tFreight.toFixed(2);
             },
@@ -362,21 +381,6 @@
                         this.isAllChecked = false;
                     }
                 });
-            },
-        },
-        watch: {
-            productList: {
-                deep: true,
-                handler(val) {
-                    this.selectPro = [];
-                    val.forEach(item => {
-                        item.products.forEach(product => {
-                            if (product.selected) {
-                                this.selectPro.push(product);
-                            }
-                        });
-                    });
-                },
             },
         },
     };
