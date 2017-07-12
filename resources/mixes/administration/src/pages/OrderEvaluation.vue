@@ -11,7 +11,7 @@
         data() {
             const self = this;
             return {
-                evaluationListColumns: [
+                columns: [
                     {
                         align: 'center',
                         fixed: 'left',
@@ -141,7 +141,7 @@
                         width: 150,
                     },
                 ],
-                evaluationListData: [
+                list: [
                     {
                         baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
@@ -218,12 +218,11 @@
                     },
                 ],
                 searchWord: '',
-                self: this,
             };
         },
         methods: {
             remove(index) {
-                this.evaluationListData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -255,8 +254,8 @@
                             </div>
                             <i-table class="shop-table"
                                      :context="self"
-                                     :data="evaluationListData"
-                                     :columns="evaluationListColumns"
+                                     :data="list"
+                                     :columns="columns"
                                      highlight-row ref="evaluationListTable" ></i-table>
                         </div>
                         <div class="page">

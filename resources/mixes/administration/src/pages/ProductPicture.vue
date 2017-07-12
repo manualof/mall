@@ -30,8 +30,7 @@
                         value: '4',
                     },
                 ],
-                self: this,
-                typeColumns: [
+                columns: [
                     {
                         key: 'albumId',
                         title: '相册ID',
@@ -121,7 +120,7 @@
                         },
                     },
                 ],
-                typeData: [
+                list: [
                     {
                         albumId: '01',
                         albumName: '默认相册',
@@ -163,7 +162,7 @@
                 });
             },
             remove(index) {
-                this.typeData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -191,8 +190,8 @@
                                 </i-input>
                             </div>
                         </div>
-                        <i-table highlight-row :columns="typeColumns" :context="self"
-                                 :data="typeData"></i-table>
+                        <i-table highlight-row :columns="columns" :context="self"
+                                 :data="list"></i-table>
                     </card>
                 </tab-pane>
             </tabs>

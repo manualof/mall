@@ -10,7 +10,7 @@
         data() {
             const self = this;
             return {
-                classificationData: [
+                list: [
                     {
                         commissionRate: '5%',
                         goodShow: '颜色',
@@ -28,7 +28,7 @@
                         goodShow: '颜色',
                     },
                 ],
-                goodColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
@@ -143,7 +143,6 @@
                 ],
                 searchCategory: '',
                 searchWord: '',
-                self: this,
             };
         },
         methods: {
@@ -176,7 +175,7 @@
                 });
             },
             remove(index) {
-                this.classificationData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -202,8 +201,8 @@
                         <i-button @click="deleteData" type="ghost">批量删除</i-button>
                         <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                     </div>
-                    <i-table ref="goodTable" highlight-row :context="self" class="shop-table"
-                             :columns="goodColumns" :data="classificationData"></i-table>
+                    <i-table ref="goodTable" highlight-row class="shop-table"
+                             :columns="columns" :data="list"></i-table>
                 </div>
                 <div class="page">
                     <page :total="100" show-elevator></page>

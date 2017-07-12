@@ -28,8 +28,7 @@
                         value: '4',
                     },
                 ],
-                self: this,
-                typeColumns: [
+                columns: [
                     {
                         key: 'orderNum',
                         title: '订单号',
@@ -55,7 +54,7 @@
                         title: '状态',
                     },
                 ],
-                typeData: [
+                list: [
                     {
                         orderNum: '56347567',
                         phone: '15623456876',
@@ -127,8 +126,8 @@
                         </i-input>
                     </div>
                 </div>
-                <i-table highlight-row :columns="typeColumns" :context="self"
-                         :data="typeData" ref="orderTable"></i-table>
+                <i-table highlight-row :columns="columns" :context="self"
+                         :data="list" ref="orderTable"></i-table>
                 <div class="page">
                     <page :total="150" show-elevator></page>
                 </div>

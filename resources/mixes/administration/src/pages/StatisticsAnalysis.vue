@@ -410,7 +410,6 @@
                         type: 'value',
                     },
                 },
-                self: this,
                 shopsColumns: [
                     {
                         key: 'num',
@@ -634,7 +633,7 @@
                                            @click="onClick"
                                            @ready="onReady" ></i-echarts>
                             </div>
-                            <i-table :columns="goodsColumns" :context="self" :data="goodsData"></i-table>
+                            <i-table :columns="goodsColumns" :data="goodsData"></i-table>
                             <div class="page">
                                 <page :total="100" show-elevator></page>
                             </div>
@@ -668,7 +667,7 @@
                                            @click="onClick"
                                            @ready="onReady"></i-echarts>
                             </div>
-                            <i-table :columns="shopsColumns" :context="self" :data="shopsData"></i-table>
+                            <i-table :columns="shopsColumns" :data="shopsData"></i-table>
                             <div class="page">
                                 <page :total="100" show-elevator></page>
                             </div>

@@ -59,6 +59,7 @@ class CreateHandler extends Handler
         $this->beginTransaction();
         $data = $this->request->only([
             'category_id',
+            'initial',
             'logo',
             'name',
             'order',

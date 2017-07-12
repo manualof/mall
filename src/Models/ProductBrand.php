@@ -25,6 +25,7 @@ class ProductBrand extends Model
     protected $fillable = [
         'category_id',
         'flow_marketing',
+        'initial',
         'logo',
         'name',
         'order',

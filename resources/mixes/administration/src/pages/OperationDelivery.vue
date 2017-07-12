@@ -25,8 +25,7 @@
                         value: '商品分类',
                     },
                 ],
-                self: this,
-                typeColumns: [
+                columns: [
                     {
                         align: 'center',
                         key: 'userName',
@@ -115,7 +114,7 @@
                         width: 200,
                     },
                 ],
-                typeData: [
+                list: [
                     {
                         address: '陕西省西安市高新区高新二路国土资源大厦公寓楼',
                         applicationTime: '2017-2-3',
@@ -200,9 +199,9 @@
                                 </i-input>
                             </div>
                         </div>
-                        <i-table :columns="typeColumns"
+                        <i-table :columns="columns"
                                  :context="self"
-                                 :data="typeData"
+                                 :data="list"
                                  highlight-row
                                  ref="managementTable">
                         </i-table>

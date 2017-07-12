@@ -10,8 +10,7 @@
         data() {
             const self = this;
             return {
-                self: this,
-                storeCategoryColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
@@ -86,7 +85,7 @@
                         width: 180,
                     },
                 ],
-                storeCategoryData: [
+                list: [
                     {
                         number: 100,
                     },
@@ -113,7 +112,7 @@
                 });
             },
             remove(index) {
-                this.storeCategoryData.splice(index, 1);
+                this.list.splice(index, 1);
             },
             toSet() {
                 const self = this;
@@ -141,8 +140,8 @@
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                             </div>
                             <i-table class="shop-table"
-                                     :columns="storeCategoryColumns"
-                                     :data="storeCategoryData"
+                                     :columns="columns"
+                                     :data="list"
                                      :context="self"
                                      highlight-row
                                      ref="storeCategoryTable">

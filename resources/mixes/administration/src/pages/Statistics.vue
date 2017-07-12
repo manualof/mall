@@ -9,7 +9,7 @@
         },
         data() {
             return {
-                goods: {
+                form: {
                     preForm: [
                         {
                             endPrice: '',
@@ -176,7 +176,6 @@
                         type: 'value',
                     },
                 },
-                self: this,
                 shopColumns: [
                     {
                         key: 'num',
@@ -231,7 +230,7 @@
         },
         methods: {
             addpreArea() {
-                this.goods.preForm.push(
+                this.form.preForm.push(
                     {
                         endPrice: '',
                         startPrice: '',
@@ -247,7 +246,7 @@
                 );
             },
             deleteArea(index) {
-                this.goods.preForm.splice(index, 1);
+                this.form.preForm.splice(index, 1);
             },
             deleteOrderArea(index) {
                 this.orders.preForm.splice(index, 1);
@@ -271,7 +270,7 @@
             priceSubmit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.goods.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -323,14 +322,14 @@
                             <row :gutter="16">
                                 <i-col span="12">
                                     <h5>7日内店铺销售TOP30</h5>
-                                    <i-table :columns="shopColumns" :context="self" :data="shopData"></i-table>
+                                    <i-table :columns="shopColumns" :data="shopData"></i-table>
                                     <div class="page">
                                         <page :total="100" show-elevator></page>
                                     </div>
                                 </i-col>
                                 <i-col span="12">
                                     <h5>7日内商品销售TOP30</h5>
-                                    <i-table :columns="goodsColumns" :context="self" :data="goodsData"></i-table>
+                                    <i-table :columns="goodsColumns" :data="goodsData"></i-table>
                                     <div class="page">
                                         <page :total="100" show-elevator></page>
                                     </div>
@@ -348,8 +347,8 @@
                                 不要缺少任何一个起始额和结束额：三、价格区间数值应该连贯，例：0~100，101~200</p>
                         </div>
                         <div class="goods-price-area">
-                            <i-form ref="goods" :model="goods" :rules="ruleValidate" :label-width="180">
-                                <form-item v-for="(item, index) in goods.preForm">
+                            <i-form ref="form" :model="form" :rules="rules" :label-width="180">
+                                <form-item v-for="(item, index) in form.preForm">
                                     <row>
                                         <i-col span="2" class="price-width">起始额</i-col>
                                         <i-col span="2" class="input-width">
@@ -391,7 +390,7 @@
                                 不要缺少任何一个起始额和结束额：三、价格区间数值应该连贯，例：0~100，101~200</p>
                         </div>
                         <div class="goods-price-area">
-                            <i-form ref="orders" :model="orders" :rules="ruleValidate" :label-width="180">
+                            <i-form ref="orders" :model="orders" :rules="rules" :label-width="180">
                                 <form-item v-for="(item, index) in orders.preForm">
                                     <row>
                                         <i-col span="2" class="price-width">起始额</i-col>

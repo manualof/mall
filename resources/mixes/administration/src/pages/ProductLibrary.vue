@@ -11,7 +11,7 @@
         data() {
             const self = this;
             return {
-                libraryColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
@@ -117,7 +117,7 @@
                         width: 160,
                     },
                 ],
-                libraryData: [
+                list: [
                     {
                         advertising: '17年春夏新品纯棉面料',
                         brandID: 33,
@@ -175,7 +175,6 @@
                     },
                 ],
                 searchWord: '',
-                self: this,
             };
         },
         methods: {
@@ -188,7 +187,7 @@
                 );
             },
             remove(index) {
-                this.libraryData.splice(index, 1);
+                this.list.splice(index, 1);
             },
             toEdit() {
                 const self = this;
@@ -227,8 +226,8 @@
                             </div>
                             <i-table class="shop-table"
                                      :context="self"
-                                     :columns="libraryColumns"
-                                     :data="libraryData"
+                                     :columns="columns"
+                                     :data="list"
                                      ref="orderTable"
                                      highlight-row>
                             </i-table>

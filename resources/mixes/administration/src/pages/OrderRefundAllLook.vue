@@ -10,7 +10,7 @@
         data() {
             return {
                 loading: false,
-                refundDetail: {
+                form: {
                     applyTime: '2016-12-21  10:31:59',
                     goodsname: '****',
                     handelResult: '同意',
@@ -29,7 +29,7 @@
                     showMount: '0.00',
                     showStyle: '在线支付',
                 },
-                ruleValidate: {
+                rules: {
                     remarks: [
                         {
                             message: '信息不能为空',
@@ -48,7 +48,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.refundDetail.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -74,49 +74,49 @@
                 </div>
                 <div class="refund-process-content store-information">
                     <card :bordered="false">
-                        <i-form ref="refundDetail" :model="refundDetail" :rules="ruleValidate" :label-width="200">
+                        <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                             <div class="refund-application">
                                 <h5>买家退款申请</h5>
                                 <div class="application-content refund-module">
                                     <row>
                                         <i-col span="18">
                                             <form-item label="申请时间">
-                                                {{refundDetail.applyTime}}
+                                                {{ form.applyTime }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="商品名称">
-                                                {{refundDetail.goodsname}}
+                                                {{ form.goodsname }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="退款金额">
-                                                ￥{{refundDetail.refundMoney}}
+                                                ￥{{ form.refundMoney }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="退款原因">
-                                                {{refundDetail.refundReason}}
+                                                {{ form.refundReason }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="退款说明">
-                                                {{refundDetail.refundDescription}}
+                                                {{ form.refundDescription }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="凭证上传">
-                                                {{refundDetail.refundImg}}
+                                                {{ form.refundImg }}
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -128,21 +128,21 @@
                                     <row>
                                         <i-col span="18">
                                             <form-item label="审核结果">
-                                                {{refundDetail.handelResult}}
+                                                {{ form.handelResult }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="处理备注">
-                                                {{refundDetail.handelText}}
+                                                {{ form.handelText }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="处理时间">
-                                                {{refundDetail.handelTime}}
+                                                {{ form.handelTime }}
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -154,21 +154,21 @@
                                     <row>
                                         <i-col span="18">
                                             <form-item label="平台确认">
-                                                {{refundDetail.payStyle}}
+                                                {{ form.payStyle }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="处理备注">
-                                                ￥{{refundDetail.orderCounts}}
+                                                ￥{{ form.orderCounts }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="处理时间">
-                                                ￥{{refundDetail.linePay}}
+                                                ￥{{ form.linePay }}
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -180,28 +180,28 @@
                                     <row>
                                         <i-col span="18">
                                             <form-item label="支付方式">
-                                                {{refundDetail.showStyle}}
+                                                {{ form.showStyle }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="在线退款金额">
-                                                ￥{{refundDetail.showMoney}}
+                                                ￥{{ form.showMoney }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="预存款金额">
-                                                ￥{{refundDetail.showAccount}}
+                                                ￥{{ form.showAccount }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="充值卡金额">
-                                                ￥{{refundDetail.showMount}}
+                                                ￥{{ form.showMount }}
                                             </form-item>
                                         </i-col>
                                     </row>

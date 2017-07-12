@@ -665,7 +665,6 @@
                         shopName: 'shop',
                     },
                 ],
-                self: this,
                 shopsList: [
                     {
                         label: '商品1',

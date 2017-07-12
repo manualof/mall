@@ -251,7 +251,6 @@
                         value: '2',
                     },
                 ],
-                self: this,
             };
         },
         methods: {

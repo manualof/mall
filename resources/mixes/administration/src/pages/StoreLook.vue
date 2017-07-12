@@ -10,8 +10,7 @@
         data() {
             return {
                 loading: false,
-                self: this,
-                storeDetail: {
+                form: {
                     account: 'hjhjkhjk',
                     classification: '所属分类',
                     companyLimitData: '2019-12-31',
@@ -58,75 +57,75 @@
             <div class="store-information">
                 <card :bordered="false">
                     <p slot="title">店铺信息</p>
-                    <i-form ref="storeDetail" :model="storeDetail" :rules="ruleValidate" :label-width="200">
+                    <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                         <div class="basic-information">
                             <row>
                                 <i-col span="12">
                                     <form-item label="店主账号">
-                                        {{storeDetail.account}}
+                                        {{ form.account }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="店铺名称" prop="storeName">
-                                        {{ storeDetail.storeName }}
+                                        {{ form.storeName }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="公司名称">
-                                        {{ storeDetail.companyName }}
+                                        {{ form.companyName }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="所在地区">
-                                        {{ storeDetail.province }}
+                                        {{ form.province }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="店铺地址">
-                                        {{ storeDetail.storeAddress }}
+                                        {{ form.storeAddress }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="开店时间">
-                                        {{storeDetail.createTime}}
+                                        {{ form.createTime }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="所属分类">
-                                        {{ storeDetail.classification }}
+                                        {{ form.classification }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="所属等级">
-                                        {{ storeDetail.level }}
+                                        {{ form.level }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12" class="data-picker-input picker-input">
                                     <form-item label="有效期至">
-                                        {{ storeDetail.limitData }}
+                                        {{ form.limitData }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="状态"  class="switch-status">
-                                        {{ storeDetail.switch1 }}
+                                        {{ form.switch1 }}
                                     </form-item>
                                 </i-col>
                             </row>
@@ -135,7 +134,7 @@
                 </card>
                 <card :bordered="false">
                     <p slot="title">注册信息</p>
-                    <i-form ref="storeDetail" :model="storeDetail" :rules="ruleValidate" :label-width="200">
+                    <i-form ref="storeDetail" :model="storeDetail" :rules="rules" :label-width="200">
                         <div class="register-information">
                             <div class="register-content">
                                 <div class="company-information border-color">

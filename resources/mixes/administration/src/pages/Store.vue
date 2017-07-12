@@ -367,7 +367,6 @@
                         value: '3',
                     },
                 ],
-                self: this,
             };
         },
         methods: {

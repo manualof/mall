@@ -10,7 +10,7 @@
         data() {
             const self = this;
             return {
-                advertisement: [
+                columns: [
                     {
                         align: 'center',
                         fixed: 'left',
@@ -128,7 +128,7 @@
                         width: 200,
                     },
                 ],
-                advertisementData: [
+                list: [
                     {
                         adverNum: 0,
                         heightNum: 206,
@@ -163,7 +163,6 @@
                         wordNum: 206,
                     },
                 ],
-                self: this,
             };
         },
         methods: {
@@ -174,7 +173,7 @@
                 });
             },
             removeAd(index) {
-                this.advertisementData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -194,8 +193,8 @@
                             <i-button class="delete-data" type="ghost">批量删除</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                         </div>
-                        <i-table highlight-row :columns="advertisement" :context="self"
-                                 :data="advertisementData"></i-table>
+                        <i-table highlight-row :columns="columns" :context="self"
+                                 :data="list"></i-table>
                     </card>
                 </tab-pane>
             </tabs>

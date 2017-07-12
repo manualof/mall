@@ -10,8 +10,7 @@
         data() {
             const self = this;
             return {
-                self: this,
-                spikeActivity: [
+                columns: [
                     {
                         align: 'center',
                         fixed: 'left',
@@ -119,7 +118,7 @@
                         width: 200,
                     },
                 ],
-                spikeData: [
+                list: [
                     {
                         endTime: '2016-12-23',
                         num: '00333',
@@ -153,7 +152,7 @@
         },
         methods: {
             removeAd(index) {
-                this.spikeData.splice(index, 1);
+                this.list.splice(index, 1);
             },
             toGoodsSet() {
                 this.$router.push({
@@ -188,7 +187,7 @@
                                       type="ghost">时间段列表</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                         </div>
-                        <i-table highlight-row :columns="spikeActivity" :context="self" :data="spikeData"></i-table>
+                        <i-table highlight-row :columns="columns" :data="list"></i-table>
                     </card>
                 </tab-pane>
             </tabs>

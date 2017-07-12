@@ -10,17 +10,17 @@
         data() {
             return {
                 loading: false,
-                postalForm: {
+                form: {
                     shop: ['系统默认等级'],
                 },
-                ruleValidate: {},
+                rules: {},
             };
         },
         methods: {
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.postalForm.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -40,11 +40,11 @@
             <tabs value="name1">
                 <tab-pane label="包邮" name="name1">
                     <card :bordered="none">
-                        <i-form :label-width="200" ref="postalForm" :model="postalForm" :rules="ruleValidate">
+                        <i-form :label-width="200" ref="form" :model="form" :rules="rules">
                             <row>
                                 <i-col span="12">
                                     <form-item label="可使用店铺" prop="shop">
-                                        <checkbox-group v-model="postalForm.shop">
+                                        <checkbox-group v-model="form.shop">
                                             <checkbox label="系统默认等级"></checkbox>
                                             <checkbox label="等级1"></checkbox>
                                             <checkbox label="等级2"></checkbox>

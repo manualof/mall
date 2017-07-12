@@ -29,8 +29,7 @@
                         value: '4',
                     },
                 ],
-                self: this,
-                typeColumns: [
+                columns: [
                     {
                         align: 'center',
                         key: 'sort',
@@ -95,7 +94,7 @@
                         width: 180,
                     },
                 ],
-                typeData: [
+                list: [
                     {
                         positionId: '22',
                         positionName: '液晶电视',
@@ -134,7 +133,7 @@
                 });
             },
             remove(index) {
-                this.typeData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -163,7 +162,7 @@
                                 </i-input>
                             </div>
                         </div>
-                        <i-table highlight-row :columns="typeColumns" :context="self" :data="typeData"></i-table>
+                        <i-table highlight-row :columns="columns" :data="list"></i-table>
                     </card>
                 </tab-pane>
             </tabs>

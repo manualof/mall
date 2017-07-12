@@ -22,7 +22,7 @@
                         value: '2',
                     },
                 ],
-                goodsEdit: {
+                form: {
                     barCode: '',
                     distribution: '',
                     goodComment: '',
@@ -81,7 +81,7 @@
                         value: '2',
                     },
                 ],
-                ruleValidate: {
+                rules: {
                     logo: [
                         {
                             message: '商品图片不能为空',
@@ -227,12 +227,12 @@
                 self.$router.go(-1);
             },
             removeLogo() {
-                this.goodsEdit.logo = '';
+                this.form.logo = '';
             },
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.goodsEdit.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         self.$Message.success('提交成功!');
                     } else {
@@ -280,7 +280,7 @@
                 self.$notice.open({
                     title: data.message,
                 });
-                self.goodsEdit.logo = data.data.path;
+                self.form.logo = data.data.path;
             },
             uploadSuccessPicture(data) {
                 const self = this;
@@ -288,7 +288,7 @@
                 self.$notice.open({
                     title: data.message,
                 });
-                self.goodsEdit.picture = data.data.path;
+                self.form.picture = data.data.path;
             },
         },
     };
@@ -305,7 +305,7 @@
                 </div>
                 <div>
                     <card :bordered="false">
-                        <i-form ref="goodsEdit" :model="goodsEdit" :rules="ruleValidate" :label-width="200">
+                        <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                             <div class="library-application">
                                 <h5>商品基本信息</h5>
                                 <div class="application-content refund-module">
@@ -314,21 +314,21 @@
                                             <form-item label="商品分类">
                                                 <cascader :data="styleData"
                                                           change-on-select
-                                                          v-model="goodsEdit.selectStyle"></cascader>
+                                                          v-model="form.selectStyle"></cascader>
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="12">
                                             <form-item label="商品名称" prop="name">
-                                                <i-input v-model="goodsEdit.name"></i-input>
+                                                <i-input v-model="form.name"></i-input>
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="12">
                                             <form-item label="商品卖点">
-                                                <i-input v-model="goodsEdit.sellPoint" type="textarea"
+                                                <i-input v-model="form.sellPoint" type="textarea"
                                                          :autosize="{minRows: 3,maxRows: 5}"></i-input>
                                                 <p class="tip">商品卖点最长不超过140个汉字</p>
                                             </form-item>
@@ -337,7 +337,7 @@
                                     <row>
                                         <i-col span="10">
                                             <form-item label="商品条形码">
-                                                <i-input v-model="goodsEdit.barCode"></i-input>
+                                                <i-input v-model="form.barCode"></i-input>
                                                 <p class="tip">请填写商品条形码下方数字</p>
                                             </form-item>
                                         </i-col>
@@ -345,8 +345,8 @@
                                     <row class="row-goods-upload">
                                         <i-col span="24">
                                             <form-item label="商品图片" prop="logo">
-                                                <div class="image-preview" v-if="goodsEdit.logo">
-                                                    <img :src="goodsEdit.logo">
+                                                <div class="image-preview" v-if="form.logo">
+                                                    <img :src="form.logo">
                                                     <icon type="close" @click.native="removeLogo"></icon>
                                                 </div>
                                                 <upload :action="action"
@@ -361,7 +361,7 @@
                                                         :on-success="uploadSuccess"
                                                         ref="upload"
                                                         :show-upload-list="false"
-                                                        v-if="goodsEdit.logo === '' || goodsEdit.logo === null">
+                                                        v-if="form.logo === '' || form.logo === null">
                                                 </upload>
                                                 <p class="tip">第一张图片为默认主图，图片支持JPG、gif、png格式上传或从图片空间中选择，
                                                     建议使用尺寸800*800像素以上，大小不超过4M的正方形图片，单击选中图片，
@@ -379,7 +379,7 @@
                                     <row>
                                         <i-col span="10">
                                             <form-item label="商品品牌">
-                                                <i-select v-model="goodsEdit.goodStyle">
+                                                <i-select v-model="form.goodStyle">
                                                     <i-option v-for="item in goodStyle" :value="item.value"
                                                               :key="item">{{ item.label }}</i-option>
                                                 </i-select>
@@ -392,28 +392,28 @@
                                                 <row>
                                                     <i-col span="6">
                                                         <span class="style-title">价格区间</span>
-                                                        <i-select v-model="goodsEdit.price">
+                                                        <i-select v-model="form.price">
                                                             <i-option v-for="item in priceList" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
                                                     </i-col>
                                                     <i-col span="6">
                                                         <span class="style-title">口碑</span>
-                                                        <i-select v-model="goodsEdit.goodComment">
+                                                        <i-select v-model="form.goodComment">
                                                             <i-option v-for="item in goodComment" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
                                                     </i-col>
                                                     <i-col span="6">
                                                         <span class="style-title">区域配送</span>
-                                                        <i-select v-model="goodsEdit.distribution">
+                                                        <i-select v-model="form.distribution">
                                                             <i-option v-for="item in distribution" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
                                                     </i-col>
                                                     <i-col span="6">
                                                         <span class="style-title">产地</span>
-                                                        <i-select v-model="goodsEdit.goodOrigin">
+                                                        <i-select v-model="form.goodOrigin">
                                                             <i-option v-for="item in goodOrigin" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
@@ -539,7 +539,7 @@
                                                                         <div class="text-edit-area" v-if="isEditText">
                                                                             <span>还可以输入500字</span><br>
                                                                             <i-input  type="textarea"
-                                                                                      v-model="goodsEdit.remarks"
+                                                                                      v-model="form.remarks"
                                                                                       :autosize="{minRows: 6,maxRows: 8}"></i-input>
                                                                             <i-button type="ghost">确认</i-button>
                                                                             <i-button @click.native="submitTextContent"
