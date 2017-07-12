@@ -43,7 +43,7 @@
                                 <label>
                                     <!--店铺全选-->
                                     <input type="checkbox" class="input_check" v-model="item.selected"
-                                           @change="changeTitleChecked(item,$event)">
+                                           @change="changeTitleChecked(item)">
                                     <span></span>
                                 </label>
                                 <span class="shop">{{ item.name }}</span>
@@ -72,8 +72,11 @@
                                 <div class="check-box">
                                     <label>
                                         <!--商品选中-->
-                                        <input type="checkbox" class="input_check"
-                                               v-model='item.selected' name='checkboxinput'>
+                                        <input type="checkbox"
+                                               class="input_check"
+                                               v-model='product.selected'
+                                               name='checkboxinput'
+                                               @change="selectProduct(item)">
                                         <span></span>
                                     </label>
                                 </div>
@@ -101,7 +104,7 @@
                                         -
                                     </span>
                                     <span class="input">
-                                        <input type="number" v-model.number="product.num">
+                                        <input type="number" readonly v-model.number="product.num">
                                     </span>
                                     <span class="num" @click="plus(product)">
                                         +
@@ -276,10 +279,7 @@
             },
         },
         methods: {
-            /**
-             * 全选框change事件的回调处理方法
-             * @param event
-             */
+//            全选框change事件的回调处理方法
             changeAllChecked() {
                 if (this.isAllChecked) {
                     this.productList.forEach(data => {
@@ -297,44 +297,49 @@
                     });
                 }
             },
-            /**
-             * 当父标题状态变化时的处理方法
-             */
-            changeTitleChecked(data, event) {
-                if (event.target.checked === true) {
-                    data.products.forEach(item => data.selected.indexOf(item.id) ===
-                    -1 && data.selected.push(item.id));
+//            当父标题状态变化时的处理方法
+            changeTitleChecked(data) {
+                this.isAllChecked = true;
+                if (data.selected) {
+                    data.products.forEach(item => {
+                        item.selected = true;
+                    });
                 } else {
-                    data.selected = [];
+                    data.products.forEach(item => {
+                        item.selected = false;
+                    });
                 }
-            },
-//            isAllChecked() {
-//                return this.productList.every(data => {
-//                    data.selected.length = data.products.length;
-//                });
-//            },
-
-            /**
-             * 判断父标题选择状态
-             */
-            isTitleChecked(data) {
-                const selected1 = data.selected;
-                const products1 = data.products;
-                // 验证selected中是否含有全部的product的id 如果是 证明title要选中
-                return products1.every(item => selected1.indexOf(item.id) !== -1);
+                this.productList.forEach(item => {
+                    if (item.selected === false) {
+                        this.isAllChecked = false;
+                    }
+                });
             },
             plus(item) {
                 item.num += 1;
             },
-            /**
-             * 判断全选框选择状态
-             * @returns {boolean}
-             */
             price(num, price) {
                 return (price * num).toFixed(2);
             },
-            reduce() {
-//                console.log(item);
+            reduce(item) {
+                if (item.num > 1) {
+                    item.num -= 1;
+                }
+            },
+//            单个商品选中时处理方法
+            selectProduct(item) {
+                this.isAllChecked = true;
+                item.selected = true;
+                item.products.forEach(product => {
+                    if (product.selected === false) {
+                        item.selected = false;
+                    }
+                });
+                this.productList.forEach(pro => {
+                    if (pro.selected === false) {
+                        this.isAllChecked = false;
+                    }
+                });
             },
         },
     };
