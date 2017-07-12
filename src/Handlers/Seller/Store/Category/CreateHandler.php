@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Category;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreCategory;
 
 /**
@@ -25,11 +25,11 @@ class CreateHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'name'     => 'required',
+            'name'     => Rule::required(),
             'store_id' => [
                 Rule::exists('mall_stores'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'name.required'     => '分类名称必须填写',

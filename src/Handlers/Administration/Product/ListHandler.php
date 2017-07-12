@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Product;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\Product;
 
 /**
@@ -24,9 +25,12 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'order'    => 'in:asc,desc',
-            'page'     => 'numeric',
-            'paginate' => 'numeric',
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
         ], [
             'order.in'         => '排序规则错误',
             'page.numeric'     => '当前页面必须为数值',
@@ -35,20 +39,17 @@ class ListHandler extends Handler
         $builder = Product::query();
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
-        $this->withCode(200)
-            ->withData($builder->items())
-            ->withMessage('获取商品列表成功！')
-            ->withExtra([
-                'pagination' => [
-                    'total'         => $builder->total(),
-                    'per_page'      => $builder->perPage(),
-                    'current_page'  => $builder->currentPage(),
-                    'last_page'     => $builder->lastPage(),
-                    'next_page_url' => $builder->nextPageUrl(),
-                    'prev_page_url' => $builder->previousPageUrl(),
-                    'from'          => $builder->firstItem(),
-                    'to'            => $builder->lastItem(),
-                ],
-            ]);
+        $this->withCode(200)->withData($builder->items())->withExtra([
+            'pagination' => [
+                'total'         => $builder->total(),
+                'per_page'      => $builder->perPage(),
+                'current_page'  => $builder->currentPage(),
+                'last_page'     => $builder->lastPage(),
+                'next_page_url' => $builder->nextPageUrl(),
+                'prev_page_url' => $builder->previousPageUrl(),
+                'from'          => $builder->firstItem(),
+                'to'            => $builder->lastItem(),
+            ],
+        ])->withMessage('获取商品列表成功！');
     }
 }

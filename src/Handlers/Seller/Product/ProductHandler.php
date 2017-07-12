@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\Product;
 
 /**
@@ -27,8 +27,8 @@ class ProductHandler extends Handler
         $this->validate($this->request, [
             'id' => [
                 Rule::exists('mall_products'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'id.exists'   => '没有对应的商品信息',

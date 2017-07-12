@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Subscribe;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductSubscribe;
 
 /**
@@ -29,12 +29,12 @@ class ListHandler extends Handler
                 'asc',
                 'desc',
             ]),
-            'page'     => 'numeric',
-            'paginate' => 'numeric',
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
             'store_id' => [
                 Rule::exists('mall_stores'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'order.in'          => '排序规则错误',

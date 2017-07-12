@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\Product;
 
 /**
@@ -25,28 +25,37 @@ class EditHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'barcode'           => 'numeric',
+            'barcode'           => Rule::numeric(),
             'brand_id'          => [
                 Rule::exists('mall_product_brands'),
-                'numeric',
+                Rule::numeric(),
             ],
-            'business_item'     => 'numeric',
+            'business_item'     => Rule::numeric(),
             'category_id'       => [
                 Rule::exists('mall_product_categories'),
-                'numeric',
+                Rule::numeric(),
             ],
-            'description'       => 'required',
+            'description'       => Rule::required(),
             'id'                => [
                 Rule::exists('mall_products'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
-            'name'              => 'required',
-            'price'             => 'required|numeric',
-            'price_cost'        => 'required|numeric',
-            'price_market'      => 'numeric',
-            'inventory'         => 'required|numeric',
-            'inventory_warning' => 'numeric',
+            'name'              => Rule::required(),
+            'price'             => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'price_cost'        => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'price_market'      => Rule::numeric(),
+            'inventory'         => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'inventory_warning' => Rule::numeric(),
         ], [
             'barcode.numeric'           => '商品条形码必须为数值',
             'brand_id.exists'           => '没有对应的品牌信息',

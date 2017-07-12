@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Product\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductCategory;
 
 /**
@@ -24,16 +25,19 @@ class CreateHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'deposit' => 'required|numeric',
-            'name' => 'required',
-            'parent_id' => 'numeric',
-            'order' => 'numeric',
+            'deposit'   => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'name'      => Rule::required(),
+            'parent_id' => Rule::numeric(),
+            'order'     => Rule::numeric(),
         ], [
-            'deposit.numeric' => '保证金数额必须为数值',
-            'deposit.required' => '保证金数额必须填写',
-            'name.required' => '分类名称必须填写',
+            'deposit.numeric'   => '保证金数额必须为数值',
+            'deposit.required'  => '保证金数额必须填写',
+            'name.required'     => '分类名称必须填写',
             'parent_id.numeric' => '父级分类 ID 必须为数值',
-            'order.numeric' => '排序必须为数值',
+            'order.numeric'     => '排序必须为数值',
         ]);
         $this->beginTransaction();
         $data = $this->request->only([

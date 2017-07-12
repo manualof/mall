@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Specification;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductSpecification;
 
 /**
@@ -27,22 +27,22 @@ class EditHandler extends Handler
         $this->validate($this->request, [
             'category_id' => [
                 Rule::exists('mall_product_categories'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
             'id'          => [
                 Rule::exists('mall_product_categories'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
-            'name'        => 'required',
+            'name'        => Rule::required(),
             'store_id'    => [
                 Rule::exists('mall_stores'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
-            'type'        => 'required',
-            'value'       => 'required',
+            'type'        => Rule::required(),
+            'value'       => Rule::required(),
         ], [
             'category_id.exists'   => '没有对应的商品分类信息',
             'category_id.numeric'  => '商品分类 ID 必须为数值',

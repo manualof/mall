@@ -11,6 +11,7 @@ namespace Notadd\Mall\Controllers\Api\Administration;
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Administration\Product\Library\CreateHandler;
 use Notadd\Mall\Handlers\Administration\Product\Library\EditHandler;
+use Notadd\Mall\Handlers\Administration\Product\Library\LibraryHandler;
 use Notadd\Mall\Handlers\Administration\Product\Library\ListHandler;
 use Notadd\Mall\Handlers\Administration\Product\Library\RemoveHandler;
 use Notadd\Mall\Handlers\Administration\Product\Library\RestoreHandler;
@@ -38,6 +39,17 @@ class ProductLibraryController extends Controller
      * @throws \Exception
      */
     public function edit(EditHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Administration\Product\Library\LibraryHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function library(LibraryHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }

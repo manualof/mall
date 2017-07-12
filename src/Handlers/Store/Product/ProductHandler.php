@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Store\Product;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\Product;
 
 /**
@@ -26,7 +26,7 @@ class ProductHandler extends Handler
     {
         $this->validate($this->request, [
             'id' => [
-                'required',
+                Rule::required(),
                 Rule::exists('mall_products'),
             ],
         ], [
