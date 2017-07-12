@@ -39,6 +39,11 @@
                     pic: image,
                     serial: 346952350274,
                 },
+                loading: false,
+                returnForm: {
+                    enabled: '',
+                    message: '',
+                },
                 returnsRequest: {
                     picture: image,
                     returnMoney: '1999.00',
@@ -69,6 +74,20 @@
             goBack() {
                 const self = this;
                 self.$router.go(-1);
+            },
+            submit() {
+                const self = this;
+                self.loading = true;
+                self.$refs.returnForm.validate(valid => {
+                    if (valid) {
+                        self.$Message.success('提交成功!');
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
         },
         computed: {
@@ -136,32 +155,24 @@
                             <!--商家处理意见-->
                             <i-col>
                                 <h5>商家处理意见</h5>
-                                <i-form :label-width="160">
-                                    <form-item label="处理状态">
-                                        {{ dealAdvice.returnsIdea }}
-                                    </form-item>
-                                    <form-item label="商家备注">
-                                        {{ dealAdvice.returnsNote }}
-                                    </form-item>
-                                    <form-item label="物流信息">
-                                        {{ dealAdvice.returnsLogistics }}
-                                    </form-item>
-                                    <form-item label="收货备注">
-                                        {{ dealAdvice.returnsGoods }}
-                                    </form-item>
-                                </i-form>
-                            </i-col>
-                            <!--商城平台处理审核-->
-                            <i-col>
-                                <h5>商城平台处理审核</h5>
-                                <i-form :label-width="160">
-                                    <form-item label="平台确认">
-                                        {{ dealAudit.returnsPlatform }}
+                                <i-form ref="returnForm" :model="returnForm" :rules="ruleValidate" :label-width="160">
+                                    <form-item label="是否同意">
+                                        <radio-group v-model="returnForm.enabled">
+                                            <radio label="同意"></radio>
+                                            <radio label="弃货"></radio>
+                                            <radio label="拒绝"></radio>
+                                        </radio-group>
+                                        <p class="tip">如果选择弃货，买家将不用退回原商品，提交后直接由管理员确认退款</p>
                                     </form-item>
                                     <row>
-                                        <form-item label="退货方式">
-                                            {{ dealAudit.returnsRefund }}
-                                        </form-item>
+                                        <i-col span="20">
+                                            <form-item label="备注信息" class="deal-advise">
+                                                <i-input type="textarea" v-model="returnForm.message"
+                                                         :autosize="{minRows: 3,maxRows: 5}"></i-input>
+                                                <p class="tip">如是同意退货，请及时关注买家的发货情况，并机型收货（发货5天后可以
+                                                    选择未收到，超过7天不处理按弃货处理）</p>
+                                            </form-item>
+                                        </i-col>
                                     </row>
                                 </i-form>
                             </i-col>
@@ -192,29 +203,18 @@
                                     </form-item>
                                 </row>
                             </i-form>
-                            <!--物流信息-->
-                            <h5>物流信息</h5>
-                            <i-form :label-width="160">
-                                <form-item label="物流公司">
-                                    {{ dealInformation.logisticsCompany }}
-                                </form-item>
-                                <form-item label="运单号码">
-                                    {{ dealInformation.trackingNumber }}
-                                </form-item>
-                                <row>
-                                    <!--<i-col span="16">-->
-                                    <i-col span="24">
-                                        <form-item label="物流信息">
-                                        <span v-for="item in dealLogistics" class="logistics">
-                                            {{ item.information }}
-                                        </span>
-                                        </form-item>
-                                    </i-col>
-                                </row>
-                            </i-form>
                         </i-col>
                     </row>
                 </div>
+                <row>
+                    <i-col span="18">
+                        <i-button :loading="loading" @click.native="submit"
+                                  class="return-button" type="primary">
+                            <span v-if="!loading">确认提交</span>
+                            <span v-else>正在提交…</span>
+                        </i-button>
+                    </i-col>
+                </row>
             </card>
         </div>
     </div>
