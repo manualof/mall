@@ -104,8 +104,8 @@
             removeImage(index) {
                 this.pictureList.splice(index, 1);
             },
-            removeLogo() {
-                this.album.logo = '';
+            removeLogo(index) {
+                this.album.logoList.splice(index, 1);
             },
             submit() {
                 const self = this;
@@ -163,13 +163,12 @@
                 this.uploadModal = true;
             },
             uploadSuccess(data) {
-                console.log(data.data.path);
                 const self = this;
                 injection.loading.finish();
                 self.$notice.open({
                     title: data.message,
                 });
-                self.album.logoList = data.data.path;
+                self.album.logoList.push(data.data.path);
             },
         },
     };
@@ -235,9 +234,9 @@
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="20">
+                                    <i-col span="22">
                                         <form-item label="选择图片" prop="logo">
-                                            <div class="image-preview" v-if="album.logo"
+                                            <div class="image-preview" v-if="album.logoList"
                                                  v-for="(item, index) in album.logoList">
                                                 <img :src="item">
                                                 <i-button type="text" @click.native="removeLogo(index)">

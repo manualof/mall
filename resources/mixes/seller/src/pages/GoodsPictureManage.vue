@@ -12,7 +12,7 @@
             return {
                 action: `${window.api}/mall/admin/upload`,
                 album: {
-                    logo: '',
+                    logoList: [],
                     type: '',
                 },
                 checkAll: false,
@@ -100,8 +100,8 @@
             removeImage(index) {
                 this.pictureList.splice(index, 1);
             },
-            removeLogo() {
-                this.album.logo = '';
+            removeLogo(index) {
+                this.album.logoList.splice(index, 1);
             },
             submit() {
                 const self = this;
@@ -151,7 +151,7 @@
                 self.$notice.open({
                     title: data.message,
                 });
-                self.album.logo = data.data.path;
+                self.album.logoList.push(data.data.path);
             },
         },
     };
@@ -220,9 +220,10 @@
                         <row>
                             <i-col span="20">
                                 <form-item label="选择图片" prop="logo">
-                                    <div class="image-preview" v-if="album.logo">
-                                        <img :src="album.logo">
-                                        <i-button type="text" @click.native="removeLogo()">
+                                    <div class="image-preview" v-if="album.logoList"
+                                         v-for="(item, index) in album.logoList">
+                                        <img :src="item">
+                                        <i-button type="text" @click.native="removeLogo(index)">
                                             <icon type="trash-a"></icon>
                                         </i-button>
                                     </div>
@@ -232,13 +233,13 @@
                                             :headers="{
                                                         Authorization: `Bearer ${$store.state.token.access_token}`
                                                     }"
+                                            multiple
                                             :max-size="2048"
                                             :on-error="uploadError"
                                             :on-format-error="uploadFormatError"
                                             :on-success="uploadSuccess"
                                             ref="upload"
-                                            :show-upload-list="false"
-                                            v-if="album.logo === '' || album.logo === null">
+                                            :show-upload-list="false">
                                     </upload>
                                     <p class="tip">支持JPG，GIF，PNG格式，大小不超过4096KB的图片上传;
                                         浏览文件是可以按住CTRL或移位键多选</p>
