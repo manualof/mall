@@ -5,7 +5,7 @@
             <span @click="qiehuan" :class="{xuanzhong: type}">退货申请</span>
         </div>
         <div class="selaes-serch">
-            <input type="text" placeholder="">
+            <input class="form-control" type="text" placeholder="">
             <span>搜索</span>
         </div>
         <div class="clearfix"></div>
