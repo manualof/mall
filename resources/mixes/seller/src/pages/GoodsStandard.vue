@@ -12,16 +12,104 @@
             return {
                 firstType: [
                     {
-                        label: '店铺名称',
-                        value: '电子数码1',
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '自行车',
+                                        value: '自行车',
+                                    },
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅',
+                                        value: '安全座椅',
+                                    },
+                                ],
+                                label: '童车童床',
+                                value: '童车童床',
+                            },
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '个护化妆',
+                        value: '个护化妆',
                     },
                     {
-                        label: '商品名称',
-                        value: '电子数码2',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '电子数码3',
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                    {
+                                        label: '婴儿推车3',
+                                        value: '婴儿推车3',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅4',
+                                        value: '安全座椅4',
+                                    },
+                                ],
+                                label: '服饰寝居',
+                                value: '服饰寝居',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '车1',
+                                        value: '车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '家用电器',
+                        value: '家用电器',
                     },
                 ],
                 goodsColorColumns: [
@@ -171,39 +259,9 @@
                     },
                 ],
                 goodsStyle: {
-                    firstType: '',
-                    secondType: '',
-                    thirdType: '',
+                    firstType: [],
                 },
-                secondType: [
-                    {
-                        label: '店铺名称',
-                        value: '电子数码1',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '电子数码2',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '电子数码3',
-                    },
-                ],
                 self: this,
-                thirdType: [
-                    {
-                        label: '店铺名称',
-                        value: '电子数码1',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '电子数码2',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '电子数码3',
-                    },
-                ],
             };
         },
         methods: {
@@ -238,25 +296,12 @@
                             <row>
                                 <i-col span="3">选择经营的商品分类</i-col>
                                 <i-col span="4">
-                                    <i-select v-model="goodsStyle.firstType">
-                                        <i-option v-for="item in firstType"
-                                                  :value="item.value">{{ item.label }}</i-option>
-                                    </i-select>
-                                </i-col>
-                                <i-col span="4">
-                                    <i-select v-model="goodsStyle.secondType">
-                                        <i-option v-for="item in secondType"
-                                                  :value="item.value">{{ item.label }}</i-option>
-                                    </i-select>
-                                </i-col>
-                                <i-col span="4">
-                                    <i-select v-model="goodsStyle.thirdType">
-                                        <i-option v-for="item in thirdType"
-                                                  :value="item.value">{{ item.label }}</i-option>
-                                    </i-select>
+                                    <cascader :data="firstType"
+                                              trigger="hover"
+                                              v-model="goodsStyle.firstType"></Cascader>
                                 </i-col>
                             </row>
-                            <tabs type="card">
+                            <tabs type="card" class="goods-standard-module">
                                 <tab-pane label="编辑颜色规格">
                                     <div class="btn-group">
                                         <i-button type="ghost" class="float-right"
