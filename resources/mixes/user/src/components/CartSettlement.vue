@@ -250,6 +250,7 @@
                         ],
                     },
                 ],
+                selectPro: [],
             };
         },
         components: {
@@ -259,10 +260,10 @@
         },
         computed: {
             selectNum() {
-                const num = 0;
-//                this.productList.forEach(item => {
-//                    num += item.selected.length;
-//                });
+                let num = 0;
+                this.selectPro.forEach(item => {
+                    num += item.num;
+                });
                 return num;
             },
             totalPrice() {
@@ -340,6 +341,21 @@
                         this.isAllChecked = false;
                     }
                 });
+            },
+        },
+        watch: {
+            productList: {
+                deep: true,
+                handler(val) {
+                    this.selectPro = [];
+                    val.forEach(item => {
+                        item.products.forEach(product => {
+                            if (product.selected) {
+                                this.selectPro.push(product);
+                            }
+                        });
+                    });
+                },
             },
         },
     };
