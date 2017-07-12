@@ -1,7 +1,7 @@
 <template>
     <div class="product-details">
         <div class="basic-intro container clearfix">
-            <div class="miaobaoxie">首页  >  xx旗舰店 > 尿不湿</div>
+            <div class="miaobaoxie"><router-link to="/slide">首页  >  xx旗舰店 > 尿不湿</router-link></div>
             <div class="product-img">
                 <div>
                     <!--<div id="preview" class="spec-preview">
@@ -99,7 +99,7 @@
                     <dd>
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon" @click="productNum > 1 ?productNum--:0">-</span>
-                            <input type="number" class="form-control" v-model="productNum">
+                            <input type="number" class="form-control" readonly v-model="productNum">
                             <span class="input-group-addon" @click="productNum++">+</span>
                         </div>
                     </dd>
