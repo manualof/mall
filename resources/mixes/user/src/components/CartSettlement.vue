@@ -18,7 +18,8 @@
                         <th class="select">
                             <div class="check-box select-all">
                                 <span>
-                                    <input type="checkbox" :checked="isAllChecked" @change="changeAllChecked($event)"
+                                    <!--全选-->
+                                    <input type="checkbox" v-model="isAllChecked" @change="changeAllChecked($event)"
                                          class="input_check" id="all-select">
                                     <label for="all-select"> </label>
                                 </span>
@@ -40,12 +41,13 @@
                         <div class="name">
                             <div class="check-box select">
                                 <label>
-                                    <input type="checkbox" class="input_check" :checked="isTitleChecked(item)"
+                                    <!--店铺全选-->
+                                    <input type="checkbox" class="input_check" v-model="item.selected"
                                            @change="changeTitleChecked(item,$event)">
                                     <span></span>
                                 </label>
+                                <span class="shop">{{ item.name }}</span>
                             </div>
-                            <span class="shop">{{ item.name }}</span>
                         </div>
                         <span class="money">运费: {{ item.pay_transform }}</span>
                     </div>
@@ -69,8 +71,9 @@
                             <td class="td-select">
                                 <div class="check-box">
                                     <label>
+                                        <!--商品选中-->
                                         <input type="checkbox" class="input_check"
-                                               v-model='item.selected' :value="product.id" name='checkboxinput'>
+                                               v-model='item.selected' name='checkboxinput'>
                                         <span></span>
                                     </label>
                                 </div>
@@ -123,7 +126,8 @@
                         <th class="select">
                             <div class="check-box select-all">
                                 <span>
-                                    <input type="checkbox" :checked="isAllChecked()" @change="changeAllChecked($event)"
+                                <!--全选-->
+                                    <input type="checkbox" v-model="isAllChecked" @change="changeAllChecked($event)"
                                            class="input_check" id="all-select2">
                                     <label for="all-select2"> </label>
                                 </span>
@@ -165,16 +169,18 @@
     export default {
         data() {
             return {
+                isAllChecked: false,
                 productList: [
                     {
                         name: '母婴',
                         pay_transform: 10,
-                        mention: true,
-                        selected: [],
+                        mention: false,
+                        selected: false,
                         products: [
                             {
                                 id: 1,
                                 img: productImg,
+                                selected: true,
                                 name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童 可爱短袜5双装',
                                 num: 1,
                                 now_price: 39.9,
@@ -187,10 +193,12 @@
                         name: 'XX母婴用品店',
                         pay_transform: 10,
                         mention: true,
+                        selected: false,
                         products: [
                             {
                                 id: 1,
                                 img: productImg,
+                                selected: false,
                                 name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童 可爱短袜5双装',
                                 num: 1,
                                 now_price: 39.9,
@@ -200,6 +208,7 @@
                             {
                                 id: 1,
                                 img: productImg,
+                                selected: false,
                                 name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童 可爱短袜5双装',
                                 num: 1,
                                 now_price: 39.9,
@@ -207,17 +216,18 @@
                                 size: 'M',
                             },
                         ],
-                        selected: [],
                     },
                     {
                         name: 'XX母婴用品',
                         offer: '买二送一',
                         mention: false,
+                        selected: false,
                         pay_transform: 10,
                         products: [
                             {
                                 id: 1,
                                 img: productImg,
+                                selected: false,
                                 name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童 可爱短袜5双装',
                                 num: 1,
                                 now_price: 39.9,
@@ -227,6 +237,7 @@
                             {
                                 id: 1,
                                 img: productImg,
+                                selected: false,
                                 name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童 可爱短袜5双装',
                                 num: 1,
                                 now_price: 39.9,
@@ -234,7 +245,6 @@
                                 size: 'M',
                             },
                         ],
-                        selected: [],
                     },
                 ],
             };
@@ -246,19 +256,19 @@
         },
         computed: {
             selectNum() {
-                let num = 0;
-                this.productList.forEach(item => {
-                    num += item.selected.length;
-                });
+                const num = 0;
+//                this.productList.forEach(item => {
+//                    num += item.selected.length;
+//                });
                 return num;
             },
             totalPrice() {
                 const tPrice = 0;
-                this.productList.forEach(item => {
-                    item.selected.forEach(i => {
-                        console.log(i);
-                    });
-                });
+//                this.productList.forEach(item => {
+//                    item.selected.forEach(i => {
+//                        console.log(i);
+//                    });
+//                });
                 return tPrice;
             },
             totalFreight() {
@@ -270,15 +280,20 @@
              * 全选框change事件的回调处理方法
              * @param event
              */
-            changeAllChecked(event) {
-                if (event.target.checked === true) {
+            changeAllChecked() {
+                if (this.isAllChecked) {
                     this.productList.forEach(data => {
-                        data.products.forEach(item => data.selected.indexOf(item.id) ===
-                        -1 && data.selected.push(item.id));
+                        data.selected = true;
+                        data.products.forEach(item => {
+                            item.selected = true;
+                        });
                     });
                 } else {
                     this.productList.forEach(data => {
-                        data.selected = [];
+                        data.selected = false;
+                        data.products.forEach(item => {
+                            item.selected = false;
+                        });
                     });
                 }
             },
@@ -293,9 +308,11 @@
                     data.selected = [];
                 }
             },
-            isAllChecked() {
-                return this.productList.every(data => data.selected.length === data.products.length);
-            },
+//            isAllChecked() {
+//                return this.productList.every(data => {
+//                    data.selected.length = data.products.length;
+//                });
+//            },
 
             /**
              * 判断父标题选择状态
