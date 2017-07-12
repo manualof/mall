@@ -11,7 +11,7 @@
             return {
                 action: `${window.api}/mall/admin/upload`,
                 loading: false,
-                ruleValidate: {},
+                rules: {},
                 self: this,
                 styleData: [
                     {
@@ -67,7 +67,7 @@
                         value: 'jiangsu',
                     },
                 ],
-                typeData: {
+                form: {
                     address: '',
                     cardPicture: '',
                     deliveryName: '',
@@ -87,12 +87,12 @@
                 self.$router.go(-1);
             },
             removeLogo() {
-                this.typeData.cardPicture = '';
+                this.form.cardPicture = '';
             },
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.typeData.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -133,7 +133,7 @@
                 self.$notice.open({
                     title: data.message,
                 });
-                self.typeData.cardPicture = data.data.path;
+                self.form.cardPicture = data.data.path;
             },
         },
     };
@@ -148,68 +148,68 @@
                 <span>管理—新增自提点</span>
             </div>
             <card :bordered="false">
-                <i-form ref="typeData" :model="typeData" :rules="ruleValidate" :label-width="200">
+                <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                     <row>
                         <i-col span="12">
                             <form-item label="自提点用户名">
-                                <i-input v-model="typeData.name"></i-input>
+                                <i-input v-model="form.name"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="真实姓名">
-                                <i-input v-model="typeData.realName"></i-input>
+                                <i-input v-model="form.realName"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="手机号">
-                                <i-input v-model="typeData.phone"></i-input>
+                                <i-input v-model="form.phone"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="座机号">
-                                <i-input v-model="typeData.seatNumber"></i-input>
+                                <i-input v-model="form.seatNumber"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="自提点名称">
-                                <i-input v-model="typeData.deliveryName"></i-input>
+                                <i-input v-model="form.deliveryName"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="所在地区">
-                                <cascader :data="styleData" trigger="hover" v-model="typeData.province"></cascader>
+                                <cascader :data="styleData" trigger="hover" v-model="form.province"></cascader>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="18">
                             <form-item label="详细地址">
-                                <i-input v-model="typeData.address" type="textarea"></i-input>
+                                <i-input v-model="form.address" type="textarea"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="身份证号码">
-                                <i-input v-model="typeData.idNum"></i-input>
+                                <i-input v-model="form.idNum"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="身份证正面" prop="cardPicture">
-                                <div class="image-preview" v-if="typeData.cardPicture">
-                                    <img :src="typeData.cardPicture">
+                                <div class="image-preview" v-if="form.cardPicture">
+                                    <img :src="form.cardPicture">
                                     <icon type="close" @click.native="removeLogo"></icon>
                                 </div>
                                 <upload :action="action"
@@ -224,7 +224,7 @@
                                         :on-success="uploadSuccess"
                                         ref="upload"
                                         :show-upload-list="false"
-                                        v-if="typeData.cardPicture === '' || typeData.cardPicture === null">
+                                        v-if="form.cardPicture === '' || form.cardPicture === null">
                                 </upload>
                             </form-item>
                         </i-col>
@@ -232,7 +232,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="状态" >
-                                <i-switch size="large" v-model="typeData.status">
+                                <i-switch size="large" v-model="form.status">
                                     <span slot="open">开启</span>
                                     <span slot="close">关闭</span>
                                 </i-switch>

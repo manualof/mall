@@ -68,7 +68,7 @@
                         value: '2',
                     },
                 ],
-                ruleValidate: {
+                rules: {
                     storeName: [
                         {
                             message: '名称不能为空',
@@ -78,7 +78,7 @@
                     ],
                 },
                 self: this,
-                storeDetail: {
+                form: {
                     account: 'hjhjkhjk',
                     classification: '',
                     companyName: '',
@@ -109,12 +109,12 @@
                 self.$router.go(-1);
             },
             removeLogo() {
-                this.storeDetail.logo = '';
+                this.form.logo = '';
             },
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.storeDetail.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -155,7 +155,7 @@
                 self.$notice.open({
                     title: data.message,
                 });
-                self.storeDetail.logo = data.data.path;
+                self.form.logo = data.data.path;
             },
         },
     };
@@ -172,33 +172,33 @@
 			<div class="store-information">
                 <card :bordered="false">
                     <p slot="title">店铺信息</p>
-                    <i-form ref="storeDetail" :model="storeDetail" :rules="ruleValidate" :label-width="200">
+                    <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                         <div class="basic-information">
                             <row>
                                 <i-col span="12">
                                     <form-item label="店主账号">
-                                        {{storeDetail.account}}
+                                        {{form.account}}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="店铺名称" prop="storeName">
-                                        <i-input v-model="storeDetail.storeName"></i-input>
+                                        <i-input v-model="form.storeName"></i-input>
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="公司名称">
-                                        <i-input v-model="storeDetail.companyName"></i-input>
+                                        <i-input v-model="form.companyName"></i-input>
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="所在地区">
-                                        <i-select placeholder="请选择" v-model="storeDetail.province">
+                                        <i-select placeholder="请选择" v-model="form.province">
                                             <i-option v-for="item in province" :value="item.value"
                                                       :key="item">{{ item.label }}</i-option>
                                         </i-select>
@@ -208,21 +208,21 @@
                             <row>
                                 <i-col span="12">
                                     <form-item label="店铺地址">
-                                        <i-input v-model="storeDetail.storeAddress"></i-input>
+                                        <i-input v-model="form.storeAddress"></i-input>
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="开店时间">
-                                        {{storeDetail.createTime}}
+                                        {{form.createTime}}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="所属分类">
-                                        <i-select v-model="storeDetail.classification" placeholder="请选择">
+                                        <i-select v-model="form.classification" placeholder="请选择">
                                             <i-option v-for="item in classification" :value="item.value"
                                                       :key="item">{{ item.label }}</i-option>
                                         </i-select>
@@ -232,7 +232,7 @@
                             <row>
                                 <i-col span="12">
                                     <form-item label="所属等级">
-                                        <i-select v-model="storeDetail.level" placeholder="请选择">
+                                        <i-select v-model="form.level" placeholder="请选择">
                                             <i-option v-for="item in level" :value="item.value"
                                                       :key="item">{{ item.label }}</i-option>
                                         </i-select>
@@ -250,7 +250,7 @@
                             <row>
                                 <i-col span="12">
                                     <form-item label="状态"  class="switch-status">
-                                        <i-switch size="large" v-model="storeDetail.switch1">
+                                        <i-switch size="large" v-model="form.switch1">
                                             <span slot="open">开启</span>
                                             <span slot="close">关闭</span>
                                         </i-switch>
@@ -262,7 +262,7 @@
                 </card>
                 <card :bordered="false">
                     <p slot="title">注册信息</p>
-                    <i-form ref="storeDetail" :model="storeDetail" :rules="ruleValidate" :label-width="200">
+                    <i-form ref="storeDetail" :model="storeDetail" :rules="rules" :label-width="200">
                         <div class="register-information">
                             <div class="register-content">
                                 <div class="company-information border-color">

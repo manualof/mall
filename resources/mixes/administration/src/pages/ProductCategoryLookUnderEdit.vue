@@ -9,7 +9,7 @@
         },
         data() {
             return {
-                editDetail: {
+                form: {
                     attributes: [
                         {
                             intro: '32英寸以上',
@@ -139,7 +139,7 @@
                     },
                 ],
                 loading: false,
-                ruleValidate: {
+                rules: {
                     positionStandard: [
                         {
                             message: '关联规格不能为空',
@@ -295,7 +295,7 @@
         },
         methods: {
             addCustomer() {
-                this.editDetail.attributes.push(
+                this.form.attributes.push(
                     {
                         intro: '',
                         single: false,
@@ -308,7 +308,7 @@
                 this.checkboxSelect = true;
             },
             deletePreForm(index) {
-                this.editDetail.attributes.splice(index, 1);
+                this.form.attributes.splice(index, 1);
             },
             goBack() {
                 const self = this;
@@ -317,7 +317,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.editDetail.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -341,19 +341,19 @@
                 <span>分类管理—编辑"项链"</span>
             </div>
             <card :bordered="false">
-                <i-form ref="editDetail" :model="editDetail" :rules="ruleValidate" :label-width="200">
+                <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                     <div class="basic-information">
                         <row>
                             <i-col span="12">
                                 <form-item label="分类名称" prop="typeName">
-                                    <i-input v-model="editDetail.typeName"></i-input>
+                                    <i-input v-model="form.typeName"></i-input>
                                 </form-item>
                             </i-col>
                         </row>
                         <row>
                             <i-col span="12">
                                 <form-item label="商品展示方式" prop="showStyle">
-                                    <i-select placeholder="请选择" v-model="editDetail.showStyle">
+                                    <i-select placeholder="请选择" v-model="form.showStyle">
                                         <i-option v-for="item in showStyles" :value="item.value"
                                                   :key="item">{{ item.label }}</i-option>
                                     </i-select>
@@ -366,7 +366,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="分佣比例" prop="quotaRatio">
-                                    <i-input v-model="editDetail.quotaRatio"></i-input>
+                                    <i-input v-model="form.quotaRatio"></i-input>
                                     <div class="tip">
                                         <p>分佣比例必须为0-100的整数</p>
                                     </div>
@@ -379,13 +379,13 @@
                                 <form-item label="关联品牌" class="quike-position" prop="positionType">
                                     <div class="flex-position">
                                         <span class="title">快捷定位</span>
-                                        <cascader :data="styleData" trigger="hover" v-model="editDetail.positionType"
-                                                  @on-change="handleChange" :value="editDetail.positionType"></cascader>
+                                        <cascader :data="styleData" trigger="hover" v-model="form.positionType"
+                                                  @on-change="handleChange" :value="form.positionType"></cascader>
                                         <span class="intro">分类下对应的品牌</span>
                                     </div>
                                     <div class="recommended-classification recommended-brand">
                                         <ul>
-                                            <li v-for="item in editDetail.contactBrand">
+                                            <li v-for="item in form.contactBrand">
                                                 <p>{{ item.brand }}</p>
                                                 <checkbox-group>
                                                     <checkbox :label="item.name" v-for="item in item.brandList"></checkbox>
@@ -401,13 +401,13 @@
                                 <form-item label="关联规格" class="quike-position" prop="positionStandard">
                                     <div class="flex-position">
                                         <span class="title">快捷定位</span>
-                                        <cascader :data="styleData" trigger="hover" v-model="editDetail.positionStandard"
+                                        <cascader :data="styleData" trigger="hover" v-model="form.positionStandard"
                                                   @on-change="handleChange1"></cascader>
                                         <span class="intro">分类下对应的规格</span>
                                     </div>
                                     <div class="recommended-classification recommended-brand">
                                         <ul>
-                                            <li v-for="item in editDetail.contactSpecification">
+                                            <li v-for="item in form.contactSpecification">
                                                 <p>{{ item.brand }}</p>
                                                 <checkbox-group>
                                                     <checkbox :label="item.name" v-for="item in item.brandList"></checkbox>
@@ -421,7 +421,7 @@
                         <row>
                             <i-col>
                                 <form-item label="添加属性" class="form-item-attribute">
-                                    <row v-for="(item, index) in editDetail.attributes" class="row-attributes">
+                                    <row v-for="(item, index) in form.attributes" class="row-attributes">
                                         <i-col span="2" style="width: 50px">
                                             <i-input :value="index+1"></i-input>
                                         </i-col>
@@ -464,7 +464,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="排序">
-                                    <i-input v-model="editDetail.goodsSort"></i-input>
+                                    <i-input v-model="form.goodsSort"></i-input>
                                     <p class="tip">数字范围为0~255,数字越小越靠前</p>
                                 </form-item>
                             </i-col>

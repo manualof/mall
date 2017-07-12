@@ -11,7 +11,7 @@
             return {
                 action: `${window.api}/mall/admin/upload`,
                 loading: false,
-                ruleValidate: {
+                rules: {
                     apply: [
                         {
                             message: '申请说明不能为空',
@@ -42,7 +42,7 @@
                     ],
                 },
                 self: this,
-                typeData: {
+                form: {
                     apply: '',
                     charges: '',
                     level: '',
@@ -61,7 +61,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.typeData.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -85,18 +85,18 @@
                 <span>店铺等级—编辑</span>
             </div>
             <card :bordered="false">
-                <i-form ref="typeData" :model="typeData" :rules="ruleValidate" :label-width="200">
+                <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                     <row>
                         <i-col span="12">
                             <form-item label="等级名称" prop="levelName">
-                                <i-input v-model="typeData.levelName"></i-input>
+                                <i-input v-model="form.levelName"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="可发布商品数">
-                                <i-input v-model="typeData.releaseNum"></i-input>
+                                <i-input v-model="form.releaseNum"></i-input>
                                 <p class="tip">0表示没有限制</p>
                             </form-item>
                         </i-col>
@@ -104,7 +104,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="可上传商品数" prop="uploadNum">
-                                <i-input v-model="typeData.uploadNum"></i-input>
+                                <i-input v-model="form.uploadNum"></i-input>
                                 <p class="tip">0表示没有限制</p>
                             </form-item>
                         </i-col>
@@ -112,7 +112,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="收费标准" prop="charges">
-                                <i-input v-model="typeData.charges"></i-input>
+                                <i-input v-model="form.charges"></i-input>
                                 <p class="tip">收费标准，单位：元/年，必须为数字，在会员开通或升级店铺时将显示在前台</p>
                             </form-item>
                         </i-col>
@@ -120,7 +120,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="可使用插件" prop="useType">
-                                <checkbox-group v-model="typeData.useType">
+                                <checkbox-group v-model="form.useType">
                                     <checkbox label="秒杀活动"></checkbox>
                                     <checkbox label="预售活动"></checkbox>
                                     <checkbox label="满减活动"></checkbox>
@@ -132,7 +132,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="申请说明" prop="apply">
-                                <i-input v-model="typeData.apply" type="textarea"></i-input>
+                                <i-input v-model="form.apply" type="textarea"></i-input>
                                 <p class="tip">在会员开通或升级店铺时将显示在前台</p>
                             </form-item>
                         </i-col>
@@ -140,7 +140,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="级别" prop="level">
-                                <i-input v-model="typeData.level"></i-input>
+                                <i-input v-model="form.level"></i-input>
                                 <p class="tip">数值越大表明级别越高</p>
                             </form-item>
                         </i-col>

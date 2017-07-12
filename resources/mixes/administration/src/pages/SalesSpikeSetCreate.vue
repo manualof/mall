@@ -50,7 +50,7 @@
                     'iphone8 plus星空蓝全新发布 信',
                     'iphone8 plus星空蓝全新发布 信用卡12',
                     'iphone8 plus星空全新发'],
-                ruleValidate: {
+                rules: {
                     remarks: [
                         {
                             message: '信息不能为空',

@@ -9,14 +9,14 @@
         },
         data() {
             return {
-                editDetail: {
+                form: {
                     goodsSort: '',
                     quotaRatio: '',
                     showStyle: '',
                     typeName: '',
                 },
                 loading: false,
-                ruleValidate: {
+                rules: {
                     quotaRatio: [
                         {
                             message: '分佣比例不能为空',
@@ -52,7 +52,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.editDetail.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -76,19 +76,19 @@
                 <span>分类管理—新增</span>
             </div>
             <card :bordered="false">
-                <i-form ref="editDetail" :model="editDetail" :rules="ruleValidate" :label-width="200">
+                <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                     <div class="basic-information">
                         <row>
                             <i-col span="12">
                                 <form-item label="分类名称" prop="typeName">
-                                    <i-input v-model="editDetail.typeName"></i-input>
+                                    <i-input v-model="form.typeName"></i-input>
                                 </form-item>
                             </i-col>
                         </row>
                         <row>
                             <i-col span="12">
                                 <form-item label="分佣比例" prop="quotaRatio">
-                                    <i-input v-model="editDetail.quotaRatio"></i-input>
+                                    <i-input v-model="form.quotaRatio"></i-input>
                                     <div class="tip">
                                         <p>分佣比例必须为0-100的整数,默认关联至子分类</p>
                                     </div>
@@ -99,7 +99,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="上级分类">
-                                    <i-select placeholder="请选择" v-model="editDetail.showStyle">
+                                    <i-select placeholder="请选择" v-model="form.showStyle">
                                         <i-option v-for="item in showStyle" :value="item.value"
                                                   :key="item">{{ item.label }}</i-option>
                                     </i-select>
@@ -110,7 +110,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="排序">
-                                    <i-input v-model="editDetail.goodsSort"></i-input>
+                                    <i-input v-model="form.goodsSort"></i-input>
                                     <p class="tip">数字范围为0~255，数字越小越靠前</p>
                                 </form-item>
                             </i-col>

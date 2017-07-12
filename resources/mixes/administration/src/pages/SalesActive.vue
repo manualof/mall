@@ -176,7 +176,7 @@
                                 v-model="activeModal"
                                 title="活动详情" class="refund-attribute-modal">
                             <div class="sales-fulldown-modal">
-                                <i-form ref="form" :model="form" :rules="formValidate" :label-width="100">
+                                <i-form ref="form" :model="form" :rules="rules" :label-width="100">
                                     <row>
                                         <i-col span="18">
                                             <form-item label="商品SKU">

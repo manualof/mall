@@ -10,8 +10,8 @@
         data() {
             return {
                 action: `${window.api}/mall/admin/upload`,
-                addData: {
-                    brandName: '',
+                form: {
+                    name: '',
                     disabledGroup: '图片',
                     initial: '',
                     initials: [
@@ -30,8 +30,8 @@
                 },
                 defaultList: [],
                 loading: false,
-                ruleValidate: {
-                    brandName: [
+                rules: {
+                    name: [
                         {
                             message: '名称不能为空',
                             required: true,
@@ -272,12 +272,12 @@
                 self.$router.go(-1);
             },
             removeLogo() {
-                this.addData.logo = '';
+                this.form.logo = '';
             },
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.addData.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -318,7 +318,7 @@
                 self.$notice.open({
                     title: data.message,
                 });
-                self.addData.logo = data.data.path;
+                self.form.logo = data.data.path;
             },
         },
     };
@@ -333,20 +333,20 @@
                 <span>品牌管理—新增</span>
             </div>
             <card :bordered="false">
-                <i-form ref="addData" :model="addData" :rules="ruleValidate" :label-width="200">
+                <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                     <div>
                         <row>
                             <i-col span="12">
-                                <form-item label="品牌名称" prop="brandName">
-                                    <i-input v-model="addData.brandName"></i-input>
+                                <form-item label="品牌名称" prop="name">
+                                    <i-input v-model="form.name"></i-input>
                                 </form-item>
                             </i-col>
                         </row>
                         <row>
                             <i-col span="12">
                                 <form-item label="名称首字母" prop="initial">
-                                    <i-select placeholder="请选择" v-model="addData.initial">
-                                        <i-option v-for="item in addData.initials"
+                                    <i-select placeholder="请选择" v-model="form.initial">
+                                        <i-option v-for="item in form.initials"
                                                   :value="item.value"
                                                   :key="item">
                                             {{ item.label }}
@@ -379,8 +379,8 @@
                         <row>
                             <i-col span="20">
                                 <form-item label="品牌LOGO" prop="logo">
-                                    <div class="image-preview" v-if="addData.logo">
-                                        <img :src="addData.logo">
+                                    <div class="image-preview" v-if="form.logo">
+                                        <img :src="form.logo">
                                         <icon type="close" @click.native="removeLogo"></icon>
                                     </div>
                                     <upload :action="action"
@@ -395,7 +395,7 @@
                                             :on-success="uploadSuccess"
                                             ref="upload"
                                             :show-upload-list="false"
-                                            v-if="addData.logo === '' || addData.logo === null">
+                                            v-if="form.logo === '' || form.logo === null">
                                     </upload>
                                     <p class="tip">品牌LOGO尺寸要求宽度为150像素，高度为50像素，比例为3:1的图片；
                                         支持格式gif、jpg、png</p>
@@ -405,7 +405,7 @@
                         <row>
                             <i-col span="20">
                                 <form-item label="展示方式">
-                                    <radio-group v-model="addData.disabledGroup">
+                                    <radio-group v-model="form.disabledGroup">
                                         <radio label="图片"></radio>
                                         <radio label="文字"></radio>
                                     </radio-group>
@@ -417,7 +417,7 @@
                         <row>
                             <i-col span="20">
                                 <form-item label="是否推荐">
-                                    <i-switch size="large" v-model="addData.switch1">
+                                    <i-switch size="large" v-model="form.switch1">
                                         <span slot="open">开启</span>
                                         <span slot="close">关闭</span>
                                     </i-switch>
@@ -428,7 +428,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="排序" prop="sort">
-                                    <i-input v-model="addData.sort"></i-input>
+                                    <i-input v-model="form.sort"></i-input>
                                     <p class="tip">数字范围为0~255，数字越小越靠前</p>
                                 </form-item>
                             </i-col>

@@ -11,389 +11,426 @@
         data() {
             const self = this;
             return {
-                goodsColumns: [
-                    {
-                        align: 'center',
-                        type: 'selection',
-                        width: 60,
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsName',
-                        title: '商品名称',
-                    },
-                    {
-                        align: 'center',
-                        key: 'spu',
-                        title: 'spu',
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsPrice',
-                        title: '商品价格',
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsStatus',
-                        title: '商品状态',
-                    },
-                    {
-                        align: 'center',
-                        key: 'reviewStatus',
-                        title: '审核状态',
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsImg',
-                        render(h, data) {
-                            return h('tooltip', {
-                                props: {
-                                    placement: 'right-end',
-                                },
-                                scopedSlots: {
-                                    content() {
-                                        return h('img', {
-                                            domProps: {
-                                                src: data.row.goodsImg,
-                                            },
-                                        });
-                                    },
-                                    default() {
-                                        return h('icon', {
-                                            props: {
-                                                type: 'image',
-                                            },
-                                        });
-                                    },
-                                },
-                            });
+                column: {
+                    illegal: [
+                        {
+                            align: 'center',
+                            type: 'selection',
+                            width: 60,
                         },
-                        title: '商品图片',
-                    },
-                    {
-                        align: 'center',
-                        key: 'adWord',
-                        title: '广告词',
-                    },
-                    {
-                        align: 'center',
-                        key: 'styleId',
-                        title: '分类ID',
-                    },
-                    {
-                        align: 'center',
-                        key: 'styleName',
-                        title: '分类名称',
-                    },
-                    {
-                        align: 'center',
-                        key: 'action',
-                        render(h, data) {
-                            return h('div', [
-                                h('dropdown', {
+                        {
+                            align: 'center',
+                            key: 'goodsName',
+                            title: '商品名称',
+                        },
+                        {
+                            align: 'center',
+                            key: 'spu',
+                            title: 'spu',
+                        },
+                        {
+                            align: 'center',
+                            key: 'goodsPrice',
+                            title: '商品价格',
+                        },
+                        {
+                            align: 'center',
+                            key: 'goodsStatus',
+                            title: '商品状态',
+                        },
+                        {
+                            align: 'center',
+                            key: 'reviewStatus',
+                            title: '审核状态',
+                        },
+                        {
+                            align: 'center',
+                            key: 'goodsImg',
+                            render(h, data) {
+                                return h('tooltip', {
+                                    props: {
+                                        placement: 'right-end',
+                                    },
                                     scopedSlots: {
-                                        list() {
-                                            return h('dropdown-menu', [
-                                                h('dropdown-item', '查看商品详情'),
-                                                h('dropdown-item', {
-                                                    nativeOn: {
-                                                        click() {
-                                                            self.lookGoodsSku();
-                                                        },
-                                                    },
-                                                    props: {
-                                                        name: 'goodSku',
-                                                    },
-                                                }, '查看商品SKU'),
-                                                h('dropdown-item', '加入商品库'),
-                                            ]);
+                                        content() {
+                                            return h('img', {
+                                                domProps: {
+                                                    src: data.row.goodsImg,
+                                                },
+                                            });
+                                        },
+                                        default() {
+                                            return h('icon', {
+                                                props: {
+                                                    type: 'image',
+                                                },
+                                            });
                                         },
                                     },
-                                }, [
+                                });
+                            },
+                            title: '商品图片',
+                        },
+                        {
+                            align: 'center',
+                            key: 'adWord',
+                            title: '广告词',
+                        },
+                        {
+                            align: 'center',
+                            key: 'styleId',
+                            title: '分类ID',
+                        },
+                        {
+                            align: 'center',
+                            key: 'styleName',
+                            title: '分类名称',
+                        },
+                        {
+                            align: 'center',
+                            key: 'action',
+                            render(h, data) {
+                                return h('div', [
+                                    h('dropdown', {
+                                        scopedSlots: {
+                                            list() {
+                                                return h('dropdown-menu', [
+                                                    h('dropdown-item', '查看商品详情'),
+                                                    h('dropdown-item', {
+                                                        on: {
+                                                            click() {
+                                                                self.lookGoodsSku();
+                                                            },
+                                                        },
+                                                        props: {
+                                                            name: 'goodSku',
+                                                        },
+                                                    }, '查看商品SKU'),
+                                                    h('dropdown-item', '加入商品库'),
+                                                ]);
+                                            },
+                                        },
+                                    }, [
+                                        h('i-button', {
+                                            props: {
+                                                size: 'small',
+                                                type: 'ghost',
+                                            },
+                                        }, [
+                                            '设置',
+                                            h('icon', {
+                                                props: {
+                                                    type: 'arrow-down-b',
+                                                },
+                                            }),
+                                        ]),
+                                    ]),
                                     h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.removeShelf(data.index);
+                                            },
+                                        },
                                         props: {
                                             size: 'small',
                                             type: 'ghost',
                                         },
-                                    }, [
-                                        '设置',
-                                        h('icon', {
-                                            props: {
-                                                type: 'arrow-down-b',
-                                            },
-                                        }),
-                                    ]),
-                                ]),
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.remove(data.index);
+                                        style: {
+                                            marginLeft: '10px',
+                                        },
+                                    }, '删除'),
+                                ]);
+                            },
+                            title: '操作',
+                            width: 180,
+                        },
+                    ],
+                    product: [
+                        {
+                            align: 'center',
+                            type: 'selection',
+                            width: 60,
+                        },
+                        {
+                            align: 'center',
+                            key: 'goodsName',
+                            title: '商品名称',
+                        },
+                        {
+                            align: 'center',
+                            key: 'spu',
+                            title: 'spu',
+                        },
+                        {
+                            align: 'center',
+                            key: 'goodsPrice',
+                            title: '商品价格',
+                        },
+                        {
+                            align: 'center',
+                            key: 'goodsStatus',
+                            title: '商品状态',
+                        },
+                        {
+                            align: 'center',
+                            key: 'reviewStatus',
+                            title: '审核状态',
+                        },
+                        {
+                            align: 'center',
+                            key: 'goodsImg',
+                            render(h, data) {
+                                return h('tooltip', {
+                                    props: {
+                                        placement: 'right-end',
+                                    },
+                                    scopedSlots: {
+                                        content() {
+                                            return h('img', {
+                                                domProps: {
+                                                    src: data.row.goodsImg,
+                                                },
+                                            });
+                                        },
+                                        default() {
+                                            return h('icon', {
+                                                props: {
+                                                    type: 'image',
+                                                },
+                                            });
                                         },
                                     },
-                                    props: {
-                                        size: 'small',
-                                        type: 'ghost',
-                                    },
-                                    style: {
-                                        marginLeft: '10px',
-                                    },
-                                }, '下架'),
-                            ]);
+                                });
+                            },
+                            title: '商品图片',
                         },
-                        title: '操作',
-                        width: 180,
-                    },
-                ],
-                goodsData: [
-                    {
-                        adWord: '纯棉易用七天',
-                        goodsImg: image1,
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
-                    },
-                    {
-                        adWord: '纯棉易用七天',
-                        goodsImg: image1,
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
-                    },
-                    {
-                        adWord: '纯棉易用七天',
-                        goodsImg: image1,
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
-                    },
-                    {
-                        adWord: '纯棉易用七天',
-                        goodsImg: image1,
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
-                    },
-                    {
-                        adWord: '纯棉易用七天',
-                        goodsImg: image1,
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
-                    },
-                ],
+                        {
+                            align: 'center',
+                            key: 'adWord',
+                            title: '广告词',
+                        },
+                        {
+                            align: 'center',
+                            key: 'styleId',
+                            title: '分类ID',
+                        },
+                        {
+                            align: 'center',
+                            key: 'styleName',
+                            title: '分类名称',
+                        },
+                        {
+                            align: 'center',
+                            key: 'action',
+                            render(h, data) {
+                                return h('div', [
+                                    h('dropdown', {
+                                        scopedSlots: {
+                                            list() {
+                                                return h('dropdown-menu', [
+                                                    h('dropdown-item', '查看商品详情'),
+                                                    h('dropdown-item', {
+                                                        nativeOn: {
+                                                            click() {
+                                                                self.lookGoodsSku();
+                                                            },
+                                                        },
+                                                        props: {
+                                                            name: 'goodSku',
+                                                        },
+                                                    }, '查看商品SKU'),
+                                                    h('dropdown-item', '加入商品库'),
+                                                ]);
+                                            },
+                                        },
+                                    }, [
+                                        h('i-button', {
+                                            props: {
+                                                size: 'small',
+                                                type: 'ghost',
+                                            },
+                                        }, [
+                                            '设置',
+                                            h('icon', {
+                                                props: {
+                                                    type: 'arrow-down-b',
+                                                },
+                                            }),
+                                        ]),
+                                    ]),
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.remove(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                        style: {
+                                            marginLeft: '10px',
+                                        },
+                                    }, '下架'),
+                                ]);
+                            },
+                            title: '操作',
+                            width: 180,
+                        },
+                    ],
+                    sku: [
+                        {
+                            align: 'center',
+                            key: 'skuId',
+                            title: 'SKU编号',
+                            width: 185,
+                        },
+                        {
+                            align: 'center',
+                            key: 'goodsImg',
+                            render(h) {
+                                return h('icon', {
+                                    props: {
+                                        type: 'image',
+                                    },
+                                });
+                            },
+                            title: '商品图片',
+                            width: 185,
+                        },
+                        {
+                            align: 'center',
+                            key: 'skuStock',
+                            title: 'SKU库存',
+                            width: 185,
+                        },
+                        {
+                            align: 'center',
+                            key: 'skuPrice',
+                            title: 'SKU价格(元)',
+                            width: 185,
+                        },
+                    ],
+                },
+                list: {
+                    illegal: [
+                        {
+                            adWord: '纯棉易用七天',
+                            goodsImg: image1,
+                            goodsName: '太阳镜眼睛放蓝光紫外线',
+                            goodsPrice: '99.00',
+                            goodsStatus: '出售中',
+                            reviewStatus: '通过',
+                            spu: '001',
+                            styleId: 30,
+                            styleName: '运动健康>户外>鞋服',
+                        },
+                        {
+                            adWord: '纯棉易用七天',
+                            goodsImg: image1,
+                            goodsName: '太阳镜眼睛放蓝光紫外线',
+                            goodsPrice: '99.00',
+                            goodsStatus: '出售中',
+                            reviewStatus: '通过',
+                            spu: '001',
+                            styleId: 30,
+                            styleName: '运动健康>户外>鞋服',
+                        },
+                        {
+                            adWord: '纯棉易用七天',
+                            goodsImg: image1,
+                            goodsName: '太阳镜眼睛放蓝光紫外线',
+                            goodsPrice: '99.00',
+                            goodsStatus: '出售中',
+                            reviewStatus: '通过',
+                            spu: '001',
+                            styleId: 30,
+                            styleName: '运动健康>户外>鞋服',
+                        },
+                        {
+                            adWord: '纯棉易用七天',
+                            goodsImg: image1,
+                            goodsName: '太阳镜眼睛放蓝光紫外线',
+                            goodsPrice: '99.00',
+                            goodsStatus: '出售中',
+                            reviewStatus: '通过',
+                            spu: '001',
+                            styleId: 30,
+                            styleName: '运动健康>户外>鞋服',
+                        },
+                        {
+                            adWord: '纯棉易用七天',
+                            goodsImg: image1,
+                            goodsName: '太阳镜眼睛放蓝光紫外线',
+                            goodsPrice: '99.00',
+                            goodsStatus: '出售中',
+                            reviewStatus: '通过',
+                            spu: '001',
+                            styleId: 30,
+                            styleName: '运动健康>户外>鞋服',
+                        },
+                    ],
+                    product: [
+                        {
+                            adWord: '纯棉易用七天',
+                            goodsImg: image1,
+                            goodsName: '太阳镜眼睛放蓝光紫外线',
+                            goodsPrice: '99.00',
+                            goodsStatus: '出售中',
+                            reviewStatus: '通过',
+                            spu: '001',
+                            styleId: 30,
+                            styleName: '运动健康>户外>鞋服',
+                        },
+                        {
+                            adWord: '纯棉易用七天',
+                            goodsImg: image1,
+                            goodsName: '太阳镜眼睛放蓝光紫外线',
+                            goodsPrice: '99.00',
+                            goodsStatus: '出售中',
+                            reviewStatus: '通过',
+                            spu: '001',
+                            styleId: 30,
+                            styleName: '运动健康>户外>鞋服',
+                        },
+                        {
+                            adWord: '纯棉易用七天',
+                            goodsImg: image1,
+                            goodsName: '太阳镜眼睛放蓝光紫外线',
+                            goodsPrice: '99.00',
+                            goodsStatus: '出售中',
+                            reviewStatus: '通过',
+                            spu: '001',
+                            styleId: 30,
+                            styleName: '运动健康>户外>鞋服',
+                        },
+                        {
+                            adWord: '纯棉易用七天',
+                            goodsImg: image1,
+                            goodsName: '太阳镜眼睛放蓝光紫外线',
+                            goodsPrice: '99.00',
+                            goodsStatus: '出售中',
+                            reviewStatus: '通过',
+                            spu: '001',
+                            styleId: 30,
+                            styleName: '运动健康>户外>鞋服',
+                        },
+                        {
+                            adWord: '纯棉易用七天',
+                            goodsImg: image1,
+                            goodsName: '太阳镜眼睛放蓝光紫外线',
+                            goodsPrice: '99.00',
+                            goodsStatus: '出售中',
+                            reviewStatus: '通过',
+                            spu: '001',
+                            styleId: 30,
+                            styleName: '运动健康>户外>鞋服',
+                        },
+                    ],
+                },
                 goodsReview: {
                     switch1: true,
                 },
-                goodsShelfColumns: [
-                    {
-                        align: 'center',
-                        type: 'selection',
-                        width: 60,
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsName',
-                        title: '商品名称',
-                    },
-                    {
-                        align: 'center',
-                        key: 'spu',
-                        title: 'spu',
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsPrice',
-                        title: '商品价格',
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsStatus',
-                        title: '商品状态',
-                    },
-                    {
-                        align: 'center',
-                        key: 'reviewStatus',
-                        title: '审核状态',
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsImg',
-                        render(h, data) {
-                            return h('tooltip', {
-                                props: {
-                                    placement: 'right-end',
-                                },
-                                scopedSlots: {
-                                    content() {
-                                        return h('img', {
-                                            domProps: {
-                                                src: data.row.goodsImg,
-                                            },
-                                        });
-                                    },
-                                    default() {
-                                        return h('icon', {
-                                            props: {
-                                                type: 'image',
-                                            },
-                                        });
-                                    },
-                                },
-                            });
-                        },
-                        title: '商品图片',
-                    },
-                    {
-                        align: 'center',
-                        key: 'adWord',
-                        title: '广告词',
-                    },
-                    {
-                        align: 'center',
-                        key: 'styleId',
-                        title: '分类ID',
-                    },
-                    {
-                        align: 'center',
-                        key: 'styleName',
-                        title: '分类名称',
-                    },
-                    {
-                        align: 'center',
-                        key: 'action',
-                        render(h, data) {
-                            return h('div', [
-                                h('dropdown', {
-                                    scopedSlots: {
-                                        list() {
-                                            return h('dropdown-menu', [
-                                                h('dropdown-item', '查看商品详情'),
-                                                h('dropdown-item', {
-                                                    on: {
-                                                        click() {
-                                                            self.lookGoodsSku();
-                                                        },
-                                                    },
-                                                    props: {
-                                                        name: 'goodSku',
-                                                    },
-                                                }, '查看商品SKU'),
-                                                h('dropdown-item', '加入商品库'),
-                                            ]);
-                                        },
-                                    },
-                                }, [
-                                    h('i-button', {
-                                        props: {
-                                            size: 'small',
-                                            type: 'ghost',
-                                        },
-                                    }, [
-                                        '设置',
-                                        h('icon', {
-                                            props: {
-                                                type: 'arrow-down-b',
-                                            },
-                                        }),
-                                    ]),
-                                ]),
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.removeShelf(data.index);
-                                        },
-                                    },
-                                    props: {
-                                        size: 'small',
-                                        type: 'ghost',
-                                    },
-                                    style: {
-                                        marginLeft: '10px',
-                                    },
-                                }, '删除'),
-                            ]);
-                        },
-                        title: '操作',
-                        width: 180,
-                    },
-                ],
-                goodsShelfData: [
-                    {
-                        adWord: '纯棉易用七天',
-                        goodsImg: image1,
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
-                    },
-                    {
-                        adWord: '纯棉易用七天',
-                        goodsImg: image1,
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
-                    },
-                    {
-                        adWord: '纯棉易用七天',
-                        goodsImg: image1,
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
-                    },
-                    {
-                        adWord: '纯棉易用七天',
-                        goodsImg: image1,
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
-                    },
-                    {
-                        adWord: '纯棉易用七天',
-                        goodsImg: image1,
-                        goodsName: '太阳镜眼睛放蓝光紫外线',
-                        goodsPrice: '99.00',
-                        goodsStatus: '出售中',
-                        reviewStatus: '通过',
-                        spu: '001',
-                        styleId: 30,
-                        styleName: '运动健康>户外>鞋服',
-                    },
-                ],
                 loading: false,
                 modal: false,
                 searchList: [
@@ -427,39 +464,6 @@
                     },
                 ],
                 self: this,
-                skuColumns: [
-                    {
-                        align: 'center',
-                        key: 'skuId',
-                        title: 'SKU编号',
-                        width: 185,
-                    },
-                    {
-                        align: 'center',
-                        key: 'goodsImg',
-                        render(h) {
-                            return h('icon', {
-                                props: {
-                                    type: 'image',
-                                },
-                            });
-                        },
-                        title: '商品图片',
-                        width: 185,
-                    },
-                    {
-                        align: 'center',
-                        key: 'skuStock',
-                        title: 'SKU库存',
-                        width: 185,
-                    },
-                    {
-                        align: 'center',
-                        key: 'skuPrice',
-                        title: 'SKU价格(元)',
-                        width: 185,
-                    },
-                ],
                 skuData: [
                     {
                         skuId: 133026,
@@ -484,10 +488,10 @@
                 this.modal = true;
             },
             remove(index) {
-                this.goodsData.splice(index, 1);
+                this.list.product.splice(index, 1);
             },
             removeShelf(index) {
-                this.goodsShelfData.splice(index, 1);
+                this.list.illegal.splice(index, 1);
             },
             submit() {
                 const self = this;
@@ -535,9 +539,8 @@
                                 </div>
                             </div>
                             <i-table class="goods-table"
-                                     :columns="goodsColumns"
-                                     :context="self"
-                                     :data="goodsData"
+                                     :columns="column.product"
+                                     :data="list.product"
                                      ref="goodsList"
                                      highlight-row>
                             </i-table>
@@ -545,8 +548,11 @@
                         <modal value="goodSku"
                             v-model="modal"
                             title="商品“222616”的SKU列表" class="good-sku-modal">
-                            <i-table ref="goodsSKU" class="goods-table" :columns="skuColumns"
-                                     :context="self" :data="skuData"></i-table>
+                            <i-table ref="goodsSKU"
+                                     class="goods-table"
+                                     :columns="column.sku"
+                                     :context="self"
+                                     :data="skuData"></i-table>
                         </modal>
                         <div class="page">
                             <page :total="100" show-elevator></page>
@@ -578,10 +584,9 @@
                                 </div>
                             </div>
                             <i-table class="goods-table"
-                                     :columns="goodsShelfColumns"
-                                     :context="self"
-                                     :data="goodsShelfData"
-                                     ref="goodsShelfList"
+                                     :columns="column.illegal"
+                                     :data="list.illegal"
+                                     ref="illegal"
                                      highlight-row>
                             </i-table>
                         </div>

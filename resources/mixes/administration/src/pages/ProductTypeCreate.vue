@@ -9,7 +9,7 @@
         },
         data() {
             return {
-                editDetail: {
+                form: {
                     attributeName: '',
                     attributeNum: 0,
                     attributeSelect: '',
@@ -38,7 +38,7 @@
                     },
                 ],
                 loading: false,
-                ruleValidate: {
+                rules: {
                     typeName: [
                         {
                             message: '名称名称不能为空',
@@ -178,7 +178,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.editDetail.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -210,12 +210,12 @@
                     <p>选中属性的“显示”选项，该属性将会在商品列表页显示</p>
                     <p>自定义属性只需要填写属性名称，属性值有商家自行填写。注意：自定义属性不作为商品检索项使用</p>
                 </div>
-                <i-form ref="editDetail" :model="editDetail" :rules="ruleValidate" :label-width="200">
+                <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                     <div class="basic-information">
                         <row>
                             <i-col span="12">
                                 <form-item label="类型名称">
-                                    <i-input v-model="editDetail.typeName"></i-input>
+                                    <i-input v-model="form.typeName"></i-input>
                                 </form-item>
                             </i-col>
                         </row>
@@ -230,7 +230,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="排序" prop="sort">
-                                    <i-input v-model="editDetail.sort"></i-input>
+                                    <i-input v-model="form.sort"></i-input>
                                     <p class="tip">
                                         请填写自然数。类型列表将会根据排序进行由小到大排列显示
                                     </p>
@@ -242,7 +242,7 @@
                                 <form-item label="选择关联规格" class="quike-position">
                                     <div class="flex-position">
                                         <span class="title">快捷定位</span>
-                                        <i-select placeholder="请选择" v-model="editDetail.location">
+                                        <i-select placeholder="请选择" v-model="form.location">
                                             <i-option v-for="item in location" :value="item.value"
                                                       :key="item">{{ item.label }}</i-option>
                                         </i-select>
@@ -252,7 +252,7 @@
                                         <ul>
                                             <li>
                                                 <p>时尚物品</p>
-                                                <checkbox-group v-model="editDetail.checkbox1">
+                                                <checkbox-group v-model="form.checkbox1">
                                                     <checkbox label="时尚"></checkbox>
                                                     <checkbox label="时尚1"></checkbox>
                                                     <checkbox label="运动品牌"></checkbox>
@@ -260,7 +260,7 @@
                                             </li>
                                             <li>
                                                 <p>时尚物品</p>
-                                                <checkbox-group v-model="editDetail.checkbox2">
+                                                <checkbox-group v-model="form.checkbox2">
                                                     <checkbox label="时尚"></checkbox>
                                                     <checkbox label="时尚1"></checkbox>
                                                     <checkbox label="运动品牌"></checkbox>
@@ -269,7 +269,7 @@
                                             </li>
                                             <li>
                                                 <p>时尚物品</p>
-                                                <checkbox-group v-model="editDetail.checkbox3">
+                                                <checkbox-group v-model="form.checkbox3">
                                                     <checkbox label="时尚"></checkbox>
                                                     <checkbox label="时尚1"></checkbox>
                                                 </checkbox-group>
@@ -286,7 +286,7 @@
                                 <form-item label="选择关联品牌" class="quike-position">
                                     <div class="flex-position">
                                         <span class="title">快捷定位</span>
-                                        <i-select placeholder="请选择" v-model="editDetail.showStyle">
+                                        <i-select placeholder="请选择" v-model="form.showStyle">
                                             <i-option v-for="item in showStyle" :value="item.value"
                                                       :key="item">{{ item.label }}</i-option>
                                         </i-select>
@@ -296,7 +296,7 @@
                                         <ul>
                                             <li>
                                                 <p>时尚物品</p>
-                                                <checkbox-group v-model="editDetail.checkbox1">
+                                                <checkbox-group v-model="form.checkbox1">
                                                     <checkbox label="时尚1"></checkbox>
                                                     <checkbox label="时尚2"></checkbox>
                                                     <checkbox label="运动品牌1"></checkbox>
@@ -304,7 +304,7 @@
                                             </li>
                                             <li>
                                                 <p>时尚物品</p>
-                                                <checkbox-group v-model="editDetail.checkbox2">
+                                                <checkbox-group v-model="form.checkbox2">
                                                     <checkbox label="时尚2"></checkbox>
                                                     <checkbox label="时尚3"></checkbox>
                                                     <checkbox label="运动品牌2"></checkbox>
@@ -313,7 +313,7 @@
                                             </li>
                                             <li>
                                                 <p>时尚物品</p>
-                                                <checkbox-group v-model="editDetail.checkbox3">
+                                                <checkbox-group v-model="form.checkbox3">
                                                     <checkbox label="时尚1"></checkbox>
                                                     <checkbox label="时尚3"></checkbox>
                                                 </checkbox-group>
@@ -330,12 +330,12 @@
                                 <form-item label="添加属性" class="quike-position">
                                     <div ref="box">
                                         <div class="flex-position">
-                                            <i-input v-model="editDetail.attributeNum"></i-input>
+                                            <i-input v-model="form.attributeNum"></i-input>
                                             <i-input placeholder="输入属性名称"
-                                                     v-model="editDetail.attributeName" ></i-input>
+                                                     v-model="form.attributeName" ></i-input>
                                             <i-input placeholder="输入属性可选值"
-                                                     v-model="editDetail.attributeSelect"></i-input>
-                                            <checkbox v-model="editDetail.attributeShow">显示</checkbox>
+                                                     v-model="form.attributeSelect"></i-input>
+                                            <checkbox v-model="form.attributeShow">显示</checkbox>
                                             <i-button @click.native="deleteCustomize" type="ghost">删除</i-button>
                                         </div>
                                     </div>
@@ -350,7 +350,7 @@
                             <i-col span="20">
                                 <form-item label="自定义属性" class="quike-position">
                                     <div class="flex-position flex-customize">
-                                        <i-input v-model="editDetail.customize"></i-input>
+                                        <i-input v-model="form.customize"></i-input>
                                         <i-button @click.native="deleteCustomize" type="ghost">删除</i-button>
                                     </div>
                                     <i-button @click.native="addCustomize" type="ghost">+添加自定义属性</i-button>
