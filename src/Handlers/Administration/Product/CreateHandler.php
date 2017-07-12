@@ -26,7 +26,10 @@ class CreateHandler extends Handler
     {
         $this->validate($this->request, [
             'barcode'           => Rule::numeric(),
-            'brand_id'          => Rule::numeric(),
+            'brand_id'          => [
+                Rule::exists('mall_product_brands'),
+                Rule::numeric(),
+            ],
             'business_item'     => Rule::numeric(),
             'category_id'       => Rule::numeric(),
             'description'       => Rule::required(),
@@ -47,6 +50,7 @@ class CreateHandler extends Handler
             'inventory_warning' => Rule::numeric(),
         ], [
             'barcode.numeric'           => '商品条形码必须为数值',
+            'brand_id.exists'           => '没有对应的品牌信息',
             'brand_id.numeric'          => '品牌 ID 必须为数值',
             'business_item.numeric'     => '商家货号必须为数值',
             'category_id.numeric'       => '分类 ID 必须为数值',
