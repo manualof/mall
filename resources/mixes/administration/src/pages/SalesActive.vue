@@ -19,7 +19,7 @@
                     sku: 133,
                     time: '1235-32-3',
                 },
-                goodsColumns: [
+                columns: [
                     {
                         align: 'center',
                         key: 'sku',
@@ -86,7 +86,7 @@
                         width: 180,
                     },
                 ],
-                goodsData: [
+                list: [
                     {
                         id: 5424367,
                         name: 'SONY索尼SFGHGKHJKH平板电脑 16G 官方标配',
@@ -130,12 +130,11 @@
                         value: '2',
                     },
                 ],
-                self: this,
             };
         },
         methods: {
             remove(index) {
-                this.goodsData.splice(index, 1);
+                this.list.splice(index, 1);
             },
             look() {
                 this.activeModal = true;
@@ -167,16 +166,16 @@
                             </div>
                         </div>
                         <i-table class="goods-table"
-                                 :columns="goodsColumns"
+                                 :columns="columns"
                                  :context="self"
-                                 :data="goodsData"
+                                 :data="list"
                                  ref="goodsList">
                         </i-table>
                         <modal
                                 v-model="activeModal"
                                 title="活动详情" class="refund-attribute-modal">
                             <div class="sales-fulldown-modal">
-                                <i-form ref="form" :model="form" :rules="formValidate" :label-width="100">
+                                <i-form ref="form" :model="form" :rules="rules" :label-width="100">
                                     <row>
                                         <i-col span="18">
                                             <form-item label="商品SKU">

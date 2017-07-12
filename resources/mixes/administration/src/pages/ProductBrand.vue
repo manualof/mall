@@ -11,7 +11,7 @@
         data() {
             const self = this;
             return {
-                brandColumns: [
+                columns: [
                     {
                         align: 'center',
                         key: 'brandId',
@@ -130,7 +130,7 @@
                         width: 180,
                     },
                 ],
-                brandData: [
+                list: [
                     {
                         brandId: '001',
                         initials: 'Y',
@@ -162,7 +162,6 @@
                         showStyle: '图片',
                     },
                 ],
-                self: this,
             };
         },
         methods: {
@@ -184,7 +183,7 @@
                 });
             },
             remove(index) {
-                this.brandData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -206,9 +205,8 @@
                             <i-button @click="exportData" type="ghost">导出数据</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                         </div>
-                        <i-table :columns="brandColumns"
-                                 :context="self"
-                                 :data="brandData"
+                        <i-table :columns="columns"
+                                 :data="list"
                                  highlight-row
                                  ref="brand">
                         </i-table>

@@ -10,7 +10,7 @@
         data() {
             const self = this;
             return {
-                managementColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
@@ -112,7 +112,7 @@
                         width: 180,
                     },
                 ],
-                managementData: [
+                list: [
                     {
                         orderAmount: '899（含运费10.00）',
                         orderID: '65454654546',
@@ -226,7 +226,6 @@
                     },
                 ],
                 searchWord: '',
-                self: this,
             };
         },
         methods: {
@@ -281,8 +280,8 @@
                             </div>
                             <i-table class="shop-table"
                                      :context="self"
-                                     :columns="managementColumns"
-                                     :data="managementData"
+                                     :columns="columns"
+                                     :data="list"
                                      ref="orderTable" highlight-row ></i-table>
                         </div>
                         <div class="page">

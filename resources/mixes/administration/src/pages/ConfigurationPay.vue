@@ -9,7 +9,7 @@
         },
         data() {
             return {
-                payColumns: [
+                columns: [
                     {
                         type: 'selection',
                         width: 150,
@@ -54,7 +54,7 @@
                         width: 150,
                     },
                 ],
-                payStyle: [
+                list: [
                     {
                         style: '货到付款',
                     },
@@ -69,7 +69,6 @@
                     },
                 ],
                 plugin: true,
-                self: this,
                 switch1: true,
             };
         },
@@ -96,7 +95,7 @@
                             <p>此处列出了系统支持的支付方式，点击“编辑”按钮可以编辑支付参数及开关状态</p>
                         </div>
                         <div class="store-body">
-                            <i-table :context="self"  :columns="payColumns" :data="payStyle" ref="payStyle"></i-table>
+                            <i-table  :columns="columns" :data="list" ref="payStyle"></i-table>
                         </div>
                     </card>
                     <card :bordered="false" v-if="!plugin">

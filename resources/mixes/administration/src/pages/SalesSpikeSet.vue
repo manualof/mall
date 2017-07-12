@@ -9,7 +9,7 @@
         },
         data() {
             return {
-                killColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
@@ -52,7 +52,7 @@
                         width: 140,
                     },
                 ],
-                killDate: [
+                list: [
                     {
                         action: '',
                         endTime: '2017-12-27',
@@ -86,7 +86,6 @@
                     },
 
                 ],
-                self: this,
             };
         },
         methods: {
@@ -114,7 +113,7 @@
                 <span>秒杀活动—设置商品</span>
             </div>
            <card :bordered="false">
-               <i-table :columns="killColumns" :context="self" :data="killDate" highlight-row></i-table>
+               <i-table :columns="columns" :data="list" highlight-row></i-table>
            </card>
         </div>
     </div>

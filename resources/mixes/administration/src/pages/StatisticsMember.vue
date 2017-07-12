@@ -1098,7 +1098,6 @@
                         province: '陕西',
                     },
                 ],
-                self: this,
                 style: 'height: 400px;',
                 timeList: [
                     {

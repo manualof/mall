@@ -25,8 +25,7 @@
                         value: '商品分类',
                     },
                 ],
-                self: this,
-                typeColumns: [
+                columns: [
                     {
                         key: 'typeId',
                         title: '类型ID',
@@ -81,7 +80,7 @@
                         },
                     },
                 ],
-                typeData: [
+                list: [
                     {
                         positionId: '22',
                         positionName: '液晶电视',
@@ -120,7 +119,7 @@
                 });
             },
             remove(index) {
-                this.typeData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -150,7 +149,7 @@
                                 </i-input>
                             </div>
                         </div>
-                        <i-table :columns="typeColumns" :context="self" :data="typeData" highlight-row></i-table>
+                        <i-table :columns="columns" :data="list" highlight-row></i-table>
                     </card>
                 </tab-pane>
             </tabs>

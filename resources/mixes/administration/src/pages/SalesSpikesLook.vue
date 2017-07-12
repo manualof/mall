@@ -9,7 +9,7 @@
         },
         data() {
             return {
-                goodsColumns: [
+                columns: [
                     {
                         align: 'center',
                         key: 'goodsName',
@@ -92,7 +92,7 @@
                         width: 180,
                     },
                 ],
-                goodsData: [
+                list: [
                     {
                         endTime: '2017-2-02',
                         goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
@@ -141,7 +141,6 @@
                         value: '商品分类',
                     },
                 ],
-                self: this,
             };
         },
         methods: {
@@ -181,9 +180,9 @@
                         </div>
                     </div>
                     <i-table class="goods-table"
-                             :columns="goodsColumns"
+                             :columns="columns"
                              :context="self"
-                             :data="goodsData"
+                             :data="list"
                              ref="goodsList">
                     </i-table>
                 </card>

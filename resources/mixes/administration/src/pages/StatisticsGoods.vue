@@ -239,7 +239,6 @@
                         spu: 4,
                     },
                 ],
-                self: this,
                 shopsList: [
                     {
                         label: '商品1',

@@ -458,7 +458,6 @@
                     },
                 ],
                 searchWord: '',
-                self: this,
             };
         },
         methods: {
@@ -550,7 +549,7 @@
                               </div>
                           </div>
                           <i-table  ref="pendingTable"  highlight-row class="shop-table" :columns="allRecordsColumns"
-                                    :context="self" :data="allRecordsData"></i-table>
+                                    :data="allRecordsData"></i-table>
                           <div class="page">
                               <page :total="100" show-elevator></page>
                           </div>

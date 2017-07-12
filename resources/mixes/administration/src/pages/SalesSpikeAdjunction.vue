@@ -9,18 +9,18 @@
         },
 //        computed: {
 //            getStartTime() {
-//                return Date.parse(this.activityData.startTime);
+//                return Date.parse(this.form.startTime);
 //            },
 //        },
         data() {
             return {
-                activityData: {
+                form: {
                     endTime: '',
                     startTime: '',
                     status: false,
                     title: '',
                 },
-                activityValidate: {
+                rules: {
                     title: [
                         {
                             message: '标题不能为空',
@@ -35,7 +35,6 @@
                     },
                 },
                 loading: false,
-                self: this,
                 startOptions: {
                     disabledDate(date) {
                         return date && date.valueOf() < Date.now() - 86400000;
@@ -49,12 +48,12 @@
                 self.$router.go(-1);
             },
 //            shuchu() {
-//                console.log(Date.parse(this.activityData.startTime));
+//                console.log(Date.parse(this.form.startTime));
 //            },
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.activityValidate.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         self.$Message.success('提交成功!');
                     } else {
@@ -85,11 +84,11 @@
                         <p>提示</p>
                         <p>秒杀活动仅设置结束时间，截止时间内多个活动可同时进行，建议标题以分类区分便于管理</p>
                     </div>
-                    <i-form :label-width="200" ref="activityValidate" :model="activityData" :rules="activityValidate">
+                    <i-form :label-width="200" ref="form" :model="form" :rules="rules">
                         <row>
                             <i-col span="12">
                                 <form-item label="活动标题：" prop="title">
-                                    <i-input v-model="activityData.title" placeholder=""></i-input>
+                                    <i-input v-model="form.title" placeholder=""></i-input>
                                 </form-item>
                             </i-col>
                         </row>
@@ -98,7 +97,7 @@
                                 <form-item label="开始时间：">
                                     <date-picker type="date" placeholder="选择日期"
                                                  :options="startOptions"
-                                                 v-model="activityData.startTime"></date-picker>
+                                                 v-model="form.startTime"></date-picker>
                                 </form-item>
                             </i-col>
                         </row>
@@ -108,14 +107,14 @@
                                     <date-picker type="date" placeholder="选择日期"
                                                  :options="endOptions"
                                                  @on-change="shuchu"
-                                                 v-model="activityData.endTime"></date-picker>
+                                                 v-model="form.endTime"></date-picker>
                                 </form-item>
                             </i-col>
                         </row>
                         <row>
                             <i-col span="12">
                                 <form-item label="状态：">
-                                    <i-switch size="large" v-model="activityData.status">
+                                    <i-switch size="large" v-model="form.status">
                                         <span slot="open">开启</span>
                                         <span slot="close">关闭</span>
                                     </i-switch>

@@ -9,7 +9,7 @@
         },
         data() {
             return {
-                timeListColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
@@ -69,7 +69,7 @@
                         width: 180,
                     },
                 ],
-                timeListData: [
+                list: [
                     {
                         finishTime: '2016-12-23',
                         name: '午夜场',
@@ -138,8 +138,8 @@
                         <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                     </div>
                     <i-table class="shop-table"
-                             :columns="timeListColumns"
-                             :data="timeListData"
+                             :columns="columns"
+                             :data="list"
                              highlight-row>
                     </i-table>
                 </div>

@@ -142,7 +142,6 @@
                         stationLetter: false,
                     },
                 ],
-                self: this,
                 userColumns: [
                     {
                         align: 'center',

@@ -10,7 +10,7 @@
         data() {
             return {
                 loading: false,
-                ruleValidate: {
+                rules: {
                     type: [
                         {
                             message: '规格不能为空',
@@ -19,7 +19,7 @@
                         },
                     ],
                 },
-                standardData: {
+                form: {
                     position: '',
                     sort: '',
                     type: '',
@@ -136,7 +136,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.standardData.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -160,12 +160,12 @@
                 <span>规格管理—添加</span>
             </div>
             <card :bordered="false">
-                <i-form ref="standardData" :model="standardData" :rules="ruleValidate" :label-width="200">
+                <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                     <div class="basic-information">
                         <row>
                             <i-col span="12">
                                 <form-item label="规格" prop="type">
-                                    <i-input v-model="standardData.type"></i-input>
+                                    <i-input v-model="form.type"></i-input>
                                     <p class="tip">
                                         请填写常用的商品规格的名称；例如：颜色；尺寸等
                                     </p>
@@ -176,7 +176,7 @@
                             <i-col span="12">
                                 <form-item label="快捷定位">
                                     <cascader :data="styleData" trigger="hover"
-                                              v-model="standardData.position"></cascader>
+                                              v-model="form.position"></cascader>
                                     <p class="tip">选择分类，可关联到任意级分类 （只在后台快捷定位中起作用）</p>
                                 </form-item>
                             </i-col>
@@ -184,7 +184,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="排序" prop="sort">
-                                    <i-input v-model="standardData.sort"></i-input>
+                                    <i-input v-model="form.sort"></i-input>
                                     <p class="tip">
                                         请填写自然数。类型列表将会根据排序进行由小到大排列显示
                                     </p>

@@ -17,7 +17,7 @@
                     shop: '爱拍数码',
                     time: '2017-04-01至2017-04-02',
                 },
-                goodsColumns: [
+                columns: [
                     {
                         align: 'center',
                         key: 'num',
@@ -79,7 +79,7 @@
                         width: 180,
                     },
                 ],
-                goodsData: [
+                list: [
                     {
                         endTime: '2016-12-23',
                         shopName: '店铺名称',
@@ -119,12 +119,11 @@
                         value: '2',
                     },
                 ],
-                self: this,
             };
         },
         methods: {
             remove(index) {
-                this.goodsData.splice(index, 1);
+                this.list.splice(index, 1);
             },
             look() {
                 this.activeModal = true;
@@ -156,16 +155,16 @@
                             </div>
                         </div>
                         <i-table class="goods-table"
-                                 :columns="goodsColumns"
+                                 :columns="columns"
                                  :context="self"
-                                 :data="goodsData"
+                                 :data="list"
                                  ref="goodsList">
                         </i-table>
                         <modal
                                 v-model="activeModal"
                                 title="活动详情" class="refund-attribute-modal">
                             <div class="sales-fulldown-modal">
-                                <i-form ref="form" :model="form" :rules="formValidate" :label-width="100">
+                                <i-form ref="form" :model="form" :rules="rules" :label-width="100">
                                     <row>
                                         <i-col span="18">
                                             <form-item label="活动名称">

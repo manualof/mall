@@ -489,7 +489,6 @@
                     },
                 ],
                 searchWord: '',
-                self: this,
             };
         },
         methods: {

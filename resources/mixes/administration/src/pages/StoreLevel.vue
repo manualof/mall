@@ -11,8 +11,7 @@
             const self = this;
             return {
                 managementSearch: '',
-                self: this,
-                typeColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
@@ -79,7 +78,7 @@
                         width: 180,
                     },
                 ],
-                typeData: [
+                list: [
                     {
                         charges: 6666,
                         goodsNum: 166,
@@ -126,7 +125,7 @@
                 });
             },
             remove(index) {
-                this.typeData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -147,7 +146,7 @@
                                 </i-input>
                             </div>
                         </div>
-                        <i-table highlight-row :columns="typeColumns" :context="self" :data="typeData"></i-table>
+                        <i-table highlight-row :columns="columns" :data="list"></i-table>
                     </card>
                 </tab-pane>
             </tabs>

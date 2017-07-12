@@ -9,7 +9,7 @@
         },
         data() {
             return {
-                addTimeData: {
+                form: {
                     endTime: '',
                     name: '',
                     startTime: '',
@@ -34,7 +34,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.activityValidate.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         self.$Message.success('提交成功!');
                     } else {
@@ -66,11 +66,11 @@
                         <p>编辑秒杀结束时段时不会影响到下一秒杀时段开始时间，结束时间不得小于当前时段开始时间，
                             不得大于下一段结束时间</p>
                     </div>
-                    <i-form :label-width="200" ref="activityValidate" :model="addTimeData" :rules="validate">
+                    <i-form :label-width="200" ref="form" :model="form" :rules="validate">
                         <row>
                             <i-col span="12">
                                 <form-item label="秒杀时段名称：" prop="name">
-                                    <i-input v-model="addTimeData.name" placeholder=""></i-input>
+                                    <i-input v-model="form.name" placeholder=""></i-input>
                                 </form-item>
                             </i-col>
                         </row>
@@ -78,7 +78,7 @@
                             <i-col span="12">
                                 <form-item label="开始时间：">
                                     <time-picker type="time" placeholder="选择时间"
-                                                 v-model="addTimeData.startTime"></time-picker>
+                                                 v-model="form.startTime"></time-picker>
                                 </form-item>
                             </i-col>
                         </row>
@@ -86,7 +86,7 @@
                             <i-col span="12">
                                 <form-item label="结束时间：">
                                     <time-picker type="time" placeholder="选择时间"
-                                                 v-model="addTimeData.endTime"></time-picker>
+                                                 v-model="form.endTime"></time-picker>
                                 </form-item>
                             </i-col>
                         </row>

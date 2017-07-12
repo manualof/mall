@@ -25,8 +25,7 @@
                         value: '3',
                     },
                 ],
-                self: this,
-                typeColumns: [
+                columns: [
                     {
                         align: 'center',
                         key: 'number',
@@ -118,7 +117,7 @@
                         width: 120,
                     },
                 ],
-                typeData: [
+                list: [
                     {
                         accountData: '2017-5-9',
                         businessName: 'Rey旗舰店',
@@ -197,7 +196,7 @@
                 });
             },
             remove(index) {
-                this.typeData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -228,8 +227,8 @@
                                 </i-input>
                             </div>
                         </div>
-                        <i-table highlight-row :columns="typeColumns" :context="self"
-                                 :data="typeData" ref="managementTable"></i-table>
+                        <i-table highlight-row :columns="columns" :context="self"
+                                 :data="list" ref="managementTable"></i-table>
                         <div class="page">
                             <page :total="150" show-elevator></page>
                         </div>
