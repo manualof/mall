@@ -22,6 +22,9 @@
                 },
                 indeterminate: false,
                 loading: false,
+                modalPicture: {
+                    img: '',
+                },
                 pictureList: [
                     {
                         img: image,
@@ -59,6 +62,7 @@
                         size: '原图尺寸：400*400',
                     },
                 ],
+                pictureModal: false,
                 sortType: [
                     {
                         label: '从小到大',
@@ -104,6 +108,10 @@
                     });
                     this.indeterminate = false;
                 }
+            },
+            lookPicture(item) {
+                this.modalPicture.img = item.img;
+                this.pictureModal = true;
             },
             removeImage(index) {
                 this.pictureList.splice(index, 1);
@@ -195,7 +203,7 @@
                         </row>
                     </div>
                     <div v-for="(item, index) in pictureList" class="picture-check">
-                        <img :src="item.img" alt="" @click="lookPicture()">
+                        <img :src="item.img" alt="" @click="lookPicture(item)">
                         <i-button type="text" @click.native="removeImage">
                             <icon type="trash-a"></icon>
                         </i-button>
@@ -264,6 +272,13 @@
                             </i-col>
                         </row>
                     </i-form>
+                </div>
+            </modal>
+            <modal
+                    v-model="pictureModal"
+                    title="查看图片" class="upload-picture-modal picture-look-modal">
+                <div>
+                    <img :src="modalPicture.img" alt="">
                 </div>
             </modal>
         </div>
