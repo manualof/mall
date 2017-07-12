@@ -470,11 +470,8 @@
                             </i-form>
                         </tab-pane>
                         <tab-pane label="无需物流运输" name="name2">
-                            <i-form ref="logistics" :model="logistics" :rules="ruleValidate" :label-width="120">
-                                <i-table :context="self"
-                                         :columns="noLogisticsColumns"
-                                         :data="noLogisticsData"
-                                         ref="noLogistics"></i-table>
+                            <i-form ref="logistics" :model="logistics" :rules="ruleValidate" class="no-logistics-module">
+                                <p>如果订单中的商品无需物流运送,您可以直接点击确认</p>
                                 <i-button class="submit-btn" type="primary">确认提交</i-button>
                             </i-form>
                         </tab-pane>
