@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Product\Specification;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductSpecification;
 
 /**
@@ -24,10 +25,13 @@ class CreateHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'category_id' => 'required|numeric',
-            'name'        => 'required',
-            'type'        => 'required',
-            'value'       => 'required',
+            'category_id' => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'name'        => Rule::required(),
+            'type'        => Rule::required(),
+            'value'       => Rule::required(),
         ], [
             'category_id.numeric'  => '分类 ID 必须为数值',
             'category_id.required' => '分类 ID 必须填写',

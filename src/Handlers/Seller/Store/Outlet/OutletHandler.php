@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Outlet;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreOutlet;
 
 /**
@@ -27,8 +27,8 @@ class OutletHandler extends Handler
         $this->validate($this->request, [
             'id' => [
                 Rule::exists('mall_store_outlets'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'id.exists'   => '没有对应的店铺门店信息',

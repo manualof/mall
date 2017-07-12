@@ -9,8 +9,8 @@
 namespace Notadd\Mall\Handlers\User\Cart;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\UserCart;
 
 /**
@@ -28,8 +28,8 @@ class EmptyHandler extends Handler
         $this->validate($this->request, [
             'user_id' => [
                 Rule::exists('mall_users'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'user_id.exists'   => '没有对应的用户信息',

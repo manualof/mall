@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\User\Integral\Log;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\UserIntegralLog;
 
 /**
@@ -25,13 +25,16 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'order'    => 'in:asc,desc',
-            'page'     => 'numeric',
-            'paginate' => 'numeric',
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
             'user_id'  => [
                 Rule::exists('mall_users'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'order.in'         => '排序规则错误',

@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Store\Dynamic;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreDynamic;
 
 /**
@@ -24,9 +25,12 @@ class DynamicHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
-            'id.numeric'  => '动态 ID 必须为数值',
+            'id.numeric' => '动态 ID 必须为数值',
             'id.required' => '动态 ID 必须填写',
         ]);
         $dynamic = StoreDynamic::query()->find($this->request->input('id'));

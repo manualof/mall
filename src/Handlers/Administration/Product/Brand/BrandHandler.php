@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Product\Brand;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductBrand;
 
 /**
@@ -24,7 +25,10 @@ class BrandHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
             'id.numeric'  => '品牌 ID 必须为数值',
             'id.required' => '品牌 ID 必须填写',

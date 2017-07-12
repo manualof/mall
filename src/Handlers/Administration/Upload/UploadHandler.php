@@ -13,6 +13,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 
 /**
  * Class UploadHandler.
@@ -43,7 +44,10 @@ class UploadHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'file' => 'required|image',
+            'file' => [
+                Rule::image(),
+                Rule::required(),
+            ],
         ], [
             'file.image'    => '上传文件格式必须为图片格式！',
             'file.required' => '必须上传一个文件！',

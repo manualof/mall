@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Brand;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductBrand;
 
 /**
@@ -27,29 +27,35 @@ class EditHandler extends Handler
         $this->validate($this->request, [
             'category_id' => [
                 Rule::exists('mall_product_categories'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
-            'id' => [
+            'id'          => [
                 Rule::exists('mall_product_brands'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
-            'logo'        => 'required',
-            'name'        => 'required',
-            'order'       => 'numeric',
-            'recommend'   => 'numeric',
-            'show'        => 'required|in:image,text',
+            'logo'        => Rule::required(),
+            'name'        => Rule::required(),
+            'order'       => Rule::numeric(),
+            'recommend'   => Rule::numeric(),
+            'show'        => [
+                Rule::in([
+                    'image',
+                    'text',
+                ]),
+                Rule::required(),
+            ],
             'store_id'    => [
                 Rule::exists('mall_stores'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'category_id.exists'   => '没有对应的商品分类信息',
             'category_id.numeric'  => '分类 ID 必须为数值',
             'category_id.required' => '分类 ID 必须填写',
-            'id.exists'   => '没有对应的品牌信息',
+            'id.exists'            => '没有对应的品牌信息',
             'id.numeric'           => '品牌 ID 必须为数值',
             'id.required'          => '品牌 ID 必须填写',
             'logo.required'        => '品牌 Logo 必须填写',

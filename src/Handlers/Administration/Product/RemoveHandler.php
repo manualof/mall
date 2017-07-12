@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Product;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\Product;
 
 /**
@@ -24,7 +25,7 @@ class RemoveHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required',
+            'id' => Rule::required(),
         ], [
             'id.required' => '商品 ID 必须填写',
         ]);

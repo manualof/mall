@@ -8,7 +8,6 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Dynamic;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Mall\Models\StoreDynamic;
 
@@ -25,10 +24,10 @@ class RestoreHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id'     => [
+            'id' => [
                 Rule::exists('mall_shop_dynamics'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'id.exists'   => '没有对应的店铺动态信息',

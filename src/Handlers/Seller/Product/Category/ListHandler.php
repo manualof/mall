@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Category;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductCategory;
 
 /**
@@ -29,8 +29,8 @@ class ListHandler extends Handler
                 'asc',
                 'desc',
             ]),
-            'page'     => 'numeric',
-            'paginate' => 'numeric',
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
         ], [
             'order.in'         => '排序规则错误',
             'page.numeric'     => '当前页面必须为数值',

@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\User\Footprint;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\UserFootprint;
 
 /**
@@ -26,12 +26,12 @@ class ListHandler extends Handler
     {
         $this->validate($this->request, [
             'order'    => 'in:asc,desc',
-            'page'     => 'numeric',
-            'paginate' => 'numeric',
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
             'user_id'  => [
                 Rule::exists('mall_users'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'order.in'         => '排序规则错误',

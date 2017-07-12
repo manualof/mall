@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Administration\Order;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\Order;
 
 /**
@@ -27,8 +27,8 @@ class EditHandler extends Handler
         $this->validate($this->request, [
             'id' => [
                 Rule::exists('mall_orders'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'id.exists'   => '没有对应的订单信息',

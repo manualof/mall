@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Product\Library;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductLibrary;
 
 /**
@@ -24,7 +25,7 @@ class RestoreHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required',
+            'id' => Rule::required(),
         ], [
             'id.required' => '商品 ID 必须填写',
         ]);

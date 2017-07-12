@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Store;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\Store;
 
 /**
@@ -24,24 +25,32 @@ class EditHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'category_id'              => 'numeric',
-            'company'                  => 'required',
-            'company_address'          => 'required',
-            'company_capital'          => 'required',
-            'company_contacts'         => 'required',
-            'company_email'            => 'required',
-            'company_employees'        => 'required',
-            'company_licence_location' => 'required',
-            'company_licence_image'    => 'required',
-            'company_licence_number'   => 'required',
-            'company_licence_sphere'   => 'required',
-            'company_licence_validity' => 'required',
-            'company_location'         => 'required',
-            'company_telephone'        => 'required',
-            'id'                       => 'required|numeric',
-            'name'                     => 'required',
-            'status'                   => 'in:review,opening,closed,banned',
-            'user_id'                  => 'numeric',
+            'category_id'              => Rule::numeric(),
+            'company'                  => Rule::required(),
+            'company_address'          => Rule::required(),
+            'company_capital'          => Rule::required(),
+            'company_contacts'         => Rule::required(),
+            'company_email'            => Rule::required(),
+            'company_employees'        => Rule::required(),
+            'company_licence_location' => Rule::required(),
+            'company_licence_image'    => Rule::required(),
+            'company_licence_number'   => Rule::required(),
+            'company_licence_sphere'   => Rule::required(),
+            'company_licence_validity' => Rule::required(),
+            'company_location'         => Rule::required(),
+            'company_telephone'        => Rule::required(),
+            'id'                       => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'name'                     => Rule::required(),
+            'status'                   => Rule::in([
+                'review',
+                'opening',
+                'closed',
+                'banned',
+            ]),
+            'user_id'                  => Rule::numeric(),
         ], [
             'category_id.numeric'               => '所属分类 ID 必须为数值',
             'company.required'                  => '公司名称必须填写',
