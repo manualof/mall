@@ -463,7 +463,6 @@
                         value: '7',
                     },
                 ],
-                self: this,
                 skuData: [
                     {
                         skuId: 133026,

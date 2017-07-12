@@ -12,8 +12,7 @@
                 action: `${window.api}/mall/admin/upload`,
                 loading: false,
                 rules: {},
-                self: this,
-                styleData: [
+                list: [
                     {
                         children: [
                             {
@@ -187,7 +186,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="所在地区">
-                                <cascader :data="styleData" trigger="hover" v-model="form.province"></cascader>
+                                <cascader :data="list" trigger="hover" v-model="form.province"></cascader>
                             </form-item>
                         </i-col>
                     </row>

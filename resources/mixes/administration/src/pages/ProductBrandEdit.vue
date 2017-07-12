@@ -48,7 +48,6 @@
                         },
                     ],
                 },
-                self: this,
                 styleData: [
                     {
                         children: [

@@ -297,7 +297,6 @@
                         value: '2',
                     },
                 ],
-                self: this,
                 style: 'height: 400px;',
                 timeList: [
                     {

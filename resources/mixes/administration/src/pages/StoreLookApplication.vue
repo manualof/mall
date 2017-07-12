@@ -9,8 +9,6 @@
         },
         data() {
             return {
-                loading: false,
-                self: this,
                 form: {
                     account: 'hjhjkhjk',
                     classification: '所属分类',
@@ -36,6 +34,7 @@
                     storeName: '店铺名称',
                     switch1: '开启',
                 },
+                loading: false,
             };
         },
         methods: {
@@ -63,7 +62,7 @@
                             <row>
                                 <i-col span="12">
                                     <form-item label="店主账号">
-                                        {{form.account}}
+                                        {{ form.account }}
                                     </form-item>
                                 </i-col>
                             </row>
@@ -98,7 +97,7 @@
                             <row>
                                 <i-col span="12">
                                     <form-item label="开店时间">
-                                        {{form.createTime}}
+                                        {{ form.createTime }}
                                     </form-item>
                                 </i-col>
                             </row>

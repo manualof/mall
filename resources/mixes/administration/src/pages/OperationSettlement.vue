@@ -194,7 +194,6 @@
                         value: '3',
                     },
                 ],
-                self: this,
                 settlementStatus: 1,
                 typeColumns: [
                     {
@@ -379,35 +378,35 @@
                             <row>
                                 <i-col span="18">
                                     <form-item label="结算单号">
-                                        {{form.settlementNum}}
+                                        {{form.settlementNum }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="18">
                                     <form-item label="起止日期">
-                                        {{form.startData}}
+                                        {{form.startData }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="18">
                                     <form-item label="出账日期">
-                                        ￥{{form.accountData}}
+                                        ￥{{ form.accountData }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="20">
                                     <form-item label="平台应付金额">
-                                        {{form.payMoney}}
+                                        {{ form.payMoney }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="18">
                                     <form-item label="结算状态">
-                                        {{form.settlementStatus}}
+                                        {{ form.settlementStatus }}
                                     </form-item>
                                 </i-col>
                             </row>

@@ -35,7 +35,6 @@
                     },
                 },
                 loading: false,
-                self: this,
                 startOptions: {
                     disabledDate(date) {
                         return date && date.valueOf() < Date.now() - 86400000;

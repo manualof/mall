@@ -136,7 +136,7 @@
                                     <i-option :key="item"
                                               :value="item.value"
                                               v-for="item in position">
-                                        {{ item.label}}
+                                        {{ item.label }}
                                     </i-option>
                                 </i-select>
                             </form-item>

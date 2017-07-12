@@ -162,7 +162,6 @@
                         showStyle: '图片',
                     },
                 ],
-                self: this,
             };
         },
         methods: {

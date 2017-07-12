@@ -176,7 +176,6 @@
                         type: 'value',
                     },
                 },
-                self: this,
                 shopColumns: [
                     {
                         key: 'num',
@@ -323,14 +322,14 @@
                             <row :gutter="16">
                                 <i-col span="12">
                                     <h5>7日内店铺销售TOP30</h5>
-                                    <i-table :columns="shopColumns" :context="self" :data="shopData"></i-table>
+                                    <i-table :columns="shopColumns" :data="shopData"></i-table>
                                     <div class="page">
                                         <page :total="100" show-elevator></page>
                                     </div>
                                 </i-col>
                                 <i-col span="12">
                                     <h5>7日内商品销售TOP30</h5>
-                                    <i-table :columns="goodsColumns" :context="self" :data="goodsData"></i-table>
+                                    <i-table :columns="goodsColumns" :data="goodsData"></i-table>
                                     <div class="page">
                                         <page :total="100" show-elevator></page>
                                     </div>

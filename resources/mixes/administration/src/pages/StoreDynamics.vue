@@ -10,7 +10,7 @@
         data() {
             const self = this;
             return {
-                brandColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
@@ -110,7 +110,7 @@
                         width: 180,
                     },
                 ],
-                brandData: [
+                list: [
                     {
                         account: 324,
                         id: 3,
@@ -152,7 +152,6 @@
                         title: '亲，我家又上新款了。',
                     },
                 ],
-                self: this,
             };
         },
         methods: {
@@ -174,7 +173,7 @@
                 });
             },
             remove(index) {
-                this.brandData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -194,9 +193,9 @@
                             <i-button class="add-data" type="ghost" @click.native="newAddData">全部评论</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                         </div>
-                        <i-table :columns="brandColumns"
+                        <i-table :columns="columns"
                                  :context="self"
-                                 :data="brandData"
+                                 :data="list"
                                  highlight-row
                                  ref="brand">
                         </i-table>

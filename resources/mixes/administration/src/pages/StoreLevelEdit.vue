@@ -41,7 +41,6 @@
                         },
                     ],
                 },
-                self: this,
                 form: {
                     apply: '',
                     charges: '',

@@ -21,7 +21,7 @@
                         type: '普通发票',
                     },
                 },
-                orderColumns: [
+                columns: [
                     {
                         align: 'center',
                         key: 'orderName',
@@ -67,7 +67,7 @@
                     payNumber: '541544524124245',
                     payTime: '2015-06-12 10:42:40',
                 },
-                orderInfo: [
+                list: [
                     {
                         freight: 10.00,
                         img: goods,
@@ -139,32 +139,32 @@
                     <row>
                         <i-col span="8">
                             <form-item label="订单号：">
-                                {{　orderData.orderNumber　}}
+                                {{ 　orderData.orderNumber　 }}
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item label="订单来源：">
-                                {{　orderData.orderSource　}}
+                                {{ 　orderData.orderSource　 }}
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item label="下单时间：">
-                                {{　orderData.orderTime　}}
+                                {{ 　orderData.orderTime　 }}
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item label="支付单号：">
-                                {{　orderData.payNumber　}}
+                                {{ 　orderData.payNumber　 }}
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item label="支付方式：">
-                                {{　orderData.payMethod　}}
+                                {{ 　orderData.payMethod　 }}
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item label="支付时间：">
-                                {{　orderData.payTime　}}
+                                {{ 　orderData.payTime　 }}
                             </form-item>
                         </i-col>
                     </row>
@@ -174,25 +174,25 @@
                     <row>
                         <i-col span="8">
                             <form-item label="买家：">
-                                {{　buyerData.buyerName　}}
+                                {{ 　buyerData.buyerName　 }}
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item label="联系方式：">
-                                {{　buyerData.buyerPhone　}}
+                                {{ 　buyerData.buyerPhone　 }}
                             </form-item>
                         </i-col>
                     </row>
                     <form-item label="收货地址：">
-                        {{　buyerData.address　}}
+                        {{ 　buyerData.address　 }}
                     </form-item>
                     <form-item label="发票信息：">
-                        <p>类型：{{　buyerData.invoiceData.type　}}</p>
-                        <p>抬头：{{　buyerData.invoiceData.title　}}</p>
-                        <p>内容：{{　buyerData.invoiceData.content　}}</p>
+                        <p>类型：{{ 　buyerData.invoiceData.type　 }}</p>
+                        <p>抬头：{{ 　buyerData.invoiceData.title　 }}</p>
+                        <p>内容：{{ 　buyerData.invoiceData.content　 }}</p>
                     </form-item>
                     <form-item label="买家留言：">
-                        {{　buyerData.buyerMessage　}}
+                        {{ 　buyerData.buyerMessage　 }}
                     </form-item>
                 </i-form>
                 <i-form :label-width="110">
@@ -200,48 +200,48 @@
                     <row>
                         <i-col span="8">
                             <form-item label="店铺：">
-                                {{　sellersData.shopName　}}
+                                {{ 　sellersData.shopName　 }}
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item label="店主名称：">
-                                {{　sellersData.owner　}}
+                                {{ 　sellersData.owner　 }}
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item label="联系电话：">
-                                {{　sellersData.phone　}}
+                                {{ 　sellersData.phone　 }}
                             </form-item>
                         </i-col>
                     </row>
                     <form-item label="发货地址：">
-                        {{　sellersData.address　}}
+                        {{ 　sellersData.address　 }}
                     </form-item>
                     <row>
                         <i-col span="8">
                             <form-item label="发货时间：">
-                                {{　sellersData.shipTime　}}
+                                {{ 　sellersData.shipTime　 }}
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item label="快递公司：">
-                                {{　sellersData.expressDelivery　}}
+                                {{ 　sellersData.expressDelivery　 }}
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item label="物流单号：">
-                                {{　sellersData.shipmentNumber　}}
+                                {{ 　sellersData.shipmentNumber　 }}
                             </form-item>
                         </i-col>
                     </row>
                 </i-form>
                 <i-form>
                     <h4>商品信息</h4>
-                    <i-table highlight-row :columns="orderColumns" :data="orderInfo"></i-table>
+                    <i-table highlight-row :columns="columns" :data="list"></i-table>
                     <p class="price">订单总额：
-                        <span class="totalAmount">￥{{ orderInfo[0].totalAmount }}</span>
+                        <span class="totalAmount">￥{{ list[0].totalAmount }}</span>
                     </p>
-                    <p class="price">(含运费：￥{{ orderInfo[0].freight }})</p>
+                    <p class="price">(含运费：￥{{ list[0].freight }})</p>
                 </i-form>
             </card>
         </div>

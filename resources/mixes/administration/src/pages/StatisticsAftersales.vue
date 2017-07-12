@@ -230,7 +230,6 @@
                         type: 'value',
                     },
                 },
-                self: this,
                 shopsList: [
                     {
                         label: '商品1',

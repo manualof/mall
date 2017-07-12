@@ -109,9 +109,9 @@
                         <div class="img">
                             <img :src="item.img" alt="">
                         </div>
-                        <p class="first-param">{{ item.name}}</p>
-                        <p class="tip">{{ item.uploadTime}}</p>
-                        <p class="tip last-param">{{ item.size}}</p>
+                        <p class="first-param">{{ item.name }}</p>
+                        <p class="tip">{{ item.uploadTime }}</p>
+                        <p class="tip last-param">{{ item.size }}</p>
                     </checkbox>
                 </checkbox-group>
                 <div class="page">

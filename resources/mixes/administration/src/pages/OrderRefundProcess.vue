@@ -77,42 +77,42 @@
                                     <row>
                                         <i-col span="18">
                                             <form-item label="申请时间">
-                                                {{form.applyTime}}
+                                                {{ form.applyTime }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="商品名称">
-                                                {{form.goodsname}}
+                                                {{ form.goodsname }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="退款金额">
-                                                ￥{{form.refundMoney}}
+                                                ￥{{ form.refundMoney }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="退款原因">
-                                                {{form.refundReason}}
+                                                {{ form.refundReason }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="退款说明">
-                                                {{form.refundDescription}}
+                                                {{ form.refundDescription }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="凭证上传">
-                                                {{form.refundImg}}
+                                                {{ form.refundImg }}
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -124,21 +124,21 @@
                                     <row>
                                         <i-col span="18">
                                             <form-item label="审核结果">
-                                                {{form.handelResult}}
+                                                {{ form.handelResult }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="处理备注">
-                                                {{form.handelText}}
+                                                {{ form.handelText }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="处理时间">
-                                                {{form.handelTime}}
+                                                {{ form.handelTime }}
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -150,21 +150,21 @@
                                     <row>
                                         <i-col span="18">
                                             <form-item label="支付方式">
-                                                {{form.payStyle}}
+                                                {{ form.payStyle }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="订单总额">
-                                                ￥{{form.orderCounts}}
+                                                ￥{{ form.orderCounts }}
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row>
                                         <i-col span="18">
                                             <form-item label="在线支付金额">
-                                                ￥{{form.linePay}}
+                                                ￥{{ form.linePay }}
                                             </form-item>
                                         </i-col>
                                     </row>

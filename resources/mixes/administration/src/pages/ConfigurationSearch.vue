@@ -10,7 +10,7 @@
             ]).then(injection.http.spread((defaultData, searchDate) => {
                 next(vm => {
                     vm.form.defaultSearch = defaultData.data.data.default;
-                    vm.searchData = searchDate.data.data;
+                    vm.list = searchDate.data.data;
                     injection.loading.finish();
                     injection.sidebar.active('mall');
                 });
@@ -34,7 +34,7 @@
                         },
                     ],
                 },
-                searchColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
@@ -85,8 +85,7 @@
                         width: 180,
                     },
                 ],
-                searchData: [],
-                self: this,
+                list: [],
             };
         },
         methods: {
@@ -97,7 +96,7 @@
                 });
             },
             remove(index) {
-                this.searchData.splice(index, 1);
+                this.list.splice(index, 1);
             },
             searchEdit() {
                 const self = this;
@@ -167,9 +166,9 @@
                                           type="ghost" >+新增搜索词</i-button>
                             </div>
                             <i-table class="shop-table"
-                                     :columns="searchColumns"
+                                     :columns="columns"
                                      :context="self"
-                                     :data="searchData"
+                                     :data="list"
                                      highlight-row
                                      ref="searchTable">
                             </i-table>
