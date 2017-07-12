@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Product\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductCategory;
 
 /**
@@ -24,9 +25,12 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'order'    => 'in:asc,desc',
-            'page'     => 'numeric',
-            'paginate' => 'numeric',
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
         ], [
             'order.in'         => '排序规则错误',
             'page.numeric'     => '当前页面必须为数值',

@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Brand;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductBrand;
 
 /**
@@ -27,18 +27,24 @@ class ApplyHandler extends Handler
         $this->validate($this->request, [
             'category_id' => [
                 Rule::exists('mall_product_categories'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
-            'logo'        => 'required',
-            'name'        => 'required',
-            'order'       => 'numeric',
-            'recommend'   => 'numeric',
-            'show'        => 'required|in:image,text',
+            'logo'        => Rule::required(),
+            'name'        => Rule::required(),
+            'order'       => Rule::numeric(),
+            'recommend'   => Rule::numeric(),
+            'show'        => [
+                Rule::in([
+                    'image',
+                    'text',
+                ]),
+                Rule::required(),
+            ],
             'store_id'    => [
                 Rule::exists('mall_stores'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'category_id.exists'   => '没有对应的商品分类信息',

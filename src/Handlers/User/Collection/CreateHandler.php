@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\User\Collection;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\UserCollection;
 
 /**
@@ -27,18 +27,18 @@ class CreateHandler extends Handler
         $this->validate($this->request, [
             'product_id' => [
                 Rule::exists('mall_products'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
             'store_id'   => [
                 Rule::exists('mall_stores'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
             'user_id'    => [
                 Rule::exists('mall_users'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'product_id.exists'   => '没有对应的商品信息',

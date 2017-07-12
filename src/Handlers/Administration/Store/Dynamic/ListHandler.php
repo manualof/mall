@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Store\Dynamic;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreDynamic;
 
 /**
@@ -24,12 +25,18 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'order'    => 'in:asc,desc',
-            'page'     => 'numeric',
-            'paginate' => 'numeric',
-            'store_id' => 'required|numeric',
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
+            'store_id' => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
-            'order.in'         => '排序规则错误',
+            'order.in'          => '排序规则错误',
             'page.numeric'      => '当前页面必须为数值',
             'paginate.numeric'  => '分页数必须为数值',
             'store_id.numeric'  => '店铺 ID 必须为数值',

@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Product;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\Product;
 
 /**
@@ -24,8 +25,14 @@ class RemoveHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required',
+            'id' => [
+                Rule::exists('mall_products'),
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
+            'id.exists'   => '没有对应的商品信息',
+            'id.numeric'  => '商品 ID 必须为数值',
             'id.required' => '商品 ID 必须填写',
         ]);
         $product = Product::query()->find($this->request->input('id'));

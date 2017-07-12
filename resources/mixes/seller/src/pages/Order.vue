@@ -40,8 +40,6 @@
                                 version: 'D-LTE（4G）/TD-SCDMA',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
@@ -222,8 +220,6 @@
                                 version: 'D-LTE（4G）/TD-SCDMA',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
@@ -316,8 +312,6 @@
                                 version: 'D-LTE（4G）/TD-SCDMA',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
@@ -410,8 +404,6 @@
                                 version: 'D-LTE（4G）/TD-SCDMA',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
@@ -504,8 +496,6 @@
                                 version: 'D-LTE（4G）/TD-SCDMA',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         num: 666666666666688,
                         payStyle: '在线支付',
                         priceAmount: '55.00',
@@ -827,9 +817,6 @@
                                             <div class="goods-td-border">&yen;{{ item.price }}</div>
                                             <div class="goods-td-border">{{ item.amount }}</div>
                                         </div>
-                                        <div class="goods-gifts" v-if="item.isGifts">
-                                            赠品<img :src="item.image" alt="">
-                                        </div>
                                     </div>
                                 </td>
                                 <td>{{ item.buyer }}</td>
@@ -920,9 +907,6 @@
                                             </div>
                                             <div class="goods-td-border">&yen;{{ item.price }}</div>
                                             <div class="goods-td-border">{{ item.amount }}</div>
-                                        </div>
-                                        <div class="goods-gifts" v-if="item.isGifts">
-                                            赠品<img :src="item.image" alt="">
                                         </div>
                                     </div>
                                 </td>
@@ -1016,9 +1000,6 @@
                                             <div class="goods-td-border">&yen;{{ item.price }}</div>
                                             <div class="goods-td-border">{{ item.amount }}</div>
                                         </div>
-                                        <div class="goods-gifts" v-if="item.isGifts">
-                                            赠品<img :src="item.image" alt="">
-                                        </div>
                                     </div>
                                 </td>
                                 <td>{{ item.buyer }}</td>
@@ -1110,9 +1091,6 @@
                                             <div class="goods-td-border">&yen;{{ item.price }}</div>
                                             <div class="goods-td-border">{{ item.amount }}</div>
                                         </div>
-                                        <div class="goods-gifts" v-if="item.isGifts">
-                                            赠品<img :src="item.image" alt="">
-                                        </div>
                                     </div>
                                 </td>
                                 <td>{{ item.buyer }}</td>
@@ -1201,9 +1179,6 @@
                                             </div>
                                             <div class="goods-td-border">&yen;{{ item.price }}</div>
                                             <div class="goods-td-border">{{ item.amount }}</div>
-                                        </div>
-                                        <div class="goods-gifts" v-if="item.isGifts">
-                                            赠品<img :src="item.image" alt="">
                                         </div>
                                     </div>
                                 </td>

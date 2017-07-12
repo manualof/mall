@@ -30,6 +30,7 @@ use Notadd\Mall\Controllers\Api\Administration\OrderProcessController as OrderPr
 use Notadd\Mall\Controllers\Api\Administration\OrderRateController as OrderRateControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\OrderRefundController as OrderRefundControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\ProductController as ProductControllerForAdministration;
+use Notadd\Mall\Controllers\Api\Administration\ProductLibraryController;
 use Notadd\Mall\Controllers\Api\Administration\StatisticsSalesController as StatisticsSalesControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StoreCategoryController as StoreCategoryControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StoreController as StoreControllerForAdministration;
@@ -167,6 +168,12 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('product/category/list', ProductCategoryControllerForAdministration::class . '@list');
             $this->router->post('product/category/remove', ProductCategoryControllerForAdministration::class . '@remove');
             $this->router->post('product/category/restore', ProductCategoryControllerForAdministration::class . '@restore');
+            $this->router->post('product/library', ProductLibraryController::class . '@library');
+            $this->router->post('product/library/create', ProductLibraryController::class . '@create');
+            $this->router->post('product/library/edit', ProductLibraryController::class . '@edit');
+            $this->router->post('product/library/list', ProductLibraryController::class . '@list');
+            $this->router->post('product/library/remove', ProductLibraryController::class . '@remove');
+            $this->router->post('product/library/restore', ProductLibraryController::class . '@restore');
             $this->router->post('store/create', StoreControllerForAdministration::class . '@create');
             $this->router->post('store/edit', StoreControllerForAdministration::class . '@edit');
             $this->router->post('store/list', StoreControllerForAdministration::class . '@list');

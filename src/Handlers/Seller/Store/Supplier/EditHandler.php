@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Supplier;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreSupplier;
 
 /**
@@ -25,19 +25,19 @@ class EditHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'contacts'  => 'required',
+            'contacts'  => Rule::required(),
             'id'        => [
                 Rule::exists('mall_store_suppliers'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
-            'name'      => 'required',
+            'name'      => Rule::required(),
             'store_id'  => [
                 Rule::exists('mall_stores'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
-            'telephone' => 'required',
+            'telephone' => Rule::required(),
         ], [
             'contacts.required'  => '联系人必须填写',
             'id.exists'          => '没有对应的店铺供应商信息',

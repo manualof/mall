@@ -30,12 +30,14 @@ class Product extends Model
         'category_id',
         'description',
         'flow_marketing',
+        'inventory',
+        'inventory_warning',
+        'library_id',
         'name',
         'price',
         'price_cost',
         'price_market',
-        'inventory',
-        'inventory_warning',
+        'store_id',
     ];
 
     /**

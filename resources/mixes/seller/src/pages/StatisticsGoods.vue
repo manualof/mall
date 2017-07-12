@@ -490,10 +490,7 @@
                                             <ul>
                                                 <li>
                                                     商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
+                                                    <cascader :data="goodsList" trigger="hover"></Cascader>
                                                 </li>
                                                 <li>
                                                     时间周期

@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Navigation;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreNavigation;
 
 /**
@@ -27,17 +27,17 @@ class EditHandler extends Handler
         $this->validate($this->request, [
             'id'            => [
                 Rule::exists('mall_shop_dynamics'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
-            'is_show'       => 'numeric',
-            'name'          => 'required',
-            'order'         => 'numeric',
-            'parent_target' => 'numeric',
+            'is_show'       => Rule::numeric(),
+            'name'          => Rule::required(),
+            'order'         => Rule::numeric(),
+            'parent_target' => Rule::numeric(),
             'store_id'      => [
                 Rule::exists('mall_stores'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'id.exists'             => '没有对应的店铺导航信息',

@@ -974,6 +974,10 @@
                         label: '按照周统计',
                         value: '2',
                     },
+                    {
+                        label: '按照天统计',
+                        value: '3',
+                    },
                 ],
             };
         },
@@ -1238,13 +1242,6 @@
                                 <i-button type="ghost">设置价格区间</i-button>
                                 <div class="select-content" style="top: -10px">
                                     <ul>
-                                        <li>
-                                            商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
                                         <li>
                                             时间周期
                                             <i-select v-model="model2" style="width:124px">

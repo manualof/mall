@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Store\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreCategory;
 
 /**
@@ -24,7 +25,10 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'store_id' => 'required|numeric',
+            'store_id' => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
             'store_id.required' => '店铺 ID 必须填写',
             'store_id.numeric'  => '店铺 ID 必须为数值',

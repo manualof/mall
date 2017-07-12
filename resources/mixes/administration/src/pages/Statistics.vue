@@ -362,7 +362,7 @@
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="14">
-                                            <i-button @click.native="deleteArea(index)"
+                                            <i-button @click.native="deleteArea(index)" v-if="index !== 0"
                                                       class="delete-color" type="ghost">刪除</i-button>
                                         </i-col>
                                     </row>
@@ -406,7 +406,7 @@
                                         <i-col span="1">元</i-col>
                                         <i-col span="14">
                                             <i-button class="delete-color" @click.native="deleteOrderArea(index)"
-                                                      type="ghost">刪除</i-button>
+                                                      type="ghost" v-if="index !== 0">刪除</i-button>
                                         </i-col>
                                     </row>
                                 </form-item>

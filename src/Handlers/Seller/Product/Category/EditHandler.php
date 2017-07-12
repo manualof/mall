@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Product\Category;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductCategory;
 
 /**
@@ -25,17 +25,17 @@ class EditHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'deposit'   => 'numeric',
+            'deposit'   => Rule::numeric(),
             'id'        => [
                 Rule::exists('mall_product_categories'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
             'parent_id' => [
                 Rule::exists('mall_product_categories'),
-                'numeric',
+                Rule::numeric(),
             ],
-            'name'      => 'required',
+            'name'      => Rule::required(),
         ], [
             'deposit.numeric'   => '品牌 ID 必须为数值',
             'id.exists'         => '没有对应的商品分类信息',

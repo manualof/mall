@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Product\Brand;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductBrand;
 
 /**
@@ -24,14 +25,29 @@ class EditHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'category_id' => 'required|numeric',
-            'id'          => 'required|numeric',
-            'logo'        => 'required',
-            'name'        => 'required',
-            'order'       => 'numeric',
-            'recommend'   => 'numeric',
-            'show'        => 'required|in:image,text',
-            'store_id'    => 'required|numeric',
+            'category_id' => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'id'          => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'logo'        => Rule::required(),
+            'name'        => Rule::required(),
+            'order'       => Rule::numeric(),
+            'recommend'   => Rule::numeric(),
+            'show'        => [
+                Rule::in([
+                    'image',
+                    'text',
+                ]),
+                Rule::required(),
+            ],
+            'store_id'    => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
             'category_id.numeric'  => '分类 ID 必须为数值',
             'category_id.required' => '分类 ID 必须填写',

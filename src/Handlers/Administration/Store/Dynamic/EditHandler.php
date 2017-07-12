@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Store\Dynamic;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreDynamic;
 
 /**
@@ -24,11 +25,17 @@ class EditHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'deposit'   => 'required|numeric',
-            'id'        => 'required|numeric',
-            'name'      => 'required',
-            'parent_id' => 'numeric',
-            'order'     => 'numeric',
+            'deposit'   => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'id'        => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'name'      => Rule::required(),
+            'parent_id' => Rule::numeric(),
+            'order'     => Rule::numeric(),
         ], [
             'deposit.numeric'   => '保证金数额必须为数值',
             'deposit.required'  => '保证金数额必须填写',

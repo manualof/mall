@@ -26,7 +26,7 @@ import OrderRefundAllLook from '../pages/OrderRefundAllLook.vue';
 import OrderRefundAllHandel from '../pages/OrderRefundAllHandel.vue';
 import OrderRefundProcess from '../pages/OrderRefundProcess.vue';
 import OrderRefundReedit from '../pages/OrderRefundReedit.vue';
-import OrderRefundAdd from '../pages/OrderRefundAdd.vue';
+import OrderRefundCreate from '../pages/OrderRefundCreate.vue';
 import OrderRejected from '../pages/OrderRejected.vue';
 import OrderRejectedLook from '../pages/OrderRejectedLook.vue';
 import OrderRejectedLookReject from '../pages/OrderRejectedLookReject.vue';
@@ -34,11 +34,11 @@ import OrderRejectedHandel from '../pages/OrderRejectedHandel.vue';
 import OrderRejectedAllHandel from '../pages/OrderRejectedAllHandel.vue';
 import Product from '../pages/Product.vue';
 import ProductBrand from '../pages/ProductBrand.vue';
-import ProductBrandAdd from '../pages/ProductBrandAdd.vue';
+import ProductBrandCreate from '../pages/ProductBrandCreate.vue';
 import ProductBrandEdit from '../pages/ProductBrandEdit.vue';
 import ProductCategory from '../pages/ProductCategory.vue';
 import ProductCategoryEdit from '../pages/ProductCategoryEdit.vue';
-import ProductCategoryAdd from '../pages/ProductCategoryAdd.vue';
+import ProductCategoryCreate from '../pages/ProductCategoryCreate.vue';
 import ProductCategoryAddUnder from '../pages/ProductCategoryAddUnder.vue';
 import ProductCategoryLook from '../pages/ProductCategoryLook.vue';
 import ProductCategoryLookAdd from '../pages/ProductCategoryLookAdd.vue';
@@ -49,15 +49,15 @@ import ProductCategoryLookUnderAdd from '../pages/ProductCategoryLookUnderAdd.vu
 import ProductCategoryLookUnderEdit from '../pages/ProductCategoryLookUnderEdit.vue';
 import ProductLibrary from '../pages/ProductLibrary.vue';
 import ProductLibraryEdit from '../pages/ProductLibraryEdit.vue';
-import ProductLibraryAdd from '../pages/ProductLibraryAdd.vue';
+import ProductLibraryCreate from '../pages/ProductLibraryCreate.vue';
 import ProductPicture from '../pages/ProductPicture.vue';
 import ProductPictureLook from '../pages/ProductPictureLook.vue';
 import ProductPictureLookAll from '../pages/ProductPictureLookAll.vue';
 import ProductStandard from '../pages/ProductStandard.vue';
-import ProductStandardAdd from '../pages/ProductStandardAdd.vue';
+import ProductStandardCreate from '../pages/ProductStandardCreate.vue';
 import ProductStandardEdit from '../pages/ProductStandardEdit.vue';
 import ProductType from '../pages/ProductType.vue';
-import ProductTypeAdd from '../pages/ProductTypeAdd.vue';
+import ProductTypeCreate from '../pages/ProductTypeCreate.vue';
 import ProductTypeEdit from '../pages/ProductTypeEdit.vue';
 import Statistics from '../pages/Statistics.vue';
 import StatisticsAftersales from '../pages/StatisticsAftersales.vue';
@@ -72,18 +72,18 @@ import StoreLook from '../pages/StoreLook.vue';
 import StoreLookApplication from '../pages/StoreLookApplication.vue';
 import StoreCategory from '../pages/StoreCategory.vue';
 import StoreCategorySet from '../pages/StoreCategorySet.vue';
-import StoreCategoryAdd from '../pages/StoreCategoryAdd.vue';
+import StoreCategoryCreate from '../pages/StoreCategoryCreate.vue';
 import StoreDynamics from '../pages/StoreDynamics.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
 import SalesActive from '../pages/SalesActive.vue';
 import StoreLevel from '../pages/StoreLevel.vue';
-import StoreLevelAdd from '../pages/StoreLevelAdd.vue';
+import StoreLevelCreate from '../pages/StoreLevelCreate.vue';
 import StoreLevelEdit from '../pages/StoreLevelEdit.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
 import SalesSpikesLook from '../pages/SalesSpikesLook.vue';
 import SalesSpike from '../pages/SalesSpike.vue';
 import SalesSpikeAdjunction from '../pages/SalesSpikeAdjunction.vue';
-import SalesSpikeSetAdd from '../pages/SalesSpikeSetAdd.vue';
+import SalesSpikeSetCreate from '../pages/SalesSpikeSetCreate.vue';
 import SalesSpikeSet from '../pages/SalesSpikeSet.vue';
 import SalesSpikeTime from '../pages/SalesSpikeTime.vue';
 import SalesSpikeTimeAddtime from '../pages/SalesSpikeTimeAddtime.vue';
@@ -169,7 +169,7 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: ProductLibraryAdd,
+                    component: ProductLibraryCreate,
                     path: 'goods/library/add',
                 },
                 {
@@ -184,7 +184,7 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: ProductCategoryAdd,
+                    component: ProductCategoryCreate,
                     path: 'goods/category/add',
                 },
                 {
@@ -234,7 +234,7 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: ProductBrandAdd,
+                    component: ProductBrandCreate,
                     path: 'goods/brand/add',
                 },
                 {
@@ -254,7 +254,7 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: ProductTypeAdd,
+                    component: ProductTypeCreate,
                     path: 'goods/type/add',
                 },
                 {
@@ -264,7 +264,7 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: ProductStandardAdd,
+                    component: ProductStandardCreate,
                     path: 'goods/standard/add',
                 },
                 {
@@ -329,7 +329,7 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: OrderRefundAdd,
+                    component: OrderRefundCreate,
                     path: 'order/refund/add',
                 },
                 {
@@ -459,7 +459,7 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreCategoryAdd,
+                    component: StoreCategoryCreate,
                     path: 'store/category/add',
                 },
                 {
@@ -474,7 +474,7 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreLevelAdd,
+                    component: StoreLevelCreate,
                     path: 'store/level/add',
                 },
                 {
@@ -514,7 +514,7 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeSetAdd,
+                    component: SalesSpikeSetCreate,
                     path: 'sales/spike/set/add',
                 },
                 {

@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Store\Navigation;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreNavigation;
 
 /**
@@ -27,8 +27,8 @@ class ListHandler extends Handler
         $this->validate($this->request, [
             'store_id' => [
                 Rule::exists('mall_stores'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'store_id.exists'   => '没有对应的店铺信息',

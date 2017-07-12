@@ -8,8 +8,8 @@
  */
 namespace Notadd\Mall\Handlers\Seller\Store\Outlet;
 
-use Illuminate\Validation\Rule;
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreOutlet;
 
 /**
@@ -25,13 +25,16 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'order'    => 'in:asc,desc',
-            'page'     => 'numeric',
-            'paginate' => 'numeric',
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
             'store_id' => [
                 Rule::exists('mall_stores'),
-                'numeric',
-                'required',
+                Rule::numeric(),
+                Rule::required(),
             ],
         ], [
             'order.in'          => '排序规则错误',

@@ -24,6 +24,7 @@ import StatisticsGoods from '../pages/StatisticsGoods.vue';
 import StatisticsGoodsSet from '../pages/StatisticsGoodsSet.vue';
 import StatisticsOperation from '../pages/StatisticsOperation.vue';
 import StatisticsIndustry from '../pages/StatisticsIndustry.vue';
+import StatisticsIndustrySet from '../pages/StatisticsIndustrySet.vue';
 import StatisticsFlow from '../pages/StatisticsFlow.vue';
 import StatisticsSettlement from '../pages/StatisticsSettlement.vue';
 import StatisticsSettlementLook from '../pages/StatisticsSettlementLook.vue';
@@ -180,6 +181,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StatisticsIndustry,
                     path: 'statistics/industry',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsIndustrySet,
+                    path: 'statistics/industry/set',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
