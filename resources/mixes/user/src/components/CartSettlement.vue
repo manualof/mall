@@ -17,11 +17,11 @@
                     <tr>
                         <th class="select">
                             <div class="check-box select-all">
-                <span>
-                  <input type="checkbox" :checked="isAllChecked()" @change="changeAllChecked($event)"
-                         class="input_check" id="all-select">
-                  <label for="all-select"> </label>
-                </span>
+                                <span>
+                                    <input type="checkbox" :checked="isAllChecked" @change="changeAllChecked($event)"
+                                         class="input_check" id="all-select">
+                                    <label for="all-select"> </label>
+                                </span>
                             </div>
                         </th>
                         <th class="select-all"><label for="all-select">全选</label></th>
@@ -39,41 +39,41 @@
                     <div class="freight clearfix">
                         <div class="name">
                             <div class="check-box select">
-                                <span>
-                                    <input type="checkbox" class="input_check" :id="item.name" :checked="isTitleChecked(item)"
-                                         @change="changeTitleChecked(item,$event)">
-                                    <label :for="item.name"> </label>
-                                    </span>
-                                    </div>
-                                    <span class="shop">{{ item.name }}</span>
+                                <label>
+                                    <input type="checkbox" class="input_check" :checked="isTitleChecked(item)"
+                                           @change="changeTitleChecked(item,$event)">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <span class="shop">{{ item.name }}</span>
+                        </div>
+                        <span class="money">运费: {{ item.pay_transform }}</span>
+                    </div>
+                    <table width="100%">
+                        <colgroup>
+                            <col width="46px">
+                            <col width="40px">
+                            <col width="500px">
+                            <col width="150px">
+                            <col width="154px">
+                            <col width="150px">
+                            <col width="150px">
+                        </colgroup>
+                        <tbody>
+                        <tr class="offer-tr" v-if="item.offer">
+                            <td colspan="7" class="offer">
+                                <span>优惠</span>{{ item.offer }}
+                            </td>
+                        </tr>
+                        <tr v-for="(product, num) in item.products">
+                            <td class="td-select">
+                                <div class="check-box">
+                                    <label>
+                                        <input type="checkbox" class="input_check"
+                                               v-model='item.selected' :value="product.id" name='checkboxinput'>
+                                        <span></span>
+                                    </label>
                                 </div>
-                                <span class="money">运费: {{ item.pay_transform }}</span>
-                            </div>
-                            <table width="100%">
-                                <colgroup>
-                                    <col width="46px">
-                                    <col width="40px">
-                                    <col width="500px">
-                                    <col width="150px">
-                                    <col width="154px">
-                                    <col width="150px">
-                                    <col width="150px">
-                                </colgroup>
-                                <tbody>
-                                <tr class="offer-tr" v-if="item.offer">
-                                    <td colspan="7" class="offer">
-                                        <span>优惠</span>{{ item.offer }}
-                                    </td>
-                                </tr>
-                                <tr v-for="(product, num) in item.products">
-                                    <td class="td-select">
-                                        <div class="check-box">
-                            <span>
-                            <input type="checkbox" class="input_check"
-                                   v-model='item.selected' :value="product.id" name='checkboxinput' :id="index.toString()+num">
-                            <label :for="index.toString()+num"> </label>
-                                </span>
-                            </div>
                             </td>
                             <td class="td-img">
                                 <router-link :to="{name: 'product-details'}">
@@ -83,7 +83,10 @@
                             <td class="td-information">
                                 <router-link :to="{name: 'product-details'}"> {{ product.name }}</router-link>
                                 <p>尺码：{{ product.size }}</p>
-                                <p><i class="mention" :class="{support:item.mention}">提</i>本商品 <i v-if="item.mention">支持</i><i v-if="!item.mention">不支持</i>门店自提</p>
+                                <p>
+                                    <i class="mention" :class="{support:item.mention}">提</i>本商品
+                                    <i v-if="item.mention">支持</i><i v-if="!item.mention">不支持</i>门店自提
+                                </p>
                             </td>
                             <td>
                                 <s>&yen;{{ product.old_price }}</s>
@@ -95,7 +98,7 @@
                                         -
                                     </span>
                                     <span class="input">
-                                    <input type="number" v-model.number="product.num">
+                                        <input type="number" v-model.number="product.num">
                                     </span>
                                     <span class="num" @click="plus(product)">
                                         +
@@ -120,9 +123,10 @@
                         <th class="select">
                             <div class="check-box select-all">
                                 <span>
-                                    <input type="checkbox" :checked="isAllChecked" @change="changeAllChecked($event)"
-                                            class="input_check" id="all-select2">
-                                    <label for="all-select2"> </label></span>
+                                    <input type="checkbox" :checked="isAllChecked()" @change="changeAllChecked($event)"
+                                           class="input_check" id="all-select2">
+                                    <label for="all-select2"> </label>
+                                </span>
                             </div>
                         </th>
                         <th class="delete-product">
@@ -145,7 +149,6 @@
                 </table>
             </div>
         </div>
-
         <need-browse></need-browse>
         <everyone-browse></everyone-browse>
         <myself-browse></myself-browse>
@@ -252,11 +255,14 @@
             totalPrice() {
                 const tPrice = 0;
                 this.productList.forEach(item => {
-                    item.selected.forEach();
+                    item.selected.forEach(i => {
+                        console.log(i);
+                    });
                 });
                 return tPrice;
             },
             totalFreight() {
+                return 0;
             },
         },
         methods: {
