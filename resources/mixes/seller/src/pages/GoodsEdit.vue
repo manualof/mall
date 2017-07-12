@@ -464,321 +464,281 @@
                 </div>
                 <div>
                     <card :bordered="false">
-                        <i-form ref="goodsEdit" :model="goodsEdit" :rules="ruleValidate" :label-width="200">
-                            <div class="library-application">
-                                <h5>商品基本信息</h5>
-                                <div class="application-content refund-module">
-                                    <row>
-                                        <i-col span="16">
-                                            <form-item label="商品分类">
-                                                {{ goodsEdit.type }}&nbsp; &nbsp;&nbsp;
-                                                <i-button type="ghost" @click.native="editInformation">编辑</i-button>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="12">
-                                            <form-item label="商品名称" prop="name">
-                                                <i-input v-model="goodsEdit.name"></i-input>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="12">
-                                            <form-item label="商品卖点">
-                                                <i-input v-model="goodsEdit.sellPoint" type="textarea"
-                                                         :autosize="{minRows: 3,maxRows: 5}"></i-input>
-                                                <p class="tip">商品卖点最长不超过140个汉字</p>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row class="freight-style-module">
-                                        <i-col span="16">
-                                            <form-item label="商品价格" prop="goodPrice">
-                                                <row class="freight-style">
-                                                    <i-col span="4">
-                                                        <i-input v-model="goodsEdit.goodPrice"></i-input>
-                                                    </i-col>
-                                                    <i-col span="2">元</i-col>
-                                                </row>
-                                                <p class="tip">价格必须是大于等于0.01的数字，且不能高于市场价，
-                                                    此价格为商品实际销售价格，如果存在规格，该价格显示最低价格</p>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row class="freight-style-module">
-                                        <i-col span="16">
-                                            <form-item label="市场价格" prop="marketPrice">
-                                                <row class="freight-style">
-                                                    <i-col span="4">
-                                                        <i-input v-model="goodsEdit.marketPrice"></i-input>
-                                                    </i-col>
-                                                    <i-col span="2">元</i-col>
-                                                </row>
-                                                <p class="tip">价格必须是大于等于0.01的数字，此价格仅为市场参考售价，
-                                                    请根据实际情况认真填写</p>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row class="freight-style-module">
-                                        <i-col span="16">
-                                            <form-item label="成本价格">
-                                                <row class="freight-style">
-                                                    <i-col span="4">
-                                                        <i-input v-model="goodsEdit.costPrice"></i-input>
-                                                    </i-col>
-                                                    <i-col span="2">元</i-col>
-                                                </row>
-                                                <p class="tip">价格必须是大于等于0.01的数字，此价格为商户对所销售的商品实际
-                                                    成本价格进行备注记录，不会在前台销售页面中显示</p>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row class="freight-style-module">
-                                        <i-col span="16">
-                                            <form-item label="折扣">
-                                                <row class="freight-style">
-                                                    <i-col span="4">
-                                                        <i-input v-model="goodsEdit.goodDiscount"></i-input>
-                                                    </i-col>
-                                                    <i-col span="2">%</i-col>
-                                                </row>
-                                                <p class="tip">价格必须是大于等于0.01的数字，此价格为商户对所销售的商品实
-                                                    际成本价格进行备注记录，不会在前台销售页面中显示</p>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="24">
-                                            <form-item label="套餐类型">
-                                                <checkbox-group v-model="goodsEdit.packageType">
-                                                    <checkbox :label="item" v-for="item in packageType">
-                                                        <span class="type-style">{{ item }}</span>
-                                                    </checkbox>
-                                                    <i-button class="add-type-btn">添加规格值</i-button>
-                                                </checkbox-group>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="24">
-                                            <form-item label="选择版本">
-                                                <checkbox-group v-model="goodsEdit.selectVersion">
-                                                    <checkbox :label="item" v-for="item in selectVersion">
-                                                        <span class="type-style">{{ item }}</span>
-                                                    </checkbox>
-                                                    <i-button class="add-type-btn">添加规格值</i-button>
-                                                </checkbox-group>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="23">
-                                            <form-item label="库存配置" class="stock-module">
-                                                <i-table class="goods-table"
-                                                         :columns="inventoryColumns"
-                                                         :context="self"
-                                                         :data="inventoryData"
-                                                         highlight-row>
-                                                </i-table>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row class="freight-style-module">
-                                        <i-col span="16">
-                                            <form-item label="商品库存" prop="goodInventory">
-                                                <row class="freight-style">
-                                                    <i-col span="4">
-                                                        <i-input v-model="goodsEdit.goodInventory"></i-input>
-                                                    </i-col>
-                                                </row>
-                                                <p class="tip">商品库存数量必须为0~999999999之间的整数，若启用了库存配置，
-                                                    则系统自动计算商品的总数，此处无需买家填写</p>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row class="freight-style-module">
-                                        <i-col span="16">
-                                            <form-item label="库存预警值">
-                                                <row class="freight-style">
-                                                    <i-col span="4">
-                                                        <i-input v-model="goodsEdit.warnValue"></i-input>
-                                                    </i-col>
-                                                </row>
-                                                <p class="tip">设置最低库存预警值。当库存低于预警值时商家中心商品列表页库
-                                                    存列红字提醒，请填写0~255的数字，0为不预警</p>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row class="freight-style-module">
-                                        <i-col span="16">
-                                            <form-item label="商家货号">
-                                                <row class="freight-style">
-                                                    <i-col span="4">
-                                                        <i-input v-model="goodsEdit.sellerNum"></i-input>
-                                                    </i-col>
-                                                </row>
-                                                <p class="tip">商家货号是指商家管理商品的编号，买家不可见，最多可输入20个字符，
-                                                    支持输入中文、字母、数字、_、/、-和小数点</p>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row class="freight-style-module">
-                                        <i-col span="16">
-                                            <form-item label="商品条形码">
-                                                <row class="freight-style">
-                                                    <i-col span="4">
-                                                        <i-input v-model="goodsEdit.barCode"></i-input>
-                                                    </i-col>
-                                                </row>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="24">
-                                            <form-item label="商品图片" prop="logo">
-                                                <div class="image-preview" v-if="goodsEdit.logo">
-                                                    <img :src="goodsEdit.logo">
-                                                    <icon type="close" @click.native="removeLogo"></icon>
-                                                </div>
-                                                <upload :action="action"
-                                                        :before-upload="uploadBefore"
-                                                        :format="['jpg','jpeg','png']"
-                                                        :headers="{
+                        <tabs type="card">
+                            <tab-pane label="编辑商品">
+                                <i-form ref="goodsEdit" :model="goodsEdit" :rules="ruleValidate" :label-width="200">
+                                    <div class="library-application">
+                                        <h5>商品基本信息</h5>
+                                        <div class="application-content refund-module">
+                                            <row>
+                                                <i-col span="16">
+                                                    <form-item label="商品分类">
+                                                        {{ goodsEdit.type }}&nbsp; &nbsp;&nbsp;
+                                                        <i-button type="ghost" @click.native="editInformation">编辑</i-button>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row>
+                                                <i-col span="12">
+                                                    <form-item label="商品名称" prop="name">
+                                                        <i-input v-model="goodsEdit.name"></i-input>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row>
+                                                <i-col span="12">
+                                                    <form-item label="商品卖点">
+                                                        <i-input v-model="goodsEdit.sellPoint" type="textarea"
+                                                                 :autosize="{minRows: 3,maxRows: 5}"></i-input>
+                                                        <p class="tip">商品卖点最长不超过140个汉字</p>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row class="freight-style-module">
+                                                <i-col span="16">
+                                                    <form-item label="商品价格" prop="goodPrice">
+                                                        <row class="freight-style">
+                                                            <i-col span="4">
+                                                                <i-input v-model="goodsEdit.goodPrice"></i-input>
+                                                            </i-col>
+                                                            <i-col span="2">元</i-col>
+                                                        </row>
+                                                        <p class="tip">价格必须是大于等于0.01的数字，且不能高于市场价，
+                                                            此价格为商品实际销售价格，如果存在规格，该价格显示最低价格</p>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row class="freight-style-module">
+                                                <i-col span="16">
+                                                    <form-item label="市场价格" prop="marketPrice">
+                                                        <row class="freight-style">
+                                                            <i-col span="4">
+                                                                <i-input v-model="goodsEdit.marketPrice"></i-input>
+                                                            </i-col>
+                                                            <i-col span="2">元</i-col>
+                                                        </row>
+                                                        <p class="tip">价格必须是大于等于0.01的数字，此价格仅为市场参考售价，
+                                                            请根据实际情况认真填写</p>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row class="freight-style-module">
+                                                <i-col span="16">
+                                                    <form-item label="成本价格">
+                                                        <row class="freight-style">
+                                                            <i-col span="4">
+                                                                <i-input v-model="goodsEdit.costPrice"></i-input>
+                                                            </i-col>
+                                                            <i-col span="2">元</i-col>
+                                                        </row>
+                                                        <p class="tip">价格必须是大于等于0.01的数字，此价格为商户对所销售的商品实际
+                                                            成本价格进行备注记录，不会在前台销售页面中显示</p>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row class="freight-style-module">
+                                                <i-col span="16">
+                                                    <form-item label="折扣">
+                                                        <row class="freight-style">
+                                                            <i-col span="4">
+                                                                <i-input v-model="goodsEdit.goodDiscount"></i-input>
+                                                            </i-col>
+                                                            <i-col span="2">%</i-col>
+                                                        </row>
+                                                        <p class="tip">价格必须是大于等于0.01的数字，此价格为商户对所销售的商品实
+                                                            际成本价格进行备注记录，不会在前台销售页面中显示</p>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row>
+                                                <i-col span="24">
+                                                    <form-item label="套餐类型">
+                                                        <checkbox-group v-model="goodsEdit.packageType">
+                                                            <checkbox :label="item" v-for="item in packageType">
+                                                                <span class="type-style">{{ item }}</span>
+                                                            </checkbox>
+                                                            <i-button class="add-type-btn">添加规格值</i-button>
+                                                        </checkbox-group>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row>
+                                                <i-col span="24">
+                                                    <form-item label="选择版本">
+                                                        <checkbox-group v-model="goodsEdit.selectVersion">
+                                                            <checkbox :label="item" v-for="item in selectVersion">
+                                                                <span class="type-style">{{ item }}</span>
+                                                            </checkbox>
+                                                            <i-button class="add-type-btn">添加规格值</i-button>
+                                                        </checkbox-group>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row>
+                                                <i-col span="23">
+                                                    <form-item label="库存配置" class="stock-module">
+                                                        <i-table class="goods-table"
+                                                                 :columns="inventoryColumns"
+                                                                 :context="self"
+                                                                 :data="inventoryData"
+                                                                 highlight-row>
+                                                        </i-table>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row class="freight-style-module">
+                                                <i-col span="16">
+                                                    <form-item label="商品库存" prop="goodInventory">
+                                                        <row class="freight-style">
+                                                            <i-col span="4">
+                                                                <i-input v-model="goodsEdit.goodInventory"></i-input>
+                                                            </i-col>
+                                                        </row>
+                                                        <p class="tip">商品库存数量必须为0~999999999之间的整数，若启用了库存配置，
+                                                            则系统自动计算商品的总数，此处无需买家填写</p>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row class="freight-style-module">
+                                                <i-col span="16">
+                                                    <form-item label="库存预警值">
+                                                        <row class="freight-style">
+                                                            <i-col span="4">
+                                                                <i-input v-model="goodsEdit.warnValue"></i-input>
+                                                            </i-col>
+                                                        </row>
+                                                        <p class="tip">设置最低库存预警值。当库存低于预警值时商家中心商品列表页库
+                                                            存列红字提醒，请填写0~255的数字，0为不预警</p>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row class="freight-style-module">
+                                                <i-col span="16">
+                                                    <form-item label="商家货号">
+                                                        <row class="freight-style">
+                                                            <i-col span="4">
+                                                                <i-input v-model="goodsEdit.sellerNum"></i-input>
+                                                            </i-col>
+                                                        </row>
+                                                        <p class="tip">商家货号是指商家管理商品的编号，买家不可见，最多可输入20个字符，
+                                                            支持输入中文、字母、数字、_、/、-和小数点</p>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row class="freight-style-module">
+                                                <i-col span="16">
+                                                    <form-item label="商品条形码">
+                                                        <row class="freight-style">
+                                                            <i-col span="4">
+                                                                <i-input v-model="goodsEdit.barCode"></i-input>
+                                                            </i-col>
+                                                        </row>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row>
+                                                <i-col span="24">
+                                                    <form-item label="商品图片" prop="logo">
+                                                        <div class="image-preview" v-if="goodsEdit.logo">
+                                                            <img :src="goodsEdit.logo">
+                                                            <icon type="close" @click.native="removeLogo"></icon>
+                                                        </div>
+                                                        <upload :action="action"
+                                                                :before-upload="uploadBefore"
+                                                                :format="['jpg','jpeg','png']"
+                                                                :headers="{
                                                             Authorization: `Bearer ${$store.state.token.access_token}`
                                                         }"
-                                                        :max-size="2048"
-                                                        :on-error="uploadError"
-                                                        :on-format-error="uploadFormatError"
-                                                        :on-success="uploadSuccess"
-                                                        ref="upload"
-                                                        :show-upload-list="false"
-                                                        v-if="goodsEdit.logo === '' || goodsEdit.logo === null">
-                                                </upload>
-                                                <p class="tip">上传商品默认主图，如多规格值时将默认使用该图或分规格上传各规格主图；
-                                                    支持jpg、gif、png格式上传或从图片空间中选择，建议使用尺寸800x800像素以上、
-                                                    大小不超过1M的正方形图片，上传后的图片将会自动保存在图片空间的默认分类中
-                                                </p>
-                                                <i-button type="ghost">从图片空间上传</i-button>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                </div>
-                            </div>
-                            <div class="library-application">
-                                <h5>商品详情描述</h5>
-                                <div class="application-content">
-                                    <row>
-                                        <i-col span="10">
-                                            <form-item label="商品品牌">
-                                                <i-select v-model="goodsEdit.goodStyle">
-                                                    <i-option v-for="item in goodStyle" :value="item.value"
-                                                              :key="item">{{ item.label }}</i-option>
-                                                </i-select>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="24">
-                                            <form-item label="商品属性" class="good-edit-style">
-                                                <row>
-                                                    <i-col span="6">
-                                                        <span class="style-title">价格区间</span>
-                                                        <i-select v-model="goodsEdit.price">
-                                                            <i-option v-for="item in priceList" :value="item.value"
+                                                                :max-size="2048"
+                                                                :on-error="uploadError"
+                                                                :on-format-error="uploadFormatError"
+                                                                :on-success="uploadSuccess"
+                                                                ref="upload"
+                                                                :show-upload-list="false"
+                                                                v-if="goodsEdit.logo === '' || goodsEdit.logo === null">
+                                                        </upload>
+                                                        <p class="tip">上传商品默认主图，如多规格值时将默认使用该图或分规格上传各规格主图；
+                                                            支持jpg、gif、png格式上传或从图片空间中选择，建议使用尺寸800x800像素以上、
+                                                            大小不超过1M的正方形图片，上传后的图片将会自动保存在图片空间的默认分类中
+                                                        </p>
+                                                        <i-button type="ghost">从图片空间上传</i-button>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                        </div>
+                                    </div>
+                                    <div class="library-application">
+                                        <h5>商品详情描述</h5>
+                                        <div class="application-content">
+                                            <row>
+                                                <i-col span="10">
+                                                    <form-item label="商品品牌">
+                                                        <i-select v-model="goodsEdit.goodStyle">
+                                                            <i-option v-for="item in goodStyle" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
-                                                    </i-col>
-                                                    <i-col span="6">
-                                                        <span class="style-title">口碑</span>
-                                                        <i-select v-model="goodsEdit.goodComment">
-                                                            <i-option v-for="item in goodComment" :value="item.value"
-                                                                      :key="item">{{ item.label }}</i-option>
-                                                        </i-select>
-                                                    </i-col>
-                                                    <i-col span="6">
-                                                        <span class="style-title">区域配送</span>
-                                                        <i-select v-model="goodsEdit.distribution">
-                                                            <i-option v-for="item in distribution" :value="item.value"
-                                                                      :key="item">{{ item.label }}</i-option>
-                                                        </i-select>
-                                                    </i-col>
-                                                    <i-col span="6">
-                                                        <span class="style-title">产地</span>
-                                                        <i-select v-model="goodsEdit.goodOrigin">
-                                                            <i-option v-for="item in goodOrigin" :value="item.value"
-                                                                      :key="item">{{ item.label }}</i-option>
-                                                        </i-select>
-                                                    </i-col>
-                                                </row>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="24">
-                                            <form-item label="商品描述" class="remark-input">
-                                                <row>
-                                                    <i-col span="24">
-                                                        <div>
-                                                            <tabs type="card">
-                                                                <tab-pane label="电脑端" class="pc-module-content">
-                                                                    <row>
-                                                                        <i-col span="18">
-                                                                            <div class="edit-content-area">
-
-                                                                            </div>
-                                                                        </i-col>
-                                                                        <i-col span="6"></i-col>
-                                                                    </row>
-                                                                    <i-button class="close-album"
-                                                                              @click.native="addAlbumPicture"
-                                                                              type="ghost">插入相册图片</i-button>
-                                                                    <div class="picture-edit-area" v-if="isPcPicture">
-                                                                        <i-button class="close-album"
-                                                                                  @click.native="closePcAlbum"
-                                                                                  type="ghost">关闭相册</i-button>
-                                                                        <p>用户相册>全部图片</p>
-                                                                        <div class="picture-content">
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row>
+                                                <i-col span="24">
+                                                    <form-item label="商品属性" class="good-edit-style">
+                                                        <row>
+                                                            <i-col span="6">
+                                                                <span class="style-title">价格区间</span>
+                                                                <i-select v-model="goodsEdit.price">
+                                                                    <i-option v-for="item in priceList" :value="item.value"
+                                                                              :key="item">{{ item.label }}</i-option>
+                                                                </i-select>
+                                                            </i-col>
+                                                            <i-col span="6">
+                                                                <span class="style-title">口碑</span>
+                                                                <i-select v-model="goodsEdit.goodComment">
+                                                                    <i-option v-for="item in goodComment" :value="item.value"
+                                                                              :key="item">{{ item.label }}</i-option>
+                                                                </i-select>
+                                                            </i-col>
+                                                            <i-col span="6">
+                                                                <span class="style-title">区域配送</span>
+                                                                <i-select v-model="goodsEdit.distribution">
+                                                                    <i-option v-for="item in distribution" :value="item.value"
+                                                                              :key="item">{{ item.label }}</i-option>
+                                                                </i-select>
+                                                            </i-col>
+                                                            <i-col span="6">
+                                                                <span class="style-title">产地</span>
+                                                                <i-select v-model="goodsEdit.goodOrigin">
+                                                                    <i-option v-for="item in goodOrigin" :value="item.value"
+                                                                              :key="item">{{ item.label }}</i-option>
+                                                                </i-select>
+                                                            </i-col>
+                                                        </row>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row>
+                                                <i-col span="24">
+                                                    <form-item label="商品描述" class="remark-input">
+                                                        <row>
+                                                            <i-col span="24">
+                                                                <div>
+                                                                    <tabs type="card">
+                                                                        <tab-pane label="电脑端" class="pc-module-content">
                                                                             <row>
-                                                                                <i-col span="4" v-for="img in [1,2,3,4,5,6,7,8,9]">
-                                                                                    <img src="../assets/images/adv.jpg" alt="">
+                                                                                <i-col span="18">
+                                                                                    <div class="edit-content-area">
+
+                                                                                    </div>
                                                                                 </i-col>
+                                                                                <i-col span="6"></i-col>
                                                                             </row>
-                                                                            <div class="page">
-                                                                                <page :total="100" show-elevator></page>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </tab-pane>
-                                                                <tab-pane label="手机端" class="mobile-module-content">
-                                                                    <row>
-                                                                        <i-col span="10" class="request-col-border">
-                                                                            <div class="pro-des">
-                                                                                <div class="pro-bg">
-                                                                                    <span>图片总数不得超过20张，
-                                                                                        文字不得超过500字</span>
-                                                                                </div>
-                                                                                <div class="pro-bg2">
-                                                                                    <i-button @click.native="addPicture"
-                                                                                              type="ghost">插入图片</i-button>
-                                                                                    <i-button @click.native="addText"
-                                                                                              type="ghost">添加文字</i-button>
-                                                                                </div>
-                                                                                <div class="pro-content"></div>
-                                                                            </div>
-                                                                            <div class="text-edit-area" v-if="isEditText">
-                                                                                <span>还可以输入500字</span><br>
-                                                                                <i-input  type="textarea"
-                                                                                          v-model="goodsEdit.remarks"
-                                                                                          :rows="6"></i-input>
-                                                                                <i-button type="ghost">确认</i-button>
-                                                                                <i-button type="ghost">提交</i-button>
-                                                                            </div>
-                                                                            <div class="picture-edit-area"
-                                                                                 v-if="isEditPicture">
-                                                                                <i-button type="ghost" class="close-album"
-                                                                                          @click.native="closeAlbum">
-                                                                                    关闭相册</i-button>
+                                                                            <i-button class="close-album"
+                                                                                      @click.native="addAlbumPicture"
+                                                                                      type="ghost">插入相册图片</i-button>
+                                                                            <div class="picture-edit-area" v-if="isPcPicture">
+                                                                                <i-button class="close-album"
+                                                                                          @click.native="closePcAlbum"
+                                                                                          type="ghost">关闭相册</i-button>
                                                                                 <p>用户相册>全部图片</p>
                                                                                 <div class="picture-content">
                                                                                     <row>
@@ -791,149 +751,199 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </i-col>
-                                                                        <i-col span="14" class="request-col-line">
+                                                                        </tab-pane>
+                                                                        <tab-pane label="手机端" class="mobile-module-content">
                                                                             <row>
-                                                                                <i-col span="14">
-                                                                                    <ul class="request">
-                                                                                        <li v-for="item in requests">
-                                                                                            <p>{{item.name}}</p>
-                                                                                            <span>{{item.content}}</span>
-                                                                                        </li>
-                                                                                    </ul>
+                                                                                <i-col span="10" class="request-col-border">
+                                                                                    <div class="pro-des">
+                                                                                        <div class="pro-bg">
+                                                                                    <span>图片总数不得超过20张，
+                                                                                        文字不得超过500字</span>
+                                                                                        </div>
+                                                                                        <div class="pro-bg2">
+                                                                                            <i-button @click.native="addPicture"
+                                                                                                      type="ghost">插入图片</i-button>
+                                                                                            <i-button @click.native="addText"
+                                                                                                      type="ghost">添加文字</i-button>
+                                                                                        </div>
+                                                                                        <div class="pro-content"></div>
+                                                                                    </div>
+                                                                                    <div class="text-edit-area" v-if="isEditText">
+                                                                                        <span>还可以输入500字</span><br>
+                                                                                        <i-input  type="textarea"
+                                                                                                  v-model="goodsEdit.remarks"
+                                                                                                  :rows="6"></i-input>
+                                                                                        <i-button type="ghost">确认</i-button>
+                                                                                        <i-button type="ghost">提交</i-button>
+                                                                                    </div>
+                                                                                    <div class="picture-edit-area"
+                                                                                         v-if="isEditPicture">
+                                                                                        <i-button type="ghost" class="close-album"
+                                                                                                  @click.native="closeAlbum">
+                                                                                            关闭相册</i-button>
+                                                                                        <p>用户相册>全部图片</p>
+                                                                                        <div class="picture-content">
+                                                                                            <row>
+                                                                                                <i-col span="4" v-for="img in [1,2,3,4,5,6,7,8,9]">
+                                                                                                    <img src="../assets/images/adv.jpg" alt="">
+                                                                                                </i-col>
+                                                                                            </row>
+                                                                                            <div class="page">
+                                                                                                <page :total="100" show-elevator></page>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </i-col>
-                                                                                <i-col span="10"></i-col>
-                                                                            </row>
+                                                                                <i-col span="14" class="request-col-line">
+                                                                                    <row>
+                                                                                        <i-col span="14">
+                                                                                            <ul class="request">
+                                                                                                <li v-for="item in requests">
+                                                                                                    <p>{{item.name}}</p>
+                                                                                                    <span>{{item.content}}</span>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </i-col>
+                                                                                        <i-col span="10"></i-col>
+                                                                                    </row>
 
-                                                                        </i-col>
-                                                                    </row>
-                                                                </tab-pane>
-                                                            </tabs>
+                                                                                </i-col>
+                                                                            </row>
+                                                                        </tab-pane>
+                                                                    </tabs>
+                                                                </div>
+                                                            </i-col>
+                                                        </row>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                        </div>
+                                    </div>
+                                    <div class="library-application">
+                                        <h5>商品物流信息</h5>
+                                        <div class="application-content refund-module">
+                                            <row>
+                                                <i-col span="12">
+                                                    <form-item label="所在地">
+                                                        <cascader :data="goodPlace" trigger="hover"
+                                                                  v-model="goodsEdit.goodPlace"></Cascader>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row class="freight-style-module">
+                                                <i-col span="16">
+                                                    <form-item label="运费">
+                                                        <radio-group v-model="goodsEdit.freightStyle">
+                                                            <radio label="固定运费"></radio>
+                                                            <radio label="选择售卖区域"></radio>
+                                                        </radio-group>
+                                                        <div v-if="goodsEdit.freightStyle === '固定运费'">
+                                                            <row class="freight-style">
+                                                                <i-col span="4">
+                                                                    <i-input v-model="goodsEdit.freightMoney"></i-input>
+                                                                </i-col>
+                                                                <i-col span="2">元</i-col>
+                                                            </row>
+                                                            <p class="tip">运费设置为0元，前台商品将显示为免运费</p>
                                                         </div>
-                                                    </i-col>
-                                                </row>
+                                                        <div v-if="goodsEdit.freightStyle === '选择售卖区域'">
+                                                            <i-button type="ghost">选择售卖区域</i-button>
+                                                        </div>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                        </div>
+                                    </div>
+                                    <div class="library-application">
+                                        <h5>发票信息</h5>
+                                        <div class="application-content refund-module">
+                                            <row>
+                                                <i-col span="16">
+                                                    <form-item label="是否开增值税发票">
+                                                        <radio-group v-model="goodsEdit.vatInvoice">
+                                                            <radio label="是"></radio>
+                                                            <radio label="否"></radio>
+                                                        </radio-group>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                        </div>
+                                    </div>
+                                    <div class="library-application">
+                                        <h5>其他信息</h5>
+                                        <div class="application-content refund-module">
+                                            <row>
+                                                <i-col span="12">
+                                                    <form-item label="本店分类">
+                                                        <i-select v-model="goodsEdit.shopStyle">
+                                                            <i-option v-for="item in shopStyle" :value="item.value"
+                                                                      :key="item">{{ item.label }}</i-option>
+                                                        </i-select>
+                                                        <p class="tip">商品可以从属于店铺的多个分类下，店铺分类可以由“商家中心>店铺>
+                                                            店铺分类”中自定义</p>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row class="data-picker-module">
+                                                <i-col span="16">
+                                                    <form-item label="商品发布">
+                                                        <radio-group v-model="goodsEdit.commodityRelease">
+                                                            <radio label="fabu">
+                                                                <span>立即发布</span>
+                                                            </radio>
+                                                            <radio label="time">
+                                                                <span>发布时间</span>
+                                                                <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                            </radio>
+                                                            <radio label="nofabu">
+                                                                <span>暂不发布</span>
+                                                            </radio>
+                                                        </radio-group>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row>
+                                                <i-col span="16">
+                                                    <form-item label="商品推荐">
+                                                        <radio-group v-model="goodsEdit.goodFeatured">
+                                                            <radio label="是"></radio>
+                                                            <radio label="否"></radio>
+                                                        </radio-group>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                            <row>
+                                                <i-col span="12">
+                                                    <form-item label="供货商">
+                                                        <i-select v-model="goodsEdit.supplier">
+                                                            <i-option v-for="item in goodSupplier" :value="item.value"
+                                                                      :key="item">{{ item.label }}</i-option>
+                                                        </i-select>
+                                                        <p class="tip">可以选择商品的供货商</p>
+                                                    </form-item>
+                                                </i-col>
+                                            </row>
+                                        </div>
+                                    </div>
+                                    <row>
+                                        <i-col span="18">
+                                            <form-item label="">
+                                                <i-button :loading="loading" @click.native="submit" type="primary">
+                                                    <span v-if="!loading">确认提交</span>
+                                                    <span v-else>正在提交…</span>
+                                                </i-button>
                                             </form-item>
                                         </i-col>
                                     </row>
+                                </i-form>
+                            </tab-pane>
+                            <tab-pane label="编辑图片">
+                                <div class="prompt-box">
+                                    <p>提示</p>
+                                    <p>每组图片的第一张图片默认为主图，每类最多展示5张图片</p>
                                 </div>
-                            </div>
-                            <div class="library-application">
-                                <h5>商品物流信息</h5>
-                                <div class="application-content refund-module">
-                                    <row>
-                                        <i-col span="12">
-                                            <form-item label="所在地">
-                                                <cascader :data="goodPlace" trigger="hover"
-                                                          v-model="goodsEdit.goodPlace"></Cascader>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row class="freight-style-module">
-                                        <i-col span="16">
-                                            <form-item label="运费">
-                                                <radio-group v-model="goodsEdit.freightStyle">
-                                                    <radio label="固定运费"></radio>
-                                                    <radio label="选择售卖区域"></radio>
-                                                </radio-group>
-                                                <div v-if="goodsEdit.freightStyle === '固定运费'">
-                                                    <row class="freight-style">
-                                                        <i-col span="4">
-                                                            <i-input v-model="goodsEdit.freightMoney"></i-input>
-                                                        </i-col>
-                                                        <i-col span="2">元</i-col>
-                                                    </row>
-                                                    <p class="tip">运费设置为0元，前台商品将显示为免运费</p>
-                                                </div>
-                                                <div v-if="goodsEdit.freightStyle === '选择售卖区域'">
-                                                    <i-button type="ghost">选择售卖区域</i-button>
-                                                </div>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                </div>
-                            </div>
-                            <div class="library-application">
-                                <h5>发票信息</h5>
-                                <div class="application-content refund-module">
-                                    <row>
-                                        <i-col span="16">
-                                            <form-item label="是否开增值税发票">
-                                                <radio-group v-model="goodsEdit.vatInvoice">
-                                                    <radio label="是"></radio>
-                                                    <radio label="否"></radio>
-                                                </radio-group>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                </div>
-                            </div>
-                            <div class="library-application">
-                                <h5>其他信息</h5>
-                                <div class="application-content refund-module">
-                                    <row>
-                                        <i-col span="12">
-                                            <form-item label="本店分类">
-                                                <i-select v-model="goodsEdit.shopStyle">
-                                                    <i-option v-for="item in shopStyle" :value="item.value"
-                                                              :key="item">{{ item.label }}</i-option>
-                                                </i-select>
-                                                <p class="tip">商品可以从属于店铺的多个分类下，店铺分类可以由“商家中心>店铺>
-                                                    店铺分类”中自定义</p>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row class="data-picker-module">
-                                        <i-col span="16">
-                                            <form-item label="商品发布">
-                                                <radio-group v-model="goodsEdit.commodityRelease">
-                                                    <radio label="fabu">
-                                                        <span>立即发布</span>
-                                                    </radio>
-                                                    <radio label="time">
-                                                        <span>发布时间</span>
-                                                        <date-picker type="date" placeholder="选择日期"></date-picker>
-                                                    </radio>
-                                                    <radio label="nofabu">
-                                                        <span>暂不发布</span>
-                                                    </radio>
-                                                </radio-group>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="16">
-                                            <form-item label="商品推荐">
-                                                <radio-group v-model="goodsEdit.goodFeatured">
-                                                    <radio label="是"></radio>
-                                                    <radio label="否"></radio>
-                                                </radio-group>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="12">
-                                            <form-item label="供货商">
-                                                <i-select v-model="goodsEdit.supplier">
-                                                    <i-option v-for="item in goodSupplier" :value="item.value"
-                                                              :key="item">{{ item.label }}</i-option>
-                                                </i-select>
-                                                <p class="tip">可以选择商品的供货商</p>
-                                            </form-item>
-                                        </i-col>
-                                    </row>
-                                </div>
-                            </div>
-                            <row>
-                                <i-col span="18">
-                                    <form-item label="">
-                                        <i-button :loading="loading" @click.native="submit" type="primary">
-                                            <span v-if="!loading">确认提交</span>
-                                            <span v-else>正在提交…</span>
-                                        </i-button>
-                                    </form-item>
-                                </i-col>
-                            </row>
-                        </i-form>
+                            </tab-pane>
+                        </tabs>
                     </card>
                 </div>
             </div>

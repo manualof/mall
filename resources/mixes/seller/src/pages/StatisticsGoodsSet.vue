@@ -9,17 +9,55 @@
         },
         data() {
             return {
-                goodsPrice: {
-                    endPrice: '',
-                    startPrice: '',
+                goods: {
+                    preForm: [
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                    ],
                 },
-                orderPrice: {
-                    endPrice: '',
-                    startPrice: '',
+                orders: {
+                    preForm: [
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                    ],
                 },
             };
         },
         methods: {
+            addpreArea() {
+                this.goods.preForm.push(
+                    {
+                        endPrice: '',
+                        startPrice: '',
+                    },
+                );
+            },
+            addOrderArea() {
+                this.orders.preForm.push(
+                    {
+                        endPrice: '',
+                        startPrice: '',
+                    },
+                );
+            },
+            deleteArea(index) {
+                this.goods.preForm.splice(index, 1);
+            },
+            deleteOrderArea(index) {
+                this.orders.preForm.splice(index, 1);
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
@@ -27,7 +65,7 @@
             submitPrice() {
                 const self = this;
                 self.loading = true;
-                self.$refs.goodsPrice.validate(valid => {
+                self.$refs.goods.validate(valid => {
                     if (valid) {
                         self.$Message.success('提交成功!');
                     } else {
@@ -41,7 +79,7 @@
             submitOrder() {
                 const self = this;
                 self.loading = true;
-                self.$refs.orderPrice.validate(valid => {
+                self.$refs.orders.validate(valid => {
                     if (valid) {
                         self.$Message.success('提交成功!');
                     } else {
@@ -75,47 +113,31 @@
                     <tabs type="card">
                         <tab-pane label="商品价格区间">
                             <div class="goods-price-area">
-                                <i-form ref="goodsPrice" :model="goodsPrice" :rules="ruleValidate" :label-width="180">
-                                    <form-item>
+                                <i-form ref="goods" :model="goods" :rules="ruleValidate" :label-width="180">
+                                    <form-item v-for="(item, index) in goods.preForm">
                                         <row>
                                             <i-col span="2" class="price-width">起始额</i-col>
                                             <i-col span="2" class="input-width">
-                                                <i-input v-model="goodsPrice.startPrice"></i-input>
+                                                <i-input v-model="item.startPrice"></i-input>
                                             </i-col>
                                             <i-col span="1">元</i-col>
                                             <i-col span="2" class="price-width">结束额</i-col>
                                             <i-col span="2" class="input-width">
-                                                <i-input v-model="goodsPrice.endPrice"></i-input>
+                                                <i-input v-model="item.endPrice"></i-input>
                                             </i-col>
                                             <i-col span="1">元</i-col>
                                             <i-col span="14">
-                                                <i-button @click.native="deleteArea($event)"
-                                                          class="delete-color" type="ghost">刪除</i-button>
-                                            </i-col>
-                                        </row>
-                                        <row>
-                                            <i-col span="2" class="price-width">起始额</i-col>
-                                            <i-col span="2" class="input-width">
-                                                <i-input v-model="goodsPrice.startPrice"></i-input>
-                                            </i-col>
-                                            <i-col span="1">元</i-col>
-                                            <i-col span="2" class="price-width">结束额</i-col>
-                                            <i-col span="2" class="input-width">
-                                                <i-input v-model="goodsPrice.endPrice"></i-input>
-                                            </i-col>
-                                            <i-col span="1">元</i-col>
-                                            <i-col span="14">
-                                                <i-button @click.native="deleteArea"
+                                                <i-button @click.native="deleteArea(index)" v-if="index !== 0"
                                                           class="delete-color" type="ghost">刪除</i-button>
                                             </i-col>
                                         </row>
                                     </form-item>
                                     <form-item>
-                                        <i-button @click.native="addArea"  class="button-style"
+                                        <i-button @click.native="addpreArea"  class="button-style"
                                                   type="ghost">+添加区间</i-button>
                                     </form-item>
                                     <form-item>
-                                        <i-button class="button-style" @click.native="submitPrice"
+                                        <i-button class="button-style" @click.native="priceSubmit"
                                                   :loading="loading" type="primary">
                                             <span v-if="!loading">确认提交</span>
                                             <span v-else>正在提交…</span>
@@ -126,47 +148,31 @@
                         </tab-pane>
                         <tab-pane label="订单金额区间">
                             <div class="goods-price-area">
-                                <i-form ref="orderPrice" :model="orderPrice" :rules="ruleValidate" :label-width="180">
-                                    <form-item>
+                                <i-form ref="orders" :model="orders" :rules="ruleValidate" :label-width="180">
+                                    <form-item v-for="(item, index) in orders.preForm">
                                         <row>
                                             <i-col span="2" class="price-width">起始额</i-col>
                                             <i-col span="2" class="input-width">
-                                                <i-input v-model="orderPrice.startPrice"></i-input>
+                                                <i-input v-model="item.startPrice"></i-input>
                                             </i-col>
                                             <i-col span="1">元</i-col>
                                             <i-col span="2" class="price-width">结束额</i-col>
                                             <i-col span="2" class="input-width">
-                                                <i-input v-model="orderPrice.endPrice"></i-input>
+                                                <i-input v-model="item.endPrice"></i-input>
                                             </i-col>
                                             <i-col span="1">元</i-col>
                                             <i-col span="14">
-                                                <i-button @click.native="deleteArea($event)"
-                                                          class="delete-color" type="ghost">刪除</i-button>
-                                            </i-col>
-                                        </row>
-                                        <row>
-                                            <i-col span="2" class="price-width">起始额</i-col>
-                                            <i-col span="2" class="input-width">
-                                                <i-input v-model="orderPrice.startPrice"></i-input>
-                                            </i-col>
-                                            <i-col span="1">元</i-col>
-                                            <i-col span="2" class="price-width">结束额</i-col>
-                                            <i-col span="2" class="input-width">
-                                                <i-input v-model="orderPrice.endPrice"></i-input>
-                                            </i-col>
-                                            <i-col span="1">元</i-col>
-                                            <i-col span="14">
-                                                <i-button @click.native="deleteArea"
-                                                          class="delete-color" type="ghost">刪除</i-button>
+                                                <i-button class="delete-color" @click.native="deleteOrderArea(index)"
+                                                          type="ghost" v-if="index !== 0">刪除</i-button>
                                             </i-col>
                                         </row>
                                     </form-item>
                                     <form-item>
-                                        <i-button @click.native="addArea"  class="button-style"
-                                                  type="ghost">+添加区间</i-button>
+                                        <i-button class="button-style" @click.native="addOrderArea"
+                                                  type="ghost" >+添加区间</i-button>
                                     </form-item>
                                     <form-item>
-                                        <i-button class="button-style" @click.native="submitOrder"
+                                        <i-button class="button-style"  @click.native="orderSubmit"
                                                   :loading="loading" type="primary">
                                             <span v-if="!loading">确认提交</span>
                                             <span v-else>正在提交…</span>
