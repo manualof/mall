@@ -115,7 +115,7 @@
                                 &yen;{{ price(product.num, product.now_price) }}
                             </td>
                             <td>
-                                删除
+                                <a @click="deleteProduct(item, num, index)">删除</a>
                             </td>
                         </tr>
                         </tbody>
@@ -315,6 +315,12 @@
                         this.isAllChecked = false;
                     }
                 });
+            },
+            deleteProduct(arr, num, index) {
+                if (arr.products.length === 1) {
+                    this.productList.splice(index, 1);
+                }
+                arr.products.splice(num, 1);
             },
             deleteSelected() {
                 for (const a in this.productList) {
