@@ -20,6 +20,20 @@
                     name: '',
                     sort: '',
                 },
+                addCategoryList: [
+                    {
+                        label: '海外代购1',
+                        value: '1',
+                    },
+                    {
+                        label: '海外代购2',
+                        value: '2',
+                    },
+                    {
+                        label: '海外代购3',
+                        value: '3',
+                    },
+                ],
                 addModal: false,
                 categoryColumns: [
                     {
@@ -354,7 +368,10 @@
                                 <row>
                                     <i-col span="12">
                                         <form-item label="上级分类">
-                                            <i-input v-model="addCategory.category"></i-input>
+                                            <i-select v-model="addCategory.category">
+                                                <i-option v-for="item in addCategoryList"
+                                                          :value="item.value">{{ item.label }}</i-option>
+                                            </i-select>
                                         </form-item>
                                     </i-col>
                                 </row>
