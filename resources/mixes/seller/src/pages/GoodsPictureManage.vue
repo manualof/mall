@@ -145,6 +145,7 @@
                 this.uploadModal = true;
             },
             uploadSuccess(data) {
+                console.log(data.data.path);
                 const self = this;
                 injection.loading.finish();
                 self.$notice.open({
@@ -221,7 +222,9 @@
                                 <form-item label="选择图片" prop="logo">
                                     <div class="image-preview" v-if="album.logo">
                                         <img :src="album.logo">
-                                        <icon type="close" @click.native="removeLogo"></icon>
+                                        <i-button type="text" @click.native="removeLogo()">
+                                            <icon type="trash-a"></icon>
+                                        </i-button>
                                     </div>
                                     <upload :action="action"
                                             :before-upload="uploadBefore"

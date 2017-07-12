@@ -129,11 +129,26 @@
                     border: 2px solid #ccc;
                     position: relative;
                     width: 204px;
-                    > i {
-                        bottom: 0;
-                        font-size: 30px;
+                    &:hover {
+                        button {
+                            display: block;
+                        }
+                    }
+                    button {
+                        display: none;
                         position: absolute;
-                        right: 0;
+                        right: 6px;
+                        top: 6px;
+                        padding: 0;
+                        width: 24px;
+                        height: 24px;
+                        border-radius: 50%;
+                        background: rgba(0, 0, 0, .3);
+                        color: #fff;
+                        z-index: 100;
+                        i {
+                            font-size: 18px;
+                        }
                     }
                     > img {
                         display: block;
