@@ -261,8 +261,12 @@
         computed: {
             selectNum() {
                 let num = 0;
-                this.selectPro.forEach(item => {
-                    num += item.num;
+                this.productList.forEach(item => {
+                    item.products.forEach(product => {
+                        if (product.selected) {
+                            num += product.num;
+                        }
+                    });
                 });
                 return num;
             },
@@ -277,7 +281,6 @@
                 });
                 return tPrice.toFixed(2);
             },
-
             totalFreight() {
                 let tFreight = 0;
                 this.productList.forEach(item => {
