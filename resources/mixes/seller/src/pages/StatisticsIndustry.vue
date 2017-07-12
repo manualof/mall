@@ -242,6 +242,16 @@
                 ],
             };
         },
+        methods: {
+            settingPrice() {
+                const self = this;
+                self.$router.push(
+                    {
+                        path: 'industry/set',
+                    },
+                );
+            },
+        },
     };
 </script>
 <template>
@@ -256,7 +266,7 @@
                         </div>
                         <div class="analysis-content">
                             <div class="order-money-content">
-                                <div class="select-content" style="top: -10px">
+                                <div class="select-content select-content-left" style="top: -10px">
                                     <ul>
                                         <li>
                                             商品分类
@@ -298,6 +308,8 @@
                         <div class="analysis-content">
                             <div class="order-money-content">
                                 <div class="select-content" style="top: -10px">
+                                    <i-button type="ghost" class="export-btn"
+                                              @click.native="settingPrice">设置价格区间</i-button>
                                     <ul>
                                         <li>
                                             商品分类
