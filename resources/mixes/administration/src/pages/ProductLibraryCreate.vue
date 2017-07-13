@@ -23,18 +23,18 @@
                     },
                 ],
                 form: {
-                    barCode: '',
-                    distribution: '',
-                    goodComment: '',
-                    goodOrigin: '',
-                    goodStyle: '',
+                    barcode: '',
+                    delivery_area: '',
+                    public_praise: '',
+                    production_place: '',
+                    brand_id: '',
                     logo: '',
                     name: '',
                     picture: '',
-                    price: '',
+                    price_range: '',
                     remarks: '',
                     selectStyle: ['个护化妆', '营养辅食'],
-                    sellPoint: '',
+                    selling_point: '',
                 },
                 goodStyle: [
                     {
@@ -333,7 +333,7 @@
                                     <row>
                                         <i-col span="12">
                                             <form-item label="商品卖点">
-                                                <i-input v-model="form.sellPoint" type="textarea"
+                                                <i-input v-model="form.selling_point" type="textarea"
                                                          :autosize="{minRows: 3,maxRows: 5}"></i-input>
                                                 <p class="tip">商品卖点最长不超过140个汉字</p>
                                             </form-item>
@@ -342,7 +342,7 @@
                                     <row>
                                         <i-col span="10">
                                             <form-item label="商品条形码">
-                                                <i-input v-model="form.barCode"></i-input>
+                                                <i-input v-model="form.barcode"></i-input>
                                                 <p class="tip">请填写商品条形码下方数字</p>
                                             </form-item>
                                         </i-col>
@@ -398,7 +398,7 @@
                                     <row>
                                         <i-col span="10">
                                             <form-item label="商品品牌">
-                                                <i-select v-model="form.goodStyle">
+                                                <i-select v-model="form.brand_id">
                                                     <i-option v-for="item in goodStyle" :value="item.value"
                                                               :key="item">{{ item.label }}</i-option>
                                                 </i-select>
@@ -411,28 +411,28 @@
                                                 <row>
                                                     <i-col span="6">
                                                         <span class="style-title">价格区间</span>
-                                                        <i-select v-model="form.price">
+                                                        <i-select v-model="form.price_range">
                                                             <i-option v-for="item in priceList" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
                                                     </i-col>
                                                     <i-col span="6">
                                                         <span class="style-title">口碑</span>
-                                                        <i-select v-model="form.goodComment">
+                                                        <i-select v-model="form.public_praise">
                                                             <i-option v-for="item in goodComment" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
                                                     </i-col>
                                                     <i-col span="6">
                                                         <span class="style-title">区域配送</span>
-                                                        <i-select v-model="form.distribution">
+                                                        <i-select v-model="form.delivery_area">
                                                             <i-option v-for="item in distribution" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
                                                     </i-col>
                                                     <i-col span="6">
                                                         <span class="style-title">产地</span>
-                                                        <i-select v-model="form.goodOrigin">
+                                                        <i-select v-model="form.production_place">
                                                             <i-option v-for="item in goodOrigin" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
