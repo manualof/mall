@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/adv.jpg';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -288,8 +289,36 @@
                 isEditPicture: false,
                 isEditText: false,
                 isPcPicture: false,
+                list: {},
                 loading: false,
                 packageType: ['官方标配', '官方标配2', '套餐'],
+                pictureGroup: [
+                    {
+                        color: '黑色',
+                        logoList: [
+                            {
+                                img: image1,
+                            },
+                            {
+                                img: image1,
+                            },
+                            {
+                                img: image1,
+                            },
+                        ],
+                    },
+                    {
+                        color: '无色',
+                        logoList: [
+                            {
+                                img: image1,
+                            },
+                            {
+                                img: image1,
+                            },
+                        ],
+                    },
+                ],
                 priceList: [
                     {
                         label: '100-200',
@@ -400,6 +429,11 @@
                 const self = this;
                 self.$router.go(-1);
             },
+            removeAlbum(index) {
+                this.pictureGroup.forEach(item => {
+                    item.logoList.splice(index, 1);
+                });
+            },
             removeLogo() {
                 this.goodsEdit.logo = '';
             },
@@ -444,10 +478,24 @@
             uploadSuccess(data) {
                 const self = this;
                 injection.loading.finish();
-                self.$notice.open({
-                    title: data.message,
+                this.pictureGroup.forEach(item => {
+                    console.log(item);
+                    this.list = item;
                 });
-                self.goodsEdit.logo = data.data.path;
+                if (this.list.logoList.length < 5) {
+                    self.$notice.open({
+                        title: data.message,
+                    });
+                    this.list.logoList.push(
+                        {
+                            img: data.data.path,
+                        },
+                    );
+                } else {
+                    self.$notice.open({
+                        title: '每类最多展示五张图片',
+                    });
+                }
             },
         },
     };
@@ -647,8 +695,8 @@
                                                                 :before-upload="uploadBefore"
                                                                 :format="['jpg','jpeg','png']"
                                                                 :headers="{
-                                                            Authorization: `Bearer ${$store.state.token.access_token}`
-                                                        }"
+                                                                    Authorization: `Bearer ${$store.state.token.access_token}`
+                                                                }"
                                                                 :max-size="2048"
                                                                 :on-error="uploadError"
                                                                 :on-format-error="uploadFormatError"
@@ -941,6 +989,38 @@
                                 <div class="prompt-box">
                                     <p>提示</p>
                                     <p>每组图片的第一张图片默认为主图，每类最多展示5张图片</p>
+                                </div>
+                                <div class="picture-group" v-for="item in pictureGroup">
+                                    <h5>颜色：{{ item.color }}</h5>
+                                    <div>
+                                        <div class="image-preview" v-for="(item, index) in item.logoList">
+                                            <img :src="item.img">
+                                            <i-button type="text" @click.native="removeAlbum(index)">
+                                                <icon type="trash-a"></icon>
+                                            </i-button>
+                                        </div>
+                                        <div style="margin-top: 16px">
+                                            <upload :action="action"
+                                                    :before-upload="uploadBefore"
+                                                    :format="['jpg','jpeg','png']"
+                                                    :headers="{
+                                                        Authorization: `Bearer ${$store.state.token.access_token}`
+                                                    }"
+                                                    multiple
+                                                    :max-size="2048"
+                                                    :on-error="uploadError"
+                                                    :on-format-error="uploadFormatError"
+                                                    :on-success="uploadSuccess"
+                                                    ref="upload"
+                                                    :show-upload-list="false">
+                                                <i-button type="ghost">图片上传</i-button>
+                                            </upload>
+                                            <i-button type="ghost">从图片空间选择</i-button>
+                                            <div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </tab-pane>
                         </tabs>

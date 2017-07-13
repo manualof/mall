@@ -10,22 +10,24 @@
         data() {
             return {
                 form: {
-                    accountData: '2015-02-01',
-                    payMoney: ' 0.00 = 0.00 (订单金额) - 0.00 (佣金金额) - 0.00 (退单金额) + 0.00 (退还佣金) ' +
-                    '- 0.00 (店铺促销费用)',
-                    settlementNum: '75 (原结算单号：20150115)',
-                    settlementStatus: '已出帐',
-                    startData: '2015-01-01  至  2015-01-31',
+                    detail: {
+                        accountData: '2015-02-01',
+                        payMoney: ' 0.00 = 0.00 (订单金额) - 0.00 (佣金金额) - 0.00 (退单金额) + 0.00 (退还佣金) ' +
+                        '- 0.00 (店铺促销费用)',
+                        settlementNum: '75 (原结算单号：20150115)',
+                        settlementStatus: '已出帐',
+                        startData: '2015-01-01  至  2015-01-31',
+                    },
+                    pay: {
+                        billInformation: '',
+                        billNum: '213624925721571',
+                        endDate: '',
+                        startDate: '',
+                    },
                 },
                 loading: false,
                 managementSearch: '',
                 modal: false,
-                form: {
-                    billInformation: '',
-                    billNum: '213624925721571',
-                    endDate: '',
-                    startDate: '',
-                },
                 payValidate: {
                     endDate: [
                         {
@@ -371,42 +373,42 @@
                 <span>结算管理—账单明细</span>
             </div>
             <card :bordered="false">
-                <i-form ref="form" :model="form" :rules="rules" :label-width="200">
+                <i-form ref="form" :model="form.detail" :rules="rules" :label-width="200">
                     <div class="bill-information">
                         <h5>店铺 - 官方店铺2（ID：15）结算单</h5>
                         <div class="bill-content">
                             <row>
                                 <i-col span="18">
                                     <form-item label="结算单号">
-                                        {{form.settlementNum }}
+                                        {{form.detail.settlementNum }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="18">
                                     <form-item label="起止日期">
-                                        {{form.startData }}
+                                        {{form.detail.startData }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="18">
                                     <form-item label="出账日期">
-                                        ￥{{ form.accountData }}
+                                        ￥{{ form.detail.accountData }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="20">
                                     <form-item label="平台应付金额">
-                                        {{ form.payMoney }}
+                                        {{ form.detail.payMoney }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="18">
                                     <form-item label="结算状态">
-                                        {{ form.settlementStatus }}
+                                        {{ form.detail.settlementStatus }}
                                     </form-item>
                                 </i-col>
                             </row>
@@ -460,15 +462,13 @@
                     </tab-pane>
                 </tabs>
             </card>
-            <modal
-                    v-model="modal"
-                    title="付款信息" class="refund-attribute-modal">
+            <modal v-model="modal" title="付款信息" class="refund-attribute-modal">
                 <div>
-                    <i-form ref="form" :model="form" :rules="payValidate" :label-width="100">
+                    <i-form ref="form" :model="form.pay" :rules="payValidate" :label-width="100">
                         <row>
                             <i-col span="18">
                                 <form-item label="账单编号" prop="billNum">
-                                    {{ form.billNum }}
+                                    {{ form.pay.billNum }}
                                 </form-item>
                             </i-col>
                         </row>
@@ -476,12 +476,12 @@
                             <row>
                                 <i-col span="8">
                                     <date-picker type="date" placeholder="选择日期"
-                                                 v-model="form.startDate"></date-picker>
+                                                 v-model="form.pay.startDate"></date-picker>
                                 </i-col>
                                 <i-col span="2" style="text-align: center">-</i-col>
                                 <i-col span="8">
                                     <date-picker type="date" placeholder="选择日期"
-                                                 v-model="form.endDate"></date-picker>
+                                                 v-model="form.pay.endDate"></date-picker>
                                 </i-col>
                             </row>
                         </form-item>
@@ -489,7 +489,7 @@
                             <i-col span="20">
                                 <form-item label="出账信息" prop="">
                                     <i-input type="textarea" :autosize="{minRows: 3,maxRows: 5}"
-                                             v-model="form.billInformation"></i-input>
+                                             v-model="form.pay.billInformation"></i-input>
                                     <p class="tip">
                                         请输入汇款单号、支付方式等付款凭证
                                     </p>

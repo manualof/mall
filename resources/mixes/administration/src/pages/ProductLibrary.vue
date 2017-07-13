@@ -1,11 +1,24 @@
 <script>
     import injection from '../helpers/injection';
-    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/product/library/list`).then(response => {
+                window.console.log(response);
+                const data = response.data.data;
+                const pagination = response.data.pagination;
+                next(vm => {
+                    vm.list = data;
+                    vm.pagination = pagination;
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+                next(() => {
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
@@ -58,22 +71,30 @@
                     },
                     {
                         align: 'center',
-                        key: 'configurationID',
+                        render(h, data) {
+                            return data.row.category.id;
+                        },
                         title: '分类ID',
                     },
                     {
                         align: 'center',
-                        key: 'configurationName',
+                        render(h, data) {
+                            return data.row.category.path;
+                        },
                         title: '分类名称',
                     },
                     {
                         align: 'center',
-                        key: 'brandID',
+                        render(h, data) {
+                            return data.row.brand.id;
+                        },
                         title: '品牌ID',
                     },
                     {
                         align: 'center',
-                        key: 'brandName',
+                        render(h, data) {
+                            return data.row.brand.name;
+                        },
                         title: '品牌名称',
                     },
                     {
@@ -89,7 +110,11 @@
                                 h('i-button', {
                                     on: {
                                         click() {
-                                            self.toEdit(data.index);
+                                            self.$router.push(
+                                                {
+                                                    path: 'library/edit',
+                                                },
+                                            );
                                         },
                                     },
                                     props: {
@@ -117,50 +142,7 @@
                         width: 160,
                     },
                 ],
-                list: [
-                    {
-                        advertising: '17年春夏新品纯棉面料',
-                        brandID: 33,
-                        brandName: '迪卡侬',
-                        configurationID: 33,
-                        configurationName: '运动健康>户外>鞋服',
-                        name: '太阳镜眼睛放蓝光紫外线',
-                        pic: image1,
-                        time: '2017-03-30 16:30:41',
-                    },
-                    {
-                        advertising: '17年春夏新品纯棉面料',
-                        brandID: 33,
-                        brandName: '迪卡侬',
-                        configurationID: 33,
-                        configurationName: '运动健康>户外>鞋服',
-                        name: '太阳镜眼睛放蓝光紫外线',
-                        pic: image1,
-                        time: '2017-03-30 16:30:41',
-                    },
-                    {
-                        advertising: '17年春夏新品纯棉面料',
-                        brandID: 33,
-                        brandName: '迪卡侬',
-                        configurationID: 33,
-                        configurationName: '运动健康>户外>鞋服',
-                        name: '太阳镜眼睛放蓝光紫外线',
-                        pic: image1,
-                        time: '2017-03-30 16:30:41',
-                    },
-                    {
-                        advertising: '17年春夏新品纯棉面料',
-                        brandID: 33,
-                        brandName: '迪卡侬',
-                        configurationID: 33,
-                        configurationName: '运动健康>户外>鞋服',
-                        name: '太阳镜眼睛放蓝光紫外线',
-                        pic: image1,
-                        time: '2017-03-30 16:30:41',
-                    },
-                ],
-                searchCategory: '',
-                searchList: [
+                filers: [
                     {
                         label: '商品名称',
                         value: '商品名称',
@@ -174,13 +156,34 @@
                         value: '品牌名称',
                     },
                 ],
-                searchWord: '',
+                form: {
+                    filter: '',
+                    keyword: '',
+                },
+                list: [
+//                    {
+//                        advertising: '17年春夏新品纯棉面料',
+//                        brand: {
+//                            id: 33,
+//                            name: '迪卡侬',
+//                        },
+//                        category: {
+//                            id: 33,
+//                            path: '运动健康>户外>鞋服',
+//                        },
+//                        name: '太阳镜眼睛放蓝光紫外线',
+//                        pic: image1,
+//                        time: '2017-03-30 16:30:41',
+//                    },
+                ],
+                pagination: {
+                    current_page: 1,
+                },
             };
         },
         methods: {
-            addData() {
-                const self = this;
-                self.$router.push(
+            create() {
+                this.$router.push(
                     {
                         path: 'library/add',
                     },
@@ -188,14 +191,6 @@
             },
             remove(index) {
                 this.list.splice(index, 1);
-            },
-            toEdit() {
-                const self = this;
-                self.$router.push(
-                    {
-                        path: 'library/edit',
-                    },
-                );
             },
         },
     };
@@ -212,10 +207,10 @@
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
-                                <i-button class="export-btn" @click="addData" type="ghost">+新增数据</i-button>
+                                <i-button class="export-btn" @click="create" type="ghost">+新增数据</i-button>
                                 <div class="store-body-header-right">
-                                    <i-input v-model="searchWord" placeholder="请输入关键词进行搜索">
-                                        <i-select v-model="searchCategory" slot="prepend" style="width: 100px">
+                                    <i-input v-model="form.keyword" placeholder="请输入关键词进行搜索">
+                                        <i-select v-model="form.filter" slot="prepend" style="width: 100px">
                                             <i-option :value="item.value"
                                                       :key="item"
                                                       v-for="item in searchList" >{{ item.label }}</i-option>
@@ -233,7 +228,10 @@
                             </i-table>
                         </div>
                         <div class="page">
-                            <page :total="100" show-elevator></page>
+                            <page :current="pagination.current_page"
+                                  :page-size="pagination.per_page"
+                                  :total="pagination.total"
+                                  show-elevator></page>
                         </div>
                     </card>
                 </tab-pane>

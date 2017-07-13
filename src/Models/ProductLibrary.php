@@ -21,16 +21,21 @@ class ProductLibrary extends Model
     protected $fillable = [
         'barcode',
         'brand_id',
-        'business_item',
         'category_id',
+        'delivery_area',
         'description',
+        'description_mobile',
         'flow_marketing',
-        'name',
-        'price',
-        'price_cost',
-        'price_market',
+        'image',
         'inventory',
         'inventory_warning',
+        'name',
+        'price_range',
+        'production_place',
+        'public_praise',
+        'selling_point',
+        'size',
+        'weight',
     ];
 
     /**
