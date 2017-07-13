@@ -1,6 +1,6 @@
 <script>
-    import image from '../assets/images/img_logo.png';
     import injection from '../helpers/injection';
+    import image from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -33,7 +33,7 @@
                     information: '退款',
                     money: 99.00,
                     number: 263567946465245485,
-                    numbering: 1254525945416,
+                    orderNum: 1254525945416,
                     person: 'maijia',
                     price: 1999.00,
                     picture: image,
@@ -68,69 +68,84 @@
             </div>
             <card :bordered="false">
                 <div class="refund-details">
-                    <row>
-                        <i-col span="15">
-                            <!--退货服务-->
-                            <row>
-                                <i-col>
-                                    <h5>退货服务</h5>
-                                    <i-form :label-width="160">
-                                        <row>
-                                            <div class="check-step">
-                                                <steps :current="1">
-                                                    <step :content="step.content" :title="step.title" v-for="step in checkSteps"></step>
-                                                </steps>
-                                            </div>
-                                        </row>
-                                    </i-form>
-                                </i-col>
-                            </row>
-                            <!--买家退款申请-->
-                            <i-col>
+                    <i-form ref="refund" :model="refund" :rules="ruleValidate" :label-width="160">
+                        <row>
+                            <i-col span="15">
+                                <h5>退货服务</h5>
+                                <row>
+                                    <i-col>
+                                        <div class="check-step">
+                                            <steps :current="1">
+                                                <step :content="step.content" :title="step.title" v-for="step in checkSteps"></step>
+                                            </steps>
+                                        </div>
+                                    </i-col>
+                                </row>
                                 <h5>买家退款申请</h5>
-                                <i-form :label-width="160">
-                                    <form-item label="退款编号">
-                                        {{ refund.number }}
-                                    </form-item>
-                                    <form-item label="申请人(买家)">
-                                        {{ refund.person }}
-                                    </form-item>
-                                    <form-item label="退款原因">
-                                        {{ refund.response }}
-                                    </form-item>
-                                    <form-item label="退款金额">
-                                        &yen;{{ refund.money }}
-                                    </form-item>
-                                    <form-item label="退款说明">
-                                        {{ refund.state }}
-                                    </form-item>
-                                    <form-item label="凭证上传" class="form-border">
-                                        <img :src="refund.picture" alt="">
-                                    </form-item>
-                                </i-form>
-                            </i-col>
-                            <!--商家处理意见-->
-                            <i-col>
+                                <row>
+                                    <i-col>
+                                        <form-item label="退款编号">
+                                            {{ refund.number }}
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col>
+                                        <form-item label="申请人(买家)">
+                                            {{ refund.person }}
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col>
+                                        <form-item label="退款原因">
+                                            {{ refund.response }}
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col>
+                                        <form-item label="退款金额">
+                                            {{ refund.money }}
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col>
+                                        <form-item label="退款说明">
+                                            {{ refund.state }}
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col>
+                                        <form-item label="凭证上传" class="form-border">
+                                            <img :src="refund.picture" alt="">
+                                        </form-item>
+                                    </i-col>
+                                </row>
                                 <h5>商家处理意见</h5>
-                                <i-form :label-width="160">
-                                    <form-item label="是否同意">
-                                        {{ refund.whether }}
-                                    </form-item>
-                                    <row>
+                                <row>
+                                    <i-col>
+                                        <form-item label="是否同意">
+                                            {{ refund.whether }}
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col>
                                         <form-item label="备注信息">
                                             {{ refund.information }}
                                         </form-item>
-                                    </row>
-                                </i-form>
+                                    </i-col>
+                                </row>
                             </i-col>
-                        </i-col>
-                        <i-col span="9">
-                            <h5>商品交易信息</h5>
-                            <i-form :label-width="160">
+                            <i-col span="9">
+                                <h5>商品交易信息</h5>
                                 <div class="goods-intro-content">
                                     <row>
                                         <i-col span="5">
-                                            <img :src="refund.picture">
+                                            <img :src="refund.picture" alt="">
                                         </i-col>
                                         <i-col span="19">
                                             <p>{{ refund.goodsName }}</p>
@@ -138,20 +153,30 @@
                                         </i-col>
                                     </row>
                                 </div>
-                                <form-item label="运费">
-                                    {{ refund.freight }}
-                                </form-item>
-                                <form-item label="订单总额">
-                                    {{ refundTotal }}
-                                </form-item>
-                                <row class="refund-number">
-                                    <form-item label="订单编号">
-                                        {{ refund.numbering }}
-                                    </form-item>
+                                <row>
+                                    <i-col>
+                                        <form-item label="运费">
+                                            {{ refund.freight }}
+                                        </form-item>
+                                    </i-col>
                                 </row>
-                            </i-form>
-                        </i-col>
-                    </row>
+                                <row>
+                                    <i-col>
+                                        <form-item label="订单总额">
+                                            {{ refundTotal }}
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col>
+                                        <form-item label="订单编号">
+                                            {{ refund.orderNum }}
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                            </i-col>
+                        </row>
+                    </i-form>
                 </div>
             </card>
         </div>

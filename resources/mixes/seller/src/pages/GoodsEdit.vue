@@ -459,9 +459,11 @@
                 this.spaceExit = true;
             },
             removeAlbum(index) {
-
-                this.pictureGroup.forEach(item => {
-                    item.logoList.splice(index, 1);
+                const self = this;
+                this.pictureGroup.forEach((item, i) => {
+                    self.list = item;
+                    index = i;
+                    self.list.logoList.splice(index, 1);
                 });
             },
             removeLogo() {
