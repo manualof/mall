@@ -1,5 +1,6 @@
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
+//    import magnifier from './magnifier';
     import small1 from '../assets/images/s1.jpg';
     import small2 from '../assets/images/s2.jpg';
     import small3 from '../assets/images/s3.jpg';
@@ -15,11 +16,11 @@
         components: {
             swiper,
             swiperSlide,
+//            magnifier,
         },
         data() {
             const self = this;
             return {
-                nextDisabled: false,
                 banner: {
                     smalls: [
                         small1,
@@ -57,16 +58,10 @@
                 },
                 smallOption: {
                     autoplay: false,
-                    slidesPerView: 4.86,
-                    loop: false,
-                    spaceBetween: 10,
-                    normalizeSlideIndex: false,
-                    slideToClickedSlide: true,
                     centeredSlides: true,
+                    loop: false,
+                    normalizeSlideIndex: false,
                     notNextTick: true,
-                    watchSlidesProgress: false,
-                    watchSlidesVisibility: false,
-                    prevButton: '.swiper-button-prev',
                     nextButton: '.swiper-button-next',
                     onSlideNextStart() {
                         this.activeIndex = self.$refs.mySwiperB.swiper.activeIndex;
@@ -74,7 +69,6 @@
                             .slideTo(self.$refs.mySwiperB.swiper.activeIndex);
                     },
                     onSlidePrevStart() {
-                        console.log(self.$refs.mySwiperB.swiper);
                         this.activeIndex = self.$refs.mySwiperB.swiper.activeIndex;
                         self.$refs.mySwiperA.swiper
                             .slideTo(self.$refs.mySwiperB.swiper.activeIndex);
@@ -84,19 +78,18 @@
                         self.$refs.mySwiperA.swiper
                             .slideTo(self.$refs.mySwiperB.swiper.activeIndex);
                     },
-                    onSlideChangeEnd() {
-                        if (swiper.isEnd) {
-                            this.nextDisabled = true;
-                        } else {
-                            this.nextDisabled = false;
-                        }
-                    },
+                    prevButton: '.swiper-button-prev',
+                    spaceBetween: 10,
+                    slideToClickedSlide: true,
+                    slidesPerView: 4.86,
+                    watchSlidesProgress: false,
+                    watchSlidesVisibility: false,
                 },
             };
         },
         computed: {
             swiperA() {
-                return this.refs.mySwiperA;
+                return this.refs.mySwiperA.swiper;
             },
             swiperB() {
                 return this.refs.mySwiperB.swiper;
@@ -104,8 +97,7 @@
         },
         mounted() {
             this.swiperB.on('mouseover', () => {
-                console.log(1);
-                this.$refs.mySwiperB.swiper.onTap();
+                this.swiperB.onTap();
             });
         },
         methods: {
@@ -150,8 +142,8 @@
                     <img :src="item">
                 </swiper-slide>
             </swiper>
-            <div class="swiper-button-prev" slot="button-prev" :class="{'swiper-button-disabled':nextDisabled}"></div>
-            <div class="swiper-button-next" slot="button-next"  :class="{'swiper-button-disabled':nextDisabled}"></div>
+            <div class="swiper-button-prev" slot="button-prev"></div>
+            <div class="swiper-button-next" slot="button-next"></div>
         </div>
     </div>
 </template>
