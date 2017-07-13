@@ -76,7 +76,8 @@
                                     <i-col>
                                         <div class="check-step">
                                             <steps :current="1">
-                                                <step :content="step.content" :title="step.title" v-for="step in checkSteps"></step>
+                                                <step :content="step.content" :title="step.title"
+                                                      v-for="step in checkSteps"></step>
                                             </steps>
                                         </div>
                                     </i-col>
