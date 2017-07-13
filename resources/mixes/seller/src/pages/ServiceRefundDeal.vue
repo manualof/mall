@@ -73,13 +73,13 @@
                     <i-form ref="form" :model="form" :rules="ruleValidate" :label-width="160">
                         <row>
                             <i-col span="15">
-                                <h5>退货服务</h5>
+                                <h5>退款服务</h5>
                                 <row>
                                     <i-col>
                                         <div class="check-step">
                                             <steps :current="1">
                                                 <step :content="step.content" :title="step.title"
-                                                      v-for="step in checkSteps"></step>
+                                                      v-for="step in dealSteps"></step>
                                             </steps>
                                         </div>
                                     </i-col>
@@ -139,7 +139,7 @@
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="20">
+                                    <i-col span="22">
                                         <form-item label="备注信息">
                                             <i-input type="textarea" :autosize="{minRows: 3,maxRows: 5}"></i-input>
                                             <p class="tip">只能提交一次，请认真选择，同意并经过平台确认后会将金额返还给买家，

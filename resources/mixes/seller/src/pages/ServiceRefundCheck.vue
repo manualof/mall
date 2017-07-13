@@ -71,7 +71,7 @@
                     <i-form ref="refund" :model="refund" :rules="ruleValidate" :label-width="160">
                         <row>
                             <i-col span="15">
-                                <h5>退货服务</h5>
+                                <h5>退款服务</h5>
                                 <row>
                                     <i-col>
                                         <div class="check-step">
