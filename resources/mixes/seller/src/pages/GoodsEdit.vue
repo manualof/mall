@@ -306,10 +306,32 @@
                                 img: image1,
                             },
                         ],
+                        pictureSpace: [
+                            {
+                                img: image1,
+                            },
+                            {
+                                img: image1,
+                            },
+                            {
+                                img: image1,
+                            },
+                        ],
                     },
                     {
                         color: '无色',
                         logoList: [
+                            {
+                                img: image1,
+                            },
+                            {
+                                img: image1,
+                            },
+                        ],
+                        pictureSpace: [
+                            {
+                                img: image1,
+                            },
                             {
                                 img: image1,
                             },
@@ -396,6 +418,7 @@
                         value: '2',
                     },
                 ],
+                spaceExit: false,
             };
         },
         methods: {
@@ -428,6 +451,12 @@
             goBack() {
                 const self = this;
                 self.$router.go(-1);
+            },
+            pictureClose() {
+                this.spaceExit = false;
+            },
+            pictureSelect() {
+                this.spaceExit = true;
             },
             removeAlbum(index) {
                 this.pictureGroup.forEach(item => {
@@ -476,10 +505,10 @@
                 });
             },
             uploadSuccess(data) {
+                console.log(data);
                 const self = this;
                 injection.loading.finish();
                 this.pictureGroup.forEach(item => {
-                    console.log(item);
                     this.list = item;
                 });
                 if (this.list.logoList.length < 5) {
@@ -990,10 +1019,10 @@
                                     <p>提示</p>
                                     <p>每组图片的第一张图片默认为主图，每类最多展示5张图片</p>
                                 </div>
-                                <div class="picture-group" v-for="item in pictureGroup">
-                                    <h5>颜色：{{ item.color }}</h5>
+                                <div class="picture-group" v-for="group in pictureGroup">
+                                    <h5>颜色：{{ group.color }}</h5>
                                     <div>
-                                        <div class="image-preview" v-for="(item, index) in item.logoList">
+                                        <div class="image-preview" v-for="(item, index) in group.logoList">
                                             <img :src="item.img">
                                             <i-button type="text" @click.native="removeAlbum(index)">
                                                 <icon type="trash-a"></icon>
@@ -1002,6 +1031,7 @@
                                         <div style="margin-top: 16px">
                                             <upload :action="action"
                                                     :before-upload="uploadBefore"
+                                                    :data="group.color"
                                                     :format="['jpg','jpeg','png']"
                                                     :headers="{
                                                         Authorization: `Bearer ${$store.state.token.access_token}`
@@ -1015,9 +1045,16 @@
                                                     :show-upload-list="false">
                                                 <i-button type="ghost">图片上传</i-button>
                                             </upload>
-                                            <i-button type="ghost">从图片空间选择</i-button>
-                                            <div>
-
+                                            <i-button type="ghost" v-if="!spaceExit"
+                                                      @click.native="pictureSelect">从图片空间选择</i-button>
+                                            <i-button type="ghost" v-if="spaceExit"
+                                                      @click.native="pictureClose">关闭图片空间</i-button>
+                                            <div v-if="spaceExit" class="picture-space">
+                                                <h5>图片空间</h5>
+                                                <span>
+                                                    <img :src="space.img" alt=""
+                                                         v-for="space in group.pictureSpace">
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
