@@ -12,77 +12,182 @@
                 action: `${window.api}/mall/admin/upload`,
                 addAlbum: true,
                 addPhoneAlbum: true,
-                distribution: [
-                    {
-                        label: '333',
-                        value: '1',
-                    },
-                    {
-                        label: '444',
-                        value: '2',
-                    },
-                ],
+                data: {
+                    brands: [
+                        {
+                            label: '华为',
+                            value: '1',
+                        },
+                        {
+                            label: '苹果',
+                            value: '2',
+                        },
+                    ],
+                    deliveryAreas: [
+                        {
+                            label: '333',
+                            value: '1',
+                        },
+                        {
+                            label: '444',
+                            value: '2',
+                        },
+                    ],
+                    priceRanges: [
+                        {
+                            label: '100-200',
+                            value: '1',
+                        },
+                        {
+                            label: '400-600',
+                            value: '2',
+                        },
+                    ],
+                    productionPlaces: [
+                        {
+                            label: '南',
+                            value: '1',
+                        },
+                        {
+                            label: '北',
+                            value: '2',
+                        },
+                    ],
+                    publicPraises: [
+                        {
+                            label: '好',
+                            value: '1',
+                        },
+                        {
+                            label: '一般',
+                            value: '2',
+                        },
+                    ],
+                    categories: [
+                        {
+                            children: [
+                                {
+                                    value: '童车童床',
+                                    label: '童车童床',
+                                    children: [
+                                        {
+                                            label: '婴儿推车',
+                                            value: '婴儿推车',
+                                        },
+                                        {
+                                            label: '自行车',
+                                            value: '自行车',
+                                        },
+                                        {
+                                            label: '婴儿推车',
+                                            value: '婴儿推车',
+                                        },
+                                        {
+                                            label: '电动车',
+                                            value: '电动车',
+                                        },
+                                        {
+                                            label: '安全座椅',
+                                            value: '安全座椅',
+                                        },
+                                    ],
+                                },
+                                {
+                                    label: '营养辅食',
+                                    value: '营养辅食',
+                                },
+                                {
+                                    label: '尿裤湿巾',
+                                    value: '尿裤湿巾',
+                                },
+                            ],
+                            label: '个护化妆',
+                            value: '个护化妆',
+                        },
+                        {
+                            children: [
+                                {
+                                    children: [
+                                        {
+                                            label: '婴儿推车1',
+                                            value: '婴儿推车1',
+                                        },
+                                        {
+                                            label: '自行车2',
+                                            value: '自行车2',
+                                        },
+                                        {
+                                            label: '婴儿推车3',
+                                            value: '婴儿推车3',
+                                        },
+                                        {
+                                            label: '电动车',
+                                            value: '电动车',
+                                        },
+                                        {
+                                            label: '安全座椅4',
+                                            value: '安全座椅4',
+                                        },
+                                    ],
+                                    label: '服饰寝居',
+                                    value: '服饰寝居',
+                                },
+                                {
+                                    children: [
+                                        {
+                                            label: '婴儿推车1',
+                                            value: '婴儿推车1',
+                                        },
+                                        {
+                                            label: '自行车2',
+                                            value: '自行车2',
+                                        },
+                                    ],
+                                    label: '营养辅食',
+                                    value: '营养辅食',
+                                },
+                                {
+                                    children: [
+                                        {
+                                            label: '车1',
+                                            value: '车1',
+                                        },
+                                        {
+                                            label: '自行车2',
+                                            value: '自行车2',
+                                        },
+                                    ],
+                                    label: '尿裤湿巾',
+                                    value: '尿裤湿巾',
+                                },
+                            ],
+                            label: '家用电器',
+                            value: '家用电器',
+                        },
+                    ],
+                },
                 form: {
-                    barCode: '',
-                    distribution: '',
-                    goodComment: '',
-                    goodOrigin: '',
-                    goodStyle: '',
-                    logo: '',
+                    barcode: '',
+                    brand_id: '',
+                    category_id: 0,
+                    delivery_area: '',
+                    image: '',
                     name: '',
                     picture: '',
-                    price: '',
+                    price_range: '',
+                    production_place: '',
+                    public_praise: '',
                     remarks: '',
                     selectStyle: ['个护化妆', '营养辅食'],
-                    sellPoint: '',
+                    selling_point: '',
                 },
-                goodStyle: [
-                    {
-                        label: '华为',
-                        value: '1',
-                    },
-                    {
-                        label: '苹果',
-                        value: '2',
-                    },
-                ],
-                goodComment: [
-                    {
-                        label: '好',
-                        value: '1',
-                    },
-                    {
-                        label: '一般',
-                        value: '2',
-                    },
-                ],
-                goodOrigin: [
-                    {
-                        label: '南',
-                        value: '1',
-                    },
-                    {
-                        label: '北',
-                        value: '2',
-                    },
-                ],
                 isEditPicture: false,
                 isEditText: false,
                 isPcPicture: false,
                 isPhonePicture: false,
                 loading: false,
-                priceList: [
-                    {
-                        label: '100-200',
-                        value: '1',
-                    },
-                    {
-                        label: '400-600',
-                        value: '2',
-                    },
-                ],
                 rules: {
-                    logo: [
+                    image: [
                         {
                             message: '商品图片不能为空',
                             required: true,
@@ -97,108 +202,6 @@
                         },
                     ],
                 },
-                styleData: [
-                    {
-                        children: [
-                            {
-                                value: '童车童床',
-                                label: '童车童床',
-                                children: [
-                                    {
-                                        label: '婴儿推车',
-                                        value: '婴儿推车',
-                                    },
-                                    {
-                                        label: '自行车',
-                                        value: '自行车',
-                                    },
-                                    {
-                                        label: '婴儿推车',
-                                        value: '婴儿推车',
-                                    },
-                                    {
-                                        label: '电动车',
-                                        value: '电动车',
-                                    },
-                                    {
-                                        label: '安全座椅',
-                                        value: '安全座椅',
-                                    },
-                                ],
-                            },
-                            {
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
-                            },
-                        ],
-                        label: '个护化妆',
-                        value: '个护化妆',
-                    },
-                    {
-                        children: [
-                            {
-                                children: [
-                                    {
-                                        label: '婴儿推车1',
-                                        value: '婴儿推车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                    {
-                                        label: '婴儿推车3',
-                                        value: '婴儿推车3',
-                                    },
-                                    {
-                                        label: '电动车',
-                                        value: '电动车',
-                                    },
-                                    {
-                                        label: '安全座椅4',
-                                        value: '安全座椅4',
-                                    },
-                                ],
-                                label: '服饰寝居',
-                                value: '服饰寝居',
-                            },
-                            {
-                                children: [
-                                    {
-                                        label: '婴儿推车1',
-                                        value: '婴儿推车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                ],
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                children: [
-                                    {
-                                        label: '车1',
-                                        value: '车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                ],
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
-                            },
-                        ],
-                        label: '家用电器',
-                        value: '家用电器',
-                    },
-                ],
             };
         },
         methods: {
@@ -222,12 +225,18 @@
                 this.isPhonePicture = false;
                 this.addPhoneAlbum = true;
             },
+            editInformation() {
+                const self = this;
+                self.$router.push({
+                    path: 'edit/category',
+                });
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
             },
-            removeLogo() {
-                this.form.logo = '';
+            removeImage() {
+                this.form.image = '';
             },
             submit() {
                 const self = this;
@@ -280,7 +289,7 @@
                 self.$notice.open({
                     title: data.message,
                 });
-                self.form.logo = data.data.path;
+                self.form.image = data.data.path;
             },
             uploadSuccessPicture(data) {
                 const self = this;
@@ -295,13 +304,13 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="goods-library-edit ">
+        <div class="goods-library-add">
             <div class="store-refund-process">
                 <div class="edit-link-title">
                     <i-button type="text" @click.native="goBack">
                         <icon type="chevron-left"></icon>
                     </i-button>
-                    <span>商品库管理—编辑</span>
+                    <span>商品库管理 —— 编辑</span>
                 </div>
                 <div>
                     <card :bordered="false">
@@ -312,9 +321,8 @@
                                     <row>
                                         <i-col span="12">
                                             <form-item label="商品分类">
-                                                <cascader :data="styleData"
-                                                          change-on-select
-                                                          v-model="form.selectStyle"></cascader>
+                                                <cascader :data="data.categories" trigger="hover"
+                                                          v-model="form.category_id"></Cascader>
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -328,7 +336,7 @@
                                     <row>
                                         <i-col span="12">
                                             <form-item label="商品卖点">
-                                                <i-input v-model="form.sellPoint" type="textarea"
+                                                <i-input v-model="form.selling_point" type="textarea"
                                                          :autosize="{minRows: 3,maxRows: 5}"></i-input>
                                                 <p class="tip">商品卖点最长不超过140个汉字</p>
                                             </form-item>
@@ -337,17 +345,17 @@
                                     <row>
                                         <i-col span="10">
                                             <form-item label="商品条形码">
-                                                <i-input v-model="form.barCode"></i-input>
+                                                <i-input v-model="form.barcode"></i-input>
                                                 <p class="tip">请填写商品条形码下方数字</p>
                                             </form-item>
                                         </i-col>
                                     </row>
                                     <row class="row-goods-upload">
                                         <i-col span="24">
-                                            <form-item label="商品图片" prop="logo">
-                                                <div class="image-preview" v-if="form.logo">
-                                                    <img :src="form.logo">
-                                                    <icon type="close" @click.native="removeLogo"></icon>
+                                            <form-item label="商品图片" prop="image">
+                                                <div class="image-preview" v-if="form.image">
+                                                    <img :src="form.image">
+                                                    <icon type="close" @click.native="removeImage"></icon>
                                                 </div>
                                                 <upload :action="action"
                                                         :before-upload="uploadBefore"
@@ -361,13 +369,27 @@
                                                         :on-success="uploadSuccess"
                                                         ref="upload"
                                                         :show-upload-list="false"
-                                                        v-if="form.logo === '' || form.logo === null">
+                                                        v-if="form.image === '' || form.image === null">
                                                 </upload>
                                                 <p class="tip">第一张图片为默认主图，图片支持JPG、gif、png格式上传或从图片空间中选择，
                                                     建议使用尺寸800*800像素以上，大小不超过4M的正方形图片，单击选中图片，
                                                     可进行上传，替换和删除
                                                 </p>
-                                                <i-button type="ghost">从图片空间上传</i-button>
+                                                <upload class="upload-picture-button"
+                                                        :action="action"
+                                                        :before-upload="uploadBefore"
+                                                        :format="['jpg','jpeg','png']"
+                                                        :headers="{
+                                                            Authorization: `Bearer ${$store.state.token.access_token}`
+                                                        }"
+                                                        :max-size="2048"
+                                                        :on-error="uploadError"
+                                                        :on-format-error="uploadFormatError"
+                                                        :on-success="uploadSuccess"
+                                                        ref="upload"
+                                                        :show-upload-list="false">
+                                                    <i-button type="ghost">从图片空间上传</i-button>
+                                                </upload>
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -379,8 +401,8 @@
                                     <row>
                                         <i-col span="10">
                                             <form-item label="商品品牌">
-                                                <i-select v-model="form.goodStyle">
-                                                    <i-option v-for="item in goodStyle" :value="item.value"
+                                                <i-select v-model="form.brand_id">
+                                                    <i-option v-for="item in data.brands" :value="item.value"
                                                               :key="item">{{ item.label }}</i-option>
                                                 </i-select>
                                             </form-item>
@@ -392,29 +414,29 @@
                                                 <row>
                                                     <i-col span="6">
                                                         <span class="style-title">价格区间</span>
-                                                        <i-select v-model="form.price">
-                                                            <i-option v-for="item in priceList" :value="item.value"
+                                                        <i-select v-model="form.price_range">
+                                                            <i-option v-for="item in data.priceRanges" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
                                                     </i-col>
                                                     <i-col span="6">
                                                         <span class="style-title">口碑</span>
-                                                        <i-select v-model="form.goodComment">
-                                                            <i-option v-for="item in goodComment" :value="item.value"
+                                                        <i-select v-model="form.public_praise">
+                                                            <i-option v-for="item in data.publicPraises" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
                                                     </i-col>
                                                     <i-col span="6">
                                                         <span class="style-title">区域配送</span>
-                                                        <i-select v-model="form.distribution">
-                                                            <i-option v-for="item in distribution" :value="item.value"
+                                                        <i-select v-model="form.delivery_area">
+                                                            <i-option v-for="item in data.deliveryAreas" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
                                                     </i-col>
                                                     <i-col span="6">
                                                         <span class="style-title">产地</span>
-                                                        <i-select v-model="form.goodOrigin">
-                                                            <i-option v-for="item in goodOrigin" :value="item.value"
+                                                        <i-select v-model="form.production_place">
+                                                            <i-option v-for="item in data.productionPlaces" :value="item.value"
                                                                       :key="item">{{ item.label }}</i-option>
                                                         </i-select>
                                                     </i-col>
@@ -468,13 +490,27 @@
                                                                                         文字不得超过500字</span>
                                                                                 </div>
                                                                                 <div class="pro-bg2">
-                                                                                    <i-button type="ghost">插入图片</i-button>
+                                                                                    <upload :action="action"
+                                                                                            :before-upload="uploadBefore"
+                                                                                            :format="['jpg','jpeg','png']"
+                                                                                            :headers="{
+                                                                                                Authorization: `Bearer ${$store.state.token.access_token}`
+                                                                                            }"
+                                                                                            :max-size="2048"
+                                                                                            :on-error="uploadError"
+                                                                                            :on-format-error="uploadErrorPicture"
+                                                                                            :on-success="uploadSuccessPicture"
+                                                                                            ref="upload"
+                                                                                            :show-upload-list="false">
+                                                                                        <i-button type="ghost">插入图片</i-button>
+                                                                                    </upload>
                                                                                     <i-button @click.native="addText" class="ivu-button-text"
                                                                                               type="ghost">添加文字</i-button>
                                                                                 </div>
                                                                                 <div class="pro-content">
-                                                                                    <div class="image-preview">
-
+                                                                                    <div class="image-preview" v-if="form.picture">
+                                                                                        <img :src="form.picture">
+                                                                                        <icon type="close" @click.native="removePicture"></icon>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

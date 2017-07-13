@@ -310,7 +310,7 @@
                     <i-button type="text" @click.native="goBack">
                         <icon type="chevron-left"></icon>
                     </i-button>
-                    <span>商品库管理—新增</span>
+                    <span>商品库管理 —— 新增</span>
                 </div>
                 <div>
                     <card :bordered="false">
