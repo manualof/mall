@@ -26,6 +26,7 @@ class ProductLibrary extends Model
         'description',
         'description_mobile',
         'flow_marketing',
+        'image',
         'inventory',
         'inventory_warning',
         'name',

@@ -52,6 +52,7 @@ class CreateHandler extends Handler
             'delivery_area',
             'description',
             'description_mobile',
+            'image',
             'inventory',
             'inventory_warning',
             'name',
