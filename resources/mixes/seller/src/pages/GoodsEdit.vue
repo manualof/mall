@@ -459,6 +459,7 @@
                 this.spaceExit = true;
             },
             removeAlbum(index) {
+
                 this.pictureGroup.forEach(item => {
                     item.logoList.splice(index, 1);
                 });
@@ -505,21 +506,22 @@
                 });
             },
             uploadSuccess(data) {
-                console.log(data);
-                const self = this;
                 injection.loading.finish();
-                this.pictureGroup.forEach(item => {
-                    this.list = item;
+                const self = this;
+                let index;
+                self.pictureGroup.forEach((item, i) => {
+                    if (item.color === data.data.color) {
+                        self.list = item;
+                        index = i;
+                    }
                 });
-                if (this.list.logoList.length < 5) {
+                if (self.list.logoList.length < 5) {
                     self.$notice.open({
                         title: data.message,
                     });
-                    this.list.logoList.push(
-                        {
-                            img: data.data.path,
-                        },
-                    );
+                    self.pictureGroup[index].logoList.push({
+                        img: data.data.path,
+                    });
                 } else {
                     self.$notice.open({
                         title: '每类最多展示五张图片',
@@ -1031,7 +1033,9 @@
                                         <div style="margin-top: 16px">
                                             <upload :action="action"
                                                     :before-upload="uploadBefore"
-                                                    :data="group.color"
+                                                    :data="{
+                                                        color: group.color,
+                                                    }"
                                                     :format="['jpg','jpeg','png']"
                                                     :headers="{
                                                         Authorization: `Bearer ${$store.state.token.access_token}`
