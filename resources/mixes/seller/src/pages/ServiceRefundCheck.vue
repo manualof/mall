@@ -26,7 +26,7 @@
                         title: '退货完成',
                     },
                 ],
-                refund: {
+                form: {
                     amount: 1,
                     freight: 10.00,
                     goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
@@ -51,8 +51,8 @@
         },
         computed: {
             refundTotal() {
-                return (this.refund.price * this.refund.amount)
-                        + this.refund.freight;
+                return (this.form.price * this.form.amount)
+                        + this.form.freight;
             },
         },
     };
@@ -68,7 +68,7 @@
             </div>
             <card :bordered="false">
                 <div class="refund-details">
-                    <i-form ref="refund" :model="refund" :rules="ruleValidate" :label-width="160">
+                    <i-form ref="form" :model="form" :rules="rule" :label-width="160">
                         <row>
                             <i-col span="15">
                                 <h5>退款服务</h5>
@@ -86,42 +86,42 @@
                                 <row>
                                     <i-col>
                                         <form-item label="退款编号">
-                                            {{ refund.number }}
+                                            {{ form.number }}
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col>
                                         <form-item label="申请人(买家)">
-                                            {{ refund.person }}
+                                            {{ form.person }}
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col>
                                         <form-item label="退款原因">
-                                            {{ refund.response }}
+                                            {{ form.response }}
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col>
                                         <form-item label="退款金额">
-                                            {{ refund.money }}
+                                            {{ form.money }}
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col>
                                         <form-item label="退款说明">
-                                            {{ refund.state }}
+                                            {{ form.state }}
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col>
                                         <form-item label="凭证上传" class="form-border">
-                                            <img :src="refund.picture" alt="">
+                                            <img :src="form.picture" alt="">
                                         </form-item>
                                     </i-col>
                                 </row>
@@ -129,14 +129,14 @@
                                 <row>
                                     <i-col>
                                         <form-item label="是否同意">
-                                            {{ refund.whether }}
+                                            {{ form.whether }}
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col>
                                         <form-item label="备注信息">
-                                            {{ refund.information }}
+                                            {{ form.information }}
                                         </form-item>
                                     </i-col>
                                 </row>
@@ -146,18 +146,18 @@
                                 <div class="goods-intro-content">
                                     <row>
                                         <i-col span="5">
-                                            <img :src="refund.picture" alt="">
+                                            <img :src="form.picture" alt="">
                                         </i-col>
                                         <i-col span="19">
-                                            <p>{{ refund.goodsName }}</p>
-                                            <p><i>&yen;{{ refund.price }}</i>*{{ refund.amount }}(数量)</p>
+                                            <p>{{ form.goodsName }}</p>
+                                            <p><i>&yen;{{ form.price }}</i>*{{ form.amount }}(数量)</p>
                                         </i-col>
                                     </row>
                                 </div>
                                 <row>
                                     <i-col>
                                         <form-item label="运费">
-                                            {{ refund.freight }}
+                                            {{ form.freight }}
                                         </form-item>
                                     </i-col>
                                 </row>
@@ -171,7 +171,7 @@
                                 <row>
                                     <i-col>
                                         <form-item label="订单编号">
-                                            {{ refund.orderNum }}
+                                            {{ form.orderNum }}
                                         </form-item>
                                     </i-col>
                                 </row>

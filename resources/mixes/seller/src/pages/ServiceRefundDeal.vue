@@ -70,7 +70,7 @@
             </div>
             <card :bordered="false">
                 <div class="deal-details">
-                    <i-form ref="form" :model="form" :rules="ruleValidate" :label-width="160">
+                    <i-form ref="form" :model="form" :rules="rule" :label-width="160">
                         <row>
                             <i-col span="15">
                                 <h5>退款服务</h5>
