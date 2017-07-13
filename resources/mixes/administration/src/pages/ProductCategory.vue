@@ -139,6 +139,9 @@
                         width: 200,
                     },
                 ],
+                pagination: {
+                    current_page: 1,
+                },
                 searchCategory: '',
                 searchWord: '',
             };
