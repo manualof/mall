@@ -11,19 +11,6 @@
         data() {
             return {
                 action: `${window.api}/mall/admin/upload`,
-                album: {
-                    logoList: [
-                        {
-                            img: image1,
-                        },
-                        {
-                            img: image1,
-                        },
-                        {
-                            img: image1,
-                        },
-                    ],
-                },
                 distribution: [
                     {
                         label: '333',
@@ -302,12 +289,34 @@
                 isEditPicture: false,
                 isEditText: false,
                 isPcPicture: false,
+                list: {},
                 loading: false,
                 packageType: ['官方标配', '官方标配2', '套餐'],
                 pictureGroup: [
                     {
                         color: '黑色',
-                        logoList: [],
+                        logoList: [
+                            {
+                                img: image1,
+                            },
+                            {
+                                img: image1,
+                            },
+                            {
+                                img: image1,
+                            },
+                        ],
+                    },
+                    {
+                        color: '无色',
+                        logoList: [
+                            {
+                                img: image1,
+                            },
+                            {
+                                img: image1,
+                            },
+                        ],
                     },
                 ],
                 priceList: [
@@ -421,7 +430,9 @@
                 self.$router.go(-1);
             },
             removeAlbum(index) {
-                this.album.logoList.splice(index, 1);
+                this.pictureGroup.forEach(item => {
+                    item.logoList.splice(index, 1);
+                });
             },
             removeLogo() {
                 this.goodsEdit.logo = '';
@@ -467,11 +478,15 @@
             uploadSuccess(data) {
                 const self = this;
                 injection.loading.finish();
-                if (self.album.logoList.length < 5) {
+                this.pictureGroup.forEach(item => {
+                    console.log(item);
+                    this.list = item;
+                });
+                if (this.list.logoList.length < 5) {
                     self.$notice.open({
                         title: data.message,
                     });
-                    self.album.logoList.push(
+                    this.list.logoList.push(
                         {
                             img: data.data.path,
                         },
@@ -975,10 +990,10 @@
                                     <p>提示</p>
                                     <p>每组图片的第一张图片默认为主图，每类最多展示5张图片</p>
                                 </div>
-                                <div class="picture-group">
-                                    <h5>颜色: </h5>
+                                <div class="picture-group" v-for="item in pictureGroup">
+                                    <h5>颜色：{{ item.color }}</h5>
                                     <div>
-                                        <div class="image-preview" v-for="(item, index) in album.logoList">
+                                        <div class="image-preview" v-for="(item, index) in item.logoList">
                                             <img :src="item.img">
                                             <i-button type="text" @click.native="removeAlbum(index)">
                                                 <icon type="trash-a"></icon>
