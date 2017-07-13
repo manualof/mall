@@ -237,7 +237,7 @@
 </template>
 <script>
     import EndTimer from './extend/Timer';
-    import img from '../assets/images/b1.jpg';
+    import img from '../assets/images/b1.png';
 
     export default{
         components: {

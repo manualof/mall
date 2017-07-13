@@ -40,7 +40,6 @@
         }
         .ivu-form-item {
             margin-bottom: 0;
-
             padding: 8px 0;
             .image-preview {
                 border: 2px solid #ccc;
@@ -261,6 +260,69 @@
             padding: 20px;
             font-size: 12px;
             margin-bottom: 20px;
+        }
+        .picture-group {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #e3e8ee;
+            h5 {
+                border-bottom: 1px solid #e3e8ee;
+                height: 40px;
+                line-height: 40px;
+                font-size: 14px;
+                padding-left: 20px;
+            }
+            > div {
+                padding: 20px;
+                .image-preview {
+                    position: relative;
+                    width: 224px;
+                    height: 224px;
+                    display: inline-block;
+                    margin-right: 20px;
+                    > div {
+                        width: 100%;
+                        height: 100%;
+                        background-color: #f5f7f9;
+                    }
+                    &:hover {
+                        button {
+                            display: block;
+                        }
+                    }
+                    button {
+                        display: none;
+                        position: absolute;
+                        right: 6px;
+                        top: 6px;
+                        padding: 0;
+                        width: 24px;
+                        height: 24px;
+                        border-radius: 50%;
+                        background: rgba(0, 0, 0, .3);
+                        color: #fff;
+                        z-index: 100;
+                        i {
+                            font-size: 18px;
+                        }
+                    }
+                    > img {
+                        display: block;
+                        width: 224px;
+                        height: 224px;
+                    }
+                }
+                .ivu-upload {
+                    display: inline-block;
+                    height: 32px;
+                    width: 80px;
+                    > .ivu-upload-select {
+                        height: 32px;
+                        width: 80px;
+                    }
+                }
+            }
         }
     }
 }

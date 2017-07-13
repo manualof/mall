@@ -12,7 +12,7 @@
             return {
                 action: `${window.api}/mall/admin/upload`,
                 album: {
-                    logo: '',
+                    logoList: [],
                     type: '',
                 },
                 checkAll: false,
@@ -20,40 +20,49 @@
                 goodsPicture: {
                     sortType: '',
                 },
-                indeterminate: true,
+                indeterminate: false,
                 loading: false,
+                modalPicture: {
+                    img: '',
+                },
                 pictureList: [
                     {
                         img: image,
                         name: '商品rey的主图1',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图2',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图3',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图4',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图5',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                 ],
+                pictureModal: false,
                 sortType: [
                     {
                         label: '从小到大',
@@ -68,16 +77,20 @@
             };
         },
         methods: {
-            checkAllGroupChange(data) {
-                if (data.length === this.pictureList.length) {
+            checkAllGroupChange() {
+                this.indeterminate = false;
+                this.checkAll = true;
+                const select = [];
+                this.pictureList.forEach(item => {
+                    if (item.single === false) {
+                        this.checkAll = false;
+                        this.indeterminate = true;
+                    } else {
+                        select.push(item);
+                    }
+                });
+                if (select.length === 0) {
                     this.indeterminate = false;
-                    this.checkAll = true;
-                } else if (data.length > 0) {
-                    this.indeterminate = true;
-                    this.checkAll = false;
-                } else {
-                    this.indeterminate = false;
-                    this.checkAll = false;
                 }
             },
             goBack() {
@@ -85,23 +98,26 @@
                 self.$router.go(-1);
             },
             handleCheckAll() {
-                if (this.indeterminate) {
-                    this.checkAll = false;
-                } else {
-                    this.checkAll = !this.checkAll;
-                }
-                this.indeterminate = false;
                 if (this.checkAll) {
-                    this.checkAllGroup = this.pictureList;
+                    this.pictureList.forEach(item => {
+                        item.single = true;
+                    });
                 } else {
-                    this.checkAllGroup = [];
+                    this.pictureList.forEach(item => {
+                        item.single = false;
+                    });
+                    this.indeterminate = false;
                 }
+            },
+            lookPicture(item) {
+                this.modalPicture.img = item.img;
+                this.pictureModal = true;
             },
             removeImage(index) {
                 this.pictureList.splice(index, 1);
             },
-            removeLogo() {
-                this.album.logo = '';
+            removeLogo(index) {
+                this.album.logoList.splice(index, 1);
             },
             submit() {
                 const self = this;
@@ -145,12 +161,13 @@
                 this.uploadModal = true;
             },
             uploadSuccess(data) {
+                console.log(data.data.path);
                 const self = this;
                 injection.loading.finish();
                 self.$notice.open({
                     title: data.message,
                 });
-                self.album.logo = data.data.path;
+                self.album.logoList.push(data.data.path);
             },
         },
     };
@@ -169,8 +186,8 @@
                     <div class="btn-group">
                         <checkbox
                                 :indeterminate="indeterminate"
-                                :value="checkAll"
-                                @click.prevent.native="handleCheckAll">全选</checkbox>
+                                v-model="checkAll"
+                                @on-change="handleCheckAll">全选</checkbox>
                         <i-button class="first-btn" type="ghost" @click.native="uploadPicture">上传图片</i-button>
                         <i-button type="ghost" class="first-btn">添加水印</i-button>
                         <i-button type="ghost">批量删除</i-button>
@@ -185,17 +202,16 @@
                             </i-col>
                         </row>
                     </div>
-                    <checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
-                        <checkbox :label="item" v-for="(item, index) in pictureList">
-                            <img :src="item.img" alt="">
-                            <i-button type="text" @click.native="removeImage">
-                                <icon type="trash-a"></icon>
-                            </i-button>
-                            <p>{{ item.name}}</p>
-                            <p class="tip">{{ item.uploadTime}}</p>
-                            <p class="tip">{{ item.size}}</p>
-                        </checkbox>
-                    </checkbox-group>
+                    <div v-for="(item, index) in pictureList" class="picture-check">
+                        <img :src="item.img" alt="" @click="lookPicture(item)">
+                        <i-button type="text" @click.native="removeImage">
+                            <icon type="trash-a"></icon>
+                        </i-button>
+                        <checkbox v-model="item.single" @on-change="checkAllGroupChange()"></checkbox>
+                        <p>{{ item.name}}</p>
+                        <p class="tip">{{ item.uploadTime}}</p>
+                        <p class="tip">{{ item.size}}</p>
+                    </div>
                 </div>
                 <div class="page">
                     <page :total="100" show-elevator></page>
@@ -219,23 +235,26 @@
                         <row>
                             <i-col span="20">
                                 <form-item label="选择图片" prop="logo">
-                                    <div class="image-preview" v-if="album.logo">
-                                        <img :src="album.logo">
-                                        <icon type="close" @click.native="removeLogo"></icon>
+                                    <div class="image-preview" v-if="album.logoList"
+                                         v-for="(item, index) in album.logoList">
+                                        <img :src="item">
+                                        <i-button type="text" @click.native="removeLogo(index)">
+                                            <icon type="trash-a"></icon>
+                                        </i-button>
                                     </div>
                                     <upload :action="action"
                                             :before-upload="uploadBefore"
                                             :format="['jpg','jpeg','png']"
                                             :headers="{
-                                                        Authorization: `Bearer ${$store.state.token.access_token}`
-                                                    }"
+                                                Authorization: `Bearer ${$store.state.token.access_token}`
+                                            }"
+                                            multiple
                                             :max-size="2048"
                                             :on-error="uploadError"
                                             :on-format-error="uploadFormatError"
                                             :on-success="uploadSuccess"
                                             ref="upload"
-                                            :show-upload-list="false"
-                                            v-if="album.logo === '' || album.logo === null">
+                                            :show-upload-list="false">
                                     </upload>
                                     <p class="tip">支持JPG，GIF，PNG格式，大小不超过4096KB的图片上传;
                                         浏览文件是可以按住CTRL或移位键多选</p>
@@ -253,6 +272,13 @@
                             </i-col>
                         </row>
                     </i-form>
+                </div>
+            </modal>
+            <modal
+                    v-model="pictureModal"
+                    title="查看图片" class="upload-picture-modal picture-look-modal">
+                <div>
+                    <img :src="modalPicture.img" alt="">
                 </div>
             </modal>
         </div>
