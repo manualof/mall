@@ -33,29 +33,41 @@
                 <form class="signup-form">
                     <div class="signup-form-group clearfix">
                         <label class="form-title">收货人姓名</label>
-                        <input type="text" class="signup-form-control" name="username" placeholder="请输入收货人姓名">
+                        <input type="text" class="signup-form-control form-control" name="username" placeholder="请输入收货人姓名">
                     </div>
                     <div class="signup-form-group clearfix">
                         <label class="form-title">手机号码</label>
-                        <input type="text" class="signup-form-control" name="telphone" placeholder="手机号码为必填项">
+                        <input type="text" class="signup-form-control form-control" name="telphone" placeholder="手机号码为必填项">
                     </div>
                     <div class="signup-form-group clearfix">
                         <label class="form-title">所在地区</label>
-                        <div class="signup-form-control select-province">
-                            <select>
-                                <option value="0">请选择省份</option>
-                            </select>
-                            <select>
-                                <option value="0">请选择市</option>
-                            </select>
-                            <select>
-                                <option value="0">请选择区</option>
-                            </select>
+                        <div class="select-province clearfix">
+                            <Select v-model="newAddress.province"  style="width:150px">
+                                <Option v-for="province in provinceList"
+                                        :value="province.name"
+                                        :key="province.id">
+                                    {{ province.name }}
+                                </Option>
+                            </Select>
+                            <Select v-model="newAddress.city"  style="width:150px">
+                                <Option v-for="city in cityList"
+                                        :value="city.name"
+                                        :key="city.id">
+                                    {{ city.name }}
+                                </Option>
+                            </Select>
+                            <Select v-model="newAddress.area"  style="width:150px">
+                                <Option v-for="area in areaList"
+                                        :value="area.name"
+                                        :key="area.id">
+                                    {{ area.name }}
+                                </Option>
+                            </Select>
                         </div>
                     </div>
                     <div class="signup-form-group clearfix group-address">
                         <label class="form-title">详细地址</label>
-                        <textarea type="text" class="signup-form-control details-address" name="address"
+                        <textarea type="text" class="signup-form-control details-address form-control" name="address"
                                   placeholder="无需重复填写省市区，小于50个字"></textarea>
                     </div>
                     <div class="signup-form-group default-address clearfix">
@@ -73,10 +85,16 @@
 </template>
 
 <script>
+    import { Select, Option, OptionGroup } from 'iview/src/components/select';
     import Modal from './Modal';
 
     export default {
-        components: { Modal },
+        components: {
+            Modal,
+            Select,
+            Option,
+            OptionGroup,
+        },
         data() {
             return {
                 addressList: [
@@ -88,18 +106,53 @@
                     },
                     {
                         address: '陕西省  西安市 雁塔区 高新二路 36号 xx大厦',
-                        isdefault: 1,
+                        isdefault: 0,
                         name: '王茂',
                         phone: 13000000000,
                     },
                     {
                         address: '陕西省  西安市 雁塔区 高新二路 36号 xx大厦',
-                        isdefault: 1,
+                        isdefault: 0,
                         name: '王茂',
                         phone: 13000000000,
                     },
                 ],
+                areaList: [
+                    {
+                        id: 1,
+                        name: '高新区',
+                    },
+                    {
+                        id: 2,
+                        name: '雁塔区',
+                    },
+                ],
+                cityList: [
+                    {
+                        id: 1,
+                        name: '西安市',
+                    },
+                    {
+                        id: 2,
+                        name: '咸阳市',
+                    },
+                ],
                 modalTitle: '',
+                newAddress: {
+                    area: '',
+                    city: '',
+                    province: '',
+                },
+                provinceList: [
+                    {
+                        id: 1,
+                        name: '陕西省',
+                    },
+                    {
+                        id: 2,
+                        name: '陕西省',
+                    },
+                ],
                 status: 0,
             };
         },
