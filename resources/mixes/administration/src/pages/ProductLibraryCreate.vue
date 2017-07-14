@@ -168,7 +168,7 @@
                 },
                 form: {
                     barcode: '',
-                    brand_id: '',
+                    brand_id: 0,
                     category_id: 0,
                     delivery_area: '',
                     image: '',
@@ -243,7 +243,15 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        self.$Message.success('提交成功!');
+                        self.$http.post(`${window.api}/mall/admin/product/library/create`, self.form).then(response => {
+                            window.console.log(response);
+                            self.$notice.open({
+                                title: '添加产品库数据成功！',
+                            });
+                            self.$router.push('/mall/goods/library');
+                        }).catch(() => {
+                            self.loading = false;
+                        });
                     } else {
                         self.loading = false;
                         self.$notice.error({
@@ -310,7 +318,7 @@
                     <i-button type="text" @click.native="goBack">
                         <icon type="chevron-left"></icon>
                     </i-button>
-                    <span>商品库管理—新增</span>
+                    <span>商品库管理 —— 新增</span>
                 </div>
                 <div>
                     <card :bordered="false">

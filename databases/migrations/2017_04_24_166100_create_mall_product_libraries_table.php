@@ -21,7 +21,7 @@ class CreateMallProductLibrariesTable extends Migration
     {
         $this->schema->create('mall_product_libraries', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('brand_id')->nullable()->comment('品牌 ID');
+            $table->integer('brand_id')->default(0)->comment('品牌 ID');
             $table->integer('category_id')->default(0)->comment('分类 ID');
             $table->string('name')->comment('商品名称');
             $table->string('selling_point')->nullable()->comment('商品卖点');

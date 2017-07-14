@@ -24,17 +24,17 @@ class CreateHandler extends Handler
      */
     protected function execute()
     {
+        $this->formats();
         $this->validate($this->request, [
             'barcode'           => Rule::numeric(),
             'brand_id'          => [
-                Rule::exists('mall_product_brands'),
+                Rule::exists('mall_product_brands', 'id'),
                 Rule::numeric(),
             ],
             'category_id'       => [
-                Rule::exists('mall_product_categories'),
+                Rule::exists('mall_product_categories', 'id'),
                 Rule::numeric(),
             ],
-            'description'       => Rule::required(),
             'name'              => Rule::required(),
         ], [
             'barcode.numeric'           => '商品条形码必须为数值',
@@ -42,7 +42,6 @@ class CreateHandler extends Handler
             'brand_id.numeric'          => '品牌 ID 必须为数值',
             'category_id.numeric'       => '分类 ID 必须为数值',
             'name.required'             => '商品名称必须填写',
-            'description.required'      => '商品描述必须填写',
         ]);
         $this->beginTransaction();
         $data = $this->request->only([
@@ -53,8 +52,6 @@ class CreateHandler extends Handler
             'description',
             'description_mobile',
             'image',
-            'inventory',
-            'inventory_warning',
             'name',
             'price_range',
             'production_place',
@@ -70,5 +67,14 @@ class CreateHandler extends Handler
             $this->rollBackTransaction();
             $this->withCode(500)->withError('添加商品失败！');
         }
+    }
+
+    /**
+     * Format data.
+     */
+    protected function formats()
+    {
+        !$this->request->input('brand_id', 0) && $this->request->offsetUnset('brand_id');
+        !$this->request->input('category_id', 0) && $this->request->offsetUnset('category_id');
     }
 }

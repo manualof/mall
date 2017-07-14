@@ -37,7 +37,7 @@
                     },
                     {
                         align: 'center',
-                        key: 'pic',
+                        key: 'image',
                         render(h, data) {
                             return h('tooltip', {
                                 props: {
@@ -47,7 +47,11 @@
                                     content() {
                                         return h('img', {
                                             domProps: {
-                                                src: data.row.pic,
+                                                src: data.row.image,
+                                            },
+                                            style: {
+                                                maxHeight: '200px',
+                                                maxWidth: '200px',
                                             },
                                         });
                                     },
@@ -72,34 +76,46 @@
                     {
                         align: 'center',
                         render(h, data) {
-                            return data.row.category.id;
+                            if (data.row.category) {
+                                return data.row.category.id;
+                            }
+                            return '';
                         },
                         title: '分类ID',
                     },
                     {
                         align: 'center',
                         render(h, data) {
-                            return data.row.category.path;
+                            if (data.row.category) {
+                                return data.row.category.path;
+                            }
+                            return '';
                         },
                         title: '分类名称',
                     },
                     {
                         align: 'center',
                         render(h, data) {
-                            return data.row.brand.id;
+                            if (data.row.brand) {
+                                return data.row.brand.id;
+                            }
+                            return '';
                         },
                         title: '品牌ID',
                     },
                     {
                         align: 'center',
                         render(h, data) {
-                            return data.row.brand.name;
+                            if (data.row.brand) {
+                                return data.row.brand.name;
+                            }
+                            return '';
                         },
                         title: '品牌名称',
                     },
                     {
                         align: 'center',
-                        key: 'time',
+                        key: 'created_at',
                         title: '发布时间',
                     },
                     {
@@ -107,21 +123,18 @@
                         key: 'action',
                         render(h, data) {
                             return h('div', [
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.$router.push(
-                                                {
-                                                    path: 'library/edit',
-                                                },
-                                            );
-                                        },
-                                    },
+                                h('router-link', {
                                     props: {
-                                        size: 'small',
-                                        type: 'ghost',
+                                        to: `library/edit/${data.row.id}`,
                                     },
-                                }, '编辑'),
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '编辑'),
+                                ]),
                                 h('i-button', {
                                     on: {
                                         click() {
@@ -160,35 +173,13 @@
                     filter: '',
                     keyword: '',
                 },
-                list: [
-//                    {
-//                        advertising: '17年春夏新品纯棉面料',
-//                        brand: {
-//                            id: 33,
-//                            name: '迪卡侬',
-//                        },
-//                        category: {
-//                            id: 33,
-//                            path: '运动健康>户外>鞋服',
-//                        },
-//                        name: '太阳镜眼睛放蓝光紫外线',
-//                        pic: image1,
-//                        time: '2017-03-30 16:30:41',
-//                    },
-                ],
+                list: [],
                 pagination: {
                     current_page: 1,
                 },
             };
         },
         methods: {
-            create() {
-                this.$router.push(
-                    {
-                        path: 'library/add',
-                    },
-                );
-            },
             remove(index) {
                 this.list.splice(index, 1);
             },
@@ -207,7 +198,9 @@
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
-                                <i-button class="export-btn" @click="create" type="ghost">+新增数据</i-button>
+                                <router-link to="/mall/goods/library/add">
+                                    <i-button class="export-btn" type="ghost">+新增数据</i-button>
+                                </router-link>
                                 <div class="store-body-header-right">
                                     <i-input v-model="form.keyword" placeholder="请输入关键词进行搜索">
                                         <i-select v-model="form.filter" slot="prepend" style="width: 100px">
