@@ -335,9 +335,6 @@
                             {
                                 img: image1,
                             },
-                            {
-                                img: image1,
-                            },
                         ],
                     },
                 ],
@@ -455,8 +452,15 @@
             pictureClose() {
                 this.spaceExit = false;
             },
-            pictureSelect() {
+            pictureSelect(group, index) {
+                console.log(group);
+                console.log(index);
+                const self = this;
+                self.pictureGroup.forEach(item => {
+                    self.list = item;
+                });
                 this.spaceExit = true;
+                self.list.pictureSpace = true;
             },
             removeAlbum(group, index) {
                 group.logoList.splice(index, 1);
@@ -1018,7 +1022,7 @@
                                     <p>提示</p>
                                     <p>每组图片的第一张图片默认为主图，每类最多展示5张图片</p>
                                 </div>
-                                <div class="picture-group" v-for="group in pictureGroup">
+                                <div class="picture-group" v-for="(group, index) in pictureGroup">
                                     <h5>颜色：{{ group.color }}</h5>
                                     <div>
                                         <div class="image-preview" v-for="(item, index) in group.logoList">
@@ -1047,9 +1051,9 @@
                                                 <i-button type="ghost">图片上传</i-button>
                                             </upload>
                                             <i-button type="ghost" v-if="!spaceExit"
-                                                      @click.native="pictureSelect">从图片空间选择</i-button>
+                                                      @click.native="pictureSelect(group, index)">从图片空间选择</i-button>
                                             <i-button type="ghost" v-if="spaceExit"
-                                                      @click.native="pictureClose">关闭图片空间</i-button>
+                                                      @click.native="pictureClose(group, index)">关闭图片空间</i-button>
                                             <div v-if="spaceExit" class="picture-space">
                                                 <h5>图片空间</h5>
                                                 <span>

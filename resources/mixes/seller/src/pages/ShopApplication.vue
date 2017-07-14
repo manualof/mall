@@ -1,6 +1,6 @@
 <script>
     import injection from '../helpers/injection';
-    import image1 from '../assets/images/img_logo.png';
+    import image1 from '../assets/images/img_banner.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
