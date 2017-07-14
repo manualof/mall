@@ -74,7 +74,7 @@ class CreateHandler extends Handler
      */
     protected function formats()
     {
-        $this->request->input('brand_id', 0) == 0 && $this->request->offsetUnset('brand_id');
-        $this->request->input('category_id', 0) == 0 && $this->request->offsetUnset('category_id');
+        !$this->request->input('brand_id', 0) && $this->request->offsetUnset('brand_id');
+        !$this->request->input('category_id', 0) && $this->request->offsetUnset('category_id');
     }
 }

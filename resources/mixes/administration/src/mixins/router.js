@@ -164,13 +164,13 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: ProductLibraryEdit,
-                    path: 'goods/library/edit',
+                    component: ProductLibraryCreate,
+                    path: 'goods/library/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: ProductLibraryCreate,
-                    path: 'goods/library/add',
+                    component: ProductLibraryEdit,
+                    path: 'goods/library/edit/:id',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

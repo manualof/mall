@@ -42,4 +42,20 @@ class ProductLibrary extends Model
      * @var string
      */
     protected $table = 'mall_product_libraries';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function brand()
+    {
+        return $this->belongsTo(ProductBrand::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(ProductCategory::class);
+    }
 }
