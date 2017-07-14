@@ -14,7 +14,6 @@
             line-height: 40px;
             background-color: #f5f7f9;
             padding: 0 20px;
-            border-top: 1px solid #e3e8ee;
             border-bottom: 1px solid #e3e8ee;
             font-size: 14px;
         }
@@ -23,20 +22,20 @@
             margin-bottom: 100px;
             .ivu-col-span-15 {
                 border-right: 1px solid #e3e8ee;
-                //min-height: 700px;
                 min-height: 680px;
-                .form-border {
-                    border-bottom: 0;
+                .ivu-row:last-child {
+                    .ivu-form-item {
+                        border-bottom: 0 none;
+                    }
                 }
             }
             .check-step {
                 display: flex;
                 justify-content: flex-start;
                 padding-left: 70px;
-                //padding-top: 24px;
-                //padding-bottom: 20px;
                 padding-top: 44px;
                 padding-bottom: 40px;
+                border-bottom: 1px solid #e3e8ee;
                 .ivu-steps .ivu-steps-tail {
                     padding: 0;
                 }
@@ -85,9 +84,6 @@
                     }
                 }
             }
-        }
-        .refund-number {
-            margin-bottom: 0;
         }
     }
 }
