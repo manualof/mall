@@ -654,8 +654,17 @@
             tabSWitch(index) {
                 this.activeTab = index;
             },
+            getOffect() {
+                const box = document.getElementsByClassName('product-img');
+                this.wrapX = box[0].offsetLeft;
+                this.wrapY = box[0].offsetTop;
+            },
         },
         mounted() {
+            this.getOffect();
+            window.onresize = () => {
+                this.getOffect();
+            };
         },
     };
 </script>
