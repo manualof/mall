@@ -26,23 +26,25 @@
                 </ul>
             </div>
             <div class="content_box">
-                <h4>入驻协议</h4>
                 <div class="progress_02" v-if="temp===2">
-                    <h5>商家入驻要求</h5>
-                    <ol>
-                        <li>请确保您的企业营业执照、组织机构代码证、银行开户许可证、税务登记证、一般纳税人资格证均有效；</li>
-                        <li>请确保您所拥有的品牌有效或已获得相关授权；</li>
-                        <li>请确保您所售商品已取得国家规定的相关行业资质。</li>
-                    </ol>
-                </div>
-                <label>
-                    <input type="checkbox">
-                    <span>
+                    <h4>入驻协议</h4>
+                    <div>
+                        <h5>商家入驻要求</h5>
+                        <ol>
+                            <li>请确保您的企业营业执照、组织机构代码证、银行开户许可证、税务登记证、一般纳税人资格证均有效；</li>
+                            <li>请确保您所拥有的品牌有效或已获得相关授权；</li>
+                            <li>请确保您所售商品已取得国家规定的相关行业资质。</li>
+                        </ol>
+                    </div>
+                    <label class="agree">
+                        <input type="checkbox" v-model="agree">
+                        <span>
                     </span>
-                    我已阅读并同意以上协议
-                </label>
-                <div class="col-md-offset-5 col-md-1">
-                    <button class="btn btn-default next-btn btn-info" @click="next">确认入驻店铺</button>
+                        我已阅读并同意以上协议
+                    </label>
+                    <div class="col-md-offset-5 col-md-1">
+                        <button class="btn btn-default next-btn btn-info" :disabled="!agree" @click="next">确认入驻店铺</button>
+                    </div>
                 </div>
                 <div class="progress_03" v-if="temp===3">
                     <h4>入驻联系人信息</h4>
@@ -728,6 +730,7 @@
     export default {
         data() {
             return {
+                agree: false,
                 temps: ['入驻须知', '公司信息', '店铺信息', '入驻审核'],
                 temp: 1,
                 data: [{
