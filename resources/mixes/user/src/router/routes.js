@@ -53,14 +53,7 @@ import Cooperation from '../components/ShoppingProcess/Cooperation';
 import Refund from '../components/Refund';
 import ReturnOfGoods from '../components/ReturnOfGoods';
 
-import slide from '../components/slide';
-
 export default [
-    {
-        path: '/slide',
-        component: slide,
-        name: 'slide',
-    },
     {
         path: '/signup',
         component: SignUp,
