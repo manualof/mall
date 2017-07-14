@@ -35,7 +35,10 @@ class LibraryHandler extends Handler
             'id.numeric'  => '商品 ID 必须为数值',
             'id.required' => '商品 ID 必须填写',
         ]);
-        $product = ProductLibrary::query()->find($this->request->input('id'));
+        $builder = ProductLibrary::query();
+        $builder->with('brand');
+        $builder->with('category');
+        $product = $builder->find($this->request->input('id'));
         if ($product instanceof ProductLibrary) {
             $this->withCode(200)->withData($product)->withMessage('获取商品信息成功！');
         } else {

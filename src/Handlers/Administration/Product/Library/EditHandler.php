@@ -24,6 +24,7 @@ class EditHandler extends Handler
      */
     protected function execute()
     {
+        $this->formats();
         $this->validate($this->request, [
             'barcode'           => Rule::numeric(),
             'brand_id'          => [
@@ -34,7 +35,6 @@ class EditHandler extends Handler
                 Rule::exists('mall_product_categories'),
                 Rule::numeric(),
             ],
-            'description'       => Rule::required(),
             'name'              => Rule::required(),
         ], [
             'barcode.numeric'           => '商品条形码必须为数值',
@@ -42,7 +42,6 @@ class EditHandler extends Handler
             'brand_id.numeric'          => '品牌 ID 必须为数值',
             'category_id.numeric'       => '分类 ID 必须为数值',
             'name.required'             => '商品名称必须填写',
-            'description.required'      => '商品描述必须填写',
         ]);
         $this->beginTransaction();
         $data = $this->request->only([
@@ -53,8 +52,6 @@ class EditHandler extends Handler
             'description',
             'description_mobile',
             'image',
-            'inventory',
-            'inventory_warning',
             'name',
             'price_range',
             'production_place',
@@ -66,10 +63,19 @@ class EditHandler extends Handler
         $product = ProductLibrary::query()->find($this->request->input('id'));
         if ($product instanceof ProductLibrary && $product->update($data)) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('修改商品信息成功！');
+            $this->withCode(200)->withMessage('修改商品库信息成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('没有对应的商品信息！');
+            $this->withCode(500)->withError('没有对应的商品库信息！');
         }
+    }
+
+    /**
+     * Format data.
+     */
+    protected function formats()
+    {
+        !$this->request->input('brand_id', 0) && $this->request->offsetUnset('brand_id');
+        !$this->request->input('category_id', 0) && $this->request->offsetUnset('category_id');
     }
 }

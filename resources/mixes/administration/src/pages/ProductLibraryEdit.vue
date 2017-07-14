@@ -3,8 +3,18 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/product/library`, {
+                id: to.params.id,
+            }).then(response => {
+                window.console.log(response);
+                next(vm => {
+                    vm.form = response.data.data;
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
@@ -168,7 +178,7 @@
                 },
                 form: {
                     barcode: '',
-                    brand_id: '',
+                    brand_id: 0,
                     category_id: 0,
                     delivery_area: '',
                     image: '',
@@ -243,6 +253,18 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
+                        self.$http.post(`${window.api}/mall/admin/product/library/edit`, self.form).then(response => {
+                            window.console.log(response);
+                            self.$notice.open({
+                                title: '编辑商品库信息成功！',
+                            });
+                            self.$router.push('/mall/goods/library');
+                        }).catch(() => {
+                            self.loading = false;
+                            self.$notice.error({
+                                title: '编辑商品库信息错误！',
+                            });
+                        });
                         self.$Message.success('提交成功!');
                     } else {
                         self.loading = false;
