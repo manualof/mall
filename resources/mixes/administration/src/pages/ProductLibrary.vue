@@ -37,7 +37,7 @@
                     },
                     {
                         align: 'center',
-                        key: 'pic',
+                        key: 'image',
                         render(h, data) {
                             return h('tooltip', {
                                 props: {
@@ -50,7 +50,8 @@
                                                 src: data.row.image,
                                             },
                                             style: {
-                                                maxWidth: '64px',
+                                                maxHeight: '200px',
+                                                maxWidth: '200px',
                                             },
                                         });
                                     },
