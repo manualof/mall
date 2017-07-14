@@ -1,4 +1,5 @@
 <script>
+//    import colorPicker from './colorPicker.vue';
     import injection from '../helpers/injection';
 
     export default {
@@ -6,6 +7,9 @@
             next(() => {
                 injection.sidebar.active('seller');
             });
+        },
+        components: {
+//            colorPicker,
         },
         data() {
             const self = this;
@@ -303,13 +307,14 @@
                             <p>3.可通过排序0~255改变规格值显示顺序；在发布商品是勾选已绑定的商品规格，还可对规格值进行"别名"
                                 修改操作，但不会影响规格值默认名称的设定</p>
                         </div>
+                        <!--<colorPicker v-model="color"></colorPicker>-->
                         <div class="goods-list">
                             <row>
                                 <i-col span="3">选择商品分类</i-col>
                                 <i-col span="6">
                                     <cascader :data="firstType"
                                               trigger="hover"
-                                              v-model="goodsStyle.firstType"></Cascader>
+                                              v-model="goodsStyle.firstType"></cascader>
                                 </i-col>
                             </row>
                             <tabs type="card" class="goods-standard-module">
