@@ -12,7 +12,7 @@
       v-model="html5Color"
       v-on:change="updataValue(html5Color)">
     <!-- 颜色色盘 -->
-    <!--<div class="box" v-bind:class="{ open: openStatus }">
+    <div class="box" v-bind:class="{ open: openStatus }">
       <div class="hd">
         <div class="colorView" v-bind:style="`background-color: ${showPanelColor}`"></div>
         <div class="defaultColor"
@@ -57,7 +57,7 @@
         </ul>
         <h3 v-on:click="triggerHtml5Color">更多颜色...</h3>
       </div>
-    </div>-->
+    </div>
   </div>
 </template>
 
@@ -199,7 +199,7 @@ export default {
 /* eslint-enable */
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .m-colorPicker{
   position: relative; text-align: left; font-size: 14px; display: inline-block;
   ul,li,ol{ list-style: none; margin: 0; padding: 0; }
