@@ -9,7 +9,10 @@
                 const data = response.data.data;
                 const pagination = response.data.pagination;
                 next(vm => {
-                    vm.list = data;
+                    vm.list = data.map(item => {
+                        item.loading = false;
+                        return item;
+                    });
                     vm.pagination = pagination;
                     injection.loading.finish();
                     injection.sidebar.active('mall');
@@ -138,10 +141,39 @@
                                 h('i-button', {
                                     on: {
                                         click() {
-                                            self.remove(data.index);
+                                            self.list[data.index].loading = true;
+                                            self.$http.post(`${window.api}/mall/admin/product/library/remove`, {
+                                                id: data.row.id,
+                                            }).then(() => {
+                                                self.$notice.open({
+                                                    title: '删除商品库信息成功！',
+                                                });
+                                                self.$notice.open({
+                                                    title: '正在刷新商品库信息...',
+                                                });
+                                                self.$loading.start();
+                                                self.$http.post(`${window.api}/mall/admin/product/library/list`).then(response => {
+                                                    self.$loading.finish();
+                                                    self.list = response.data.data.map(item => {
+                                                        item.loading = false;
+                                                        return item;
+                                                    });
+                                                    self.pagination = response.data.pagination;
+                                                }).catch(() => {
+                                                    self.$loading.fail();
+                                                });
+                                            }).catch(() => {
+                                                self.$notice.error({
+                                                    title: '删除商品库信息失败！',
+                                                });
+                                            }).finally(() => {
+                                                self.list[data.index].loading = false;
+                                            });
+                                            console.log(data.row, self);
                                         },
                                     },
                                     props: {
+                                        loading: self.list[data.index].loading,
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -206,7 +238,8 @@
                                         <i-select v-model="form.filter" slot="prepend" style="width: 100px">
                                             <i-option :value="item.value"
                                                       :key="item"
-                                                      v-for="item in searchList" >{{ item.label }}</i-option>
+                                                      v-for="item in searchList">{{ item.label }}
+                                            </i-option>
                                         </i-select>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>
