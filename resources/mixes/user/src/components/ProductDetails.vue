@@ -3,42 +3,20 @@
         <div class="basic-intro container clearfix">
             <div class="miaobaoxie"><router-link to="/slide">首页  >  xx旗舰店 > 尿不湿</router-link></div>
             <div class="product-img">
-                <div>
-                    <!--<div id="preview" class="spec-preview">
-                        <span class="jqzoom" @mouseover="imgBigbox1" @mousemove="moveZoom($event)"
-                              @mouseleave="imgBigbox2"
-                              ref="smallImgBox">
-                          <img class="img-responsive" :src="bigImg"/>
-                          <div id="magnifier-pup" v-if="show" ref="filter"></div>
-                        </span>
-                        <div class="magnifier-box" v-if="show" ref="bigImgBox">
-                            <img class="img-responsive" :src="bigImg" ref="bigImg"/>
-                        </div>
-                    </div>-->
-                    <div id="preview" class="spec-preview">
-                        <span class="jqzoom">
-                          <img class="img-responsive" :src="bigImg"/>
-                          <div id="magnifier-pup" v-if="show" ref="filter"></div>
-                        </span>
-                        <div class="magnifier-box" v-if="show" ref="bigImgBox">
-                            <img class="img-responsive" :src="bigImg" ref="bigImg"/>
-                        </div>
-                    </div>
-                    <!--缩图开始-->
-                    <div class="spec-scroll clearfix">
-                        <a class="prev swiper-button-prev"><i class="icon iconfont icon-gengduo gengduo-left"></i></a>
-                        <a class="next swiper-button-next"><i class="icon iconfont icon-gengduo"></i></a>
-                        <div class="items swiper-container">
-                            <ul class="swiper-wrapper">
-                                <li class="swiper-slide" v-for="(item,index) in smallImgs">
-                                    <img class="img-responsive" :index="index" :src="item"
-                                         @mousemove="preview($event);">
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <!--缩图结束-->
+                <swiper :options="bigOption" ref="mySwiperA">
+                    <swiper-slide v-for="(item, index) in banner.bigs" :key="index">
+                        <img :src="item">
+                    </swiper-slide>
+                    <div class="swiper-pagination" slot="pagination"></div>
+                </swiper>
+                <div class="swiper2">
+                    <swiper :options="smallOption" ref="mySwiperB">
+                        <swiper-slide v-for="(item, index) in banner.smalls" :key="index">
+                            <img :src="item">
+                        </swiper-slide>
+                    </swiper>
+                    <div class="swiper-button-prev icon iconfont icon-gengduo gengduo-left" slot="button-prev"></div>
+                    <div class="swiper-button-next icon iconfont icon-gengduo" slot="button-next"></div>
                 </div>
             </div>
             <div class="product-intro">
@@ -317,28 +295,74 @@
 </template>
 <script>
     import Cascader from 'iview/src/components/cascader';
+    import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import RightSide from './dashboard/RightSide';
     import NeedBrowse from './dashboard/NeedBrowse';
     import MyselfBrowse from './dashboard/MyselfBrowse';
     import EveryoneBrowse from './dashboard/EveryoneBrowse';
+    //    import magnifier from './magnifier';
+    import small1 from '../assets/images/s1.jpg';
+    import small2 from '../assets/images/s2.jpg';
+    import small3 from '../assets/images/s3.jpg';
+    import small4 from '../assets/images/s4.jpg';
+    import small5 from '../assets/images/s5.jpg';
+    import big1 from '../assets/images/b1.png';
+    import big2 from '../assets/images/b2.jpg';
+    import big3 from '../assets/images/b3.jpg';
+    import big4 from '../assets/images/b4.jpg';
+    import big5 from '../assets/images/b5.jpg';
     //    import swiper from 'swiper';
 
     import img1 from '../assets/images/details/stool2.png';
     import img2 from '../assets/images/details/stool1.png';
     import user from '../assets/images/details/user-img.png';
     import img7 from '../assets/images/img_07.png';
-    import stool from '../assets/images/details/stool.png';
+//    import stool from '../assets/images/details/stool.png';
     import logo from '../assets/images/img_lofo.png';
     import talk from '../assets/images/service.png';
 
     export default {
         data() {
+            const self = this;
             return {
                 activeTab: 1,
-                img: logo,
-                talked: talk,
                 activeImg: img1,
-                bigImg: [stool, stool, stool, stool, stool],
+                banner: {
+                    smalls: [
+                        small1,
+                        small2,
+                        small3,
+                        small4,
+                        small5,
+                    ],
+                    bigs: [
+                        big1,
+                        big2,
+                        big3,
+                        big4,
+                        big5,
+                    ],
+                },
+                bigOption: {
+                    autoplay: false,
+                    loop: false,
+                    notNextTick: true,
+                    slideToClickedSlide: true,
+                    controlBy: 'container',
+                    onSlideNextStart() {
+                        if (self.$refs.mySwiperB.swiper) {
+                            self.$refs.mySwiperB.swiper
+                                .slideTo(self.$refs.mySwiperA.swiper.activeIndex);
+                        }
+                    },
+                    onSlidePrevStart() {
+                        if (self.$refs.mySwiperB.swiper) {
+                            self.$refs.mySwiperB.swiper
+                                .slideTo(self.$refs.mySwiperA.swiper.activeIndex);
+                        }
+                    },
+                },
+                img: logo,
                 data: [
                     {
                         children: [
@@ -431,7 +455,43 @@
                         },
                     },
                 ],
+                goodskind: [
+                    {
+                        onoff: true,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                    {
+                        onoff: false,
+                        kind: '全部分类',
+                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    },
+                ],
                 isActive: false,
+                kefu: [
+                    {
+                        name: '售前客服',
+                        items: [
+                            '客服依依', '客服依依', '客服依依', '客服依依',
+                        ],
+                    },
+                    {
+                        name: '售后客服',
+                        items: [
+                            '客服依依', '客服依依', '客服依依',
+                        ],
+                    },
+                ],
                 product_intro: {
                     eval_num: 6298,
                     integral: 138,
@@ -509,42 +569,36 @@
                 selectRecommends: [],
                 show: 0,
                 smallImgs: [img1, img2, img1, img2, img1, img1, img1],
-                kefu: [
-                    {
-                        name: '售前客服',
-                        items: [
-                            '客服依依', '客服依依', '客服依依', '客服依依',
-                        ],
+                talked: talk,
+                smallOption: {
+                    autoplay: false,
+                    centeredSlides: true,
+                    loop: false,
+                    normalizeSlideIndex: false,
+                    notNextTick: true,
+                    nextButton: '.swiper-button-next',
+                    onSlideNextStart() {
+                        this.activeIndex = self.$refs.mySwiperB.swiper.activeIndex;
+                        self.$refs.mySwiperA.swiper
+                            .slideTo(self.$refs.mySwiperB.swiper.activeIndex);
                     },
-                    {
-                        name: '售后客服',
-                        items: [
-                            '客服依依', '客服依依', '客服依依',
-                        ],
+                    onSlidePrevStart() {
+                        this.activeIndex = self.$refs.mySwiperB.swiper.activeIndex;
+                        self.$refs.mySwiperA.swiper
+                            .slideTo(self.$refs.mySwiperB.swiper.activeIndex);
                     },
-                ],
-                goodskind: [
-                    {
-                        onoff: true,
-                        kind: '全部分类',
-                        item: ['按销量', '按时间', '按地点', '按价格'],
+                    onTap() {
+                        this.activeIndex = self.$refs.mySwiperB.swiper.activeIndex;
+                        self.$refs.mySwiperA.swiper
+                            .slideTo(self.$refs.mySwiperB.swiper.activeIndex);
                     },
-                    {
-                        onoff: false,
-                        kind: '全部分类',
-                        item: ['按销量', '按时间', '按地点', '按价格'],
-                    },
-                    {
-                        onoff: false,
-                        kind: '全部分类',
-                        item: ['按销量', '按时间', '按地点', '按价格'],
-                    },
-                    {
-                        onoff: false,
-                        kind: '全部分类',
-                        item: ['按销量', '按时间', '按地点', '按价格'],
-                    },
-                ],
+                    prevButton: '.swiper-button-prev',
+                    spaceBetween: 10,
+                    slideToClickedSlide: true,
+                    slidesPerView: 3.8,
+                    watchSlidesProgress: false,
+                    watchSlidesVisibility: false,
+                },
             };
         },
         components: {
@@ -553,6 +607,8 @@
             MyselfBrowse,
             NeedBrowse,
             RightSide,
+            swiper,
+            swiperSlide,
         },
         computed: {
             total_price() {
