@@ -23,6 +23,7 @@ import Statistics from '../pages/Statistics.vue';
 import StatisticsGoods from '../pages/StatisticsGoods.vue';
 import StatisticsGoodsSet from '../pages/StatisticsGoodsSet.vue';
 import StatisticsOperation from '../pages/StatisticsOperation.vue';
+import StatisticsOperationSet from '../pages/StatisticsOperationSet.vue';
 import StatisticsIndustry from '../pages/StatisticsIndustry.vue';
 import StatisticsIndustrySet from '../pages/StatisticsIndustrySet.vue';
 import StatisticsFlow from '../pages/StatisticsFlow.vue';
@@ -176,6 +177,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StatisticsOperation,
                     path: 'statistics/operation',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsOperationSet,
+                    path: 'statistics/operation/set',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

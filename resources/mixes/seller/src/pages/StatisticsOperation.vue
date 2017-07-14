@@ -1045,6 +1045,14 @@
             randomValue() {
                 return Math.round(Math.random() * 1000);
             },
+            settingPriceArea() {
+                const self = this;
+                self.$router.push(
+                    {
+                        path: 'operation/set',
+                    },
+                );
+            },
         },
     };
 </script>
@@ -1246,7 +1254,7 @@
                         <div class="analysis-content">
                             <h5>买家排行榜TOP15</h5>
                             <div class="order-money-content">
-                                <i-button type="ghost">设置价格区间</i-button>
+                                <i-button type="ghost" @click.native="settingPriceArea">设置价格区间</i-button>
                                 <div class="select-content" style="top: -10px">
                                     <ul>
                                         <li>
