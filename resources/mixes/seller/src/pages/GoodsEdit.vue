@@ -458,13 +458,8 @@
             pictureSelect() {
                 this.spaceExit = true;
             },
-            removeAlbum(index) {
-                const self = this;
-                this.pictureGroup.forEach((item, i) => {
-                    self.list = item;
-                    index = i;
-                    self.list.logoList.splice(index, 1);
-                });
+            removeAlbum(group, index) {
+                group.logoList.splice(index, 1);
             },
             removeLogo() {
                 this.goodsEdit.logo = '';
@@ -1028,7 +1023,7 @@
                                     <div>
                                         <div class="image-preview" v-for="(item, index) in group.logoList">
                                             <img :src="item.img">
-                                            <i-button type="text" @click.native="removeAlbum(index)">
+                                            <i-button type="text" @click.native="removeAlbum(group, index)">
                                                 <icon type="trash-a"></icon>
                                             </i-button>
                                         </div>
