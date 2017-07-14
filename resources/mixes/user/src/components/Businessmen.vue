@@ -26,6 +26,7 @@
                 </ul>
             </div>
             <div class="content_box">
+                <h4>入驻协议</h4>
                 <div class="progress_02" v-if="temp===2">
                     <h5>商家入驻要求</h5>
                     <ol>
@@ -33,9 +34,15 @@
                         <li>请确保您所拥有的品牌有效或已获得相关授权；</li>
                         <li>请确保您所售商品已取得国家规定的相关行业资质。</li>
                     </ol>
-                    <div class="col-md-offset-5 col-md-1">
-                        <button class="btn btn-default next-btn btn-info" @click="next">确认入驻店铺</button>
-                    </div>
+                </div>
+                <label>
+                    <input type="checkbox">
+                    <span>
+                    </span>
+                    我已阅读并同意以上协议
+                </label>
+                <div class="col-md-offset-5 col-md-1">
+                    <button class="btn btn-default next-btn btn-info" @click="next">确认入驻店铺</button>
                 </div>
                 <div class="progress_03" v-if="temp===3">
                     <h4>入驻联系人信息</h4>
