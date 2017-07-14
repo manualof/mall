@@ -346,16 +346,21 @@
                         if (self.$refs.mySwiperB.swiper) {
                             self.$refs.mySwiperB.swiper
                                 .slideTo(self.$refs.mySwiperA.swiper.activeIndex);
+                            self.imgSrc = self.banner.bigs[self.$refs.mySwiperA.swiper.activeIndex];
                         }
                     },
                     onSlidePrevStart() {
                         if (self.$refs.mySwiperB.swiper) {
                             self.$refs.mySwiperB.swiper
                                 .slideTo(self.$refs.mySwiperA.swiper.activeIndex);
+                            self.imgSrc = self.banner.bigs[self.$refs.mySwiperA.swiper.activeIndex];
                         }
                     },
                 },
+                boxWidth: 384,
+                boxHeight: 384,
                 img: logo,
+                imgSrc: null,
                 data: [
                     {
                         children: [
@@ -448,6 +453,7 @@
                         },
                     },
                 ],
+                gap: 20,
                 goodskind: [
                     {
                         onoff: true,
@@ -562,7 +568,7 @@
                 selectRecommends: [],
                 show: 0,
                 smallImgs: [img1, img2, img1, img2, img1, img1, img1],
-                talked: talk,
+                scale: 3,
                 smallOption: {
                     autoplay: false,
                     centeredSlides: true,
@@ -592,13 +598,9 @@
                     watchSlidesProgress: false,
                     watchSlidesVisibility: false,
                 },
+                talked: talk,
                 wrapX: 0,
                 wrapY: 0,
-                boxWidth: 384,
-                boxHeight: 384,
-                scale: 3,
-                imgSrc: big5,
-                gap: 20,
             };
         },
         components: {
@@ -631,9 +633,10 @@
             change(num) {
                 this.goodskind[num].onoff = !this.goodskind[num].onoff;
             },
-            preview($event) {
-                const index = $event.target.getAttribute('index');
-                this.bigImg = this.smallImgs[index];
+            getOffect() {
+                const box = document.getElementsByClassName('product-img');
+                this.wrapX = box[0].offsetLeft;
+                this.wrapY = box[0].offsetTop;
             },
             selectRecommend(item, e) {
                 const index = this.selectRecommends.indexOf(item);
@@ -654,13 +657,9 @@
             tabSWitch(index) {
                 this.activeTab = index;
             },
-            getOffect() {
-                const box = document.getElementsByClassName('product-img');
-                this.wrapX = box[0].offsetLeft;
-                this.wrapY = box[0].offsetTop;
-            },
         },
         mounted() {
+            this.imgSrc = this.banner.bigs[0];
             this.getOffect();
             window.onresize = () => {
                 this.getOffect();
