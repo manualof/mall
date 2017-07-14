@@ -46,141 +46,16 @@
         padding-top: 20px;
         .miaobaoxie{
             color: #666;
+            margin-bottom: 20px;
         }
         .product-img {
             float: left;
             width: 384px;
-            /*图片放大镜样式*/
-            .spec-preview {
-                position: relative;
-                height: 384px;
-                width: 100%;
-                .magnifier-box {
-                    border: 1px solid #e5e5e5;
-                    height: 400px;
-                    left: 420px;
-                    position: absolute;
-                    width: 400px;
-                }
-            }
-            .jqzoom {
-                border: none;
-                cursor: pointer;
-                display: block;
-                float: left;
-                height: 384px;
-                margin: 0px;
-                padding: 0px;
-                position: relative;
-                width: 384px;
-                img {
-                    height: auto;
-                    width: 100%;
-                }
-                #magnifier-pup {
-                    background: #de2634;
-                    cursor: move;
-                    height: 200px;
-                    left: 0;
-                    opacity: 0.4;
-                    position: absolute;
-                    top: 0;
-                    width: 200px;
-                }
-            }
-            .zoomdiv {
-                background: #ffffff;
-                border: 1px solid #d0d0d0;
-                display: none;
-                left: 0px;
-                height: 350px;
-                overflow: hidden;
-                position: absolute;
-                text-align: center;
-                top: 0px;
-                width: 350px;
-                z-index: 100;
-            }
-            .jqZoomPup {
-                background: #ffffff /*url(../images/zoom.png) 50% center no-repeat*/;
-                border: 1px solid #aaa;
-                filter: alpha(Opacity=50);
-                left: 0px;
-                height: 20px;
-                opacity: 0.5;
-                position: absolute;
-                top: 0px;
-                -moz-opacity: 0.5;
-                -khtml-opacity: 0.5;
-                visibility: hidden;
-                width: 20px;
-                z-index: 10;
-            }
-
             /*图片小图预览列表*/
             .spec-preview {
                 height: 384px;
                 margin-top: 10px;
                 width: 384px;
-            }
-            .spec-scroll {
-                clear: both;
-                margin-top: 10px;
-                width: 384px;
-            }
-            .pre,
-            .snext {
-                display: block;
-                height: 80px;
-                margin-right: 4px;
-                margin-top: 0;
-                position: relative;
-                right: 0;
-                width: 15px;
-                i {
-                    color: #ffffff;
-                }
-            }
-            .spec-scroll .next {
-                float: right;
-            }
-            .spec-scroll .prev, .spec-scroll .next {
-                background: #666666;
-                cursor: pointer;
-                display: block;
-                height: 80px;
-                line-height: 80px;
-                margin-right: 0;
-                text-decoration: none;
-                text-align: center;
-                width: 15px;
-            }
-            .spec-scroll .items {
-                float: left;
-                height: 82px;
-                margin-left: 2px;
-                overflow: hidden;
-                position: relative;
-                width: 350px;
-            }
-            .spec-scroll .items ul {
-                position: absolute;
-                width: 999999px;
-            }
-            .spec-scroll .items ul li {
-                float: left;
-                text-align: center;
-                width: 80px;
-                margin-right: 10px;
-                border: 1px solid #e5e5e5;
-                img {
-                    border: 1px solid #ffffff;
-                    height: auto;
-                    width: 100%;
-                }
-            }
-            .spec-scroll .items ul li img:hover {
-                border: 1px solid #de2634;
             }
         }
         .product-intro {
@@ -331,6 +206,7 @@
                             }
                         }
                         .form-control {
+                            background: transparent;
                             text-align: center;
                             width: 82px;
                         }

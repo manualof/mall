@@ -9,6 +9,15 @@
                     </swiper-slide>
                     <div class="swiper-pagination" slot="pagination"></div>
                 </swiper>
+                <magnifier
+                    :wrap-x='wrapX'
+                    :wrap-y='wrapY'
+                    :box-width='boxWidth'
+                    :box-height='boxHeight'
+                    :scale='scale'
+                    :gap='gap'
+                    :img-src='imgSrc'>
+                </magnifier>
                 <div class="swiper2">
                     <swiper :options="smallOption" ref="mySwiperB">
                         <swiper-slide v-for="(item, index) in banner.smalls" :key="index">
@@ -86,20 +95,7 @@
                     <li class="buy"><a class="text-center">立刻购买</a></li>
                     <li class="basket"><a class="text-center">加入购物车</a></li>
                 </ul>
-                <!--<p class="prompt">温馨提示&nbsp;本产品不支持货到付款</p>-->
             </div>
-            <!--<div class="shop-info">-->
-                <!--<div class="shop-img">-->
-                    <!--<router-link :to="{ name: 'shop-home'}">-->
-                        <!--<img src="../assets/images/details/shop.png"/>-->
-                    <!--</router-link>-->
-                <!--</div>-->
-                <!--<h5 class="shop-name">xxx母婴用品店<span class="shop-type text-center">自荐</span></h5>-->
-                <!--<p class="shop-score">店铺评分：<span>9.2</span></p>-->
-                <!--<p class="shop-serve">服务：七天无理由退换货</p>-->
-                <!--<a class="shop-btn text-center contact" href="javascript:void (0)">联系客服</a>-->
-                <!--<a class="shop-btn text-center" href="javascript:void (0)">关注店家</a>-->
-            <!--</div>-->
         </div>
         <!--推荐购买-->
         <ul class="combination-buy container">
@@ -300,7 +296,7 @@
     import NeedBrowse from './dashboard/NeedBrowse';
     import MyselfBrowse from './dashboard/MyselfBrowse';
     import EveryoneBrowse from './dashboard/EveryoneBrowse';
-    //    import magnifier from './magnifier';
+    import magnifier from './extend/magnifier';
     import small1 from '../assets/images/s1.jpg';
     import small2 from '../assets/images/s2.jpg';
     import small3 from '../assets/images/s3.jpg';
@@ -311,13 +307,10 @@
     import big3 from '../assets/images/b3.jpg';
     import big4 from '../assets/images/b4.jpg';
     import big5 from '../assets/images/b5.jpg';
-    //    import swiper from 'swiper';
-
     import img1 from '../assets/images/details/stool2.png';
     import img2 from '../assets/images/details/stool1.png';
     import user from '../assets/images/details/user-img.png';
     import img7 from '../assets/images/img_07.png';
-//    import stool from '../assets/images/details/stool.png';
     import logo from '../assets/images/img_lofo.png';
     import talk from '../assets/images/service.png';
 
@@ -599,6 +592,13 @@
                     watchSlidesProgress: false,
                     watchSlidesVisibility: false,
                 },
+                wrapX: 0,
+                wrapY: 0,
+                boxWidth: 384,
+                boxHeight: 384,
+                scale: 3,
+                imgSrc: big5,
+                gap: 20,
             };
         },
         components: {
@@ -609,6 +609,7 @@
             RightSide,
             swiper,
             swiperSlide,
+            magnifier,
         },
         computed: {
             total_price() {
@@ -653,57 +654,8 @@
             tabSWitch(index) {
                 this.activeTab = index;
             },
-//            imgBigbox1() {
-//                this.show = 1;
-//            },
-//            imgBigbox2() {
-//                this.show = 0;
-//            },
-//            moveZoom(e) {
-//                let x = e.clientX;//鼠标相对于视口的位置
-//                let y = e.clientY;
-//                let t = this.$refs.smallImgBox.offsetTop;//box相对于视口的位置
-//                let l = this.$refs.smallImgBox.offsetLeft;
-//                let _left = x - l - this.$refs.filter.offsetWidth - 100;//计算move的位置
-//                let _top = y - t - this.$refs.filter.offsetHeight - 100;
-//                if (_top <= 0)//滑到box的最顶部
-//                    _top = 0;
-//                else if (_top >= this.$refs.smallImgBox.offsetHeight -
-//                      this.$refs.filter.offsetHeight)//滑到box的最底部
-//                    _top = this.$refs.smallImgBox.offsetHeight - this.$refs.filter.offsetHeight;
-//                if (_left <= 0)//滑到box的最左边
-//                    _left = 0;
-//                else if (_left >= this.$refs.smallImgBox.offsetWidth -
-//                       this.$refs.filter.offsetWidth)//滑到box的最右边
-//                    _left = this.$refs.smallImgBox.offsetWidth - this.$refs.filter.offsetWidth;
-//                this.$refs.filter.style.top = _top + "px";//设置move的位置
-//                this.$refs.filter.style.left = _left + "px";
-//                let w = _left / (this.$refs.smallImgBox.offsetWidth -
-//                      this.$refs.filter.offsetWidth);//计算移动的比例
-//                let h = _top / (this.$refs.smallImgBox.offsetHeight -
-//                          this.$refs.filter.offsetHeight);
-//                let b_bimg_top = (this.$refs.bigImg.offsetHeight -
-//                                  this.$refs.bigImgBox.offsetHeight) * h;//计算大图的位置
-//                let b_bimg_left = (this.$refs.bigImg.offsetWidth -
-//                                  this.$refs.bigImgBox.offsetWidth) * w;
-//                this.$refs.bigImg.style.top = -b_bimg_top + "px";//设置大图的位置信息
-//                this.$refs.bigImg.style.left = -b_bimg_left + "px";
-//            },
-            zoom() {
-//                jQuery(".jqzoom").jqueryzoom({xzoom:380,yzoom:410});
-            },
         },
         mounted() {
-//            this.bigImg = this.smallImgs[0];
-//            const mySwiper = new Swiper('.swiper-container', {
-//                direction: 'horizontal',
-//                loop: true,
-//                nextButton: '.swiper-button-next',
-//                normalizeSlideIndex: true,
-//                prevButton: '.swiper-button-prev',
-//                spaceBetween: 10,
-//                slidesPerView: 4,
-//            });
         },
     };
 </script>
