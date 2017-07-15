@@ -10,94 +10,6 @@
         data() {
             const self = this;
             return {
-                columns: [
-                    {
-                        key: 'index',
-                        render(h) {
-                            return h('i-input', {
-                                props: {
-                                    type: 'ghost',
-                                },
-                            });
-                        },
-                        title: '排序',
-                        width: 80,
-                    },
-                    {
-                        key: 'type',
-                        render(h) {
-                            return h('i-input', {
-                                props: {
-                                    type: 'ghost',
-                                },
-                            });
-                        },
-                        title: '属性',
-                        width: 130,
-                    },
-                    {
-                        key: 'intro',
-                        render(h) {
-                            return h('i-input', {
-                                props: {
-                                    type: 'ghost',
-                                },
-                            });
-                        },
-                        title: '分类名称',
-                    },
-                    {
-                        key: 'single',
-                        render(h) {
-                            return h('checkbox', {}, '显示');
-                        },
-                        title: '分拥比例',
-                        width: 70,
-                    },
-                    {
-                        key: 'sku',
-                        render(h) {
-                            return h('checkbox', {}, 'SKU展示');
-                        },
-                        title: '分拥比例',
-                        width: 100,
-                    },
-                    {
-                        align: 'center',
-                        key: 'action',
-                        render(h, data) {
-                            return h('div', [
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.edit(data.index);
-                                        },
-                                    },
-                                    props: {
-                                        size: 'small',
-                                        type: 'ghost',
-                                    },
-                                    style: {
-                                        marginRight: '10px',
-                                    },
-                                }, '编辑'),
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.deletePreForm(data.index);
-                                        },
-                                    },
-                                    props: {
-                                        size: 'small',
-                                        type: 'error',
-                                    },
-                                }, '删除'),
-                            ]);
-                        },
-                        title: '操作',
-                        width: 180,
-                    },
-                ],
                 form: {
                     attributes: [
                         {
@@ -210,6 +122,110 @@
                             ],
                         },
                     ],
+                    columns: [
+                        {
+                            key: 'index',
+                            render(h) {
+                                return h('i-input', {
+                                    props: {
+                                        type: 'ghost',
+                                    },
+                                });
+                            },
+                            title: '排序',
+                            width: 80,
+                        },
+                        {
+                            key: 'type',
+                            render(h) {
+                                return h('i-input', {
+                                    props: {
+                                        type: 'ghost',
+                                    },
+                                });
+                            },
+                            title: '属性',
+                            width: 130,
+                        },
+                        {
+                            key: 'intro',
+                            render(h) {
+                                return h('i-input', {
+                                    props: {
+                                        type: 'ghost',
+                                    },
+                                });
+                            },
+                            title: '分类名称',
+                        },
+                        {
+                            key: 'single',
+                            render(h) {
+                                return h('checkbox', {}, '显示');
+                            },
+                            title: '分拥比例',
+                            width: 70,
+                        },
+                        {
+                            key: 'sku',
+                            render(h) {
+                                return h('checkbox', {}, 'SKU展示');
+                            },
+                            title: '分拥比例',
+                            width: 100,
+                        },
+                        {
+                            align: 'center',
+                            key: 'action',
+                            render(h, data) {
+                                return h('div', [
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.edit(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                        style: {
+                                            marginRight: '10px',
+                                        },
+                                    }, '编辑'),
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.deletePreForm(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'error',
+                                        },
+                                    }, '删除'),
+                                ]);
+                            },
+                            title: '操作',
+                            width: 180,
+                        },
+                    ],
+                    list: [
+                        {
+                            index: 1,
+                            intro: '32英寸以上',
+                            single: false,
+                            spu: false,
+                            type: '价格',
+                        },
+                        {
+                            index: 2,
+                            intro: '支持',
+                            single: false,
+                            spu: false,
+                            type: '尺寸',
+                        },
+                    ],
                     goodsSort: '',
                     positionType: [],
                     positionStandard: [],
@@ -217,22 +233,6 @@
                     showStyle: '',
                     typeName: '',
                 },
-                list: [
-                    {
-                        index: 1,
-                        intro: '',
-                        single: false,
-                        sku: false,
-                        type: '',
-                    },
-                    {
-                        index: 1,
-                        intro: '',
-                        single: false,
-                        sku: false,
-                        type: '',
-                    },
-                ],
                 location: [
                     {
                         label: '颜色',
@@ -400,7 +400,7 @@
         },
         methods: {
             addCustomer() {
-                this.form.attributes.push(
+                this.form.list.push(
                     {
                         intro: '',
                         single: false,
@@ -413,7 +413,7 @@
                 this.checkboxSelect = true;
             },
             deletePreForm(index) {
-                this.form.attributes.splice(index, 1);
+                this.form.list.splice(index, 1);
             },
             edit() {},
             goBack() {
@@ -539,8 +539,8 @@
                             <i-col span="20">
                                 <form-item label="添加属性" class="form-item-attribute">
                                     <i-table class="shop-table"
-                                             :columns="columns"
-                                             :data="list"
+                                             :columns="form.columns"
+                                             :data="form.list"
                                              :disabled-hover="false"
                                              ref="goodTable"
                                              :show-header="false"
