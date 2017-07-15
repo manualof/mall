@@ -125,10 +125,11 @@
                     columns: [
                         {
                             key: 'index',
-                            render(h) {
+                            render(h, data) {
                                 return h('i-input', {
                                     props: {
                                         type: 'ghost',
+                                        value: data.index + 1,
                                     },
                                 });
                             },
@@ -137,10 +138,11 @@
                         },
                         {
                             key: 'type',
-                            render(h) {
+                            render(h, data) {
                                 return h('i-input', {
                                     props: {
                                         type: 'ghost',
+                                        value: data.row.type,
                                     },
                                 });
                             },
@@ -149,10 +151,11 @@
                         },
                         {
                             key: 'intro',
-                            render(h) {
+                            render(h, data) {
                                 return h('i-input', {
                                     props: {
                                         type: 'ghost',
+                                        value: data.row.intro,
                                     },
                                 });
                             },
@@ -160,16 +163,29 @@
                         },
                         {
                             key: 'single',
-                            render(h) {
-                                return h('checkbox', {}, '显示');
+                            render(h, data) {
+                                return h('checkbox', {
+                                    props: {
+                                        value: data.row.single,
+                                    },
+                                }, '显示');
                             },
                             title: '分拥比例',
                             width: 70,
                         },
                         {
                             key: 'sku',
-                            render(h) {
-                                return h('checkbox', {}, 'SKU展示');
+                            render(h, data) {
+                                return h('checkbox', {
+                                    on: {
+                                        'on-change': () => {
+                                            console.log(data);
+                                        },
+                                    },
+                                    props: {
+                                        value: data.row.sku,
+                                    },
+                                }, 'SKU展示');
                             },
                             title: '分拥比例',
                             width: 100,
@@ -541,10 +557,8 @@
                                     <i-table class="shop-table"
                                              :columns="form.columns"
                                              :data="form.list"
-                                             :disabled-hover="false"
                                              ref="goodTable"
-                                             :show-header="false"
-                                             :highlight-row="false"></i-table>
+                                             :show-header="false"></i-table>
                                     <!--<row v-for="(item, index) in form.attributes" class="row-attributes">
                                         <i-col span="2" style="width: 50px">
                                             <i-input :value="index+1"></i-input>
