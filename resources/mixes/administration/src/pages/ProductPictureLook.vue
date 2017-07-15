@@ -12,58 +12,65 @@
             return {
                 checkAll: false,
                 checkAllGroup: [],
-                indeterminate: true,
+                indeterminate: false,
+                modalPicture: {
+                    img: '',
+                },
                 pictureList: [
                     {
                         img: image,
                         name: '商品rey的主图1',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图2',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图3',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图4',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                     {
                         img: image,
                         name: '商品rey的主图5',
                         uploadTime: '上传时间：2017/02/11 12:30:17',
-                        size: '原图尺寸：400*400',
-                    },
-                    {
-                        img: image,
-                        name: '商品rey的主图6',
-                        uploadTime: '上传时间：2017/02/11 12:30:17',
+                        single: false,
                         size: '原图尺寸：400*400',
                     },
                 ],
+                pictureModal: false,
             };
         },
         methods: {
-            checkAllGroupChange(data) {
-                if (data.length === this.pictureList.length) {
+            checkAllGroupChange() {
+                this.indeterminate = false;
+                this.checkAll = true;
+                const select = [];
+                this.pictureList.forEach(item => {
+                    if (item.single === false) {
+                        this.checkAll = false;
+                        this.indeterminate = true;
+                    } else {
+                        select.push(item);
+                    }
+                });
+                if (select.length === 0) {
                     this.indeterminate = false;
-                    this.checkAll = true;
-                } else if (data.length > 0) {
-                    this.indeterminate = true;
-                    this.checkAll = false;
-                } else {
-                    this.indeterminate = false;
-                    this.checkAll = false;
                 }
             },
             delete() {},
@@ -72,17 +79,23 @@
                 self.$router.go(-1);
             },
             handleCheckAll() {
-                if (this.indeterminate) {
-                    this.checkAll = false;
-                } else {
-                    this.checkAll = !this.checkAll;
-                }
-                this.indeterminate = false;
                 if (this.checkAll) {
-                    this.checkAllGroup = this.pictureList;
+                    this.pictureList.forEach(item => {
+                        item.single = true;
+                    });
                 } else {
-                    this.checkAllGroup = [];
+                    this.pictureList.forEach(item => {
+                        item.single = false;
+                    });
+                    this.indeterminate = false;
                 }
+            },
+            lookPicture(item) {
+                this.modalPicture.img = item.img;
+                this.pictureModal = true;
+            },
+            removeImage(index) {
+                this.pictureList.splice(index, 1);
             },
         },
     };
@@ -100,24 +113,31 @@
                 <div class="picture-select">
                     <checkbox
                             :indeterminate="indeterminate"
-                            :value="checkAll"
-                            @click.prevent.native="handleCheckAll">全选</checkbox>
+                            v-model="checkAll"
+                            @on-change="handleCheckAll">全选</checkbox>
                     <i-button class="delete-btn" type="ghost" @click.native="delete">删除</i-button>
                 </div>
-                <checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
-                    <checkbox :label="item" v-for="(item, index) in pictureList">
-                        <div class="img">
-                            <img :src="item.img" alt="">
-                        </div>
-                        <p class="first-param">{{ item.name }}</p>
-                        <p class="tip">{{ item.uploadTime }}</p>
-                        <p class="tip last-param">{{ item.size }}</p>
-                    </checkbox>
-                </checkbox-group>
+                <div v-for="(item, index) in pictureList" class="picture-check">
+                    <img :src="item.img" alt="" @click="lookPicture(item)">
+                    <i-button type="text" @click.native="removeImage">
+                        <icon type="trash-a"></icon>
+                    </i-button>
+                    <checkbox v-model="item.single" @on-change="checkAllGroupChange()"></checkbox>
+                    <p>{{ item.name}}</p>
+                    <p class="tip">{{ item.uploadTime}}</p>
+                    <p class="tip">{{ item.size}}</p>
+                </div>
                 <div class="page">
                     <page :total="100" show-elevator></page>
                 </div>
             </card>
+            <modal
+                    v-model="pictureModal"
+                    title="查看图片" class="upload-picture-modal picture-look-modal">
+                <div>
+                    <img :src="modalPicture.img" alt="">
+                </div>
+            </modal>
         </div>
     </div>
 </template>
