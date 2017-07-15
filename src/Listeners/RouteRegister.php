@@ -191,6 +191,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/dynamic/remove', StoreDynamicControllerForAdministration::class . '@remove');
             $this->router->post('store/grade/edit', StoreRateControllerForAdministration::class . '@edit');
             $this->router->post('store/grade/list', StoreRateControllerForAdministration::class . '@list');
+            $this->router->post('store/grade/remove', StoreRateControllerForAdministration::class . '@remove');
             $this->router->post('store/rate', StoreRateControllerForAdministration::class . '@rate');
             $this->router->post('store/rate/edit', StoreRateControllerForAdministration::class . '@edit');
             $this->router->post('store/rate/list', StoreRateControllerForAdministration::class . '@list');
