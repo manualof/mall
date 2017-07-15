@@ -26,7 +26,7 @@ class GradeHandler extends Handler
     {
         $this->validate($this->request, [
             'id' => [
-                Rule::exists(''),
+                Rule::exists('mall_store_grades'),
                 Rule::numeric(),
                 Rule::required(),
             ],
