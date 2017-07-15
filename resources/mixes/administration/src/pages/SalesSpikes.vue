@@ -9,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 businessmenColumns: [
                     {
@@ -162,9 +163,32 @@
                         key: 'status',
                         render(h, data) {
                             return h('i-switch', {
+                                on: {
+                                    'on-change': value => {
+                                        let count = 0;
+                                        self.goodsData.forEach(item => {
+                                            if (item.status === true) {
+                                                count += 1;
+                                            }
+                                        });
+                                        if (value === true) {
+                                            count += 1;
+                                        }
+                                        if (count <= 5) {
+                                            self.goodsData[data.index].status = value;
+                                        } else {
+                                            const a = self.goodsData[data.index];
+                                            a.status = false;
+                                            self.$set(self.goodsData, data.index, a);
+                                            self.$notice.error({
+                                                title: '最多同时推荐五种商品！',
+                                            });
+                                        }
+                                    },
+                                },
                                 props: {
                                     size: 'large',
-                                    value: data.row.status,
+                                    value: self.goodsData[data.index].status,
                                 },
                                 scopedSlots: {
                                     close() {
@@ -176,7 +200,7 @@
                                 },
                             });
                         },
-                        title: '状态',
+                        title: '推荐',
                     },
                     {
                         align: 'center',
@@ -210,7 +234,7 @@
                         goodsPrice: '99.00',
                         prePrice: '199.00',
                         startTime: '2017-2-02',
-                        status: true,
+                        status: false,
                     },
                     {
                         endTime: '2017-2-02',
@@ -229,6 +253,33 @@
                         prePrice: '199.00',
                         startTime: '2017-2-02',
                         status: true,
+                    },
+                    {
+                        endTime: '2017-2-02',
+                        goodsImg: image1,
+                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
+                        goodsPrice: '99.00',
+                        prePrice: '199.00',
+                        startTime: '2017-2-02',
+                        status: true,
+                    },
+                    {
+                        endTime: '2017-2-02',
+                        goodsImg: image1,
+                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
+                        goodsPrice: '99.00',
+                        prePrice: '199.00',
+                        startTime: '2017-2-02',
+                        status: false,
+                    },
+                    {
+                        endTime: '2017-2-02',
+                        goodsImg: image1,
+                        goodsName: 'Sony/索尼 SGP512CN WIFI 32..',
+                        goodsPrice: '99.00',
+                        prePrice: '199.00',
+                        startTime: '2017-2-02',
+                        status: false,
                     },
                 ],
                 searchList: [
@@ -269,6 +320,12 @@
                 self.$router.push({
                     path: 'spikes/look',
                 });
+            },
+        },
+        watch: {
+            goodsData: {
+                deep: true,
+                handler() {},
             },
         },
     };
