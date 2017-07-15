@@ -8,7 +8,96 @@
             });
         },
         data() {
+            const self = this;
             return {
+                columns: [
+                    {
+                        key: 'index',
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                            });
+                        },
+                        title: '排序',
+                        width: 80,
+                    },
+                    {
+                        key: 'type',
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                            });
+                        },
+                        title: '属性',
+                        width: 130,
+                    },
+                    {
+                        key: 'intro',
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                            });
+                        },
+                        title: '分类名称',
+                    },
+                    {
+                        key: 'single',
+                        render(h) {
+                            return h('checkbox', {}, '显示');
+                        },
+                        title: '分拥比例',
+                        width: 70,
+                    },
+                    {
+                        key: 'sku',
+                        render(h) {
+                            return h('checkbox', {}, 'SKU展示');
+                        },
+                        title: '分拥比例',
+                        width: 100,
+                    },
+                    {
+                        align: 'center',
+                        key: 'action',
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                    style: {
+                                        marginRight: '10px',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.deletePreForm(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'error',
+                                    },
+                                }, '删除'),
+                            ]);
+                        },
+                        title: '操作',
+                        width: 180,
+                    },
+                ],
                 form: {
                     attributes: [
                         {
@@ -128,6 +217,22 @@
                     showStyle: '',
                     typeName: '',
                 },
+                list: [
+                    {
+                        index: 1,
+                        intro: '',
+                        single: false,
+                        sku: false,
+                        type: '',
+                    },
+                    {
+                        index: 1,
+                        intro: '',
+                        single: false,
+                        sku: false,
+                        type: '',
+                    },
+                ],
                 location: [
                     {
                         label: '颜色',
@@ -310,9 +415,13 @@
             deletePreForm(index) {
                 this.form.attributes.splice(index, 1);
             },
+            edit() {},
             goBack() {
                 const self = this;
                 self.$router.go(-1);
+            },
+            handleCheckSku() {
+
             },
             submit() {
                 const self = this;
@@ -327,6 +436,14 @@
                         });
                     }
                 });
+            },
+        },
+        watch: {
+            'form.attributes': {
+                deep: true,
+                handler(value, old) {
+                    window.console.log(value, old);
+                },
             },
         },
     };
@@ -419,9 +536,16 @@
                             </i-col>
                         </row>
                         <row>
-                            <i-col>
+                            <i-col span="20">
                                 <form-item label="添加属性" class="form-item-attribute">
-                                    <row v-for="(item, index) in form.attributes" class="row-attributes">
+                                    <i-table class="shop-table"
+                                             :columns="columns"
+                                             :data="list"
+                                             :disabled-hover="false"
+                                             ref="goodTable"
+                                             :show-header="false"
+                                             :highlight-row="false"></i-table>
+                                    <!--<row v-for="(item, index) in form.attributes" class="row-attributes">
                                         <i-col span="2" style="width: 50px">
                                             <i-input :value="index+1"></i-input>
                                         </i-col>
@@ -435,14 +559,7 @@
                                             <checkbox v-model="item.single">显示</checkbox>
                                         </i-col>
                                         <i-col span="4" style="width: 80px">
-                                            <!--<label class="ivu-checkbox-wrapper">
-                                                <span class="ivu-checkbox" :class="{'ivu-checkbox-checked': checkboxSelect === true}">
-                                                    <span class="ivu-checkbox-inner"></span>
-                                                    <input type="radio" name="sku" class="ivu-checkbox-input"
-                                                           @change="checkChange">
-                                                </span> SKU展示
-                                            </label>-->
-                                            <checkbox v-model="item.sku" >SKU展示</checkbox>
+                                            <checkbox v-model="item.sku" @on-change="handleCheckSku">SKU展示</checkbox>
                                         </i-col>
                                         <i-col span="2" style="width: 56px">
                                             <i-button type="ghost">编辑</i-button>
@@ -450,7 +567,7 @@
                                         <i-col span="2" style="width: 56px">
                                             <i-button type="error" @click.native="deletePreForm(index)">删除</i-button>
                                         </i-col>
-                                    </row>
+                                    </row>-->
                                 </form-item>
                                 <form-item>
                                     <i-button class="add-btn" type="ghost"
