@@ -18,10 +18,24 @@ class StoreGrade extends Model
     /**
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'level',
+        'name',
+        'picture_limit',
+        'product_limit',
+        'price',
+    ];
 
     /**
      * @var string
      */
     protected $table = 'mall_store_grades';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function stores()
+    {
+        return $this->hasMany(Store::class);
+    }
 }
