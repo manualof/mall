@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Administration;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Administration\Store\Grade\CreateHandler;
 use Notadd\Mall\Handlers\Administration\Store\Grade\EditHandler;
 use Notadd\Mall\Handlers\Administration\Store\Grade\GradeHandler;
 use Notadd\Mall\Handlers\Administration\Store\Grade\ListHandler;
@@ -19,6 +20,17 @@ use Notadd\Mall\Handlers\Administration\Store\Grade\RemoveHandler;
  */
 class StoreGradeController extends Controller
 {
+    /**
+     * @param \Notadd\Mall\Handlers\Administration\Store\Grade\CreateHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function create(CreateHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\Administration\Store\Grade\EditHandler $handler
      *
