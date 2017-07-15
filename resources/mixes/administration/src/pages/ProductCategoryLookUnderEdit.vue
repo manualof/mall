@@ -178,12 +178,30 @@
                             render(h, data) {
                                 return h('checkbox', {
                                     on: {
-                                        'on-change': () => {
-                                            console.log(data);
+                                        'on-change': value => {
+                                            let count = 0;
+                                            self.form.list.forEach(item => {
+                                                if (item.spu === true) {
+                                                    count += 1;
+                                                }
+                                            });
+                                            if (value === true) {
+                                                count += 1;
+                                            }
+                                            if (count <= 1) {
+                                                self.form.list[data.index].spu = value;
+                                            } else {
+                                                const a = self.form.list[data.index];
+                                                a.status = false;
+                                                self.$set(self.form.list, data.index, a);
+                                                self.$notice.error({
+                                                    title: 'SPU展示最多只能选择一种',
+                                                });
+                                            }
                                         },
                                     },
                                     props: {
-                                        value: data.row.sku,
+                                        value: self.form.list[data.index].spu,
                                     },
                                 }, 'SKU展示');
                             },
@@ -559,29 +577,6 @@
                                              :data="form.list"
                                              ref="goodTable"
                                              :show-header="false"></i-table>
-                                    <!--<row v-for="(item, index) in form.attributes" class="row-attributes">
-                                        <i-col span="2" style="width: 50px">
-                                            <i-input :value="index+1"></i-input>
-                                        </i-col>
-                                        <i-col span="3">
-                                            <i-input v-model="item.type"></i-input>
-                                        </i-col>
-                                        <i-col span="7">
-                                            <i-input v-model="item.intro"></i-input>
-                                        </i-col>
-                                        <i-col span="4" style="width: 60px">
-                                            <checkbox v-model="item.single">显示</checkbox>
-                                        </i-col>
-                                        <i-col span="4" style="width: 80px">
-                                            <checkbox v-model="item.sku" @on-change="handleCheckSku">SKU展示</checkbox>
-                                        </i-col>
-                                        <i-col span="2" style="width: 56px">
-                                            <i-button type="ghost">编辑</i-button>
-                                        </i-col>
-                                        <i-col span="2" style="width: 56px">
-                                            <i-button type="error" @click.native="deletePreForm(index)">删除</i-button>
-                                        </i-col>
-                                    </row>-->
                                 </form-item>
                                 <form-item>
                                     <i-button class="add-btn" type="ghost"
