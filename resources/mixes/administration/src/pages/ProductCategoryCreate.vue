@@ -9,6 +9,40 @@
         },
         data() {
             return {
+                goodsList: [
+                    {
+                        children: [
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '个护化妆',
+                        value: '个护化妆',
+                    },
+                    {
+                        children: [
+                            {
+                                label: '服饰寝居',
+                                value: '服饰寝居',
+                            },
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '家用电器',
+                        value: '家用电器',
+                    },
+                ],
                 form: {
                     deposit: '',
                     name: '',
@@ -99,10 +133,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="上级分类">
-                                    <i-select placeholder="请选择" v-model="form.parent">
-                                        <i-option v-for="item in parents" :value="item.value"
-                                                  :key="item">{{ item.label }}</i-option>
-                                    </i-select>
+                                    <cascader change-on-select :data="goodsList" trigger="hover"></Cascader>
                                     <p class="tip">如果选择上级分类,那么新的分类则为被选择上级分类的子分类</p>
                                 </form-item>
                             </i-col>
