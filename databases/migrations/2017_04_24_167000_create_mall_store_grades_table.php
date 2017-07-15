@@ -23,6 +23,7 @@ class CreateMallStoreGradesTable extends Migration
             $table->increments('id');
             $table->tinyInteger('level')->default(0)->comment('店铺级别');
             $table->string('name')->comment('等级名称');
+            $table->string('description')->comment('申请说明');
             $table->tinyInteger('picture_limit')->default(0)->comment('可上传图片数');
             $table->tinyInteger('product_limit')->default(0)->comment('可发布商品数');
             $table->decimal('price', 12, 2)->default(0)->comment('收费标准');

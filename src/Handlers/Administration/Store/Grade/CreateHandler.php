@@ -25,12 +25,14 @@ class CreateHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
+            'description'   => Rule::required(),
             'level'         => Rule::numeric(),
             'name'          => Rule::required(),
             'picture_limit' => Rule::numeric(),
             'price'         => Rule::numeric(),
             'product_limit' => Rule::numeric(),
         ], [
+            'description.required'  => '申请说明必须填写',
             'level.numeric'         => '店铺等级必须为数值',
             'name.required'         => '等级名称必须填写',
             'picture_limit.numeric' => '可上传图片数必须为数值',
@@ -39,6 +41,7 @@ class CreateHandler extends Handler
         ]);
         $this->beginTransaction();
         $data = $this->request->only([
+            'description',
             'level',
             'name',
             'picture_limit',

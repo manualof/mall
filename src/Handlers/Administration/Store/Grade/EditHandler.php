@@ -25,6 +25,7 @@ class EditHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
+            'description'   => Rule::required(),
             'id'            => [
                 Rule::exists('mall_store_grades'),
                 Rule::numeric(),
@@ -36,6 +37,7 @@ class EditHandler extends Handler
             'price'         => Rule::numeric(),
             'product_limit' => Rule::numeric(),
         ], [
+            'description.required'  => '申请说明必须填写',
             'id.exists'             => '没有对应的店铺等级信息',
             'id.numeric'            => '店铺等级 ID 必须为数值',
             'id.required'           => '店铺等级 ID 必须填写',
@@ -47,6 +49,7 @@ class EditHandler extends Handler
         ]);
         $this->beginTransaction();
         $data = $this->request->only([
+            'description',
             'level',
             'name',
             'picture_limit',
