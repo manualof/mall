@@ -38,7 +38,6 @@ class ListHandler extends Handler
         ]);
         $builder = StoreGrade::query();
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
-        $builder->where('store_id', $this->request->input('store_id'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)->withData($builder->items())->withExtra([
             'pagination' => [

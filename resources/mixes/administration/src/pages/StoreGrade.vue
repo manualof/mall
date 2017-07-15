@@ -3,6 +3,12 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/store/grade/list`).then(response => {
+                window.console.log(response);
+            }).catch(() => {
+                injection.loading.fail();
+            });
             next(() => {
                 injection.sidebar.active('mall');
             });

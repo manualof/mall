@@ -35,6 +35,7 @@ use Notadd\Mall\Controllers\Api\Administration\StatisticsSalesController as Stat
 use Notadd\Mall\Controllers\Api\Administration\StoreCategoryController as StoreCategoryControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StoreController as StoreControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StoreDynamicController as StoreDynamicControllerForAdministration;
+use Notadd\Mall\Controllers\Api\Administration\StoreGradeController as StoreGradeControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StoreRateController as StoreRateControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\ProductSpecificationController as ProductSpecificationControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StatisticsAnalysisController as StatisticsAnalysisControllerForAdministration;
@@ -189,11 +190,11 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/dynamic/edit', StoreDynamicControllerForAdministration::class . '@edit');
             $this->router->post('store/dynamic/list', StoreDynamicControllerForAdministration::class . '@dynamic');
             $this->router->post('store/dynamic/remove', StoreDynamicControllerForAdministration::class . '@remove');
-            $this->router->post('store/grade', StoreRateControllerForAdministration::class . '@grade');
-            $this->router->post('store/grade/create', StoreRateControllerForAdministration::class . '@create');
-            $this->router->post('store/grade/edit', StoreRateControllerForAdministration::class . '@edit');
-            $this->router->post('store/grade/list', StoreRateControllerForAdministration::class . '@list');
-            $this->router->post('store/grade/remove', StoreRateControllerForAdministration::class . '@remove');
+            $this->router->post('store/grade', StoreGradeControllerForAdministration::class . '@grade');
+            $this->router->post('store/grade/create', StoreGradeControllerForAdministration::class . '@create');
+            $this->router->post('store/grade/edit', StoreGradeControllerForAdministration::class . '@edit');
+            $this->router->post('store/grade/list', StoreGradeControllerForAdministration::class . '@list');
+            $this->router->post('store/grade/remove', StoreGradeControllerForAdministration::class . '@remove');
             $this->router->post('store/rate', StoreRateControllerForAdministration::class . '@rate');
             $this->router->post('store/rate/edit', StoreRateControllerForAdministration::class . '@edit');
             $this->router->post('store/rate/list', StoreRateControllerForAdministration::class . '@list');
