@@ -10,7 +10,6 @@
         data() {
             return {
                 filter: {
-                    dataType: '',
                     goodsType: [],
                     goodsTypeList: [
                         {
@@ -105,7 +104,6 @@
                             value: '2',
                         },
                     ],
-                    industryType: '',
                     priceGoodsType: [],
                     priceList: [
                         {
@@ -161,7 +159,6 @@
                             value: '2',
                         },
                     ],
-                    priceType: '',
                 },
                 goodsColumns: [
                     {
@@ -275,6 +272,79 @@
                     ],
                 },
                 isPriceArea: false,
+                orderAccount: {
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '下单金额',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
+                orderMoneyOptions: {
+                    shortcuts: [
+                        {
+                            text: '最近一周',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 7));
+                                return [start, end];
+                            },
+                        },
+                        {
+                            text: '最近一个月',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 30));
+                                return [start, end];
+                            },
+                        },
+                        {
+                            text: '最近三个月',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 90));
+                                return [start, end];
+                            },
+                        },
+                    ],
+                },
+                orderNumber: {
+                    series: [
+                        {
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '下单金额',
+                            stack: '下单金额',
+                            type: 'line',
+                        },
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
                 profileOrderGoods: {
                     color: ['#3398DB'],
                     series: [
@@ -368,48 +438,6 @@
                         },
                     ],
                 },
-                orderAccount: {
-                    series: [
-                        {
-                            data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '下单金额',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                    ],
-                    tooltip: {
-                        trigger: 'axis',
-                    },
-                    xAxis: {
-                        boundaryGap: false,
-                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                        type: 'category',
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
-                },
-                orderNumber: {
-                    series: [
-                        {
-                            data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '下单金额',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                    ],
-                    tooltip: {
-                        trigger: 'axis',
-                    },
-                    xAxis: {
-                        boundaryGap: false,
-                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                        type: 'category',
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
-                },
                 shopsColumns: [
                     {
                         key: 'num',
@@ -460,20 +488,6 @@
                     },
                 ],
                 style: 'height: 400px;',
-                timeList: [
-                    {
-                        label: '按照月统计',
-                        value: '1',
-                    },
-                    {
-                        label: '按照周统计',
-                        value: '2',
-                    },
-                    {
-                        label: '按照天统计',
-                        value: '3',
-                    },
-                ],
             };
         },
         methods: {},
@@ -503,18 +517,11 @@
                                                 </li>
                                                 <li>
                                                     时间周期
-                                                    <i-select style="width:124px" v-model="filter.dataType">
-                                                        <i-option v-for="item in timeList" :value="item.value"
-                                                                :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    <date-picker type="date" placeholder="选择日期"
-                                                                 v-show="filter.dataType === '3'"></date-picker>
-                                                    <date-picker type="date" placeholder="选择日期"
-                                                                 v-show="filter.dataType === '2'"></date-picker>
-                                                    <date-picker type="month" placeholder="选择日期"
-                                                                 v-show="filter.dataType === '1'"></date-picker>
+                                                    <date-picker :options="orderMoneyOptions"
+                                                                 placement="bottom-end"
+                                                                 placeholder="选择日期"
+                                                                 style="width: 200px"
+                                                                 type="daterange"></date-picker>
                                                 </li>
                                             </ul>
                                         </div>
@@ -537,16 +544,11 @@
                                                 </li>
                                                 <li>
                                                     时间周期
-                                                    <i-select style="width:124px" v-model="filter.dataType">
-                                                        <i-option v-for="item in timeList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    <date-picker type="date" placeholder="选择日期"
-                                                                 v-show="filter.dataType === '3'"></date-picker>
-                                                    <date-picker type="month" placeholder="选择日期"
-                                                                 v-show="filter.dataType === '1'"></date-picker>
+                                                    <date-picker :options="orderMoneyOptions"
+                                                                 placement="bottom-end"
+                                                                 placeholder="选择日期"
+                                                                 style="width: 200px"
+                                                                 type="daterange"></date-picker>
                                                 </li>
                                             </ul>
                                         </div>
@@ -569,16 +571,11 @@
                                                 </li>
                                                 <li>
                                                     时间周期
-                                                    <i-select style="width:124px" v-model="filter.dataType">
-                                                        <i-option v-for="item in timeList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    <date-picker type="date" placeholder="选择日期"
-                                                                 v-show="filter.dataType === '3'"></date-picker>
-                                                    <date-picker type="month" placeholder="选择日期"
-                                                                 v-show="filter.dataType === '1'"></date-picker>
+                                                    <date-picker :options="orderMoneyOptions"
+                                                                 placement="bottom-end"
+                                                                 placeholder="选择日期"
+                                                                 style="width: 200px"
+                                                                 type="daterange"></date-picker>
                                                 </li>
                                             </ul>
                                         </div>
@@ -613,16 +610,11 @@
                                         </li>
                                         <li>
                                             时间周期
-                                            <i-select style="width:124px" v-model="filter.industryType">
-                                                <i-option v-for="item in timeList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            <date-picker type="date" placeholder="选择日期"
-                                                         v-show="filter.industryType === '3'"></date-picker>
-                                            <date-picker type="month" placeholder="选择日期"
-                                                         v-show="filter.industryType === '1'"></date-picker>
+                                            <date-picker :options="orderMoneyOptions"
+                                                         placement="bottom-end"
+                                                         placeholder="选择日期"
+                                                         style="width: 200px"
+                                                         type="daterange"></date-picker>
                                         </li>
                                     </ul>
                                 </div>
@@ -650,13 +642,11 @@
                                         </li>
                                         <li>
                                             时间周期
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in timeList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            <date-picker type="date" placeholder="选择日期"></date-picker>
+                                            <date-picker :options="orderMoneyOptions"
+                                                         placement="bottom-end"
+                                                         placeholder="选择日期"
+                                                         style="width: 200px"
+                                                         type="daterange"></date-picker>
                                         </li>
                                     </ul>
                                 </div>
@@ -697,16 +687,11 @@
                                         </li>
                                         <li>
                                             时间周期
-                                            <i-select style="width:124px" v-model="filter.priceType">
-                                                <i-option v-for="item in timeList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            <date-picker type="date" placeholder="选择日期"
-                                                         v-show="filter.priceType === '3'"></date-picker>
-                                            <date-picker type="month" placeholder="选择日期"
-                                                         v-show="filter.priceType === '1'"></date-picker>
+                                            <date-picker :options="orderMoneyOptions"
+                                                         placement="bottom-end"
+                                                         placeholder="选择日期"
+                                                         style="width: 200px"
+                                                         type="daterange"></date-picker>
                                         </li>
                                     </ul>
                                 </div>
