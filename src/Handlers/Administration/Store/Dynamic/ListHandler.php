@@ -46,7 +46,7 @@ class ListHandler extends Handler
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder->where('store_id', $this->request->input('store_id'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
-        $this->withCode(200)->withData($builder->items())->withMessage('获取商品列表成功！')->withExtra([
+        $this->withCode(200)->withData($builder->items())->withExtra([
             'pagination' => [
                 'total'         => $builder->total(),
                 'per_page'      => $builder->perPage(),
@@ -57,6 +57,6 @@ class ListHandler extends Handler
                 'from'          => $builder->firstItem(),
                 'to'            => $builder->lastItem(),
             ],
-        ]);
+        ])->withMessage('获取商品列表成功！');
     }
 }
