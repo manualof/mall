@@ -22,8 +22,8 @@ class StoreGrade extends Model
         'level',
         'name',
         'picture_limit',
-        'product_limit',
         'price',
+        'product_limit',
     ];
 
     /**
