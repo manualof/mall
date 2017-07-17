@@ -44,9 +44,9 @@
                     },
                 ],
                 form: {
-                    deposit: '',
+                    deposit: 10,
                     name: '',
-                    order: '',
+                    order: 0,
                     parent: '',
                 },
                 loading: false,
@@ -88,6 +88,14 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
+                        self.$http.post(`${window.api}/mall/admin/product/category/create`, self.form).then(() => {
+                            self.$notice.open({
+                                title: '创建商品分类信息成功！',
+                            });
+                            self.$router.push('/mall/goods/category');
+                        }).catch(() => {}).finally(() => {
+                            self.loading = false;
+                        });
                         window.console.log(valid);
                     } else {
                         self.loading = false;
