@@ -18,6 +18,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 action: `${window.api}/mall/admin/upload`,
                 form: {
@@ -26,6 +27,138 @@
                     phone: '',
                 },
                 loading: false,
+                navColumns: [
+                    {
+                        align: 'center',
+                        type: 'selection',
+                        width: 100,
+                    },
+                    {
+                        key: 'describe',
+                        title: '模板描述',
+                    },
+                    {
+                        align: 'center',
+                        key: 'stationLetter',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.stationLetter,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '站内信',
+                    },
+                    {
+                        align: 'center',
+                        key: 'smsStatus',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.smsStatus,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '手机短信',
+                    },
+                    {
+                        align: 'center',
+                        key: 'mailStatus',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.mailStatus,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '邮件',
+                    },
+                    {
+                        align: 'center',
+                        key: 'action',
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.toEdit(data.index);
+                                    },
+                                },
+                                props: {
+                                    class: 'editor-btn',
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '编辑');
+                        },
+                        title: '操作',
+                        width: '140',
+                    },
+                ],
+                navData: [
+                    {
+                        describe: '商品库存预警',
+                        mailStatus: true,
+                        smsStatus: true,
+                        stationLetter: false,
+                    },
+                    {
+                        describe: '商品被投诉提醒',
+                        mailStatus: false,
+                        smsStatus: true,
+                        stationLetter: true,
+                    },
+                    {
+                        describe: '商品审核失败提醒',
+                        mailStatus: true,
+                        smsStatus: true,
+                        stationLetter: false,
+                    },
+                    {
+                        describe: '商品违规被下架',
+                        mailStatus: false,
+                        smsStatus: true,
+                        stationLetter: false,
+                    },
+                    {
+                        describe: '新订单提醒',
+                        mailStatus: true,
+                        smsStatus: false,
+                        stationLetter: false,
+                    },
+                    {
+                        describe: '退款提醒',
+                        mailStatus: true,
+                        smsStatus: false,
+                        stationLetter: false,
+                    },
+                ],
                 rules: {
                     email: [
                         {
@@ -151,7 +284,7 @@
                             <row>
                                 <i-col span="12">
                                     <form-item label="平台客服联系电话" prop="phone">
-                                        <i-input placeholder="请输入平台客服联系电话" v-model="form.phone"></i-input>
+                                        <i-input v-model="form.phone"></i-input>
                                         <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询，多个请用半角逗号“，”隔开</p>
                                     </form-item>
                                 </i-col>
@@ -159,7 +292,7 @@
                             <row>
                                 <i-col span="12">
                                     <form-item label="平台客服电子邮件" prop="email">
-                                        <i-input placeholder="请输入平台客服电子邮件" v-model="form.email"></i-input>
+                                        <i-input v-model="form.email"></i-input>
                                         <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询</p>
                                     </form-item>
                                 </i-col>
@@ -177,6 +310,22 @@
                         </i-form>
                     </card>
                 </tab-pane>
+                <tab-pane label="分类导航" name="nav">
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>"编辑分类导航"功能可以设置前台左上侧商品分类导航的相关信息，可以设置一级分类前图标，推荐分类，
+                                推荐品牌以及两张广告图片</p>
+                            <p>分类导航设置完成后，需要清除缓存</p>
+                        </div>
+                        <i-table class="shop-table"
+                                 :context="self"
+                                 :columns="navColumns"
+                                 :data="navData"
+                                 highlight-row></i-table>
+                    </card>
+                </tab-pane>
+                <tab-pane label="主导航" name="mainNav"></tab-pane>
             </tabs>
         </div>
     </div>
