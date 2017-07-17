@@ -47,6 +47,48 @@
                     sellPoint: '原价258 特价9元F码抢购！仅限10个！全球首款净化空气的台灯，上班看书的同时释放负离子，' +
                     '远离城市喧嚣，仿佛置身于大自然的感觉，让你身心健康',
                     shopStyle: [],
+                    shopStyleList: [
+                        {
+                            shopStyle: [
+                                {
+                                    children: [
+                                        {
+                                            label: '童车童床',
+                                            value: '童车童床',
+                                        },
+                                        {
+                                            label: '营养辅食',
+                                            value: '营养辅食',
+                                        },
+                                        {
+                                            label: '尿裤湿巾',
+                                            value: '尿裤湿巾',
+                                        },
+                                    ],
+                                    label: '个护化妆',
+                                    value: '个护化妆',
+                                },
+                                {
+                                    children: [
+                                        {
+                                            label: '服饰寝居',
+                                            value: '服饰寝居',
+                                        },
+                                        {
+                                            label: '营养辅食',
+                                            value: '营养辅食',
+                                        },
+                                        {
+                                            label: '尿裤湿巾',
+                                            value: '尿裤湿巾',
+                                        },
+                                    ],
+                                    label: '家用电器',
+                                    value: '家用电器',
+                                },
+                            ],
+                        },
+                    ],
                     supplier: '',
                     type: '数码办公>时尚影音>智能设备',
                     vatInvoice: '否',
@@ -405,7 +447,16 @@
                 },
                 selectVersion: ['256GB', '128GB', '64GB', '32GB'],
                 self: this,
-                shopStyleList: [
+                spaceExit: false,
+            };
+        },
+        methods: {
+            addAlbumPicture() {
+                const self = this;
+                self.isPcPicture = !self.isPcPicture;
+            },
+            addCategory() {
+                this.goodsEdit.shopStyleList.push(
                     {
                         shopStyle: [
                             {
@@ -446,14 +497,7 @@
                             },
                         ],
                     },
-                ],
-                spaceExit: false,
-            };
-        },
-        methods: {
-            addAlbumPicture() {
-                const self = this;
-                self.isPcPicture = !self.isPcPicture;
+                );
             },
             addPicture() {
                 const self = this;
@@ -990,9 +1034,9 @@
                                                         <cascader class="shop-edit-classification"
                                                                   change-on-select
                                                                   :data="type.shopStyle"
-                                                                  v-for="type in shopStyleList"
+                                                                  v-for="type in goodsEdit.shopStyleList"
                                                                   v-model="goodsEdit.shopStyle"></Cascader>
-
+                                                        <i-button type="ghost" @click.native="addCategory">新增分类</i-button>
                                                         <p class="tip">商品可以从属于店铺的多个分类下，店铺分类可以由“商家中心>店铺>
                                                             店铺分类”中自定义</p>
                                                     </form-item>
