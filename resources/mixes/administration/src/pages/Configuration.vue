@@ -30,6 +30,7 @@
                 loading: false,
                 mainNavColumns: [
                     {
+                        align: 'center',
                         key: 'index',
                         render(h, data) {
                             return h('i-input', {
@@ -40,13 +41,13 @@
                             });
                         },
                         title: '排序',
-                        width: 80,
+                        width: 160,
                     },
                     {
                         align: 'center',
                         key: 'name',
                         title: '导航名称',
-                        width: 200,
+                        width: 300,
 
                     },
                     {
@@ -68,7 +69,6 @@
                             });
                         },
                         title: '是否显示',
-                        width: 200,
                     },
                     {
                         align: 'center',
@@ -89,7 +89,7 @@
                                 h('i-button', {
                                     on: {
                                         click() {
-                                            self.toEdit(data.index);
+                                            self.delete(data.index);
                                         },
                                     },
                                     props: {
@@ -103,7 +103,7 @@
                             ]);
                         },
                         title: '操作',
-                        width: '140',
+                        width: '180',
                     },
                 ],
                 mainNavData: [
@@ -315,6 +315,9 @@
             };
         },
         methods: {
+            delete(index) {
+                this.mainNavData.splice(index, 1);
+            },
             removeLogo() {
                 const self = this;
                 self.form.logo = '';
