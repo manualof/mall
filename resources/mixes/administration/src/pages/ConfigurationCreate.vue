@@ -382,97 +382,62 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="mall-configuration">
-            <tabs value="default">
-                <tab-pane label="商城设置" name="default">
-                    <card :bordered="false">
-                        <i-form :label-width="200" :model="form" ref="form" :rules="rules">
-                            <row>
-                                <i-col span="12">
-                                    <form-item label="网站 Logo" prop="logo">
-                                        <div class="image-preview" v-if="form.logo">
-                                            <img :src="form.logo">
-                                            <icon type="close" @click.native="removeLogo"></icon>
-                                        </div>
-                                        <upload :action="action"
-                                                :before-upload="uploadBefore"
-                                                :format="['jpg','jpeg','png']"
-                                                :headers="{
+        <div class="mall-configuration-create">
+            <card :bordered="false">
+                <i-form :label-width="200" :model="form" ref="form" :rules="rules">
+                    <row>
+                        <i-col span="12">
+                            <form-item label="网站 Logo" prop="logo">
+                                <div class="image-preview" v-if="form.logo">
+                                    <img :src="form.logo">
+                                    <icon type="close" @click.native="removeLogo"></icon>
+                                </div>
+                                <upload :action="action"
+                                        :before-upload="uploadBefore"
+                                        :format="['jpg','jpeg','png']"
+                                        :headers="{
                                                     Authorization: `Bearer ${$store.state.token.access_token}`
                                                 }"
-                                                :max-size="2048"
-                                                :on-error="uploadError"
-                                                :on-format-error="uploadFormatError"
-                                                :on-success="uploadSuccess"
-                                                ref="upload"
-                                                :show-upload-list="false"
-                                                v-if="form.logo === '' || form.logo === null">
-                                        </upload>
-                                        <p class="tip">默认网站LOGO，通用头部显示，最佳显示尺寸为240*60像素</p>
-                                    </form-item>
-                                </i-col>
-                            </row>
-                            <row>
-                                <i-col span="12">
-                                    <form-item label="平台客服联系电话" prop="phone">
-                                        <i-input v-model="form.phone"></i-input>
-                                        <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询，多个请用半角逗号“，”隔开</p>
-                                    </form-item>
-                                </i-col>
-                            </row>
-                            <row>
-                                <i-col span="12">
-                                    <form-item label="平台客服电子邮件" prop="email">
-                                        <i-input v-model="form.email"></i-input>
-                                        <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询</p>
-                                    </form-item>
-                                </i-col>
-                            </row>
-                            <row>
-                                <i-col span="12">
-                                    <form-item>
-                                        <i-button :loading="loading" type="primary" @click.native="submit">
-                                            <span v-if="!loading">确认提交</span>
-                                            <span v-else>正在提交…</span>
-                                        </i-button>
-                                    </form-item>
-                                </i-col>
-                            </row>
-                        </i-form>
-                    </card>
-                </tab-pane>
-                <tab-pane label="分类导航" name="nav">
-                    <card :bordered="false">
-                        <div class="prompt-box">
-                            <p>提示</p>
-                            <p>"编辑分类导航"功能可以设置前台左上侧商品分类导航的相关信息，可以设置一级分类前图标，推荐分类，
-                                推荐品牌以及两张广告图片</p>
-                            <p>分类导航设置完成后，需要清除缓存</p>
-                        </div>
-                        <i-table class="goods-table"
-                                 :context="self"
-                                 :columns="navColumns"
-                                 :data="navData"
-                                 highlight-row></i-table>
-                    </card>
-                </tab-pane>
-                <tab-pane label="主导航" name="mainNav">
-                    <card :bordered="false">
-                        <div class="prompt-box">
-                            <p>提示</p>
-                            <p>商城前台主导航默认商品分类与首页为最前列，其余按照数字大小排序</p>
-                        </div>
-                        <router-link to="configuration/create">
-                            <i-button type="ghost" class="add-data">新增数据</i-button>
-                        </router-link>
-                        <i-table class="goods-table"
-                                 :context="self"
-                                 :columns="mainNavColumns"
-                                 :data="mainNavData"
-                                 highlight-row></i-table>
-                    </card>
-                </tab-pane>
-            </tabs>
+                                        :max-size="2048"
+                                        :on-error="uploadError"
+                                        :on-format-error="uploadFormatError"
+                                        :on-success="uploadSuccess"
+                                        ref="upload"
+                                        :show-upload-list="false"
+                                        v-if="form.logo === '' || form.logo === null">
+                                </upload>
+                                <p class="tip">默认网站LOGO，通用头部显示，最佳显示尺寸为240*60像素</p>
+                            </form-item>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="12">
+                            <form-item label="平台客服联系电话" prop="phone">
+                                <i-input v-model="form.phone"></i-input>
+                                <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询，多个请用半角逗号“，”隔开</p>
+                            </form-item>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="12">
+                            <form-item label="平台客服电子邮件" prop="email">
+                                <i-input v-model="form.email"></i-input>
+                                <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询</p>
+                            </form-item>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="12">
+                            <form-item>
+                                <i-button :loading="loading" type="primary" @click.native="submit">
+                                    <span v-if="!loading">确认提交</span>
+                                    <span v-else>正在提交…</span>
+                                </i-button>
+                            </form-item>
+                        </i-col>
+                    </row>
+                </i-form>
+            </card>
         </div>
     </div>
 </template>
