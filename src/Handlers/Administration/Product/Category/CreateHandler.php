@@ -63,7 +63,12 @@ class CreateHandler extends Handler
     {
         $parent = $this->request->input('parent');
         if ($parent) {
-            $this->request->offsetSet('parent_id', 0);
+            $category = ProductCategory::query()->find($parent);
+            if ($category instanceof ProductCategory) {
+                $this->request->offsetSet('parent_id', $category->getAttribute('id'));
+            } else {
+                throw new \Exception('没有对应的父级分类信息！');
+            }
         } else {
             $this->request->offsetSet('parent_id', 0);
         }
