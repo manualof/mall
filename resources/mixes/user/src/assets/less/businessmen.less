@@ -126,11 +126,13 @@
         .content_box {
             color: #444444;
             padding: 10px 40px 40px 41px;
-            text-align: center;
             h4 {
                 font-weight: bold;
-                text-align: center;
                 line-height: 78px;
+            }
+            ol {
+                padding-left: 15px;
+                line-height: 2;
             }
             .progress_02 {
                 > div:nth-child(2) {
@@ -143,13 +145,6 @@
                         color: #444444;
                         line-height: 2;
                     }
-                    ol {
-                        padding-left: 15px;
-                        line-height: 2;
-                        li {
-                            list-style: decimal;
-                        }
-                    }
                     .col-md-offset-5 {
                         float: none;
                     }
@@ -158,11 +153,11 @@
                     }
                 }
             }
-
             .agree {
-                display: inline-block;
+                display: block;
                 font-size: 14px;
                 margin: 30px 0;
+                text-align: center;
                 input {
                     display: block;
                     height: 16px;
@@ -205,6 +200,13 @@
                 float: none;
             }
             .progress_03 {
+                > div:first-child {
+                    ol {
+                        background: #f7f7f7;
+                        color: #999999;
+                        padding: 36px;
+                    }
+                }
                 .form-horizontal {
                     margin-top: 20px;
                 }
@@ -212,6 +214,7 @@
                     margin-bottom: 20px;
                 }
                 .form-horizontal .control-label {
+                    font-size: 14px;
                     padding-top: 10px;
                     padding-right: 5px;
                     width: 170px;
@@ -222,8 +225,54 @@
                 }
                 input {
                     border-radius: 0;
+                    display: inline-block;
                     height: 42px;
+                    margin-right: 7px;
                     width: 324px;
+                    &.ivu-input {
+                        width: 180px;
+                    }
+                }
+                textarea {
+                    height: 94px;
+                    resize: none;
+                }
+                .date_div {
+                    position: relative;
+                    .date_icon {
+                        color: #d0d0d0;
+                        display: block;
+                        font-size: 24px;
+                        height: 24px;
+                        left: 10px;
+                        line-height: 24px;
+                        position: absolute;
+                        top: 10px;
+                        text-align: center;
+                        width: 24px;
+                    }
+                }
+                .date_long {
+                    line-height: 41px;
+                    margin-left: 10px;
+                    padding: 0;
+                    width: auto;
+                    input {
+                        display: none;
+                        & + span {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+                .connect {
+                    background-color: #444444;
+                    display: block;
+                    height: 2px;
+                    margin: 23px 10px;
+                    width: 12px;
+                }
+                .real-imgs {
+                    margin-top: 0;
                 }
             }
             .progress_04, .progress_05, .progress_06 {
@@ -269,17 +318,6 @@
                         line-height: 42px;
                         margin-right: 10px;
                     }
-                    .connect {
-                        background-color: #444444;
-                        display: block;
-                        height: 2px;
-                        margin: 23px 10px;
-                        width: 12px;
-                    }
-                    .date_long {
-                        padding-left: 30px;
-                        padding-top: 15px;
-                    }
                     .input_suffix {
                         display: block;
                         height: 42px;
@@ -290,24 +328,6 @@
                         height: 94px;
                         resize: none;
                         width: 324px;
-                    }
-                    .real-imgs {
-                        margin-top: 0;
-                    }
-                    .date_div {
-                        position: relative;
-                        .date_icon {
-                            color: #d0d0d0;
-                            display: block;
-                            font-size: 24px;
-                            height: 24px;
-                            left: 10px;
-                            line-height: 24px;
-                            position: absolute;
-                            top: 10px;
-                            text-align: center;
-                            width: 24px;
-                        }
                     }
                 }
             }
@@ -382,6 +402,9 @@
             margin-top: 40px;
             margin-bottom: 0;
         }
+    }
+    .ivu-cascader {
+        width: 180px;
     }
     .vdp-datepicker input {
         padding-left: 50px;
