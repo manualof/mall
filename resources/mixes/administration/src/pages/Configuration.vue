@@ -28,15 +28,18 @@
                     phone: '',
                 },
                 loading: false,
-                navColumns: [
+                mainNavColumns: [
                     {
                         align: 'center',
                         type: 'selection',
-                        width: 100,
+                        width: 60,
                     },
                     {
+                        align: 'center',
                         key: 'name',
                         title: '分类名称',
+                        width: 200,
+
                     },
                     {
                         align: 'center',
@@ -65,6 +68,7 @@
                             });
                         },
                         title: '分类图标',
+                        width: 180,
                     },
                     {
                         align: 'center',
@@ -86,6 +90,7 @@
                             });
                         },
                         title: '推荐分类',
+                        width: 180,
                     },
                     {
                         align: 'center',
@@ -109,7 +114,168 @@
                         title: '推荐品牌',
                     },
                     {
+                        key: 'ad',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.ad,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '广告',
+                    },
+                    {
                         align: 'center',
+                        key: 'action',
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.toEdit(data.index);
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '编辑');
+                        },
+                        title: '操作',
+                        width: '140',
+                    },
+                ],
+                mainNavData: [
+                    {
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '数码办公',
+                        type: true,
+                    },
+                    {
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '礼品箱包',
+                        type: true,
+                    },
+                    {
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '家用电器',
+                        type: true,
+                    },
+                    {
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '珠宝手表',
+                        type: true,
+                    },
+                    {
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '运动健康',
+                        type: true,
+                    },
+                ],
+                navColumns: [
+                    {
+                        align: 'center',
+                        type: 'selection',
+                        width: 60,
+                    },
+                    {
+                        align: 'center',
+                        key: 'name',
+                        title: '分类名称',
+                        width: 200,
+
+                    },
+                    {
+                        align: 'center',
+                        key: 'goodsImg',
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.goodsImg,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
+                        },
+                        title: '分类图标',
+                        width: 180,
+                    },
+                    {
+                        align: 'center',
+                        key: 'category',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.category,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '推荐分类',
+                        width: 180,
+                    },
+                    {
+                        align: 'center',
+                        key: 'type',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.type,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '推荐品牌',
+                    },
+                    {
                         key: 'ad',
                         render(h, data) {
                             return h('i-switch', {
@@ -161,28 +327,28 @@
                         ad: true,
                         category: true,
                         goodsImg: image1,
-                        name: '数码办公',
+                        name: '礼品箱包',
                         type: true,
                     },
                     {
                         ad: true,
                         category: true,
                         goodsImg: image1,
-                        name: '数码办公',
+                        name: '家用电器',
                         type: true,
                     },
                     {
                         ad: true,
                         category: true,
                         goodsImg: image1,
-                        name: '数码办公',
+                        name: '珠宝手表',
                         type: true,
                     },
                     {
                         ad: true,
                         category: true,
                         goodsImg: image1,
-                        name: '数码办公',
+                        name: '运动健康',
                         type: true,
                     },
                 ],
@@ -353,7 +519,20 @@
                                  highlight-row></i-table>
                     </card>
                 </tab-pane>
-                <tab-pane label="主导航" name="mainNav"></tab-pane>
+                <tab-pane label="主导航" name="mainNav">
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>商城前台主导航默认商品分类与首页为最前列，其余按照数字大小排序</p>
+                        </div>
+                        <i-button type="ghost" class="add-data">新增数据</i-button>
+                        <i-table class="goods-table"
+                                 :context="self"
+                                 :columns="mainNavColumns"
+                                 :data="mainNavData"
+                                 highlight-row></i-table>
+                    </card>
+                </tab-pane>
             </tabs>
         </div>
     </div>
