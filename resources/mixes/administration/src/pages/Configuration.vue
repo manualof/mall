@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -34,17 +35,45 @@
                         width: 100,
                     },
                     {
-                        key: 'describe',
-                        title: '模板描述',
+                        key: 'name',
+                        title: '分类名称',
                     },
                     {
                         align: 'center',
-                        key: 'stationLetter',
+                        key: 'goodsImg',
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.goodsImg,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
+                        },
+                        title: '分类图标',
+                    },
+                    {
+                        align: 'center',
+                        key: 'category',
                         render(h, data) {
                             return h('i-switch', {
                                 props: {
                                     size: 'large',
-                                    value: data.row.stationLetter,
+                                    value: data.row.category,
                                 },
                                 scopedSlots: {
                                     close() {
@@ -56,16 +85,16 @@
                                 },
                             });
                         },
-                        title: '站内信',
+                        title: '推荐分类',
                     },
                     {
                         align: 'center',
-                        key: 'smsStatus',
+                        key: 'type',
                         render(h, data) {
                             return h('i-switch', {
                                 props: {
                                     size: 'large',
-                                    value: data.row.smsStatus,
+                                    value: data.row.type,
                                 },
                                 scopedSlots: {
                                     close() {
@@ -77,16 +106,16 @@
                                 },
                             });
                         },
-                        title: '手机短信',
+                        title: '推荐品牌',
                     },
                     {
                         align: 'center',
-                        key: 'mailStatus',
+                        key: 'ad',
                         render(h, data) {
                             return h('i-switch', {
                                 props: {
                                     size: 'large',
-                                    value: data.row.mailStatus,
+                                    value: data.row.ad,
                                 },
                                 scopedSlots: {
                                     close() {
@@ -98,7 +127,7 @@
                                 },
                             });
                         },
-                        title: '邮件',
+                        title: '广告',
                     },
                     {
                         align: 'center',
@@ -111,7 +140,6 @@
                                     },
                                 },
                                 props: {
-                                    class: 'editor-btn',
                                     size: 'small',
                                     type: 'ghost',
                                 },
@@ -123,40 +151,39 @@
                 ],
                 navData: [
                     {
-                        describe: '商品库存预警',
-                        mailStatus: true,
-                        smsStatus: true,
-                        stationLetter: false,
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '数码办公',
+                        type: true,
                     },
                     {
-                        describe: '商品被投诉提醒',
-                        mailStatus: false,
-                        smsStatus: true,
-                        stationLetter: true,
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '数码办公',
+                        type: true,
                     },
                     {
-                        describe: '商品审核失败提醒',
-                        mailStatus: true,
-                        smsStatus: true,
-                        stationLetter: false,
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '数码办公',
+                        type: true,
                     },
                     {
-                        describe: '商品违规被下架',
-                        mailStatus: false,
-                        smsStatus: true,
-                        stationLetter: false,
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '数码办公',
+                        type: true,
                     },
                     {
-                        describe: '新订单提醒',
-                        mailStatus: true,
-                        smsStatus: false,
-                        stationLetter: false,
-                    },
-                    {
-                        describe: '退款提醒',
-                        mailStatus: true,
-                        smsStatus: false,
-                        stationLetter: false,
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '数码办公',
+                        type: true,
                     },
                 ],
                 rules: {
@@ -213,6 +240,7 @@
                     }
                 });
             },
+            toEdit() {},
             uploadBefore() {
                 injection.loading.start();
             },
@@ -318,7 +346,7 @@
                                 推荐品牌以及两张广告图片</p>
                             <p>分类导航设置完成后，需要清除缓存</p>
                         </div>
-                        <i-table class="shop-table"
+                        <i-table class="goods-table"
                                  :context="self"
                                  :columns="navColumns"
                                  :data="navData"
