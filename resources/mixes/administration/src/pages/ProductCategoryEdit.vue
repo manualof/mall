@@ -58,7 +58,16 @@
                             self.$notice.open({
                                 title: '编辑商品分类信息成功！',
                             });
-                            self.$router.push('/mall/goods/category');
+                            if (self.form.parent_id) {
+                                self.$router.push({
+                                    path: '/mall/goods/category',
+                                    query: {
+                                        parent: self.form.parent_id,
+                                    },
+                                });
+                            } else {
+                                self.$router.push('/mall/goods/category');
+                            }
                         }).catch(() => {
                             self.$notice.error({
                                 title: '编辑商品分类信息失败！',

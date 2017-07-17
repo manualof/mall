@@ -96,7 +96,17 @@
                             self.$notice.open({
                                 title: '创建商品分类信息成功！',
                             });
-                            self.$router.push('/mall/goods/category');
+                            window.console.log(self.form.parent);
+                            if (self.form.parent) {
+                                self.$router.push({
+                                    path: '/mall/goods/category',
+                                    query: {
+                                        parent: self.form.parent,
+                                    },
+                                });
+                            } else {
+                                self.$router.push('/mall/goods/category');
+                            }
                         }).catch(() => {}).finally(() => {
                             self.loading = false;
                         });
