@@ -76,7 +76,7 @@
                 const that = this;
                 const ev = event || window.event;
                 let floatBoxLeft = ev.clientX - that.wrapX - (that.floatBoxWidth / 2);
-                let floatBoxTop = ev.clientY - that.wrapY - (that.floatBoxHeight / 2);
+                let floatBoxTop = ev.pageY - that.wrapY - (that.floatBoxHeight / 2);
 //                 处理鼠标移动到边界情况
                 if (floatBoxLeft < 0) {
                     floatBoxLeft = 0;

@@ -227,14 +227,20 @@
                         <div class="evaluation-select">
                             <div class="select">
                                 <label class="radio-box">
-                                    <input type="radio" name="evaluation-select"/>
+                                    <input type="radio"
+                                           name="evaluation-select"
+                                           value="all"
+                                           v-model="showEvaluation"/>
                                     <span></span>
                                     全部评价
                                 </label>
                             </div>
                             <div class="select">
                                 <label class="radio-box">
-                                    <input type="radio" name="evaluation-select"/>
+                                    <input type="radio"
+                                           name="evaluation-select"
+                                           value="image"
+                                           v-model="showEvaluation"/>
                                     <span></span>
                                     图片
                                 </label>
@@ -567,6 +573,7 @@
                 ],
                 selectRecommends: [],
                 show: 0,
+                showEvaluation: 'all',
                 smallImgs: [img1, img2, img1, img2, img1, img1, img1],
                 scale: 3,
                 smallOption: {

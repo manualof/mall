@@ -42,7 +42,7 @@
                     </span>
                         我已阅读并同意以上协议
                     </label>
-                    <div class="col-md-offset-5 col-md-1">
+                    <div class="col-md-offset-5 col-md-1 col-sm-1">
                         <button class="btn btn-default next-btn btn-info" :disabled="!agree" @click="next">确认入驻店铺</button>
                     </div>
                 </div>
@@ -50,33 +50,33 @@
                     <h4>入驻联系人信息</h4>
                     <div class="form-horizontal">
                         <div class="form-group">
-                            <label for="inputName" class="col-md-2 control-label">联系人姓名</label>
-                            <div class="col-md-6">
+                            <label for="inputName" class="col-md-2 col-sm-2 col-xs-2 control-label">联系人姓名</label>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
                                 <input type="email" class="form-control" id="inputName" placeholder=""
                                        v-model="connect.name">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPhone" class="col-md-2 control-label">联系人手机</label>
-                            <div class="col-md-6">
+                            <label for="inputPhone" class="col-md-2 col-sm-2 col-xs-2 control-label">联系人手机</label>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
                                 <input type="tel" class="form-control" id="inputPhone" placeholder=""
                                        v-model="connect.phone">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail" class="col-md-2 control-label">联系人电子邮箱</label>
-                            <div class="col-md-6">
+                            <label for="inputEmail" class="col-md-2 col-sm-2 col-xs-2 control-label">联系人电子邮箱</label>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
                                 <input type="email" class="form-control" id="inputEmail" placeholder=""
                                        v-model="connect.email">
-                                <p>用于入驻过程中接收京东审核结果、开店账号密码信息，请务必正确填写。</p>
+                                <p class="text-left">用于入驻过程中接收京东审核结果、开店账号密码信息，请务必正确填写。</p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-offset-4 col-md-1">
+                            <div class="col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-md-1 col-sm-1 col-xs-1">
                                 <button class="btn btn-default prev-btn" @click="prev">上一步</button>
                             </div>
-                            <div class="col-md-1">
-                                <button type="submit" class="col-md-offset-11 btn btn-info next-btn" @click="next">
+                            <div class="col-md-1 col-sm-1 col-xs-1">
+                                <button type="submit" class="col-md-offset-11 col-sm-offset-11 col-xs-offset-11 btn btn-info next-btn" @click="next">
                                     下一步，完善公司信息
                                 </button>
                             </div>
@@ -93,9 +93,9 @@
                     </div>
                     <div class="company_info">
                         <div class="info_item form-horizontal">
-                            <h4>营业执照信息</h4>
+                            <h4 class="text-left">营业执照信息</h4>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">执照类型</label>
+                                <label class="col-sm-2 control-label text-left">执照类型</label>
                                 <div class="col-sm-10">
                                     <label class="radio-inline">
                                         <input type="radio" name="license_type" v-model="lincenseInfo.license_type"
@@ -194,8 +194,8 @@
                             <div class="form-group">
                                 <label for="company_name" class="col-sm-2 control-label">经营范围</label>
                                 <div class="col-sm-10">
-                  <textarea type="text" class="form-control business_scope" v-model="lincenseInfo.business_scope"
-                            placeholder=""></textarea>
+                                    <textarea type="text" class="form-control business_scope" v-model="lincenseInfo.business_scope"
+                                        placeholder=""></textarea>
                                     <p>请与营业执照或企业信息公示网的经营范围保持一致</p>
                                 </div>
                             </div>
