@@ -19,6 +19,7 @@
                         return item;
                     });
                     vm.pagination = response.data.pagination;
+                    vm.parent = to.query.parent;
                     injection.loading.finish();
                     injection.sidebar.active('mall');
                 });
@@ -63,6 +64,36 @@
                         align: 'center',
                         key: 'action',
                         render(h, data) {
+                            if (self.level === 3) {
+                                return h('div', [
+                                    h('router-link', {
+                                        props: {
+                                            to: `/mall/goods/category/edit/${data.row.id}`,
+                                        },
+                                    }, [
+                                        h('i-button', {
+                                            props: {
+                                                size: 'small',
+                                                type: 'ghost',
+                                            },
+                                        }, '编辑'),
+                                    ]),
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.remove(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                        style: {
+                                            marginLeft: '10px',
+                                        },
+                                    }, '删除'),
+                                ]);
+                            }
                             return h('div', [
                                 h('dropdown', {
                                     scopedSlots: {
@@ -144,17 +175,12 @@
                 pagination: {
                     current_page: 1,
                 },
+                parent: 0,
                 searchCategory: '',
                 searchWord: '',
             };
         },
         methods: {
-            addData() {
-                const self = this;
-                self.$router.push({
-                    path: 'category/add',
-                });
-            },
             addSubordinate() {
                 const self = this;
                 self.$router.push({
@@ -211,10 +237,25 @@
                 <span style="margin-left: 20px">分类管理</span>
             </div>
             <div class="edit-link-title" v-if="level === 2">
-                <i-button type="text" @click.native="$router.go(-1)">
-                    <icon type="chevron-left"></icon>
-                </i-button>
+                <router-link to="/mall/goods/category">
+                    <i-button type="text">
+                        <icon type="chevron-left"></icon>
+                    </i-button>
+                </router-link>
                 <span>分类管理 — "{{ category.name }}"的下级列表(二级)</span>
+            </div>
+            <div class="edit-link-title" v-if="level === 3">
+                <router-link :to="{
+                    query: {
+                        parent: category.parent_id
+                    },
+                    to: '/mall/goods/category'
+                }">
+                    <i-button type="text">
+                        <icon type="chevron-left"></icon>
+                    </i-button>
+                </router-link>
+                <span>分类管理 — "{{ category.name }}"的下级列表(三级)</span>
             </div>
             <card :bordered="false">
                 <div class="prompt-box">
@@ -224,7 +265,17 @@
                 </div>
                 <div class="store-body">
                     <div class="store-body-header">
-                        <i-button @click.native="addData" type="ghost">+新增数据</i-button>
+                        <router-link :to="{
+                            path: '/mall/goods/category/add',
+                            query: {
+                                parent: category.id
+                            }
+                        }" v-if="category.id">
+                            <i-button type="ghost">+新增数据</i-button>
+                        </router-link>
+                        <router-link :to="'/mall/goods/category/add'" v-else>
+                            <i-button type="ghost">+新增数据</i-button>
+                        </router-link>
                         <i-button @click="exportData" type="ghost">导出数据</i-button>
                         <i-button @click="deleteData" type="ghost">批量删除</i-button>
                         <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>

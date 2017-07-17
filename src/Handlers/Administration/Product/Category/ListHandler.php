@@ -47,8 +47,12 @@ class ListHandler extends Handler
             $category = new \stdClass();
             $level = 1;
         } else {
-            $category = ProductCategory::query()->find($parent_id);
-            $level = 2;
+            $category = ProductCategory::query()->withCount('parent')->find($parent_id);
+            if ($category->getAttribute('parent_count')) {
+                $level = 3;
+            } else {
+                $level = 2;
+            }
         }
         $this->withCode(200)->withData($builder->items())->withExtra([
             'category'   => $category,
