@@ -144,6 +144,7 @@
                                                 :show-upload-list="false"
                                                 v-if="form.logo === '' || form.logo === null">
                                         </upload>
+                                        <p class="tip">默认网站LOGO，通用头部显示，最佳显示尺寸为240*60像素</p>
                                     </form-item>
                                 </i-col>
                             </row>
@@ -151,6 +152,7 @@
                                 <i-col span="12">
                                     <form-item label="平台客服联系电话" prop="phone">
                                         <i-input placeholder="请输入平台客服联系电话" v-model="form.phone"></i-input>
+                                        <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询，多个请用半角逗号“，”隔开</p>
                                     </form-item>
                                 </i-col>
                             </row>
@@ -158,6 +160,7 @@
                                 <i-col span="12">
                                     <form-item label="平台客服电子邮件" prop="email">
                                         <i-input placeholder="请输入平台客服电子邮件" v-model="form.email"></i-input>
+                                        <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询</p>
                                     </form-item>
                                 </i-col>
                             </row>
