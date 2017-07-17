@@ -4,8 +4,19 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/product/brand/list`).then(response => {
+                window.console.log(response);
+                next(vm => {
+                    vm.list = response.data.data.map(item => {
+                        item.loading = false;
+                        return item;
+                    });
+                    vm.pagination = response.data.pagination;
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
@@ -141,27 +152,8 @@
                         status: true,
                         showStyle: '图片',
                     },
-                    {
-                        brandId: '001',
-                        initials: 'Y',
-                        isshow: '是',
-                        name: '迪卡侬',
-                        pic: image1,
-                        sort: 4,
-                        status: false,
-                        showStyle: '图片',
-                    },
-                    {
-                        brandId: '001',
-                        initials: 'Y',
-                        isshow: '是',
-                        name: '迪卡侬',
-                        pic: image1,
-                        sort: 4,
-                        status: true,
-                        showStyle: '图片',
-                    },
                 ],
+                pagination: {},
             };
         },
         methods: {
