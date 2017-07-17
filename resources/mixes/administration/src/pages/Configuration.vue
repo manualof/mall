@@ -30,54 +30,32 @@
                 loading: false,
                 mainNavColumns: [
                     {
-                        align: 'center',
-                        type: 'selection',
-                        width: 60,
+                        key: 'index',
+                        render(h, data) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                    value: data.index + 1,
+                                },
+                            });
+                        },
+                        title: '排序',
+                        width: 80,
                     },
                     {
                         align: 'center',
                         key: 'name',
-                        title: '分类名称',
+                        title: '导航名称',
                         width: 200,
 
                     },
                     {
-                        align: 'center',
-                        key: 'goodsImg',
-                        render(h, data) {
-                            return h('tooltip', {
-                                props: {
-                                    placement: 'right-end',
-                                },
-                                scopedSlots: {
-                                    content() {
-                                        return h('img', {
-                                            domProps: {
-                                                src: data.row.goodsImg,
-                                            },
-                                        });
-                                    },
-                                    default() {
-                                        return h('icon', {
-                                            props: {
-                                                type: 'image',
-                                            },
-                                        });
-                                    },
-                                },
-                            });
-                        },
-                        title: '分类图标',
-                        width: 180,
-                    },
-                    {
-                        align: 'center',
-                        key: 'category',
+                        key: 'enabled',
                         render(h, data) {
                             return h('i-switch', {
                                 props: {
                                     size: 'large',
-                                    value: data.row.category,
+                                    value: data.row.enabled,
                                 },
                                 scopedSlots: {
                                     close() {
@@ -89,65 +67,40 @@
                                 },
                             });
                         },
-                        title: '推荐分类',
-                        width: 180,
-                    },
-                    {
-                        align: 'center',
-                        key: 'type',
-                        render(h, data) {
-                            return h('i-switch', {
-                                props: {
-                                    size: 'large',
-                                    value: data.row.type,
-                                },
-                                scopedSlots: {
-                                    close() {
-                                        return h('span', '关闭');
-                                    },
-                                    open() {
-                                        return h('span', '开启');
-                                    },
-                                },
-                            });
-                        },
-                        title: '推荐品牌',
-                    },
-                    {
-                        key: 'ad',
-                        render(h, data) {
-                            return h('i-switch', {
-                                props: {
-                                    size: 'large',
-                                    value: data.row.ad,
-                                },
-                                scopedSlots: {
-                                    close() {
-                                        return h('span', '关闭');
-                                    },
-                                    open() {
-                                        return h('span', '开启');
-                                    },
-                                },
-                            });
-                        },
-                        title: '广告',
+                        title: '是否显示',
+                        width: 200,
                     },
                     {
                         align: 'center',
                         key: 'action',
                         render(h, data) {
-                            return h('i-button', {
-                                on: {
-                                    click() {
-                                        self.toEdit(data.index);
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.toEdit(data.index);
+                                        },
                                     },
-                                },
-                                props: {
-                                    size: 'small',
-                                    type: 'ghost',
-                                },
-                            }, '编辑');
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.toEdit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: '140',
@@ -155,39 +108,20 @@
                 ],
                 mainNavData: [
                     {
-                        ad: true,
-                        category: true,
-                        goodsImg: image1,
+                        enabled: true,
                         name: '数码办公',
-                        type: true,
                     },
                     {
-                        ad: true,
-                        category: true,
-                        goodsImg: image1,
-                        name: '礼品箱包',
-                        type: true,
+                        enabled: true,
+                        name: '数码办公',
                     },
                     {
-                        ad: true,
-                        category: true,
-                        goodsImg: image1,
-                        name: '家用电器',
-                        type: true,
+                        enabled: true,
+                        name: '数码办公',
                     },
                     {
-                        ad: true,
-                        category: true,
-                        goodsImg: image1,
-                        name: '珠宝手表',
-                        type: true,
-                    },
-                    {
-                        ad: true,
-                        category: true,
-                        goodsImg: image1,
-                        name: '运动健康',
-                        type: true,
+                        enabled: true,
+                        name: '数码办公',
                     },
                 ],
                 navColumns: [
