@@ -1,3 +1,4 @@
+<script src="../mixins/router.js"></script>
 <script>
     import injection from '../helpers/injection';
 
