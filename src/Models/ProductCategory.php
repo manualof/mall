@@ -51,11 +51,11 @@ class ProductCategory extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function parent()
     {
-        return $this->hasOne(ProductCategory::class, 'id', 'category_id');
+        return $this->belongsTo(ProductCategory::class, 'parent_id');
     }
 
     /**
