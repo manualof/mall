@@ -80,7 +80,12 @@
                                                 h('dropdown-item', {
                                                     nativeOn: {
                                                         click() {
-                                                            self.addSubordinate();
+                                                            self.$router.push({
+                                                                path: '/mall/goods/category/add',
+                                                                query: {
+                                                                    parent: data.row.id,
+                                                                },
+                                                            });
                                                         },
                                                     },
                                                 }, '新增下级分类'),

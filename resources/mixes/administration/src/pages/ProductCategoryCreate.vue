@@ -3,7 +3,11 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
+            next(vm => {
+                if (to.query.parent) {
+                    vm.form.parent = to.query.parent;
+                }
+                window.console.log(vm.form);
                 injection.sidebar.active('mall');
             });
         },
