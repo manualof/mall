@@ -3,14 +3,25 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/store/grade/list`).then(response => {
+                window.console.log(response);
+                next(vm => {
+                    vm.list = response.data.data.map(item => {
+                        item.loading = false;
+                        return item;
+                    });
+                    vm.pagination = response.data.pagination;
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
             const self = this;
             return {
-                managementSearch: '',
                 columns: [
                     {
                         align: 'center',
@@ -108,6 +119,8 @@
                         pictureNum: 56,
                     },
                 ],
+                managementSearch: '',
+                pagination: {},
             };
         },
         methods: {

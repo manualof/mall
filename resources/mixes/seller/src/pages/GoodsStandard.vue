@@ -1,5 +1,5 @@
 <script>
-//    import colorPicker from './colorPicker.vue';
+//    import ColorPicker from './colorPicker.vue';
     import injection from '../helpers/injection';
 
     export default {
@@ -9,11 +9,12 @@
             });
         },
         components: {
-//            colorPicker,
+//            ColorPicker,
         },
         data() {
             const self = this;
             return {
+                color: '',
                 firstType: [
                     {
                         children: [
@@ -152,13 +153,20 @@
                     },
                     {
                         key: 'color',
+//                        render(h) {
+//                            return h('i-input', {
+//                                props: {
+//                                    type: 'ghost',
+//                                },
+//                                style: {
+//                                    width: '124px',
+//                                },
+//                            });
+//                        },
                         render(h) {
-                            return h('i-input', {
+                            return h('color-picker', {
                                 props: {
-                                    type: 'ghost',
-                                },
-                                style: {
-                                    width: '124px',
+                                    value: self.color,
                                 },
                             });
                         },
@@ -307,7 +315,6 @@
                             <p>3.可通过排序0~255改变规格值显示顺序；在发布商品是勾选已绑定的商品规格，还可对规格值进行"别名"
                                 修改操作，但不会影响规格值默认名称的设定</p>
                         </div>
-                        <!--<colorPicker v-model="color"></colorPicker>-->
                         <div class="goods-list">
                             <row>
                                 <i-col span="3">选择商品分类</i-col>

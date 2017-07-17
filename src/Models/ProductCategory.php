@@ -15,7 +15,7 @@ use Symfony\Component\Workflow\Transition;
 
 /**
  * Class ProductCategory.
- */
+*/
 class ProductCategory extends Model
 {
     use HasFlow;
@@ -37,11 +37,25 @@ class ProductCategory extends Model
     protected $table = 'mall_product_categories';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @param $value
+     *
+     * @return mixed
+     */
+    public function getOrderAttribute($value)
+    {
+        if (is_null($value)) {
+            return 0;
+        }
+
+        return $value;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function parent()
     {
-        return $this->hasOne(ProductCategory::class, 'id', 'category_id');
+        return $this->belongsTo(ProductCategory::class, 'parent_id');
     }
 
     /**
@@ -82,7 +96,10 @@ class ProductCategory extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
         ];
     }

@@ -76,9 +76,9 @@ import StoreCategoryCreate from '../pages/StoreCategoryCreate.vue';
 import StoreDynamics from '../pages/StoreDynamics.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
 import SalesActive from '../pages/SalesActive.vue';
-import StoreLevel from '../pages/StoreLevel.vue';
-import StoreLevelCreate from '../pages/StoreLevelCreate.vue';
-import StoreLevelEdit from '../pages/StoreLevelEdit.vue';
+import StoreLevel from '../pages/StoreGrade.vue';
+import StoreLevelCreate from '../pages/StoreGradeCreate.vue';
+import StoreLevelEdit from '../pages/StoreGradeEdit.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
 import SalesSpikesLook from '../pages/SalesSpikesLook.vue';
 import SalesSpike from '../pages/SalesSpike.vue';
@@ -180,7 +180,7 @@ export default function (injection) {
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductCategoryEdit,
-                    path: 'goods/category/edit',
+                    path: 'goods/category/edit/:id',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

@@ -2,15 +2,15 @@
 /**
  * This file is part of Notadd.
  *
- * @author TwilRoad <heshudong@ibenchu.com>
+ * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 12:16
+ * @datetime 2017-07-15 19:44
  */
-namespace Notadd\Mall\Handlers\Administration\Store\Dynamic;
+namespace Notadd\Mall\Handlers\Administration\Store\Grade;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Foundation\Validation\Rule;
-use Notadd\Mall\Models\StoreDynamic;
+use Notadd\Mall\Models\StoreGrade;
 
 /**
  * Class ListHandler.
@@ -31,20 +31,13 @@ class ListHandler extends Handler
             ]),
             'page'     => Rule::numeric(),
             'paginate' => Rule::numeric(),
-            'store_id' => [
-                Rule::numeric(),
-                Rule::required(),
-            ],
         ], [
-            'order.in'          => '排序规则错误',
-            'page.numeric'      => '当前页面必须为数值',
-            'paginate.numeric'  => '分页数必须为数值',
-            'store_id.numeric'  => '店铺 ID 必须为数值',
-            'store_id.required' => '店铺 ID 必须填写',
+            'order.in'         => '排序规则错误',
+            'page.numeric'     => '当前页面必须为数值',
+            'paginate.numeric' => '分页数必须为数值',
         ]);
-        $builder = StoreDynamic::query();
+        $builder = StoreGrade::query();
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
-        $builder->where('store_id', $this->request->input('store_id'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)->withData($builder->items())->withExtra([
             'pagination' => [
@@ -57,6 +50,6 @@ class ListHandler extends Handler
                 'from'          => $builder->firstItem(),
                 'to'            => $builder->lastItem(),
             ],
-        ])->withMessage('获取商品列表成功！');
+        ])->withMessage('获取店铺等级列表成功！');
     }
 }

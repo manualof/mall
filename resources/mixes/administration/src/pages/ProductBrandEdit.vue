@@ -8,6 +8,17 @@
             });
         },
         data() {
+//            const validateSort = (rule, value, callback) => {
+//                if (!Number.isInteger(value)) {
+//                    callback(new Error('请输入数字值'));
+//                } else if (Number.isInteger(value)) {
+//                    if (value > 255) {
+//                        callback(new Error('请输入排序范围内的数字'));
+//                    } else {
+//                        callback();
+//                    }
+//                }
+//            };
             return {
                 action: `${window.api}/mall/admin/upload`,
                 form: {
@@ -26,7 +37,7 @@
                     ],
                     logo: '',
                     selectStyle: ['个护化妆', '营养辅食'],
-                    sort: '',
+                    sort: 0,
                     switch1: true,
                 },
                 addType: false,
@@ -45,6 +56,17 @@
                             message: '名称首字母不能为空',
                             required: true,
                             trigger: 'blur',
+                        },
+                    ],
+                    sort: [
+                        {
+                            max: 255,
+                            message: '请输入排序范围内的数字',
+                            min: 0,
+                            required: true,
+                            trigger: 'change',
+                            type: 'number',
+//                            validator: validateSort,
                         },
                     ],
                 },
@@ -319,6 +341,15 @@
                 });
                 self.form.logo = data.data.path;
             },
+//            validatorSort() {
+//                const self = this;
+//                const reg1 = /^\d$/;
+//                if (!reg1.test(self.form.sort)) {
+//                    self.$notice.error({
+//                        title: '排序必须为数字！',
+//                    });
+//                }
+//            },
         },
     };
 </script>

@@ -3,13 +3,23 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
+            window.console.log(to);
             injection.loading.start();
-            injection.http.post(`${window.api}/mall/admin/product/category/list`).then(response => {
-                const data = response.data.data;
-                const pagination = response.data.pagination;
+            const data = {};
+            if (to.query.parent) {
+                data.parent_id = to.query.parent;
+            }
+            injection.http.post(`${window.api}/mall/admin/product/category/list`, data).then(response => {
+                window.console.log(response);
                 next(vm => {
-                    vm.list = data;
-                    vm.pagination = pagination;
+                    vm.category = response.data.category;
+                    vm.level = response.data.level;
+                    vm.list = response.data.data.map(item => {
+                        item.loading = false;
+                        return item;
+                    });
+                    vm.pagination = response.data.pagination;
+                    vm.parent = to.query.parent;
                     injection.loading.finish();
                     injection.sidebar.active('mall');
                 });
@@ -20,12 +30,7 @@
         data() {
             const self = this;
             return {
-                list: [
-//                    {
-//                        commissionRate: '5%',
-//                        goodShow: '颜色',
-//                    },
-                ],
+                category: {},
                 columns: [
                     {
                         align: 'center',
@@ -33,37 +38,21 @@
                         width: 60,
                     },
                     {
-                        key: 'sort',
-                        render(h) {
-                            return h('i-input', {
-                                props: {
-                                    type: 'ghost',
-                                },
-                                style: {
-                                    width: '64px',
-                                },
-                            });
-                        },
+                        key: 'order',
                         title: '排序',
                         width: 150,
                     },
                     {
-                        key: 'typeName',
-                        render(h) {
-                            return h('i-input', {
-                                props: {
-                                    type: 'ghost',
-                                },
-                                style: {
-                                    width: '128px',
-                                },
-                            });
-                        },
+                        key: 'name',
                         title: '分类名称',
                         width: 200,
                     },
                     {
-                        key: 'commissionRate',
+                        align: 'center',
+                        key: 'deposit',
+                        render(h, data) {
+                            return `${data.row.deposit} %`;
+                        },
                         title: '分拥比例',
                         width: 150,
                     },
@@ -75,6 +64,36 @@
                         align: 'center',
                         key: 'action',
                         render(h, data) {
+                            if (self.level === 3) {
+                                return h('div', [
+                                    h('router-link', {
+                                        props: {
+                                            to: `/mall/goods/category/edit/${data.row.id}`,
+                                        },
+                                    }, [
+                                        h('i-button', {
+                                            props: {
+                                                size: 'small',
+                                                type: 'ghost',
+                                            },
+                                        }, '编辑'),
+                                    ]),
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.remove(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                        style: {
+                                            marginLeft: '10px',
+                                        },
+                                    }, '删除'),
+                                ]);
+                            }
                             return h('div', [
                                 h('dropdown', {
                                     scopedSlots: {
@@ -83,21 +102,33 @@
                                                 h('dropdown-item', {
                                                     nativeOn: {
                                                         click() {
-                                                            self.editType();
+                                                            self.$router.push({
+                                                                path: `category/edit/${data.row.id}`,
+                                                            });
                                                         },
                                                     },
                                                 }, '编辑分类信息'),
                                                 h('dropdown-item', {
                                                     nativeOn: {
                                                         click() {
-                                                            self.addSubordinate();
+                                                            self.$router.push({
+                                                                path: '/mall/goods/category/add',
+                                                                query: {
+                                                                    parent: data.row.id,
+                                                                },
+                                                            });
                                                         },
                                                     },
                                                 }, '新增下级分类'),
                                                 h('dropdown-item', {
                                                     nativeOn: {
                                                         click() {
-                                                            self.lookSubordinate();
+                                                            self.$router.push({
+                                                                path: '/mall/goods/category',
+                                                                query: {
+                                                                    parent: data.row.id,
+                                                                },
+                                                            });
                                                         },
                                                     },
                                                 }, '查看下级分类'),
@@ -139,30 +170,21 @@
                         width: 200,
                     },
                 ],
+                level: 0,
+                list: [],
                 pagination: {
                     current_page: 1,
                 },
+                parent: 0,
                 searchCategory: '',
                 searchWord: '',
             };
         },
         methods: {
-            addData() {
-                const self = this;
-                self.$router.push({
-                    path: 'category/add',
-                });
-            },
             addSubordinate() {
                 const self = this;
                 self.$router.push({
                     path: 'category/add/under',
-                });
-            },
-            editType() {
-                const self = this;
-                self.$router.push({
-                    path: 'category/edit',
                 });
             },
             editTypeNav() {
@@ -176,54 +198,101 @@
                     filename: '商品分类数据',
                 });
             },
-            lookSubordinate() {
-                const self = this;
-                self.$router.push({
-                    path: 'category/look',
-                });
-            },
             remove(index) {
                 this.list.splice(index, 1);
+            },
+        },
+        watch: {
+            $route: {
+                handler(route) {
+                    const self = this;
+                    self.$notice.open({
+                        title: '正在刷新数据...',
+                    });
+                    self.$loading.start();
+                    self.$http.post(`${window.api}/mall/admin/product/category/list`, {
+                        parent_id: route.query.parent,
+                    }).then(response => {
+                        window.console.log(response);
+                        self.category = response.data.category;
+                        self.level = response.data.level;
+                        self.list = response.data.data.map(item => {
+                            item.loading = false;
+                            return item;
+                        });
+                        self.pagination = response.data.pagination;
+                        self.$loading.finish();
+                    }).catch(() => {
+                        self.loading.fail();
+                    });
+                },
             },
         },
     };
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="goods-category">
-            <tabs value="name1">
-                <tab-pane label="分类管理" name="name1">
-                    <card :bordered="false">
-                        <div class="prompt-box">
-                            <p>提示</p>
-                            <p>当店主添加商品时可选择商品分类，用户可根据分类查询商品列表</p>
-                            <p>对分类做任何更改后，都需要到 站点设置>清理缓存 清理商品分类，新的设置才会生效</p>
-                            <p>"商品展示"为在商品列表页的展示方式</p>
-                            <p>"SKU"：以某一SKU分别展示,例如,商品列表页同款商品分别展示不同颜色</p>
-                            <p>"SPU"：每个SPU只展示一个SKU,默认销量最大且有库存的SKU</p>
-                        </div>
-                        <div class="store-body">
-                            <div class="store-body-header">
-                                <i-button @click.native="addData" type="ghost">+新增数据</i-button>
-                                <i-button @click="exportData" type="ghost">导出数据</i-button>
-                                <i-button @click="deleteData" type="ghost">批量删除</i-button>
-                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                            </div>
-                            <i-table class="shop-table"
-                                     :columns="columns"
-                                     :data="list"
-                                     highlight-row
-                                     ref="goodTable"></i-table>
-                        </div>
-                        <div class="page">
-                            <page :current="pagination.current_page"
-                                  :page-size="pagination.per_page"
-                                  :total="pagination.total"
-                                  show-elevator></page>
-                        </div>
-                    </card>
-                </tab-pane>
-            </tabs>
+        <div class="goods-category-look">
+            <div class="edit-link-title" v-if="level === 1">
+                <span style="margin-left: 20px">分类管理</span>
+            </div>
+            <div class="edit-link-title" v-if="level === 2">
+                <router-link to="/mall/goods/category">
+                    <i-button type="text">
+                        <icon type="chevron-left"></icon>
+                    </i-button>
+                </router-link>
+                <span>分类管理 — "{{ category.name }}"的下级列表(二级)</span>
+            </div>
+            <div class="edit-link-title" v-if="level === 3">
+                <router-link :to="{
+                    query: {
+                        parent: category.parent_id
+                    },
+                    to: '/mall/goods/category'
+                }">
+                    <i-button type="text">
+                        <icon type="chevron-left"></icon>
+                    </i-button>
+                </router-link>
+                <span>分类管理 — "{{ category.name }}"的下级列表(三级)</span>
+            </div>
+            <card :bordered="false">
+                <div class="prompt-box">
+                    <p>提示</p>
+                    <p>当店主添加商品时可选择商品分类，用户可根据分类查询商品列表</p>
+                    <p>对分类做任何更改后，都需要到 站点设置>清理缓存 清理商品分类，新的设置才会生效</p>
+                </div>
+                <div class="store-body">
+                    <div class="store-body-header">
+                        <router-link :to="{
+                            path: '/mall/goods/category/add',
+                            query: {
+                                parent: category.id
+                            }
+                        }" v-if="category.id">
+                            <i-button type="ghost">+新增数据</i-button>
+                        </router-link>
+                        <router-link :to="'/mall/goods/category/add'" v-else>
+                            <i-button type="ghost">+新增数据</i-button>
+                        </router-link>
+                        <i-button @click="exportData" type="ghost">导出数据</i-button>
+                        <i-button @click="deleteData" type="ghost">批量删除</i-button>
+                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                    </div>
+                    <i-table class="shop-table"
+                             :columns="columns"
+                             :data="list"
+                             highlight-row
+                             ref="goodTable"></i-table>
+                </div>
+                <div class="page">
+                    <page :current="pagination.current_page"
+                          :page-size="pagination.per_page"
+                          :total="pagination.total"
+                          show-elevator></page>
+                </div>
+            </card>
         </div>
     </div>
 </template>

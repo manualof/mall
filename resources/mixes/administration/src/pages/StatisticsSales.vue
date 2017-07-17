@@ -225,6 +225,37 @@
                         status: '已完成',
                     },
                 ],
+                orderMoneyOptions: {
+                    shortcuts: [
+                        {
+                            text: '最近一周',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 7));
+                                return [start, end];
+                            },
+                        },
+                        {
+                            text: '最近一个月',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 30));
+                                return [start, end];
+                            },
+                        },
+                        {
+                            text: '最近三个月',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 90));
+                                return [start, end];
+                            },
+                        },
+                    ],
+                },
                 orderStatistics: [
                     {
                         price: '4444',
@@ -402,13 +433,11 @@
                                                     </li>
                                                     <li>
                                                         时间周期
-                                                        <i-select v-model="model2" style="width:124px">
-                                                            <i-option v-for="item in timeList" :value="item.value"
-                                                                      :key="item">{{ item.label }}</i-option>
-                                                        </i-select>
-                                                    </li>
-                                                    <li>
-                                                        <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                        <date-picker :options="orderMoneyOptions"
+                                                                     placement="bottom-end"
+                                                                     placeholder="选择日期"
+                                                                     style="width: 200px"
+                                                                     type="daterange"></date-picker>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -442,13 +471,11 @@
                                                     </li>
                                                     <li>
                                                         时间周期
-                                                        <i-select v-model="model2" style="width:124px">
-                                                            <i-option v-for="item in timeList" :value="item.value"
-                                                                      :key="item">{{ item.label }}</i-option>
-                                                        </i-select>
-                                                    </li>
-                                                    <li>
-                                                        <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                        <date-picker :options="orderMoneyOptions"
+                                                                     placement="bottom-end"
+                                                                     placeholder="选择日期"
+                                                                     style="width: 200px"
+                                                                     type="daterange"></date-picker>
                                                     </li>
                                                 </ul>
                                             </div>

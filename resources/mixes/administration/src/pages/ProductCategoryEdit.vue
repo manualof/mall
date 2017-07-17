@@ -3,16 +3,27 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/product/category`, {
+                id: to.params.id,
+            }).then(repsonse => {
+                window.console.log(repsonse);
+                next(vm => {
+                    vm.form = repsonse.data.data;
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
             return {
                 form: {
-                    order: '',
-                    deposit: '',
+                    order: 0,
+                    deposit: 0,
                     name: '',
+                    parent_id: 0,
                 },
                 loading: false,
                 rules: {
@@ -25,7 +36,7 @@
                     ],
                     name: [
                         {
-                            message: '名称名称不能为空',
+                            message: '分类名称不能为空',
                             required: true,
                             trigger: 'blur',
                         },
@@ -43,7 +54,27 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        window.console.log(valid);
+                        self.$http.post(`${window.api}/mall/admin/product/category/edit`, self.form).then(() => {
+                            self.$notice.open({
+                                title: '编辑商品分类信息成功！',
+                            });
+                            if (self.form.parent_id) {
+                                self.$router.push({
+                                    path: '/mall/goods/category',
+                                    query: {
+                                        parent: self.form.parent_id,
+                                    },
+                                });
+                            } else {
+                                self.$router.push('/mall/goods/category');
+                            }
+                        }).catch(() => {
+                            self.$notice.error({
+                                title: '编辑商品分类信息失败！',
+                            });
+                        }).finally(() => {
+                            self.loading = false;
+                        });
                     } else {
                         self.loading = false;
                         self.$notice.error({
