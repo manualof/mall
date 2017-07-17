@@ -22,11 +22,13 @@
                         align: 'center',
                         key: 'name',
                         title: '品牌名称',
+                        width: 180,
                     },
                     {
                         align: 'center',
                         key: 'initials',
                         title: '首字母',
+                        width: 180,
                     },
                     {
                         align: 'center',
@@ -55,66 +57,29 @@
                             });
                         },
                         title: '品牌图片',
+                        width: 200,
                     },
                     {
-                        align: 'center',
-                        key: 'sort',
-                        title: '品牌排序',
-                    },
-                    {
-                        align: 'center',
-                        key: 'isshow',
-                        render(h, data) {
-                            if (data.row.status === true) {
-                                return h('span', {
-                                    class: {
-                                        'status-check': true,
-                                    },
-                                }, [
-                                    h('icon', {
-                                        props: {
-                                            type: 'checkmark-circled',
-                                        },
-                                    }),
-                                    '是',
-                                ]);
-                            }
-                            return h('span', [
-                                h('icon', {
-                                    props: {
-                                        type: 'close-circled',
-                                    },
-                                }),
-                                '否',
-                            ]);
-                        },
-                        title: '是否推荐品牌',
-                    },
-                    {
-                        key: 'showStyle',
-                        title: '展示形式',
+                        key: 'reviewStatus',
+                        title: '审核状态',
                     },
                     {
                         align: 'center',
                         key: 'action',
-                        render(h, data) {
+                        render(h) {
                             return h('div', [
                                 h('i-button', {
                                     on: {
-                                        click() {
-                                            self.edit(data.index);
-                                        },
+                                        click() {},
                                     },
                                     props: {
                                         size: 'small',
                                         type: 'ghost',
                                     },
-                                }, '编辑'),
+                                }, '通过'),
                                 h('i-button', {
                                     on: {
-                                        click() {
-                                            self.remove(data.index);
-                                        },
+                                        click() {},
                                     },
                                     props: {
                                         size: 'small',
@@ -123,7 +88,7 @@
                                     style: {
                                         marginLeft: '10px',
                                     },
-                                }, '删除'),
+                                }, '拒绝'),
                             ]);
                         },
                         title: '操作',
@@ -134,32 +99,37 @@
                     {
                         brandId: '001',
                         initials: 'Y',
-                        isshow: '是',
                         name: '迪卡侬',
                         pic: image1,
-                        sort: 4,
-                        status: true,
-                        showStyle: '图片',
+                        reviewStatus: '未审核',
                     },
                     {
                         brandId: '001',
                         initials: 'Y',
-                        isshow: '是',
                         name: '迪卡侬',
                         pic: image1,
-                        sort: 4,
-                        status: false,
-                        showStyle: '图片',
+                        reviewStatus: '未审核',
                     },
                     {
                         brandId: '001',
                         initials: 'Y',
-                        isshow: '是',
                         name: '迪卡侬',
                         pic: image1,
-                        sort: 4,
-                        status: true,
-                        showStyle: '图片',
+                        reviewStatus: '未审核',
+                    },
+                    {
+                        brandId: '001',
+                        initials: 'Y',
+                        name: '迪卡侬',
+                        pic: image1,
+                        reviewStatus: '未审核',
+                    },
+                    {
+                        brandId: '001',
+                        initials: 'Y',
+                        name: '迪卡侬',
+                        pic: image1,
+                        reviewStatus: '未审核',
                     },
                 ],
                 columns: [
