@@ -276,12 +276,6 @@
                     filename: '品牌管理数据',
                 });
             },
-            newAddData() {
-                const self = this;
-                self.$router.push({
-                    path: 'brand/add',
-                });
-            },
             remove(index) {
                 this.list.splice(index, 1);
             },
@@ -302,7 +296,9 @@
                         </div>
                         <div class="brand-management">
                             <div class="store-body-header">
-                                <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
+                                <router-link to="/mall/goods/brand/add">
+                                    <i-button class="add-data" type="ghost">+新增数据</i-button>
+                                </router-link>
                                 <i-button @click="exportData" type="ghost">导出数据</i-button>
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                                 <div class="store-body-header-right">
