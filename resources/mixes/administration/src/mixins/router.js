@@ -180,7 +180,7 @@ export default function (injection) {
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductCategoryEdit,
-                    path: 'goods/category/edit',
+                    path: 'goods/category/edit/:id',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

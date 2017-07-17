@@ -71,7 +71,9 @@
                                                 h('dropdown-item', {
                                                     nativeOn: {
                                                         click() {
-                                                            self.editType();
+                                                            self.$router.push({
+                                                                path: `category/edit/${data.row.id}`,
+                                                            });
                                                         },
                                                     },
                                                 }, '编辑分类信息'),
@@ -152,12 +154,6 @@
                 const self = this;
                 self.$router.push({
                     path: 'category/add/under',
-                });
-            },
-            editType() {
-                const self = this;
-                self.$router.push({
-                    path: 'category/edit',
                 });
             },
             editTypeNav() {
