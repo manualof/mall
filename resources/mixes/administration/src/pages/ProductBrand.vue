@@ -8,11 +8,12 @@
             injection.http.post(`${window.api}/mall/admin/product/brand/list`).then(response => {
                 window.console.log(response);
                 next(vm => {
-                    vm.list = response.data.data.map(item => {
+                    vm.list.data = response.data.data.map(item => {
                         item.loading = false;
                         return item;
                     });
                     vm.pagination = response.data.pagination;
+                    injection.loading.finish();
                     injection.sidebar.active('mall');
                 });
             }).catch(() => {
@@ -22,278 +23,234 @@
         data() {
             const self = this;
             return {
-                brandColumns: [
-                    {
-                        align: 'center',
-                        key: 'brandId',
-                        title: '品牌ID',
-                        width: 120,
-                    },
-                    {
-                        align: 'center',
-                        key: 'name',
-                        title: '品牌名称',
-                        width: 180,
-                    },
-                    {
-                        align: 'center',
-                        key: 'initials',
-                        title: '首字母',
-                        width: 180,
-                    },
-                    {
-                        align: 'center',
-                        key: 'brandPicture',
-                        render(h, data) {
-                            return h('tooltip', {
-                                props: {
-                                    placement: 'right-end',
-                                },
-                                scopedSlots: {
-                                    content() {
-                                        return h('img', {
-                                            domProps: {
-                                                src: data.row.pic,
-                                            },
-                                        });
-                                    },
-                                    default() {
-                                        return h('icon', {
-                                            props: {
-                                                type: 'image',
-                                            },
-                                        });
-                                    },
-                                },
-                            });
+                column: {
+                    audit: [
+                        {
+                            align: 'center',
+                            key: 'brandId',
+                            title: '品牌ID',
+                            width: 120,
                         },
-                        title: '品牌图片',
-                        width: 200,
-                    },
-                    {
-                        key: 'reviewStatus',
-                        title: '审核状态',
-                    },
-                    {
-                        align: 'center',
-                        key: 'action',
-                        render(h) {
-                            return h('div', [
-                                h('i-button', {
-                                    on: {
-                                        click() {},
-                                    },
+                        {
+                            align: 'center',
+                            key: 'name',
+                            title: '品牌名称',
+                            width: 180,
+                        },
+                        {
+                            align: 'center',
+                            key: 'initials',
+                            title: '首字母',
+                            width: 180,
+                        },
+                        {
+                            align: 'center',
+                            key: 'brandPicture',
+                            render(h, data) {
+                                return h('tooltip', {
                                     props: {
-                                        size: 'small',
-                                        type: 'ghost',
+                                        placement: 'right-end',
                                     },
-                                }, '通过'),
-                                h('i-button', {
-                                    on: {
-                                        click() {},
+                                    scopedSlots: {
+                                        content() {
+                                            return h('img', {
+                                                domProps: {
+                                                    src: data.row.pic,
+                                                },
+                                            });
+                                        },
+                                        default() {
+                                            return h('icon', {
+                                                props: {
+                                                    type: 'image',
+                                                },
+                                            });
+                                        },
                                     },
+                                });
+                            },
+                            title: '品牌图片',
+                            width: 200,
+                        },
+                        {
+                            key: 'reviewStatus',
+                            title: '审核状态',
+                        },
+                        {
+                            align: 'center',
+                            key: 'action',
+                            render(h) {
+                                return h('div', [
+                                    h('i-button', {
+                                        on: {
+                                            click() {},
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '通过'),
+                                    h('i-button', {
+                                        on: {
+                                            click() {},
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                        style: {
+                                            marginLeft: '10px',
+                                        },
+                                    }, '拒绝'),
+                                ]);
+                            },
+                            title: '操作',
+                            width: 180,
+                        },
+                    ],
+                    list: [
+                        {
+                            align: 'center',
+                            key: 'brandId',
+                            title: '品牌ID',
+                            width: 120,
+                        },
+                        {
+                            align: 'center',
+                            key: 'name',
+                            title: '品牌名称',
+                        },
+                        {
+                            align: 'center',
+                            key: 'initials',
+                            title: '首字母',
+                        },
+                        {
+                            align: 'center',
+                            key: 'brandPicture',
+                            render(h, data) {
+                                return h('tooltip', {
                                     props: {
-                                        size: 'small',
-                                        type: 'ghost',
+                                        placement: 'right-end',
                                     },
-                                    style: {
-                                        marginLeft: '10px',
+                                    scopedSlots: {
+                                        content() {
+                                            return h('img', {
+                                                domProps: {
+                                                    src: data.row.pic,
+                                                },
+                                            });
+                                        },
+                                        default() {
+                                            return h('icon', {
+                                                props: {
+                                                    type: 'image',
+                                                },
+                                            });
+                                        },
                                     },
-                                }, '拒绝'),
-                            ]);
+                                });
+                            },
+                            title: '品牌图片',
                         },
-                        title: '操作',
-                        width: 180,
-                    },
-                ],
-                brandData: [
-                    {
-                        brandId: '001',
-                        initials: 'Y',
-                        name: '迪卡侬',
-                        pic: image1,
-                        reviewStatus: '未审核',
-                    },
-                    {
-                        brandId: '001',
-                        initials: 'Y',
-                        name: '迪卡侬',
-                        pic: image1,
-                        reviewStatus: '未审核',
-                    },
-                    {
-                        brandId: '001',
-                        initials: 'Y',
-                        name: '迪卡侬',
-                        pic: image1,
-                        reviewStatus: '未审核',
-                    },
-                    {
-                        brandId: '001',
-                        initials: 'Y',
-                        name: '迪卡侬',
-                        pic: image1,
-                        reviewStatus: '未审核',
-                    },
-                    {
-                        brandId: '001',
-                        initials: 'Y',
-                        name: '迪卡侬',
-                        pic: image1,
-                        reviewStatus: '未审核',
-                    },
-                ],
-                columns: [
-                    {
-                        align: 'center',
-                        key: 'brandId',
-                        title: '品牌ID',
-                        width: 120,
-                    },
-                    {
-                        align: 'center',
-                        key: 'name',
-                        title: '品牌名称',
-                    },
-                    {
-                        align: 'center',
-                        key: 'initials',
-                        title: '首字母',
-                    },
-                    {
-                        align: 'center',
-                        key: 'brandPicture',
-                        render(h, data) {
-                            return h('tooltip', {
-                                props: {
-                                    placement: 'right-end',
-                                },
-                                scopedSlots: {
-                                    content() {
-                                        return h('img', {
-                                            domProps: {
-                                                src: data.row.pic,
-                                            },
-                                        });
-                                    },
-                                    default() {
-                                        return h('icon', {
+                        {
+                            align: 'center',
+                            key: 'sort',
+                            title: '品牌排序',
+                        },
+                        {
+                            align: 'center',
+                            key: 'isshow',
+                            render(h, data) {
+                                if (data.row.status === true) {
+                                    return h('span', {
+                                        class: {
+                                            'status-check': true,
+                                        },
+                                    }, [
+                                        h('icon', {
                                             props: {
-                                                type: 'image',
+                                                type: 'checkmark-circled',
                                             },
-                                        });
-                                    },
-                                },
-                            });
-                        },
-                        title: '品牌图片',
-                    },
-                    {
-                        align: 'center',
-                        key: 'sort',
-                        title: '品牌排序',
-                    },
-                    {
-                        align: 'center',
-                        key: 'isshow',
-                        render(h, data) {
-                            if (data.row.status === true) {
-                                return h('span', {
-                                    class: {
-                                        'status-check': true,
-                                    },
-                                }, [
+                                        }),
+                                        '是',
+                                    ]);
+                                }
+                                return h('span', [
                                     h('icon', {
                                         props: {
-                                            type: 'checkmark-circled',
+                                            type: 'close-circled',
                                         },
                                     }),
-                                    '是',
+                                    '否',
                                 ]);
-                            }
-                            return h('span', [
-                                h('icon', {
-                                    props: {
-                                        type: 'close-circled',
-                                    },
-                                }),
-                                '否',
-                            ]);
+                            },
+                            title: '是否推荐品牌',
                         },
-                        title: '是否推荐品牌',
-                    },
-                    {
-                        key: 'showStyle',
-                        title: '展示形式',
-                    },
-                    {
-                        align: 'center',
-                        key: 'action',
-                        render(h, data) {
-                            return h('div', [
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.edit(data.index);
-                                        },
-                                    },
-                                    props: {
-                                        size: 'small',
-                                        type: 'ghost',
-                                    },
-                                }, '编辑'),
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.remove(data.index);
-                                        },
-                                    },
-                                    props: {
-                                        size: 'small',
-                                        type: 'ghost',
-                                    },
-                                    style: {
-                                        marginLeft: '10px',
-                                    },
-                                }, '删除'),
-                            ]);
+                        {
+                            key: 'showStyle',
+                            title: '展示形式',
                         },
-                        title: '操作',
-                        width: 180,
-                    },
-                ],
-                list: [
-                    {
-                        brandId: '001',
-                        initials: 'Y',
-                        isshow: '是',
-                        name: '迪卡侬',
-                        pic: image1,
-                        sort: 4,
-                        status: true,
-                        showStyle: '图片',
-                    },
-                    {
-                        brandId: '001',
-                        initials: 'Y',
-                        isshow: '是',
-                        name: '迪卡侬',
-                        pic: image1,
-                        sort: 4,
-                        status: false,
-                        showStyle: '图片',
-                    },
-                    {
-                        brandId: '001',
-                        initials: 'Y',
-                        isshow: '是',
-                        name: '迪卡侬',
-                        pic: image1,
-                        sort: 4,
-                        status: true,
-                        showStyle: '图片',
-                    },
-                ],
+                        {
+                            align: 'center',
+                            key: 'action',
+                            render(h, data) {
+                                return h('div', [
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.edit(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '编辑'),
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.remove(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                        style: {
+                                            marginLeft: '10px',
+                                        },
+                                    }, '删除'),
+                                ]);
+                            },
+                            title: '操作',
+                            width: 180,
+                        },
+                    ],
+                },
+                list: {
+                    audit: [
+                        {
+                            brandId: '001',
+                            initials: 'Y',
+                            name: '迪卡侬',
+                            pic: image1,
+                            reviewStatus: '未审核',
+                        },
+                    ],
+                    data: [
+                        {
+                            brandId: '001',
+                            initials: 'Y',
+                            isshow: '是',
+                            name: '迪卡侬',
+                            pic: image1,
+                            sort: 4,
+                            status: true,
+                            showStyle: '图片',
+                        },
+                    ],
+                },
                 searchList: [
                     {
                         label: '品牌ID',
@@ -359,8 +316,8 @@
                                 </div>
                             </div>
                         </div>
-                        <i-table :columns="columns"
-                                 :data="list"
+                        <i-table :columns="column.list"
+                                 :data="list.data"
                                  highlight-row
                                  ref="brand">
                         </i-table>
@@ -381,8 +338,8 @@
                                 </div>
                             </div>
                         </div>
-                        <i-table :columns="brandColumns"
-                                 :data="brandData"
+                        <i-table :columns="column.audit"
+                                 :data="list.audit"
                                  highlight-row
                                  ref="brand">
                         </i-table>
