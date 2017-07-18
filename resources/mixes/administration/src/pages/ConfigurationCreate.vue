@@ -8,9 +8,30 @@
             });
         },
         data() {
-            return {};
+            return {
+                form: {
+                    enabled: true,
+                    link: '',
+                    name: '',
+                    sort: '',
+                },
+                loading: false,
+                rules: {
+                    name: [
+                        {
+                            message: '主导航名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
+            };
         },
         methods: {
+            goBack() {
+                const self = this;
+                self.$router.go(-1);
+            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -37,46 +58,43 @@
 <template>
     <div class="mall-wrap">
         <div class="mall-configuration-create">
+            <div class="edit-link-title">
+                <i-button type="text" @click.native="goBack">
+                    <icon type="chevron-left"></icon>
+                </i-button>
+                <span>主导航-新增</span>
+            </div>
             <card :bordered="false">
                 <i-form :label-width="200" :model="form" ref="form" :rules="rules">
                     <row>
                         <i-col span="12">
-                            <form-item label="网站 Logo" prop="logo">
-                                <div class="image-preview" v-if="form.logo">
-                                    <img :src="form.logo">
-                                    <icon type="close" @click.native="removeLogo"></icon>
-                                </div>
-                                <upload :action="action"
-                                        :before-upload="uploadBefore"
-                                        :format="['jpg','jpeg','png']"
-                                        :headers="{
-                                                    Authorization: `Bearer ${$store.state.token.access_token}`
-                                                }"
-                                        :max-size="2048"
-                                        :on-error="uploadError"
-                                        :on-format-error="uploadFormatError"
-                                        :on-success="uploadSuccess"
-                                        ref="upload"
-                                        :show-upload-list="false"
-                                        v-if="form.logo === '' || form.logo === null">
-                                </upload>
-                                <p class="tip">默认网站LOGO，通用头部显示，最佳显示尺寸为240*60像素</p>
+                            <form-item label="主导航名称" prop="name">
+                                <i-input v-model="form.name"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
-                            <form-item label="平台客服联系电话" prop="phone">
-                                <i-input v-model="form.phone"></i-input>
-                                <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询，多个请用半角逗号“，”隔开</p>
+                            <form-item label="链接">
+                                <i-input v-model="form.link"></i-input>
+                                <p class="tip">请在添加以http：//开头的链接地址</p>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
-                            <form-item label="平台客服电子邮件" prop="email">
-                                <i-input v-model="form.email"></i-input>
-                                <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询</p>
+                            <form-item label="排序">
+                                <i-input v-model="form.sort"></i-input>
+                            </form-item>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="12">
+                            <form-item label="是否显示">
+                                <i-switch size="large" v-model="form.enabled">
+                                    <span slot="open">开启</span>
+                                    <span slot="close">关闭</span>
+                                </i-switch>
                             </form-item>
                         </i-col>
                     </row>
