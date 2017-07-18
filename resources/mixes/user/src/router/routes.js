@@ -7,7 +7,6 @@ import MyOrder from '../components/MyOrder';
 import PersonnalCenter from '../components/PersonnalCenter';
 import CustomerServe from '../components/CustomerServe';
 import More from '../components/More';
-import Businessmen from '../components/Businessmen';
 import Offer from '../components/Offer';
 import Discount from '../components/Discount';
 import Spike from '../components/Spike';
@@ -160,11 +159,6 @@ export default [
                 path: 'more',
                 name: 'more',
                 component: More,
-            },
-            {
-                path: 'businessmen',
-                name: 'businessmen',
-                component: Businessmen,
             },
             {
                 path: 'offer',

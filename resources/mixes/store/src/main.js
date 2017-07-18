@@ -1,8 +1,11 @@
 import Vue from 'vue';
-import App from './App.vue';
+import App from './App';
 import router from './router';
 
-Vue.config.productionTip = false;
+import RouterLink from './directives/router-link';
+import './assets/less/main.less';
+
+Vue.directive('router-link', RouterLink);
 
 /* eslint-disable no-new */
 new Vue({
