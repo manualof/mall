@@ -18,9 +18,6 @@
                             brand: '平板电视',
                             brandList: [
                                 {
-                                    name: '三星',
-                                },
-                                {
                                     name: '索尼',
                                 },
                                 {
