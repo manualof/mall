@@ -174,12 +174,14 @@
                 ],
                 level: 0,
                 list: [],
+                loading: false,
                 pagination: {
                     current_page: 1,
                 },
                 parent: 0,
                 searchCategory: '',
                 searchWord: '',
+                selection: [],
             };
         },
         methods: {
@@ -189,6 +191,45 @@
                     path: 'category/add/under',
                 });
             },
+            batchRemove() {
+                const handlers = [];
+                const self = this;
+                self.loading = true;
+                self.selection.forEach(item => {
+                    handlers.push(self.$http.post(`${window.api}/mall/admin/product/category/remove`, {
+                        id: item.id,
+                    }));
+                });
+                self.$http.all(handlers).then(self.$http.spread(() => {
+                    self.$notice.open({
+                        title: '批量删除商品分类信息成功！',
+                    });
+                    self.$notice.open({
+                        title: '正在刷新数据...',
+                    });
+                    self.$loading.start();
+                    self.$http.post(`${window.api}/mall/admin/product/category/list`, {
+                        parent_id: self.$route.query.parent,
+                    }).then(response => {
+                        window.console.log(response);
+                        self.category = response.data.category;
+                        self.level = response.data.level;
+                        self.list = response.data.data.map(item => {
+                            item.loading = false;
+                            return item;
+                        });
+                        self.pagination = response.data.pagination;
+                        self.$loading.finish();
+                        self.$notice.open({
+                            title: '刷新数据成功！',
+                        });
+                    }).catch(() => {
+                        self.$loading.fail();
+                    }).finally(() => {
+                        self.loading = false;
+                    });
+                }));
+            },
             editTypeNav() {
                 const self = this;
                 self.$router.push({
@@ -196,7 +237,7 @@
                 });
             },
             exportData() {
-                this.$refs.goodTable.exportCsv({
+                this.$refs.list.exportCsv({
                     filename: '商品分类数据',
                 });
             },
@@ -226,8 +267,11 @@
                         });
                         self.pagination = response.data.pagination;
                         self.$loading.finish();
+                        self.$notice.open({
+                            title: '刷新数据成功！',
+                        });
                     }).catch(() => {
-                        self.loading.fail();
+                        self.$loading.fail();
                     });
                 }).catch(() => {
                     self.$notice.error({
@@ -236,6 +280,9 @@
                 }).finally(() => {
                     self.list[index].loading = false;
                 });
+            },
+            selectionChange(selection) {
+                this.selection = selection;
             },
         },
         watch: {
@@ -258,6 +305,9 @@
                         });
                         self.pagination = response.data.pagination;
                         self.$loading.finish();
+                        self.$notice.open({
+                            title: '刷新数据成功！',
+                        });
                     }).catch(() => {
                         self.loading.fail();
                     });
@@ -313,14 +363,15 @@
                             <i-button type="ghost">+新增数据</i-button>
                         </router-link>
                         <i-button @click="exportData" type="ghost">导出数据</i-button>
-                        <i-button @click="deleteData" type="ghost">批量删除</i-button>
+                        <i-button :loading="loading" @click="batchRemove" type="ghost">批量删除</i-button>
                         <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                     </div>
                     <i-table class="shop-table"
                              :columns="columns"
                              :data="list"
                              highlight-row
-                             ref="goodTable"></i-table>
+                             ref="list"
+                             @on-selection-change="selectionChange"></i-table>
                 </div>
                 <div class="page">
                     <page :current="pagination.current_page"
