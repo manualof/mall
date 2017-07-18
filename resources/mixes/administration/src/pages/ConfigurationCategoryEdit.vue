@@ -10,6 +10,9 @@
         data() {
             return {
                 form: {
+                    action: `${window.api}/mall/admin/upload`,
+                    adImage1: '',
+                    adImage2: '',
                     contactBrand: [
                         {
                             brand: '平板电视',
@@ -125,6 +128,8 @@
                     enabled: true,
                     image: '',
                     link: '',
+                    linkUrl1: '',
+                    linkUrl2: '',
                     name: '',
                     positionStandard: [],
                     positionType: [],
@@ -256,18 +261,27 @@
                 const self = this;
                 self.$router.go(-1);
             },
+            removeLogo() {
+                const self = this;
+                self.form.image = '';
+                self.$refs.form.validateField('image');
+            },
+            removeAdImage1() {
+                const self = this;
+                self.form.adImage1 = '';
+                self.$refs.form.validateField('adImage1');
+            },
+            removeAdImage2() {
+                const self = this;
+                self.form.adImage2 = '';
+                self.$refs.form.validateField('adImage2');
+            },
             submit() {
                 const self = this;
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        self.$http.post(`${window.api}/mall/admin/configuration/set`, self.form).then(() => {
-                            self.$notice.open({
-                                title: '更新商城配置成功！',
-                            });
-                        }).finally(() => {
-                            self.loading = false;
-                        });
+                        window.console.log(valid);
                     } else {
                         self.loading = false;
                         self.$notice.error({
@@ -275,6 +289,57 @@
                         });
                     }
                 });
+            },
+            uploadBefore() {
+                injection.loading.start();
+            },
+            uploadError(error, data) {
+                const self = this;
+                injection.loading.error();
+                if (typeof data.message === 'object') {
+                    for (const p in data.message) {
+                        self.$notice.error({
+                            title: data.message[p],
+                        });
+                    }
+                } else {
+                    self.$notice.error({
+                        title: data.message,
+                    });
+                }
+            },
+            uploadFormatError(file) {
+                this.$notice.warning({
+                    title: '文件格式不正确',
+                    desc: `文件 ${file.name} 格式不正确，请上传 jpg 或 png 格式的图片。`,
+                });
+            },
+            uploadSuccess(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.form.image = data.data.path;
+                self.$refs.form.validateField('image');
+            },
+            uploadSuccessAdImage1(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.form.adImage1 = data.data.path;
+                self.$refs.form.validateField('adImage1');
+            },
+            uploadSuccessAdImage2(data) {
+                const self = this;
+                injection.loading.finish();
+                self.$notice.open({
+                    title: data.message,
+                });
+                self.form.adImage2 = data.data.path;
+                self.$refs.form.validateField('adImage2');
             },
         },
     };
@@ -363,6 +428,64 @@
                                 </div>
                                 <p class="tip">推荐品牌将在展开后的二、三级导航列表右侧突出显示，建议选择数量为8个具有图片的品牌，
                                     超过将被隐藏</p>
+                            </form-item>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="18">
+                            <form-item label="广告1图" prop="adImage1">
+                                <div class="image-preview" v-if="form.adImage1">
+                                    <img :src="form.adImage1">
+                                    <icon type="close" @click.native="removeAdImage1"></icon>
+                                </div>
+                                <upload :action="action"
+                                        :before-upload="uploadBefore"
+                                        :format="['jpg','jpeg','png']"
+                                        :headers="{
+                                            Authorization: `Bearer ${$store.state.token.access_token}`
+                                        }"
+                                        :max-size="2048"
+                                        :on-error="uploadError"
+                                        :on-format-error="uploadFormatError"
+                                        :on-success="uploadSuccessAdImage1"
+                                        ref="upload"
+                                        :show-upload-list="false"
+                                        v-if="form.adImage1 === '' || form.adImage1 === null">
+                                </upload>
+                                <i-input v-model="form.linkUrl1" class="ad-image-input">
+                                    <span slot="prepend">http://</span>
+                                </i-input>
+                                <p class="tip">广告图片将展示在推荐品牌下方，请使用宽度190px，高度150px的jpg、gif、png格式图片
+                                    作为分类导航广告上传，如需跳转请在后方添加以http://开头的链接地址</p>
+                            </form-item>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="18">
+                            <form-item label="广告2图" prop="adImage2">
+                                <div class="image-preview" v-if="form.adImage2">
+                                    <img :src="form.adImage2">
+                                    <icon type="close" @click.native="removeAdImage2"></icon>
+                                </div>
+                                <upload :action="action"
+                                        :before-upload="uploadBefore"
+                                        :format="['jpg','jpeg','png']"
+                                        :headers="{
+                                            Authorization: `Bearer ${$store.state.token.access_token}`
+                                        }"
+                                        :max-size="2048"
+                                        :on-error="uploadError"
+                                        :on-format-error="uploadFormatError"
+                                        :on-success="uploadSuccessAdImage2"
+                                        ref="upload"
+                                        :show-upload-list="false"
+                                        v-if="form.adImage2 === '' || form.adImage2 === null">
+                                </upload>
+                                <i-input v-model="form.linkUrl2" class="ad-image-input">
+                                    <span slot="prepend">http://</span>
+                                </i-input>
+                                <p class="tip">广告图片将展示在推荐品牌下方，请使用宽度190px，高度150px的jpg、gif、png格式图片
+                                    作为分类导航广告上传，如需跳转请在后方添加以http://开头的链接地址</p>
                             </form-item>
                         </i-col>
                     </row>
