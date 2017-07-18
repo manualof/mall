@@ -1,4 +1,6 @@
 import Configuration from '../pages/Configuration.vue';
+import ConfigurationCreate from '../pages/ConfigurationCreate.vue';
+import ConfigurationEdit from '../pages/ConfigurationEdit.vue';
 import ConfigurationAdvertisement from '../pages/ConfigurationAdvertisement.vue';
 import ConfigurationAdvertisementAdd from '../pages/ConfigurationAdvertisementAdd.vue';
 import ConfigurationAdvertisementPosition from '../pages/ConfigurationAdvertisementPosition.vue';
@@ -101,6 +103,16 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: Configuration,
                     path: 'configuration',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ConfigurationCreate,
+                    path: 'configuration/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ConfigurationEdit,
+                    path: 'configuration/edit/main',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
