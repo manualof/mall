@@ -63,7 +63,7 @@
                                     type: 'ghost',
                                 },
                             }, '查看'));
-                            if (data.row.orderStatus === '代付款') {
+                            if (data.row.orderStatus === '待付款') {
                                 items.push(h('dropdown', {
                                     scopedSlots: {
                                         list() {
@@ -117,7 +117,7 @@
                         orderAmount: '899（含运费10.00）',
                         orderID: '65454654546',
                         orderSource: '移动端',
-                        orderStatus: '代付款',
+                        orderStatus: '待付款',
                         ownerTime: '2017-03-21 16:45:45',
                         paymentMethod: '钻石店铺',
                         payNumber: '45654646',
@@ -172,7 +172,7 @@
                         orderAmount: '899（含运费10.00）',
                         orderID: '65454654546',
                         orderSource: '移动端',
-                        orderStatus: '代付款',
+                        orderStatus: '待付款',
                         ownerTime: '2017-03-21 16:45:45',
                         paymentMethod: '钻石店铺',
                         payNumber: '45654646',
