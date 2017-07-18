@@ -85,6 +85,7 @@
                                             },
                                         },
                                         props: {
+                                            loading: self.list[data.index].loading,
                                             size: 'small',
                                             type: 'ghost',
                                         },
@@ -157,6 +158,7 @@
                                         },
                                     },
                                     props: {
+                                        loading: self.list[data.index].loading,
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -199,7 +201,41 @@
                 });
             },
             remove(index) {
-                this.list.splice(index, 1);
+                const self = this;
+                self.list[index].loading = true;
+                window.console.log(self.list[index]);
+                self.$http.post(`${window.api}/mall/admin/product/category/remove`, {
+                    id: self.list[index].id,
+                }).then(() => {
+                    self.$notice.open({
+                        title: '删除分类信息成功！',
+                    });
+                    self.$notice.open({
+                        title: '正在刷新数据...',
+                    });
+                    self.$loading.start();
+                    self.$http.post(`${window.api}/mall/admin/product/category/list`, {
+                        parent_id: self.$route.query.parent,
+                    }).then(response => {
+                        window.console.log(response);
+                        self.category = response.data.category;
+                        self.level = response.data.level;
+                        self.list = response.data.data.map(item => {
+                            item.loading = false;
+                            return item;
+                        });
+                        self.pagination = response.data.pagination;
+                        self.$loading.finish();
+                    }).catch(() => {
+                        self.loading.fail();
+                    });
+                }).catch(() => {
+                    self.$notice.error({
+                        title: '删除分类信息失败！',
+                    });
+                }).finally(() => {
+                    self.list[index].loading = false;
+                });
             },
         },
         watch: {
