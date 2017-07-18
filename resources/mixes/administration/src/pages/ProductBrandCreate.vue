@@ -10,25 +10,26 @@
         data() {
             return {
                 action: `${window.api}/mall/admin/upload`,
+                defaultList: [],
                 form: {
+                    category_id: 0,
                     name: '',
-                    disabledGroup: '图片',
+                    show: 'image',
                     initial: '',
-                    initials: [
-                        {
-                            label: 'A',
-                            value: '1',
-                        },
-                        {
-                            label: 'B',
-                            value: '2',
-                        },
-                    ],
                     logo: '',
                     sort: '',
-                    switch1: true,
+                    recommend: true,
                 },
-                defaultList: [],
+                initials: [
+                    {
+                        label: 'A',
+                        value: '1',
+                    },
+                    {
+                        label: 'B',
+                        value: '2',
+                    },
+                ],
                 loading: false,
                 rules: {
                     name: [
@@ -278,7 +279,18 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        window.console.log(valid);
+                        self.$http.post(`${window.api}/mall/admin/product/brand/create`, self.form).then(() => {
+                            self.$notice.open({
+                                title: '创建品牌信息成功！',
+                            });
+                            self.$router.push('/mall/goods/brand');
+                        }).catch(() => {
+                            self.$notice.error({
+                                title: '创建品牌信息失败！',
+                            });
+                        }).finally(() => {
+                            self.loading = false;
+                        });
                     } else {
                         self.loading = false;
                         self.$notice.error({
@@ -345,7 +357,7 @@
                             <i-col span="12">
                                 <form-item label="名称首字母" prop="initial">
                                     <i-select placeholder="请选择" v-model="form.initial">
-                                        <i-option v-for="item in form.initials"
+                                        <i-option v-for="item in initials"
                                                   :value="item.value"
                                                   :key="item">
                                             {{ item.label }}
@@ -359,19 +371,18 @@
                                 <form-item label="所属分类">
                                     <row v-for="(item, index) in styleDataList" class="contact-classification">
                                         <i-col span="18">
-                                           <cascader :data="item.styleData"
-                                                     change-on-select></cascader>
+                                           <cascader :data="item.category_id" change-on-select></cascader>
                                         </i-col>
                                         <i-col span="6">
-                                           <i-button type="error" v-if="index !== 0"
+                                           <i-button type="error"
+                                                     v-if="index !== 0"
                                                      @click.native="deleteType(index)">删除</i-button>
                                         </i-col>
                                     </row>
-                                    <p class="tip">
-                                        请选择分类，可关联大分类或更具体的下级分类
-                                    </p>
-                                    <i-button class="add-contact-type" type="ghost"
-                                    @click.native="addContactType">增加关联分类</i-button>
+                                    <p class="tip">请选择分类，可关联大分类或更具体的下级分类</p>
+                                    <i-button class="add-contact-type"
+                                              type="ghost"
+                                              @click.native="addContactType">增加关联分类</i-button>
                                 </form-item>
                             </i-col>
                         </row>
@@ -404,9 +415,13 @@
                         <row>
                             <i-col span="20">
                                 <form-item label="展示方式">
-                                    <radio-group v-model="form.disabledGroup">
-                                        <radio label="图片"></radio>
-                                        <radio label="文字"></radio>
+                                    <radio-group v-model="form.show">
+                                        <radio label="image">
+                                            <span>图片</span>
+                                        </radio>
+                                        <radio label="text">
+                                            <span>文字</span>
+                                        </radio>
                                     </radio-group>
                                     <p class="tip">在"全部品牌"页面的展示方式，如果设置为"图片"则显示该品牌的"品牌图片标识"，
                                         如果设置为"文字"则显示该品牌的“品牌名”</p>
@@ -416,7 +431,7 @@
                         <row>
                             <i-col span="20">
                                 <form-item label="是否推荐">
-                                    <i-switch size="large" v-model="form.switch1">
+                                    <i-switch size="large" v-model="form.recommend">
                                         <span slot="open">开启</span>
                                         <span slot="close">关闭</span>
                                     </i-switch>
