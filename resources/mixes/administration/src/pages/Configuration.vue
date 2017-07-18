@@ -233,18 +233,19 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(h, data) {
-                            return h('i-button', {
-                                on: {
-                                    click() {
-                                        self.toEdit(data.index);
-                                    },
-                                },
+                        render(h) {
+                            return h('router-link', {
                                 props: {
-                                    size: 'small',
-                                    type: 'ghost',
+                                    to: '/mall/configuration/category/edit',
                                 },
-                            }, '编辑');
+                            }, [
+                                h('i-button', {
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                            ]);
                         },
                         title: '操作',
                         width: '140',
