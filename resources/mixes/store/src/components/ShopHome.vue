@@ -120,14 +120,14 @@
     </div>
 </template>
 <script>
-    import shop from '../assets/images/shopBanner.png';
-    import service from '../assets/images/service.png';
-    import product from '../assets/images/thephone.png';
-    import shopImg from '../assets/images/img_lofo.png';
-    import EveryoneBrowse from './dashboard/EveryoneBrowse';
-    import MyselfBrowse from './dashboard/MyselfBrowse';
-    import NeedBrowse from './dashboard/NeedBrowse';
-    import RightSide from './dashboard/RightSide';
+    import shop from '../../../user/src/assets/images/shopBanner.png';
+    import service from '../../../user/src/assets/images/service.png';
+    import product from '../../../user/src/assets/images/thephone.png';
+    import shopImg from '../../../user/src/assets/images/img_lofo.png';
+    import EveryoneBrowse from './library/EveryoneBrowse';
+    import MyselfBrowse from './library/MyselfBrowse';
+    import NeedBrowse from './library/NeedBrowse';
+    import RightSide from './library/RightSide';
 
     export default {
         components: {

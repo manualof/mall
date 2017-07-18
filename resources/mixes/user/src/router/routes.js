@@ -13,7 +13,6 @@ import Spike from '../components/Spike';
 import Classification from '../components/Classification';
 import Search from '../components/Search';
 import ProductDetails from '../components/ProductDetails';
-import ShopHome from '../components/ShopHome';
 import Evaluation from '../components/Evaluation';
 
 import SubmitOrder from '../components/SubmitOrder';
@@ -199,11 +198,6 @@ export default [
                 path: 'search/product-details',
                 name: 'product-details',
                 component: ProductDetails,
-            },
-            {
-                path: 'shop-home',
-                name: 'shop-home',
-                component: ShopHome,
             },
             {
                 path: 'submit-order',
