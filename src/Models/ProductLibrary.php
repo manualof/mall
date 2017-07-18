@@ -58,4 +58,26 @@ class ProductLibrary extends Model
     {
         return $this->belongsTo(ProductCategory::class);
     }
+
+    /**
+     * @param $value
+     */
+    public function setBrandIdAttribute($value)
+    {
+        if (is_null($value)) {
+            $value = 0;
+        }
+        $this->attributes['brand_id'] = $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setCategoryIdAttribute($value)
+    {
+        if (is_null($value)) {
+            $value = 0;
+        }
+        $this->attributes['category_id'] = $value;
+    }
 }
