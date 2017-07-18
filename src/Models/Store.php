@@ -83,6 +83,30 @@ class Store extends Model
     }
 
     /**
+     * @param $value
+     */
+    public function setCategoryIdAttribute($value)
+    {
+        $this->attributes['category_id'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setLevelAttribute($value)
+    {
+        $this->attributes['level'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setUserIdAttribute($value)
+    {
+        $this->attributes['user_id'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
      * Definition of name for flow.
      *
      * @return string

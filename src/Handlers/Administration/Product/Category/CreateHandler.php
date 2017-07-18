@@ -72,6 +72,5 @@ class CreateHandler extends Handler
         } else {
             $this->request->offsetSet('parent_id', 0);
         }
-        !$this->request->input('order') && $this->request->offsetUnset('order');
     }
 }

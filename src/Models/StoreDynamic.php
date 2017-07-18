@@ -55,6 +55,14 @@ class StoreDynamic extends Model
     }
 
     /**
+     * @param $value
+     */
+    public function setShowAttribute($value)
+    {
+        $this->attributes['show'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
      * Definition of name for flow.
      *
      * @return string

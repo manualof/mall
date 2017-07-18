@@ -48,6 +48,30 @@ class ProductBrand extends Model
     }
 
     /**
+     * @param $value
+     */
+    public function setOrderAttribute($value)
+    {
+        $this->attributes['order'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setRecommendAttribute($value)
+    {
+        $this->attributes['recommend'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setStoreIdAttribute($value)
+    {
+        $this->attributes['store_id'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
      * Definition of name for flow.
      *
      * @return string

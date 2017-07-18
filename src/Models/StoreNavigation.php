@@ -38,4 +38,28 @@ class StoreNavigation extends Model
     {
         return $this->belongsTo(Store::class);
     }
+
+    /**
+     * @param $value
+     */
+    public function setIsShowAttribute($value)
+    {
+        $this->attributes['is_show'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setOrderAttribute($value)
+    {
+        $this->attributes['order'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setParentTargetAttribute($value)
+    {
+        $this->attributes['parent_target'] = is_null($value) ? 0 : $value;
+    }
 }

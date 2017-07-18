@@ -59,6 +59,30 @@ class ProductCategory extends Model
     }
 
     /**
+     * @param $value
+     */
+    public function setDepositAttribute($value)
+    {
+        $this->attributes['deposit'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setOrderAttribute($value)
+    {
+        $this->attributes['order'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setParentIdAttribute($value)
+    {
+        $this->attributes['parent_id'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
      * Definition of name for flow.
      *
      * @return string

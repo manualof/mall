@@ -94,6 +94,70 @@ class Product extends Model
     }
 
     /**
+     * @param $value
+     */
+    public function setBrandIdAttribute($value)
+    {
+        $this->attributes['brand_id'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setInventoryIdAttribute($value)
+    {
+        $this->attributes['inventory'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setInventoryWarningIdAttribute($value)
+    {
+        $this->attributes['inventory_warning'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setLibraryIdAttribute($value)
+    {
+        $this->attributes['library_id'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] = is_null($value) ? 0.00 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setPriceCostAttribute($value)
+    {
+        $this->attributes['price_cost'] = is_null($value) ? 0.00 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setPriceMarketAttribute($value)
+    {
+        $this->attributes['price_market'] = is_null($value) ? 0.00 : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setStoreIdAttribute($value)
+    {
+        $this->attributes['store_id'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
      * Definition of name for flow.
      *
      * @return string

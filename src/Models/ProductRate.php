@@ -63,6 +63,14 @@ class ProductRate extends Model
     }
 
     /**
+     * @param $value
+     */
+    public function setRateAttribute($value)
+    {
+        $this->attributes['rate'] = is_null($value) ? 0 : $value;
+    }
+
+    /**
      * Definition of name for flow.
      *
      * @return string

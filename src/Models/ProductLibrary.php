@@ -64,10 +64,7 @@ class ProductLibrary extends Model
      */
     public function setBrandIdAttribute($value)
     {
-        if (is_null($value)) {
-            $value = 0;
-        }
-        $this->attributes['brand_id'] = $value;
+        $this->attributes['brand_id'] = is_null($value) ? 0 : $value;
     }
 
     /**
@@ -75,9 +72,6 @@ class ProductLibrary extends Model
      */
     public function setCategoryIdAttribute($value)
     {
-        if (is_null($value)) {
-            $value = 0;
-        }
-        $this->attributes['category_id'] = $value;
+        $this->attributes['category_id'] = is_null($value) ? 0 : $value;
     }
 }
