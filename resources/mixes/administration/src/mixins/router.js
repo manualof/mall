@@ -1,6 +1,7 @@
 import Configuration from '../pages/Configuration.vue';
 import ConfigurationCreate from '../pages/ConfigurationCreate.vue';
 import ConfigurationEdit from '../pages/ConfigurationEdit.vue';
+import ConfigurationCategoryEdit from '../pages/ConfigurationCategoryEdit.vue';
 import ConfigurationAdvertisement from '../pages/ConfigurationAdvertisement.vue';
 import ConfigurationAdvertisementAdd from '../pages/ConfigurationAdvertisementAdd.vue';
 import ConfigurationAdvertisementPosition from '../pages/ConfigurationAdvertisementPosition.vue';
@@ -113,6 +114,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ConfigurationEdit,
                     path: 'configuration/edit/main',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ConfigurationCategoryEdit,
+                    path: 'configuration/category/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
