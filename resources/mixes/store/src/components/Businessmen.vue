@@ -1,7 +1,7 @@
 <template>
     <div class="businessmen-box">
         <div class="shop_banner" v-if="temp==1">
-            <img src="../assets/images/shop-banner.png"/>
+            <img src="../../../user/src/assets/images/shop-banner.png"/>
             <div class="shop_icon1 shop_icon" @click="next">
                 <div class="shop_icon2 shop_icon">
                     <div class="shop_icon3 shop_icon">
