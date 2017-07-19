@@ -116,7 +116,7 @@
                         <p>建议设置四至五个是时间段（前台显示）</p>
                     </div>
                     <div class="goods-body-header">
-                        <router-link to="sales/spikes/add" class="first-btn">
+                        <router-link to="/mall/sales/spikes/time/create" class="first-btn">
                             <i-button type="ghost">+添加秒杀时间段</i-button>
                         </router-link>
                     </div>
