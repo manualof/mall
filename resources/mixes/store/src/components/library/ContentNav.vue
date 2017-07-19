@@ -7,7 +7,7 @@
             </div>
             <ul class="header-bar-nav">
                 <li v-for="item in navigation" :class="{ 'active': $route.path === item.to }">
-                    <router-link :to="item.to">{{ item.text }}</router-link>
+                    <a :href="link + item.to" target="_blank">{{ item.text }}</a>
                 </li>
             </ul>
         </div>
@@ -23,21 +23,22 @@
         },
         data() {
             return {
+                link: window.link,
                 navigation: [
                     {
-                        to: { name: 'home' },
+                        to: 'home',
                         text: '首页',
                     },
                     {
-                        to: { name: 'offer' },
+                        to: 'offer',
                         text: '优惠',
                     },
                     {
-                        to: { name: 'spike' },
+                        to: 'spike',
                         text: '秒杀',
                     },
                     {
-                        to: { name: 'discount' },
+                        to: 'discount',
                         text: '折扣',
                     },
                 ],

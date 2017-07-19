@@ -9,9 +9,12 @@
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
-                    <li v-for="item in navigation" :class="{ 'active': $route.path === item.to }">
+                    <li v-for="(item,index) in navigation" :class="{ 'active': $route.path === item.to }" :key="index">
                         <router-link :to="item.to">{{ item.text }}</router-link>
                         <span>|</span>
+                    </li>
+                    <li>
+                        <a :href="link + 'businessmen'">商家入驻</a>
                     </li>
                 </ul>
             </div>
@@ -40,11 +43,8 @@
                         to: { name: 'more' },
                         text: '更多',
                     },
-                    {
-                        to: { name: 'businessmen' },
-                        text: '商家入驻',
-                    },
                 ],
+                link: window.link,
             };
         },
     };

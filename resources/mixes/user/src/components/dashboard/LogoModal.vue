@@ -1,3 +1,26 @@
+<script>
+    export default {
+        data() {
+            return {
+                hotSearch: [
+                    {
+                        name: '买三免一',
+                    },
+                    {
+                        name: '促销',
+                    },
+                    {
+                        name: '五折起购',
+                    },
+                    {
+                        name: '满200减30',
+                    },
+                ],
+                link: window.link,
+            };
+        },
+    };
+</script>
 <template>
     <div class="logoModal">
         <div class="container">
@@ -13,7 +36,14 @@
                         <router-link :to="{name:'search'}">搜索</router-link>
                     </span>
                 </div>
-                <p>买三免一&nbsp;&nbsp;促销&nbsp;&nbsp;五折起购&nbsp;&nbsp;满2000减300</p>
+                <p>
+                    <router-link to="/search"
+                                 target="_blank"
+                                 v-for="(item,index) in hotSearch"
+                                 :key="index">
+                        {{ item.name }}
+                    </router-link>
+                </p>
             </div>
             <div class="shopping-car col-md-2 col-xs-2 col-xs-2">
                 <router-link :to="{ name: 'cart-settlement' }">
@@ -24,3 +54,4 @@
         </div>
     </div>
 </template>
+
