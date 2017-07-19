@@ -84,6 +84,7 @@ import StoreLevelCreate from '../pages/StoreGradeCreate.vue';
 import StoreLevelEdit from '../pages/StoreGradeEdit.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
 import SalesSpikesTime from '../pages/SalesSpikesTime.vue';
+import SalesSpikesTimeEdit from '../pages/SalesSpikesTimeEdit.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -503,6 +504,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: SalesSpikesTime,
                     path: 'sales/spikes/time',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesTimeEdit,
+                    path: 'sales/spikes/time/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
