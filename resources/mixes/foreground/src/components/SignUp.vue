@@ -53,7 +53,7 @@
 </template>
 
 <script>
-    import FooterBar from '../../../user/src/components/dashboard/FooterBar';
+    import FooterBar from './public/FooterBar';
 
     export default {
         components: {

@@ -45,8 +45,8 @@
 </template>
 
 <script>
-    import FooterBar from '../../../user/src/components/dashboard/FooterBar';
-    import FooterContent from '../../../user/src/components/dashboard/FooterContent';
+    import FooterBar from './public/FooterBar';
+    import FooterContent from './public/FooterContent';
 
     export default {
         components: {
