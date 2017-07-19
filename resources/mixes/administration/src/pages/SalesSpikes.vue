@@ -334,7 +334,7 @@
     <div class="mall-wrap">
         <div class="sales-spikes">
             <tabs value="name1">
-                <tab-pane label="秒杀活动" name="name1">
+                <tab-pane label="首页秒杀推荐" name="name1">
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
@@ -342,50 +342,56 @@
                             <p>推荐商品默认在商城显示前五件，其余在商城首页不显示</p>
                         </div>
                         <div class="spikes-content">
-                            <tabs type="card">
-                                <tab-pane label="活动商品列表">
-                                    <div class="goods-body-header">
-                                        <i-button class="export-btn" @click="exportGoodsData" type="ghost">导出数据</i-button>
-                                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                                        <div class="goods-body-header-right">
-                                            <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
-                                                <i-button slot="append" type="primary">搜索</i-button>
-                                            </i-input>
-                                        </div>
-                                    </div>
-                                    <i-table class="goods-table"
-                                             :columns="goodsColumns"
-                                             :context="self"
-                                             :data="goodsData"
-                                             ref="goodsList">
-                                    </i-table>
-                                </tab-pane>
-                                <tab-pane label="活动商家列表">
-                                    <div class="goods-body-header">
-                                        <i-button class="export-btn" @click="exportBusinessmenData" type="ghost">导出数据</i-button>
-                                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                                        <div class="goods-body-header-right">
-                                            <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchListBusis"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
-                                                <i-button slot="append" type="primary">搜索</i-button>
-                                            </i-input>
-                                        </div>
-                                    </div>
-                                    <i-table class="goods-table"
-                                             :columns="businessmenColumns"
-                                             :context="self"
-                                             :data="businessmenData"
-                                             ref="businessmenList">
-                                    </i-table>
-                                </tab-pane>
-                            </tabs>
+                            <div class="goods-body-header">
+                                <i-button class="export-btn" @click="exportGoodsData" type="ghost">导出数据</i-button>
+                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                                <div class="goods-body-header-right">
+                                    <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                        <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
+                                            <i-option v-for="item in searchList"
+                                                      :value="item.value">{{ item.label }}</i-option>
+                                        </i-select>
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </div>
+                            </div>
+                            <i-table class="goods-table"
+                                     :columns="goodsColumns"
+                                     :context="self"
+                                     :data="goodsData"
+                                     ref="goodsList">
+                            </i-table>
+                            <div class="page">
+                                <page :total="100" show-elevator></page>
+                            </div>
+                        </div>
+                    </card>
+                </tab-pane>
+                <tab-pane label="秒杀频道设置" name="name2">
+                    <card :bordered="false">
+                        <div class="spikes-content">
+                            <div class="goods-body-header">
+                                <i-button class="export-btn" @click="exportBusinessmenData" type="ghost">导出数据</i-button>
+                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                                <div class="goods-body-header-right">
+                                    <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                        <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
+                                            <i-option v-for="item in searchListBusis"
+                                                      :value="item.value">{{ item.label }}</i-option>
+                                        </i-select>
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </div>
+                            </div>
+                            <i-table class="goods-table"
+                                     :columns="businessmenColumns"
+                                     :context="self"
+                                     :data="businessmenData"
+                                     ref="businessmenList">
+                            </i-table>
+                            <div class="page">
+                                <page :total="100" show-elevator></page>
+                            </div>
                         </div>
                     </card>
                 </tab-pane>
