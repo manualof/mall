@@ -3,47 +3,45 @@
         <div class="container">
             <div class="header-welcome ">
                 西部母婴欢迎您!
-                <router-link :to="{ name: 'signin' }" class="login">登录</router-link>
+                <a href="http://localhost:8081/#/signin" target="_blank" class="login">登录</a>
                 <span>|</span>
-                <router-link :to="{ name: 'signup' }" class="register">注册</router-link>
+                <a href="http://localhost:8081/#/signup" target="_blank" class="register">注册</a>
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
-                    <li v-for="(item,index) in navigation" :class="{ 'active': $route.path === item.to }" :key="index">
-                        <router-link :to="item.to">{{ item.text }}</router-link>
+                    <li v-for="item in navigation" :class="{ 'active': $route.path === item.to }">
+                        <a :href="item.to" target="_blank">{{ item.text }}</a>
                         <span>|</span>
-                    </li>
-                    <li>
-                        <a :href="link + 'businessmen'">商家入驻</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 </template>
+
 <script>
     export default {
         data() {
+            const link = window.link;
             return {
                 navigation: [
                     {
-                        to: { name: 'all-order' },
+                        to: `${link}personnal-center/all-order`,
                         text: '我的订单',
                     },
                     {
-                        to: { name: 'personnal-center' },
+                        to: `${link}personnal-center/`,
                         text: '个人中心',
                     },
                     {
-                        to: { name: 'customer-serve' },
+                        to: `${link}customer-serve`,
                         text: '客户服务',
                     },
                     {
-                        to: { name: 'more' },
-                        text: '更多',
+                        to: '#/businessmen',
+                        text: '商家入驻',
                     },
                 ],
-                link: window.link,
             };
         },
     };
