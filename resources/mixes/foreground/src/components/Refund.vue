@@ -125,8 +125,8 @@
     </div>
 </template>
 <script>
-    import EndTimer from './extend/Timer';
-    import img from '../assets/images/b1.png';
+    import EndTimer from '../../../user/src/components/extend/Timer';
+    import img from '../../../user/src/assets/images/b1.png';
 
     export default{
         components: {

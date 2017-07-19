@@ -3,7 +3,7 @@
         <header-bar></header-bar>
         <div class="header-bar-logo header-bar-line">
             <div class="container">
-                <img src="../assets/images/logo.png" alt="">
+                <img src="../../../user/src/assets/images/logo.png" alt="">
             </div>
         </div>
         <div class="padding-attribute container">
@@ -24,14 +24,14 @@
                     <label class="form-control-radio">
                         <input type="radio" name="pay">
                         <span></span>
-                        <img src="../assets/images/alipay.png" alt="alipay">
+                        <img src="../../../user/src/assets/images/alipay.png" alt="alipay">
                     </label>
                 </p>
                 <p class="weixin">
                     <label class="form-control-radio">
                         <input type="radio" name="pay">
                         <span></span>
-                        <img src="../assets/images/weixin.png" alt="weixin">
+                        <img src="../../../user/src/assets/images/weixin.png" alt="weixin">
                     </label>
                 </p>
                 <router-link :to="{ name: 'pay-result' }" class="order-btn">立即支付</router-link>
@@ -44,10 +44,10 @@
 </template>
 
 <script>
-    import RightSide from './dashboard/RightSide';
-    import HeaderBar from './dashboard/HeaderBar';
-    import FooterBar from './dashboard/FooterBar';
-    import FooterContent from './dashboard/FooterContent';
+    import RightSide from '../../../user/src/components/dashboard/RightSide';
+    import HeaderBar from '../../../user/src/components/dashboard/HeaderBar';
+    import FooterBar from '../../../user/src/components/dashboard/FooterBar';
+    import FooterContent from '../../../user/src/components/dashboard/FooterContent';
 
     export default {
         components: {

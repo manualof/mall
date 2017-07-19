@@ -163,11 +163,11 @@
 </template>
 
 <script>
-    import NeedBrowse from './dashboard/NeedBrowse';
-    import EveryoneBrowse from './dashboard/EveryoneBrowse';
-    import MyselfBrowse from './dashboard/MyselfBrowse';
+    import NeedBrowse from '../../../user/src/components/dashboard/NeedBrowse';
+    import EveryoneBrowse from '../../../user/src/components/dashboard/EveryoneBrowse';
+    import MyselfBrowse from '../../../user/src/components/dashboard/MyselfBrowse';
 
-    import productImg from '../assets/images/img_06.png';
+    import productImg from '../../../user/src/assets/images/img_06.png';
 
     export default {
         data() {

@@ -243,9 +243,9 @@
 <script>
     import Cascader from 'iview/src/components/cascader';
     import { Select, Option, OptionGroup } from 'iview/src/components/select';
-    import Modal from './personnal-center/Modal';
-    import order from '../assets/images/details/order.png';
-    import RightSide from './dashboard/RightSide';
+    import Modal from '../../../user/src/components/personnal-center/Modal';
+    import order from '../../../user/src/assets/images/details/order.png';
+    import RightSide from '../../../user/src/components/dashboard/RightSide';
 
     export default {
         components: {

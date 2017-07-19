@@ -5,7 +5,7 @@
             <div class="product-evaluation">
                 <div class="product-info clearfix">
                     <div class="product-img">
-                        <img src="../assets/images/img_06.png"/>
+                        <img src="../../../user/src/assets/images/img_06.png"/>
                     </div>
                     <div class="product-intro">Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装 <span
                         class="product-size">尺码：M</span></div>

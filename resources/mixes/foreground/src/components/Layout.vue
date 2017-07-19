@@ -13,11 +13,11 @@
     </div>
 </template>
 <script>
-    import HeaderBar from './dashboard/HeaderBar';
-    import FooterBar from './dashboard/FooterBar';
-    import LogoModal from './dashboard/LogoModal';
-    import ContentNav from './dashboard/ContentNav';
-    import FooterContent from './dashboard/FooterContent';
+    import HeaderBar from '../../../user/src/components/dashboard/HeaderBar';
+    import FooterBar from '../../../user/src/components/dashboard/FooterBar';
+    import LogoModal from '../../../user/src/components/dashboard/LogoModal';
+    import ContentNav from '../../../user/src/components/dashboard/ContentNav';
+    import FooterContent from '../../../user/src/components/dashboard/FooterContent';
 
     export default {
         components: {

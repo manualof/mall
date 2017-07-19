@@ -3,7 +3,7 @@
         <div class="header-bar-logo">
             <div class="container">
                 <router-link to="/home">
-                    <img src="../assets/images/logo.png" alt="">
+                    <img src="../../../user/src/assets/images/logo.png" alt="">
                 </router-link>
             </div>
         </div>
@@ -45,8 +45,8 @@
 </template>
 
 <script>
-    import FooterBar from './dashboard/FooterBar';
-    import FooterContent from './dashboard/FooterContent';
+    import FooterBar from '../../../user/src/components/dashboard/FooterBar';
+    import FooterContent from '../../../user/src/components/dashboard/FooterContent';
 
     export default {
         components: {

@@ -3,7 +3,7 @@
         <header-bar></header-bar>
         <div class="header-bar-logo header-bar-line">
             <div class="container">
-                <img src="../assets/images/logo.png" alt="">
+                <img src="../../../user/src/assets/images/logo.png" alt="">
             </div>
         </div>
         <div class="container">
@@ -127,13 +127,13 @@
 </template>
 
 <script>
-    import EveryoneBrowse from './dashboard/EveryoneBrowse';
-    import FooterBar from './dashboard/FooterBar';
-    import FooterContent from './dashboard/FooterContent';
-    import HeaderBar from './dashboard/HeaderBar';
-    import MyselfBrowse from './dashboard/MyselfBrowse';
-    import RightSide from './dashboard/RightSide';
-    import order from '../assets/images/details/order.png';
+    import EveryoneBrowse from '../../../user/src/components/dashboard/EveryoneBrowse';
+    import FooterBar from '../../../user/src/components/dashboard/FooterBar';
+    import FooterContent from '../../../user/src/components/dashboard/FooterContent';
+    import HeaderBar from '../../../user/src/components/dashboard/HeaderBar';
+    import MyselfBrowse from '../../../user/src/components/dashboard/MyselfBrowse';
+    import RightSide from '../../../user/src/components/dashboard/RightSide';
+    import order from '../../../user/src/assets/images/details/order.png';
 
     export default {
         components: {

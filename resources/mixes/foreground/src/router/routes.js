@@ -4,7 +4,6 @@ import SignIn from '../components/SignIn';
 import Layout from '../components/Layout';
 import Home from '../components/Home';
 import MyOrder from '../components/MyOrder';
-import PersonnalCenter from '../components/PersonnalCenter';
 import CustomerServe from '../components/CustomerServe';
 import More from '../components/More';
 import Offer from '../components/Offer';
@@ -21,18 +20,6 @@ import PayResult from '../components/PayResult';
 import CartSettlement from '../components/CartSettlement';
 import PaymentSuccess from '../components/PaymentSuccess';
 import ScanPay from '../components/ScanPay';
-
-import AllOrder from '../components/personnal-center/AllOrder';
-import Coupon from '../components/personnal-center/Coupon';
-import Integral from '../components/personnal-center/Integral';
-import AccountSecurity from '../components/personnal-center/AccountSecurity';
-import ShippingAddress from '../components/personnal-center/ShippingAddress';
-import CollectStore from '../components/personnal-center/CollectStore';
-import SelaesReturn from '../components/personnal-center/SelaesReturn';
-import Footprint from '../components/personnal-center/Footprint';
-import MyAccount from '../components/personnal-center/MyAccount';
-import MyCollect from '../components/personnal-center/MyCollect';
-import Notice from '../components/personnal-center/Notice';
 
 import ShoppingProcess from '../components/ShoppingProcess';
 import ShopProcess from '../components/ShoppingProcess/ShopProcess';
@@ -85,69 +72,6 @@ export default [
                 path: 'scan-pay',
                 name: 'scan-pay',
                 component: ScanPay,
-            },
-            {
-                path: 'personnal-center',
-                name: 'personnal-center',
-                component: PersonnalCenter,
-                redirect: { name: 'all-order' },
-                children: [
-                    {
-                        path: 'all-order',
-                        name: 'all-order',
-                        component: AllOrder,
-                    },
-                    {
-                        path: 'coupon',
-                        name: 'coupon',
-                        component: Coupon,
-                    },
-                    {
-                        path: 'integral',
-                        name: 'integral',
-                        component: Integral,
-                    },
-                    {
-                        path: 'account-security',
-                        name: 'account-security',
-                        component: AccountSecurity,
-                    },
-                    {
-                        path: 'shipping-address',
-                        name: 'shipping-address',
-                        component: ShippingAddress,
-                    },
-                    {
-                        path: 'collect-store',
-                        name: 'collect-store',
-                        component: CollectStore,
-                    },
-                    {
-                        path: 'selaes-return',
-                        name: 'selaes-return',
-                        component: SelaesReturn,
-                    },
-                    {
-                        path: 'footprint',
-                        name: 'footprint',
-                        component: Footprint,
-                    },
-                    {
-                        path: 'my-account',
-                        name: 'my-account',
-                        component: MyAccount,
-                    },
-                    {
-                        path: 'my-collect',
-                        name: 'my-collect',
-                        component: MyCollect,
-                    },
-                    {
-                        path: 'notice',
-                        name: 'notice',
-                        component: Notice,
-                    },
-                ],
             },
             {
                 path: 'customer-serve',

@@ -86,12 +86,12 @@
     </div>
 </template>
 <script>
-    import product from '../assets/images/thephone.png';
-    import SearchList from './dashboard/SearchList';
-    import NeedBrowse from './dashboard/NeedBrowse';
-    import EveryoneBrowse from './dashboard/EveryoneBrowse';
-    import MyselfBrowse from './dashboard/MyselfBrowse';
-    import RightSide from './dashboard/RightSide';
+    import product from '../../../user/src/assets/images/thephone.png';
+    import SearchList from '../../../user/src/components/dashboard/SearchList';
+    import NeedBrowse from '../../../user/src/components/dashboard/NeedBrowse';
+    import EveryoneBrowse from '../../../user/src/components/dashboard/EveryoneBrowse';
+    import MyselfBrowse from '../../../user/src/components/dashboard/MyselfBrowse';
+    import RightSide from '../../../user/src/components/dashboard/RightSide';
 
     export default {
         data() {

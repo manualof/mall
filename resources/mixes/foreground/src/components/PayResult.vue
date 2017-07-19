@@ -43,12 +43,12 @@
 </template>
 
 <script>
-    import FooterBar from './dashboard/FooterBar';
-    import FooterContent from './dashboard/FooterContent';
-    import HeaderBar from './dashboard/HeaderBar';
-    import LogoModal from './dashboard/LogoModal';
-    import NeedBrowse from './dashboard/NeedBrowse';
-    import RightSide from './dashboard/RightSide';
+    import FooterBar from '../../../user/src/components/dashboard/FooterBar';
+    import FooterContent from '../../../user/src/components/dashboard/FooterContent';
+    import HeaderBar from '../../../user/src/components/dashboard/HeaderBar';
+    import LogoModal from '../../../user/src/components/dashboard/LogoModal';
+    import NeedBrowse from '../../../user/src/components/dashboard/NeedBrowse';
+    import RightSide from '../../../user/src/components/dashboard/RightSide';
 
     export default {
         components: {
