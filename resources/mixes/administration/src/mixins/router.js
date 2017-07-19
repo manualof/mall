@@ -84,6 +84,7 @@ import StoreLevelCreate from '../pages/StoreGradeCreate.vue';
 import StoreLevelEdit from '../pages/StoreGradeEdit.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
 import SalesSpikesEdit from '../pages/SalesSpikesEdit.vue';
+import SalesSpikesCreate from '../pages/SalesSpikesCreate.vue';
 import SalesSpikesTime from '../pages/SalesSpikesTime.vue';
 import SalesSpikesTimeEdit from '../pages/SalesSpikesTimeEdit.vue';
 import SalesSpikesTimeCreate from '../pages/SalesSpikesTimeCreate.vue';
@@ -506,6 +507,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: SalesSpikesEdit,
                     path: 'sales/spikes/edit',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesCreate,
+                    path: 'sales/spikes/create',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

@@ -377,7 +377,7 @@
                         </div>
                         <div class="spikes-content">
                             <div class="goods-body-header">
-                                <router-link to="/mall/sales/spikes/add" class="first-btn">
+                                <router-link to="/mall/sales/spikes/create" class="first-btn">
                                     <i-button type="ghost">+添加秒杀活动</i-button>
                                 </router-link>
                                 <router-link to="/mall/sales/spikes/time">
