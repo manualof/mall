@@ -298,7 +298,7 @@
                         value: '1',
                     },
                     {
-                        label: '商品ID',
+                        label: 'spu',
                         value: '2',
                     },
                 ],
