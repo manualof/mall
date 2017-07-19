@@ -66,7 +66,7 @@
                                 h('i-button', {
                                     on: {
                                         click() {
-                                            self.toEdit();
+                                            self.remove(data.index);
                                         },
                                     },
                                     props: {
@@ -320,6 +320,9 @@
                     path: 'spikes/look',
                 });
             },
+            remove(index) {
+                this.settingData.splice(index, 1);
+            },
         },
         watch: {
             spikesData: {
@@ -373,10 +376,10 @@
                         </div>
                         <div class="spikes-content">
                             <div class="goods-body-header">
-                                <router-link to="sales/spikes/add" class="first-btn">
+                                <router-link to="/mall/sales/spikes/add" class="first-btn">
                                     <i-button type="ghost">+添加秒杀活动</i-button>
                                 </router-link>
-                                <router-link to="/sales/spikes/time">
+                                <router-link to="/mall/sales/spikes/time">
                                     <i-button type="ghost">秒杀时间段列表</i-button>
                                 </router-link>
                                 <div class="goods-body-header-right">

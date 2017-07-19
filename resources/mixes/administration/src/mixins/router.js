@@ -83,7 +83,7 @@ import StoreLevel from '../pages/StoreGrade.vue';
 import StoreLevelCreate from '../pages/StoreGradeCreate.vue';
 import StoreLevelEdit from '../pages/StoreGradeEdit.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
-import SalesSpikesLook from '../pages/SalesSpikesLook.vue';
+import SalesSpikesTime from '../pages/SalesSpikesTime.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -501,8 +501,8 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikesLook,
-                    path: 'sales/spikes/look',
+                    component: SalesSpikesTime,
+                    path: 'sales/spikes/time',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
