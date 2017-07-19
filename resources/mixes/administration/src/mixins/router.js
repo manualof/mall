@@ -84,12 +84,6 @@ import StoreLevelCreate from '../pages/StoreGradeCreate.vue';
 import StoreLevelEdit from '../pages/StoreGradeEdit.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
 import SalesSpikesLook from '../pages/SalesSpikesLook.vue';
-import SalesSpike from '../pages/SalesSpike.vue';
-import SalesSpikeAdjunction from '../pages/SalesSpikeAdjunction.vue';
-import SalesSpikeSetCreate from '../pages/SalesSpikeSetCreate.vue';
-import SalesSpikeSet from '../pages/SalesSpikeSet.vue';
-import SalesSpikeTime from '../pages/SalesSpikeTime.vue';
-import SalesSpikeTimeAddtime from '../pages/SalesSpikeTimeAddtime.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -502,11 +496,6 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpike,
-                    path: 'sales/spike',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
                     component: SalesSpikes,
                     path: 'sales/spikes',
                 },
@@ -524,31 +513,6 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: SalesFullDown,
                     path: 'sales/fulldown',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeAdjunction,
-                    path: 'sales/spike/adjunction',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeSetCreate,
-                    path: 'sales/spike/set/add',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeSet,
-                    path: 'sales/spike/set',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeTime,
-                    path: 'sales/spike/time',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeTimeAddtime,
-                    path: 'sales/spike/time/addtime',
                 },
             ],
             component: Layout,
