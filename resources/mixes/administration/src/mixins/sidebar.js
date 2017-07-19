@@ -136,6 +136,10 @@ export default function (injection) {
                     path: '/mall/sales/fulldown',
                     title: '满减活动',
                 },
+                {
+                    path: '/mall/sales/integral',
+                    title: '积分',
+                },
             ],
             icon: 'speakerphone',
             title: '促销',

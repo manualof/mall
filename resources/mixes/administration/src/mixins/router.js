@@ -78,6 +78,7 @@ import StoreCategorySet from '../pages/StoreCategorySet.vue';
 import StoreCategoryCreate from '../pages/StoreCategoryCreate.vue';
 import StoreDynamics from '../pages/StoreDynamics.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
+import SalesIntegral from '../pages/SalesIntegral.vue';
 import SalesActive from '../pages/SalesActive.vue';
 import StoreLevel from '../pages/StoreGrade.vue';
 import StoreLevelCreate from '../pages/StoreGradeCreate.vue';
@@ -537,6 +538,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: SalesFullDown,
                     path: 'sales/fulldown',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesIntegral,
+                    path: 'sales/integral',
                 },
             ],
             component: Layout,
