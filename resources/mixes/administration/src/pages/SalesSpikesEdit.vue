@@ -113,31 +113,37 @@
                             img: image,
                             name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
                             price: '￥1999.00',
+                            status: true,
                         },
                         {
                             img: image,
                             name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
                             price: '￥1999.00',
+                            status: true,
                         },
                         {
                             img: image,
                             name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
                             price: '￥1999.00',
+                            status: true,
                         },
                         {
                             img: image,
                             name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
                             price: '￥1999.00',
+                            status: false,
                         },
                         {
                             img: image,
                             name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
                             price: '￥1999.00',
+                            status: false,
                         },
                         {
                             img: image,
                             name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
                             price: '￥1999.00',
+                            status: false,
                         },
                     ],
                     search: '',
@@ -162,6 +168,9 @@
             },
             remove(index) {
                 this.form.list.splice(index, 1);
+            },
+            removeProduct(index) {
+                this.form.pictureList.splice(index, 1);
             },
             submit() {
                 const self = this;
@@ -231,8 +240,12 @@
                                             <img :src="item.img" alt="" @click="lookPicture(item)">
                                             <p class="name">{{ item.name}}</p>
                                             <p class="price">价格：{{ item.price}}</p>
-                                            <i-button type="error">从秒杀活动中移除</i-button>
-                                            <i-button type="ghost">添加至秒杀活动</i-button>
+                                            <i-button type="error" v-if="item.status === true"
+                                                      @click.native="removeProduct(index)">从秒杀活动中移除</i-button>
+                                            <i-button type="ghost" v-if="item.status === false">添加至秒杀活动</i-button>
+                                        </div>
+                                        <div class="page">
+                                            <page :total="100" show-elevator></page>
                                         </div>
                                     </div>
                                 </div>
