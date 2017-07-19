@@ -35,6 +35,15 @@ class ProductBrand extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'order'     => 'null|0',
+        'recommend' => 'null|0',
+        'store_id'  => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_product_brands';
@@ -45,30 +54,6 @@ class ProductBrand extends Model
     public function category()
     {
         return $this->hasOne(ProductCategory::class, 'id', 'category_id');
-    }
-
-    /**
-     * @param $value
-     */
-    public function setOrderAttribute($value)
-    {
-        $this->attributes['order'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setRecommendAttribute($value)
-    {
-        $this->attributes['recommend'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setStoreIdAttribute($value)
-    {
-        $this->attributes['store_id'] = is_null($value) ? 0 : $value;
     }
 
     /**

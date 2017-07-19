@@ -27,15 +27,14 @@ class UserCart extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'count' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_user_carts';
-
-    /**
-     * @param $value
-     */
-    public function setCountAttribute($value)
-    {
-        $this->attributes['count'] = is_null($value) ? 0 : $value;
-    }
 }

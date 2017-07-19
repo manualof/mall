@@ -34,6 +34,13 @@ class StoreDynamic extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'show' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_shop_dynamics';
@@ -52,14 +59,6 @@ class StoreDynamic extends Model
     public function user()
     {
         return $this->hasOne(Member::class, 'id', 'user_id');
-    }
-
-    /**
-     * @param $value
-     */
-    public function setShowAttribute($value)
-    {
-        $this->attributes['show'] = is_null($value) ? 0 : $value;
     }
 
     /**
@@ -102,9 +101,15 @@ class StoreDynamic extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
-            new Transition('need_to_publish', ['created', 'edited'], 'publish'),
+            new Transition('need_to_publish', [
+                'created',
+                'edited',
+            ], 'publish'),
             new Transition('publish', 'publish', 'published'),
         ];
     }

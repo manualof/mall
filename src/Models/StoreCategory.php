@@ -32,6 +32,15 @@ class StoreCategory extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'order'     => 'null|0',
+        'parent_id' => 'null|0',
+        'status'    => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_store_categories';
@@ -50,30 +59,6 @@ class StoreCategory extends Model
     public function store()
     {
         return $this->belongsTo(Store::class);
-    }
-
-    /**
-     * @param $value
-     */
-    public function setOrderAttribute($value)
-    {
-        $this->attributes['order'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setParentIdAttribute($value)
-    {
-        $this->attributes['parent_id'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setStatusAttribute($value)
-    {
-        $this->attributes['status'] = is_null($value) ? 0 : $value;
     }
 
     /**
@@ -114,7 +99,10 @@ class StoreCategory extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
         ];
     }

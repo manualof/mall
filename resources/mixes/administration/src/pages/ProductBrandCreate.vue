@@ -13,12 +13,12 @@
                 defaultList: [],
                 form: {
                     category_id: 0,
-                    name: '',
-                    show: 'image',
                     initial: '',
                     logo: '',
-                    sort: '',
+                    name: '',
                     recommend: true,
+                    show: 'image',
+                    sort: '',
                 },
                 initials: [
                     {

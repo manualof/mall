@@ -28,6 +28,15 @@ class StoreGrade extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'level'         => 'null|0',
+        'picture_limit' => 'null|0',
+        'product_limit' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_store_grades';
@@ -38,29 +47,5 @@ class StoreGrade extends Model
     public function stores()
     {
         return $this->hasMany(Store::class);
-    }
-
-    /**
-     * @param $value
-     */
-    public function setLevelAttribute($value)
-    {
-        $this->attributes['level'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setPictureLimitAttribute($value)
-    {
-        $this->attributes['picture_limit'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setProductLimitAttribute($value)
-    {
-        $this->attributes['product_limit'] = is_null($value) ? 0 : $value;
     }
 }

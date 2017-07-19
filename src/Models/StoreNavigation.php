@@ -27,6 +27,15 @@ class StoreNavigation extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'is_show'       => 'null|0',
+        'order'         => 'null|0',
+        'parent_target' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_store_navigations';
@@ -37,29 +46,5 @@ class StoreNavigation extends Model
     public function store()
     {
         return $this->belongsTo(Store::class);
-    }
-
-    /**
-     * @param $value
-     */
-    public function setIsShowAttribute($value)
-    {
-        $this->attributes['is_show'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setOrderAttribute($value)
-    {
-        $this->attributes['order'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setParentTargetAttribute($value)
-    {
-        $this->attributes['parent_target'] = is_null($value) ? 0 : $value;
     }
 }

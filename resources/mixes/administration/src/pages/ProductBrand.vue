@@ -27,7 +27,7 @@
                     audit: [
                         {
                             align: 'center',
-                            key: 'brandId',
+                            key: 'id',
                             title: '品牌ID',
                             width: 120,
                         },
@@ -83,7 +83,8 @@
                                 return h('div', [
                                     h('i-button', {
                                         on: {
-                                            click() {},
+                                            click() {
+                                            },
                                         },
                                         props: {
                                             size: 'small',
@@ -92,7 +93,8 @@
                                     }, '通过'),
                                     h('i-button', {
                                         on: {
-                                            click() {},
+                                            click() {
+                                            },
                                         },
                                         props: {
                                             size: 'small',
@@ -111,7 +113,7 @@
                     list: [
                         {
                             align: 'center',
-                            key: 'brandId',
+                            key: 'id',
                             title: '品牌ID',
                             width: 120,
                         },
@@ -196,24 +198,58 @@
                             key: 'action',
                             render(h, data) {
                                 return h('div', [
+                                    h('router-link', {
+                                        props: {
+                                            to: `/mall/goods/brand/edit/${data.row.id}`,
+                                        },
+                                    }, [
+                                        h('i-button', {
+                                            props: {
+                                                size: 'small',
+                                                type: 'ghost',
+                                            },
+                                        }, '编辑'),
+                                    ]),
                                     h('i-button', {
                                         on: {
                                             click() {
-                                                self.edit(data.index);
+                                                self.list.data[data.index].loading = true;
+                                                self.$http.post(`${window.api}/mall/admin/product/brand/remove`, {
+                                                    id: self.list.data[data.index].id,
+                                                }).then(() => {
+                                                    self.$notice.open({
+                                                        title: '删除商品品牌信息成功！',
+                                                    });
+                                                    self.$loading.start();
+                                                    self.$notice.open({
+                                                        title: '正在刷新数据...',
+                                                    });
+                                                    const api = `${window.api}/mall/admin/product/brand/list`;
+                                                    self.$http.post(api).then(response => {
+                                                        const items = response.data.data.map(item => {
+                                                            item.loading = false;
+                                                            return item;
+                                                        });
+                                                        self.list.data = items;
+                                                        self.pagination = response.data.pagination;
+                                                        self.$loading.finish();
+                                                        self.$notice.open({
+                                                            title: '刷新数据完成！',
+                                                        });
+                                                    }).catch(() => {
+                                                        self.$loading.fail();
+                                                    });
+                                                }).catch(() => {
+                                                    self.$notice.error({
+                                                        title: '删除商品品牌信息错误！',
+                                                    });
+                                                }).finally(() => {
+                                                    self.list.data[data.index].loading = false;
+                                                });
                                             },
                                         },
                                         props: {
-                                            size: 'small',
-                                            type: 'ghost',
-                                        },
-                                    }, '编辑'),
-                                    h('i-button', {
-                                        on: {
-                                            click() {
-                                                self.remove(data.index);
-                                            },
-                                        },
-                                        props: {
+                                            loading: self.list.data[data.index].loading,
                                             size: 'small',
                                             type: 'ghost',
                                         },
@@ -224,7 +260,7 @@
                                 ]);
                             },
                             title: '操作',
-                            width: 180,
+                            width: 200,
                         },
                     ],
                 },
@@ -265,19 +301,10 @@
             };
         },
         methods: {
-            edit() {
-                const self = this;
-                self.$router.push({
-                    path: 'brand/edit',
-                });
-            },
             exportData() {
                 this.$refs.brand.exportCsv({
                     filename: '品牌管理数据',
                 });
-            },
-            remove(index) {
-                this.list.splice(index, 1);
             },
         },
     };
@@ -305,7 +332,8 @@
                                     <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
                                         <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
                                             <i-option v-for="item in searchList"
-                                                      :value="item.value">{{ item.label }}</i-option>
+                                                      :value="item.value">{{ item.label }}
+                                            </i-option>
                                         </i-select>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>
@@ -327,7 +355,8 @@
                                     <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
                                         <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
                                             <i-option v-for="item in searchList"
-                                                      :value="item.value">{{ item.label }}</i-option>
+                                                      :value="item.value">{{ item.label }}
+                                            </i-option>
                                         </i-select>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>

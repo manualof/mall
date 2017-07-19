@@ -41,6 +41,20 @@ class Product extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'brand_id'          => 'null|0',
+        'inventory'         => 'null|0',
+        'inventory_warning' => 'null|0',
+        'library_id'        => 'null|0',
+        'price'             => 'null|0',
+        'price_cost'        => 'null|0',
+        'price_market'      => 'null|0',
+        'store_id'          => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_products';
@@ -94,70 +108,6 @@ class Product extends Model
     }
 
     /**
-     * @param $value
-     */
-    public function setBrandIdAttribute($value)
-    {
-        $this->attributes['brand_id'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setInventoryIdAttribute($value)
-    {
-        $this->attributes['inventory'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setInventoryWarningIdAttribute($value)
-    {
-        $this->attributes['inventory_warning'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setLibraryIdAttribute($value)
-    {
-        $this->attributes['library_id'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setPriceAttribute($value)
-    {
-        $this->attributes['price'] = is_null($value) ? 0.00 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setPriceCostAttribute($value)
-    {
-        $this->attributes['price_cost'] = is_null($value) ? 0.00 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setPriceMarketAttribute($value)
-    {
-        $this->attributes['price_market'] = is_null($value) ? 0.00 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setStoreIdAttribute($value)
-    {
-        $this->attributes['store_id'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
      * Definition of name for flow.
      *
      * @return string
@@ -197,9 +147,15 @@ class Product extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
-            new Transition('need_to_publish', ['created', 'edited'], 'publish'),
+            new Transition('need_to_publish', [
+                'created',
+                'edited',
+            ], 'publish'),
             new Transition('publish', 'publish', 'published'),
         ];
     }
