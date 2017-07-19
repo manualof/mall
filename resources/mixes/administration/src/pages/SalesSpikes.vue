@@ -11,31 +11,41 @@
         data() {
             const self = this;
             return {
-                businessmenColumns: [
+                settingColumns: [
                     {
-                        align: 'center',
                         key: 'activeName',
                         title: '活动名称',
                     },
                     {
                         align: 'center',
-                        key: 'businessmenName',
-                        title: '商家名称',
-                    },
-                    {
-                        align: 'center',
-                        key: 'businessmenId',
-                        title: '商家ID',
-                    },
-                    {
-                        align: 'center',
                         key: 'startTime',
-                        title: '开始时间',
+                        title: '活动日期',
                     },
                     {
                         align: 'center',
                         key: 'endTime',
-                        title: '结束时间',
+                        title: '活动时间段',
+                    },
+                    {
+                        align: 'center',
+                        key: 'status',
+                        render(h) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: self.settingData.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '是否启用',
                     },
                     {
                         align: 'center',
@@ -52,11 +62,11 @@
                                         size: 'small',
                                         type: 'ghost',
                                     },
-                                }, '查看'),
+                                }, '编辑'),
                                 h('i-button', {
                                     on: {
                                         click() {
-                                            self.toEdit();
+                                            self.remove(data.index);
                                         },
                                     },
                                     props: {
@@ -66,14 +76,14 @@
                                     style: {
                                         marginLeft: '10px',
                                     },
-                                }, '屏蔽'),
+                                }, '删除'),
                             ]);
                         },
                         title: '操作',
                         width: 180,
                     },
                 ],
-                businessmenData: [
+                settingData: [
                     {
                         activeName: '春季服装大秒杀活动',
                         businessmenName: '数码数码',
@@ -103,9 +113,8 @@
                         startTime: '2018-04-23',
                     },
                 ],
-                goodsColumns: [
+                spikesColumns: [
                     {
-                        align: 'center',
                         key: 'goodsName',
                         title: '商品名称',
                         width: 240,
@@ -166,7 +175,7 @@
                                 on: {
                                     'on-change': value => {
                                         let count = 0;
-                                        self.goodsData.forEach(item => {
+                                        self.spikesData.forEach(item => {
                                             if (item.status === true) {
                                                 count += 1;
                                             }
@@ -175,11 +184,11 @@
                                             count += 1;
                                         }
                                         if (count <= 5) {
-                                            self.goodsData[data.index].status = value;
+                                            self.spikesData[data.index].status = value;
                                         } else {
-                                            const a = self.goodsData[data.index];
+                                            const a = self.spikesData[data.index];
                                             a.status = false;
-                                            self.$set(self.goodsData, data.index, a);
+                                            self.$set(self.spikesData, data.index, a);
                                             self.$notice.error({
                                                 title: '最多同时推荐五种商品！',
                                             });
@@ -188,7 +197,7 @@
                                 },
                                 props: {
                                     size: 'large',
-                                    value: self.goodsData[data.index].status,
+                                    value: self.spikesData[data.index].status,
                                 },
                                 scopedSlots: {
                                     close() {
@@ -217,7 +226,7 @@
                         width: 120,
                     },
                 ],
-                goodsData: [
+                spikesData: [
                     {
                         endTime: '2017-2-02',
                         goodsImg: image1,
@@ -305,25 +314,18 @@
             };
         },
         methods: {
-            exportBusinessmenData() {
-                this.$refs.businessmenList.exportCsv({
-                    filename: '活动商家列表数据',
-                });
-            },
-            exportGoodsData() {
-                this.$refs.goodsList.exportCsv({
-                    filename: '活动商品列表数据',
-                });
-            },
             look() {
                 const self = this;
                 self.$router.push({
                     path: 'spikes/look',
                 });
             },
+            remove(index) {
+                this.settingData.splice(index, 1);
+            },
         },
         watch: {
-            goodsData: {
+            spikesData: {
                 deep: true,
                 handler() {},
             },
@@ -334,7 +336,7 @@
     <div class="mall-wrap">
         <div class="sales-spikes">
             <tabs value="name1">
-                <tab-pane label="秒杀活动" name="name1">
+                <tab-pane label="首页秒杀推荐" name="name1">
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
@@ -342,50 +344,63 @@
                             <p>推荐商品默认在商城显示前五件，其余在商城首页不显示</p>
                         </div>
                         <div class="spikes-content">
-                            <tabs type="card">
-                                <tab-pane label="活动商品列表">
-                                    <div class="goods-body-header">
-                                        <i-button class="export-btn" @click="exportGoodsData" type="ghost">导出数据</i-button>
-                                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                                        <div class="goods-body-header-right">
-                                            <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
-                                                <i-button slot="append" type="primary">搜索</i-button>
-                                            </i-input>
-                                        </div>
-                                    </div>
-                                    <i-table class="goods-table"
-                                             :columns="goodsColumns"
-                                             :context="self"
-                                             :data="goodsData"
-                                             ref="goodsList">
-                                    </i-table>
-                                </tab-pane>
-                                <tab-pane label="活动商家列表">
-                                    <div class="goods-body-header">
-                                        <i-button class="export-btn" @click="exportBusinessmenData" type="ghost">导出数据</i-button>
-                                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
-                                        <div class="goods-body-header-right">
-                                            <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchListBusis"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
-                                                <i-button slot="append" type="primary">搜索</i-button>
-                                            </i-input>
-                                        </div>
-                                    </div>
-                                    <i-table class="goods-table"
-                                             :columns="businessmenColumns"
-                                             :context="self"
-                                             :data="businessmenData"
-                                             ref="businessmenList">
-                                    </i-table>
-                                </tab-pane>
-                            </tabs>
+                            <div class="goods-body-header">
+                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                                <div class="goods-body-header-right">
+                                    <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                        <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
+                                            <i-option v-for="item in searchList"
+                                                      :value="item.value">{{ item.label }}</i-option>
+                                        </i-select>
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </div>
+                            </div>
+                            <i-table class="goods-table"
+                                     :columns="spikesColumns"
+                                     :context="self"
+                                     :data="spikesData"
+                                     ref="goodsList">
+                            </i-table>
+                            <div class="page">
+                                <page :total="100" show-elevator></page>
+                            </div>
+                        </div>
+                    </card>
+                </tab-pane>
+                <tab-pane label="秒杀频道设置" name="name2">
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>请先设置秒杀时段，然后在添加秒杀活动并选择秒杀时间段</p>
+                        </div>
+                        <div class="spikes-content">
+                            <div class="goods-body-header">
+                                <router-link to="/mall/sales/spikes/add" class="first-btn">
+                                    <i-button type="ghost">+添加秒杀活动</i-button>
+                                </router-link>
+                                <router-link to="/mall/sales/spikes/time">
+                                    <i-button type="ghost">秒杀时间段列表</i-button>
+                                </router-link>
+                                <div class="goods-body-header-right">
+                                    <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
+                                        <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
+                                            <i-option v-for="item in searchListBusis"
+                                                      :value="item.value">{{ item.label }}</i-option>
+                                        </i-select>
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </div>
+                            </div>
+                            <i-table class="goods-table"
+                                     :columns="settingColumns"
+                                     :context="self"
+                                     :data="settingData"
+                                     ref="businessmenList">
+                            </i-table>
+                            <div class="page">
+                                <page :total="100" show-elevator></page>
+                            </div>
                         </div>
                     </card>
                 </tab-pane>
