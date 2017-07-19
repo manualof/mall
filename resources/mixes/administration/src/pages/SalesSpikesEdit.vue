@@ -1,6 +1,7 @@
 <script>
     import injection from '../helpers/injection';
     import image1 from '../assets/images/img_logo.png';
+    import image from '../assets/images/adv.jpg';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -107,6 +108,39 @@
                         },
                     ],
                     name: '',
+                    pictureList: [
+                        {
+                            img: image,
+                            name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
+                            price: '￥1999.00',
+                        },
+                        {
+                            img: image,
+                            name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
+                            price: '￥1999.00',
+                        },
+                        {
+                            img: image,
+                            name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
+                            price: '￥1999.00',
+                        },
+                        {
+                            img: image,
+                            name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
+                            price: '￥1999.00',
+                        },
+                        {
+                            img: image,
+                            name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
+                            price: '￥1999.00',
+                        },
+                        {
+                            img: image,
+                            name: 'Sony/索尼SGP512CNWIFI 32GB 平板电脑 32G 官方标配',
+                            price: '￥1999.00',
+                        },
+                    ],
+                    search: '',
                     startTime: '',
                 },
                 loading: false,
@@ -185,6 +219,23 @@
                                          :context="self"
                                          :data="form.list">
                                 </i-table>
+                                <div class="goods-body-header-right">
+                                    <i-input v-model="form.search" placeholder="请输入商品名称/spu">
+                                        <i-button slot="append" type="primary">搜索</i-button>
+                                    </i-input>
+                                </div>
+                                <div class="search-result-content">
+                                    <h5>搜索结果</h5>
+                                    <div>
+                                        <div v-for="(item, index) in form.pictureList" class="picture-check">
+                                            <img :src="item.img" alt="" @click="lookPicture(item)">
+                                            <p class="name">{{ item.name}}</p>
+                                            <p class="price">价格：{{ item.price}}</p>
+                                            <i-button type="error">从秒杀活动中移除</i-button>
+                                            <i-button type="ghost">添加至秒杀活动</i-button>
+                                        </div>
+                                    </div>
+                                </div>
                             </form-item>
                         </i-col>
                     </row>
