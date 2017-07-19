@@ -1,25 +1,25 @@
 <script>
-    export default {
-        data() {
-            return {
-                hotSearch: [
-                    {
-                        name: '买三免一',
-                    },
-                    {
-                        name: '促销',
-                    },
-                    {
-                        name: '五折起购',
-                    },
-                    {
-                        name: '满200减30',
-                    },
-                ],
-                link: window.link,
-            };
-        },
-    };
+   export default {
+       data() {
+           return {
+               hotSearch: [
+                   {
+                       name: '买三免一',
+                   },
+                   {
+                       name: '促销',
+                   },
+                   {
+                       name: '五折起购',
+                   },
+                   {
+                       name: '满200减30',
+                   },
+               ],
+               link: window.link,
+           };
+       },
+   };
 </script>
 <template>
     <div class="logoModal">
@@ -37,19 +37,18 @@
                     </span>
                 </div>
                 <p>
-                    <router-link to="/search"
-                                 target="_blank"
-                                 v-for="(item,index) in hotSearch"
-                                 :key="index">
+                    <a :href="link + 'search'"
+                        target="_blank"
+                        v-for="item in hotSearch">
                         {{ item.name }}
-                    </router-link>
+                    </a>
                 </p>
             </div>
             <div class="shopping-car col-md-2 col-xs-2 col-xs-2">
-                <router-link :to="{ name: 'cart-settlement' }">
+                <a :href="link + 'cart'" target="_blank">
                     <i class="icon iconfont icon-gouwuche"></i>
                     购物车
-                </router-link>
+                </a>
             </div>
         </div>
     </div>
