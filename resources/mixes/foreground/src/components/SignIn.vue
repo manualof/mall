@@ -16,15 +16,17 @@
                 <form class="signup-form">
                     <div class="signup-form-group form-icon">
                         <i class="icon iconfont icon-denglu"></i>
-                        <input type="text" class="signup-form-control" placeholder="邮箱账号" name="username">
+                        <input type="text" class="form-control signup-form-control" placeholder="邮箱账号" name="username">
                     </div>
                     <div class="signup-form-group form-icon">
                         <i class="icon iconfont icon-mima"></i>
-                        <input type="password" class="signup-form-control" placeholder="登录密码" name="password">
+                        <input type="password" class="form-control signup-form-control" placeholder="登录密码" name="password">
                     </div>
                     <div class="signup-form-group protocol-kinds">
                         <div class="check-box signup-form-protocol">
-                            <span><input type="checkbox" class="input_check" id="check24"><label for="check24"> </label></span>
+                            <span>
+                                <input type="checkbox" class="form-control input_check" id="check24">
+                                <label for="check24"> </label></span>
                         </div>
                         <!--<input type="radio" class="signup-form-protocol" name="protocol">-->
                         <span>记住密码</span> <span><a href=""> 忘记密码</a></span>
@@ -33,8 +35,12 @@
                         <button class="register">登录</button>
                     </div>
                     <div class="signup-form-group third-party">
-            <span>第三方账号登录 <a href=""> <i class="icon iconfont icon-weixin"></i></a>
-              <a href=""><i class="icon iconfont icon-qq"></i></a></span>
+                        <span>第三方账号登录
+                            <a href="">
+                                <i class="icon iconfont icon-weixin"></i>
+                            </a>
+                            <a href=""><i class="icon iconfont icon-qq"></i></a>
+                        </span>
                     </div>
                 </form>
             </div>

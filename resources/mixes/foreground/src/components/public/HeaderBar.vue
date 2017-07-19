@@ -3,9 +3,9 @@
         <div class="container">
             <div class="header-welcome ">
                 西部母婴欢迎您!
-                <a href="http://localhost:8081/#/signin" target="_blank" class="login">登录</a>
+                <router-link :to="{ name: 'signin' }" class="login">登录</router-link>
                 <span>|</span>
-                <a href="http://localhost:8081/#/signup" target="_blank" class="register">注册</a>
+                <router-link :to="{ name: 'signup' }" class="register">注册</router-link>
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
