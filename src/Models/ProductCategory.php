@@ -15,7 +15,7 @@ use Symfony\Component\Workflow\Transition;
 
 /**
  * Class ProductCategory.
-*/
+ */
 class ProductCategory extends Model
 {
     use HasFlow;
@@ -29,6 +29,15 @@ class ProductCategory extends Model
         'name',
         'order',
         'parent_id',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $setters = [
+        'deposit'   => 'null|0',
+        'order'     => 'null|0',
+        'parent_id' => 'null|0',
     ];
 
     /**
@@ -56,30 +65,6 @@ class ProductCategory extends Model
     public function parent()
     {
         return $this->belongsTo(ProductCategory::class, 'parent_id');
-    }
-
-    /**
-     * @param $value
-     */
-    public function setDepositAttribute($value)
-    {
-        $this->attributes['deposit'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setOrderAttribute($value)
-    {
-        $this->attributes['order'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setParentIdAttribute($value)
-    {
-        $this->attributes['parent_id'] = is_null($value) ? 0 : $value;
     }
 
     /**

@@ -33,6 +33,13 @@ class ProductSpecification extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'store_id' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_product_specifications';
@@ -43,14 +50,6 @@ class ProductSpecification extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
-    }
-
-    /**
-     * @param $value
-     */
-    public function setStoreIdAttribute($value)
-    {
-        $this->attributes['store_id'] = is_null($value) ? 0 : $value;
     }
 
     /**
@@ -91,7 +90,10 @@ class ProductSpecification extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
         ];
     }

@@ -28,15 +28,14 @@ class UserAddress extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'is_default' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_user_addresses';
-
-    /**
-     * @param $value
-     */
-    public function setIsDefaultAttribute($value)
-    {
-        $this->attributes['is_default'] = is_null($value) ? 0 : $value;
-    }
 }

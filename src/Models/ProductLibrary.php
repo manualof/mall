@@ -39,6 +39,14 @@ class ProductLibrary extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'brand_id'    => 'null|0',
+        'category_id' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_product_libraries';
@@ -57,21 +65,5 @@ class ProductLibrary extends Model
     public function category()
     {
         return $this->belongsTo(ProductCategory::class);
-    }
-
-    /**
-     * @param $value
-     */
-    public function setBrandIdAttribute($value)
-    {
-        $this->attributes['brand_id'] = is_null($value) ? 0 : $value;
-    }
-
-    /**
-     * @param $value
-     */
-    public function setCategoryIdAttribute($value)
-    {
-        $this->attributes['category_id'] = is_null($value) ? 0 : $value;
     }
 }
