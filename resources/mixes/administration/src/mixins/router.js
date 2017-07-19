@@ -80,7 +80,7 @@ import StoreDynamics from '../pages/StoreDynamics.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
 import SalesIntegral from '../pages/SalesIntegral.vue';
 import SalesActive from '../pages/SalesActive.vue';
-import StoreLevel from '../pages/StoreGrade.vue';
+import StoreGrade from '../pages/StoreGrade.vue';
 import StoreLevelCreate from '../pages/StoreGradeCreate.vue';
 import StoreLevelEdit from '../pages/StoreGradeEdit.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
@@ -486,13 +486,13 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreLevel,
+                    component: StoreGrade,
                     path: 'store/level',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StoreLevelCreate,
-                    path: 'store/level/add',
+                    path: 'store/level/create',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

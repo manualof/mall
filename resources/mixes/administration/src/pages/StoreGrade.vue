@@ -58,17 +58,18 @@
                         key: 'action',
                         render(h, data) {
                             return h('div', [
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.edit();
-                                        },
-                                    },
+                                h('router-link', {
                                     props: {
-                                        size: 'small',
-                                        type: 'ghost',
+                                        to: '/mall/store/level/edit',
                                     },
-                                }, '编辑'),
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '编辑'),
+                                ]),
                                 h('i-button', {
                                     on: {
                                         click() {
@@ -125,18 +126,6 @@
         },
         methods: {
             deleteData() {},
-            edit() {
-                const self = this;
-                self.$router.push({
-                    path: 'level/edit',
-                });
-            },
-            newAddData() {
-                const self = this;
-                self.$router.push({
-                    path: 'level/add',
-                });
-            },
             remove(index) {
                 this.list.splice(index, 1);
             },
@@ -150,7 +139,9 @@
                 <tab-pane label="店铺等级" name="name1">
                     <card :bordered="false">
                         <div class="advertisement-action">
-                            <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
+                            <router-link to="/mall/store/level/create">
+                                <i-button class="add-data" type="ghost">+新增数据</i-button>
+                            </router-link>
                             <i-button type="ghost" @click.native="deleteData">批量删除</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                             <div class="goods-body-header-right">
