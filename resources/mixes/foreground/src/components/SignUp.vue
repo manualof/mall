@@ -10,7 +10,7 @@
         <div class="signup-content">
             <div class="signup-title clearfix">
                 <span>注册</span>
-                <a href="/signin">已有账号？点击登录</a>
+                <router-link to="/signin">已有账号？点击登录</router-link>
             </div>
             <form class="signup-form">
                 <div class="signup-form-group">
