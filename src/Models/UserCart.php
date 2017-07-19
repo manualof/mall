@@ -27,6 +27,13 @@ class UserCart extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'count' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_user_carts';

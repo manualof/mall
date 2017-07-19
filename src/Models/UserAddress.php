@@ -28,6 +28,13 @@ class UserAddress extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'is_default' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_user_addresses';

@@ -34,6 +34,13 @@ class ProductRate extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'rate' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_order_rates';
@@ -80,10 +87,14 @@ class ProductRate extends Model
     public function places()
     {
         return [
-            'rate',      // 评价
-            'rated',     // 评价完胜
-            'review',    // 审核
-            'reviewed',  // 审核完成
+            'rate',
+            // 评价
+            'rated',
+            // 评价完胜
+            'review',
+            // 审核
+            'reviewed',
+            // 审核完成
         ];
     }
 

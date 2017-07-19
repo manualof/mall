@@ -44,8 +44,10 @@
                 form: {
                     apply: '',
                     charges: '',
+                    goods: true,
                     level: '',
                     levelName: '',
+                    release: true,
                     releaseNum: '',
                     uploadNum: '',
                     useType: [],
@@ -105,6 +107,26 @@
                             <form-item label="可上传商品数" prop="uploadNum">
                                 <i-input v-model="form.uploadNum"></i-input>
                                 <p class="tip">0表示没有限制</p>
+                            </form-item>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="12">
+                            <form-item label="可认领商品" prop="goods">
+                                <i-switch size="large" v-model="form.goods">
+                                    <span slot="open">开启</span>
+                                    <span slot="close">关闭</span>
+                                </i-switch>
+                            </form-item>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="12">
+                            <form-item label="可自主发布商品" prop="release">
+                                <i-switch size="large" v-model="form.release">
+                                    <span slot="open">开启</span>
+                                    <span slot="close">关闭</span>
+                                </i-switch>
                             </form-item>
                         </i-col>
                     </row>

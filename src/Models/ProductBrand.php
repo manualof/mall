@@ -35,6 +35,15 @@ class ProductBrand extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'order'     => 'null|0',
+        'recommend' => 'null|0',
+        'store_id'  => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_product_brands';

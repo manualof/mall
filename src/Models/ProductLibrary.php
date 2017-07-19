@@ -39,6 +39,14 @@ class ProductLibrary extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'brand_id'    => 'null|0',
+        'category_id' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_product_libraries';

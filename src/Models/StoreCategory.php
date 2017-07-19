@@ -32,6 +32,15 @@ class StoreCategory extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'order'     => 'null|0',
+        'parent_id' => 'null|0',
+        'status'    => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_store_categories';
@@ -90,7 +99,10 @@ class StoreCategory extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
         ];
     }

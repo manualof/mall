@@ -38,6 +38,15 @@ class Store extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'category_id' => 'null|0',
+        'level'       => 'null|0',
+        'user_id'     => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_stores';
@@ -118,7 +127,10 @@ class Store extends Model
     {
         return [
             new Transition('register', 'register', 'registered'),
-            new Transition('need_to_close', ['opened', 'registered'], 'close'),
+            new Transition('need_to_close', [
+                'opened',
+                'registered',
+            ], 'close'),
             new Transition('close', 'close', 'closed'),
             new Transition('need_to_open', 'registered', 'open'),
             new Transition('open', 'open', 'opened'),

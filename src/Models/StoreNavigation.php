@@ -27,6 +27,15 @@ class StoreNavigation extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'is_show'       => 'null|0',
+        'order'         => 'null|0',
+        'parent_target' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_store_navigations';

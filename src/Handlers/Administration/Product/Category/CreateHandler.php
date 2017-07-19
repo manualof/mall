@@ -69,9 +69,6 @@ class CreateHandler extends Handler
             } else {
                 throw new \Exception('没有对应的父级分类信息！');
             }
-        } else {
-            $this->request->offsetSet('parent_id', 0);
         }
-        !$this->request->input('order') && $this->request->offsetUnset('order');
     }
 }

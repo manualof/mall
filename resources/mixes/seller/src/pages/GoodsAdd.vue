@@ -967,22 +967,13 @@
                                     <row class="freight-style-module">
                                         <i-col span="16">
                                             <form-item label="运费">
-                                                <radio-group v-model="goodsEdit.freightStyle">
-                                                    <radio label="固定运费"></radio>
-                                                    <radio label="选择售卖区域"></radio>
-                                                </radio-group>
-                                                <div v-if="goodsEdit.freightStyle === '固定运费'">
-                                                    <row class="freight-style">
-                                                        <i-col span="4">
-                                                            <i-input v-model="goodsEdit.freightMoney"></i-input>
-                                                        </i-col>
-                                                        <i-col span="2">元</i-col>
-                                                    </row>
-                                                    <p class="tip">运费设置为0元，前台商品将显示为免运费</p>
-                                                </div>
-                                                <div v-if="goodsEdit.freightStyle === '选择售卖区域'">
-                                                    <i-button type="ghost">选择售卖区域</i-button>
-                                                </div>
+                                                <row class="freight-style">
+                                                    <i-col span="4">
+                                                        <i-input v-model="goodsEdit.freightMoney"></i-input>
+                                                    </i-col>
+                                                    <i-col span="2">元</i-col>
+                                                </row>
+                                                <p class="tip">运费设置为0元，前台商品将显示为免运费</p>
                                             </form-item>
                                         </i-col>
                                     </row>

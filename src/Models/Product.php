@@ -41,6 +41,20 @@ class Product extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'brand_id'          => 'null|0',
+        'inventory'         => 'null|0',
+        'inventory_warning' => 'null|0',
+        'library_id'        => 'null|0',
+        'price'             => 'null|0',
+        'price_cost'        => 'null|0',
+        'price_market'      => 'null|0',
+        'store_id'          => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_products';
@@ -133,9 +147,15 @@ class Product extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
-            new Transition('need_to_publish', ['created', 'edited'], 'publish'),
+            new Transition('need_to_publish', [
+                'created',
+                'edited',
+            ], 'publish'),
             new Transition('publish', 'publish', 'published'),
         ];
     }

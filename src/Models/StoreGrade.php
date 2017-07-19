@@ -28,6 +28,15 @@ class StoreGrade extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'level'         => 'null|0',
+        'picture_limit' => 'null|0',
+        'product_limit' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_store_grades';

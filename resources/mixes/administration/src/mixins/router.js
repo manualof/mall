@@ -1,4 +1,7 @@
 import Configuration from '../pages/Configuration.vue';
+import ConfigurationCreate from '../pages/ConfigurationCreate.vue';
+import ConfigurationEdit from '../pages/ConfigurationEdit.vue';
+import ConfigurationCategoryEdit from '../pages/ConfigurationCategoryEdit.vue';
 import ConfigurationAdvertisement from '../pages/ConfigurationAdvertisement.vue';
 import ConfigurationAdvertisementAdd from '../pages/ConfigurationAdvertisementAdd.vue';
 import ConfigurationAdvertisementPosition from '../pages/ConfigurationAdvertisementPosition.vue';
@@ -75,18 +78,17 @@ import StoreCategorySet from '../pages/StoreCategorySet.vue';
 import StoreCategoryCreate from '../pages/StoreCategoryCreate.vue';
 import StoreDynamics from '../pages/StoreDynamics.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
+import SalesIntegral from '../pages/SalesIntegral.vue';
 import SalesActive from '../pages/SalesActive.vue';
-import StoreLevel from '../pages/StoreGrade.vue';
+import StoreGrade from '../pages/StoreGrade.vue';
 import StoreLevelCreate from '../pages/StoreGradeCreate.vue';
 import StoreLevelEdit from '../pages/StoreGradeEdit.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
-import SalesSpikesLook from '../pages/SalesSpikesLook.vue';
-import SalesSpike from '../pages/SalesSpike.vue';
-import SalesSpikeAdjunction from '../pages/SalesSpikeAdjunction.vue';
-import SalesSpikeSetCreate from '../pages/SalesSpikeSetCreate.vue';
-import SalesSpikeSet from '../pages/SalesSpikeSet.vue';
-import SalesSpikeTime from '../pages/SalesSpikeTime.vue';
-import SalesSpikeTimeAddtime from '../pages/SalesSpikeTimeAddtime.vue';
+import SalesSpikesEdit from '../pages/SalesSpikesEdit.vue';
+import SalesSpikesCreate from '../pages/SalesSpikesCreate.vue';
+import SalesSpikesTime from '../pages/SalesSpikesTime.vue';
+import SalesSpikesTimeEdit from '../pages/SalesSpikesTimeEdit.vue';
+import SalesSpikesTimeCreate from '../pages/SalesSpikesTimeCreate.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -101,6 +103,21 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: Configuration,
                     path: 'configuration',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ConfigurationCreate,
+                    path: 'configuration/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ConfigurationEdit,
+                    path: 'configuration/edit/main',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ConfigurationCategoryEdit,
+                    path: 'configuration/category/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -240,7 +257,7 @@ export default function (injection) {
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductBrandEdit,
-                    path: 'goods/brand/edit',
+                    path: 'goods/brand/edit/:id',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -469,13 +486,13 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreLevel,
+                    component: StoreGrade,
                     path: 'store/level',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StoreLevelCreate,
-                    path: 'store/level/add',
+                    path: 'store/level/create',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -484,18 +501,33 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpike,
-                    path: 'sales/spike',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
                     component: SalesSpikes,
                     path: 'sales/spikes',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikesLook,
-                    path: 'sales/spikes/look',
+                    component: SalesSpikesEdit,
+                    path: 'sales/spikes/edit',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesCreate,
+                    path: 'sales/spikes/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesTime,
+                    path: 'sales/spikes/time',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesTimeEdit,
+                    path: 'sales/spikes/time/edit',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesTimeCreate,
+                    path: 'sales/spikes/time/create',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -509,28 +541,8 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeAdjunction,
-                    path: 'sales/spike/adjunction',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeSetCreate,
-                    path: 'sales/spike/set/add',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeSet,
-                    path: 'sales/spike/set',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeTime,
-                    path: 'sales/spike/time',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeTimeAddtime,
-                    path: 'sales/spike/time/addtime',
+                    component: SalesIntegral,
+                    path: 'sales/integral',
                 },
             ],
             component: Layout,

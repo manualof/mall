@@ -24,15 +24,13 @@ class CreateHandler extends Handler
      */
     protected function execute()
     {
+        $this->formats();
         $this->validate($this->request, [
             'category_id' => [
                 Rule::numeric(),
-                Rule::required(),
             ],
-            'logo'        => Rule::required(),
             'name'        => Rule::required(),
             'order'       => Rule::numeric(),
-            'recommend'   => Rule::numeric(),
             'show'        => [
                 Rule::in([
                     'image',
@@ -42,19 +40,14 @@ class CreateHandler extends Handler
             ],
             'store_id'    => [
                 Rule::numeric(),
-                Rule::required(),
             ],
         ], [
             'category_id.numeric'  => '分类 ID 必须为数值',
-            'category_id.required' => '分类 ID 必须填写',
-            'logo.required'        => '品牌 Logo 必须填写',
             'name.required'        => '品牌名称必须填写',
             'order.numeric'        => '排列顺序必须为数值',
-            'recommend.numeric'    => '是否推荐为数值',
             'show.in'              => '显示方式值超越限制',
             'show.required'        => '显示方式必须填写',
             'store_id.numeric'     => '店铺 ID 必须为数值',
-            'store_id.required'    => '店铺 ID 必须填写',
         ]);
         $this->beginTransaction();
         $data = $this->request->only([
@@ -74,5 +67,14 @@ class CreateHandler extends Handler
             $this->rollBackTransaction();
             $this->withError(500)->withError('申请商品失败！');
         }
+    }
+
+    /**
+     * Format data.
+     */
+    protected function formats()
+    {
+        !$this->request->input('order') && $this->request->offsetSet('order', 0);
+        !$this->request->input('store_id') && $this->request->offsetSet('store_id', 0);
     }
 }

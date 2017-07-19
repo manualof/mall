@@ -15,7 +15,7 @@ use Symfony\Component\Workflow\Transition;
 
 /**
  * Class ProductCategory.
-*/
+ */
 class ProductCategory extends Model
 {
     use HasFlow;
@@ -29,6 +29,15 @@ class ProductCategory extends Model
         'name',
         'order',
         'parent_id',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $setters = [
+        'deposit'   => 'null|0',
+        'order'     => 'null|0',
+        'parent_id' => 'null|0',
     ];
 
     /**

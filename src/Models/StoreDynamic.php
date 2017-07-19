@@ -34,6 +34,13 @@ class StoreDynamic extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'show' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_shop_dynamics';
@@ -94,9 +101,15 @@ class StoreDynamic extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
-            new Transition('need_to_publish', ['created', 'edited'], 'publish'),
+            new Transition('need_to_publish', [
+                'created',
+                'edited',
+            ], 'publish'),
             new Transition('publish', 'publish', 'published'),
         ];
     }
