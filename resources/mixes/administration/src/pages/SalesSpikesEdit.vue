@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -13,14 +14,40 @@
                 form: {
                     columns: [
                         {
-                            key: 'goodsName',
+                            key: 'name',
+                            render(h, data) {
+                                return h('div', {
+                                    class: {
+                                        'goods-name-row': true,
+                                    },
+                                }, [
+                                    h('div', {
+                                        class: {
+                                            img: true,
+                                        },
+                                    }, [
+                                        h('img', {
+                                            domProps: {
+                                                src: data.row.image,
+                                            },
+                                        }),
+                                    ]),
+                                    h('div', {
+                                        class: {
+                                            'right-text': true,
+                                        },
+                                    }, [
+                                        h('p', data.row.name),
+                                    ]),
+                                ]);
+                            },
                             title: '商品名称',
                         },
                         {
                             align: 'center',
                             key: 'pre_price',
                             title: '原价',
-                            width: 240,
+                            width: 180,
                         },
                         {
                             align: 'center',
@@ -34,7 +61,7 @@
                                 });
                             },
                             title: '优惠价格',
-                            width: 240,
+                            width: 180,
                         },
                         {
                             align: 'center',
@@ -49,7 +76,7 @@
                                         },
                                         props: {
                                             size: 'small',
-                                            type: 'error',
+                                            type: 'ghost',
                                         },
                                     }, '删除'),
                                 ]);
@@ -59,7 +86,26 @@
                         },
                     ],
                     endTime: '',
-                    list: [],
+                    list: [
+                        {
+                            image: image1,
+                            name: '可用十年 创意椭圆不锈钢肥皂(带底托精装) 神奇除味去',
+                            pre_price: '￥388.00',
+                            price: '388.00',
+                        },
+                        {
+                            image: image1,
+                            name: '可用十年 创意椭圆不锈钢肥皂(带底托精装) 神奇除味去',
+                            pre_price: '￥388.00',
+                            price: '388.00',
+                        },
+                        {
+                            image: image1,
+                            name: '可用十年 创意椭圆不锈钢肥皂(带底托精装) 神奇除味去',
+                            pre_price: '￥388.00',
+                            price: '388.00',
+                        },
+                    ],
                     name: '',
                     startTime: '',
                 },
