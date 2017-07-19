@@ -1,3 +1,38 @@
+<script>
+    export default {
+        data() {
+            return {
+                productImgs: [],
+                red: false,
+                sorce: 5,
+            };
+        },
+        methods: {
+            deleteImg(e) {
+                const index = e.target.getAttribute('i');
+                this.productImgs.splice(index);
+            },
+            imageSelected(e) {
+                const file = e.target.files[0];
+                const self = this;
+                const image = {
+                    content: '',
+                    file1: file,
+                };
+                const reader = new global.FileReader();
+                reader.onload = () => {
+                    image.content = reader.result;
+                };
+                reader.readAsDataURL(file);
+                self.productImgs.push(image);
+            },
+            score(e) {
+                this.red = true;
+                this.sorce = Number(e.target.getAttribute('i')) + 1;
+            },
+        },
+    };
+</script>
 <template>
     <div class="evaluation">
         <div class="evaluation-box container">
@@ -64,39 +99,3 @@
         </div>
     </div>
 </template>
-<script>
-
-    export default {
-        data() {
-            return {
-                productImgs: [],
-                red: false,
-                sorce: 5,
-            };
-        },
-        methods: {
-            deleteImg(e) {
-                const index = e.target.getAttribute('i');
-                this.productImgs.splice(index);
-            },
-            imageSelected(e) {
-                const file = e.target.files[0];
-                const self = this;
-                const image = {
-                    content: '',
-                    file1: file,
-                };
-                const reader = new global.FileReader();
-                reader.onload = () => {
-                    image.content = reader.result;
-                };
-                reader.readAsDataURL(file);
-                self.productImgs.push(image);
-            },
-            score(e) {
-                this.red = true;
-                this.sorce = Number(e.target.getAttribute('i')) + 1;
-            },
-        },
-    };
-</script>

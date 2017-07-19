@@ -87,13 +87,18 @@
 </template>
 <script>
     import product from '../../../user/src/assets/images/thephone.png';
-    import SearchList from '../../../user/src/components/dashboard/SearchList';
-    import NeedBrowse from '../../../user/src/components/dashboard/NeedBrowse';
-    import EveryoneBrowse from '../../../user/src/components/dashboard/EveryoneBrowse';
-    import MyselfBrowse from '../../../user/src/components/dashboard/MyselfBrowse';
-    import RightSide from '../../../user/src/components/dashboard/RightSide';
+    import NeedBrowse from './public/NeedBrowse';
+    import EveryoneBrowse from './public/EveryoneBrowse';
+    import MyselfBrowse from './public/MyselfBrowse';
+    import RightSide from './public/RightSide';
 
     export default {
+        components: {
+            NeedBrowse,
+            EveryoneBrowse,
+            MyselfBrowse,
+            RightSide,
+        },
         data() {
             return {
                 data: {
@@ -195,13 +200,6 @@
                     sizes: ['M', 'L', 'XL', 'XXL'],
                 },
             };
-        },
-        components: {
-            SearchList,
-            NeedBrowse,
-            EveryoneBrowse,
-            MyselfBrowse,
-            RightSide,
         },
     };
 </script>

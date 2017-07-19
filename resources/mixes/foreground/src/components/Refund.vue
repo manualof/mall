@@ -1,3 +1,42 @@
+
+<script>
+    import EndTimer from '../../../user/src/components/extend/Timer';
+    import img from '../../../user/src/assets/images/b1.png';
+
+    export default{
+        components: {
+            EndTimer,
+        },
+        data() {
+            return {
+                endTime: '2018-10-08 10:06:00',
+                imgsrc: img,
+                goods: {
+                    freight: 10,
+                    price: 99,
+                    ordernum: '25648946541656',
+                    seller: 'xxx旗舰店',
+                    msg: '女装 夏季自然腰宽松九分裤休闲长裤麻混纺',
+                    taocan: '官方套餐一',
+                },
+                message: '已超时',
+                refund: {
+                    reason: '物品有瑕疵',
+                    price: 99,
+                    number: '3265646123655',
+                    illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
+                },
+                status: 2,
+                onOff: true,
+            };
+        },
+        methods: {
+            dosomething(n) {
+                this.onOff = n;
+            },
+        },
+    };
+</script>
 <template>
     <div class="refund container">
         <div class="container top row">
@@ -124,41 +163,3 @@
         </div>
     </div>
 </template>
-<script>
-    import EndTimer from '../../../user/src/components/extend/Timer';
-    import img from '../../../user/src/assets/images/b1.png';
-
-    export default{
-        components: {
-            EndTimer,
-        },
-        data() {
-            return {
-                endTime: '2018-10-08 10:06:00',
-                imgsrc: img,
-                goods: {
-                    freight: 10,
-                    price: 99,
-                    ordernum: '25648946541656',
-                    seller: 'xxx旗舰店',
-                    msg: '女装 夏季自然腰宽松九分裤休闲长裤麻混纺',
-                    taocan: '官方套餐一',
-                },
-                message: '已超时',
-                refund: {
-                    reason: '物品有瑕疵',
-                    price: 99,
-                    number: '3265646123655',
-                    illustrate: '桌子的木质不太好，且桌面有2cm裂缝，桌面不平整，颜色发错',
-                },
-                status: 2,
-                onOff: true,
-            };
-        },
-        methods: {
-            dosomething(n) {
-                this.onOff = n;
-            },
-        },
-    };
-</script>

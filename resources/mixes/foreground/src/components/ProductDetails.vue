@@ -1,308 +1,11 @@
-<template>
-    <div class="product-details">
-        <div class="basic-intro container clearfix">
-            <div class="miaobaoxie"><router-link to="/slide">首页  >  xx旗舰店 > 尿不湿</router-link></div>
-            <div class="product-img">
-                <swiper :options="bigOption" ref="mySwiperA">
-                    <swiper-slide v-for="(item, index) in banner.bigs" :key="index">
-                        <img :src="item">
-                    </swiper-slide>
-                    <div class="swiper-pagination" slot="pagination"></div>
-                </swiper>
-                <magnifier
-                    :wrap-x='wrapX'
-                    :wrap-y='wrapY'
-                    :box-width='boxWidth'
-                    :box-height='boxHeight'
-                    :scale='scale'
-                    :gap='gap'
-                    :img-src='imgSrc'>
-                </magnifier>
-                <div class="swiper2">
-                    <swiper :options="smallOption" ref="mySwiperB">
-                        <swiper-slide v-for="(item, index) in banner.smalls" :key="index">
-                            <img :src="item">
-                        </swiper-slide>
-                    </swiper>
-                    <div class="swiper-button-prev icon iconfont icon-gengduo gengduo-left" slot="button-prev"></div>
-                    <div class="swiper-button-next icon iconfont icon-gengduo" slot="button-next"></div>
-                </div>
-            </div>
-            <div class="product-intro">
-                <h3>{{ product_intro.name }}</h3>
-                <p class="offer">{{ product_intro.offer.join('&nbsp;') }}</p>
-                <div class="price-box">
-                    <p><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
-                    </p>
-                </div>
-                <ul class="sell-info">
-                    <li class="sell-count">
-                        <span>销量</span>
-                        <span class="count">{{　product_intro.sales_num　}}</span>
-                    </li>
-                    <li class="evaluation-count">
-                        <span>评价</span>
-                        <span class="count">{{ product_intro.eval_num }}</span>
-                    </li>
-                    <li class="integral-count">
-                        <span>赠送积分</span>
-                        <span class="count">{{　product_intro.integral　}}</span>
-                    </li>
-                </ul>
-                <div class="distribution">
-                    <p>配送<span class="origin-adress">西安</span>至
-                        <Cascader class="destination" :data="data" v-model="distribution_address"></Cascader>
-                        运费：<span class="freigh">&nbsp;￥ {{ product_intro.transport_price }}</span></p>
-                    <!--<p class="stock">{{ product_intro.status }}</p>-->
-                </div>
-                <dl class="product-type-select clearfix">
-                    <dt>尺码</dt>
-                    <dd>
-                        <ul>
-                            <li v-for="size in product_intro.size">
-                                <label class="form-control-radio">
-                                    <input type="radio" name="size" :value="size">
-                                    <span>{{ size }}</span>
-                                </label>
-                            </li>
-                        </ul>
-                    </dd>
-                </dl>
-                <dl class="product-type-select clearfix">
-                    <dt>类型</dt>
-                    <dd>
-                        <ul>
-                            <li v-for="type in product_intro.type">
-                                <label class="form-control-radio">
-                                    <input type="radio" name="package" value="type">
-                                    <span>{{ type }}</span>
-                                </label>
-                            </li>
-                        </ul>
-                    </dd>
-                </dl>
-                <dl class="product-num clearfix">
-                    <dt>数量</dt>
-                    <dd>
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-addon" @click="productNum > 1 ?productNum--:0">-</span>
-                            <input type="number" class="form-control" readonly v-model="productNum">
-                            <span class="input-group-addon" @click="productNum++">+</span>
-                        </div>
-                    </dd>
-                </dl>
-                <ul class="product-buy clearfix">
-                    <li class="buy"><a class="text-center">立刻购买</a></li>
-                    <li class="basket"><a class="text-center">加入购物车</a></li>
-                </ul>
-            </div>
-        </div>
-        <!--推荐购买-->
-        <ul class="combination-buy container">
-            <router-link to="/" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
-                <a href="javascript:void (0)">
-                    <img :src="product.img"/>
-                </a>
-                <p class="intro">{{ product.name }}</p>
-                <p class="price">￥{{　product.price　}}</p>
-                <div class="check-box select">
-                    <label>
-                        <input @change="selectRecommend(product,$event)" name="recommend" type="checkbox"
-                                 class="input_check" :id="product.id">
-                        <span></span>
-                    </label>
-                </div>
-            </router-link>
-            <li>
-                <p class="original-price">原价：<s>￥{{ total_oldPrice }}</s></p>
-                <p class="package-price">套餐价格：<span>￥{{　total_price　}}</span></p>
-                <a class="text-center" href="javascript:void (0)">立即购买</a>
-            </li>
-        </ul>
-        <!--产品相关-->
-        <div class="product-about container clearfix">
-            <!--看了又看-->
-            <div class="left-box">
-                <div class="see-again-box follow">
-                     <div class="img">
-                         <img :src="img" alt="">
-                     </div>
-                    <p class="name">xxx旗舰店</p>
-                    <router-link to="/" class="shop">关注店铺</router-link>
-                </div>
-                <div class="see-again-box talked">
-                    <h4>店铺客服</h4>
-                    <div class="talkes">
-                        <div class="talkeds" v-for="talk in kefu">
-                            <p class="talk-name">{{ talk.name }}</p>
-                           <div class="chilrd" v-for="item in talk.items">
-                               {{ item }}&nbsp;&nbsp;&nbsp;<img :src="talked" alt="">
-                           </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="goods-kind">
-                    <h4>商品分类</h4>
-                    <ul class="goods-list">
-                        <li class="goods-li" v-for="(good, index) in goodskind">
-                            <span @click="change(index)" class="goods-btn" v-if="!good.onoff">+</span>
-                            <span @click="change(index)" v-if="good.onoff" class="goods-btn">-</span>
-                            <div class="goods-item">{{ good.kind }}</div>
-                            <div class="clearfix"></div>
-                            <ul class="goods-items" v-if="good.onoff && good.item.length > 0">
-                                <li v-for="item in good.item">{{ item }}</li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="see-again-box">
-                    <h4>看了又看</h4>
-                    <ul>
-                        <router-link tag="li" to="/" v-for="(item, index) in seeAgain_products" :key="index">
-                            <a href="javascript:void (0)">
-                                <img :src="item.img"/>
-                            </a>
-                            <p>{{ item.name }}
-                            </p>
-                            <p>
-                                <span class="price">￥{{ item.price }}</span>
-                                <span class="sales">销量：{{ item.sales }}</span>
-                            </p>
-                        </router-link>
-                    </ul>
-                </div>
-            </div>
-
-            <!--商品详情及用户评价-->
-            <div class="details-evaluation pull-left">
-                <ul class="clearfix nav" role="tablist">
-                    <li class="pull-left text-center" :class="{active:activeTab===1}">
-                        <i></i>
-                        <a class="text-center a-block" name="details" @click="tabSWitch(1)">
-                            商品详情
-                        </a>
-                    </li>
-                    <li class="pull-left" :class="{active:activeTab===2}">
-                        <i></i>
-                        <a class="text-center a-block" name="evaluation" @click="tabSWitch(2)">
-                            用户评价
-                        </a>
-                    </li>
-                </ul>
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane in active" id="details" v-if="activeTab===1">
-                        <ul class="product-info row">
-                            <li class="product-option  col-md-4">
-                                <span class="option">品牌：</span>
-                                <span class="option-value">{{ productInfo.name }}</span>
-                            </li>
-                            <li class="product-option  col-md-4">
-                                <span class="option">地区：</span>
-                                <span class="option-value">{{ productInfo.madeIn }}</span>
-                            </li>
-                            <li class="product-option  col-md-4">
-                                <span class="option">材质：</span>
-                                <span class="option-value">{{ productInfo.cailiao }}</span>
-                            </li>
-                            <li class="product-option  col-md-4">
-                                <span class="option">风格：</span>
-                                <span class="option-value">{{ productInfo.style }}</span>
-                            </li>
-                            <li class="product-option  col-md-4">
-                                <span class="option">颜色：</span>
-                                <span class="option-value">{{ productInfo.color }}</span>
-                            </li>
-                        </ul>
-                        <div class="img-show">
-                            <img src="../../../user/src/assets/images/details/details-img.png"/>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="evaluation" v-if="activeTab===2">
-                        <div class="evaluation-sorce">
-                            <p>评分：<span class="sorce">9.98</span>
-                                <span class="evaluation-count">评价人数：2290</span>
-                            </p>
-                        </div>
-                        <div class="evaluation-select">
-                            <div class="select">
-                                <label class="radio-box">
-                                    <input type="radio"
-                                           name="evaluation-select"
-                                           value="all"
-                                           v-model="showEvaluation"/>
-                                    <span></span>
-                                    全部评价
-                                </label>
-                            </div>
-                            <div class="select">
-                                <label class="radio-box">
-                                    <input type="radio"
-                                           name="evaluation-select"
-                                           value="image"
-                                           v-model="showEvaluation"/>
-                                    <span></span>
-                                    图片
-                                </label>
-                            </div>
-                            <ul class="sorting">
-                                <li class="time-sorting"><a>按时间排序</a></li>
-                                <li class="default-sorting"><a>默认排序</a></li>
-                            </ul>
-                        </div>
-                        <ul class="evaluation-details">
-                            <li class="evaluation-li" v-for="(item,index1) in evaluation">
-                                <div class="clearfix evaluation-box">
-                                    <div class="userinfo">
-                                        <img :src="item.userImg">
-                                        <p class="text-center">{{ item.name }}</p>
-                                    </div>
-                                    <div class="user-say">
-                                        <div class="buy-info clearfix">
-                                            <div class="buy-sorce">评分：
-                                                <i v-if="item.sorce>=1" class="icon iconfont icon-xing1"></i>
-                                                <i v-if="item.sorce>=2" class="icon iconfont icon-xing1"></i>
-                                                <i v-if="item.sorce>=3" class="icon iconfont icon-xing1"></i>
-                                                <i v-if="item.sorce>=4" class="icon iconfont icon-xing1"></i>
-                                                <i v-if="item.sorce>=5" class="icon iconfont icon-xing1"></i>
-                                            </div>
-                                            <p><span class="date">{{ item.buyDate }}</span><span
-                                                class="color">颜色：{{ item.productInfo.color }}</span><span class="size">尺码：{{ item.productInfo.size }}</span>
-                                            </p>
-                                        </div>
-                                        <p class="user-description">{{ item.evaluationTxt }}</p>
-                                        <ul class="buy-img clearfix">
-                                            <li v-for="(value,index2) in item.evaluationImg"
-                                                :class="{ zoom: item.bigImg === '' || item.bigImg !== value, ziim: item.bigImg === value }">
-                                                <img :src="value" :i1="index1" :i2="index2"
-                                                     @click="showImg(item, $event)"/>
-                                            </li>
-                                        </ul>
-                                        <div class="active-img" v-if="item.bigImg">
-                                            <img :src="item.bigImg"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <need-browse></need-browse>
-        <everyone-browse></everyone-browse>
-        <myself-browse></myself-browse>
-        <right-side></right-side>
-    </div>
-</template>
 <script>
-    import Cascader from 'iview/src/components/cascader';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
-    import RightSide from '../../../user/src/components/dashboard/RightSide';
-    import NeedBrowse from '../../../user/src/components/dashboard/NeedBrowse';
-    import MyselfBrowse from '../../../user/src/components/dashboard/MyselfBrowse';
-    import EveryoneBrowse from '../../../user/src/components/dashboard/EveryoneBrowse';
-    import magnifier from '../../../user/src/components/extend/magnifier';
+    import Cascader from 'iview/src/components/cascader';
+    import RightSide from './public/RightSide';
+    import NeedBrowse from './public/NeedBrowse';
+    import MyselfBrowse from './public/MyselfBrowse';
+    import EveryoneBrowse from './public/EveryoneBrowse';
+    import Magnifier from './public/Magnifier';
     import small1 from '../../../user/src/assets/images/s1.jpg';
     import small2 from '../../../user/src/assets/images/s2.jpg';
     import small3 from '../../../user/src/assets/images/s3.jpg';
@@ -618,7 +321,7 @@
             RightSide,
             swiper,
             swiperSlide,
-            magnifier,
+            Magnifier,
         },
         computed: {
             total_price() {
@@ -674,3 +377,301 @@
         },
     };
 </script>
+<template>
+    <div class="product-details">
+        <div class="basic-intro container clearfix">
+            <div class="miaobaoxie"><router-link to="/slide">首页  >  xx旗舰店 > 尿不湿</router-link></div>
+            <div class="product-img">
+                <swiper :options="bigOption" ref="mySwiperA">
+                    <swiper-slide v-for="(item, index) in banner.bigs" :key="index">
+                        <img :src="item">
+                    </swiper-slide>
+                    <div class="swiper-pagination" slot="pagination"></div>
+                </swiper>
+                <magnifier
+                    :wrap-x='wrapX'
+                    :wrap-y='wrapY'
+                    :box-width='boxWidth'
+                    :box-height='boxHeight'
+                    :scale='scale'
+                    :gap='gap'
+                    :img-src='imgSrc'>
+                </magnifier>
+                <div class="swiper2">
+                    <swiper :options="smallOption" ref="mySwiperB">
+                        <swiper-slide v-for="(item, index) in banner.smalls" :key="index">
+                            <img :src="item">
+                        </swiper-slide>
+                    </swiper>
+                    <div class="swiper-button-prev icon iconfont icon-gengduo gengduo-left" slot="button-prev"></div>
+                    <div class="swiper-button-next icon iconfont icon-gengduo" slot="button-next"></div>
+                </div>
+            </div>
+            <div class="product-intro">
+                <h3>{{ product_intro.name }}</h3>
+                <p class="offer">{{ product_intro.offer.join('&nbsp;') }}</p>
+                <div class="price-box">
+                    <p><span>价格</span><span class="price">￥{{ product_intro.price }}</span><span class="original-price">原价<s>￥{{ product_intro.original_price }}</s></span>
+                    </p>
+                </div>
+                <ul class="sell-info">
+                    <li class="sell-count">
+                        <span>销量</span>
+                        <span class="count">{{　product_intro.sales_num　}}</span>
+                    </li>
+                    <li class="evaluation-count">
+                        <span>评价</span>
+                        <span class="count">{{ product_intro.eval_num }}</span>
+                    </li>
+                    <li class="integral-count">
+                        <span>赠送积分</span>
+                        <span class="count">{{　product_intro.integral　}}</span>
+                    </li>
+                </ul>
+                <div class="distribution">
+                    <p>配送<span class="origin-adress">西安</span>至
+                        <Cascader class="destination" :data="data" v-model="distribution_address"></Cascader>
+                        运费：<span class="freigh">&nbsp;￥ {{ product_intro.transport_price }}</span></p>
+                    <!--<p class="stock">{{ product_intro.status }}</p>-->
+                </div>
+                <dl class="product-type-select clearfix">
+                    <dt>尺码</dt>
+                    <dd>
+                        <ul>
+                            <li v-for="size in product_intro.size">
+                                <label class="form-control-radio">
+                                    <input type="radio" name="size" :value="size">
+                                    <span>{{ size }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="product-type-select clearfix">
+                    <dt>类型</dt>
+                    <dd>
+                        <ul>
+                            <li v-for="type in product_intro.type">
+                                <label class="form-control-radio">
+                                    <input type="radio" name="package" value="type">
+                                    <span>{{ type }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="product-num clearfix">
+                    <dt>数量</dt>
+                    <dd>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon" @click="productNum > 1 ?productNum--:0">-</span>
+                            <input type="number" class="form-control" readonly v-model="productNum">
+                            <span class="input-group-addon" @click="productNum++">+</span>
+                        </div>
+                    </dd>
+                </dl>
+                <ul class="product-buy clearfix">
+                    <li class="buy"><a class="text-center">立刻购买</a></li>
+                    <li class="basket"><a class="text-center">加入购物车</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--推荐购买-->
+        <ul class="combination-buy container">
+            <router-link to="/" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
+                <a href="javascript:void (0)">
+                    <img :src="product.img"/>
+                </a>
+                <p class="intro">{{ product.name }}</p>
+                <p class="price">￥{{　product.price　}}</p>
+                <div class="check-box select">
+                    <label>
+                        <input @change="selectRecommend(product,$event)" name="recommend" type="checkbox"
+                                 class="input_check" :id="product.id">
+                        <span></span>
+                    </label>
+                </div>
+            </router-link>
+            <li>
+                <p class="original-price">原价：<s>￥{{ total_oldPrice }}</s></p>
+                <p class="package-price">套餐价格：<span>￥{{　total_price　}}</span></p>
+                <a class="text-center" href="javascript:void (0)">立即购买</a>
+            </li>
+        </ul>
+        <!--产品相关-->
+        <div class="product-about container clearfix">
+            <!--看了又看-->
+            <div class="left-box">
+                <div class="see-again-box follow">
+                     <div class="img">
+                         <img :src="img" alt="">
+                     </div>
+                    <p class="name">xxx旗舰店</p>
+                    <router-link to="/" class="shop">关注店铺</router-link>
+                </div>
+                <div class="see-again-box talked">
+                    <h4>店铺客服</h4>
+                    <div class="talkes">
+                        <div class="talkeds" v-for="talk in kefu">
+                            <p class="talk-name">{{ talk.name }}</p>
+                           <div class="chilrd" v-for="item in talk.items">
+                               {{ item }}&nbsp;&nbsp;&nbsp;<img :src="talked" alt="">
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-kind">
+                    <h4>商品分类</h4>
+                    <ul class="goods-list">
+                        <li class="goods-li" v-for="(good, index) in goodskind">
+                            <span @click="change(index)" class="goods-btn" v-if="!good.onoff">+</span>
+                            <span @click="change(index)" v-if="good.onoff" class="goods-btn">-</span>
+                            <div class="goods-item">{{ good.kind }}</div>
+                            <div class="clearfix"></div>
+                            <ul class="goods-items" v-if="good.onoff && good.item.length > 0">
+                                <li v-for="item in good.item">{{ item }}</li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="see-again-box">
+                    <h4>看了又看</h4>
+                    <ul>
+                        <router-link tag="li" to="/" v-for="(item, index) in seeAgain_products" :key="index">
+                            <a href="javascript:void (0)">
+                                <img :src="item.img"/>
+                            </a>
+                            <p>{{ item.name }}
+                            </p>
+                            <p>
+                                <span class="price">￥{{ item.price }}</span>
+                                <span class="sales">销量：{{ item.sales }}</span>
+                            </p>
+                        </router-link>
+                    </ul>
+                </div>
+            </div>
+
+            <!--商品详情及用户评价-->
+            <div class="details-evaluation pull-left">
+                <ul class="clearfix nav" role="tablist">
+                    <li class="pull-left text-center" :class="{active:activeTab===1}">
+                        <i></i>
+                        <a class="text-center a-block" name="details" @click="tabSWitch(1)">
+                            商品详情
+                        </a>
+                    </li>
+                    <li class="pull-left" :class="{active:activeTab===2}">
+                        <i></i>
+                        <a class="text-center a-block" name="evaluation" @click="tabSWitch(2)">
+                            用户评价
+                        </a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane in active" id="details" v-if="activeTab===1">
+                        <ul class="product-info row">
+                            <li class="product-option  col-md-4">
+                                <span class="option">品牌：</span>
+                                <span class="option-value">{{ productInfo.name }}</span>
+                            </li>
+                            <li class="product-option  col-md-4">
+                                <span class="option">地区：</span>
+                                <span class="option-value">{{ productInfo.madeIn }}</span>
+                            </li>
+                            <li class="product-option  col-md-4">
+                                <span class="option">材质：</span>
+                                <span class="option-value">{{ productInfo.cailiao }}</span>
+                            </li>
+                            <li class="product-option  col-md-4">
+                                <span class="option">风格：</span>
+                                <span class="option-value">{{ productInfo.style }}</span>
+                            </li>
+                            <li class="product-option  col-md-4">
+                                <span class="option">颜色：</span>
+                                <span class="option-value">{{ productInfo.color }}</span>
+                            </li>
+                        </ul>
+                        <div class="img-show">
+                            <img src="../../../user/src/assets/images/details/details-img.png"/>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="evaluation" v-if="activeTab===2">
+                        <div class="evaluation-sorce">
+                            <p>评分：<span class="sorce">9.98</span>
+                                <span class="evaluation-count">评价人数：2290</span>
+                            </p>
+                        </div>
+                        <div class="evaluation-select">
+                            <div class="select">
+                                <label class="radio-box">
+                                    <input type="radio"
+                                           name="evaluation-select"
+                                           value="all"
+                                           v-model="showEvaluation"/>
+                                    <span></span>
+                                    全部评价
+                                </label>
+                            </div>
+                            <div class="select">
+                                <label class="radio-box">
+                                    <input type="radio"
+                                           name="evaluation-select"
+                                           value="image"
+                                           v-model="showEvaluation"/>
+                                    <span></span>
+                                    图片
+                                </label>
+                            </div>
+                            <ul class="sorting">
+                                <li class="time-sorting"><a>按时间排序</a></li>
+                                <li class="default-sorting"><a>默认排序</a></li>
+                            </ul>
+                        </div>
+                        <ul class="evaluation-details">
+                            <li class="evaluation-li" v-for="(item,index1) in evaluation">
+                                <div class="clearfix evaluation-box">
+                                    <div class="userinfo">
+                                        <img :src="item.userImg">
+                                        <p class="text-center">{{ item.name }}</p>
+                                    </div>
+                                    <div class="user-say">
+                                        <div class="buy-info clearfix">
+                                            <div class="buy-sorce">评分：
+                                                <i v-if="item.sorce>=1" class="icon iconfont icon-xing1"></i>
+                                                <i v-if="item.sorce>=2" class="icon iconfont icon-xing1"></i>
+                                                <i v-if="item.sorce>=3" class="icon iconfont icon-xing1"></i>
+                                                <i v-if="item.sorce>=4" class="icon iconfont icon-xing1"></i>
+                                                <i v-if="item.sorce>=5" class="icon iconfont icon-xing1"></i>
+                                            </div>
+                                            <p><span class="date">{{ item.buyDate }}</span><span
+                                                class="color">颜色：{{ item.productInfo.color }}</span><span class="size">尺码：{{ item.productInfo.size }}</span>
+                                            </p>
+                                        </div>
+                                        <p class="user-description">{{ item.evaluationTxt }}</p>
+                                        <ul class="buy-img clearfix">
+                                            <li v-for="(value,index2) in item.evaluationImg"
+                                                :class="{ zoom: item.bigImg === '' || item.bigImg !== value, ziim: item.bigImg === value }">
+                                                <img :src="value" :i1="index1" :i2="index2"
+                                                     @click="showImg(item, $event)"/>
+                                            </li>
+                                        </ul>
+                                        <div class="active-img" v-if="item.bigImg">
+                                            <img :src="item.bigImg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <need-browse></need-browse>
+        <everyone-browse></everyone-browse>
+        <myself-browse></myself-browse>
+        <right-side></right-side>
+    </div>
+</template>
+

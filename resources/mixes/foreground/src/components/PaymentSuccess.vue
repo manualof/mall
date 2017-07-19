@@ -1,3 +1,107 @@
+<script>
+    import EveryoneBrowse from './public/EveryoneBrowse';
+    import FooterBar from './public/FooterBar';
+    import FooterContent from './public/FooterContent';
+    import HeaderBar from './public/HeaderBar';
+    import MyselfBrowse from './public/MyselfBrowse';
+    import RightSide from './public/RightSide';
+    import order from '../../../user/src/assets/images/details/order.png';
+
+    export default {
+        components: {
+            EveryoneBrowse,
+            FooterBar,
+            FooterContent,
+            HeaderBar,
+            MyselfBrowse,
+            RightSide,
+        },
+        computed: {
+            total_price() {
+                let totalPrice = 0;
+                this.submitOrder.productList.forEach(item => {
+                    totalPrice += item.price * item.num;
+                });
+                return totalPrice.toFixed(2);
+            },
+        },
+        data() {
+            return {
+                logisticsInfo: {
+                    company: '顺丰速运',
+                    list: [
+                        {
+                            address: '北京海淀区xx大道',
+                            current: true,
+                            time: '2016-12-29  13:06:03',
+                            status: '已收入',
+                        },
+                        {
+                            address: '北京海淀区xx大道',
+                            current: false,
+                            time: '2016-12-29  13:06:03',
+                            status: '已收入',
+                        },
+                        {
+                            address: '北京海淀区xx大道',
+                            current: false,
+                            time: '2016-12-29  13:06:03',
+                            status: '已收入',
+                        },
+                        {
+                            address: '北京海淀区xx大道',
+                            current: false,
+                            time: '2016-12-29  13:06:03',
+                            status: '已收入',
+                        },
+                    ],
+                    number: '2017020615400000710016792',
+                },
+                status: 1,
+                steps: [
+                    {
+                        icon: 'icon-icon',
+                        name: '提交订单',
+                        time: '2017-05-10 12:30:10',
+                    },
+                    {
+                        icon: 'icon-fukuan',
+                        name: '付款成功',
+                    },
+                    {
+                        icon: 'icon-feiji',
+                        name: '商家发货',
+                    },
+                    {
+                        icon: 'icon-shouhuo',
+                        name: '确认收货',
+                    },
+                    {
+                        icon: 'icon-pingjia',
+                        name: '评价',
+                    },
+                ],
+                submitOrder: {
+                    integral_num: 1660,
+                    integral_price: 16.6,
+                    freight: 20,
+                    productList: [
+                        {
+                            img: order,
+                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
+                            num: 2,
+                            offer: 6,
+                            price: 39.9,
+                            status: '待付款',
+                            size: 'L',
+                            shop: 'XXX母婴用品店',
+                        },
+                    ],
+                },
+            };
+        },
+    };
+</script>
 <template>
     <div class="payment-success  ">
         <header-bar></header-bar>
@@ -126,107 +230,3 @@
     </div>
 </template>
 
-<script>
-    import EveryoneBrowse from '../../../user/src/components/dashboard/EveryoneBrowse';
-    import FooterBar from '../../../user/src/components/dashboard/FooterBar';
-    import FooterContent from '../../../user/src/components/dashboard/FooterContent';
-    import HeaderBar from '../../../user/src/components/dashboard/HeaderBar';
-    import MyselfBrowse from '../../../user/src/components/dashboard/MyselfBrowse';
-    import RightSide from '../../../user/src/components/dashboard/RightSide';
-    import order from '../../../user/src/assets/images/details/order.png';
-
-    export default {
-        components: {
-            EveryoneBrowse,
-            FooterBar,
-            FooterContent,
-            HeaderBar,
-            MyselfBrowse,
-            RightSide,
-        },
-        computed: {
-            total_price() {
-                let totalPrice = 0;
-                this.submitOrder.productList.forEach(item => {
-                    totalPrice += item.price * item.num;
-                });
-                return totalPrice.toFixed(2);
-            },
-        },
-        data() {
-            return {
-                logisticsInfo: {
-                    company: '顺丰速运',
-                    list: [
-                        {
-                            address: '北京海淀区xx大道',
-                            current: true,
-                            time: '2016-12-29  13:06:03',
-                            status: '已收入',
-                        },
-                        {
-                            address: '北京海淀区xx大道',
-                            current: false,
-                            time: '2016-12-29  13:06:03',
-                            status: '已收入',
-                        },
-                        {
-                            address: '北京海淀区xx大道',
-                            current: false,
-                            time: '2016-12-29  13:06:03',
-                            status: '已收入',
-                        },
-                        {
-                            address: '北京海淀区xx大道',
-                            current: false,
-                            time: '2016-12-29  13:06:03',
-                            status: '已收入',
-                        },
-                    ],
-                    number: '2017020615400000710016792',
-                },
-                status: 1,
-                steps: [
-                    {
-                        icon: 'icon-icon',
-                        name: '提交订单',
-                        time: '2017-05-10 12:30:10',
-                    },
-                    {
-                        icon: 'icon-fukuan',
-                        name: '付款成功',
-                    },
-                    {
-                        icon: 'icon-feiji',
-                        name: '商家发货',
-                    },
-                    {
-                        icon: 'icon-shouhuo',
-                        name: '确认收货',
-                    },
-                    {
-                        icon: 'icon-pingjia',
-                        name: '评价',
-                    },
-                ],
-                submitOrder: {
-                    integral_num: 1660,
-                    integral_price: 16.6,
-                    freight: 20,
-                    productList: [
-                        {
-                            img: order,
-                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
-                            num: 2,
-                            offer: 6,
-                            price: 39.9,
-                            status: '待付款',
-                            size: 'L',
-                            shop: 'XXX母婴用品店',
-                        },
-                    ],
-                },
-            };
-        },
-    };
-</script>

@@ -1,3 +1,32 @@
+<script>
+    import RightSide from './public/RightSide';
+    import HeaderBar from './public/HeaderBar';
+    import FooterBar from './public/FooterBar';
+    import FooterContent from './public/FooterContent';
+
+    export default {
+        components: {
+            FooterBar,
+            FooterContent,
+            HeaderBar,
+            RightSide,
+        },
+        data() {
+            return {
+                orderDetail: {
+                    address: '北京市朝阳区群众',
+                    money: 1034.88,
+                    name: 'Purrfectdiary 咕噜日记 1-8岁儿童中筒袜1双袜子随机发货中筒袜1双袜子随机发货',
+                    num: 3,
+                    number: 1122154857863,
+                    phone: 12345654321,
+                    user: '王茂',
+                    size: 'M',
+                },
+            };
+        },
+    };
+</script>
 <template>
     <div class="order-success">
         <header-bar></header-bar>
@@ -42,33 +71,3 @@
         <footer-bar></footer-bar>
     </div>
 </template>
-
-<script>
-    import RightSide from '../../../user/src/components/dashboard/RightSide';
-    import HeaderBar from '../../../user/src/components/dashboard/HeaderBar';
-    import FooterBar from '../../../user/src/components/dashboard/FooterBar';
-    import FooterContent from '../../../user/src/components/dashboard/FooterContent';
-
-    export default {
-        components: {
-            FooterBar,
-            FooterContent,
-            HeaderBar,
-            RightSide,
-        },
-        data() {
-            return {
-                orderDetail: {
-                    address: '北京市朝阳区群众',
-                    money: 1034.88,
-                    name: 'Purrfectdiary 咕噜日记 1-8岁儿童中筒袜1双袜子随机发货中筒袜1双袜子随机发货',
-                    num: 3,
-                    number: 1122154857863,
-                    phone: 12345654321,
-                    user: '王茂',
-                    size: 'M',
-                },
-            };
-        },
-    };
-</script>

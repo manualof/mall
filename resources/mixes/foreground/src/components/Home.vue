@@ -592,8 +592,8 @@
     import picture2 from '../../../user/src/assets/images/img_02-2.png';
     import picture3 from '../../../user/src/assets/images/offer_img_01.png';
 
-    import RightSide from '../../../user/src/components/dashboard/RightSide';
-    import NeedBrowse from '../../../user/src/components/dashboard/NeedBrowse';
+    import RightSide from './public/RightSide';
+    import NeedBrowse from './public/NeedBrowse';
 
     export default {
         components: {

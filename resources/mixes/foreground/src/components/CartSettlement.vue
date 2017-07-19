@@ -1,171 +1,7 @@
-<template>
-    <div class="cart-settlement padding-attribute">
-        <div class="container">
-            <p class="select-title">购物车</p>
-            <div class="product-information cart-select-model">
-                <table width="100%">
-                    <colgroup>
-                        <col width="46px">
-                        <col width="40px">
-                        <col width="500px">
-                        <col width="150px">
-                        <col width="154px">
-                        <col width="150px">
-                        <col width="150px">
-                    </colgroup>
-                    <thead>
-                    <tr>
-                        <th class="select">
-                            <div class="check-box select-all">
-                                <span>
-                                    <!--全选-->
-                                    <input type="checkbox" v-model="isAllChecked" @change="changeAllChecked($event)"
-                                         class="input_check" id="all-select">
-                                    <label for="all-select"> </label>
-                                </span>
-                            </div>
-                        </th>
-                        <th class="select-all"><label for="all-select">全选</label></th>
-                        <th class="th-information">商品信息</th>
-                        <th>单价</th>
-                        <th>数量</th>
-                        <th>金额</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            <div>
-                <div class="product-information" v-for="(item,index) in productList">
-                    <div class="freight clearfix">
-                        <div class="name">
-                            <div class="check-box select">
-                                <label>
-                                    <!--店铺全选-->
-                                    <input type="checkbox" class="input_check" v-model="item.selected"
-                                           @change="changeTitleChecked(item)">
-                                    <span></span>
-                                </label>
-                                <span class="shop">{{ item.name }}</span>
-                            </div>
-                        </div>
-                        <span class="money">运费: {{ item.pay_transform }}</span>
-                    </div>
-                    <table width="100%">
-                        <colgroup>
-                            <col width="46px">
-                            <col width="40px">
-                            <col width="500px">
-                            <col width="150px">
-                            <col width="154px">
-                            <col width="150px">
-                            <col width="150px">
-                        </colgroup>
-                        <tbody>
-                        <tr class="offer-tr" v-if="item.offer">
-                            <td colspan="7" class="offer">
-                                <span>优惠</span>{{ item.offer }}
-                            </td>
-                        </tr>
-                        <tr v-for="(product, num) in item.products">
-                            <td class="td-select">
-                                <div class="check-box">
-                                    <label>
-                                        <!--商品选中-->
-                                        <input type="checkbox"
-                                               class="input_check"
-                                               v-model='product.selected'
-                                               name='checkboxinput'
-                                               @change="selectProduct(item)">
-                                        <span></span>
-                                    </label>
-                                </div>
-                            </td>
-                            <td class="td-img">
-                                <router-link :to="{name: 'product-details'}">
-                                    <img :src="product.img" alt="">
-                                </router-link>
-                            </td>
-                            <td class="td-information">
-                                <router-link :to="{name: 'product-details'}"> {{ product.name }}</router-link>
-                                <p>尺码：{{ product.size }}</p>
-                                <p>
-                                    <i class="mention" :class="{support:item.mention}">提</i>本商品
-                                    <i v-if="item.mention">支持</i><i v-if="!item.mention">不支持</i>门店自提
-                                </p>
-                            </td>
-                            <td>
-                                <s>&yen;{{ product.old_price }}</s>
-                                <p>&yen;{{ product.now_price }}</p>
-                            </td>
-                            <td>
-                                <div class="num-input clearfix">
-                                    <span class="num" @click="reduce(product)">
-                                        -
-                                    </span>
-                                    <span class="input">
-                                        <input type="number" readonly v-model.number="product.num">
-                                    </span>
-                                    <span class="num" @click="plus(product)">
-                                        +
-                                    </span>
-                                </div>
-                            </td>
-                            <td class="price">
-                                &yen;{{ price(product.num, product.now_price) }}
-                            </td>
-                            <td>
-                                <a @click="deleteProduct(item, num, index)">删除</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="product-information cart-pay">
-                <table width="100%">
-                    <thead>
-                    <tr>
-                        <th class="select">
-                            <div class="check-box select-all">
-                                <span>
-                                <!--全选-->
-                                    <input type="checkbox" v-model="isAllChecked" @change="changeAllChecked($event)"
-                                           class="input_check" id="all-select2">
-                                    <label for="all-select2"> </label>
-                                </span>
-                            </div>
-                        </th>
-                        <th class="delete-product">
-                            <label for="all-select2" class="select-delete-all">
-                                全选
-                            </label>
-                            <span @click="deleteSelected">删除选中的商品</span>
-                        </th>
-                        <th class="th-information"></th>
-                        <th>已选商品 {{ selectNum }}</th>
-                        <th class="mount">总价 (不含运费)</th>
-                        <th class="num-price">&yen;{{ totalPrice }} <p>运费:{{ totalFreight }}</p></th>
-                        <th>
-                            <button class="order-btn" v-router-link="{ name: 'submit-order' }">
-                                去结算
-                            </button>
-                        </th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-        <need-browse></need-browse>
-        <everyone-browse></everyone-browse>
-        <myself-browse></myself-browse>
-    </div>
-</template>
-
 <script>
-    import NeedBrowse from '../../../user/src/components/dashboard/NeedBrowse';
-    import EveryoneBrowse from '../../../user/src/components/dashboard/EveryoneBrowse';
-    import MyselfBrowse from '../../../user/src/components/dashboard/MyselfBrowse';
+    import NeedBrowse from './public/NeedBrowse';
+    import EveryoneBrowse from './public/EveryoneBrowse';
+    import MyselfBrowse from './public/MyselfBrowse';
 
     import productImg from '../../../user/src/assets/images/img_06.png';
 
@@ -388,3 +224,166 @@
         },
     };
 </script>
+<template>
+    <div class="cart-settlement padding-attribute">
+        <div class="container">
+            <p class="select-title">购物车</p>
+            <div class="product-information cart-select-model">
+                <table width="100%">
+                    <colgroup>
+                        <col width="46px">
+                        <col width="40px">
+                        <col width="500px">
+                        <col width="150px">
+                        <col width="154px">
+                        <col width="150px">
+                        <col width="150px">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="select">
+                            <div class="check-box select-all">
+                                <span>
+                                    <!--全选-->
+                                    <input type="checkbox" v-model="isAllChecked" @change="changeAllChecked($event)"
+                                         class="input_check" id="all-select">
+                                    <label for="all-select"> </label>
+                                </span>
+                            </div>
+                        </th>
+                        <th class="select-all"><label for="all-select">全选</label></th>
+                        <th class="th-information">商品信息</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>金额</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div>
+                <div class="product-information" v-for="(item,index) in productList">
+                    <div class="freight clearfix">
+                        <div class="name">
+                            <div class="check-box select">
+                                <label>
+                                    <!--店铺全选-->
+                                    <input type="checkbox" class="input_check" v-model="item.selected"
+                                           @change="changeTitleChecked(item)">
+                                    <span></span>
+                                </label>
+                                <span class="shop">{{ item.name }}</span>
+                            </div>
+                        </div>
+                        <span class="money">运费: {{ item.pay_transform }}</span>
+                    </div>
+                    <table width="100%">
+                        <colgroup>
+                            <col width="46px">
+                            <col width="40px">
+                            <col width="500px">
+                            <col width="150px">
+                            <col width="154px">
+                            <col width="150px">
+                            <col width="150px">
+                        </colgroup>
+                        <tbody>
+                        <tr class="offer-tr" v-if="item.offer">
+                            <td colspan="7" class="offer">
+                                <span>优惠</span>{{ item.offer }}
+                            </td>
+                        </tr>
+                        <tr v-for="(product, num) in item.products">
+                            <td class="td-select">
+                                <div class="check-box">
+                                    <label>
+                                        <!--商品选中-->
+                                        <input type="checkbox"
+                                               class="input_check"
+                                               v-model='product.selected'
+                                               name='checkboxinput'
+                                               @change="selectProduct(item)">
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="td-img">
+                                <router-link :to="{name: 'product-details'}">
+                                    <img :src="product.img" alt="">
+                                </router-link>
+                            </td>
+                            <td class="td-information">
+                                <router-link :to="{name: 'product-details'}"> {{ product.name }}</router-link>
+                                <p>尺码：{{ product.size }}</p>
+                                <p>
+                                    <i class="mention" :class="{support:item.mention}">提</i>本商品
+                                    <i v-if="item.mention">支持</i><i v-if="!item.mention">不支持</i>门店自提
+                                </p>
+                            </td>
+                            <td>
+                                <s>&yen;{{ product.old_price }}</s>
+                                <p>&yen;{{ product.now_price }}</p>
+                            </td>
+                            <td>
+                                <div class="num-input clearfix">
+                                    <span class="num" @click="reduce(product)">
+                                        -
+                                    </span>
+                                    <span class="input">
+                                        <input type="number" readonly v-model.number="product.num">
+                                    </span>
+                                    <span class="num" @click="plus(product)">
+                                        +
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="price">
+                                &yen;{{ price(product.num, product.now_price) }}
+                            </td>
+                            <td>
+                                <a @click="deleteProduct(item, num, index)">删除</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="product-information cart-pay">
+                <table width="100%">
+                    <thead>
+                    <tr>
+                        <th class="select">
+                            <div class="check-box select-all">
+                                <span>
+                                <!--全选-->
+                                    <input type="checkbox" v-model="isAllChecked" @change="changeAllChecked($event)"
+                                           class="input_check" id="all-select2">
+                                    <label for="all-select2"> </label>
+                                </span>
+                            </div>
+                        </th>
+                        <th class="delete-product">
+                            <label for="all-select2" class="select-delete-all">
+                                全选
+                            </label>
+                            <span @click="deleteSelected">删除选中的商品</span>
+                        </th>
+                        <th class="th-information"></th>
+                        <th>已选商品 {{ selectNum }}</th>
+                        <th class="mount">总价 (不含运费)</th>
+                        <th class="num-price">&yen;{{ totalPrice }} <p>运费:{{ totalFreight }}</p></th>
+                        <th>
+                            <button class="order-btn" v-router-link="{ name: 'submit-order' }">
+                                去结算
+                            </button>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <need-browse></need-browse>
+        <everyone-browse></everyone-browse>
+        <myself-browse></myself-browse>
+    </div>
+</template>

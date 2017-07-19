@@ -1,3 +1,22 @@
+<script>
+    import FooterBar from './public/FooterBar';
+    import FooterContent from './public/FooterContent';
+    import HeaderBar from './public/HeaderBar';
+    import LogoModal from './public/LogoModal';
+    import NeedBrowse from './public/NeedBrowse';
+    import RightSide from './public/RightSide';
+
+    export default {
+        components: {
+            FooterBar,
+            FooterContent,
+            HeaderBar,
+            LogoModal,
+            NeedBrowse,
+            RightSide,
+        },
+    };
+</script>
 <template>
     <div class="pay-result ">
         <header-bar></header-bar>
@@ -41,23 +60,3 @@
         <footer-bar></footer-bar>
     </div>
 </template>
-
-<script>
-    import FooterBar from '../../../user/src/components/dashboard/FooterBar';
-    import FooterContent from '../../../user/src/components/dashboard/FooterContent';
-    import HeaderBar from '../../../user/src/components/dashboard/HeaderBar';
-    import LogoModal from '../../../user/src/components/dashboard/LogoModal';
-    import NeedBrowse from '../../../user/src/components/dashboard/NeedBrowse';
-    import RightSide from '../../../user/src/components/dashboard/RightSide';
-
-    export default {
-        components: {
-            FooterBar,
-            FooterContent,
-            HeaderBar,
-            LogoModal,
-            NeedBrowse,
-            RightSide,
-        },
-    };
-</script>
