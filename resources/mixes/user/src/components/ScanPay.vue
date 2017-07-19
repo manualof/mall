@@ -1,10 +1,12 @@
 <script>
     import saoyisao from '../assets/images/sao.png';
+    import payImg from '../assets/images/s1.jpg';
 
     export default{
         data() {
             return {
                 img: saoyisao,
+                pay: payImg,
             };
         },
     };
@@ -16,19 +18,19 @@
             <span>微信支付</span>
             二维码已过期，刷新页面重新获取二维码
         </div>
-        <div class="scan">
+        <div class="scan clearfix">
             <div class="scan-left">
-                <div class="two-bar-codes"></div>
+                <div class="two-bar-codes">
+                    <img :src="pay" alt="">
+                </div>
                 <p>请使用微信扫一扫，扫描二维码支付</p>
             </div>
             <div class="scan-right">
                 <img :src="img" alt="">
             </div>
         </div>
-        <div class="clearfix"></div>
-        <div class="chose-pay">
-            <i class="glyphicon glyphicon-chevron-left"></i>
-            <span>选择其他支付方式</span>
+        <div class="chose-pay clearfix">
+            <span><&nbsp;选择其他支付方式</span>
         </div>
     </div>
 </template>
