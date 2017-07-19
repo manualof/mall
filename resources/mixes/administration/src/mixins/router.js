@@ -254,7 +254,7 @@ export default function (injection) {
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductBrandEdit,
-                    path: 'goods/brand/edit',
+                    path: 'goods/brand/edit/:id',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

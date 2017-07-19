@@ -3,8 +3,18 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/product/brand`, {
+                id: to.params.id,
+            }).then(response => {
+                window.console.log(response);
+                next(vm => {
+                    vm.form = response.data.data;
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
@@ -22,24 +32,24 @@
             return {
                 action: `${window.api}/mall/admin/upload`,
                 form: {
-                    name: '',
-                    disabledGroup: '图片',
-                    initial: 'A',
-                    initials: [
-                        {
-                            label: 'A',
-                            value: '1',
-                        },
-                        {
-                            label: 'B',
-                            value: '2',
-                        },
-                    ],
+                    category_id: 0,
+                    initial: '',
                     logo: '',
-                    selectStyle: ['个护化妆', '营养辅食'],
-                    sort: 0,
-                    switch1: true,
+                    name: '',
+                    recommend: true,
+                    show: 'image',
+                    sort: '',
                 },
+                initials: [
+                    {
+                        label: 'A',
+                        value: '1',
+                    },
+                    {
+                        label: 'B',
+                        value: '2',
+                    },
+                ],
                 addType: false,
                 defaultList: [],
                 loading: false,
@@ -56,17 +66,6 @@
                             message: '名称首字母不能为空',
                             required: true,
                             trigger: 'blur',
-                        },
-                    ],
-                    sort: [
-                        {
-                            max: 255,
-                            message: '请输入排序范围内的数字',
-                            min: 0,
-                            required: true,
-                            trigger: 'change',
-                            type: 'number',
-//                            validator: validateSort,
                         },
                     ],
                 },
@@ -376,7 +375,7 @@
                             <i-col span="12">
                                 <form-item label="名称首字母" prop="initial">
                                     <i-select :placeholder="form.initial">
-                                        <i-option v-for="item in form.initials" :value="item.value"
+                                        <i-option v-for="item in initials" :value="item.value"
                                                   :key="item">{{ item.label }}</i-option>
                                     </i-select>
                                 </form-item>
@@ -388,7 +387,7 @@
                                     <div class="flex-module">
                                         <cascader :data="styleData"
                                                   change-on-select
-                                                  v-model="form.selectStyle"></cascader>
+                                                  v-model="form.category_id"></cascader>
                                     </div>
                                     <div v-for="(item, index) in styleDataList" v-if="addType" class="contact-margin">
                                         <div class="contact-classification">
@@ -434,7 +433,7 @@
                         <row>
                             <i-col span="20">
                                 <form-item label="展示方式">
-                                    <radio-group v-model="form.disabledGroup">
+                                    <radio-group v-model="form.show">
                                         <radio label="图片"></radio>
                                         <radio label="文字"></radio>
                                     </radio-group>
@@ -446,7 +445,7 @@
                         <row>
                             <i-col span="20">
                                 <form-item label="是否推荐">
-                                    <i-switch size="large" v-model="form.switch1">
+                                    <i-switch size="large" v-model="form.recommend">
                                         <span slot="open">开启</span>
                                         <span slot="close">关闭</span>
                                     </i-switch>
