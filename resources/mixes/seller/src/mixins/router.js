@@ -45,6 +45,9 @@ import OrderWaybillDesign from '../pages/OrderWaybillDesign.vue';
 import OrderWaybillEdit from '../pages/OrderWaybillEdit.vue';
 import OrderEvaluation from '../pages/OrderEvaluation.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
+import SalesSpikesCreate from '../pages/SalesSpikesCreate.vue';
+import SalesSpikesMagage from '../pages/SalesSpikesMagage.vue';
+import SalesActive from '../pages/SalesActive.vue';
 import Customer from '../pages/Customer.vue';
 import CustomerMessage from '../pages/CustomerMessage.vue';
 import Account from '../pages/Account.vue';
@@ -289,6 +292,21 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: SalesSpikes,
                     path: 'sales/spikes',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesCreate,
+                    path: 'sales/spikes/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesMagage,
+                    path: 'sales/spikes/manage',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesActive,
+                    path: 'sales/active',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
