@@ -7,7 +7,7 @@
             </div>
             <ul class="header-bar-nav">
                 <li v-for="item in navigation" :class="{ 'active': $route.path === item.to }">
-                    <router-link :to="{name: item.to}">{{ item.text }}</router-link>
+                    <router-link :to="item.to">{{ item.text }}</router-link>
                 </li>
             </ul>
         </div>

@@ -1,7 +1,11 @@
 <script>
+    import Affix from 'iview/src/components/affix/affix';
     import phone from '../assets/images/phone.png';
 
     export default {
+        component: [
+            Affix,
+        ],
         data() {
             return {
                 active: 1,
@@ -45,17 +49,19 @@
 <template>
     <div class="spike">
         <div class="container">
-            <ul class="time-list clearfix">
-                <li class="spike-time pull-left"
-                    :class="{active:active===index}"
-                    @click="switchTab(index)"
-                    v-for="(item,index) in times">
-                    <span :class="{now:now === index}">{{ item.time }}</span>
-                    <i class="end" v-if="now > index">已经结束</i>
-                    <i class="now" v-if="now === index">正在进行</i>
-                    <i class="end" v-if="now < index">即将开始</i>
-                </li>
-            </ul>
+            <Affix :offsetTop-top="100">
+                <ul class="time-list clearfix">
+                    <li class="spike-time pull-left"
+                        :class="{active:active===index}"
+                        @click="switchTab(index)"
+                        v-for="(item,index) in times">
+                        <span :class="{now:now === index}">{{ item.time }}</span>
+                        <i class="end" v-if="now > index">已经结束</i>
+                        <i class="now" v-if="now === index">正在进行</i>
+                        <i class="end" v-if="now < index">即将开始</i>
+                    </li>
+                </ul>
+            </Affix>
             <ul class="spike-list">
                 <li>
                     <router-link to="/" v-for="(product,index) in productList" :key="index">

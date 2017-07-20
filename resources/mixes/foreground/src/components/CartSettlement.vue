@@ -308,12 +308,12 @@
                                 </div>
                             </td>
                             <td class="td-img">
-                                <router-link :to="{name: 'product-details'}">
+                                <router-link to="/product-details">
                                     <img :src="product.img" alt="">
                                 </router-link>
                             </td>
                             <td class="td-information">
-                                <router-link :to="{name: 'product-details'}"> {{ product.name }}</router-link>
+                                <router-link to="/product-details"> {{ product.name }}</router-link>
                                 <p>尺码：{{ product.size }}</p>
                                 <p>
                                     <i class="mention" :class="{support:item.mention}">提</i>本商品
@@ -373,7 +373,7 @@
                         <th class="mount">总价 (不含运费)</th>
                         <th class="num-price">&yen;{{ totalPrice }} <p>运费:{{ totalFreight }}</p></th>
                         <th>
-                            <button class="order-btn" v-router-link="{ name: 'submit-order' }">
+                            <button class="order-btn" v-router-link="{ path: 'submit-order' }">
                                 去结算
                             </button>
                         </th>

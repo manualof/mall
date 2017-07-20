@@ -63,7 +63,7 @@
                         <img src="../../../user/src/assets/images/weixin.png" alt="weixin">
                     </label>
                 </p>
-                <router-link :to="{ name: 'pay-result' }" class="order-btn">立即支付</router-link>
+                <router-link to="/pay-result" class="order-btn">立即支付</router-link>
             </div>
         </div>
         <right-side></right-side>

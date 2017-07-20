@@ -380,7 +380,9 @@
 <template>
     <div class="product-details">
         <div class="basic-intro container clearfix">
-            <div class="miaobaoxie"><router-link to="/slide">首页  >  xx旗舰店 > 尿不湿</router-link></div>
+            <div class="miaobaoxie">
+                <router-link to="/slide">首页  >  xx旗舰店 > 尿不湿</router-link>
+            </div>
             <div class="product-img">
                 <swiper :options="bigOption" ref="mySwiperA">
                     <swiper-slide v-for="(item, index) in banner.bigs" :key="index">
@@ -478,7 +480,7 @@
         </div>
         <!--推荐购买-->
         <ul class="combination-buy container">
-            <router-link to="/" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
+            <router-link :to="{ path: 'product-details' }" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
                 <a href="javascript:void (0)">
                     <img :src="product.img"/>
                 </a>
@@ -507,7 +509,7 @@
                          <img :src="img" alt="">
                      </div>
                     <p class="name">xxx旗舰店</p>
-                    <router-link to="/" class="shop">关注店铺</router-link>
+                    <a class="shop">关注店铺</a>
                 </div>
                 <div class="see-again-box talked">
                     <h4>店铺客服</h4>
@@ -538,7 +540,7 @@
                 <div class="see-again-box">
                     <h4>看了又看</h4>
                     <ul>
-                        <router-link tag="li" to="/" v-for="(item, index) in seeAgain_products" :key="index">
+                        <router-link tag="li" to="/product-details" v-for="(item, index) in seeAgain_products" :key="index">
                             <a href="javascript:void (0)">
                                 <img :src="item.img"/>
                             </a>

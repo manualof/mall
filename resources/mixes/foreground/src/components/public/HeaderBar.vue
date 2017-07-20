@@ -3,14 +3,14 @@
         <div class="container">
             <div class="header-welcome ">
                 西部母婴欢迎您!
-                <router-link :to="{ name: 'signin' }"  target="_blank" class="login">登录</router-link>
+                <router-link to="/signin" class="login">登录</router-link>
                 <span>|</span>
-                <router-link :to="{ name: 'signup' }" class="register">注册</router-link>
+                <router-link to="/signup" class="register">注册</router-link>
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
                     <li v-for="item in navigation" :class="{ 'active': $route.path === item.to }">
-                        <a :href="item.to" target="_blank">{{ item.text }}</a>
+                        <router-link :to="item.to" target="_blank">{{ item.text }}</router-link>
                         <span>|</span>
                     </li>
                 </ul>
@@ -22,23 +22,22 @@
 <script>
     export default {
         data() {
-            const link = window.userLink;
             return {
                 navigation: [
                     {
-                        to: `${link}personnal-center/all-order`,
+                        to: '/all-order',
                         text: '我的订单',
                     },
                     {
-                        to: `${link}personnal-center/`,
+                        to: 'personnal-center',
                         text: '个人中心',
                     },
                     {
-                        to: `${link}customer-serve`,
+                        to: 'customer-serve',
                         text: '客户服务',
                     },
                     {
-                        to: '#/businessmen',
+                        to: 'businessmen',
                         text: '商家入驻',
                     },
                 ],

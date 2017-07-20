@@ -86,7 +86,7 @@
                                 <span>{{ take.name }}</span>
                                 <span>{{ take.phone }}</span>
                                 <span class="address-detail">{{ take.address }}</span>
-                                <router-link to="/" class="self-take pull-right">修改自提信息</router-link>
+                                <a class="self-take pull-right">修改自提信息</a>
                             </p>
                         </div>
                     </label>
@@ -232,7 +232,7 @@
                         <span class="order-price price">&yen;{{ total_price}}</span>
                         <span class="name">金额(不含运费)：</span>
                     </div>
-                    <router-link :to="{ name: 'order-success' }" class="order-btn submit-btn">提交订单</router-link>
+                    <router-link :to="{ path: 'order-success' }" class="order-btn submit-btn">提交订单</router-link>
                 </div>
             </div>
         </div>
