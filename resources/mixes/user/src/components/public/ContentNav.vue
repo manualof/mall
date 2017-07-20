@@ -23,7 +23,7 @@
         },
         data() {
             return {
-                link: window.link,
+                link: window.foregroundLink,
                 navigation: [
                     {
                         to: 'home',
