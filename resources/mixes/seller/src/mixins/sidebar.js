@@ -65,6 +65,24 @@ export default function (injection) {
         {
             children: [
                 {
+                    path: '/seller/sales/spikes',
+                    title: '限时秒杀',
+                },
+                {
+                    path: '/seller/sales/active',
+                    title: '预售活动',
+                },
+                {
+                    path: '/seller/sales/fulldown',
+                    title: '满减活动',
+                },
+            ],
+            icon: 'speakerphone',
+            title: '促销',
+        },
+        {
+            children: [
+                {
                     path: '/seller/shop',
                     title: '店铺设置',
                 },

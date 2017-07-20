@@ -52,17 +52,18 @@
                         key: 'action',
                         render(h, data) {
                             return h('div', [
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.look(data.index);
-                                        },
-                                    },
+                                h('router-link', {
                                     props: {
-                                        size: 'small',
-                                        type: 'ghost',
+                                        to: '/mall/sales/spikes/edit',
                                     },
-                                }, '编辑'),
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '编辑'),
+                                ]),
                                 h('i-button', {
                                     on: {
                                         click() {
@@ -297,7 +298,7 @@
                         value: '1',
                     },
                     {
-                        label: '商品ID',
+                        label: 'spu',
                         value: '2',
                     },
                 ],
@@ -376,7 +377,7 @@
                         </div>
                         <div class="spikes-content">
                             <div class="goods-body-header">
-                                <router-link to="/mall/sales/spikes/add" class="first-btn">
+                                <router-link to="/mall/sales/spikes/create" class="first-btn">
                                     <i-button type="ghost">+添加秒杀活动</i-button>
                                 </router-link>
                                 <router-link to="/mall/sales/spikes/time">

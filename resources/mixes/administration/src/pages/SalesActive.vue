@@ -52,6 +52,27 @@
                     },
                     {
                         align: 'center',
+                        key: 'status',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '推荐',
+                    },
+                    {
+                        align: 'center',
                         key: 'action',
                         render(h, data) {
                             return h('div', [
@@ -93,6 +114,7 @@
                         price: '5463.00',
                         shopName: '店铺名称',
                         sku: 133,
+                        status: true,
                         time: '1235-32-3',
                     },
                     {
@@ -101,6 +123,7 @@
                         price: '5463.00',
                         shopName: '店铺名称',
                         sku: 133,
+                        status: true,
                         time: '1235-32-3',
                     },
                     {
@@ -109,6 +132,7 @@
                         price: '5463.00',
                         shopName: '店铺名称',
                         sku: 133,
+                        status: true,
                         time: '1235-32-3',
                     },
                     {
@@ -117,6 +141,16 @@
                         price: '5463.00',
                         shopName: '店铺名称',
                         sku: 133,
+                        status: true,
+                        time: '1235-32-3',
+                    },
+                    {
+                        id: 5424367,
+                        name: 'SONY索尼SFGHGKHJKH平板电脑 16G 官方标配',
+                        price: '5463.00',
+                        shopName: '店铺名称',
+                        sku: 133,
+                        status: true,
                         time: '1235-32-3',
                     },
                 ],
@@ -126,8 +160,16 @@
                         value: '1',
                     },
                     {
-                        label: '商品ID',
+                        label: '商品SKU',
                         value: '2',
+                    },
+                    {
+                        label: '店铺名称',
+                        value: '3',
+                    },
+                    {
+                        label: '店铺ID',
+                        value: '4',
                     },
                 ],
             };
@@ -152,6 +194,7 @@
                             <p>提示</p>
                             <p>商家发布的预售商品列表</p>
                             <p>可进行添加,编辑,修改,删除等操作,查看预售活动订单</p>
+                            <p>推荐商品默认在商城显示前五件，其余在商城首页不显示</p>
                         </div>
                         <div class="goods-body-header">
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>

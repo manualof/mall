@@ -258,7 +258,7 @@
                             self.$notice.open({
                                 title: '编辑商品库信息成功！',
                             });
-                            self.$router.push('/mall/goods/library');
+                            self.$router.push('/mall/goods/public');
                         }).catch(() => {
                             self.loading = false;
                             self.$notice.error({

@@ -78,11 +78,14 @@ import StoreCategorySet from '../pages/StoreCategorySet.vue';
 import StoreCategoryCreate from '../pages/StoreCategoryCreate.vue';
 import StoreDynamics from '../pages/StoreDynamics.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
+import SalesIntegral from '../pages/SalesIntegral.vue';
 import SalesActive from '../pages/SalesActive.vue';
-import StoreLevel from '../pages/StoreGrade.vue';
+import StoreGrade from '../pages/StoreGrade.vue';
 import StoreLevelCreate from '../pages/StoreGradeCreate.vue';
 import StoreLevelEdit from '../pages/StoreGradeEdit.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
+import SalesSpikesEdit from '../pages/SalesSpikesEdit.vue';
+import SalesSpikesCreate from '../pages/SalesSpikesCreate.vue';
 import SalesSpikesTime from '../pages/SalesSpikesTime.vue';
 import SalesSpikesTimeEdit from '../pages/SalesSpikesTimeEdit.vue';
 import SalesSpikesTimeCreate from '../pages/SalesSpikesTimeCreate.vue';
@@ -174,17 +177,17 @@ export default function (injection) {
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductLibrary,
-                    path: 'goods/library',
+                    path: 'goods/public',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductLibraryCreate,
-                    path: 'goods/library/add',
+                    path: 'goods/public/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductLibraryEdit,
-                    path: 'goods/library/edit/:id',
+                    path: 'goods/public/edit/:id',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -483,13 +486,13 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreLevel,
+                    component: StoreGrade,
                     path: 'store/level',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StoreLevelCreate,
-                    path: 'store/level/add',
+                    path: 'store/level/create',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -500,6 +503,16 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: SalesSpikes,
                     path: 'sales/spikes',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesEdit,
+                    path: 'sales/spikes/edit',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesCreate,
+                    path: 'sales/spikes/create',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -525,6 +538,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: SalesFullDown,
                     path: 'sales/fulldown',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesIntegral,
+                    path: 'sales/integral',
                 },
             ],
             component: Layout,

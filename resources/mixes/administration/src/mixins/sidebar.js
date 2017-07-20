@@ -7,7 +7,7 @@ export default function (injection) {
                     title: '商品管理',
                 },
                 {
-                    path: '/mall/goods/library',
+                    path: '/mall/goods/public',
                     title: '商品库管理',
                 },
                 {
@@ -135,6 +135,10 @@ export default function (injection) {
                 {
                     path: '/mall/sales/fulldown',
                     title: '满减活动',
+                },
+                {
+                    path: '/mall/sales/integral',
+                    title: '积分',
                 },
             ],
             icon: 'speakerphone',

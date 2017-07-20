@@ -3,6 +3,7 @@ import Dashboard from '../pages/Dashboard.vue';
 import Home from '../pages/Home.vue';
 import Goods from '../pages/Goods.vue';
 import GoodsAdd from '../pages/GoodsAdd.vue';
+import GoodsClaim from '../pages/GoodsClaim.vue';
 import GoodsEdit from '../pages/GoodsEdit.vue';
 import GoodsEditCategory from '../pages/GoodsEditCategory.vue';
 import GoodsNotice from '../pages/GoodsNotice.vue';
@@ -43,6 +44,7 @@ import OrderWaybillAdd from '../pages/OrderWaybillAdd.vue';
 import OrderWaybillDesign from '../pages/OrderWaybillDesign.vue';
 import OrderWaybillEdit from '../pages/OrderWaybillEdit.vue';
 import OrderEvaluation from '../pages/OrderEvaluation.vue';
+import SalesSpikes from '../pages/SalesSpikes.vue';
 import Customer from '../pages/Customer.vue';
 import CustomerMessage from '../pages/CustomerMessage.vue';
 import Account from '../pages/Account.vue';
@@ -77,6 +79,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: GoodsAdd,
                     path: 'goods/add',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsClaim,
+                    path: 'goods/claim',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -277,6 +284,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: OrderEvaluation,
                     path: 'order/evaluation',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikes,
+                    path: 'sales/spikes',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

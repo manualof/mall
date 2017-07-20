@@ -1,0 +1,39 @@
+.spike {
+    .time-list {
+
+        .spike-time {
+            border-right: 2px solid #f7f7f7;
+            width: 20%;
+            &:last-child {
+                border: 0;
+            }
+            i {
+                font-size: 14px;
+                &.end {
+                    border: 1px solid #999999;
+                    border-radius: 12px;
+                    color: #999999;
+                    display: inline-block;
+                    height: 24px;
+                    width: 72px;
+                }
+                &.now {
+                    color: #de2634;
+                }
+            }
+            &.active {
+                color: #de2634;
+                font-size: 24px;
+                position: relative;
+                &:after {
+                    background: #de2634;
+                    bottom: 0;
+                    height: 2px;
+                    left: 0;
+                    position: absolute;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
