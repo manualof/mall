@@ -18,6 +18,7 @@
                         saled: 25,
                         price: 32.99,
                         oldPrice: 46.88,
+                        sold: '15%',
                     },
                 ],
                 times: [
@@ -65,9 +66,16 @@
             <ul class="spike-list">
                 <li>
                     <router-link to="/mall/search/product-details" v-for="(product,index) in productList" :key="index">
-                        <img :src="product.img"/>
-                        <p>{{ product.title }}</p>
-
+                        <div class="img">
+                            <img :src="product.img"/>
+                        </div>
+                        <p class="title">{{ product.title }}</p>
+                        <div class="clearfix progress-line">
+                            <span class="pull-left">已售{{ product.sold }}</span>
+                            <div class="progress-box pull-left">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
                     </router-link>
                 </li>
             </ul>
