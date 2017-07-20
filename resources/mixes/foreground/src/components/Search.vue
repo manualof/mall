@@ -61,7 +61,7 @@
         </div>
         <div class="search-list container">
             <div class="product" v-for="product in data.productList">
-                <router-link to="/product-details">
+                <router-link to="/mall/search/product-details">
                     <img :src="product.img"/>
                     <p>
                         <em>

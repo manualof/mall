@@ -6,7 +6,7 @@
                     }} <span>{{ browse.intro }}</span></div>
             </div>
             <div class="browse-content">
-                <router-link to="/product-details">
+                <router-link to="/mall/product-details">
                     <dl class="col col-line" v-for="item in browse.commendList">
                         <dt><img :src="item.img"></dt>
                         <dd>

@@ -24,19 +24,19 @@
             return {
                 navigation: [
                     {
-                        to: 'home',
+                        to: '/mall',
                         text: '首页',
                     },
                     {
-                        to: 'offer',
+                        to: '/mall/offer',
                         text: '优惠',
                     },
                     {
-                        to: 'spike',
+                        to: '/mall/spike',
                         text: '秒杀',
                     },
                     {
-                        to: 'discount',
+                        to: '/mall/discount',
                         text: '折扣',
                     },
                 ],

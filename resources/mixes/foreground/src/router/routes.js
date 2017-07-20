@@ -40,16 +40,6 @@ import ReturnOfGoods from '../components/ReturnOfGoods';
 
 export default [
     {
-        path: '/signup',
-        component: SignUp,
-        name: 'signup',
-    },
-    {
-        path: '/signin',
-        component: SignIn,
-        name: 'signin',
-    },
-    {
         path: '/mall',
         component: Layout,
         children: [
@@ -59,77 +49,87 @@ export default [
                 component: Home,
             },
             {
-                path: 'order',
+                path: '/mall/signup',
+                component: SignUp,
+                name: 'signup',
+            },
+            {
+                path: '/mall/signin',
+                component: SignIn,
+                name: 'signin',
+            },
+            {
+                path: '/mall/order',
                 name: 'order',
                 component: MyOrder,
             },
             {
-                path: 'scan-pay',
+                path: '/mall/scan-pay',
                 name: 'scan-pay',
                 component: ScanPay,
             },
             {
-                path: 'customer-serve',
+                path: '/mall/customer-serve',
                 name: 'customer-serve',
                 component: CustomerServe,
             },
             {
-                path: 'more',
+                path: '/mall/more',
                 name: 'more',
                 component: More,
             },
             {
-                path: 'offer',
+                path: '/mall/offer',
                 name: 'offer',
                 component: Offer,
             },
             {
-                path: 'discount',
+                path: '/mall/discount',
                 name: 'discount',
                 component: Discount,
             },
             {
-                path: 'spike',
+                path: '/mall/spike',
                 name: 'spike',
                 component: Spike,
             },
             {
-                path: 'refund',
+                path: '/mall/refund',
                 name: 'refund',
                 component: Refund,
             },
             {
-                path: 'return-of-goods',
+                path: '/mall/return-of-goods',
                 name: 'return-of-goods',
                 component: ReturnOfGoods,
             },
             {
-                path: 'classification',
+                path: '/mall/classification',
                 name: 'classification',
                 component: Classification,
             },
             {
-                path: 'search',
+                path: '/mall/search',
                 name: 'search',
                 component: Search,
             },
             {
-                path: 'product-details',
+                path: '/mall/search/product-details',
                 name: 'product-details',
                 component: ProductDetails,
             },
             {
-                path: 'submit-order',
+                path: '/mall/search/product-details/submit-order',
                 name: 'submit-order',
                 component: SubmitOrder,
             },
             {
-                path: 'cart-settlement',
+                path: '/mall/cart-settlement',
                 name: 'cart-settlement',
                 component: CartSettlement,
             },
             {
-                path: 'evaluation',
+                path: '/mall/evaluation',
                 name: 'evaluation',
                 component: Evaluation,
             },
@@ -139,82 +139,82 @@ export default [
                 redirect: { name: 'shop-process' },
                 children: [
                     {
-                        path: 'shop-process',
+                        path: '/mall/shop-process',
                         name: 'shop-process',
                         component: ShopProcess,
                     },
                     {
-                        path: 'pay-method',
+                        path: '/mall/shop-process/pay-method',
                         name: 'pay-method',
                         component: PayMethod,
                     },
                     {
-                        path: 'common-problem',
+                        path: '/mall/shop-process/common-problem',
                         name: 'common-problem',
                         component: CommonProblem,
                     },
                     {
-                        path: 'return-process',
+                        path: '/mall/shop-process/return-process',
                         name: 'return-process',
                         component: ReturnProcess,
                     },
                     {
-                        path: 'return-money',
+                        path: '/mall/shop-process/return-money',
                         name: 'return-money',
                         component: ReturnMoney,
                     },
                     {
-                        path: 'contact-service',
+                        path: '/mall/shop-process/contact-service',
                         name: 'contact-service',
                         component: ContactService,
                     },
                     {
-                        path: 'delivery-method',
+                        path: '/mall/shop-process/delivery-method',
                         name: 'delivery-method',
                         component: DeliveryMethod,
                     },
                     {
-                        path: 'delivery-sevice',
+                        path: '/mall/shop-process/delivery-sevice',
                         name: 'delivery-sevice',
                         component: DeliverySevice,
                     },
                     {
-                        path: 'delivery-track',
+                        path: '/mall/shop-process/delivery-track',
                         name: 'delivery-track',
                         component: DeliveryTrack,
                     },
                     {
-                        path: 'about-us',
+                        path: '/mall/shop-process/about-us',
                         name: 'about-us',
                         component: AboutUs,
                     },
                     {
-                        path: 'contact-us',
+                        path: '/mall/shop-process/contact-us',
                         name: 'contact-us',
                         component: ContactUs,
                     },
                     {
-                        path: 'cooperation',
+                        path: '/mall/shop-process/cooperation',
                         name: 'cooperation',
                         component: Cooperation,
                     },
                 ],
             },
+            {
+                path: '/mall/order-success',
+                name: 'order-success',
+                component: OrderSuccess,
+            },
+            {
+                path: '/mall/pay-result',
+                name: 'pay-result',
+                component: PayResult,
+            },
+            {
+                path: '/mall/payment-success',
+                name: 'payment-success',
+                component: PaymentSuccess,
+            },
         ],
-    },
-    {
-        path: '/order-success',
-        name: 'order-success',
-        component: OrderSuccess,
-    },
-    {
-        path: '/pay-result',
-        name: 'pay-result',
-        component: PayResult,
-    },
-    {
-        path: '/payment-success',
-        name: 'payment-success',
-        component: PaymentSuccess,
     },
 ];

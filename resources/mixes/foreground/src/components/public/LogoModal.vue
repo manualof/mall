@@ -32,11 +32,11 @@
                 <div class="searchInput clearfix">
                     <input type="text" class="form-control" placeholder="洗衣机、电冰箱、洗碗机" aria-describedby="basic-addon2">
                     <span class="input-group-addon" id="basic-addon2">
-                        <router-link to="/search" target="_blank">搜索</router-link>
+                        <router-link to="/mall/search">搜索</router-link>
                     </span>
                 </div>
                 <p>
-                    <router-link :to="{path: 'search'}"
+                    <router-link :to="{path: '/mall/search'}"
                                  :key="index"
                                 v-for="(item,index) in hotSearch"
                     >
