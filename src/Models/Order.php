@@ -40,17 +40,25 @@ class Order extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function address()
+    {
+        return $this->belongsTo(UserAddress::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(Member::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function address()
+    public function products()
     {
-        return $this->belongsTo(UserAddress::class);
+        return $this->hasMany(OrderProduct::class);
     }
 
     /**

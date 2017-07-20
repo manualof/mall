@@ -18,10 +18,32 @@ class OrderProduct extends Model
     /**
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'discount',
+        'order_id',
+        'price',
+        'price_original',
+        'product_id',
+    ];
 
     /**
      * @var string
      */
     protected $table = 'mall_order_products';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
