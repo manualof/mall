@@ -10,7 +10,7 @@
         data() {
             return {
                 form: {
-                    enabled: true,
+                    enabled: '是',
                 },
                 loading: false,
             };

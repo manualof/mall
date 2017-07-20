@@ -3,6 +3,7 @@ import Dashboard from '../pages/Dashboard.vue';
 import Home from '../pages/Home.vue';
 import Goods from '../pages/Goods.vue';
 import GoodsAdd from '../pages/GoodsAdd.vue';
+import GoodsClaim from '../pages/GoodsClaim.vue';
 import GoodsEdit from '../pages/GoodsEdit.vue';
 import GoodsEditCategory from '../pages/GoodsEditCategory.vue';
 import GoodsNotice from '../pages/GoodsNotice.vue';
@@ -77,6 +78,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: GoodsAdd,
                     path: 'goods/add',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsClaim,
+                    path: 'goods/claim',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
