@@ -60,19 +60,19 @@ class Product extends Model
     protected $table = 'mall_products';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function brand()
     {
-        return $this->hasOne(ProductBrand::class, 'id', 'brand_id');
+        return $this->belongsTo(ProductBrand::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
     {
-        return $this->hasOne(ProductCategory::class, 'id', 'category_id');
+        return $this->belongsTo(ProductCategory::class);
     }
 
     /**

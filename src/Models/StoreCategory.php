@@ -46,11 +46,11 @@ class StoreCategory extends Model
     protected $table = 'mall_store_categories';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function parent()
     {
-        return $this->hasOne(StoreCategory::class, 'id', 'parent_id');
+        return $this->belongsTo(StoreCategory::class, 'parent_id');
     }
 
     /**

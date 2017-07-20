@@ -52,19 +52,19 @@ class Store extends Model
     protected $table = 'mall_stores';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
     {
-        return $this->hasOne(StoreCategory::class, 'id', 'category_id');
+        return $this->belongsTo(StoreCategory::class, 'category_id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function information()
     {
-        return $this->hasOne(StoreInformation::class);
+        return $this->belongsTo(StoreInformation::class);
     }
 
     /**

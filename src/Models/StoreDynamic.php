@@ -54,11 +54,11 @@ class StoreDynamic extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->hasOne(Member::class, 'id', 'user_id');
+        return $this->belongsTo(Member::class, 'user_id');
     }
 
     /**
