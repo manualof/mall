@@ -1,9 +1,21 @@
 <script>
+    import phone from '../assets/images/phone.png';
+
     export default {
         data() {
             return {
                 active: 1,
                 now: 0,
+                productList: [
+                    {
+                        img: phone,
+                        title: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        num: 100,
+                        saled: 25,
+                        price: 32.99,
+                        oldPrice: 46.88,
+                    },
+                ],
                 times: [
                     {
                         time: '08:00',
@@ -46,7 +58,11 @@
             </ul>
             <ul class="spike-list">
                 <li>
+                    <router-link to="/" v-for="(product,index) in productList" :key="index">
+                        <img :src="product.img"/>
+                        <p>{{ product.title }}</p>
 
+                    </router-link>
                 </li>
             </ul>
         </div>

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="header-welcome ">
                 西部母婴欢迎您!
-                <router-link :to="{ name: 'signin' }" class="login">登录</router-link>
+                <router-link :to="{ name: 'signin' }"  target="_blank" class="login">登录</router-link>
                 <span>|</span>
                 <router-link :to="{ name: 'signup' }" class="register">注册</router-link>
             </div>
