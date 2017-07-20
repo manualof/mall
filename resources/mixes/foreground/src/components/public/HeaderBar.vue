@@ -29,7 +29,7 @@
                         text: '我的订单',
                     },
                     {
-                        to: 'personnal-center',
+                        to: '/personnal-center',
                         text: '个人中心',
                     },
                     {

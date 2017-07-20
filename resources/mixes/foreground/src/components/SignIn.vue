@@ -11,7 +11,7 @@
             <div class="signin-content">
                 <div class="signup-title clearfix">
                     <span>密码登录</span>
-                    <router-link to="/signup">没有账号？立即注册</router-link>
+                    <router-link to="/mall/signup">没有账号？立即注册</router-link>
                 </div>
                 <form class="signup-form">
                     <div class="signup-form-group form-icon">

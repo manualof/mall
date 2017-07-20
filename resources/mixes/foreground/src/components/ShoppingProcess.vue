@@ -39,15 +39,15 @@
                         children: [
                             {
                                 name: '购物流程',
-                                router: '/shop-process',
+                                router: '/mall/shop-process',
                             },
                             {
                                 name: '支付方式',
-                                router: '/pay-method',
+                                router: '/mall/shop-process/pay-method',
                             },
                             {
                                 name: '常见问题',
-                                router: '/common-problem',
+                                router: '/mall/shop-process/common-problem',
                             },
                         ],
                         show: true,
@@ -57,15 +57,15 @@
                         children: [
                             {
                                 name: '退货流程',
-                                router: '/return-process',
+                                router: '/mall/shop-process/return-process',
                             },
                             {
                                 name: '退款说明',
-                                router: '/return-money',
+                                router: '/mall/shop-process/return-money',
                             },
                             {
                                 name: '联系客服',
-                                router: '/contact-service',
+                                router: '/mall/shop-process/contact-service',
                             },
                         ],
                         show: false,
@@ -75,15 +75,15 @@
                         children: [
                             {
                                 name: '配送方式',
-                                router: '/delivery-method',
+                                router: '/mall/shop-process/delivery-method',
                             },
                             {
                                 name: '配送服务',
-                                router: '/delivery-sevice',
+                                router: '/mall/shop-process/delivery-sevice',
                             },
                             {
                                 name: '物流跟踪',
-                                router: '/delivery-track',
+                                router: '/mall/shop-process/delivery-track',
                             },
                         ],
                         show: false,
@@ -93,15 +93,15 @@
                         children: [
                             {
                                 name: '关于我们',
-                                router: '/about-us',
+                                router: '/mall/shop-process/about-us',
                             },
                             {
                                 name: '联系我们',
-                                router: '/contact-us',
+                                router: '/mall/shop-process/contact-us',
                             },
                             {
                                 name: '招商合作',
-                                router: '/cooperation',
+                                router: '/mall/shop-process/cooperation',
                             },
                         ],
                         show: false,

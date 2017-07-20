@@ -232,7 +232,7 @@
                         <span class="order-price price">&yen;{{ total_price}}</span>
                         <span class="name">金额(不含运费)：</span>
                     </div>
-                    <router-link :to="{ path: 'order-success' }" class="order-btn submit-btn">提交订单</router-link>
+                    <router-link to="/mall/order-success" class="order-btn submit-btn">提交订单</router-link>
                 </div>
             </div>
         </div>

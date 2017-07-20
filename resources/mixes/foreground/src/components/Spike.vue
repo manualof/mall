@@ -64,7 +64,7 @@
             </Affix>
             <ul class="spike-list">
                 <li>
-                    <router-link to="/" v-for="(product,index) in productList" :key="index">
+                    <router-link to="/mall/search/product-details" v-for="(product,index) in productList" :key="index">
                         <img :src="product.img"/>
                         <p>{{ product.title }}</p>
 
