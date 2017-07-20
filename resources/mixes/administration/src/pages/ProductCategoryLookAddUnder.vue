@@ -1,4 +1,4 @@
-<script>
+/home/wwwroot/tianjing/modules/mall/resources/mixes/administration<script>
     import injection from '../helpers/injection';
 
     export default {
