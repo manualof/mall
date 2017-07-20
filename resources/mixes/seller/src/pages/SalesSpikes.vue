@@ -32,7 +32,7 @@
                             return h('div', [
                                 h('router-link', {
                                     props: {
-                                        to: '/seller/sales/spikes/edit',
+                                        to: '/seller/sales/spikes/manage',
                                     },
                                 }, [
                                     h('i-button', {
