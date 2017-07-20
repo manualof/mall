@@ -2,35 +2,34 @@
 /**
  * This file is part of Notadd.
  *
- * @author TwilRoad <heshudong@ibenchu.com>
+ * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-05-09 15:45
+ * @datetime 2017-07-20 14:25
  */
 namespace Notadd\Mall\Models;
 
 use Notadd\Foundation\Database\Model;
-use Notadd\Foundation\Member\Member;
 
 /**
- * Class OrderInvoice.
+ * Class OrderProduct.
  */
-class OrderInvoice extends Model
+class OrderProduct extends Model
 {
     /**
      * @var array
      */
     protected $fillable = [
-        'content',
+        'discount',
         'order_id',
-        'title',
-        'type',
-        'user_id',
+        'price',
+        'price_original',
+        'product_id',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_order_invoices';
+    protected $table = 'mall_order_products';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -43,8 +42,8 @@ class OrderInvoice extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function product()
     {
-        return $this->belongsTo(Member::class, 'user_id');
+        return $this->belongsTo(Product::class);
     }
 }

@@ -36,7 +36,7 @@ class EditHandler extends Handler
             'logo'        => Rule::required(),
             'name'        => Rule::required(),
             'order'       => Rule::numeric(),
-            'recommend'   => Rule::numeric(),
+            'recommend'   => Rule::boolean(),
             'show'        => [
                 Rule::in([
                     'image',
@@ -46,7 +46,6 @@ class EditHandler extends Handler
             ],
             'store_id'    => [
                 Rule::numeric(),
-                Rule::required(),
             ],
         ], [
             'category_id.numeric'  => '分类 ID 必须为数值',
@@ -56,16 +55,16 @@ class EditHandler extends Handler
             'logo.required'        => '品牌 Logo 必须填写',
             'name.required'        => '品牌名称必须填写',
             'order.numeric'        => '排列顺序必须为数值',
-            'recommend.numeric'    => '是否推荐为数值',
+            'recommend.numeric'    => '是否推荐为布尔值',
             'show.in'              => '显示方式值超越限制',
             'show.required'        => '显示方式必须填写',
             'store_id.numeric'     => '店铺 ID 必须为数值',
-            'store_id.required'    => '店铺 ID 必须填写',
         ]);
         $this->beginTransaction();
         $brand = ProductBrand::query()->find($this->request->input('id'));
         $data = $this->request->only([
             'category_id',
+            'initial',
             'logo',
             'name',
             'order',

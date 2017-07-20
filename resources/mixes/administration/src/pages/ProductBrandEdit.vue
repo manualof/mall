@@ -10,6 +10,7 @@
                 window.console.log(response);
                 next(vm => {
                     vm.form = response.data.data;
+                    vm.form.recommend = vm.form.recommend === 1;
                     injection.loading.finish();
                     injection.sidebar.active('mall');
                 });
@@ -18,17 +19,6 @@
             });
         },
         data() {
-//            const validateSort = (rule, value, callback) => {
-//                if (!Number.isInteger(value)) {
-//                    callback(new Error('请输入数字值'));
-//                } else if (Number.isInteger(value)) {
-//                    if (value > 255) {
-//                        callback(new Error('请输入排序范围内的数字'));
-//                    } else {
-//                        callback();
-//                    }
-//                }
-//            };
             return {
                 action: `${window.api}/mall/admin/upload`,
                 form: {
@@ -38,32 +28,30 @@
                     name: '',
                     recommend: true,
                     show: 'image',
-                    sort: '',
+                    order: '',
                 },
-                initials: [
-                    {
-                        label: 'A',
-                        value: '1',
-                    },
-                    {
-                        label: 'B',
-                        value: '2',
-                    },
-                ],
+                initials: [],
                 addType: false,
                 defaultList: [],
                 loading: false,
                 rules: {
-                    name: [
+                    initial: [
                         {
-                            message: '名称不能为空',
+                            message: '名称首字母不能为空',
                             required: true,
                             trigger: 'blur',
                         },
                     ],
-                    initial: [
+                    logo: [
                         {
-                            message: '名称首字母不能为空',
+                            message: '必须上传商品品牌 Logo',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '名称不能为空',
                             required: true,
                             trigger: 'blur',
                         },
@@ -299,6 +287,18 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
+                        self.$http.post(`${window.api}/mall/admin/product/brand/edit`, self.form).then(() => {
+                            self.$notice.open({
+                                title: '编辑商品品牌信息成功！',
+                            });
+                            self.$router.push('/mall/goods/brand');
+                        }).catch(() => {
+                            self.$notice.error({
+                                title: '编辑商品品牌信息失败！',
+                            });
+                        }).finally(() => {
+                            self.loading = false;
+                        });
                         window.console.log(valid);
                     } else {
                         self.loading = false;
@@ -340,15 +340,15 @@
                 });
                 self.form.logo = data.data.path;
             },
-//            validatorSort() {
-//                const self = this;
-//                const reg1 = /^\d$/;
-//                if (!reg1.test(self.form.sort)) {
-//                    self.$notice.error({
-//                        title: '排序必须为数字！',
-//                    });
-//                }
-//            },
+        },
+        mounted() {
+            const self = this;
+            for (let i = 0; i < 25; i += 1) {
+                self.initials.push({
+                    label: String.fromCharCode((65 + i)),
+                    value: String.fromCharCode((65 + i)),
+                });
+            }
         },
     };
 </script>
@@ -374,7 +374,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="名称首字母" prop="initial">
-                                    <i-select :placeholder="form.initial">
+                                    <i-select :placeholder="form.initial" v-model="form.initial">
                                         <i-option v-for="item in initials" :value="item.value"
                                                   :key="item">{{ item.label }}</i-option>
                                     </i-select>
@@ -406,7 +406,7 @@
                         </row>
                         <row>
                             <i-col span="20">
-                                <form-item label="品牌LOGO" prop="logo">
+                                <form-item label="商品品牌 Logo" prop="logo">
                                     <div class="image-preview" v-if="form.logo">
                                         <img :src="form.logo">
                                         <icon type="close" @click.native="removeLogo"></icon>
@@ -425,7 +425,7 @@
                                             :show-upload-list="false"
                                             v-if="form.logo === '' || form.logo === null">
                                     </upload>
-                                    <p class="tip">品牌LOGO尺寸要求宽度为150像素，高度为50像素，比例为3:1的图片；
+                                    <p class="tip">品牌 Logo 尺寸要求宽度为 150 像素，高度为 50 像素，比例为 3:1 的图片；
                                         支持格式gif、jpg、png</p>
                                 </form-item>
                             </i-col>
@@ -434,8 +434,12 @@
                             <i-col span="20">
                                 <form-item label="展示方式">
                                     <radio-group v-model="form.show">
-                                        <radio label="图片"></radio>
-                                        <radio label="文字"></radio>
+                                        <radio label="image">
+                                            <span>图片</span>
+                                        </radio>
+                                        <radio label="text">
+                                            <span>文字</span>
+                                        </radio>
                                     </radio-group>
                                     <p class="tip">在"全部品牌"页面的展示方式，如果设置为"图片"则显示该品牌的"品牌图片标识"，
                                         如果设置为"文字"则显示该品牌的“品牌名”</p>
@@ -455,8 +459,8 @@
                         </row>
                         <row>
                             <i-col span="12">
-                                <form-item label="排序" prop="sort">
-                                    <i-input v-model="form.sort"></i-input>
+                                <form-item label="排序" prop="order">
+                                    <i-input v-model="form.order"></i-input>
                                     <p class="tip">
                                         数字范围为0~255，数字越小越靠前
                                     </p>

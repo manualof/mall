@@ -45,19 +45,19 @@ class OrderRefund extends Model
     protected $table = 'mall_order_refunds';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function order()
     {
-        return $this->hasOne(Order::class, 'id', 'order_id');
+        return $this->belongsTo(Order::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->hasOne(Member::class, 'id', 'user_id');
+        return $this->belongsTo(Member::class, 'user_id');
     }
 
     /**
