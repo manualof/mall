@@ -26,12 +26,9 @@ class Order extends Model
      */
     protected $fillable = [
         'address_id',
-        'description',
-        'end_date',
         'flow_marketing',
-        'shop_id',
         'status',
-        'type',
+        'store_id',
         'user_id',
     ];
 
@@ -41,27 +38,27 @@ class Order extends Model
     protected $table = 'mall_orders';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->hasOne(Member::class, 'id', 'user_id');
+        return $this->belongsTo(Member::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function address()
     {
-        return $this->hasOne(Address::class, 'id', 'address_id');
+        return $this->belongsTo(UserAddress::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function shop()
+    public function store()
     {
-        return $this->hasOne(Store::class, 'id', 'shop_id');
+        return $this->belongsTo(Store::class);
     }
 
     /**

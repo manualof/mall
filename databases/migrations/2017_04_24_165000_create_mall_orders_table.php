@@ -21,16 +21,10 @@ class CreateMallOrdersTable extends Migration
     {
         $this->schema->create('mall_orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('address_id')->unsigned()->nullable();
-            $table->integer('shop_id')->unsigned()->nullable();
-            $table->enum('status', ['pay', 'express'])->default('pay');
-            $table->enum('type', ['cart', 'wishlist', 'order', 'later', 'freeproduct']);
-            $table->string('description')->nullable();
-            $table->dateTime('end_date')->nullable(); //cancelled or paid
-            $table->integer('rate')->nullable();
-            $table->string('rate_comment')->nullable();
-            $table->boolean('rate_mail_sent')->default(false);
+            $table->integer('address_id')->comment('用户地址 ID');
+            $table->integer('user_id')->comment('用户 ID');
+            $table->integer('store_id')->comment('店铺 ID');
+            $table->enum('status', ['order', 'pay', 'express'])->default('order')->comment('订单状态');
             $table->string('flow_marketing')->nullable();
             $table->timestamps();
             $table->softDeletes();
