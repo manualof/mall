@@ -47,27 +47,30 @@
                             align: 'center',
                             key: 'brandPicture',
                             render(h, data) {
-                                return h('tooltip', {
-                                    props: {
-                                        placement: 'right-end',
-                                    },
-                                    scopedSlots: {
-                                        content() {
-                                            return h('img', {
-                                                domProps: {
-                                                    src: data.row.pic,
-                                                },
-                                            });
+                                if (data.row.pic) {
+                                    return h('tooltip', {
+                                        props: {
+                                            placement: 'right-end',
                                         },
-                                        default() {
-                                            return h('icon', {
-                                                props: {
-                                                    type: 'image',
-                                                },
-                                            });
+                                        scopedSlots: {
+                                            content() {
+                                                return h('img', {
+                                                    domProps: {
+                                                        src: data.row.pic,
+                                                    },
+                                                });
+                                            },
+                                            default() {
+                                                return h('icon', {
+                                                    props: {
+                                                        type: 'image',
+                                                    },
+                                                });
+                                            },
                                         },
-                                    },
-                                });
+                                    });
+                                }
+                                return '';
                             },
                             title: '品牌图片',
                             width: 200,
@@ -124,47 +127,50 @@
                         },
                         {
                             align: 'center',
-                            key: 'initials',
+                            key: 'initial',
                             title: '首字母',
                         },
                         {
                             align: 'center',
                             key: 'brandPicture',
                             render(h, data) {
-                                return h('tooltip', {
-                                    props: {
-                                        placement: 'right-end',
-                                    },
-                                    scopedSlots: {
-                                        content() {
-                                            return h('img', {
-                                                domProps: {
-                                                    src: data.row.pic,
-                                                },
-                                            });
+                                if (data.row.logo) {
+                                    return h('tooltip', {
+                                        props: {
+                                            placement: 'right-end',
                                         },
-                                        default() {
-                                            return h('icon', {
-                                                props: {
-                                                    type: 'image',
-                                                },
-                                            });
+                                        scopedSlots: {
+                                            content() {
+                                                return h('img', {
+                                                    domProps: {
+                                                        src: data.row.logo,
+                                                    },
+                                                });
+                                            },
+                                            default() {
+                                                return h('icon', {
+                                                    props: {
+                                                        type: 'image',
+                                                    },
+                                                });
+                                            },
                                         },
-                                    },
-                                });
+                                    });
+                                }
+                                return '';
                             },
                             title: '品牌图片',
                         },
                         {
                             align: 'center',
-                            key: 'sort',
+                            key: 'order',
                             title: '品牌排序',
                         },
                         {
                             align: 'center',
-                            key: 'isshow',
+                            key: 'recommend',
                             render(h, data) {
-                                if (data.row.status === true) {
+                                if (data.row.recommend === true) {
                                     return h('span', {
                                         class: {
                                             'status-check': true,
@@ -190,7 +196,13 @@
                             title: '是否推荐品牌',
                         },
                         {
-                            key: 'showStyle',
+                            key: 'show',
+                            render(h, data) {
+                                if (data.row.show === 'image') {
+                                    return '图片';
+                                }
+                                return '文字';
+                            },
                             title: '展示形式',
                         },
                         {
