@@ -8,25 +8,25 @@
                 <div class="menu-content">
                     <div class="clearfix menu-box pull-left">
                         <ul class="recommend clearfix">
-                            <li v-for="goods in menu.recommend"><router-link to="/search">{{ goods.name }}</router-link></li>
+                            <li v-for="goods in menu.recommend"><router-link to="/mall/search">{{ goods.name }}</router-link></li>
                         </ul>
                         <div class="content-list" v-for="item in menu.secondMenu">
                             <h5>{{ item.name }}</h5>
                             <ul class="row">
-                                <li v-for="product in item.products"><router-link to="/search">{{ product.product }}</router-link><span>|</span></li>
+                                <li v-for="product in item.products"><router-link to="/mall/search">{{ product.product }}</router-link><span>|</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="advertising pull-left">
                         <ul class="clearfix">
                             <li class="pull-left" v-for="adv in menu.advertising.smallAdv">
-                                <router-link to="/search">
+                                <router-link to="/mall/search">
                                     <img :src="adv.img" alt="">
                                 </router-link>
                             </li>
                         </ul>
                         <div class="bigAdv" v-for="bigAdv in menu.advertising.bigAdvs">
-                            <router-link to="/search">
+                            <router-link to="/mall/search">
                                 <img :src="bigAdv.img" alt="">
                             </router-link>
                         </div>

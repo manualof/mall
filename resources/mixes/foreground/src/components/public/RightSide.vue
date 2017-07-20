@@ -1,17 +1,17 @@
 <template>
     <ul class="right-side" :class="{fixed:show}">
         <li>
-            <router-link class="text-center" to="/personnal-center">
+            <router-link class="text-center" to="/mall/user/personnal-center">
                 <i class="icon iconfont icon-denglu"></i>我的
             </router-link>
         </li>
         <li>
-            <router-link class="text-center" to="/cart-settlement">
+            <router-link class="text-center" to="/mall/cart-settlement">
                 <i class="icon iconfont icon-gouwuche"></i>购物车
             </router-link>
         </li>
         <li>
-            <router-link class="text-center" to="/customer-serve">
+            <router-link class="text-center" to="/mall/customer-serve">
                 <i class="icon iconfont icon-kefu"></i>客服
             </router-link>
         </li>

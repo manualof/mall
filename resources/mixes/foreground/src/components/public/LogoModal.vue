@@ -24,7 +24,7 @@
     <div class="logoModal">
         <div class="container">
             <div class="logo col-md-4 col-xs-4 col-sm-4">
-                <router-link :to="{name:'home'}">
+                <router-link to="/mall">
                     <img src="../../assets/images/logo.png"/>
                 </router-link>
             </div>
@@ -45,7 +45,7 @@
                 </p>
             </div>
             <div class="shopping-car col-md-2 col-xs-2 col-xs-2">
-                <router-link :to="{path: 'cart-settlement'}">
+                <router-link to="/mall/cart-settlement">
                     <i class="icon iconfont icon-gouwuche"></i>
                     购物车
                 </router-link>
