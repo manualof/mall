@@ -20,16 +20,7 @@
                     show: 'image',
                     sort: '',
                 },
-                initials: [
-                    {
-                        label: 'A',
-                        value: '1',
-                    },
-                    {
-                        label: 'B',
-                        value: '2',
-                    },
-                ],
+                initials: [],
                 loading: false,
                 rules: {
                     name: [
@@ -331,6 +322,15 @@
                 });
                 self.form.logo = data.data.path;
             },
+        },
+        mounted() {
+            const self = this;
+            for (let i = 0; i < 25; i += 1) {
+                self.initials.push({
+                    label: String.fromCharCode((65 + i)),
+                    value: String.fromCharCode((65 + i)),
+                });
+            }
         },
     };
 </script>

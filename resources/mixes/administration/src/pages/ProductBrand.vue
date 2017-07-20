@@ -10,6 +10,7 @@
                 next(vm => {
                     vm.list.data = response.data.data.map(item => {
                         item.loading = false;
+                        item.recommend = item.recommend === 1;
                         return item;
                     });
                     vm.pagination = response.data.pagination;
