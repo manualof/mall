@@ -12,6 +12,7 @@
         data() {
             const self = this;
             return {
+                addBtn: true,
                 form: {
                     columns: [
                         {
@@ -54,12 +55,18 @@
                             align: 'center',
                             key: 'price',
                             render(h, data) {
-                                return h('i-input', {
-                                    props: {
-                                        type: 'ghost',
-                                        value: data.row.price,
-                                    },
-                                });
+                                if (self.searchResult) {
+                                    return h('i-input', {
+                                        props: {
+                                            type: 'ghost',
+                                            value: data.row.price,
+                                        },
+                                    });
+                                }
+                                if (!self.searchResult) {
+                                    return h('div', data.row.price);
+                                }
+                                return '';
                             },
                             title: '优惠价格',
                             width: 180,
@@ -86,6 +93,7 @@
                             width: 180,
                         },
                     ],
+                    endTime: '2018-02-22',
                     list: [
                         {
                             image: image1,
@@ -106,7 +114,7 @@
                             price: '388.00',
                         },
                     ],
-                    name: '',
+                    name: '秒杀促销',
                     pictureList: [
                         {
                             img: image,
@@ -146,21 +154,18 @@
                         },
                     ],
                     search: '',
-                    startTime: '',
+                    startTime: '2017-07-20',
                 },
                 loading: false,
-                rules: {
-                    name: [
-                        {
-                            message: '活动名称不能为空',
-                            required: true,
-                            trigger: 'blur',
-                        },
-                    ],
-                },
+                rules: {},
+                searchResult: false,
             };
         },
         methods: {
+            addData() {
+                this.addBtn = false;
+                this.searchResult = true;
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
@@ -206,15 +211,22 @@
                 <i-form :label-width="180" :model="form" ref="form" :rules="rules">
                     <row>
                         <i-col span="12">
-                            <form-item label="分类名称" prop="name">
-                                <i-input v-model="form.name"></i-input>
+                            <form-item label="活动名称">
+                                {{ form.name }}
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
-                            <form-item label="设置活动时间" prop="startTime">
-                                <date-picker type="date" placeholder="选择日期" v-model="form.startTime"></date-picker>
+                            <form-item label="开始时间">
+                                {{ form.startTime }}
+                            </form-item>
+                        </i-col>
+                    </row>
+                    <row>
+                        <i-col span="12">
+                            <form-item label="结束时间">
+                                {{ form.endTime }}
                             </form-item>
                         </i-col>
                     </row>
@@ -225,32 +237,37 @@
                                          :context="self"
                                          :data="form.list">
                                 </i-table>
-                                <div class="goods-body-header-right">
-                                    <i-input v-model="form.search" placeholder="请输入商品名称/spu">
-                                        <i-button slot="append" type="primary">搜索</i-button>
-                                    </i-input>
-                                    <span class="search-tip">不输入名称直接搜索将显示店内所有商品</span>
+                                <div class="goods-body-header-right" v-if="addBtn">
+                                    <i-button type="ghost" @click.native="addData">+添加商品</i-button>
                                 </div>
-                                <div class="search-result-content">
-                                    <h5>搜索结果</h5>
-                                    <div>
-                                        <div v-for="(item, index) in form.pictureList" class="picture-check">
-                                            <img :src="item.img" alt="" @click="lookPicture(item)">
-                                            <p class="name">{{ item.name}}</p>
-                                            <p class="price">价格：{{ item.price}}</p>
-                                            <i-button type="error" v-if="item.status === true"
-                                                      @click.native="removeProduct(index)">从秒杀活动中移除</i-button>
-                                            <i-button type="ghost" v-if="item.status === false">添加至秒杀活动</i-button>
-                                        </div>
-                                        <div class="page">
-                                            <page :total="100" show-elevator></page>
+                                <div v-if="searchResult">
+                                    <div class="goods-body-header-right">
+                                        <i-input v-model="form.search" placeholder="请输入商品名称/spu">
+                                            <i-button slot="append" type="primary">搜索</i-button>
+                                        </i-input>
+                                        <span class="search-tip">不输入名称直接搜索将显示店内所有商品</span>
+                                    </div>
+                                    <div class="search-result-content">
+                                        <h5>搜索结果</h5>
+                                        <div>
+                                            <div v-for="(item, index) in form.pictureList" class="picture-check">
+                                                <img :src="item.img" alt="" @click="lookPicture(item)">
+                                                <p class="name">{{ item.name}}</p>
+                                                <p class="price">价格：{{ item.price}}</p>
+                                                <i-button type="error" v-if="item.status === true"
+                                                          @click.native="removeProduct(index)">从秒杀活动中移除</i-button>
+                                                <i-button type="ghost" v-if="item.status === false">添加至秒杀活动</i-button>
+                                            </div>
+                                            <div class="page">
+                                                <page :total="100" show-elevator></page>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </form-item>
                         </i-col>
                     </row>
-                    <row>
+                    <row v-if="searchResult">
                         <i-col span="12">
                             <form-item>
                                 <i-button :loading="loading" type="primary" @click.native="submit">
