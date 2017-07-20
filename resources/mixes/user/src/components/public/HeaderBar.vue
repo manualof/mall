@@ -3,14 +3,18 @@
         <div class="container">
             <div class="header-welcome ">
                 西部母婴欢迎您!
-                <a href="http://localhost:8081/#/signin" target="_blank" class="login">登录</a>
+                <a :href="link + 'signin'" target="_blank" class="login">登录</a>
                 <span>|</span>
-                <a href="http://localhost:8081/#/signup" target="_blank" class="register">注册</a>
+                <a :href="link + 'signup'" target="_blank" class="register">注册</a>
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
-                    <li v-for="item in navigation" :class="{ 'active': $route.path === item.to }">
-                        <a :href="item.to" target="_blank">{{ item.text }}</a>
+                    <li v-for="item in navigation" :class="{ 'active': $route.name === item.to }">
+                        <router-link :to="{name: item.to}">{{ item.text }}</router-link>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a :href="link + 'businessmen'">商家入驻</a>
                         <span>|</span>
                     </li>
                 </ul>
@@ -22,24 +26,20 @@
 <script>
     export default {
         data() {
-            const link = window.link;
             return {
+                link: window.storeLink,
                 navigation: [
                     {
-                        to: `${link}personnal-center/all-order`,
+                        to: 'all-order',
                         text: '我的订单',
                     },
                     {
-                        to: `${link}personnal-center/`,
+                        to: 'personnal-center',
                         text: '个人中心',
                     },
                     {
-                        to: `${link}customer-serve`,
+                        to: 'customer-serve',
                         text: '客户服务',
-                    },
-                    {
-                        to: '#/businessmen',
-                        text: '商家入驻',
                     },
                 ],
             };
