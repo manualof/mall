@@ -1,24 +1,24 @@
 <script>
-   export default {
-       data() {
-           return {
-               hotSearch: [
-                   {
-                       name: '买三免一',
-                   },
-                   {
-                       name: '促销',
-                   },
-                   {
-                       name: '五折起购',
-                   },
-                   {
-                       name: '满200减30',
-                   },
-               ],
-           };
-       },
-   };
+    export default {
+        data() {
+            return {
+                hotSearch: [
+                    {
+                        name: '买三免一',
+                    },
+                    {
+                        name: '促销',
+                    },
+                    {
+                        name: '五折起购',
+                    },
+                    {
+                        name: '满200减30',
+                    },
+                ],
+            };
+        },
+    };
 </script>
 <template>
     <div class="logoModal">
@@ -32,13 +32,13 @@
                 <div class="searchInput clearfix">
                     <input type="text" class="form-control" placeholder="洗衣机、电冰箱、洗碗机" aria-describedby="basic-addon2">
                     <span class="input-group-addon" id="basic-addon2">
-                        <router-link :to="{name:'search'}">搜索</router-link>
+                        <router-link to="/personnal-center" target="_blank">搜索</router-link>
                     </span>
                 </div>
                 <p>
                     <a :href="link + 'search'"
-                        target="_blank"
-                        v-for="item in hotSearch">
+                       target="_blank"
+                       v-for="item in hotSearch">
                         {{ item.name }}
                     </a>
                 </p>

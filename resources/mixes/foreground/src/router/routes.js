@@ -114,7 +114,7 @@ export default [
                 component: Search,
             },
             {
-                path: 'search/product-details',
+                path: 'product-details',
                 name: 'product-details',
                 component: ProductDetails,
             },
@@ -124,7 +124,7 @@ export default [
                 component: SubmitOrder,
             },
             {
-                path: 'cart',
+                path: 'cart-settlement',
                 name: 'cart-settlement',
                 component: CartSettlement,
             },
