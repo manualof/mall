@@ -28,6 +28,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /iview.src.*?js$/,
+                loader: 'babel-loader',
+            },
+            {
                 test: /\.(js|vue)$/,
                 loader: 'eslint-loader',
                 enforce: 'pre',
