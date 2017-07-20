@@ -20,7 +20,7 @@ export default [
         redirect: { name: 'personnal-center' },
         children: [
             {
-                path: 'personnal-center',
+                path: '/',
                 name: 'personnal-center',
                 component: PersonnalCenter,
                 redirect: { name: 'all-order' },

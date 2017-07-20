@@ -22,7 +22,7 @@
 <script>
     export default {
         data() {
-            const link = window.link;
+            const link = window.userLink;
             return {
                 navigation: [
                     {

@@ -7,13 +7,12 @@
             </div>
             <ul class="header-bar-nav">
                 <li v-for="item in navigation" :class="{ 'active': $route.path === item.to }">
-                    <a :href="link + item.to" target="_blank">{{ item.text }}</a>
+                    <router-link :to="{name: item.to}">{{ item.text }}</router-link>
                 </li>
             </ul>
         </div>
     </div>
 </template>
-
 <script>
     import MenuBar from './MenuBar';
 
@@ -23,7 +22,6 @@
         },
         data() {
             return {
-                link: window.link,
                 navigation: [
                     {
                         to: 'home',

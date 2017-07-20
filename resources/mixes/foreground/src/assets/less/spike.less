@@ -1,33 +1,47 @@
 .spike {
+    margin-top: 10px;
     .time-list {
-
+        background: #ffffff;
+        margin-bottom: 20px;
         .spike-time {
             border-right: 2px solid #f7f7f7;
+            font-size: 18px;
+            font-weight: bold;
+            height: 64px;
+            line-height: 64px;
+            text-align: center;
             width: 20%;
+            span.now {
+                color: #de2634;
+                font-size: 24px;
+            }
             &:last-child {
                 border: 0;
+                font-size: 24px;
             }
             i {
-                font-size: 14px;
+                display: inline-block;
+                font-size: 12px;
+                height: 24px;
+                line-height: 24px;
+                text-align: center;
+                width: 72px;
                 &.end {
                     border: 1px solid #999999;
                     border-radius: 12px;
                     color: #999999;
-                    display: inline-block;
-                    height: 24px;
-                    width: 72px;
                 }
                 &.now {
                     color: #de2634;
+                    font-size: 14px;
                 }
             }
             &.active {
-                color: #de2634;
-                font-size: 24px;
                 position: relative;
                 &:after {
                     background: #de2634;
                     bottom: 0;
+                    content: '';
                     height: 2px;
                     left: 0;
                     position: absolute;

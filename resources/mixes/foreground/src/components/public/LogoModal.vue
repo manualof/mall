@@ -16,7 +16,6 @@
                        name: '满200减30',
                    },
                ],
-               link: window.link,
            };
        },
    };
@@ -45,12 +44,11 @@
                 </p>
             </div>
             <div class="shopping-car col-md-2 col-xs-2 col-xs-2">
-                <a :href="link + 'cart'" target="_blank">
+                <router-link :to="{name: 'cart-settlement'}">
                     <i class="icon iconfont icon-gouwuche"></i>
                     购物车
-                </a>
+                </router-link>
             </div>
         </div>
     </div>
 </template>
-
