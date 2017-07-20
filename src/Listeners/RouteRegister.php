@@ -335,9 +335,9 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('vip', VipControllerForUser::class . '@vip');
         });
         $this->router->group(['middleware' => ['web'], 'prefix' => 'mall'], function () {
-            $this->router->get('mall*', MallControllerForForeground::class . '@handle');
-            $this->router->get('store*', StoreControllerForForeground::class . '@handle');
-            $this->router->get('user*', UserControllerForForeground::class . '@handle');
+            $this->router->get('/', MallControllerForForeground::class . '@handle');
+            $this->router->get('store', StoreControllerForForeground::class . '@handle');
+            $this->router->get('user', UserControllerForForeground::class . '@handle');
         });
     }
 }
