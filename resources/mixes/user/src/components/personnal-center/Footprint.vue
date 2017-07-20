@@ -11,7 +11,7 @@
             </div>
             <div class="clearfix"></div>
             <div class="row" >
-                <router-link to="/"  v-for="(item,ind) in goods.childern"  class="col-sm-3" :key="ind">
+                <router-link to="/mall/search/product-details"  v-for="(item,ind) in goods.childern"  class="col-sm-3" :key="ind">
                     <div>
                         <img :src="item.imgsrc" alt="">
                         <div class="goods-msg">

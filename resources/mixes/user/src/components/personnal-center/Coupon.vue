@@ -30,7 +30,7 @@
                             <li>使用时间：{{ coupon.startTime }}-{{ coupon.endTime }}</li>
                             <li>其他说明：{{ coupon.other }}</li>
                         </ul>
-                        <a class="use">立即使用</a>
+                        <router-link to="/mall/search/product-details" target="_blank" class="use">立即使用</router-link>
                     </div>
                 </li>
             </ul>

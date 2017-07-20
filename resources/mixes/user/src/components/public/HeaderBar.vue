@@ -3,18 +3,18 @@
         <div class="container">
             <div class="header-welcome ">
                 西部母婴欢迎您!
-                <a :href="link + 'signin'" target="_blank" class="login">登录</a>
+                <router-link to="/mall/signin" target="_blank" class="login">登录</router-link>
                 <span>|</span>
-                <a :href="link + 'signup'" target="_blank" class="register">注册</a>
+                <router-link to="/mall/signup" target="_blank" class="register">注册</router-link>
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
                     <li v-for="item in navigation" :class="{ 'active': $route.name === item.to }">
-                        <router-link :to="{name: item.to}">{{ item.text }}</router-link>
+                        <router-link :to="item.to">{{ item.text }}</router-link>
                         <span>|</span>
                     </li>
                     <li>
-                        <a :href="link + 'businessmen'">商家入驻</a>
+                        <router-link to="/mall/store/businessmen" target="_blank">商家入驻</router-link>
                         <span>|</span>
                     </li>
                 </ul>
@@ -27,18 +27,17 @@
     export default {
         data() {
             return {
-                link: window.storeLink,
                 navigation: [
                     {
-                        to: 'all-order',
+                        to: '/mall/user/personnal-center/all-order',
                         text: '我的订单',
                     },
                     {
-                        to: 'personnal-center',
+                        to: '/mall/user/personnal-center/all-order',
                         text: '个人中心',
                     },
                     {
-                        to: 'customer-serve',
+                        to: '/mall/customer-serve',
                         text: '客户服务',
                     },
                 ],
