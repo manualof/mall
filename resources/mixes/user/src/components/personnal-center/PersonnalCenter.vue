@@ -21,47 +21,47 @@
             return {
                 list: [
                     {
-                        to: { name: 'all-order' },
+                        to: '/mall/user/personnal-center/all-order',
                         text: '我的订单',
                     },
                     {
-                        to: { name: 'notice' },
+                        to: '/mall/user/personnal-center/notice',
                         text: '预约/到货通知',
                     },
                     {
-                        to: { name: 'selaes-return' },
+                        to: '/mall/user/personnal-center/selaes-return',
                         text: '退款退货',
                     },
                     {
-                        to: { name: 'my-collect' },
+                        to: '/mall/user/personnal-center/my-collect',
                         text: '我的收藏',
                     },
                     {
-                        to: { name: 'collect-store' },
+                        to: '/mall/user/personnal-center/collect-store',
                         text: '店铺关注',
                     },
                     {
-                        to: { name: 'footprint' },
+                        to: '/mall/user/personnal-center/footprint',
                         text: '我的足迹',
                     },
                     {
-                        to: { name: 'my-account' },
+                        to: '/mall/user/personnal-center/my-account',
                         text: '账户信息',
                     },
                     {
-                        to: { name: 'account-security' },
+                        to: '/mall/user/personnal-center/account-security',
                         text: '账户安全',
                     },
                     {
-                        to: { name: 'shipping-address' },
+                        to: '/mall/user/personnal-center/shipping-address',
                         text: '收货地址',
                     },
                     {
-                        to: { name: 'integral' },
+                        to: '/mall/user/personnal-center/integral',
                         text: '我的积分',
                     },
                     {
-                        to: { name: 'coupon' },
+                        to: '/mall/user/personnal-center/coupon',
                         text: '优惠券',
                     },
                 ],
