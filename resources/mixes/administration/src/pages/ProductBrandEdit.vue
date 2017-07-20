@@ -299,6 +299,18 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
+                        self.$http.post(`${window.api}/mall/admin/product/brand/edit`, self.form).then(() => {
+                            self.$notice.open({
+                                title: '编辑商品品牌信息成功！',
+                            });
+                            self.$router.push('/mall/goods/brand');
+                        }).catch(() => {
+                            self.$notice.error({
+                                title: '编辑商品品牌信息失败！',
+                            });
+                        }).finally(() => {
+                            self.loading = false;
+                        });
                         window.console.log(valid);
                     } else {
                         self.loading = false;
