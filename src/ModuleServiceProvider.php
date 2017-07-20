@@ -42,6 +42,7 @@ class ModuleServiceProvider extends Module
         $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'mall');
         $this->publishes([
             realpath(__DIR__ . '/../resources/mixes/administration/dist/assets/mall/administration') => public_path('assets/mall/administration'),
+            realpath(__DIR__ . '/../resources/mixes/foreground/dist/assets/mall/mall') => public_path('assets/mall/mall'),
             realpath(__DIR__ . '/../resources/mixes/seller/dist/assets/mall/seller') => public_path('assets/mall/seller'),
         ], 'public');
     }

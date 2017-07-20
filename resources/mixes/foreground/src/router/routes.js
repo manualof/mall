@@ -50,17 +50,12 @@ export default [
         name: 'signin',
     },
     {
-        path: '/',
+        path: '/mall',
         component: Layout,
         children: [
             {
-                name: '',
-                path: '',
-                redirect: { name: 'home' },
-            },
-            {
-                path: 'home',
                 name: 'home',
+                path: '/',
                 component: Home,
             },
             {
