@@ -149,7 +149,7 @@
             </div>
             <div class="pay-method invoice-info">
                 <h5 class="select-title">发票信息</h5>
-                <p>{{ invoice.invoice }} <a @click="modifyInvoice">修改</a></p>
+                <p>{{ invoice }} <a @click="modifyInvoice">修改</a></p>
                 <modal ref="invoice">
                     <div slot="title">
                         <h4 class="modal-title">发票信息</h4>
@@ -159,11 +159,11 @@
                             <div class="signup-form-group clearfix">
                                 <label class="form-title">收货人姓名</label>
                                 <label class="form-control-radio">
-                                    <input type="radio" name="invoice" value="普通发票" v-model="invoice.invoice">
+                                    <input type="radio" name="invoice" value="普通发票" v-model="invoice">
                                     <span>普通发票</span>
                                 </label>
                                 <label class="form-control-radio">
-                                    <input type="radio" name="invoice" value="不需要发票" v-model="invoice.invoice">
+                                    <input type="radio" name="invoice" value="不需要发票" v-model="invoice">
                                     <span>不需要发票</span>
                                 </label>
                             </div>
@@ -184,12 +184,12 @@
                         </form>
                     </div>
                     <button type="button"
+                            @click="closeInvoice"
                             class="order-btn"
-                            @click="selfTakeAdd"
                             slot="save_address">保存发票信息</button>
                     <button type="button"
+                            @click="notNeedInvoice"
                             class="order-btn notNeed"
-                            @click="selfTakeAdd"
                             slot="save_address">不需要发票</button>
                 </modal>
             </div>
@@ -443,6 +443,13 @@
             },
             modifyInvoice() {
                 this.$refs.invoice.open();
+            },
+            closeInvoice() {
+                this.$refs.invoice.close();
+            },
+            notNeedInvoice() {
+                this.invoice = '不需要发票';
+                this.closeInvoice();
             },
             selfTakeAdd() {
                 this.selfTake.push(this.newSelfTake);
