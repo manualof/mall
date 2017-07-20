@@ -45,6 +45,7 @@ class ModuleServiceProvider extends Module
             realpath(__DIR__ . '/../resources/mixes/foreground/dist/assets/mall/mall') => public_path('assets/mall/mall'),
             realpath(__DIR__ . '/../resources/mixes/seller/dist/assets/mall/seller') => public_path('assets/mall/seller'),
             realpath(__DIR__ . '/../resources/mixes/store/dist/assets/mall/store') => public_path('assets/mall/store'),
+            realpath(__DIR__ . '/../resources/mixes/user/dist/assets/mall/user') => public_path('assets/mall/user'),
         ], 'public');
     }
 
