@@ -76,6 +76,11 @@
                                 <div class="progress"></div>
                             </div>
                         </div>
+                        <div class="pay-box pull-right">
+                            <span><i>￥</i>{{ product.price }}</span>
+                            <s>￥{{ product.oldPrice }}</s>
+                            <a>立即抢购</a>
+                        </div>
                     </router-link>
                 </li>
             </ul>
