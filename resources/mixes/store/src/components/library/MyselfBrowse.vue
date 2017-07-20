@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="browse-content">
-                <router-link to="/mall/search/product-details">
+                <router-link to="/mall/search/product-details"  target="_blank">
                     <dl class="col col-line" v-for="item in browse.commendList">
                         <dt><img :src="item.img"></dt>
                         <dd>

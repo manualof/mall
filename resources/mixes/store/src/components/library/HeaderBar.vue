@@ -9,7 +9,7 @@
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
-                    <li v-for="item in navigation" :class="{ 'active': $route.path === item.to }">
+                    <li v-for="item in navigation" :class="{ 'active': $route.path === item.to }"  target="_blank">
                         <router-link :to="item.to" target="_blank">{{ item.text }}</router-link>
                         <span>|</span>
                     </li>
