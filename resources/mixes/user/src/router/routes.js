@@ -15,18 +15,16 @@ import Notice from '../components/personnal-center/Notice';
 
 export default [
     {
-        path: '/',
+        path: '/mall/user',
         component: Layout,
-        redirect: { name: 'personnal-center' },
         children: [
             {
                 path: '/',
                 name: 'personnal-center',
                 component: PersonnalCenter,
-                redirect: { name: 'all-order' },
                 children: [
                     {
-                        path: 'all-order',
+                        path: '/',
                         name: 'all-order',
                         component: AllOrder,
                     },
