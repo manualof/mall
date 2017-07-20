@@ -2,7 +2,7 @@
     <div class="signin ">
         <div class="header-bar-logo">
             <div class="container">
-                <router-link to="/home">
+                <router-link to="/mall">
                     <img src="../../../user/src/assets/images/logo.png" alt="">
                 </router-link>
             </div>

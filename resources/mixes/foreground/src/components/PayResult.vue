@@ -50,7 +50,7 @@
                         </table>
                     </div>
                     <!--<button class="order-btn submit-btn">查看订单</button>-->
-                    <router-link :to="{ name: 'payment-success' }" class="order-btn submit-btn">查看订单</router-link>
+                    <router-link :to="{ path: 'payment-success' }" class="order-btn submit-btn">查看订单</router-link>
                 </div>
                 <need-browse></need-browse>
             </div>
