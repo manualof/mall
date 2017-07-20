@@ -335,9 +335,19 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('vip', VipControllerForUser::class . '@vip');
         });
         $this->router->group(['middleware' => ['web'], 'prefix' => 'mall'], function () {
-            $this->router->get('/', MallControllerForForeground::class . '@handle');
+            $this->router->get('store/{one}/{two}/{three}', StoreControllerForForeground::class . '@handle');
+            $this->router->get('store/{one}/{two}', StoreControllerForForeground::class . '@handle');
+            $this->router->get('store/{one}', StoreControllerForForeground::class . '@handle');
             $this->router->get('store', StoreControllerForForeground::class . '@handle');
+            $this->router->get('user/{one}/{two}/{three}', UserControllerForForeground::class . '@handle');
+            $this->router->get('user/{one}/{two}', UserControllerForForeground::class . '@handle');
+            $this->router->get('user/{one}', UserControllerForForeground::class . '@handle');
             $this->router->get('user', UserControllerForForeground::class . '@handle');
+            $this->router->get('{one}/{two}/{three}/{four}', MallControllerForForeground::class . '@handle');
+            $this->router->get('{one}/{two}/{three}', MallControllerForForeground::class . '@handle');
+            $this->router->get('{one}/{two}', MallControllerForForeground::class . '@handle');
+            $this->router->get('{one}', MallControllerForForeground::class . '@handle');
+            $this->router->get('/', MallControllerForForeground::class . '@handle');
         });
     }
 }
