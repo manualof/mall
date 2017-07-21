@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Scrollspy from 'vue2-scrollspy';
-import App from './App';
+import App from './App.vue';
 import router from './router';
 
 import RouterLink from './directives/router-link';
