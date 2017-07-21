@@ -18,6 +18,7 @@
                         saled: 25,
                         price: 32.99,
                         oldPrice: 46.88,
+                        stoke: 100,
                         sold: '15%',
                     },
                     {
@@ -27,6 +28,7 @@
                         saled: 25,
                         price: 32.99,
                         oldPrice: 46.88,
+                        stoke: 50,
                         sold: '15%',
                     },
                     {
@@ -36,6 +38,7 @@
                         saled: 25,
                         price: 32.99,
                         oldPrice: 46.88,
+                        stoke: 100,
                         sold: '15%',
                     },
                     {
@@ -45,6 +48,7 @@
                         saled: 25,
                         price: 32.99,
                         oldPrice: 46.88,
+                        stoke: 500,
                         sold: '15%',
                     },
                     {
@@ -54,6 +58,7 @@
                         saled: 25,
                         price: 32.99,
                         oldPrice: 46.88,
+                        stoke: 150,
                         sold: '15%',
                     },
                     {
@@ -63,6 +68,7 @@
                         saled: 25,
                         price: 32.99,
                         oldPrice: 46.88,
+                        stoke: 1000,
                         sold: '15%',
                     },
                 ],
@@ -86,6 +92,12 @@
             };
         },
         methods: {
+            saledWidth(item) {
+                const progressWidth = (item.saled / item.stoke) * 128;
+                return {
+                    width: `${progressWidth}px`,
+                };
+            },
             switchTab(index) {
                 this.active = index;
             },
@@ -118,7 +130,7 @@
                         <div class="clearfix progress-line">
                             <span class="pull-left">已售{{ product.sold }}</span>
                             <div class="progress-box pull-left">
-                                <div class="progress"></div>
+                                <div class="progress" :style='saledWidth(product)'></div>
                             </div>
                         </div>
                         <div class="pay-box pull-right">
