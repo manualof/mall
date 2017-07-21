@@ -4,6 +4,8 @@ import SignIn from '../components/SignIn';
 import Layout from '../components/Layout';
 import Home from '../components/Home';
 import MyOrder from '../components/MyOrder';
+import Help from '../components/Help';
+import AfterSale from '../components/AfterSale';
 import CustomerServe from '../components/CustomerServe';
 import More from '../components/More';
 import Offer from '../components/Offer';
@@ -72,6 +74,16 @@ export default [
                 path: '/mall/customer-serve',
                 name: 'customer-serve',
                 component: CustomerServe,
+            },
+            {
+                path: '/mall/help',
+                name: 'help',
+                component: Help,
+            },
+            {
+                path: '/mall/after-sale',
+                name: 'after-sale',
+                component: AfterSale,
             },
             {
                 path: '/mall/more',

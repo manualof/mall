@@ -86,15 +86,15 @@
             };
         },
         methods: {
+            progress(product) {
+                const percentage = ((product.saled / product.stoke) * 100).toFixed(0);
+                return percentage;
+            },
             saledWidth(item) {
                 const progressWidth = (item.saled / item.stoke) * 128;
                 return {
                     width: `${progressWidth}px`,
                 };
-            },
-            progress(product) {
-                const percentage = ((product.saled / product.stoke) * 100).toFixed(0);
-                return percentage;
             },
             switchTab(index) {
                 this.active = index;

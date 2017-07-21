@@ -9,8 +9,34 @@
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
-                    <li v-for="item in navigation" :class="{ 'active': $route.path === item.to }">
-                        <router-link :to="item.to" target="_blank">{{ item.text }}</router-link>
+                    <li :class="{ 'active': $route.path === '/mall/user/all-order' }">
+                        <router-link to="/mall/user/all-order" target="_blank">我的订单</router-link>
+                        <span>|</span>
+                    </li>
+                    <li :class="{ 'active': $route.path === '/mall/user/personnal-center' }">
+                        <router-link to="/mall/user/personnal-center" target="_blank">个人中心</router-link>
+                        <span>|</span>
+                    </li>
+                    <li :class="{ 'active': $route.path === '/mall/customer-serve' }">
+                        <a>客户服务</a>
+                        <span>|</span>
+                        <ul>
+                            <li>
+                                <router-link to="/mall/customer-serve">客户服务</router-link>
+                            </li>
+                            <li>
+                                <router-link to="/mall/help">帮助中心</router-link>
+                            </li>
+                            <li>
+                                <router-link to="/mall/after-sale">售后中心</router-link>
+                            </li>
+                            <li>
+                                <router-link to="/mall/customer-serve">客服中心</router-link>
+                            </li>
+                        </ul>
+                    </li>
+                    <li :class="{ 'active': $route.path === '/mall/store/businessmen' }">
+                        <router-link to="/mall/store/businessmen" target="_blank">商家入驻</router-link>
                         <span>|</span>
                     </li>
                 </ul>
@@ -23,24 +49,6 @@
     export default {
         data() {
             return {
-                navigation: [
-                    {
-                        to: '/mall/user/all-order',
-                        text: '我的订单',
-                    },
-                    {
-                        to: '/mall/user/personnal-center',
-                        text: '个人中心',
-                    },
-                    {
-                        to: '/mall/customer-serve',
-                        text: '客户服务',
-                    },
-                    {
-                        to: '/mall/store/businessmen',
-                        text: '商家入驻',
-                    },
-                ],
             };
         },
     };

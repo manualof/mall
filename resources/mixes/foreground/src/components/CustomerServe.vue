@@ -1,3 +1,5 @@
 <template>
-    <div>000</div>
+    <div>
+        客服中心
+    </div>
 </template>
