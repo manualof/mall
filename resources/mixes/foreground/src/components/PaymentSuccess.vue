@@ -1,4 +1,5 @@
 <script>
+    import SplinLine from './public/SplinLine';
     import EveryoneBrowse from './public/EveryoneBrowse';
     import FooterBar from './public/FooterBar';
     import FooterContent from './public/FooterContent';
@@ -15,6 +16,7 @@
             HeaderBar,
             MyselfBrowse,
             RightSide,
+            SplinLine,
         },
         computed: {
             total_price() {
@@ -27,6 +29,7 @@
         },
         data() {
             return {
+                loading: true,
                 logisticsInfo: {
                     company: '顺丰速运',
                     list: [
@@ -100,17 +103,28 @@
                 },
             };
         },
+        mounted() {
+            const self = this;
+            self.$nextTick(() => {
+                setTimeout(() => {
+                    self.loading = false;
+                }, 1000);
+            });
+        },
     };
 </script>
 <template>
-    <div class="payment-success  ">
+    <div class="payment-success">
         <header-bar></header-bar>
         <div class="header-bar-logo header-bar-line">
             <div class="container">
-                <img src="../../../user/src/assets/images/logo.png" alt="">
+                <router-link to="/mall">
+                    <img src="../../../user/src/assets/images/logo.png" alt="">
+                </router-link>
             </div>
         </div>
-        <div class="container">
+        <splin-line v-if="loading"></splin-line>
+        <div v-if="!loading" class="container">
             <div class="pay-success-model">
                 <div class="top-status bottom-line">
                     <ul class="clearfix">

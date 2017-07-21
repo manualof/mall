@@ -1,6 +1,7 @@
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import Cascader from 'iview/src/components/cascader';
+    import SplinLine from './public/SplinLine';
     import RightSide from './public/RightSide';
     import NeedBrowse from './public/NeedBrowse';
     import MyselfBrowse from './public/MyselfBrowse';
@@ -68,8 +69,6 @@
                 },
                 boxWidth: 384,
                 boxHeight: 384,
-                img: logo,
-                imgSrc: null,
                 data: [
                     {
                         children: [
@@ -185,6 +184,8 @@
                         item: ['按销量', '按时间', '按地点', '按价格'],
                     },
                 ],
+                img: logo,
+                imgSrc: null,
                 isActive: false,
                 kefu: [
                     {
@@ -200,6 +201,7 @@
                         ],
                     },
                 ],
+                loading: true,
                 product_intro: {
                     eval_num: 6298,
                     integral: 138,
@@ -317,11 +319,12 @@
             Cascader,
             EveryoneBrowse,
             MyselfBrowse,
+            Magnifier,
             NeedBrowse,
             RightSide,
+            SplinLine,
             swiper,
             swiperSlide,
-            Magnifier,
         },
         computed: {
             total_price() {
@@ -379,7 +382,8 @@
 </script>
 <template>
     <div class="product-details">
-        <div class="basic-intro container clearfix">
+        <splin-line v-if="loading"></splin-line>
+        <div v-if="!loading" class="basic-intro container clearfix">
             <div class="miaobaoxie">
                 <router-link to="/slide">首页  >  xx旗舰店 > 尿不湿</router-link>
             </div>
@@ -479,7 +483,7 @@
             </div>
         </div>
         <!--推荐购买-->
-        <ul class="combination-buy container">
+        <ul v-if="!loading" class="combination-buy container">
             <router-link :to="{ path: 'product-details' }" tag="li" class="text-center" v-for="(product, index) in recommend_products" :key="index">
                 <a href="javascript:void (0)">
                     <img :src="product.img"/>
@@ -501,7 +505,7 @@
             </li>
         </ul>
         <!--产品相关-->
-        <div class="product-about container clearfix">
+        <div v-if="!loading" class="product-about container clearfix">
             <!--看了又看-->
             <div class="left-box">
                 <div class="see-again-box follow">
