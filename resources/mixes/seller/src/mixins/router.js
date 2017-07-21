@@ -48,6 +48,7 @@ import SalesSpikes from '../pages/SalesSpikes.vue';
 import SalesSpikesCreate from '../pages/SalesSpikesCreate.vue';
 import SalesSpikesMagage from '../pages/SalesSpikesMagage.vue';
 import SalesActive from '../pages/SalesActive.vue';
+import SalesActiveCreate from '../pages/SalesActiveCreate.vue';
 import Customer from '../pages/Customer.vue';
 import CustomerMessage from '../pages/CustomerMessage.vue';
 import Account from '../pages/Account.vue';
@@ -307,6 +308,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: SalesActive,
                     path: 'sales/active',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesActiveCreate,
+                    path: 'sales/active/create',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
