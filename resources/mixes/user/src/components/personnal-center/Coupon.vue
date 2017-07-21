@@ -1,10 +1,10 @@
 <template>
     <div class="coupon">
         <h4>我的优惠券</h4>
-        <div class="exchange">
-            输入兑换码:
-            <input class="form-control exchange-code" type="text">
-            <button class="exchange-btn order-btn">兑换</button>
+        <div class="exchange clearfix">
+            <span class="pull-left">输入兑换码:</span>
+            <input class="form-control exchange-code pull-left" type="text">
+            <button class="exchange-btn order-btn pull-left">兑换</button>
         </div>
         <div class="clearfix nav-box">
             <ul id="myTab" class="tab-nav clearfix">
