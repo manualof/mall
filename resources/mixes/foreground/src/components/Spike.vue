@@ -19,7 +19,6 @@
                         price: 32.99,
                         oldPrice: 46.88,
                         stoke: 100,
-                        sold: '15%',
                     },
                     {
                         img: phone,
@@ -29,7 +28,6 @@
                         price: 32.99,
                         oldPrice: 46.88,
                         stoke: 50,
-                        sold: '15%',
                     },
                     {
                         img: phone,
@@ -39,7 +37,6 @@
                         price: 32.99,
                         oldPrice: 46.88,
                         stoke: 100,
-                        sold: '15%',
                     },
                     {
                         img: phone,
@@ -49,7 +46,6 @@
                         price: 32.99,
                         oldPrice: 46.88,
                         stoke: 500,
-                        sold: '15%',
                     },
                     {
                         img: phone,
@@ -59,7 +55,6 @@
                         price: 32.99,
                         oldPrice: 46.88,
                         stoke: 150,
-                        sold: '15%',
                     },
                     {
                         img: phone,
@@ -69,7 +64,6 @@
                         price: 32.99,
                         oldPrice: 46.88,
                         stoke: 1000,
-                        sold: '15%',
                     },
                 ],
                 times: [
@@ -97,6 +91,10 @@
                 return {
                     width: `${progressWidth}px`,
                 };
+            },
+            progress(product) {
+                const percentage = ((product.saled / product.stoke) * 100).toFixed(0);
+                return percentage;
             },
             switchTab(index) {
                 this.active = index;
@@ -128,7 +126,7 @@
                         </div>
                         <p class="title">{{ product.title }}</p>
                         <div class="clearfix progress-line">
-                            <span class="pull-left">已售{{ product.sold }}</span>
+                            <span class="pull-left">已售{{ progress(product) }}%</span>
                             <div class="progress-box pull-left">
                                 <div class="progress" :style='saledWidth(product)'></div>
                             </div>
