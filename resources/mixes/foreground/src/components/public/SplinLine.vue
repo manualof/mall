@@ -1,4 +1,3 @@
-
 <template>
     <div v-bind:style="styles" class="spinner spinner--spin-line">
         <div v-bind:style="lineStyles" class="spinner-inner">
@@ -9,37 +8,39 @@
     export default {
         props: {
             size: {
-                default: '40px'
+                default: '40px',
             },
             color: {
-                default: '#41b883'
+                default: '#de2634',
             },
             stroke: {
-                default: '5px'
-            }
+                default: '6px',
+            },
         },
         computed: {
-            lineStyles () {
+            lineStyles() {
                 return {
                     width: this.size,
                     height: this.stroke,
                     background: this.color,
-                    borderRadius: this.stroke
-                }
+                    borderRadius: this.stroke,
+                };
             },
-            styles () {
-                let size = parseInt(this.size)
+            styles() {
                 return {
-                    width: this.size,
+                    width: '100%',
                     height: this.size,
-                    transform: 'scale(' + (size / 75) + ')'
-                }
-            }
-        }
-    }
+                };
+            },
+        },
+    };
 </script>
-<style lang="scss" scoped>
-    .spinner{
+<style lang="less" scoped>
+    .spinner--spin-line {
+        background: #ffffff;
+        min-height: 680px;
+    }
+    .spinner {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -55,54 +56,54 @@
     @keyframes spin-line {
         0% {
             transform: rotate(-20deg);
-            height: 5px;
-            width: 75px;
+            height: 4px;
+            width: 64px;
         }
         5% {
-            height: 5px;
-            width: 75px;
+            height: 4px;
+            width: 64px;
         }
         30% {
             transform: rotate(380deg);
-            height: 5px;
-            width: 75px;
+            height: 4px;
+            width: 64px;
         }
         40% {
             transform: rotate(360deg);
-            height: 5px;
-            width: 75px;
+            height: 4px;
+            width: 64px;
         }
         55% {
             transform: rotate(0deg);
-            height: 5px;
-            width: 5px;
+            height: 4px;
+            width: 64px;
         }
         65% {
             transform: rotate(0deg);
-            height: 5px;
-            width: 85px;
+            height: 4px;
+            width: 64px;
         }
         68% {
             transform: rotate(0deg);
-            height: 5px;
+            height: 4px;
         }
         75% {
             transform: rotate(0deg);
-            height: 5px;
+            height: 4px;
             width: 1px;
         }
         78% {
-            height: 5px;
+            height: 4px;
             width: 5px;
         }
         90% {
-            height: 5px;
-            width: 75px;
+            height: 4px;
+            width: 64px;
             transform: rotate(0deg);
         }
         99%, 100% {
-            height: 5px;
-            width: 75px;
+            height: 4px;
+            width: 64px;
             transform: rotate(-20deg);
         }
     }
