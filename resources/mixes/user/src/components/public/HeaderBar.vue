@@ -29,11 +29,11 @@
             return {
                 navigation: [
                     {
-                        to: '/mall/user/personnal-center/all-order',
+                        to: '/mall/user/personnal-center/order',
                         text: '我的订单',
                     },
                     {
-                        to: '/mall/user/personnal-center/all-order',
+                        to: '/mall/user/personnal-center/order',
                         text: '个人中心',
                     },
                     {

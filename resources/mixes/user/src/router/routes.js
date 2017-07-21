@@ -22,12 +22,12 @@ export default [
                 name: 'personnal-center',
                 component: PersonnalCenter,
                 redirect: {
-                    name: 'all-order',
+                    name: 'order',
                 },
                 children: [
                     {
-                        path: 'all-order',
-                        name: 'all-order',
+                        path: 'order',
+                        name: 'order',
                         component: AllOrder,
                     },
                     {
