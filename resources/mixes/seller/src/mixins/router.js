@@ -48,6 +48,10 @@ import SalesSpikes from '../pages/SalesSpikes.vue';
 import SalesSpikesCreate from '../pages/SalesSpikesCreate.vue';
 import SalesSpikesMagage from '../pages/SalesSpikesMagage.vue';
 import SalesActive from '../pages/SalesActive.vue';
+import SalesActiveCreate from '../pages/SalesActiveCreate.vue';
+import SalesFulldown from '../pages/SalesFulldown.vue';
+import SalesFulldownCreate from '../pages/SalesFulldownCreate.vue';
+import SalesFulldownDetail from '../pages/SalesFulldownDetail.vue';
 import Customer from '../pages/Customer.vue';
 import CustomerMessage from '../pages/CustomerMessage.vue';
 import Account from '../pages/Account.vue';
@@ -307,6 +311,26 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: SalesActive,
                     path: 'sales/active',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesActiveCreate,
+                    path: 'sales/active/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesFulldown,
+                    path: 'sales/fulldown',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesFulldownCreate,
+                    path: 'sales/fulldown/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesFulldownDetail,
+                    path: 'sales/fulldown/detail',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
