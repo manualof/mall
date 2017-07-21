@@ -107,6 +107,13 @@
                         },
                     ],
                     name: '',
+                    remarks: '',
+                    standard: [
+                        {
+                            amount: '',
+                            fullPrice: '',
+                        },
+                    ],
                     startTime: '',
                 },
                 loading: false,
@@ -118,10 +125,33 @@
                             trigger: 'blur',
                         },
                     ],
+                    standard: [
+                        {
+                            message: '单笔订单不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    startTime: [
+                        {
+                            message: '开始时间不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
                 },
             };
         },
         methods: {
+            addStandard() {
+                this.form.standard.push({
+                    amount: '',
+                    fullPrice: '',
+                });
+            },
+            deleteStandard(index) {
+                this.form.standard.splice(index, 1);
+            },
             goBack() {
                 const self = this;
                 self.$router.go(-1);
@@ -180,6 +210,38 @@
                         <i-col span="12">
                             <form-item label="结束时间" prop="endTime">
                                 <time-picker type="time" placeholder="选择日期" v-model="form.endTime"></time-picker>
+                            </form-item>
+                        </i-col>
+                    </row>
+                    <form-item label="活动规则" prop="standard">
+                        <row class="active-standard" v-for="(item, index) in form.standard">
+                            <i-col span="3" class="price-width">单笔订单满</i-col>
+                            <i-col span="2" class="input-width">
+                                <i-input v-model="item.amount"></i-input>
+                            </i-col>
+                            <i-col span="3" class="price-width"> 元, 立减现金</i-col>
+                            <i-col span="2" class="input-width">
+                                <i-input v-model="item.fullPrice"></i-input>
+                            </i-col>
+                            <i-col span="1">元</i-col>
+                            <i-col span="12">
+                                <i-button @click.native="deleteStandard(index)" v-if="index !== 0"
+                                          class="delete-color" type="ghost">刪除</i-button>
+                            </i-col>
+                        </row>
+                    </form-item>
+                    <form-item>
+                        <i-button @click.native="addStandard"  class="button-style"
+                                  type="ghost">添加规则</i-button>
+                        <p class="tip">设置当单笔订单满足金额时（必填选项），减免金额（选填）；留空为不做减免金额处理，
+                            系统最多支持设置三组等级规则</p>
+                    </form-item>
+                    <row>
+                        <i-col span="16">
+                            <form-item label="备注" prop="remarks">
+                                <i-input :autosize="{minRows: 4,maxRows: 5}" type="textarea"
+                                v-model="form.remarks"></i-input>
+                                <p class="tip">活动备注最多为100个字符</p>
                             </form-item>
                         </i-col>
                     </row>
