@@ -33,30 +33,37 @@
                 <form class="signup-form">
                     <div class="signup-form-group clearfix">
                         <label class="form-title">收货人姓名</label>
-                        <input type="text" class="signup-form-control form-control" name="username" placeholder="请输入收货人姓名">
+                        <input type="text"
+                               class="signup-form-control form-control"
+                               name="username"
+                               placeholder="请输入收货人姓名"
+                               v-model="form.username">
                     </div>
                     <div class="signup-form-group clearfix">
                         <label class="form-title">手机号码</label>
-                        <input type="text" class="signup-form-control form-control" name="telphone" placeholder="手机号码为必填项">
+                        <input type="text"
+                               class="signup-form-control form-control"
+                               placeholder="手机号码为必填项"
+                               v-model="form.phone">
                     </div>
                     <div class="signup-form-group clearfix">
                         <label class="form-title">所在地区</label>
                         <div class="select-province clearfix">
-                            <Select v-model="newAddress.province"  style="width:150px">
+                            <Select v-model="form.province"  style="width:150px">
                                 <Option v-for="province in provinceList"
                                         :value="province.name"
                                         :key="province.id">
                                     {{ province.name }}
                                 </Option>
                             </Select>
-                            <Select v-model="newAddress.city"  style="width:150px">
+                            <Select v-model="form.city"  style="width:150px">
                                 <Option v-for="city in cityList"
                                         :value="city.name"
                                         :key="city.id">
                                     {{ city.name }}
                                 </Option>
                             </Select>
-                            <Select v-model="newAddress.area"  style="width:150px">
+                            <Select v-model="form.area"  style="width:150px">
                                 <Option v-for="area in areaList"
                                         :value="area.name"
                                         :key="area.id">
@@ -67,19 +74,22 @@
                     </div>
                     <div class="signup-form-group clearfix group-address">
                         <label class="form-title">详细地址</label>
-                        <textarea type="text" class="signup-form-control details-address form-control" name="address"
-                                  placeholder="无需重复填写省市区，小于50个字"></textarea>
+                        <textarea class="signup-form-control details-address form-control"
+                                  name="address"
+                                  placeholder="无需重复填写省市区，小于50个字"
+                                  type="text"
+                                  v-model="form.address"></textarea>
                     </div>
                     <div class="signup-form-group default-address clearfix">
                         <label class="form-title"></label>
                         <div class="check-box">
-                            <span><input type="checkbox" class="input_check" id="check46"><label for="check46"> </label></span>
+                            <span><input type="checkbox" class="input_check" v-model="form.default"><label></label></span>
                         </div>
                         <span class="default">设为默认地址</span>
                     </div>
                 </form>
             </div>
-            <button type="button" class="order-btn" slot="save_address">保存地址</button>
+            <button type="button" class="order-btn" slot="save_address" @click="submit">保存地址</button>
         </modal>
     </div>
 </template>
@@ -138,10 +148,14 @@
                     },
                 ],
                 modalTitle: '',
-                newAddress: {
+                form: {
+                    address: '',
                     area: '',
                     city: '',
+                    default: '',
+                    phone: '',
                     province: '',
+                    username: '',
                 },
                 provinceList: [
                     {
@@ -176,6 +190,10 @@
                     index.isdefault = 0;
                 });
                 item.isdefault = 1;
+            },
+            submit() {
+                const self = this;
+                window.console.log(self.form);
             },
         },
     };
