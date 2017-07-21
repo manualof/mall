@@ -223,6 +223,21 @@
                         </div>
                     </li>
                 </ul>
+                <p class="select-title">使用优惠/积分</p>
+                <ul class="select-offer clearfix">
+                    <li class="pull-left">
+                        <label class="form-control-radio">
+                            <input type="radio" name="method">
+                            <span>优惠券</span>
+                        </label>
+                    </li>
+                    <li class="pull-left">
+                        <label class="form-control-radio">
+                            <input type="radio" name="method">
+                            <span>积分</span>
+                        </label>
+                    </li>
+                </ul>
                 <div class="order-submit submit-btn">
                     <div class="order-submit-content clearfix">
                         <span class="order-price">-&yen;{{ submitOrder.freight }}</span>

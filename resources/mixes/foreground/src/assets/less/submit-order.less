@@ -528,6 +528,43 @@
     .ivu-cascader-rel {
         position: relative;
     }
+    .select-offer {
+        border-bottom: 1px solid #e5e5e5;
+        margin-top: 10px;
+        padding-left: 20px;
+        li {
+            line-height: 30px;
+            width: 96px;
+            label {
+                height: 100%;
+                width: 100%;
+                input {
+                    display: none;
+                    &:checked {
+                        & + span {
+                            height: 100%;
+                            color: #de2634;
+                            position: relative;
+                            &:after {
+                                background: #de2634;
+                                bottom: 0;
+                                content: '';
+                                height: 2px;
+                                left: 0;
+                                position: absolute;
+                                width: 100%;
+                            }
+                        }
+                    }
+                    & + span {
+                        display: block;
+                        text-align: center;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .order-btn {
@@ -555,13 +592,16 @@
     color: #9ea7b4;
     transition: all 0.2s ease-in-out;
 }
+
 .ivu-select-selection .ivu-select-arrow:first-of-type {
     display: none;
     cursor: pointer;
 }
+
 .ivu-icon-arrow-down-b:before {
     content: "\F104";
 }
+
 .ivu-cascader-arrow {
     position: absolute;
     top: 50%;
@@ -574,6 +614,7 @@
     width: 12px;
     height: 12px;
 }
+
 .ivu-select-selection {
     display: block;
     box-sizing: border-box;
@@ -589,11 +630,13 @@
     border: 1px solid #dddee1;
     transition: all .2s ease-in-out;
 }
+
 .ivu-select-visible .ivu-select-selection {
     border-color: #57a3f3;
     outline: 0;
-    box-shadow: 0 0 0 2px rgba(45,140,240,.2);
+    box-shadow: 0 0 0 2px rgba(45, 140, 240, .2);
 }
+
 .ivu-select-dropdown {
     width: inherit;
     max-height: 200px;
@@ -603,40 +646,47 @@
     background-color: #fff;
     box-sizing: border-box;
     border-radius: 4px;
-    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
     position: absolute;
     z-index: 900;
 }
+
 .ivu-article .ivu-select ul {
-    padding-left: 0!important;
+    padding-left: 0 !important;
     list-style-type: none;
 }
+
 .ivu-article li:not([class^=ivu-]) {
     margin-bottom: 5px;
     font-size: 14px;
 }
+
 .ivu-select-not-found li:not([class^=ivu-]) {
     margin-bottom: 0;
 }
+
 .ivu-article .ivu-select ul {
-    padding-left: 0!important;
+    padding-left: 0 !important;
     list-style-type: none;
 }
+
 .ivu-select-item-focus, .ivu-select-item:hover {
     background: #f3f3f3;
 }
+
 .ivu-select-item {
     margin: 0;
     line-height: normal;
     padding: 7px 16px;
     clear: both;
     color: #495060;
-    font-size: 12px!important;
+    font-size: 12px !important;
     white-space: nowrap;
     list-style: none;
     cursor: pointer;
     transition: background .2s ease-in-out;
 }
+
 .ivu-icon-arrow-down-b:before {
     content: '';
     border-width: 6px;
@@ -648,6 +698,7 @@
     top: 36%;
     width: 0
 }
+
 .notNeed {
     background: none;
     border: 1px solid #e5e5e5;
