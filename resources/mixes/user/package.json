@@ -12,6 +12,7 @@
         "watch": "node build/watch.js"
     },
     "dependencies": {
+        "axios": "^0.16.2",
         "bootstrap": "^3.3.7",
         "iview": "^2.0.0-rc.17",
         "jquery": "^3.2.1",
