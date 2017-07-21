@@ -1,4 +1,5 @@
 <script>
+    import SplinLine from './public/SplinLine';
     import RightSide from './public/RightSide';
     import HeaderBar from './public/HeaderBar';
     import FooterBar from './public/FooterBar';
@@ -10,6 +11,7 @@
             FooterContent,
             HeaderBar,
             RightSide,
+            SplinLine,
         },
         data() {
             return {
@@ -25,6 +27,14 @@
                 },
             };
         },
+        mounted() {
+            const self = this;
+            self.$nextTick(() => {
+                setTimeout(() => {
+                    self.loading = false;
+                }, 1000);
+            });
+        },
     };
 </script>
 <template>
@@ -32,10 +42,13 @@
         <header-bar></header-bar>
         <div class="header-bar-logo header-bar-line">
             <div class="container">
-                <img src="../../../user/src/assets/images/logo.png" alt="">
+                <router-link to="/mall">
+                    <img src="../../../user/src/assets/images/logo.png" alt="">
+                </router-link>
             </div>
         </div>
-        <div class="padding-attribute container">
+        <splin-line v-if="loading"></splin-line>
+        <div v-if="!loading" class="padding-attribute container">
             <div class="submit-success" v-if="orderDetail">
                 <div class="submit-title text-center">
                     订单提交成功，请于<span>30分00秒</span>内完成支付~

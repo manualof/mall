@@ -5,6 +5,7 @@
     import LogoModal from './public/LogoModal';
     import NeedBrowse from './public/NeedBrowse';
     import RightSide from './public/RightSide';
+    import SplinLine from './public/SplinLine';
 
     export default {
         components: {
@@ -14,14 +15,34 @@
             LogoModal,
             NeedBrowse,
             RightSide,
+            SplinLine,
+        },
+        date() {
+            return {
+                product: {
+                    num: 1,
+                    oldPrice: 128.33,
+                    price: 38.99,
+                    title: 'Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童可爱短袜5双装',
+                },
+            };
+        },
+        mounted() {
+            const self = this;
+            self.$nextTick(() => {
+                setTimeout(() => {
+                    self.loading = false;
+                }, 1000);
+            });
         },
     };
 </script>
 <template>
-    <div class="pay-result ">
+    <div class="pay-result">
         <header-bar></header-bar>
         <logo-modal></logo-modal>
-        <div class="pay-success padding-attribute">
+        <splin-line v-if="loading"></splin-line>
+        <div v-if="!loading" class="pay-success padding-attribute">
             <div class="container">
                 <div class="pay-success-content">
                     <div class="submit-title text-center"> 付款成功！我们将尽快安排发货！</div>
@@ -38,19 +59,17 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Purrfect diary 咕噜日记1-7岁儿童可爱短袜5双装儿童可爱短袜5双装儿童
-                                    可爱短袜5双装
-                                </td>
-                                <td><s>&yen;126.07</s>
-                                    <p>&yen;39.9</p></td>
-                                <td>1</td>
-                                <td class="price">&yen;39.90</td>
+                                <td>{{ product.title }}</td>
+                                <td><s>&yen;{{ product.oldPrice }}</s>
+                                    <p>&yen;{{ product.price }}</p></td>
+                                <td>{{ product.num }}</td>
+                                <td class="price">&yen;{{ product.price * product.num }}</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                     <!--<button class="order-btn submit-btn">查看订单</button>-->
-                    <router-link :to="{ path: 'payment-success' }" class="order-btn submit-btn">查看订单</router-link>
+                    <router-link to="/mall/payment-success" class="order-btn submit-btn">查看订单</router-link>
                 </div>
                 <need-browse></need-browse>
             </div>
