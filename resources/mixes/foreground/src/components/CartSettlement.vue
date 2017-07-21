@@ -237,8 +237,18 @@
 </script>
 <template>
     <div class="cart-settlement padding-attribute">
+        <div class="no-product" v-if="!productList.length">
+            <div class="clearfix">
+                <div class="icon iconfont icon-gouwuche pull-left"></div>
+                <div class="pull-left no-product-text">
+                    <p>购物车里什么都没有哦~</p>
+                    <router-link to="/mall/signin">登录</router-link>
+                    <router-link to="/mall/search">去逛逛>></router-link>
+                </div>
+            </div>
+        </div>
         <div v-if="!loading">
-            <div class="container">
+            <div class="container" v-if="productList.length">
                 <p class="select-title">购物车</p>
                 <div class="product-information cart-select-model">
                     <table width="100%">
