@@ -238,6 +238,21 @@
                         </label>
                     </li>
                 </ul>
+                <div class="tab-content">
+                    <ul class="tab-pane fade in active clearfix" :class="{used:used}" >
+                        <li class="pull-left pane pull-left" v-for="coupon in coupons">
+                            <div class="coupons">
+                                <p class="text-center"><span class="symbol">￥</span>{{ coupon.money }}&nbsp;<span>{{ coupon.use }}</span></p>
+                            </div>
+                            <div class="coupons-info text-center">
+                                <ul class="text-left">
+                                    <li>品类限制：{{ coupon.type }}</li>
+                                    <li>使用时间：{{ coupon.startTime }}-{{ coupon.endTime }}</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
                 <div class="order-submit submit-btn">
                     <div class="order-submit-content clearfix">
                         <span class="order-price">-&yen;{{ submitOrder.freight }}</span>
@@ -328,6 +343,24 @@
                     {
                         value: 'chongqing',
                         label: '重庆市',
+                    },
+                ],
+                coupons: [
+                    {
+                        endTime: '2017.12.1',
+                        money: 50.00,
+                        other: '无',
+                        startTime: '5016.12.12',
+                        type: '户外运动',
+                        use: '满399元可用',
+                    },
+                    {
+                        endTime: '2017.12.1',
+                        money: 50.00,
+                        other: '无',
+                        startTime: '5016.12.12',
+                        type: '户外运动',
+                        use: '满399元可用',
                     },
                 ],
                 model1: '',
