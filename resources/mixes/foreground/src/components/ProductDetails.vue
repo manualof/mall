@@ -372,11 +372,19 @@
             },
         },
         mounted() {
-            this.imgSrc = this.banner.bigs[0];
-            this.getOffect();
-            window.onresize = () => {
+            const self = this;
+            self.$nextTick(() => {
+                setTimeout(() => {
+                    self.loading = false;
+                }, 1000);
+            });
+            setTimeout(() => {
+                this.imgSrc = this.banner.bigs[0];
                 this.getOffect();
-            };
+                window.onresize = () => {
+                    this.getOffect();
+                };
+            }, 1100);
         },
     };
 </script>

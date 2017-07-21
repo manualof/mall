@@ -20,6 +20,51 @@
                         oldPrice: 46.88,
                         sold: '15%',
                     },
+                    {
+                        img: phone,
+                        title: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        num: 100,
+                        saled: 25,
+                        price: 32.99,
+                        oldPrice: 46.88,
+                        sold: '15%',
+                    },
+                    {
+                        img: phone,
+                        title: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        num: 100,
+                        saled: 25,
+                        price: 32.99,
+                        oldPrice: 46.88,
+                        sold: '15%',
+                    },
+                    {
+                        img: phone,
+                        title: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        num: 100,
+                        saled: 25,
+                        price: 32.99,
+                        oldPrice: 46.88,
+                        sold: '15%',
+                    },
+                    {
+                        img: phone,
+                        title: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        num: 100,
+                        saled: 25,
+                        price: 32.99,
+                        oldPrice: 46.88,
+                        sold: '15%',
+                    },
+                    {
+                        img: phone,
+                        title: 'Apple iPhone 6 32G 金色 移动联通电信4G手机',
+                        num: 100,
+                        saled: 25,
+                        price: 32.99,
+                        oldPrice: 46.88,
+                        sold: '15%',
+                    },
                 ],
                 times: [
                     {
@@ -63,9 +108,9 @@
                     </li>
                 </ul>
             </Affix>
-            <ul class="spike-list">
-                <li>
-                    <router-link to="/mall/search/product-details" v-for="(product,index) in productList" :key="index">
+            <ul class="spike-list clearfix">
+                <li v-for="(product,index) in productList" class="pull-left" :key="index">
+                    <router-link to="/mall/search/product-details">
                         <div class="img">
                             <img :src="product.img"/>
                         </div>

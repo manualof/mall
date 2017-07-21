@@ -51,11 +51,13 @@
         }
     }
     .spike-list {
+        margin-bottom: 40px;
         > li {
             background: #ffffff;
             height: 415px;
             margin-right: 20px;
             padding-top: 20px;
+            margin-bottom: 20px;
             width: 282px;
             &:nth-child(4n) {
                 margin-right: 0;
@@ -76,7 +78,7 @@
                 text-align: left;
             }
             .progress-line {
-                margin-top: 15px;
+                margin-top: 10px;
                 padding: 0 20px;
                 > span {
                     color: #999999;
@@ -99,13 +101,17 @@
                 border: 1px solid #de2634;
                 height: 60px;
                 line-height: 60px;
+                margin-top: 10px;
                 padding-left: 22px;
+                width: 100%;
                 > span {
                     color: #de2634;
                     font-size: 18px;
+                    font-weight: bold;
                     margin-right: 9px;
                     i {
                         font-size: 14px;
+                        font-weight: normal;
                     }
                 }
                 > s {
@@ -115,11 +121,25 @@
                     color: #ffffff;
                     background: #de2634;
                     display: inline-block;
+                    float: right;
                     font-size: 18px;
-                    font-weight: 500;
+                    font-weight: bold;
                     height: 100%;
+                    position: relative;
                     text-align: center;
-                    width: 128px;
+                    width: 108px;
+                    &:before {
+                        content: '';
+                        display: block;
+                        width: 0;
+                        height: 0;
+                        left: 0;
+                        margin-left: -20px;
+                        position: absolute;
+                        border-right: 20px solid transparent;
+                        border-bottom: 58px solid #de2634;
+                        border-left: 20px solid transparent;
+                    }
                 }
             }
         }
