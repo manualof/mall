@@ -24,7 +24,7 @@
     <div class="logoModal">
         <div class="container">
             <div class="logo col-md-4 col-xs-4 col-sm-4">
-                <router-link :to="{name:'home'}">
+                <router-link to="/mall">
                     <img src="../../assets/images/logo.png"/>
                 </router-link>
             </div>
@@ -32,11 +32,11 @@
                 <div class="searchInput clearfix">
                     <input type="text" class="form-control" placeholder="洗衣机、电冰箱、洗碗机" aria-describedby="basic-addon2">
                     <span class="input-group-addon" id="basic-addon2">
-                        <router-link to="/search" target="_blank">搜索</router-link>
+                        <router-link to="/mall/search">搜索</router-link>
                     </span>
                 </div>
                 <p>
-                    <router-link :to="{path: 'search'}"
+                    <router-link :to="{path: '/mall/search'}"
                                  :key="index"
                                 v-for="(item,index) in hotSearch"
                     >
@@ -45,7 +45,7 @@
                 </p>
             </div>
             <div class="shopping-car col-md-2 col-xs-2 col-xs-2">
-                <router-link :to="{path: 'cart-settlement'}">
+                <router-link to="/mall/cart-settlement">
                     <i class="icon iconfont icon-gouwuche"></i>
                     购物车
                 </router-link>

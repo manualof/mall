@@ -58,7 +58,6 @@
                 <div class="title">退款申请</div>
                 <div class="goods-box">
                     <div class="goods-main">
-
                         <div class="goods-img">
                             <img :src="imgsrc" >
                         </div>
@@ -156,7 +155,6 @@
                             <span class="jinggao-msg">商家同意，退款完成</span>
                         </p>
                         <p class="msg-main">商家同意，金额会晶块返回您的账户，有疑问可以联系平台</p>
-
                     </div>
                 </div>
             </div>

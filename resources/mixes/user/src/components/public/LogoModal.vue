@@ -16,7 +16,6 @@
                        name: '满200减30',
                    },
                ],
-               link: window.link,
            };
        },
    };
@@ -25,7 +24,7 @@
     <div class="logoModal">
         <div class="container">
             <div class="logo col-md-4 col-xs-4 col-sm-4">
-                <router-link :to="{name:'home'}">
+                <router-link to="/mall">
                     <img src="../../assets/images/logo.png"/>
                 </router-link>
             </div>
@@ -37,18 +36,18 @@
                     </span>
                 </div>
                 <p>
-                    <a :href="link + 'search'"
+                    <router-link to="/mall/search"
                         target="_blank"
                         v-for="item in hotSearch">
                         {{ item.name }}
-                    </a>
+                    </router-link>
                 </p>
             </div>
             <div class="shopping-car col-md-2 col-xs-2 col-xs-2">
-                <a :href="link + 'cart'" target="_blank">
+                <router-link to="/mall/cart-settlement" target="_blank">
                     <i class="icon iconfont icon-gouwuche"></i>
                     购物车
-                </a>
+                </router-link>
             </div>
         </div>
     </div>

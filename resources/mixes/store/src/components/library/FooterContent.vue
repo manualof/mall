@@ -37,49 +37,49 @@
                         <!--<li><a href="javascript: void(0)">购物流程</a></li>-->
                         <li><span>购物流程</span></li>
                         <li>
-                            <router-link to="shop-process">购物流程</router-link>
+                            <router-link to="/mall/shop-process" target="_blank">购物流程</router-link>
                         </li>
                         <li>
-                            <router-link to="pay-method">支付方式</router-link>
+                            <router-link to="/mall/shop-process/pay-method"  target="_blank">支付方式</router-link>
                         </li>
                         <li>
-                            <router-link to="common-problem">常见问题</router-link>
+                            <router-link to="/mall/shop-process/common-problem" target="_blank">常见问题</router-link>
                         </li>
                     </ul>
                     <ul class="col-md-3 col-xs-3 col-sm-3">
                         <li><span>退货流程</span></li>
                         <li>
-                            <router-link to="return-process">退货流程</router-link>
+                            <router-link to="/mall/shop-process/return-process" target="_blank">退货流程</router-link>
                         </li>
                         <li>
-                            <router-link to="return-money">退款说明</router-link>
+                            <router-link to="/mall/shop-process/return-money" target="_blank">退款说明</router-link>
                         </li>
                         <li>
-                            <router-link to="contact-service">联系客服</router-link>
+                            <router-link to="/mall/shop-process/contact-service" target="_blank">联系客服</router-link>
                         </li>
                     </ul>
                     <ul class="col-md-3 col-xs-3 col-sm-3">
                         <li><span>配送方式</span></li>
                         <li>
-                            <router-link to="delivery-method">配送方式</router-link>
+                            <router-link to="/mall/shop-process/delivery-method" target="_blank">配送方式</router-link>
                         </li>
                         <li>
-                            <router-link to="delivery-sevice">配送服务</router-link>
+                            <router-link to="/mall/shop-process/delivery-sevice" target="_blank">配送服务</router-link>
                         </li>
                         <li>
-                            <router-link to="delivery-track">物流跟踪</router-link>
+                            <router-link to="/mall/shop-process/delivery-track" target="_blank">物流跟踪</router-link>
                         </li>
                     </ul>
                     <ul class="col-md-3 col-xs-3 col-sm-3">
                         <li><span>关于我们</span></li>
                         <li>
-                            <router-link to="about-us">关于我们</router-link>
+                            <router-link to="/mall/shop-process/about-us" target="_blank">关于我们</router-link>
                         </li>
                         <li>
-                            <router-link to="contact-us">联系我们</router-link>
+                            <router-link to="/mall/shop-process/contact-us" target="_blank">联系我们</router-link>
                         </li>
                         <li>
-                            <router-link to="cooperation">招商合作</router-link>
+                            <router-link to="/mall/shop-process/cooperation" target="_blank">招商合作</router-link>
                         </li>
                     </ul>
                 </div>

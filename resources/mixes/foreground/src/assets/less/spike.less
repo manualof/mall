@@ -50,4 +50,78 @@
             }
         }
     }
+    .spike-list {
+        > li {
+            background: #ffffff;
+            height: 415px;
+            margin-right: 20px;
+            padding-top: 20px;
+            width: 282px;
+            &:nth-child(4n) {
+                margin-right: 0;
+            }
+            .img {
+                height: 242px;
+                padding: 0 20px;
+                text-align: center;
+                img {
+                    height: 216px;
+                }
+            }
+            .title {
+                font-size: 14px;
+                line-height: 1.29;
+                margin-top: 19px;
+                padding: 0 20px;
+                text-align: left;
+            }
+            .progress-line {
+                margin-top: 15px;
+                padding: 0 20px;
+                > span {
+                    color: #999999;
+                }
+                .progress-box {
+                    background: #e5e5e5;
+                    height: 10px;
+                    margin-left: 9px;
+                    margin-top: 2px;
+                    width: 128px;
+                    .progress {
+                        background: #fd4d3e;
+                        border-radius: 0;
+                        height: 100%;
+                        width: 20%;
+                    }
+                }
+            }
+            .pay-box {
+                border: 1px solid #de2634;
+                height: 60px;
+                line-height: 60px;
+                padding-left: 22px;
+                > span {
+                    color: #de2634;
+                    font-size: 18px;
+                    margin-right: 9px;
+                    i {
+                        font-size: 14px;
+                    }
+                }
+                > s {
+                    color: #d0d0d0;
+                }
+                > a {
+                    color: #ffffff;
+                    background: #de2634;
+                    display: inline-block;
+                    font-size: 18px;
+                    font-weight: 500;
+                    height: 100%;
+                    text-align: center;
+                    width: 128px;
+                }
+            }
+        }
+    }
 }

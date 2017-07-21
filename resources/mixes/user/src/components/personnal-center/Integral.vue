@@ -5,12 +5,14 @@
         <h4>推荐兑换</h4>
         <div class="recommend-model">
             <div class="browse-content">
-                <dl class="col col-line" v-router-link="{name: 'product-details'}" v-for="item in commendList">
-                    <dt><img :src="item.img"></dt>
-                    <dd>
-                        <p class="name">{{ item.name }}</p>
-                        <p class="new-price">￥{{ item.price }}</p>
-                    </dd>
+                <dl class="col col-line" v-for="item in commendList">
+                    <router-link to="/mall/search/product-details" target="_blank">
+                        <dt><img :src="item.img"></dt>
+                        <dd>
+                            <p class="name">{{ item.name }}</p>
+                            <p class="new-price">￥{{ item.price }}</p>
+                        </dd>
+                    </router-link>
                 </dl>
             </div>
         </div>

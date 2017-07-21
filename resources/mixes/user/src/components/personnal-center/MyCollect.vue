@@ -7,7 +7,7 @@
         <div class="row">
             <div  v-for="(item, index) in goods" class="col-sm-3">
                 <div>
-                    <router-link to="/search/product-details">
+                    <router-link to="/mall/search/product-details" target="_blank">
                         <img :src="item.imgSrc" alt="">
                     </router-link>
                     <div class="goods-msg">
@@ -15,7 +15,7 @@
                             <i>￥</i><span>{{ item.price }}</span>
                             <span class="old-price">￥{{ item.oldPrice }}</span>
                         </div>
-                        <router-link to="/search/product-details" class="goods-name">
+                        <router-link  to="/mall/search/product-details" target="_blank" class="goods-name">
                             {{ item.name }}
                         </router-link>
                         <div class="sales">

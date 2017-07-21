@@ -4,17 +4,17 @@ import ShopHome from '../components/ShopHome';
 
 export default [
     {
-        path: '/',
+        path: '/mall/store',
         component: Layout,
         redirect: { name: 'businessmen' },
         children: [
             {
-                path: 'businessmen',
+                path: '/mall/store/businessmen',
                 name: 'businessmen',
                 component: Businessmen,
             },
             {
-                path: 'shop-home',
+                path: '/mall/store/shop-home',
                 name: 'shop-home',
                 component: ShopHome,
             },

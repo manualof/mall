@@ -120,7 +120,7 @@
                     <card :bordered="false">
                         <div class="spikes-content">
                             <div class="goods-body-header">
-                                <router-link to="/seller/sales/create" class="first-btn">
+                                <router-link to="/seller/sales/active/create" class="first-btn">
                                     <i-button type="ghost">+添加商品</i-button>
                                 </router-link>
                             </div>

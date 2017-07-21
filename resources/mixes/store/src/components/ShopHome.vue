@@ -95,7 +95,7 @@
                 <div class="product clearfix">
                     <router-link class="pull-left"
                                  :key="index"
-                                 to="/" v-for="(product, index) in shop.productList">
+                                 to="/mall/search/product-details" v-for="(product, index) in shop.productList">
                         <img :src="product.img"/>
                         <p>
                             <em>

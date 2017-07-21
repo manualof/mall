@@ -71,12 +71,12 @@
                 <div class="bind">
                     <span>绑定QQ帐号</span>
                     <span class="wechat-bind">未绑定（绑定后即可用QQ账号登录）</span>
-                    <div class="bind-cancel"><router-link to="">绑定</router-link></div>
+                    <div class="bind-cancel"><a>绑定</a></div>
                 </div>
                 <div class="bind">
                     <span>绑定微信账号</span>
                     <span class="wechat-bind">已绑定</span>
-                    <div class="bind-cancel"><router-link to="">解绑</router-link></div>
+                    <div class="bind-cancel"><a>解绑</a></div>
                 </div>
             </div>
             <div v-if="status === 3">

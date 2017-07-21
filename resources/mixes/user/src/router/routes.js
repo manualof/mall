@@ -1,5 +1,4 @@
 import Layout from '../components/public/Layout';
-
 import PersonnalCenter from '../components/personnal-center/PersonnalCenter';
 import AllOrder from '../components/personnal-center/AllOrder';
 import Coupon from '../components/personnal-center/Coupon';
@@ -19,62 +18,62 @@ export default [
         component: Layout,
         children: [
             {
-                path: '/',
+                path: '/mall/user/personnal-center',
                 name: 'personnal-center',
                 component: PersonnalCenter,
                 children: [
                     {
-                        path: '/',
+                        path: '/mall/user/personnal-center/all-order',
                         name: 'all-order',
                         component: AllOrder,
                     },
                     {
-                        path: 'coupon',
+                        path: '/mall/user/personnal-center/coupon',
                         name: 'coupon',
                         component: Coupon,
                     },
                     {
-                        path: 'integral',
+                        path: '/mall/user/personnal-center/integral',
                         name: 'integral',
                         component: Integral,
                     },
                     {
-                        path: 'account-security',
+                        path: '/mall/user/personnal-center/account-security',
                         name: 'account-security',
                         component: AccountSecurity,
                     },
                     {
-                        path: 'shipping-address',
+                        path: '/mall/user/personnal-center/shipping-address',
                         name: 'shipping-address',
                         component: ShippingAddress,
                     },
                     {
-                        path: 'collect-store',
+                        path: '/mall/user/personnal-center/collect-store',
                         name: 'collect-store',
                         component: CollectStore,
                     },
                     {
-                        path: 'selaes-return',
+                        path: '/mall/user/personnal-center/selaes-return',
                         name: 'selaes-return',
                         component: SelaesReturn,
                     },
                     {
-                        path: 'footprint',
+                        path: '/mall/user/personnal-center/footprint',
                         name: 'footprint',
                         component: Footprint,
                     },
                     {
-                        path: 'my-account',
+                        path: '/mall/user/personnal-center/my-account',
                         name: 'my-account',
                         component: MyAccount,
                     },
                     {
-                        path: 'my-collect',
+                        path: '/mall/user/personnal-center/my-collect',
                         name: 'my-collect',
                         component: MyCollect,
                     },
                     {
-                        path: 'notice',
+                        path: '/mall/user/personnal-center/notice',
                         name: 'notice',
                         component: Notice,
                     },
