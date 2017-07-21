@@ -135,7 +135,7 @@
                     <card :bordered="false">
                         <div class="spikes-content">
                             <div class="goods-body-header">
-                                <router-link to="/seller/sales/spikes/create" class="first-btn">
+                                <router-link to="/seller/sales/fulldown/create" class="first-btn">
                                     <i-button type="ghost">+添加活动</i-button>
                                 </router-link>
                                 <div class="goods-body-header-right">
