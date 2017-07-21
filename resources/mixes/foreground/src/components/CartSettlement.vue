@@ -62,6 +62,7 @@
             return {
                 isAllChecked: false,
                 loading: true,
+                login: false,
                 productList: [
                     {
                         name: '母婴',
@@ -242,7 +243,7 @@
                 <div class="icon iconfont icon-gouwuche pull-left"></div>
                 <div class="pull-left no-product-text">
                     <p>购物车里什么都没有哦~</p>
-                    <router-link to="/mall/signin">登录</router-link>
+                    <router-link to="/mall/signin" v-if="login === false">登录</router-link>
                     <router-link to="/mall/search">去逛逛>></router-link>
                 </div>
             </div>

@@ -13,7 +13,7 @@
         float: right;
         .header-bar-nav {
             height: 40px;
-            li {
+            > li {
                 float: left;
                 a{
                     color: #666;
@@ -27,6 +27,33 @@
                 }
                 a.active {
                     color: #de2634;
+                }
+                &:nth-child(3) {
+                    position: relative;
+                    &:hover {
+                        > ul {
+                            display: block;
+                        }
+                    }
+                    > ul {
+                        background-color: #ffffff;
+                        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+                        display: none;
+                        height: 134px;
+                        position: absolute;
+                        top: 0px;
+                        width: 92px;
+                        z-index: 50;
+                        li {
+                            color: #666666;
+                            font-size: 12px;
+                            line-height: 32px;
+                            a {
+                                padding: 0;
+                                padding-left: 10px;
+                            }
+                        }
+                    }
                 }
             }
         }

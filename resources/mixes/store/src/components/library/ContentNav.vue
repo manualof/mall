@@ -28,16 +28,8 @@
                         text: '首页',
                     },
                     {
-                        to: '/mall/offer',
-                        text: '优惠',
-                    },
-                    {
                         to: '/mall/spike',
                         text: '秒杀',
-                    },
-                    {
-                        to: '/mall/discount',
-                        text: '折扣',
                     },
                 ],
             };
