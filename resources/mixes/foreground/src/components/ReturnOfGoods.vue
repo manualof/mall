@@ -43,43 +43,43 @@
         <div class="container top row">
             <div class="col-sm-3">
                 <div class="bar bar-right"
-                     :class="{barxuanzhong : status === 1 | status === 2 ||status ===3 || status ===4 || status ===5 || status === 6}">
+                     :class="{activeBar : status === 1 | status === 2 ||status ===3 || status ===4 || status ===5 || status === 6}">
                     1
                 </div>
-                <div class="tuikuanliucheng"
-                     :class="{tuikuanliuchengxuanzhong : status === 1 || status === 2 ||status ===3 || status ===4 || status === 5 || status === 6}">
+                <div class="progress"
+                     :class="{activeProgress : status === 1 || status === 2 ||status ===3 || status ===4 || status === 5 || status === 6}">
                     买家申请退货
                 </div>
             </div>
 
             <div v-if="status != 6" class="col-sm-3">
                 <div class="bar bar-main"
-                     :class="{barxuanzhong :  status ===2 || status === 3 || status === 4 || status === 5}">2
+                     :class="{activeBar :  status ===2 || status === 3 || status === 4 || status === 5}">2
                 </div>
-                <div class="tuikuanliucheng"
-                     :class="{tuikuanliuchengxuanzhong :  status === 2 ||status ===3 || status === 4 || status === 5}">
+                <div class="progress"
+                     :class="{activeProgress :  status === 2 ||status ===3 || status === 4 || status === 5}">
                     商家处理退货申请
                 </div>
             </div>
             <div v-if="status != 6" class="col-sm-3">
-                <div class="bar bar-main" :class="{barxuanzhong : status ===3 || status === 4 || status === 5  }">3
+                <div class="bar bar-main" :class="{activeBar : status ===3 || status === 4 || status === 5  }">3
                 </div>
-                <div class="tuikuanliucheng"
-                     :class="{tuikuanliuchengxuanzhong : status ===3 || status === 4 || status === 5 }">买家退货给商家
+                <div class="progress"
+                     :class="{activeProgress : status ===3 || status === 4 || status === 5 }">买家退货给商家
                 </div>
             </div>
             <div v-if="status != 6" class="col-sm-3">
-                <div class="bar bar-left" :class="{barxuanzhong :  status === 5  }">4</div>
-                <div class="tuikuanliucheng" :class="{tuikuanliuchengxuanzhong : status === 5  }">确认，平台审核</div>
+                <div class="bar bar-left" :class="{activeBar :  status === 5  }">4</div>
+                <div class="progress" :class="{activeProgress : status === 5  }">确认，平台审核</div>
             </div>
 
             <div v-if="status === 6" class="col-sm-3">
-                <div class="bar bar-left" :class="{barxuanzhong :  status === 6 }">2</div>
-                <div class="tuikuanliucheng" :class="{tuikuanliuchengxuanzhong : status === 6 }">商家拒绝</div>
+                <div class="bar bar-left" :class="{activeBar :  status === 6 }">2</div>
+                <div class="progress" :class="{activeProgress : status === 6 }">商家拒绝</div>
             </div>
         </div>
         <div class="container bottom">
-            <div class="shengqing-goods">
+            <div class="applay-goods">
                 <div class="title">退款申请</div>
                 <div class="goods-box">
                     <div class="goods-main">
@@ -102,10 +102,10 @@
                 </div>
             </div>
             <!--卖家退货申请-->
-            <div v-if="status === 1" class="shengqing-maijia ">
+            <div v-if="status === 1" class="applay-buyer">
                 <div class="title">买家退款申请</div>
-                <div class="maijia-box">
-                    <div class="maijia-main border-none">
+                <div class="buyer-box">
+                    <div class="buyer-main border-none">
                         <div class="group-input">
                             <div class="lable">退款原因</div>
                             <div class="input-main">
@@ -147,10 +147,10 @@
                 </div>
             </div>
             <!--商家处理退货信息-->
-            <div v-else-if="status === 2" class="shengqing-maijia">
+            <div v-else-if="status === 2" class="applay-buyer">
                 <div class="title">买家退款申请</div>
-                <div class="maijia-box">
-                    <div class="maijia-main">
+                <div class="buyer-box">
+                    <div class="buyer-main">
                         <p>
                             <span class="msg-title">退款原因</span>
                             <span class="msg-main">{{ refund.reason }}</span>
@@ -168,10 +168,10 @@
                             <span class="msg-main">{{ refund.illustrate }}</span>
                         </p>
                     </div>
-                    <div class="shangjiachuli">
-                        <p class="title-jinggao">
-                            <span class="jinggao">!</span>
-                            <span class="jinggao-msg">等待商家处理退款申请</span>
+                    <div class="trader-deal">
+                        <p class="title-caveat">
+                            <span class="caveat">!</span>
+                            <span class="caveat-msg">等待商家处理退款申请</span>
                         </p>
                         <p class="msg-main">如果商家同意，金额会尽快返回您的账户</p>
                         <p class="msg-main">如果商家拒绝，那么您将不能再次申请退款，有疑问可以联系平台</p>
@@ -186,26 +186,26 @@
                 </div>
             </div>
             <!--  买家退货给商家 填写物流单号-->
-            <div v-else-if="status === 3" class="shengqing-maijia">
+            <div v-else-if="status === 3" class="applay-buyer">
                 <div class="title">买家退款申请</div>
-                <div class="maijia-box">
-                    <div class="maijia-main">
+                <div class="buyer-box">
+                    <div class="buyer-main">
                         <p><span class="msg-title">退款原因</span><span class="msg-main">{{ refund.reason }}</span></p>
                         <p><span class="msg-title">退款金额</span><span class="msg-main price">￥{{ refund.price }}</span>
                         </p>
                         <p><span class="msg-title">退款编号</span><span class="msg-main">{{ refund.number }}</span></p>
                         <p><span class="msg-title">退款说明</span><span class="msg-main">{{ refund.illustrate }}</span></p>
                     </div>
-                    <div class="shangjiachuli tuihuowancheng">
-                        <p class="title-jinggao">
-                            <span class="jinggao">!</span>
-                            <span class="jinggao-msg">商家已同意，请尽快填写退货信息</span>
+                    <div class="trader-deal complate">
+                        <p class="title-caveat">
+                            <span class="caveat">!</span>
+                            <span class="caveat-msg">商家已同意，请尽快填写退货信息</span>
                         </p>
                         <p class="msg-main">商家收货信息：王某某  139995554545 </p>
                         <p class="msg-address">陕西省西安市雁塔区科技四路中段国土资源大厦公寓楼2304</p>
 
                     </div>
-                    <div class="maijia-main border-none ">
+                    <div class="buyer-main border-none ">
                         <div class="group-input">
                             <div class="lable">物流公司</div>
                             <div class="input-main">
@@ -229,10 +229,10 @@
                 </div>
             </div>
             <!--物流单号-->
-            <div v-else-if="status === 4" class="shengqing-maijia">
+            <div v-else-if="status === 4" class="applay-buyer">
                 <div class="title">买家退款申请</div>
-                <div class="maijia-box">
-                    <div class="maijia-main">
+                <div class="buyer-box">
+                    <div class="buyer-main">
                         <p>
                             <span class="msg-title">退款原因</span>
                             <span class="msg-main">{{ refund.reason }}</span>
@@ -250,16 +250,16 @@
                             <span class="msg-main">{{ refund.illustrate }}</span>
                         </p>
                     </div>
-                    <div class="shangjiachuli tuihuowancheng">
-                        <p class="title-jinggao">
-                            <span class="jinggao">!</span>
-                            <span class="jinggao-msg">商家已同意，请尽快填写退货信息</span>
+                    <div class="trader-deal complate">
+                        <p class="title-caveat">
+                            <span class="caveat">!</span>
+                            <span class="caveat-msg">商家已同意，请尽快填写退货信息</span>
                         </p>
                         <p class="msg-main">商家收货信息：王某某  139995554545 <br>
                             陕西省西安市雁塔区科技四路中段国土资源大厦公寓楼2304</p>
 
                     </div>
-                    <div class="maijia-main border-none ">
+                    <div class="buyer-main border-none ">
                         <p>
                             <span class="msg-title">物流公司</span>
                             <span class="msg-main">顺丰速运</span>
@@ -273,10 +273,10 @@
             </div>
 
             <!--第四步  退货处理完成-->
-            <div v-else-if="status ===5 " class="shengqing-maijia">
+            <div v-else-if="status ===5 " class="applay-buyer">
                 <div class="title">买家退款申请</div>
-                <div class="maijia-box">
-                    <div class="maijia-main">
+                <div class="buyer-box">
+                    <div class="buyer-main">
                         <p>
                             <span class="msg-title">退款原因</span>
                             <span class="msg-main">{{ refund.reason }}</span>
@@ -294,15 +294,15 @@
                             <span class="msg-main">{{ refund.illustrate }}</span>
                         </p>
                     </div>
-                    <div class="shangjiachuli tuihuowancheng">
-                        <p class="title-jinggao">
-                            <span class="jinggao">!</span>
-                            <span class="jinggao-msg">退货处理完成，请查收</span>
+                    <div class="trader-deal complate">
+                        <p class="title-caveat">
+                            <span class="caveat">!</span>
+                            <span class="caveat-msg">退货处理完成，请查收</span>
                         </p>
                         <p class="msg-main">退款已经返还至您的账户，请查收</p>
 
                     </div>
-                    <div class="maijia-main border-none ">
+                    <div class="buyer-main border-none ">
                         <p>
                             <span class="msg-title">物流公司</span>
                             <span class="msg-main">顺丰速运</span>
@@ -315,10 +315,10 @@
                 </div>
             </div>
             <!--商家不同意退货申请-->
-            <div v-else-if="status ===6 " class="shengqing-maijia">
+            <div v-else-if="status ===6 " class="applay-buyer">
                 <div class="title">买家退款申请</div>
-                <div class="maijia-box">
-                    <div class="maijia-main">
+                <div class="buyer-box">
+                    <div class="buyer-main">
                         <p>
                             <span class="msg-title">退款原因</span>
                             <span class="msg-main">{{ refund.reason }}</span>
@@ -336,10 +336,10 @@
                             <span class="msg-main">{{ refund.illustrate }}</span>
                         </p>
                     </div>
-                    <div class="shangjiachuli">
-                        <p class="title-jinggao">
-                            <span class="jinggao">!</span>
-                            <span class="jinggao-msg">商家不同意退货申请</span>
+                    <div class="trader-deal">
+                        <p class="title-caveat">
+                            <span class="caveat">!</span>
+                            <span class="caveat-msg">商家不同意退货申请</span>
                         </p>
                         <p class="msg-main">商家拒绝了您的退货申请，拒绝理由：
                             恶意退货。如您对此处理有意见，可以联系平台服务人员进行处理。祝您购物愉快。
