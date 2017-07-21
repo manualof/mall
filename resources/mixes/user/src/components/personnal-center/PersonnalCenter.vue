@@ -53,7 +53,7 @@
                         text: '账户安全',
                     },
                     {
-                        to: '/mall/user/shipping-address',
+                        to: '/mall/user/address',
                         text: '收货地址',
                     },
                     {

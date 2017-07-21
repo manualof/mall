@@ -3,8 +3,8 @@ import PersonnalCenter from '../components/personnal-center/PersonnalCenter.vue'
 import AllOrder from '../components/personnal-center/AllOrder.vue';
 import Coupon from '../components/personnal-center/Coupon.vue';
 import Integral from '../components/personnal-center/Integral.vue';
-import AccountSecurity from '../components/personnal-center/AccountSecurity.vue';
-import ShippingAddress from '../components/personnal-center/ShippingAddress.vue';
+import AccountSecurity from '../components/personnal-center/Security.vue';
+import ShippingAddress from '../components/personnal-center/Address.vue';
 import CollectStore from '../components/personnal-center/CollectStore.vue';
 import SelaesReturn from '../components/personnal-center/SelaesReturn.vue';
 import Footprint from '../components/personnal-center/Footprint.vue';
@@ -46,8 +46,8 @@ export default [
                         component: AccountSecurity,
                     },
                     {
-                        path: 'shipping-address',
-                        name: 'shipping-address',
+                        path: 'address',
+                        name: 'address',
                         component: ShippingAddress,
                     },
                     {
