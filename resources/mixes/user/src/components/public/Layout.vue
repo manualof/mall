@@ -13,11 +13,11 @@
     </div>
 </template>
 <script>
-    import HeaderBar from './HeaderBar';
-    import FooterBar from './FooterBar';
-    import LogoModal from './LogoModal';
-    import ContentNav from './ContentNav';
-    import FooterContent from './FooterContent';
+    import HeaderBar from './HeaderBar.vue';
+    import FooterBar from './FooterBar.vue';
+    import LogoModal from './LogoModal.vue';
+    import ContentNav from './ContentNav.vue';
+    import FooterContent from './FooterContent.vue';
 
     export default {
         components: {

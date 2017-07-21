@@ -101,7 +101,7 @@
 <script>
     import Datepicker from 'vuejs-datepicker';
     import Ascader from 'iview/src/components/cascader';
-    import Upload from 'iview/src/components/upload/upload';
+    import Upload from 'iview/src/components/upload/upload.vue';
     import IButton from 'iview/src/components/button';
 
     export default{
