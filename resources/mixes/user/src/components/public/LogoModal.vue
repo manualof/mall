@@ -37,8 +37,9 @@
                 </div>
                 <p>
                     <router-link to="/mall/search"
-                        target="_blank"
-                        v-for="item in hotSearch">
+                                 :key="index"
+                                 target="_blank"
+                                 v-for="(item,index) in hotSearch">
                         {{ item.name }}
                     </router-link>
                 </p>

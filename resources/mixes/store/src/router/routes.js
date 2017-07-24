@@ -9,12 +9,12 @@ export default [
         redirect: { name: 'businessmen' },
         children: [
             {
-                path: '/mall/store/businessmen',
+                path: 'businessmen',
                 name: 'businessmen',
                 component: Businessmen,
             },
             {
-                path: '/mall/store/shop-home',
+                path: 'shop-home',
                 name: 'shop-home',
                 component: ShopHome,
             },
