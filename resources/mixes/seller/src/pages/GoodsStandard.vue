@@ -273,6 +273,7 @@
                 goodsStyle: {
                     firstType: [],
                 },
+                loading: false,
                 self: this,
             };
         },
@@ -296,6 +297,34 @@
             },
             removeSizeGoods(index) {
                 this.goodsSizeData.splice(index, 1);
+            },
+            submitColor() {
+                const self = this;
+                self.loading = true;
+                self.$refs.colorForm.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            submitSize() {
+                const self = this;
+                self.loading = true;
+                self.$refs.sizeForm.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
         },
     };
@@ -326,35 +355,56 @@
                             </row>
                             <tabs type="card" class="goods-standard-module">
                                 <tab-pane label="编辑颜色规格">
-                                    <div class="btn-group">
-                                        <i-button type="ghost" class="float-right"
-                                                  @click="addColorStandard">添加规格值</i-button>
-                                    </div>
-                                    <i-table class="goods-table"
-                                             :columns="goodsColorColumns"
-                                             :context="self"
-                                             :data="goodsColorData"
-                                             ref="goodsColorList"
-                                             highlight-row>
-                                    </i-table>
+                                    <i-form :label-width="45" ref="colorForm" :model="colorForm">
+                                        <div class="btn-group">
+                                            <i-button type="ghost" class="float-right"
+                                                      @click="addColorStandard">添加规格值</i-button>
+                                        </div>
+                                        <i-table class="goods-table"
+                                                 :columns="goodsColorColumns"
+                                                 :context="self"
+                                                 :data="goodsColorData"
+                                                 ref="goodsColorList"
+                                                 highlight-row>
+                                        </i-table>
+                                        <row>
+                                            <i-col span="20">
+                                                <form-item>
+                                                    <i-button :loading="loading" type="primary" @click.native="submitColor">
+                                                        <span v-if="!loading">确认提交</span>
+                                                        <span v-else>正在提交…</span>
+                                                    </i-button>
+                                                </form-item>
+                                            </i-col>
+                                        </row>
+                                    </i-form>
                                 </tab-pane>
                                 <tab-pane label="编辑尺码规格">
-                                    <div class="btn-group">
-                                        <i-button type="ghost" class="float-right"
-                                                  @click="addSizeStandard">添加规格值</i-button>
-                                    </div>
-                                    <i-table class="goods-table"
-                                             :columns="goodsSizeColumns"
-                                             :context="self"
-                                             :data="goodsSizeData"
-                                             ref="goodsSizeList"
-                                             highlight-row>
-                                    </i-table>
+                                    <i-form :label-width="45" ref="sizeForm" :model="sizeForm">
+                                        <div class="btn-group">
+                                            <i-button type="ghost" class="float-right"
+                                                      @click="addSizeStandard">添加规格值</i-button>
+                                        </div>
+                                        <i-table class="goods-table"
+                                                 :columns="goodsSizeColumns"
+                                                 :context="self"
+                                                 :data="goodsSizeData"
+                                                 ref="goodsSizeList"
+                                                 highlight-row>
+                                        </i-table>
+                                        <row>
+                                            <i-col span="20">
+                                                <form-item>
+                                                    <i-button :loading="loading" type="primary" @click.native="submitSize">
+                                                        <span v-if="!loading">确认提交</span>
+                                                        <span v-else>正在提交…</span>
+                                                    </i-button>
+                                                </form-item>
+                                            </i-col>
+                                        </row>
+                                    </i-form>
                                 </tab-pane>
                             </tabs>
-                        </div>
-                        <div class="page">
-                            <page :total="100" show-elevator></page>
                         </div>
                     </card>
                 </tab-pane>
