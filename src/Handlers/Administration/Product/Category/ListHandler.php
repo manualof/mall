@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Handlers\Administration\Product\Category;
 
+use Illuminate\Support\Collection;
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductCategory;
@@ -54,7 +55,7 @@ class ListHandler extends Handler
                 $level = 2;
             }
         }
-        $this->withCode(200)->withData($builder->items())->withExtra([
+        $this->withCode(200)->withData($this->reformatData($builder->items()))->withExtra([
             'category'   => $category,
             'level'      => $level,
             'pagination' => [
@@ -67,6 +68,48 @@ class ListHandler extends Handler
                 'from'          => $builder->firstItem(),
                 'to'            => $builder->lastItem(),
             ],
+            'structure'  => $this->restructureData($builder->items()),
         ])->withMessage('获取商品列表成功！');
+    }
+
+    /**
+     * @param array $items
+     *
+     * @return array
+     */
+    protected function reformatData(array $items)
+    {
+        $data = new Collection();
+        collect($items)->each(function (ProductCategory $category) use ($data) {
+            $data->put($category->getAttribute('id'), $category);
+        });
+
+        return $data->toArray();
+    }
+
+    /**
+     * @param array $items
+     *
+     * @return array
+     */
+    protected function restructureData(array $items)
+    {
+        $data = new Collection();
+        $items = collect($items);
+        $items->where('parent_id', 0)->each(function (ProductCategory $category) use ($data, $items) {
+            $children = new Collection();
+            $items->where('parent_id', $category->getAttribute('id'))->each(function (ProductCategory $category) use ($children, $items) {
+                $sub = new Collection();
+                $items->where('parent_id', $category->getAttribute('id'))->each(function (ProductCategory $category) use ($sub) {
+                    $sub->put($category->getAttribute('id'), $category);
+                });
+                $category->setAttribute('children', $sub->toArray());
+                $children->put($category->getAttribute('id'), $category);
+            });
+            $category->setAttribute('children', $children->toArray());
+            $data->put($category->getAttribute('id'), $category);
+        });
+
+        return $data->toArray();
     }
 }
