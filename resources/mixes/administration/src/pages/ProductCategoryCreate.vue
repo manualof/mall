@@ -3,55 +3,48 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(vm => {
-                if (to.query.parent) {
-                    vm.form.parent = to.query.parent;
-                }
-                window.console.log(vm.form);
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/product/category/list`).then(response => {
+                const structures = response.data.structure;
+                next(vm => {
+                    if (to.query.parent) {
+                        vm.form.parent = to.query.parent;
+                    }
+                    vm.structures = Object.keys(structures).map(index => {
+                        const item = structures[index];
+                        item.label = item.name;
+                        item.value = item.id;
+                        const children = item.children;
+                        item.children = Object.keys(children).map(i => {
+                            const sub = children[i];
+                            sub.label = sub.name;
+                            sub.value = sub.id;
+                            const down = sub.children;
+                            sub.children = Object.keys(down).map(n => {
+                                const low = down[n];
+                                low.label = low.name;
+                                low.value = low.id;
+                                return low;
+                            });
+                            return sub;
+                        });
+                        return item;
+                    });
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
             return {
-                goodsList: [
-                    {
-                        children: [
-                            {
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
-                            },
-                        ],
-                        label: '个护化妆',
-                        value: '个护化妆',
-                    },
-                    {
-                        children: [
-                            {
-                                label: '服饰寝居',
-                                value: '服饰寝居',
-                            },
-                            {
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
-                            },
-                        ],
-                        label: '家用电器',
-                        value: '家用电器',
-                    },
-                ],
+                structures: [],
                 form: {
                     deposit: 10,
                     name: '',
                     order: 0,
-                    parent: '',
+                    parent: [],
                 },
                 loading: false,
                 rules: {
@@ -60,6 +53,7 @@
                             message: '分佣比例不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'number',
                         },
                     ],
                     name: [
@@ -67,6 +61,7 @@
                             message: '名称名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
@@ -83,34 +78,33 @@
             };
         },
         methods: {
-            goBack() {
-                const self = this;
-                self.$router.go(-1);
-            },
             submit() {
                 const self = this;
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
+                        const form = self.form;
+                        if (form.parent.length > 0) {
+                            form.parent_id = form.parent[form.parent.length];
+                        }
                         self.$http.post(`${window.api}/mall/admin/product/category/create`, self.form).then(() => {
                             self.$notice.open({
                                 title: '创建商品分类信息成功！',
                             });
-                            window.console.log(self.form.parent);
                             if (self.form.parent) {
                                 self.$router.push({
                                     path: '/mall/goods/category',
                                     query: {
-                                        parent: self.form.parent,
+                                        parent: form.parent_id,
                                     },
                                 });
                             } else {
                                 self.$router.push('/mall/goods/category');
                             }
-                        }).catch(() => {}).finally(() => {
+                        }).catch(() => {
+                        }).finally(() => {
                             self.loading = false;
                         });
-                        window.console.log(valid);
                     } else {
                         self.loading = false;
                         self.$notice.error({
@@ -120,15 +114,25 @@
                 });
             },
         },
+        watch: {
+            form: {
+                deep: true,
+                handler(val) {
+                    window.console.log(val);
+                },
+            },
+        },
     };
 </script>
 <template>
     <div class="mall-wrap">
         <div class="goods-category-add">
             <div class="edit-link-title">
-                <i-button type="text" @click.native="goBack">
-                    <icon type="chevron-left"></icon>
-                </i-button>
+                <router-link to="/mall/goods/category">
+                    <i-button type="text" @click.native="goBack">
+                        <icon type="chevron-left"></icon>
+                    </i-button>
+                </router-link>
                 <span>分类管理—新增</span>
             </div>
             <card :bordered="false">
@@ -155,7 +159,8 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="上级分类">
-                                    <cascader change-on-select :data="goodsList" trigger="hover"></Cascader>
+                                    <cascader change-on-select :data="structures" v-model="form.parent"
+                                              @on-change="selectChange"></Cascader>
                                     <p class="tip">如果选择上级分类,那么新的分类则为被选择上级分类的子分类</p>
                                 </form-item>
                             </i-col>
