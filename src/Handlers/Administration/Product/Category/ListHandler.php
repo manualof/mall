@@ -95,7 +95,7 @@ class ListHandler extends Handler
     protected function restructureData(array $items)
     {
         $data = new Collection();
-        $items = collect($items);
+        $items = ProductCategory::all();
         $items->where('parent_id', 0)->each(function (ProductCategory $category) use ($data, $items) {
             $children = new Collection();
             $items->where('parent_id', $category->getAttribute('id'))->each(function (ProductCategory $category) use ($children, $items) {
