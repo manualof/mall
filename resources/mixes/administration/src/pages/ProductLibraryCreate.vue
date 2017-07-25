@@ -192,6 +192,7 @@
                             message: '商品图片不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     name: [
@@ -199,6 +200,7 @@
                             message: '商品名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

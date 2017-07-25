@@ -19,6 +19,7 @@
                             message: '信息不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

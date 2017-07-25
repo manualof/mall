@@ -44,6 +44,7 @@
                             message: '名称名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

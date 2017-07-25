@@ -35,6 +35,7 @@
                             message: '广告名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     logo: [
@@ -42,6 +43,7 @@
                             message: '图片上传不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     position: [
@@ -49,6 +51,7 @@
                             message: '广告位不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

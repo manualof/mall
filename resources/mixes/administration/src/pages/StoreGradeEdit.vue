@@ -17,6 +17,7 @@
                             message: '申请说明不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     charges: [
@@ -24,6 +25,7 @@
                             message: '收费标准不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     level: [
@@ -31,6 +33,7 @@
                             message: '级别不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     levelName: [
@@ -38,6 +41,7 @@
                             message: '等级名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

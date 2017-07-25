@@ -36,6 +36,7 @@
                             message: '高度不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     logo: [
@@ -43,6 +44,7 @@
                             message: '广告位默认图片不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     name: [
@@ -50,6 +52,7 @@
                             message: '名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     widthNum: [
@@ -57,6 +60,7 @@
                             message: '宽度不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

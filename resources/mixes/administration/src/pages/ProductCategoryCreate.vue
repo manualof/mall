@@ -54,6 +54,7 @@
                             required: true,
                             trigger: 'blur',
                             type: 'number',
+                            type: 'string',
                         },
                     ],
                     name: [
@@ -61,6 +62,7 @@
                             message: '名称名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                             type: 'string',
                         },
                     ],

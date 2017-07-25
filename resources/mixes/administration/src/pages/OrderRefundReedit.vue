@@ -20,6 +20,7 @@
                             message: '原因不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     refundSort: [
@@ -27,6 +28,7 @@
                             message: '排序不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

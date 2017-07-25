@@ -21,6 +21,7 @@
                             message: '分类名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     number: [
@@ -28,6 +29,7 @@
                             message: '保证金额数不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
@@ -37,6 +39,7 @@
                             message: '分类名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     number: [
@@ -44,6 +47,7 @@
                             message: '保证金额数不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

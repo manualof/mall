@@ -32,6 +32,7 @@
                             message: '分佣比例不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     name: [
@@ -39,6 +40,7 @@
                             message: '分类名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

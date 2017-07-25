@@ -20,6 +20,7 @@
                             message: '搜索默认词不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     show: [
@@ -27,6 +28,7 @@
                             message: '显示词不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
@@ -40,6 +42,7 @@
                             message: '搜索默认词不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     show: [
@@ -47,6 +50,7 @@
                             message: '显示词不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

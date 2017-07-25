@@ -300,6 +300,7 @@
                             message: '分佣比例不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     showStyle: [
@@ -307,6 +308,7 @@
                             message: '商品展示方式不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     typeName: [
@@ -314,6 +316,7 @@
                             message: '分类名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
