@@ -32,7 +32,7 @@
                             message: '分佣比例不能为空',
                             required: true,
                             trigger: 'blur',
-                            type: 'string',
+                            type: 'number',
                         },
                     ],
                     name: [
@@ -47,10 +47,6 @@
             };
         },
         methods: {
-            goBack() {
-                const self = this;
-                self.$router.go(-1);
-            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -92,9 +88,11 @@
     <div class="mall-wrap">
         <div class="goods-category-edit">
             <div class="edit-link-title">
-                <i-button type="text" @click.native="goBack">
-                    <icon type="chevron-left"></icon>
-                </i-button>
+                <router-link to="/mall/goods/category">
+                    <i-button type="text">
+                        <icon type="chevron-left"></icon>
+                    </i-button>
+                </router-link>
                 <span>分类管理—编辑"珠宝手表"</span>
             </div>
             <card :bordered="false">
@@ -110,7 +108,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="分佣比例" prop="deposit">
-                                    <i-input v-model="form.deposit"></i-input>
+                                    <i-input number v-model="form.deposit"></i-input>
                                     <div class="tip">
                                         <p>分佣比例必须为0-100的整数,默认关联至子分类</p>
                                     </div>
@@ -121,7 +119,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="排序">
-                                    <i-input v-model="form.order"></i-input>
+                                    <i-input number v-model="form.order"></i-input>
                                     <p class="tip">数字范围为0~255，数字越小越靠前</p>
                                 </form-item>
                             </i-col>

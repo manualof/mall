@@ -12,7 +12,7 @@
             injection.http.post(`${window.api}/mall/admin/product/category/list`, data).then(response => {
                 window.console.log(response);
                 next(vm => {
-                    vm.category = response.data.category;
+                    vm.category = response.data.current;
                     vm.level = response.data.level;
                     vm.list = response.data.data.map(item => {
                         item.loading = false;
@@ -212,7 +212,7 @@
                         parent_id: self.$route.query.parent,
                     }).then(response => {
                         window.console.log(response);
-                        self.category = response.data.category;
+                        self.category = response.data.current;
                         self.level = response.data.level;
                         self.list = response.data.data.map(item => {
                             item.loading = false;
@@ -259,7 +259,7 @@
                         parent_id: self.$route.query.parent,
                     }).then(response => {
                         window.console.log(response);
-                        self.category = response.data.category;
+                        self.category = response.data.current;
                         self.level = response.data.level;
                         self.list = response.data.data.map(item => {
                             item.loading = false;
@@ -297,7 +297,7 @@
                         parent_id: route.query.parent,
                     }).then(response => {
                         window.console.log(response);
-                        self.category = response.data.category;
+                        self.category = response.data.current;
                         self.level = response.data.level;
                         self.list = response.data.data.map(item => {
                             item.loading = false;

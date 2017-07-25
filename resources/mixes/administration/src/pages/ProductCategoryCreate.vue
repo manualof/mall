@@ -4,13 +4,14 @@
     export default {
         beforeRouteEnter(to, from, next) {
             injection.loading.start();
-            injection.http.post(`${window.api}/mall/admin/product/category/list`).then(response => {
+            injection.http.post(`${window.api}/mall/admin/product/category/list`, {
+                parent_id: to.query.parent,
+            }).then(response => {
                 const structures = response.data.structure;
                 next(vm => {
-                    if (to.query.parent) {
-                        vm.form.parent = to.query.parent;
-                    }
-                    vm.structures = Object.keys(structures).map(index => {
+                    vm.current = response.data.current;
+                    vm.form.parent = response.data.current.path;
+                    vm.parents = Object.keys(structures).map(index => {
                         const item = structures[index];
                         item.label = item.name;
                         item.value = item.id;
@@ -39,7 +40,7 @@
         },
         data() {
             return {
-                structures: [],
+                current: {},
                 form: {
                     deposit: 10,
                     name: '',
@@ -54,7 +55,6 @@
                             required: true,
                             trigger: 'blur',
                             type: 'number',
-                            type: 'string',
                         },
                     ],
                     name: [
@@ -63,20 +63,10 @@
                             required: true,
                             trigger: 'blur',
                             type: 'string',
-                            type: 'string',
                         },
                     ],
                 },
-                parents: [
-                    {
-                        label: '颜色',
-                        value: '1',
-                    },
-                    {
-                        label: '类型',
-                        value: '2',
-                    },
-                ],
+                parents: [],
             };
         },
         methods: {
@@ -87,8 +77,9 @@
                     if (valid) {
                         const form = self.form;
                         if (form.parent.length > 0) {
-                            form.parent_id = form.parent[form.parent.length];
+                            form.parent_id = form.parent[form.parent.length - 1];
                         }
+                        window.console.log(form);
                         self.$http.post(`${window.api}/mall/admin/product/category/create`, self.form).then(() => {
                             self.$notice.open({
                                 title: '创建商品分类信息成功！',
@@ -131,7 +122,7 @@
         <div class="goods-category-add">
             <div class="edit-link-title">
                 <router-link to="/mall/goods/category">
-                    <i-button type="text" @click.native="goBack">
+                    <i-button type="text">
                         <icon type="chevron-left"></icon>
                     </i-button>
                 </router-link>
@@ -143,7 +134,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="分类名称" prop="name">
-                                    <i-input v-model="form.name"></i-input>
+                                    <i-input number v-model="form.name"></i-input>
                                 </form-item>
                             </i-col>
                         </row>
@@ -161,7 +152,7 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="上级分类">
-                                    <cascader change-on-select :data="structures" v-model="form.parent"
+                                    <cascader change-on-select :data="parents" v-model="form.parent"
                                               @on-change="selectChange"></Cascader>
                                     <p class="tip">如果选择上级分类,那么新的分类则为被选择上级分类的子分类</p>
                                 </form-item>
