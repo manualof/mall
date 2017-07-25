@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Models;
 
+use Illuminate\Support\Collection;
 use Notadd\Foundation\Database\Model;
 use Notadd\Foundation\Database\Traits\HasFlow;
 use Symfony\Component\Workflow\Event\GuardEvent;
@@ -19,6 +20,14 @@ use Symfony\Component\Workflow\Transition;
 class ProductCategory extends Model
 {
     use HasFlow;
+
+    /**
+     * @var array
+     */
+    protected $appends = [
+        'level',
+        'path',
+    ];
 
     /**
      * @var array
@@ -48,6 +57,25 @@ class ProductCategory extends Model
     /**
      * @param $value
      *
+     * @return int
+     */
+    public function getLevelAttribute($value)
+    {
+        if (static::query()->where('id', $this->attributes['parent_id'])->count()) {
+            $parent = static::query()->find($this->attributes['parent_id']);
+            if (static::query()->where('id', $parent->getAttribute('parent_id'))->count()) {
+                return 3;
+            } else {
+                return 2;
+            }
+        } else {
+            return 1;
+        }
+    }
+
+    /**
+     * @param $value
+     *
      * @return mixed
      */
     public function getOrderAttribute($value)
@@ -57,6 +85,26 @@ class ProductCategory extends Model
         }
 
         return $value;
+    }
+
+    /**
+     * @param $value
+     *
+     * @return array
+     */
+    public function getPathAttribute($value)
+    {
+        $paths = new Collection();
+        if ($this->attributes['parent_id']) {
+            $one = static::query()->find($this->attributes['parent_id']);
+            $paths->prepend($one->getAttribute('id'));
+            if ($one->getAttribute('parent_id')) {
+                $two = static::query()->find($one->getAttribute('parent_id'));
+                $paths->prepend($two->getAttribute('id'));
+            }
+        }
+
+        return $paths->toArray();
     }
 
     /**
