@@ -27,6 +27,7 @@ class ProductSpecification extends Model
         'category_id',
         'flow_marketing',
         'name',
+        'order',
         'store_id',
         'type',
         'value',
@@ -36,6 +37,7 @@ class ProductSpecification extends Model
      * @var array
      */
     protected $setters = [
+        'order'    => 'null|0',
         'store_id' => 'null|0',
         'type'     => 'null|color',
     ];
