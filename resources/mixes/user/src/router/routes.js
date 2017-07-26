@@ -1,16 +1,16 @@
 import Layout from '../layouts/Layout.vue';
-import PersonnalCenter from '../layouts/UserLayout.vue';
-import AllOrder from '../pages/UserOrder.vue';
-import Coupon from '../pages/UserCoupon.vue';
-import Integral from '../pages/UserIntegral.vue';
-import AccountSecurity from '../pages/UserSecurity.vue';
-import ShippingAddress from '../pages/UserAddress.vue';
-import CollectStore from '../pages/UserFollow.vue';
+import UserLayout from '../layouts/UserLayout.vue';
+import UserOrder from '../pages/UserOrder.vue';
+import UserCoupon from '../pages/UserCoupon.vue';
+import UserIntegral from '../pages/UserIntegral.vue';
+import UserSecurity from '../pages/UserSecurity.vue';
+import UserAddress from '../pages/UserAddress.vue';
+import UserFollow from '../pages/UserFollow.vue';
 import SelaesReturn from '../pages/SelaesReturn.vue';
-import Footprint from '../pages/UserFootprint.vue';
-import MyAccount from '../pages/UserAccount.vue';
-import MyCollect from '../pages/UserCollect.vue';
-import Notice from '../pages/UserNotice.vue';
+import UserFootprint from '../pages/UserFootprint.vue';
+import UserAccount from '../pages/UserAccount.vue';
+import UserCollect from '../pages/UserCollect.vue';
+import UserNotice from '../pages/UserNotice.vue';
 
 export default [
     {
@@ -20,65 +20,65 @@ export default [
             {
                 path: 'user',
                 name: 'personnal-center',
-                component: PersonnalCenter,
+                component: UserLayout,
                 redirect: {
                     name: 'order',
                 },
                 children: [
                     {
-                        path: 'order',
+                        component: UserOrder,
                         name: 'order',
-                        component: AllOrder,
+                        path: 'order',
                     },
                     {
-                        path: 'coupon',
+                        component: UserCoupon,
                         name: 'coupon',
-                        component: Coupon,
+                        path: 'coupon',
                     },
                     {
-                        path: 'integral',
+                        component: UserIntegral,
                         name: 'integral',
-                        component: Integral,
+                        path: 'integral',
                     },
                     {
-                        path: 'account-security',
+                        component: UserSecurity,
                         name: 'account-security',
-                        component: AccountSecurity,
+                        path: 'account-security',
                     },
                     {
-                        path: 'address',
+                        component: UserAddress,
                         name: 'address',
-                        component: ShippingAddress,
+                        path: 'address',
                     },
                     {
-                        path: 'collect-store',
+                        component: UserFollow,
                         name: 'collect-store',
-                        component: CollectStore,
+                        path: 'collect-store',
                     },
                     {
-                        path: 'selaes-return',
-                        name: 'selaes-return',
                         component: SelaesReturn,
+                        name: 'selaes-return',
+                        path: 'selaes-return',
                     },
                     {
-                        path: 'footprint',
+                        component: UserFootprint,
                         name: 'footprint',
-                        component: Footprint,
+                        path: 'footprint',
                     },
                     {
-                        path: 'my-account',
+                        component: UserAccount,
                         name: 'my-account',
-                        component: MyAccount,
+                        path: 'my-account',
                     },
                     {
-                        path: 'my-collect',
+                        component: UserCollect,
                         name: 'my-collect',
-                        component: MyCollect,
+                        path: 'my-collect',
                     },
                     {
-                        path: 'notice',
+                        component: UserNotice,
                         name: 'notice',
-                        component: Notice,
+                        path: 'notice',
                     },
                 ],
             },
