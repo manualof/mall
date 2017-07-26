@@ -37,6 +37,7 @@ class ListHandler extends Handler
             'paginate.numeric' => '分页数必须为数值',
         ]);
         $builder = ProductSpecification::query();
+        $builder->with('category');
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)

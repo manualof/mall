@@ -50,8 +50,8 @@
                 },
                 form: {
                     category: [],
-                    position: '',
-                    sort: '',
+                    order: '',
+                    name: '',
                 },
             };
         },
@@ -127,8 +127,8 @@
                         </row>
                         <row>
                             <i-col span="12">
-                                <form-item label="排序" prop="sort">
-                                    <i-input v-model="form.sort"></i-input>
+                                <form-item label="排序" prop="order">
+                                    <i-input v-model="form.order"></i-input>
                                     <p class="tip">
                                         请填写自然数。类型列表将会根据排序进行由小到大排列显示
                                     </p>

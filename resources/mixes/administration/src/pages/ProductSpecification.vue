@@ -7,7 +7,10 @@
             injection.http.post(`${window.api}/mall/admin/product/specification/list`).then(response => {
                 const data = response.data.data;
                 next(vm => {
-                    vm.list = data;
+                    vm.list = data.map(item => {
+                        item.loading = false;
+                        return item;
+                    });
                     injection.loading.finish();
                     injection.sidebar.active('mall');
                 });
@@ -40,34 +43,30 @@
                 columns: [
                     {
                         align: 'center',
-                        key: 'sort',
+                        key: 'order',
                         title: '规格排序',
                         width: 120,
                     },
                     {
                         align: 'center',
-                        key: 'typeId',
+                        key: 'id',
                         title: '规格ID',
                         width: 120,
                     },
                     {
                         align: 'center',
-                        key: 'typeName',
+                        key: 'name',
                         title: '规格名称',
                         width: 160,
                     },
                     {
-                        align: 'center',
-                        key: 'positionId',
-                        title: '快捷定位ID',
-                        width: 120,
+                        key: 'location',
+                        render(h, data) {
+                            return data.row.category.breadcrumb;
+                        },
+                        title: '快捷定位',
                     },
                     {
-                        key: 'positionName',
-                        title: '快捷定位名称',
-                    },
-                    {
-                        align: 'center',
                         key: 'action',
                         render(h, data) {
                             return h('div', [
@@ -85,10 +84,39 @@
                                 h('i-button', {
                                     on: {
                                         click() {
-                                            self.remove(data.index);
+                                            self.list[data.index].loading = true;
+                                            self.$http.post(`${window.api}/mall/admin/product/specification/remove`, {
+                                                id: data.row.id,
+                                            }).then(() => {
+                                                self.$notice.open({
+                                                    title: '删除规格信息成功！',
+                                                });
+                                                self.$notice.open({
+                                                    title: '正在刷新数据...',
+                                                });
+                                                self.$http.post(`${window.api}/mall/admin/product/specification/list`).then(response => {
+                                                    self.list = response.data.data.map(item => {
+                                                        item.loading = false;
+                                                        return item;
+                                                    });
+                                                    self.$loading.finish();
+                                                    self.$notice.open({
+                                                        title: '刷新数据成功！',
+                                                    });
+                                                }).catch(() => {
+                                                    self.$loading.fail();
+                                                });
+                                            }).catch(() => {
+                                                self.$notice.error({
+                                                    title: '删除规格信息失败！',
+                                                });
+                                            }).finally(() => {
+                                                self.list[data.index].loading = false;
+                                            });
                                         },
                                     },
                                     props: {
+                                        loading: self.list[data.index].loading,
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -99,7 +127,7 @@
                             ]);
                         },
                         title: '操作',
-                        width: 180,
+                        width: 230,
                     },
                 ],
                 list: [],
@@ -111,9 +139,6 @@
                 self.$router.push({
                     path: 'standard/edit',
                 });
-            },
-            remove(index) {
-                this.list.splice(index, 1);
             },
         },
     };
