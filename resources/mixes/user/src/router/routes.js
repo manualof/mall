@@ -1,4 +1,6 @@
 import Layout from '../layouts/Layout.vue';
+import Store from '../pages/Store.vue';
+import StoreBusinessmen from '../pages/StoreBusinessmen.vue';
 import UserLayout from '../layouts/UserLayout.vue';
 import UserOrder from '../pages/UserOrder.vue';
 import UserCoupon from '../pages/UserCoupon.vue';
@@ -17,6 +19,24 @@ export default [
         path: '/mall',
         component: Layout,
         children: [
+            {
+                path: 'store',
+                redirect: {
+                    name: 'businessmen',
+                },
+                children: [
+                    {
+                        path: 'businessmen',
+                        name: 'businessmen',
+                        component: StoreBusinessmen,
+                    },
+                    {
+                        path: 'shop-home',
+                        name: 'shop-home',
+                        component: Store,
+                    },
+                ],
+            },
             {
                 path: 'user',
                 name: 'personnal-center',
