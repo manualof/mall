@@ -112,12 +112,6 @@
                     path: 'standard/edit',
                 });
             },
-            newAddData() {
-                const self = this;
-                self.$router.push({
-                    path: 'standard/add',
-                });
-            },
             remove(index) {
                 this.list.splice(index, 1);
             },
@@ -136,7 +130,9 @@
                             <p>默认安装中会添加一个颜色规格，请不要删除，只有这个颜色规格才能在商品详细页显示为图片</p>
                         </div>
                         <div class="advertisement-action">
-                            <i-button class="add-data" type="ghost" @click.native="newAddData">+新增数据</i-button>
+                            <router-link to="/mall/product/specification/add">
+                                <i-button class="add-data" type="ghost">+新增数据</i-button>
+                            </router-link>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                             <div class="goods-body-header-right">
                                 <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
