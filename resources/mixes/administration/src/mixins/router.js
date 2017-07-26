@@ -42,13 +42,6 @@ import ProductBrandEdit from '../pages/ProductBrandEdit.vue';
 import ProductCategory from '../pages/ProductCategory.vue';
 import ProductCategoryEdit from '../pages/ProductCategoryEdit.vue';
 import ProductCategoryCreate from '../pages/ProductCategoryCreate.vue';
-import ProductCategoryAddUnder from '../pages/ProductCategoryAddUnder.vue';
-import ProductCategoryLook from '../pages/ProductCategoryLook.vue';
-import ProductCategoryLookAdd from '../pages/ProductCategoryLookAdd.vue';
-import ProductCategoryLookAddUnder from '../pages/ProductCategoryLookAddUnder.vue';
-import ProductCategoryLookEdit from '../pages/ProductCategoryLookEdit.vue';
-import ProductCategoryLookUnder from '../pages/ProductCategoryLookUnder.vue';
-import ProductCategoryLookUnderAdd from '../pages/ProductCategoryLookUnderAdd.vue';
 import ProductCategoryLookUnderEdit from '../pages/ProductCategoryLookUnderEdit.vue';
 import ProductLibrary from '../pages/ProductLibrary.vue';
 import ProductLibraryEdit from '../pages/ProductLibraryEdit.vue';
@@ -203,41 +196,6 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductCategoryCreate,
                     path: 'product/category/add',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: ProductCategoryAddUnder,
-                    path: 'product/category/add/under',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: ProductCategoryLook,
-                    path: 'product/category/look',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: ProductCategoryLookAdd,
-                    path: 'product/category/look/add',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: ProductCategoryLookAddUnder,
-                    path: 'product/category/look/add/under',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: ProductCategoryLookEdit,
-                    path: 'product/category/look/edit',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: ProductCategoryLookUnder,
-                    path: 'product/category/look/under',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: ProductCategoryLookUnderAdd,
-                    path: 'product/category/look/under/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
