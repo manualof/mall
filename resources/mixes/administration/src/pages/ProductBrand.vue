@@ -213,7 +213,7 @@
                                 return h('div', [
                                     h('router-link', {
                                         props: {
-                                            to: `/mall/goods/brand/edit/${data.row.id}`,
+                                            to: `/mall/product/brand/edit/${data.row.id}`,
                                         },
                                     }, [
                                         h('i-button', {
@@ -336,7 +336,7 @@
                         </div>
                         <div class="brand-management">
                             <div class="store-body-header">
-                                <router-link to="/mall/goods/brand/add">
+                                <router-link to="/mall/product/brand/add">
                                     <i-button class="add-data" type="ghost">+新增数据</i-button>
                                 </router-link>
                                 <i-button @click="exportData" type="ghost">导出数据</i-button>

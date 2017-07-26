@@ -3,27 +3,27 @@ export default function (injection) {
         {
             children: [
                 {
-                    path: '/mall/goods',
+                    path: '/mall/product',
                     title: '商品管理',
                 },
                 {
-                    path: '/mall/goods/library',
+                    path: '/mall/product/library',
                     title: '商品库管理',
                 },
                 {
-                    path: '/mall/goods/category',
+                    path: '/mall/product/category',
                     title: '分类管理',
                 },
                 {
-                    path: '/mall/goods/brand',
+                    path: '/mall/product/brand',
                     title: '品牌管理',
                 },
                 {
-                    path: '/mall/goods/standard',
+                    path: '/mall/product/standard',
                     title: '规格管理',
                 },
                 {
-                    path: '/mall/goods/picture',
+                    path: '/mall/product/picture',
                     title: '图片空间',
                 },
             ],

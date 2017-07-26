@@ -250,7 +250,7 @@
                             self.$notice.open({
                                 title: '添加产品库数据成功！',
                             });
-                            self.$router.push('/mall/goods/public');
+                            self.$router.push('/mall/product/public');
                         }).catch(() => {
                             self.loading = false;
                         });

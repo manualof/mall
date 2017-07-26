@@ -294,7 +294,7 @@
                             self.$notice.open({
                                 title: '编辑商品品牌信息成功！',
                             });
-                            self.$router.push('/mall/goods/brand');
+                            self.$router.push('/mall/product/brand');
                         }).catch(() => {
                             self.$notice.error({
                                 title: '编辑商品品牌信息失败！',

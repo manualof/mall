@@ -58,13 +58,13 @@
                             });
                             if (self.form.parent_id) {
                                 self.$router.push({
-                                    path: '/mall/goods/category',
+                                    path: '/mall/product/category',
                                     query: {
                                         parent: self.form.parent_id,
                                     },
                                 });
                             } else {
-                                self.$router.push('/mall/goods/category');
+                                self.$router.push('/mall/product/category');
                             }
                         }).catch(() => {
                             self.$notice.error({
@@ -88,7 +88,7 @@
     <div class="mall-wrap">
         <div class="goods-category-edit">
             <div class="edit-link-title">
-                <router-link to="/mall/goods/category">
+                <router-link to="/mall/product/category">
                     <i-button type="text">
                         <icon type="chevron-left"></icon>
                     </i-button>

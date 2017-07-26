@@ -276,7 +276,7 @@
                             self.$notice.open({
                                 title: '创建品牌信息成功！',
                             });
-                            self.$router.push('/mall/goods/brand');
+                            self.$router.push('/mall/product/brand');
                         }).catch(() => {
                             self.$notice.error({
                                 title: '创建品牌信息失败！',
