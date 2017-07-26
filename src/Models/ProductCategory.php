@@ -38,6 +38,7 @@ class ProductCategory extends Model
         'name',
         'order',
         'parent_id',
+        'show',
     ];
 
     /**
@@ -47,6 +48,7 @@ class ProductCategory extends Model
         'deposit'   => 'null|0',
         'order'     => 'null|0',
         'parent_id' => 'null|0',
+        'show'      => 'null|spu',
     ];
 
     /**
