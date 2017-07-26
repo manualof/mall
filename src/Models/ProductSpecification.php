@@ -37,6 +37,7 @@ class ProductSpecification extends Model
      */
     protected $setters = [
         'store_id' => 'null|0',
+        'type'     => 'null|color',
     ];
 
     /**
