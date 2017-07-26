@@ -11,6 +11,7 @@
                         item.loading = false;
                         return item;
                     });
+                    vm.pagination = response.data.pagination;
                     injection.loading.finish();
                     injection.sidebar.active('mall');
                 });
@@ -105,6 +106,7 @@
                                                         item.loading = false;
                                                         return item;
                                                     });
+                                                    self.pagination = response.data.pagination;
                                                     self.$loading.finish();
                                                     self.$notice.open({
                                                         title: '刷新数据成功！',
@@ -137,6 +139,9 @@
                     },
                 ],
                 list: [],
+                pagination: {
+                    current_page: 1,
+                },
             };
         },
         methods: {
@@ -176,6 +181,12 @@
                             </div>
                         </div>
                         <i-table highlight-row :columns="columns" :data="list"></i-table>
+                        <div class="page">
+                            <page :current="pagination.current_page"
+                                  :page-size="pagination.per_page"
+                                  :total="pagination.total"
+                                  show-elevator></page>
+                        </div>
                     </card>
                 </tab-pane>
             </tabs>
