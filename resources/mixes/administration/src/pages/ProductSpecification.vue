@@ -3,8 +3,16 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/product/specification/list`).then(response => {
+                const data = response.data.data;
+                next(vm => {
+                    vm.list = data;
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
@@ -94,29 +102,7 @@
                         width: 180,
                     },
                 ],
-                list: [
-                    {
-                        positionId: '22',
-                        positionName: '液晶电视',
-                        sort: '6',
-                        typeId: '0001',
-                        typeName: '颜色',
-                    },
-                    {
-                        positionId: '22',
-                        positionName: '液晶电视',
-                        sort: '6',
-                        typeId: '0001',
-                        typeName: '尺码',
-                    },
-                    {
-                        positionId: '22',
-                        positionName: '液晶电视',
-                        sort: '6',
-                        typeId: '0001',
-                        typeName: '重量',
-                    },
-                ],
+                list: [],
             };
         },
         methods: {

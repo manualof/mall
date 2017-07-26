@@ -175,6 +175,11 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('product/library/list', ProductLibraryController::class . '@list');
             $this->router->post('product/library/remove', ProductLibraryController::class . '@remove');
             $this->router->post('product/library/restore', ProductLibraryController::class . '@restore');
+            $this->router->post('product/specification', ProductSpecificationControllerForAdministration::class . '@specification');
+            $this->router->post('product/specification/create', ProductSpecificationControllerForAdministration::class . '@create');
+            $this->router->post('product/specification/edit', ProductSpecificationControllerForAdministration::class . '@edit');
+            $this->router->post('product/specification/list', ProductSpecificationControllerForAdministration::class . '@list');
+            $this->router->post('product/specification/remove', ProductSpecificationControllerForAdministration::class . '@remove');
             $this->router->post('store/create', StoreControllerForAdministration::class . '@create');
             $this->router->post('store/edit', StoreControllerForAdministration::class . '@edit');
             $this->router->post('store/list', StoreControllerForAdministration::class . '@list');
@@ -198,11 +203,6 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/rate', StoreRateControllerForAdministration::class . '@rate');
             $this->router->post('store/rate/edit', StoreRateControllerForAdministration::class . '@edit');
             $this->router->post('store/rate/list', StoreRateControllerForAdministration::class . '@list');
-            $this->router->post('specification', ProductSpecificationControllerForAdministration::class . '@specification');
-            $this->router->post('specification/create', ProductSpecificationControllerForAdministration::class . '@create');
-            $this->router->post('specification/edit', ProductSpecificationControllerForAdministration::class . '@edit');
-            $this->router->post('specification/list', ProductSpecificationControllerForAdministration::class . '@list');
-            $this->router->post('specification/remove', ProductSpecificationControllerForAdministration::class . '@remove');
             $this->router->post('statistics', StatisticsControllerForAdministration::class . '@get');
             $this->router->post('statistics/analysis', StatisticsAnalysisControllerForAdministration::class . '@dashboard');
             $this->router->post('statistics/analysis', StatisticsAnalysisControllerForAdministration::class . '@dashboard');

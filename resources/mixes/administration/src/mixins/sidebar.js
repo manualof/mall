@@ -19,7 +19,7 @@ export default function (injection) {
                     title: '品牌管理',
                 },
                 {
-                    path: '/mall/product/standard',
+                    path: '/mall/product/specification',
                     title: '规格管理',
                 },
                 {
