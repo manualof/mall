@@ -25,6 +25,7 @@ class ProductCategory extends Model
      * @var array
      */
     protected $appends = [
+        'breadcrumb',
         'level',
         'path',
     ];
@@ -55,6 +56,29 @@ class ProductCategory extends Model
      * @var string
      */
     protected $table = 'mall_product_categories';
+
+    /**
+     * @param $value
+     *
+     * @return string
+     */
+    public function getBreadcrumbAttribute($value)
+    {
+        $paths = new Collection([$this]);
+        if ($this->attributes['parent_id']) {
+            $one = static::query()->find($this->attributes['parent_id']);
+            $paths->prepend($one->getAttribute('id'));
+            if ($one->getAttribute('parent_id')) {
+                $two = static::query()->find($one->getAttribute('parent_id'));
+                $paths->prepend($two->getAttribute('id'));
+            }
+        }
+        $paths->transform(function (ProductCategory $category) {
+            return $category->getAttribute('name');
+        });
+
+        return $paths->implode(' / ');
+    }
 
     /**
      * @param $value

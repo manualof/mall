@@ -56,9 +56,9 @@ import ProductLibraryCreate from '../pages/ProductLibraryCreate.vue';
 import ProductPicture from '../pages/ProductPicture.vue';
 import ProductPictureLook from '../pages/ProductPictureLook.vue';
 import ProductPictureLookAll from '../pages/ProductPictureLookAll.vue';
-import ProductStandard from '../pages/ProductStandard.vue';
-import ProductStandardCreate from '../pages/ProductStandardCreate.vue';
-import ProductStandardEdit from '../pages/ProductStandardEdit.vue';
+import ProductSpecification from '../pages/ProductSpecification.vue';
+import ProductSpecificationCreate from '../pages/ProductSpecificationCreate.vue';
+import ProductSpecificationEdit from '../pages/ProductSpecificationEdit.vue';
 import ProductType from '../pages/ProductType.vue';
 import ProductTypeCreate from '../pages/ProductTypeCreate.vue';
 import ProductTypeEdit from '../pages/ProductTypeEdit.vue';
@@ -276,17 +276,17 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: ProductStandard,
+                    component: ProductSpecification,
                     path: 'product/standard',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: ProductStandardCreate,
+                    component: ProductSpecificationCreate,
                     path: 'product/standard/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: ProductStandardEdit,
+                    component: ProductSpecificationEdit,
                     path: 'product/standard/edit',
                 },
                 {
