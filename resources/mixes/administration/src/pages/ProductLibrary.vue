@@ -90,7 +90,7 @@
                         align: 'center',
                         render(h, data) {
                             if (data.row.category) {
-                                return data.row.category.path;
+                                return data.row.category.name;
                             }
                             return '';
                         },
