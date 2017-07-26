@@ -1,16 +1,16 @@
 import Layout from '../layouts/Layout.vue';
-import PersonnalCenter from '../pages/PersonnalCenter.vue';
-import AllOrder from '../pages/AllOrder.vue';
-import Coupon from '../pages/Coupon.vue';
-import Integral from '../pages/Integral.vue';
-import AccountSecurity from '../pages/Security.vue';
-import ShippingAddress from '../pages/Address.vue';
-import CollectStore from '../pages/CollectStore.vue';
+import PersonnalCenter from '../layouts/UserLayout.vue';
+import AllOrder from '../pages/UserOrder.vue';
+import Coupon from '../pages/UserCoupon.vue';
+import Integral from '../pages/UserIntegral.vue';
+import AccountSecurity from '../pages/UserSecurity.vue';
+import ShippingAddress from '../pages/UserAddress.vue';
+import CollectStore from '../pages/UserFollow.vue';
 import SelaesReturn from '../pages/SelaesReturn.vue';
-import Footprint from '../pages/Footprint.vue';
-import MyAccount from '../pages/MyAccount.vue';
-import MyCollect from '../pages/MyCollect.vue';
-import Notice from '../pages/Notice.vue';
+import Footprint from '../pages/UserFootprint.vue';
+import MyAccount from '../pages/UserAccount.vue';
+import MyCollect from '../pages/UserCollect.vue';
+import Notice from '../pages/UserNotice.vue';
 
 export default [
     {
