@@ -67,10 +67,10 @@ class ProductCategory extends Model
         $paths = new Collection([$this]);
         if ($this->attributes['parent_id']) {
             $one = static::query()->find($this->attributes['parent_id']);
-            $paths->prepend($one->getAttribute('id'));
+            $paths->prepend($one);
             if ($one->getAttribute('parent_id')) {
                 $two = static::query()->find($one->getAttribute('parent_id'));
-                $paths->prepend($two->getAttribute('id'));
+                $paths->prepend($two);
             }
         }
         $paths->transform(function (ProductCategory $category) {
