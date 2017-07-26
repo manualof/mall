@@ -25,7 +25,7 @@
         <div class="container">
             <div class="logo col-md-4 col-xs-4 col-sm-4">
                 <router-link to="/mall">
-                    <img src="../../assets/images/logo.png"/>
+                    <img src="../assets/images/logo.png"/>
                 </router-link>
             </div>
             <div class="search-input col-md-6 col-xs-6 col-sm-6">

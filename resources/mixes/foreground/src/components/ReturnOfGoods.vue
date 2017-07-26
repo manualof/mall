@@ -1,5 +1,5 @@
 <script>
-    import EndTimer from '../../../user/src/components/extend/Timer';
+    import EndTimer from '../../../user/src/components/Timer';
     import img from '../../../user/src/assets/images/b1.png';
 
     export default{

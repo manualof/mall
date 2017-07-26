@@ -19,7 +19,7 @@
                 return `0${time}`;
             },
         },
-        mounted() {
+        mounted() {yit
             const time = setInterval(() => {
                 if (this.flag === true) {
                     clearInterval(time);

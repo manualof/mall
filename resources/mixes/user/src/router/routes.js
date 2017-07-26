@@ -1,16 +1,16 @@
-import Layout from '../components/public/Layout.vue';
-import PersonnalCenter from '../components/personnal-center/PersonnalCenter.vue';
-import AllOrder from '../components/personnal-center/AllOrder.vue';
-import Coupon from '../components/personnal-center/Coupon.vue';
-import Integral from '../components/personnal-center/Integral.vue';
-import AccountSecurity from '../components/personnal-center/Security.vue';
-import ShippingAddress from '../components/personnal-center/Address.vue';
-import CollectStore from '../components/personnal-center/CollectStore.vue';
-import SelaesReturn from '../components/personnal-center/SelaesReturn.vue';
-import Footprint from '../components/personnal-center/Footprint.vue';
-import MyAccount from '../components/personnal-center/MyAccount.vue';
-import MyCollect from '../components/personnal-center/MyCollect.vue';
-import Notice from '../components/personnal-center/Notice.vue';
+import Layout from '../layouts/Layout.vue';
+import PersonnalCenter from '../pages/PersonnalCenter.vue';
+import AllOrder from '../pages/AllOrder.vue';
+import Coupon from '../pages/Coupon.vue';
+import Integral from '../pages/Integral.vue';
+import AccountSecurity from '../pages/Security.vue';
+import ShippingAddress from '../pages/Address.vue';
+import CollectStore from '../pages/CollectStore.vue';
+import SelaesReturn from '../pages/SelaesReturn.vue';
+import Footprint from '../pages/Footprint.vue';
+import MyAccount from '../pages/MyAccount.vue';
+import MyCollect from '../pages/MyCollect.vue';
+import Notice from '../pages/Notice.vue';
 
 export default [
     {

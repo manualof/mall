@@ -128,7 +128,7 @@
     </div>
 </template>
 <script>
-    import img1 from '../../assets/images/details/stool2.png';
+    import img1 from '../assets/images/details/stool2.png';
 
     export default{
         data() {

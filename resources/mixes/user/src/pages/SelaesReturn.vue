@@ -45,7 +45,7 @@
     </div>
 </template>
 <script>
-    import img from '../../assets/images/img_02-3.png';
+    import img from '../assets/images/img_02-3.png';
 
     export default{
         data() {

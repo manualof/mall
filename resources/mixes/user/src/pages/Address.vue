@@ -96,7 +96,7 @@
 
 <script>
     import { Select, Option, OptionGroup } from 'iview/src/components/select';
-    import Modal from './Modal.vue';
+    import Modal from '../components/Modal.vue';
 
     export default {
         components: {
