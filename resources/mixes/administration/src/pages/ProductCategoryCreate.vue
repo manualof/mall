@@ -11,6 +11,7 @@
                 next(vm => {
                     vm.current = response.data.current;
                     vm.form.parent = response.data.current.path;
+                    vm.level = response.data.level;
                     vm.parents = Object.keys(structures).map(index => {
                         const item = structures[index];
                         item.label = item.name;
@@ -20,13 +21,6 @@
                             const sub = children[i];
                             sub.label = sub.name;
                             sub.value = sub.id;
-                            const down = sub.children;
-                            sub.children = Object.keys(down).map(n => {
-                                const low = down[n];
-                                low.label = low.name;
-                                low.value = low.id;
-                                return low;
-                            });
                             return sub;
                         });
                         return item;
@@ -46,7 +40,9 @@
                     name: '',
                     order: 0,
                     parent: [],
+                    show: 'SPU',
                 },
+                level: 0,
                 loading: false,
                 rules: {
                     deposit: [
@@ -67,6 +63,16 @@
                     ],
                 },
                 parents: [],
+                ways: [
+                    {
+                        value: 'SPU',
+                        label: 'SPU',
+                    },
+                    {
+                        value: 'SKU',
+                        label: 'SKU',
+                    },
+                ],
             };
         },
         methods: {
@@ -138,6 +144,19 @@
                                 </form-item>
                             </i-col>
                         </row>
+                        <template v-if="level === 3">
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="展示方式" prop="show">
+                                        <i-select placeholder="请选择" v-model="form.show">
+                                            <i-option :value="way.value"
+                                                      :key="way"
+                                                      v-for="way in ways">{{ way.label }}</i-option>
+                                        </i-select>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                        </template>
                         <row>
                             <i-col span="12">
                                 <form-item label="分佣比例" prop="deposit">
