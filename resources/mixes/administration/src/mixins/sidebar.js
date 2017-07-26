@@ -7,7 +7,7 @@ export default function (injection) {
                     title: '商品管理',
                 },
                 {
-                    path: '/mall/goods/public',
+                    path: '/mall/goods/library',
                     title: '商品库管理',
                 },
                 {

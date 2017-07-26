@@ -177,17 +177,17 @@ export default function (injection) {
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductLibrary,
-                    path: 'goods/public',
+                    path: 'goods/library',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductLibraryCreate,
-                    path: 'goods/public/add',
+                    path: 'goods/library/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductLibraryEdit,
-                    path: 'goods/public/edit/:id',
+                    path: 'goods/library/edit/:id',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
