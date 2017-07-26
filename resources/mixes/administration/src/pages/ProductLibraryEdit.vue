@@ -180,7 +180,11 @@
                 self.$refs.form.validate(valid => {
                     if (valid) {
                         const form = self.form;
-                        form.category_id = form.category.length ? form.category[form.category.length - 1] : 0;
+                        if (form.category.length) {
+                            form.category_id = form.category[form.category.length - 1];
+                        } else {
+                            form.category_id = 0;
+                        }
                         self.$http.post(`${window.api}/mall/admin/product/library/edit`, form).then(response => {
                             window.console.log(response);
                             self.$notice.open({
