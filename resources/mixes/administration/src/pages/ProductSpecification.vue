@@ -70,17 +70,23 @@
                         key: 'action',
                         render(h, data) {
                             return h('div', [
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.edit(data.index);
-                                        },
-                                    },
+                                h('router-link', {
                                     props: {
-                                        size: 'small',
-                                        type: 'ghost',
+                                        to: `/mall/product/specification/${data.row.id}/edit`,
                                     },
-                                }, '编辑'),
+                                }, [
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.edit(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '编辑'),
+                                ]),
                                 h('i-button', {
                                     on: {
                                         click() {

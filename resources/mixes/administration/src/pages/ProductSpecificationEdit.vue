@@ -3,15 +3,53 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.all([
+                injection.http.post(`${window.api}/mall/admin/product/specification`, {
+                    id: to.params.id,
+                }),
+                injection.http.post(`${window.api}/mall/admin/product/category/list`),
+            ]).then(injection.http.spread((one, two) => {
+                window.console.log(one, two);
+                const form = one.data.data;
+                const structures = two.data.structure;
+                next(vm => {
+                    form.placeholder = form.category.breadcrumb;
+                    form.category = form.category.path;
+                    vm.form = form;
+                    vm.categories = Object.keys(structures).map(index => {
+                        const item = structures[index];
+                        item.label = item.name;
+                        item.value = item.id;
+                        const children = item.children;
+                        item.children = Object.keys(children).map(i => {
+                            const sub = children[i];
+                            sub.label = sub.name;
+                            sub.value = sub.id;
+                            const down = sub.children;
+                            sub.children = Object.keys(down).map(n => {
+                                const son = down[n];
+                                son.label = son.name;
+                                son.value = son.id;
+                                return son;
+                            });
+                            return sub;
+                        });
+                        return item;
+                    });
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            })).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
             return {
+                categories: [],
                 loading: false,
                 rules: {
-                    type: [
+                    name: [
                         {
                             message: '规格不能为空',
                             required: true,
@@ -21,112 +59,11 @@
                     ],
                 },
                 form: {
-                    position: ['个护化妆'],
-                    sort: '',
-                    type: '',
+                    category: [],
+                    name: '',
+                    order: '',
+                    placeholder: '',
                 },
-                styleData: [
-                    {
-                        children: [
-                            {
-                                children: [
-                                    {
-                                        label: '婴儿推车',
-                                        value: '婴儿推车',
-                                    },
-                                    {
-                                        label: '自行车',
-                                        value: '自行车',
-                                    },
-                                    {
-                                        label: '婴儿推车',
-                                        value: '婴儿推车',
-                                    },
-                                    {
-                                        label: '电动车',
-                                        value: '电动车',
-                                    },
-                                    {
-                                        label: '安全座椅',
-                                        value: '安全座椅',
-                                    },
-                                ],
-                                label: '童车童床',
-                                value: '童车童床',
-                            },
-                            {
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
-                            },
-                        ],
-                        label: '个护化妆',
-                        value: '个护化妆',
-                    },
-                    {
-                        children: [
-                            {
-                                value: '服饰寝居',
-                                label: '服饰寝居',
-                                children: [
-                                    {
-                                        label: '婴儿推车1',
-                                        value: '婴儿推车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                    {
-                                        label: '婴儿推车3',
-                                        value: '婴儿推车3',
-                                    },
-                                    {
-                                        label: '电动车',
-                                        value: '电动车',
-                                    },
-                                    {
-                                        label: '安全座椅4',
-                                        value: '安全座椅4',
-                                    },
-                                ],
-                            },
-                            {
-                                children: [
-                                    {
-                                        label: '婴儿推车1',
-                                        value: '婴儿推车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                ],
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                children: [
-                                    {
-                                        label: '车1',
-                                        value: '车1',
-                                    },
-                                    {
-                                        label: '自行车2',
-                                        value: '自行车2',
-                                    },
-                                ],
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
-                            },
-                        ],
-                        label: '家用电器',
-                        value: '家用电器',
-                    },
-                ],
             };
         },
         methods: {
@@ -139,7 +76,24 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        window.console.log(valid);
+                        const form = self.form;
+                        if (form.category.length) {
+                            form.category_id = form.category[form.category.length - 1];
+                        } else {
+                            form.category_id = 0;
+                        }
+                        self.$http.post(`${window.api}/mall/admin/product/specification/edit`, form).then(() => {
+                            self.$notice.open({
+                                title: '更新规格信息成功！',
+                            });
+                            self.$router.push('/mall/product/specification');
+                        }).catch(() => {
+                            self.$notice.error({
+                                title: '更新规格信息失败！',
+                            });
+                        }).finally(() => {
+                            self.loading = false;
+                        });
                     } else {
                         self.loading = false;
                         self.$notice.error({
@@ -165,8 +119,8 @@
                     <div class="basic-information">
                         <row>
                             <i-col span="12">
-                                <form-item label="规格" prop="type">
-                                    <i-input v-model="form.type"></i-input>
+                                <form-item label="规格" prop="name">
+                                    <i-input v-model="form.name"></i-input>
                                     <p class="tip">
                                         请填写常用的商品规格的名称；例如：颜色；尺寸等
                                     </p>
@@ -177,9 +131,10 @@
                             <i-col span="12">
                                 <form-item label="快捷定位">
                                     <div class="flex-module">
-                                        <cascader :data="styleData"
+                                        <cascader :data="categories"
                                                   change-on-select
-                                                  v-model="form.position">
+                                                  :placeholder="form.placeholder"
+                                                  v-model="form.category">
                                         </cascader>
                                     </div>
                                     <p class="tip">选择分类，可关联到任意级分类 （只在后台快捷定位中起作用）</p>
@@ -188,8 +143,8 @@
                         </row>
                         <row>
                             <i-col span="12">
-                                <form-item label="排序" prop="sort">
-                                    <i-input v-model="form.sort"></i-input>
+                                <form-item label="排序" prop="order">
+                                    <i-input v-model="form.order"></i-input>
                                     <p class="tip">
                                         请填写自然数。类型列表将会根据排序进行由小到大排列显示
                                     </p>

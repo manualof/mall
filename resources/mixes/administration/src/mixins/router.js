@@ -287,7 +287,7 @@ export default function (injection) {
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: ProductSpecificationEdit,
-                    path: 'product/specification/edit',
+                    path: 'product/specification/:id/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

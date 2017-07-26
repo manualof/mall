@@ -50,8 +50,8 @@
                 },
                 form: {
                     category: [],
-                    order: '',
                     name: '',
+                    order: '',
                 },
             };
         },
