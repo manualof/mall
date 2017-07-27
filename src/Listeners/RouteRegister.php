@@ -42,6 +42,7 @@ use Notadd\Mall\Controllers\Api\Administration\StatisticsAnalysisController as S
 use Notadd\Mall\Controllers\Api\Administration\StatisticsController as StatisticsControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StatisticsMemberController as StatisticsMemberControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StatisticsStoreController as StatisticsStoreControllerForAdministration;
+use Notadd\Mall\Controllers\Api\Administration\StoreTypeController as StoreTypeControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\UploadController as UploadControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Seller\OrderController as OrderControllerForSeller;
 use Notadd\Mall\Controllers\Api\Seller\OrderExpressController as OrderExpressControllerForSeller;
@@ -203,6 +204,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/rate', StoreRateControllerForAdministration::class . '@rate');
             $this->router->post('store/rate/edit', StoreRateControllerForAdministration::class . '@edit');
             $this->router->post('store/rate/list', StoreRateControllerForAdministration::class . '@list');
+            $this->router->post('store/type/list', StoreTypeControllerForAdministration::class . '@list');
             $this->router->post('statistics', StatisticsControllerForAdministration::class . '@get');
             $this->router->post('statistics/analysis', StatisticsAnalysisControllerForAdministration::class . '@dashboard');
             $this->router->post('statistics/analysis', StatisticsAnalysisControllerForAdministration::class . '@dashboard');
