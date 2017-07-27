@@ -41,8 +41,8 @@ export default function (injection) {
                     title: '店铺等级',
                 },
                 {
-                    path: '/mall/store/category',
-                    title: '店铺分类',
+                    path: '/mall/store/type',
+                    title: '店铺类型',
                 },
                 {
                     path: '/mall/store/dynamics',

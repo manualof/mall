@@ -66,9 +66,6 @@ import Store from '../pages/Store.vue';
 import StoreEdit from '../pages/StoreEdit.vue';
 import StoreLook from '../pages/StoreLook.vue';
 import StoreLookApplication from '../pages/StoreLookApplication.vue';
-import StoreCategory from '../pages/StoreCategory.vue';
-import StoreCategorySet from '../pages/StoreCategorySet.vue';
-import StoreCategoryCreate from '../pages/StoreCategoryCreate.vue';
 import StoreDynamics from '../pages/StoreDynamics.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
 import SalesIntegral from '../pages/SalesIntegral.vue';
@@ -82,6 +79,9 @@ import SalesSpikesCreate from '../pages/SalesSpikesCreate.vue';
 import SalesSpikesTime from '../pages/SalesSpikesTime.vue';
 import SalesSpikesTimeEdit from '../pages/SalesSpikesTimeEdit.vue';
 import SalesSpikesTimeCreate from '../pages/SalesSpikesTimeCreate.vue';
+import StoreType from '../pages/StoreType.vue';
+import StoreTypeCreate from '../pages/StoreTypeCreate.vue';
+import StoreTypeEdit from '../pages/StoreTypeEdit.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -424,18 +424,18 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreCategory,
-                    path: 'store/category',
+                    component: StoreType,
+                    path: 'store/type',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreCategorySet,
-                    path: 'store/category/set',
+                    component: StoreTypeEdit,
+                    path: 'store/type/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreCategoryCreate,
-                    path: 'store/category/add',
+                    component: StoreTypeCreate,
+                    path: 'store/type/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
