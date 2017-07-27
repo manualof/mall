@@ -57,18 +57,18 @@
                                 h('i-button', {
                                     on: {
                                         click() {
-                                            self.remove(data.index);
+                                            self.toSet();
                                         },
                                     },
                                     props: {
                                         size: 'small',
                                         type: 'ghost',
                                     },
-                                }, '删除'),
+                                }, '设置'),
                                 h('i-button', {
                                     on: {
                                         click() {
-                                            self.toSet();
+                                            self.remove(data.index);
                                         },
                                     },
                                     props: {
@@ -78,7 +78,7 @@
                                     style: {
                                         marginLeft: '10px',
                                     },
-                                }, '设置'),
+                                }, '删除'),
                             ]);
                         },
                         title: '操作',
