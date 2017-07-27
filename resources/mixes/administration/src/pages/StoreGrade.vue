@@ -35,22 +35,22 @@
                     },
                     {
                         align: 'center',
-                        key: 'levelName',
+                        key: 'name',
                         title: '等级名称',
                     },
                     {
                         align: 'center',
-                        key: 'goodsNum',
+                        key: 'publish_limit',
                         title: '可发布商品数',
                     },
                     {
                         align: 'center',
-                        key: 'pictureNum',
-                        title: '可上传图片数',
+                        key: 'upload_limit',
+                        title: '可上传商品数',
                     },
                     {
                         align: 'center',
-                        key: 'charges',
+                        key: 'price',
                         title: '收费标准',
                     },
                     {
@@ -90,38 +90,11 @@
                         width: 180,
                     },
                 ],
-                list: [
-                    {
-                        charges: 6666,
-                        goodsNum: 166,
-                        level: 1,
-                        levelName: '系统默认',
-                        pictureNum: 56,
-                    },
-                    {
-                        charges: 6666,
-                        goodsNum: 166,
-                        level: 1,
-                        levelName: '白金店铺',
-                        pictureNum: 56,
-                    },
-                    {
-                        charges: 6666,
-                        goodsNum: 166,
-                        level: 1,
-                        levelName: '黄金店铺',
-                        pictureNum: 56,
-                    },
-                    {
-                        charges: 6666,
-                        goodsNum: 166,
-                        level: 2,
-                        levelName: '系统默认',
-                        pictureNum: 56,
-                    },
-                ],
+                list: [],
                 managementSearch: '',
-                pagination: {},
+                pagination: {
+                    current_page: 1,
+                },
             };
         },
         methods: {
@@ -151,6 +124,12 @@
                             </div>
                         </div>
                         <i-table highlight-row :columns="columns" :data="list"></i-table>
+                        <div class="page">
+                            <page :current="pagination.current_page"
+                                  :page-size="pagination.per_page"
+                                  :total="pagination.total"
+                                  show-elevator></page>
+                        </div>
                     </card>
                 </tab-pane>
             </tabs>

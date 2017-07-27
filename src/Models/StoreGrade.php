@@ -33,9 +33,11 @@ class StoreGrade extends Model
      * @var array
      */
     protected $setters = [
+        'can_claim'     => 'null|0',
+        'can_upload'    => 'null|0',
         'level'         => 'null|0',
-        'picture_limit' => 'null|0',
-        'product_limit' => 'null|0',
+        'publish_limit' => 'null|0',
+        'upload_limit'  => 'null|0',
     ];
 
     /**

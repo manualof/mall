@@ -55,8 +55,10 @@ class CreateHandler extends Handler
             'price',
         ]);
         if (StoreGrade::query()->create($data)) {
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('创建店铺等级信息成功！');
         } else {
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('创建店铺等级信息失败！');
         }
     }
