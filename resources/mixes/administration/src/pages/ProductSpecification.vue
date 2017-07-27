@@ -77,11 +77,6 @@
                                     },
                                 }, [
                                     h('i-button', {
-                                        on: {
-                                            click() {
-                                                self.edit(data.index);
-                                            },
-                                        },
                                         props: {
                                             size: 'small',
                                             type: 'ghost',
@@ -143,14 +138,6 @@
                     current_page: 1,
                 },
             };
-        },
-        methods: {
-            edit() {
-                const self = this;
-                self.$router.push({
-                    path: 'standard/edit',
-                });
-            },
         },
     };
 </script>
