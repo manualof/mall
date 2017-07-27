@@ -85,23 +85,7 @@
                         width: 180,
                     },
                 ],
-                list: [
-                    {
-                        number: 100,
-                    },
-                    {
-                        number: 1000,
-                    },
-                    {
-                        number: 10000,
-                    },
-                    {
-                        number: 30000,
-                    },
-                    {
-                        number: 50000,
-                    },
-                ],
+                list: [],
             };
         },
         methods: {
