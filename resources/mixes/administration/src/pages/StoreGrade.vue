@@ -50,6 +50,9 @@
                     {
                         align: 'center',
                         key: 'price',
+                        render(h, data) {
+                            return `${parseInt(data.row.price, 10)} 元/年`;
+                        },
                         title: '收费标准',
                     },
                     {
@@ -58,7 +61,7 @@
                             return h('div', [
                                 h('router-link', {
                                     props: {
-                                        to: '/mall/store/grade/edit',
+                                        to: `/mall/store/grade/${data.row.id}/edit`,
                                     },
                                 }, [
                                     h('i-button', {

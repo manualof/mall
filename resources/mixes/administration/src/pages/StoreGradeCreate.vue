@@ -9,7 +9,6 @@
         },
         data() {
             return {
-                action: `${window.api}/mall/admin/upload`,
                 loading: false,
                 rules: {
                     application_instruction: [

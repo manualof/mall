@@ -25,41 +25,41 @@ class EditHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'description'   => Rule::required(),
-            'id'            => [
-                Rule::exists('mall_store_grades'),
-                Rule::numeric(),
-                Rule::required(),
-            ],
-            'level'         => Rule::numeric(),
-            'name'          => Rule::required(),
-            'picture_limit' => Rule::numeric(),
-            'price'         => Rule::numeric(),
-            'product_limit' => Rule::numeric(),
+            'application_instruction' => Rule::required(),
+            'can_claim'               => Rule::boolean(),
+            'can_upload'              => Rule::boolean(),
+            'level'                   => Rule::numeric(),
+            'name'                    => Rule::required(),
+            'price'                   => Rule::numeric(),
+            'publish_limit'           => Rule::numeric(),
+            'upload_limit'            => Rule::numeric(),
         ], [
-            'description.required'  => '申请说明必须填写',
-            'id.exists'             => '没有对应的店铺等级信息',
-            'id.numeric'            => '店铺等级 ID 必须为数值',
-            'id.required'           => '店铺等级 ID 必须填写',
-            'level.numeric'         => '店铺等级必须为数值',
-            'name.required'         => '等级名称必须填写',
-            'picture_limit.numeric' => '可上传图片数必须为数值',
-            'price.numeric'         => '收费标准必须为数值',
-            'product_limit.numeric' => '可发布商品数必须为数值',
+            'application_instruction.required' => '申请说明必须填写',
+            'can_claim.numeric'                => '可认领商品必须为布尔值',
+            'can_upload.numeric'               => '可自主发布商品必须为布尔值',
+            'level.numeric'                    => '店铺等级必须为数值',
+            'name.required'                    => '等级名称必须填写',
+            'price.numeric'                    => '收费标准必须为数值',
+            'publish_limit.numeric'            => '可发布商品数必须为数值',
+            'upload_limit.numeric'             => '可上传商品数必须为数值',
         ]);
         $this->beginTransaction();
         $data = $this->request->only([
-            'description',
+            'application_instruction',
             'level',
             'name',
-            'picture_limit',
+            'publish_limit',
+            'upload_limit',
+            'can_claim',
+            'can_upload',
             'price',
-            'product_limit',
         ]);
         $grade = StoreGrade::query()->find($this->request->input('id'));
         if ($grade instanceof StoreGrade && $grade->update($data)) {
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('编辑店铺等级信息成功！');
         } else {
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('编辑店铺等级信息失败！');
         }
     }

@@ -455,7 +455,7 @@ export default function (injection) {
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StoreLevelEdit,
-                    path: 'store/grade/edit',
+                    path: 'store/grade/:id/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
