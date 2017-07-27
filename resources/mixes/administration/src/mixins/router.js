@@ -445,17 +445,17 @@ export default function (injection) {
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StoreGrade,
-                    path: 'store/level',
+                    path: 'store/grade',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StoreLevelCreate,
-                    path: 'store/level/create',
+                    path: 'store/grade/create',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StoreLevelEdit,
-                    path: 'store/level/edit',
+                    path: 'store/grade/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

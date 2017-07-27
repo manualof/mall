@@ -37,17 +37,17 @@ export default function (injection) {
                     title: '店铺管理',
                 },
                 {
-                    path: '/mall/store/level',
+                    path: '/mall/store/grade',
                     title: '店铺等级',
                 },
                 {
                     path: '/mall/store/category',
                     title: '店铺分类',
                 },
-                // {
-                //     path: '/mall/store/dynamics',
-                //     title: '店铺动态',
-                // },
+                {
+                    path: '/mall/store/dynamics',
+                    title: '店铺动态',
+                },
             ],
             icon: 'ios-analytics',
             title: '店铺',

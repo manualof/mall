@@ -60,7 +60,7 @@
                             return h('div', [
                                 h('router-link', {
                                     props: {
-                                        to: '/mall/store/level/edit',
+                                        to: '/mall/store/grade/edit',
                                     },
                                 }, [
                                     h('i-button', {
@@ -139,7 +139,7 @@
                 <tab-pane label="店铺等级" name="name1">
                     <card :bordered="false">
                         <div class="advertisement-action">
-                            <router-link to="/mall/store/level/create">
+                            <router-link to="/mall/store/grade/create">
                                 <i-button class="add-data" type="ghost">+新增数据</i-button>
                             </router-link>
                             <i-button type="ghost" @click.native="deleteData">批量删除</i-button>

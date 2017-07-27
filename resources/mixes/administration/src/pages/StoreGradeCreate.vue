@@ -59,10 +59,6 @@
             };
         },
         methods: {
-            goBack() {
-                const self = this;
-                self.$router.go(-1);
-            },
             submit() {
                 const self = this;
                 self.loading = true;
@@ -84,9 +80,11 @@
     <div class="mall-wrap">
         <div class="store-level-add">
             <div class="edit-link-title">
-                <i-button type="text" @click.native="goBack">
-                    <icon type="chevron-left"></icon>
-                </i-button>
+                <router-link to="/mall/store/grade">
+                    <i-button type="text">
+                        <icon type="chevron-left"></icon>
+                    </i-button>
+                </router-link>
                 <span>店铺等级—新增</span>
             </div>
             <card :bordered="false">
