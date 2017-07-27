@@ -54,7 +54,6 @@
                         title: '收费标准',
                     },
                     {
-                        align: 'center',
                         key: 'action',
                         render(h, data) {
                             return h('div', [
@@ -73,10 +72,41 @@
                                 h('i-button', {
                                     on: {
                                         click() {
-                                            self.remove(data.index);
+                                            self.list[data.index].loading = true;
+                                            self.$http.post(`${window.api}/mall/admin/store/grade/remove`, {
+                                                id: data.row.id,
+                                            }).then(() => {
+                                                self.$notice.open({
+                                                    title: '删除店铺等级信息成功！',
+                                                });
+                                                self.$notice.open({
+                                                    title: '正在刷新数据...',
+                                                });
+                                                self.$loading.start();
+                                                self.$http.post(`${window.api}/mall/admin/store/grade/list`).then(response => {
+                                                    self.list = response.data.data.map(item => {
+                                                        item.loading = false;
+                                                        return item;
+                                                    });
+                                                    self.pagination = response.data.pagination;
+                                                    self.$loading.finish();
+                                                    self.$notice.open({
+                                                        title: '刷新数据成功！',
+                                                    });
+                                                }).catch(() => {
+                                                    self.$loading.fail();
+                                                });
+                                            }).catch(() => {
+                                                self.$notice.error({
+                                                    title: '删除店铺等级信息失败！',
+                                                });
+                                            }).finally(() => {
+                                                self.list[data.index].loading = false;
+                                            });
                                         },
                                     },
                                     props: {
+                                        loading: self.list[data.index].loading,
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -87,7 +117,7 @@
                             ]);
                         },
                         title: '操作',
-                        width: 180,
+                        width: 230,
                     },
                 ],
                 list: [],
@@ -95,12 +125,13 @@
                 pagination: {
                     current_page: 1,
                 },
+                selection: [],
             };
         },
         methods: {
             deleteData() {},
-            remove(index) {
-                this.list.splice(index, 1);
+            selectionChange(val) {
+                window.console.log(val);
             },
         },
     };
@@ -123,7 +154,7 @@
                                 </i-input>
                             </div>
                         </div>
-                        <i-table highlight-row :columns="columns" :data="list"></i-table>
+                        <i-table :columns="columns" :data="list" highlight-row @on-selection-change="selectionChange"></i-table>
                         <div class="page">
                             <page :current="pagination.current_page"
                                   :page-size="pagination.per_page"

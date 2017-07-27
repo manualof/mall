@@ -39,7 +39,7 @@ class RemoveHandler extends Handler
         $grade = StoreGrade::query()->find($this->request->input('id'));
         if ($grade instanceof StoreGrade && $grade->delete()) {
             $this->commitTransaction();
-            $this->withCode(200)->withCode('删除店铺等级信息成功！');
+            $this->withCode(200)->withMessage('删除店铺等级信息成功！');
         } else {
             $this->rollBackTransaction();
             $this->withCode(500)->withError('删除店铺等级信息失败！');
