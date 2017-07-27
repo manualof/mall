@@ -11,7 +11,6 @@
                         item.loading = false;
                         return item;
                     });
-                    vm.pagination = response.data.pagination;
                     injection.loading.finish();
                     injection.sidebar.active('mall');
                 });
@@ -88,7 +87,6 @@
                                                         item.loading = false;
                                                         return item;
                                                     });
-                                                    self.pagination = response.data.pagination;
                                                     self.$loading.finish();
                                                     self.$notice.open({
                                                         title: '刷新数据成功！',
@@ -121,17 +119,57 @@
                     },
                 ],
                 list: [],
+                loading: false,
                 managementSearch: '',
-                pagination: {
-                    current_page: 1,
-                },
                 selection: [],
             };
         },
         methods: {
-            deleteData() {},
+            batchRemove() {
+                const self = this;
+                const query = [];
+                if (self.selection.length > 0) {
+                    self.selection.forEach(item => {
+                        query.push(self.$http.post(`${window.api}/mall/admin/store/grade/remove`, {
+                            id: item.id,
+                        }));
+                    });
+                    self.loading = true;
+                    self.$http.all(query).then(() => {
+                        self.$notice.open({
+                            title: '批量删除店铺等级信息成功！',
+                        });
+                        self.$notice.open({
+                            title: '正在刷新数据...',
+                        });
+                        self.$loading.start();
+                        self.$http.post(`${window.api}/mall/admin/store/grade/list`).then(response => {
+                            self.list = response.data.data.map(item => {
+                                item.loading = false;
+                                return item;
+                            });
+                            self.$loading.finish();
+                            self.$notice.open({
+                                title: '刷新数据成功！',
+                            });
+                        }).catch(() => {
+                            self.$loading.fail();
+                        });
+                    }).catch(() => {
+                        self.$notice.error({
+                            title: '批量删除店铺等级信息失败！',
+                        });
+                    }).finally(() => {
+                        self.loading = false;
+                    });
+                } else {
+                    self.$notice.error({
+                        title: '请选择一个店铺等级！',
+                    });
+                }
+            },
             selectionChange(val) {
-                window.console.log(val);
+                this.selection = val;
             },
         },
     };
@@ -146,7 +184,7 @@
                             <router-link to="/mall/store/grade/create">
                                 <i-button class="add-data" type="ghost">+新增数据</i-button>
                             </router-link>
-                            <i-button type="ghost" @click.native="deleteData">批量删除</i-button>
+                            <i-button :loading="loading" type="ghost" @click.native="batchRemove">批量删除</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                             <div class="goods-body-header-right">
                                 <i-input v-model="managementWord" placeholder="等级名称">
@@ -155,12 +193,6 @@
                             </div>
                         </div>
                         <i-table :columns="columns" :data="list" highlight-row @on-selection-change="selectionChange"></i-table>
-                        <div class="page">
-                            <page :current="pagination.current_page"
-                                  :page-size="pagination.per_page"
-                                  :total="pagination.total"
-                                  show-elevator></page>
-                        </div>
                     </card>
                 </tab-pane>
             </tabs>

@@ -38,18 +38,7 @@ class ListHandler extends Handler
         ]);
         $builder = StoreGrade::query();
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
-        $builder = $builder->paginate($this->request->input('paginate', 20));
-        $this->withCode(200)->withData($builder->items())->withExtra([
-            'pagination' => [
-                'total'         => $builder->total(),
-                'per_page'      => $builder->perPage(),
-                'current_page'  => $builder->currentPage(),
-                'last_page'     => $builder->lastPage(),
-                'next_page_url' => $builder->nextPageUrl(),
-                'prev_page_url' => $builder->previousPageUrl(),
-                'from'          => $builder->firstItem(),
-                'to'            => $builder->lastItem(),
-            ],
-        ])->withMessage('获取店铺等级列表成功！');
+        $items = $builder->get();
+        $this->withCode(200)->withData($items)->withMessage('获取店铺等级列表成功！');
     }
 }
