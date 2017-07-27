@@ -19,12 +19,14 @@ class StoreGrade extends Model
      * @var array
      */
     protected $fillable = [
-        'description',
+        'application_instruction',
+        'can_claim',
+        'can_upload',
         'level',
         'name',
-        'picture_limit',
         'price',
-        'product_limit',
+        'publish_limit',
+        'upload_limit',
     ];
 
     /**
