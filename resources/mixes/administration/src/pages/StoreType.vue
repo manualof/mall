@@ -4,7 +4,10 @@
     export default {
         beforeRouteEnter(to, from, next) {
             injection.loading.start();
-            injection.http.post(`${window.api}/mall/admin/store/type/list`).then(response => {
+            injection.http.post(`${window.api}/mall/admin/store/type/list`, {
+                order: 'asc',
+                sort: 'order',
+            }).then(response => {
                 next(vm => {
                     vm.list = response.data.data.map(item => {
                         item.loading = false;
@@ -30,13 +33,35 @@
                         align: 'center',
                         key: 'order',
                         render(h, data) {
-                            return h('i-input', {
+                            const row = data.row;
+                            return h('tooltip', {
                                 props: {
-                                    type: 'ghost',
-                                    value: self.list[data.index].order,
+                                    placement: 'right-end',
                                 },
-                                style: {
-                                    width: '48px',
+                                scopedSlots: {
+                                    content() {
+                                        return '回车更新数据';
+                                    },
+                                    default() {
+                                        return h('i-input', {
+                                            on: {
+                                                'on-change': event => {
+                                                    row.order = event.target.value;
+                                                },
+                                                'on-enter': () => {
+                                                    self.update(row);
+                                                },
+                                            },
+                                            props: {
+                                                type: 'ghost',
+                                                value: self.list[data.index].order,
+                                            },
+                                            ref: 'order',
+                                            style: {
+                                                width: '48px',
+                                            },
+                                        });
+                                    },
                                 },
                             });
                         },
@@ -46,13 +71,34 @@
                         align: 'center',
                         key: 'name',
                         render(h, data) {
-                            return h('i-input', {
+                            const row = data.row;
+                            return h('tooltip', {
                                 props: {
-                                    type: 'ghost',
-                                    value: self.list[data.index].name,
+                                    placement: 'right-end',
                                 },
-                                style: {
-                                    width: '168px',
+                                scopedSlots: {
+                                    content() {
+                                        return '回车更新数据';
+                                    },
+                                    default() {
+                                        return h('i-input', {
+                                            on: {
+                                                'on-change': event => {
+                                                    row.name = event.target.value;
+                                                },
+                                                'on-enter': () => {
+                                                    self.update(row);
+                                                },
+                                            },
+                                            props: {
+                                                type: 'ghost',
+                                                value: self.list[data.index].name,
+                                            },
+                                            style: {
+                                                width: '168px',
+                                            },
+                                        });
+                                    },
                                 },
                             });
                         },
@@ -140,7 +186,10 @@
                     title: '正在刷新数据...',
                 });
                 self.$loading.start();
-                self.$http.post(`${window.api}/mall/admin/store/type/list`).then(response => {
+                self.$http.post(`${window.api}/mall/admin/store/type/list`, {
+                    order: 'asc',
+                    sort: 'order',
+                }).then(response => {
                     self.list = response.data.data.map(item => {
                         item.loading = false;
                         return item;
@@ -155,6 +204,20 @@
             },
             selectionChange(val) {
                 this.selection = val;
+            },
+            update(type) {
+                const self = this;
+                self.$loading.start();
+                window.console.log(type);
+                self.$http.post(`${window.api}/mall/admin/store/type/edit`, type).then(() => {
+                    self.$loading.finish();
+                    self.$notice.open({
+                        title: '更新数据成功！',
+                    });
+                    self.refresh();
+                }).catch(() => {
+                    self.$loading.fail();
+                });
             },
         },
     };

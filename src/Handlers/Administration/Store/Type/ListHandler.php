@@ -37,7 +37,7 @@ class ListHandler extends Handler
             'paginate.numeric' => '分页数必须为数值',
         ]);
         $builder = StoreType::query();
-        $builder->orderBy('created_at', $this->request->input('order', 'desc'));
+        $builder->orderBy($this->request->input('sort', 'created_at'), $this->request->input('order', 'desc'));
         $items = $builder->get();
         $this->withCode(200)->withData($items)->withMessage('获取店铺等级列表成功！');
     }
