@@ -9,6 +9,8 @@
 namespace Notadd\Mall\Handlers\Administration\Store\Type;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
+use Notadd\Mall\Models\StoreType;
 
 /**
  * Class ListHandler.
@@ -22,6 +24,21 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
+        ], [
+            'order.in'         => '排序规则错误',
+            'page.numeric'     => '当前页面必须为数值',
+            'paginate.numeric' => '分页数必须为数值',
+        ]);
+        $builder = StoreType::query();
+        $builder->orderBy('created_at', $this->request->input('order', 'desc'));
+        $items = $builder->get();
+        $this->withCode(200)->withData($items)->withMessage('获取店铺等级列表成功！');
     }
 }

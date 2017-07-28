@@ -3,8 +3,18 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/store/type/list`).then(response => {
+                next(vm => {
+                    vm.list = response.data.data.map(item => {
+                        item.loading = false;
+                        return item;
+                    });
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
@@ -18,10 +28,12 @@
                     },
                     {
                         align: 'center',
-                        render(h) {
+                        key: 'order',
+                        render(h, data) {
                             return h('i-input', {
                                 props: {
                                     type: 'ghost',
+                                    value: self.list[data.index].order,
                                 },
                                 style: {
                                     width: '48px',
@@ -32,10 +44,12 @@
                     },
                     {
                         align: 'center',
-                        render(h) {
+                        key: 'name',
+                        render(h, data) {
                             return h('i-input', {
                                 props: {
                                     type: 'ghost',
+                                    value: self.list[data.index].name,
                                 },
                                 style: {
                                     width: '168px',
@@ -46,7 +60,7 @@
                     },
                     {
                         align: 'center',
-                        key: 'number',
+                        key: 'amount_of_deposit',
                         title: '保证金数额',
                     },
                     {
@@ -86,17 +100,60 @@
                     },
                 ],
                 list: [],
+                loading: false,
+                selection: [],
             };
         },
         methods: {
-            remove(index) {
-                this.list.splice(index, 1);
-            },
-            toSet() {
+            batchRemove() {
                 const self = this;
-                self.$router.push({
-                    path: 'category/set',
+                if (self.selection.length === 0) {
+                    self.$notice.error({
+                        title: '请先选择一个店铺类型！',
+                    });
+                } else {
+                    const query = [];
+                    self.selection.forEach(item => {
+                        query.push(self.$http.post(`${window.api}/mall/admin/store/type/remove`, {
+                            id: item.id,
+                        }));
+                    });
+                    self.loading = true;
+                    self.$http.all(query).then(() => {
+                        self.$notice.open({
+                            title: '批量删除店铺类型信息成功！',
+                        });
+                        self.refresh();
+                    }).catch(() => {
+                        self.$notice.error({
+                            title: '批量删除店铺类型信息失败！',
+                        });
+                    }).finally(() => {
+                        self.loading = false;
+                    });
+                }
+            },
+            refresh() {
+                const self = this;
+                self.$notice.open({
+                    title: '正在刷新数据...',
                 });
+                self.$loading.start();
+                self.$http.post(`${window.api}/mall/admin/store/type/list`).then(response => {
+                    self.list = response.data.data.map(item => {
+                        item.loading = false;
+                        return item;
+                    });
+                    self.$loading.finish();
+                    self.$notice.open({
+                        title: '刷新数据成功！',
+                    });
+                }).catch(() => {
+                    self.$loading.fail();
+                });
+            },
+            selectionChange(val) {
+                this.selection = val;
             },
         },
     };
@@ -117,14 +174,17 @@
                                 <router-link to="/mall/store/type/add">
                                     <i-button class="export-btn" type="ghost">新增数据</i-button>
                                 </router-link>
-                                <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                                <i-button :loading="loading" :style="{
+                                    marginLeft: '20px'
+                                }" type="ghost" @click.native="batchRemove">批量删除</i-button>
+                                <i-button type="text" icon="android-sync" class="refresh" @click.native="refresh">刷新</i-button>
                             </div>
                             <i-table class="shop-table"
                                      :columns="columns"
                                      :data="list"
                                      :context="self"
                                      highlight-row
-                                     ref="storeCategoryTable">
+                                     @on-selection-change="selectionChange">
                             </i-table>
                         </div>
                     </card>
