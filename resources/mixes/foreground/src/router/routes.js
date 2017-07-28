@@ -59,7 +59,6 @@ import ReturnOfGoods from '../pages/ReturnOfGoods.vue';
 export default [
     {
         children: [
-
             {
                 component: Home,
                 path: '/',

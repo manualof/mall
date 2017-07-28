@@ -114,7 +114,7 @@ const components = {
     Upload,
 };
 
-export default function (Vue, injection) {
+export default function (injection, Vue) {
     const opts = {};
 
     locale.use(opts.locale);

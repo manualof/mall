@@ -5,7 +5,7 @@
         </div>
         <div class="attention-store clearfix" v-for="(store, index) in attentionStore" ref="store">
             <div class="left-store text-center">
-                <router-link to="/mall/store/shop-home" target="_blank">
+                <router-link to="/mall/store/shop-home">
                     <dl class="store">
                         <dt><img :src="store.store_img"></dt>
                         <dd>
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="store-product clearfix">
-                <router-link to="/mall/search/product-details" target="_blank">
+                <router-link to="/mall/search/product-details">
                     <dl class="store-product-model " v-for="item in store.storeList">
                         <dt><img :src="item.img"></dt>
                         <dd>

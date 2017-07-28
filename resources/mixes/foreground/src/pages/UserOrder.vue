@@ -62,13 +62,13 @@
                     </tr>
                     <tr v-for="(product,index) in order.products">
                         <td>
-                            <router-link to="/mall/search/product-details" target="_blank">
+                            <router-link to="/mall/search/product-details">
                                 <img :src="product.img">
                             </router-link>
                         </td>
                         <td>
                             <p>
-                                <router-link to="/mall/search/product-details" target="_blank">
+                                <router-link to="/mall/search/product-details">
                                     {{ product.name }}
                                 </router-link>
                             </p>
