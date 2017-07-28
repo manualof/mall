@@ -1,6 +1,6 @@
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
-    import SplinLine from '../components/SplinLine';
+    import SplinLine from '../components/SplinLine.vue';
     import image1 from '../../../user/src/assets/images/img_04.png';
     import image3 from '../../../user/src/assets/images/img_06-1.png';
     import image4 from '../../../user/src/assets/images/kitty.png';
@@ -10,8 +10,8 @@
     import picture2 from '../../../user/src/assets/images/img_02-2.png';
     import picture3 from '../../../user/src/assets/images/offer_img_01.png';
 
-    import RightSide from '../layouts/RightSide';
-    import NeedBrowse from '../components/NeedBrowse';
+    import RightSide from '../layouts/RightSide.vue';
+    import NeedBrowse from '../components/NeedBrowse.vue';
 
     export default {
         components: {

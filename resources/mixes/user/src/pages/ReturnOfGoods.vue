@@ -1,5 +1,5 @@
 <script>
-    import EndTimer from '../../../user/src/components/Timer';
+    import EndTimer from '../components/Timer.vue';
     import img from '../../../user/src/assets/images/b1.png';
 
     export default{

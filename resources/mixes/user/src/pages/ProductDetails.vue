@@ -1,10 +1,10 @@
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import Cascader from 'iview/src/components/cascader';
-    import SplinLine from '../components/SplinLine';
-    import RightSide from '../layouts/RightSide';
-    import NeedBrowse from '../components/NeedBrowse';
-    import Magnifier from '../components/Magnifier';
+    import SplinLine from '../components/SplinLine.vue';
+    import RightSide from '../layouts/RightSide.vue';
+    import NeedBrowse from '../components/NeedBrowse.vue';
+    import Magnifier from '../components/Magnifier.vue';
     import small1 from '../../../user/src/assets/images/s1.jpg';
     import small2 from '../../../user/src/assets/images/s2.jpg';
     import small3 from '../../../user/src/assets/images/s3.jpg';

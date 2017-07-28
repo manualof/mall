@@ -1,6 +1,6 @@
 <script>
-    import SplinLine from '../components/SplinLine';
-    import NeedBrowse from '../components/NeedBrowse';
+    import SplinLine from '../components/SplinLine.vue';
+    import NeedBrowse from '../components/NeedBrowse.vue';
 
     import productImg from '../../../user/src/assets/images/img_06.png';
 
