@@ -80,23 +80,17 @@
             </div>
         </div>
         <need-browse></need-browse>
-        <everyone-browse></everyone-browse>
-        <myself-browse></myself-browse>
         <right-side></right-side>
     </div>
 </template>
 <script>
     import product from '../../../user/src/assets/images/thephone.png';
-    import NeedBrowse from './public/NeedBrowse';
-    import EveryoneBrowse from './public/EveryoneBrowse';
-    import MyselfBrowse from './public/MyselfBrowse';
-    import RightSide from './public/RightSide';
+    import NeedBrowse from '../components/NeedBrowse';
+    import RightSide from '../layouts/RightSide';
 
     export default {
         components: {
             NeedBrowse,
-            EveryoneBrowse,
-            MyselfBrowse,
             RightSide,
         },
         data() {

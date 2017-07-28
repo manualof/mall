@@ -114,8 +114,6 @@
             </div>
         </div>
         <need-browse></need-browse>
-        <everyone-browse></everyone-browse>
-        <myself-browse></myself-browse>
         <right-side></right-side>
     </div>
 </template>
@@ -124,15 +122,11 @@
     import service from '../../../user/src/assets/images/service.png';
     import product from '../../../user/src/assets/images/thephone.png';
     import shopImg from '../../../user/src/assets/images/img_lofo.png';
-    import EveryoneBrowse from './library/EveryoneBrowse';
-    import MyselfBrowse from './library/MyselfBrowse';
-    import NeedBrowse from './library/NeedBrowse';
-    import RightSide from './library/RightSide';
+    import NeedBrowse from '../components/NeedBrowse';
+    import RightSide from '../layouts/RightSide';
 
     export default {
         components: {
-            EveryoneBrowse,
-            MyselfBrowse,
             NeedBrowse,
             RightSide,
         },
