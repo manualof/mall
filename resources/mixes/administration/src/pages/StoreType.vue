@@ -110,7 +110,6 @@
                         title: '保证金数额',
                     },
                     {
-                        align: 'center',
                         key: 'action',
                         render(h, data) {
                             return h('div', [
@@ -129,10 +128,25 @@
                                 h('i-button', {
                                     on: {
                                         click() {
-                                            self.remove(data.index);
+                                            self.list[data.index].loading = true;
+                                            self.$http.post(`${window.api}/mall/admin/store/type/remove`, {
+                                                id: data.row.id,
+                                            }).then(() => {
+                                                self.$notice.open({
+                                                    title: '删除店铺类型信息成功！',
+                                                });
+                                                self.refresh();
+                                            }).catch(() => {
+                                                self.$notice.error({
+                                                    title: '删除店铺类型信息失败！',
+                                                });
+                                            }).finally(() => {
+                                                self.list[data.index].loading = true;
+                                            });
                                         },
                                     },
                                     props: {
+                                        loading: self.list[data.index].loading,
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -143,7 +157,7 @@
                             ]);
                         },
                         title: '操作',
-                        width: 180,
+                        width: 230,
                     },
                 ],
                 list: [],
