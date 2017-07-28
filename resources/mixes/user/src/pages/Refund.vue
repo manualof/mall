@@ -1,6 +1,6 @@
 <script>
-    import EndTimer from '../components/Timer';
-    import SplinLine from '../components/SplinLine';
+    import EndTimer from '../components/Timer.vue';
+    import SplinLine from '../components/SplinLine.vue';
     import img from '../../../user/src/assets/images/b1.png';
 
     export default{
