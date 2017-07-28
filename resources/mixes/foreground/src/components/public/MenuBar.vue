@@ -37,8 +37,8 @@
     </div>
 </template>
 <script>
-    import huwei from '../../assets/images/huawei.png';
-    import adv from '../../assets/images/banner_01.png';
+    import huwei from '../../../../user/src/assets/images/huawei.png';
+    import adv from '../../../../user/src/assets/images/banner_01.png';
 
     export default {
         data() {
