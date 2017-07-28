@@ -1,11 +1,7 @@
 <script>
-    import Affix from 'iview/src/components/affix/affix';
     import phone from '../assets/images/phone.png';
 
     export default {
-        component: [
-            Affix,
-        ],
         data() {
             return {
                 active: 1,

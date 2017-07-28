@@ -1,11 +1,12 @@
 <script>
+    import EveryoneBrowse from '../layouts/EveryoneBrowse.vue';
     import SplinLine from '../components/SplinLine.vue';
     import FooterBar from '../layouts/FooterBar.vue';
     import FooterContent from '../layouts/FooterContent.vue';
     import HeaderBar from '../layouts/HeaderBar.vue';
-    import NeedBrowse from '../components/NeedBrowse.vue';
+    import MyselfBrowse from '../layouts/MyselfBrowse.vue';
     import RightSide from '../layouts/RightSide.vue';
-    import order from '../../../user/src/assets/images/details/order.png';
+    import order from '../assets/images/details/order.png';
 
     export default {
         components: {
