@@ -275,7 +275,7 @@
     import { Select, Option, OptionGroup } from 'iview/src/components/select';
     import Modal from '../components/Modal';
     import order from '../../../user/src/assets/images/details/order.png';
-    import RightSide from '../layouts/RightSide';
+    import RightSide from '../layouts/RightSide.vue';
 
     export default {
         components: {

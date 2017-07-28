@@ -51,8 +51,8 @@
 </template>
 
 <script>
-    import FooterBar from '../layouts/FooterBar';
-    import FooterContent from '../layouts/FooterContent';
+    import FooterBar from '../layouts/FooterBar.vue';
+    import FooterContent from '../layouts/FooterContent.vue';
 
     export default {
         components: {

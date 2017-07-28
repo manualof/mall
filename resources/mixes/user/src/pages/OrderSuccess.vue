@@ -1,9 +1,9 @@
 <script>
-    import SplinLine from '../components/SplinLine';
-    import RightSide from '../layouts/RightSide';
-    import HeaderBar from '../layouts/HeaderBar';
-    import FooterBar from '../layouts/FooterBar';
-    import FooterContent from '../layouts/FooterContent';
+    import SplinLine from '../components/SplinLine.vue';
+    import RightSide from '../layouts/RightSide.vue';
+    import HeaderBar from '../layouts/HeaderBar.vue';
+    import FooterBar from '../layouts/FooterBar.vue';
+    import FooterContent from '../layouts/FooterContent.vue';
 
     export default {
         components: {

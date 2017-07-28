@@ -1,10 +1,10 @@
 <script>
-    import SplinLine from '../components/SplinLine';
-    import FooterBar from '../layouts/FooterBar';
-    import FooterContent from '../layouts/FooterContent';
-    import HeaderBar from '../layouts/HeaderBar';
-    import NeedBrowse from '../components/NeedBrowse';
-    import RightSide from '../layouts/RightSide';
+    import SplinLine from '../components/SplinLine.vue';
+    import FooterBar from '../layouts/FooterBar.vue';
+    import FooterContent from '../layouts/FooterContent.vue';
+    import HeaderBar from '../layouts/HeaderBar.vue';
+    import NeedBrowse from '../components/NeedBrowse.vue';
+    import RightSide from '../layouts/RightSide.vue';
     import order from '../../../user/src/assets/images/details/order.png';
 
     export default {

@@ -10,8 +10,8 @@
     import picture2 from '../../../user/src/assets/images/img_02-2.png';
     import picture3 from '../../../user/src/assets/images/offer_img_01.png';
 
-    import RightSide from '../layouts/RightSide';
-    import NeedBrowse from '../components/NeedBrowse';
+    import RightSide from '../layouts/RightSide.vue';
+    import NeedBrowse from '../components/NeedBrowse.vue';
 
     export default {
         components: {

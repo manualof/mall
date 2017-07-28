@@ -85,8 +85,8 @@
 </template>
 <script>
     import product from '../../../user/src/assets/images/thephone.png';
-    import NeedBrowse from '../components/NeedBrowse';
-    import RightSide from '../layouts/RightSide';
+    import NeedBrowse from '../components/NeedBrowse.vue';
+    import RightSide from '../layouts/RightSide.vue';
 
     export default {
         components: {
