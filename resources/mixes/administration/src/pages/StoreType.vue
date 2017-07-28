@@ -68,17 +68,18 @@
                         key: 'action',
                         render(h, data) {
                             return h('div', [
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.toSet();
-                                        },
-                                    },
+                                h('router-link', {
                                     props: {
-                                        size: 'small',
-                                        type: 'ghost',
+                                        to: `/mall/store/type/${data.row.id}/edit`,
                                     },
-                                }, '设置'),
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '设置'),
+                                ]),
                                 h('i-button', {
                                     on: {
                                         click() {

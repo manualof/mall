@@ -430,7 +430,7 @@ export default function (injection) {
                 {
                     beforeEnter: injection.middleware.requireAuth,
                     component: StoreTypeEdit,
-                    path: 'store/type/edit',
+                    path: 'store/type/:id/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
