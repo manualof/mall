@@ -1,5 +1,5 @@
 <script>
-    import Affix from 'iview/src/components/affix/affix';
+    import Affix from '../../node_modules/iview/src/components/affix/affix.vue';
     import phone from '../assets/images/phone.png';
 
     export default {

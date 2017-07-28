@@ -315,8 +315,6 @@
         },
         components: {
             Cascader,
-            EveryoneBrowse,
-            MyselfBrowse,
             Magnifier,
             NeedBrowse,
             RightSide,
