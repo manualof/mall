@@ -1,11 +1,10 @@
 <script>
-    import SplinLine from './public/SplinLine';
-    import EveryoneBrowse from './public/EveryoneBrowse';
-    import FooterBar from './public/FooterBar';
-    import FooterContent from './public/FooterContent';
-    import HeaderBar from './public/HeaderBar';
-    import MyselfBrowse from './public/MyselfBrowse';
-    import RightSide from './public/RightSide';
+    import SplinLine from '../components/SplinLine';
+    import FooterBar from '../layouts/FooterBar';
+    import FooterContent from '../layouts/FooterContent';
+    import HeaderBar from '../layouts/HeaderBar';
+    import NeedBrowse from '../components/NeedBrowse';
+    import RightSide from '../layouts/RightSide';
     import order from '../../../user/src/assets/images/details/order.png';
 
     export default {

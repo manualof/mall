@@ -1,11 +1,11 @@
 <script>
-    import FooterBar from './public/FooterBar';
-    import FooterContent from './public/FooterContent';
-    import HeaderBar from './public/HeaderBar';
-    import LogoModal from './public/LogoModal';
-    import NeedBrowse from './public/NeedBrowse';
-    import RightSide from './public/RightSide';
-    import SplinLine from './public/SplinLine';
+    import FooterBar from '../layouts/FooterBar';
+    import FooterContent from '../layouts/FooterContent';
+    import HeaderBar from '../layouts/HeaderBar';
+    import LogoModal from '../layouts/LogoModal';
+    import NeedBrowse from '../components/NeedBrowse';
+    import RightSide from '../layouts/RightSide';
+    import SplinLine from '../components/SplinLine';
 
     export default {
         components: {

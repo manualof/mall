@@ -53,7 +53,7 @@
 </template>
 
 <script>
-    import FooterBar from './public/FooterBar';
+    import FooterBar from '../layouts/FooterBar';
 
     export default {
         components: {

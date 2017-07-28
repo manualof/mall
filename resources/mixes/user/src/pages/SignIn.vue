@@ -51,8 +51,8 @@
 </template>
 
 <script>
-    import FooterBar from './public/FooterBar';
-    import FooterContent from './public/FooterContent';
+    import FooterBar from '../layouts/FooterBar';
+    import FooterContent from '../layouts/FooterContent';
 
     export default {
         components: {

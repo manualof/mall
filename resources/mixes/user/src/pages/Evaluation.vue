@@ -1,5 +1,5 @@
 <script>
-    import SplinLine from './public/SplinLine';
+    import SplinLine from '../components/SplinLine';
     import product from '../../../user/src/assets/images/img_06.png';
 
     export default {

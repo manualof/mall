@@ -1,15 +1,11 @@
 <script>
-    import SplinLine from './public/SplinLine';
-    import NeedBrowse from './public/NeedBrowse';
-    import EveryoneBrowse from './public/EveryoneBrowse';
-    import MyselfBrowse from './public/MyselfBrowse';
+    import SplinLine from '../components/SplinLine';
+    import NeedBrowse from '../components/NeedBrowse';
 
     import productImg from '../../../user/src/assets/images/img_06.png';
 
     export default {
         components: {
-            EveryoneBrowse,
-            MyselfBrowse,
             NeedBrowse,
             SplinLine,
         },
@@ -406,8 +402,6 @@
                 </div>
             </div>
             <need-browse></need-browse>
-            <everyone-browse></everyone-browse>
-            <myself-browse></myself-browse>
         </div>
         <splin-line v-if="loading"></splin-line>
     </div>

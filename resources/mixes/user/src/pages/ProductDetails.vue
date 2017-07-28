@@ -1,12 +1,10 @@
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import Cascader from 'iview/src/components/cascader';
-    import SplinLine from './public/SplinLine';
-    import RightSide from './public/RightSide';
-    import NeedBrowse from './public/NeedBrowse';
-    import MyselfBrowse from './public/MyselfBrowse';
-    import EveryoneBrowse from './public/EveryoneBrowse';
-    import Magnifier from './public/Magnifier';
+    import SplinLine from '../components/SplinLine';
+    import RightSide from '../layouts/RightSide';
+    import NeedBrowse from '../components/NeedBrowse';
+    import Magnifier from '../components/Magnifier';
     import small1 from '../../../user/src/assets/images/s1.jpg';
     import small2 from '../../../user/src/assets/images/s2.jpg';
     import small3 from '../../../user/src/assets/images/s3.jpg';
@@ -683,8 +681,6 @@
             </div>
         </div>
         <need-browse></need-browse>
-        <everyone-browse></everyone-browse>
-        <myself-browse></myself-browse>
         <right-side></right-side>
     </div>
 </template>
