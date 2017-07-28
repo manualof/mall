@@ -1,6 +1,6 @@
 <script>
-    import saoyisao from '../../../user/src/assets/images/sao.png';
-    import payImg from '../../../user/src/assets/images/s1.jpg';
+    import saoyisao from '../assets/images/sao.png';
+    import payImg from '../assets/images/s1.jpg';
 
     export default{
         data() {

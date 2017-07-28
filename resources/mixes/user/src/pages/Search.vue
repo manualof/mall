@@ -84,7 +84,7 @@
     </div>
 </template>
 <script>
-    import product from '../../../user/src/assets/images/thephone.png';
+    import product from '../assets/images/thephone.png';
     import NeedBrowse from '../components/NeedBrowse.vue';
     import RightSide from '../layouts/RightSide.vue';
 

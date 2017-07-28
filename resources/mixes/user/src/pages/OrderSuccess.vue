@@ -43,7 +43,7 @@
         <div class="header-bar-logo header-bar-line">
             <div class="container">
                 <router-link to="/mall">
-                    <img src="../../../user/src/assets/images/logo.png" alt="">
+                    <img src="../assets/images/logo.png" alt="">
                 </router-link>
             </div>
         </div>
@@ -66,14 +66,14 @@
                     <label class="form-control-radio">
                         <input type="radio" name="pay">
                         <span></span>
-                        <img src="../../../user/src/assets/images/alipay.png" alt="alipay">
+                        <img src="../assets/images/alipay.png" alt="alipay">
                     </label>
                 </p>
                 <p class="weixin">
                     <label class="form-control-radio">
                         <input type="radio" name="pay">
                         <span></span>
-                        <img src="../../../user/src/assets/images/weixin.png" alt="weixin">
+                        <img src="../assets/images/weixin.png" alt="weixin">
                     </label>
                 </p>
                 <router-link to="/pay-result" class="order-btn">立即支付</router-link>

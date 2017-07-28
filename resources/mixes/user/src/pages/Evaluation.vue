@@ -1,6 +1,6 @@
 <script>
     import SplinLine from '../components/SplinLine.vue';
-    import product from '../../../user/src/assets/images/img_06.png';
+    import product from '../assets/images/img_06.png';
 
     export default {
         component: [

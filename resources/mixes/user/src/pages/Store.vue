@@ -118,10 +118,10 @@
     </div>
 </template>
 <script>
-    import shop from '../../../user/src/assets/images/shopBanner.png';
-    import service from '../../../user/src/assets/images/service.png';
-    import product from '../../../user/src/assets/images/thephone.png';
-    import shopImg from '../../../user/src/assets/images/img_lofo.png';
+    import shop from '../assets/images/shopBanner.png';
+    import service from '../assets/images/service.png';
+    import product from '../assets/images/thephone.png';
+    import shopImg from '../assets/images/img_lofo.png';
     import NeedBrowse from '../components/NeedBrowse.vue';
     import RightSide from '../layouts/RightSide.vue';
 

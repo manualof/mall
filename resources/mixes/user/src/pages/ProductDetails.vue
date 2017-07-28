@@ -5,22 +5,22 @@
     import RightSide from '../layouts/RightSide.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
     import Magnifier from '../components/Magnifier.vue';
-    import small1 from '../../../user/src/assets/images/s1.jpg';
-    import small2 from '../../../user/src/assets/images/s2.jpg';
-    import small3 from '../../../user/src/assets/images/s3.jpg';
-    import small4 from '../../../user/src/assets/images/s4.jpg';
-    import small5 from '../../../user/src/assets/images/s5.jpg';
-    import big1 from '../../../user/src/assets/images/b1.png';
-    import big2 from '../../../user/src/assets/images/b2.jpg';
-    import big3 from '../../../user/src/assets/images/b3.jpg';
-    import big4 from '../../../user/src/assets/images/b4.jpg';
-    import big5 from '../../../user/src/assets/images/b5.jpg';
-    import img1 from '../../../user/src/assets/images/details/stool2.png';
-    import img2 from '../../../user/src/assets/images/details/stool1.png';
-    import user from '../../../user/src/assets/images/details/user-img.png';
-    import img7 from '../../../user/src/assets/images/img_07.png';
-    import logo from '../../../user/src/assets/images/img_lofo.png';
-    import talk from '../../../user/src/assets/images/service.png';
+    import small1 from '../assets/images/s1.jpg';
+    import small2 from '../assets/images/s2.jpg';
+    import small3 from '../assets/images/s3.jpg';
+    import small4 from '../assets/images/s4.jpg';
+    import small5 from '../assets/images/s5.jpg';
+    import big1 from '../assets/images/b1.png';
+    import big2 from '../assets/images/b2.jpg';
+    import big3 from '../assets/images/b3.jpg';
+    import big4 from '../assets/images/b4.jpg';
+    import big5 from '../assets/images/b5.jpg';
+    import img1 from '../assets/images/details/stool2.png';
+    import img2 from '../assets/images/details/stool1.png';
+    import user from '../assets/images/details/user-img.png';
+    import img7 from '../assets/images/img_07.png';
+    import logo from '../assets/images/img_lofo.png';
+    import talk from '../assets/images/service.png';
 
     export default {
         data() {
@@ -604,7 +604,7 @@
                             </li>
                         </ul>
                         <div class="img-show">
-                            <img src="../../../user/src/assets/images/details/details-img.png"/>
+                            <img src="../assets/images/details/details-img.png"/>
                         </div>
                     </div>
                     <div class="tab-pane" id="evaluation" v-if="activeTab===2">

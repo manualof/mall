@@ -1,10 +1,8 @@
 <script>
-    import EveryoneBrowse from '../layouts/EveryoneBrowse.vue';
     import SplinLine from '../components/SplinLine.vue';
     import FooterBar from '../layouts/FooterBar.vue';
     import FooterContent from '../layouts/FooterContent.vue';
     import HeaderBar from '../layouts/HeaderBar.vue';
-    import MyselfBrowse from '../layouts/MyselfBrowse.vue';
     import RightSide from '../layouts/RightSide.vue';
     import order from '../assets/images/details/order.png';
 
@@ -13,7 +11,6 @@
             FooterBar,
             FooterContent,
             HeaderBar,
-            NeedBrowse,
             RightSide,
             SplinLine,
         },
@@ -118,7 +115,7 @@
         <div class="header-bar-logo header-bar-line">
             <div class="container">
                 <router-link to="/mall">
-                    <img src="../../../user/src/assets/images/logo.png" alt="">
+                    <img src="../assets/images/logo.png" alt="">
                 </router-link>
             </div>
         </div>
