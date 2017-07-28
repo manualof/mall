@@ -10,11 +10,10 @@
 
     export default {
         components: {
-            EveryoneBrowse,
             FooterBar,
             FooterContent,
             HeaderBar,
-            MyselfBrowse,
+            NeedBrowse,
             RightSide,
             SplinLine,
         },
@@ -237,8 +236,6 @@
             </div>
         </div>
         <right-side></right-side>
-        <everyone-browse></everyone-browse>
-        <myself-browse></myself-browse>
         <footer-content></footer-content>
         <footer-bar></footer-bar>
     </div>
