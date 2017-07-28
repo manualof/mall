@@ -29,7 +29,7 @@ class Store extends Model
         'company',
         'end_at',
         'flow_marketing',
-        'level',
+        'grade',
         'location',
         'name',
         'open_at',
@@ -43,6 +43,7 @@ class Store extends Model
     protected $setters = [
         'category_id' => 'null|0',
         'level'       => 'null|0',
+        'status'      => 'null|review',
         'user_id'     => 'null|0',
     ];
 
