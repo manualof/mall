@@ -1,3 +1,130 @@
+<script>
+    import Datepicker from 'vuejs-datepicker';
+    import cities from '../data/cities';
+
+    export default {
+        components: {
+            Datepicker,
+        },
+        data() {
+            return {
+                agree: false,
+                temps: ['入驻须知', '公司信息', '店铺信息', '入驻审核'],
+                temp: 1,
+                data: cities,
+                connect: {
+                    name: '',
+                    phone: '',
+                    email: '',
+                },
+                lincenseInfo: {
+                    company_name: '',
+                    registration_num: '',
+                    legal_person_name: '',
+                    business_license_address: [],
+                    license_type: true,
+                    detial_adress: '',
+                    setDate: new Date(),
+                    startDate: new Date(),
+                    endDate: new Date(),
+                    redistered_capital: '',
+                    company_detial_address: '',
+                    business_scope: '',
+                    company_address: [],
+                    company_tel: '',
+                    emergency_contact: '',
+                    certificate_type: '',
+                    legal_id: '',
+                    id_card_imgs: [],
+                    license_imgs: [],
+                    account_imgs: [],
+                },
+                organizationInfo: {
+                    code: '',
+                    startDate: new Date(),
+                    endDate: new Date(),
+                    certificate_imgs: [],
+                },
+                taxationInfo: {
+                    taxpayer_type: '',
+                    code: '',
+                    certificate_imgs: [],
+                    tax_paymentCode: '',
+                },
+                bankInfo: {
+                    public_account: '',
+                    branch_num: '',
+                    branch_name: '',
+                    address: '',
+                },
+                operatingInfo: {
+                    company_type: '',
+                    web_address: '',
+                    year_sales: '',
+                    shop_address: '',
+                    person_num: '',
+                    similar_experience: '',
+                    available_num: '',
+                    average_price: '',
+                    warehouse_situation: '',
+                    warehouse_address: '',
+                    used_logistics: '',
+                    erp_type: '',
+                    behalf_company_name: '',
+                },
+                shopInfo: {
+                    shop_type: {
+                        name: '',
+                        options: ['请选择', '有限公司', '国营企业', '私营企业'],
+                    },
+                    main_categories: [
+                        {
+                            name: '',
+                            options: ['请选择', '1', '2', '3'],
+                        },
+                        {
+                            name: '',
+                            options: ['请选择', '1', '2', '3'],
+                        },
+                        {
+                            name: '',
+                            options: ['请选择', '1', '2', '3'],
+                        },
+                    ],
+                    shop_name: '',
+                    business_firm: '',
+                    shop_account: '',
+                },
+            };
+        },
+        methods: {
+            next() {
+                if (this.temp < 7) {
+                    this.temp += 1;
+                }
+            },
+            prev() {
+                this.temp -= 1;
+            },
+            imageSelected(e, arr) {
+                const file = e.target.files[0];
+                const image = {
+                    content: '',
+                    file1: file,
+                };
+                const reader = new global.FileReader();
+                reader.onload = () => {
+                    image.content = reader.result;
+                };
+                reader.readAsDataURL(file);
+                arr.push(image);
+            },
+            deleteImg(arr, item) {
+                arr.splice(arr.indexOf(item));
+            },
+        },
+    };
+</script>
 <template>
     <div class="businessmen-box">
         <div class="shop_banner" v-if="temp==1">
@@ -275,130 +402,3 @@
         </div>
     </div>
 </template>
-<script>
-    import Datepicker from 'vuejs-datepicker';
-    import cities from '../data/cities';
-
-    export default {
-        components: {
-            Datepicker,
-        },
-        data() {
-            return {
-                agree: false,
-                temps: ['入驻须知', '公司信息', '店铺信息', '入驻审核'],
-                temp: 1,
-                data: cities,
-                connect: {
-                    name: '',
-                    phone: '',
-                    email: '',
-                },
-                lincenseInfo: {
-                    company_name: '',
-                    registration_num: '',
-                    legal_person_name: '',
-                    business_license_address: [],
-                    license_type: true,
-                    detial_adress: '',
-                    setDate: new Date(),
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    redistered_capital: '',
-                    company_detial_address: '',
-                    business_scope: '',
-                    company_address: [],
-                    company_tel: '',
-                    emergency_contact: '',
-                    certificate_type: '',
-                    legal_id: '',
-                    id_card_imgs: [],
-                    license_imgs: [],
-                    account_imgs: [],
-                },
-                organizationInfo: {
-                    code: '',
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    certificate_imgs: [],
-                },
-                taxationInfo: {
-                    taxpayer_type: '',
-                    code: '',
-                    certificate_imgs: [],
-                    tax_paymentCode: '',
-                },
-                bankInfo: {
-                    public_account: '',
-                    branch_num: '',
-                    branch_name: '',
-                    address: '',
-                },
-                operatingInfo: {
-                    company_type: '',
-                    web_address: '',
-                    year_sales: '',
-                    shop_address: '',
-                    person_num: '',
-                    similar_experience: '',
-                    available_num: '',
-                    average_price: '',
-                    warehouse_situation: '',
-                    warehouse_address: '',
-                    used_logistics: '',
-                    erp_type: '',
-                    behalf_company_name: '',
-                },
-                shopInfo: {
-                    shop_type: {
-                        name: '',
-                        options: ['请选择', '有限公司', '国营企业', '私营企业'],
-                    },
-                    main_categories: [
-                        {
-                            name: '',
-                            options: ['请选择', '1', '2', '3'],
-                        },
-                        {
-                            name: '',
-                            options: ['请选择', '1', '2', '3'],
-                        },
-                        {
-                            name: '',
-                            options: ['请选择', '1', '2', '3'],
-                        },
-                    ],
-                    shop_name: '',
-                    business_firm: '',
-                    shop_account: '',
-                },
-            };
-        },
-        methods: {
-            next() {
-                if (this.temp < 7) {
-                    this.temp += 1;
-                }
-            },
-            prev() {
-                this.temp -= 1;
-            },
-            imageSelected(e, arr) {
-                const file = e.target.files[0];
-                const image = {
-                    content: '',
-                    file1: file,
-                };
-                const reader = new global.FileReader();
-                reader.onload = () => {
-                    image.content = reader.result;
-                };
-                reader.readAsDataURL(file);
-                arr.push(image);
-            },
-            deleteImg(arr, item) {
-                arr.splice(arr.indexOf(item));
-            },
-        },
-    };
-</script>

@@ -1,49 +1,3 @@
-<template>
-    <div class="selases-return">
-        <div class="saases-title">
-            <span @click="qiehuan" :class="{xuanzhong: !type}">退款申请</span>
-            <span @click="qiehuan" :class="{xuanzhong: type}">退货申请</span>
-        </div>
-        <div class="selaes-serch">
-            <input class="form-control" type="text" placeholder="">
-            <span>搜索</span>
-        </div>
-        <div class="clearfix"></div>
-        <div>
-            <div class="goods-list-title">
-                <div>商品</div>
-                <div>退款金额（元）</div>
-                <div>退货数量</div>
-                <div>审核状态</div>
-                <div>平台确认</div>
-                <div>操作</div>
-            </div>
-            <div class="goods-list" v-for="item in goods">
-                <p>
-                    <span>退款编号：{{ item.refundnum }}</span>
-                    <span>申请时间：{{ item.time }}</span>
-                    <span>{{ item.seller }}</span>
-                </p>
-                <div class="goods-list-title">
-                    <div>
-                        <div class="goods-img">
-                            <img :src="item.imgsrc" alt="">
-                        </div>
-                        <div class="goods-msg">
-                            <div class="goods-msg-main">{{ item.name }}</div>
-                            <div class="diangdanbianhao">订单编号：{{ item.num }}</div>
-                        </div>
-                    </div>
-                    <div>{{ item.price }}</div>
-                    <div>1</div>
-                    <div>待审核</div>
-                    <div>无</div>
-                    <div class="caozuo"> <span>查看</span> </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
 <script>
     import img from '../assets/images/img_02-3.png';
 
@@ -102,3 +56,49 @@
         },
     };
 </script>
+<template>
+    <div class="selases-return">
+        <div class="saases-title">
+            <span @click="qiehuan" :class="{xuanzhong: !type}">退款申请</span>
+            <span @click="qiehuan" :class="{xuanzhong: type}">退货申请</span>
+        </div>
+        <div class="selaes-serch">
+            <input class="form-control" type="text" placeholder="">
+            <span>搜索</span>
+        </div>
+        <div class="clearfix"></div>
+        <div>
+            <div class="goods-list-title">
+                <div>商品</div>
+                <div>退款金额（元）</div>
+                <div>退货数量</div>
+                <div>审核状态</div>
+                <div>平台确认</div>
+                <div>操作</div>
+            </div>
+            <div class="goods-list" v-for="item in goods">
+                <p>
+                    <span>退款编号：{{ item.refundnum }}</span>
+                    <span>申请时间：{{ item.time }}</span>
+                    <span>{{ item.seller }}</span>
+                </p>
+                <div class="goods-list-title">
+                    <div>
+                        <div class="goods-img">
+                            <img :src="item.imgsrc" alt="">
+                        </div>
+                        <div class="goods-msg">
+                            <div class="goods-msg-main">{{ item.name }}</div>
+                            <div class="diangdanbianhao">订单编号：{{ item.num }}</div>
+                        </div>
+                    </div>
+                    <div>{{ item.price }}</div>
+                    <div>1</div>
+                    <div>待审核</div>
+                    <div>无</div>
+                    <div class="caozuo"> <span>查看</span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,3 +1,97 @@
+<script>
+    import Datepicker from 'vuejs-datepicker';
+    import Ascader from 'iview/src/components/cascader';
+    import Upload from 'iview/src/components/upload/upload.vue';
+    import IButton from 'iview/src/components/button';
+
+    export default{
+        components: {
+            Ascader,
+            Datepicker,
+            Upload,
+            IButton,
+        },
+        data() {
+            return {
+                reg: /(.{2}).+(.{2}@.+)/g,
+                data: [{
+                    value: 'beijing',
+                    label: '北京',
+                    children: [
+                        {
+                            value: 'gugong',
+                            label: '故宫',
+                        },
+                        {
+                            value: 'tiantan',
+                            label: '天坛',
+                        },
+                        {
+                            value: 'wangfujing',
+                            label: '王府井',
+                        },
+                    ],
+                }, {
+                    value: 'jiangsu',
+                    label: '江苏',
+                    children: [
+                        {
+                            value: 'nanjing',
+                            label: '南京',
+                            children: [
+                                {
+                                    value: 'fuzimiao',
+                                    label: '夫子庙',
+                                },
+                            ],
+                        },
+                        {
+                            value: 'suzhou',
+                            label: '苏州',
+                            children: [
+                                {
+                                    value: 'zhuozhengyuan',
+                                    label: '拙政园',
+                                },
+                                {
+                                    value: 'shizilin',
+                                    label: '狮子林',
+                                },
+                            ],
+                        },
+                    ],
+                }],
+                imgName: '',
+                info: {
+                    address: [],
+                    ali: '',
+                    birthday: new Date(),
+                    email: '10507822722@qq.com',
+                    imgsrc: '',
+                    realName: 'ibenchu',
+                    sex: '男',
+                    qq: '1050782272',
+                },
+                uploadList: [],
+                status: 1,
+                value1: [],
+                visible: false,
+            };
+        },
+        methods: {
+            qiehuan1() {
+                this.status = 1;
+            },
+            qiehuan2() {
+                this.status = 2;
+            },
+            qiehuan3() {
+                this.status = 3;
+            },
+            handleSuccess() {},
+        },
+    };
+</script>
 <template>
     <div class="my-account">
         <div class="saases-title">
@@ -98,97 +192,3 @@
         </div>
     </div>
 </template>
-<script>
-    import Datepicker from 'vuejs-datepicker';
-    import Ascader from 'iview/src/components/cascader';
-    import Upload from 'iview/src/components/upload/upload.vue';
-    import IButton from 'iview/src/components/button';
-
-    export default{
-        components: {
-            Ascader,
-            Datepicker,
-            Upload,
-            IButton,
-        },
-        data() {
-            return {
-                reg: /(.{2}).+(.{2}@.+)/g,
-                data: [{
-                    value: 'beijing',
-                    label: '北京',
-                    children: [
-                        {
-                            value: 'gugong',
-                            label: '故宫',
-                        },
-                        {
-                            value: 'tiantan',
-                            label: '天坛',
-                        },
-                        {
-                            value: 'wangfujing',
-                            label: '王府井',
-                        },
-                    ],
-                }, {
-                    value: 'jiangsu',
-                    label: '江苏',
-                    children: [
-                        {
-                            value: 'nanjing',
-                            label: '南京',
-                            children: [
-                                {
-                                    value: 'fuzimiao',
-                                    label: '夫子庙',
-                                },
-                            ],
-                        },
-                        {
-                            value: 'suzhou',
-                            label: '苏州',
-                            children: [
-                                {
-                                    value: 'zhuozhengyuan',
-                                    label: '拙政园',
-                                },
-                                {
-                                    value: 'shizilin',
-                                    label: '狮子林',
-                                },
-                            ],
-                        },
-                    ],
-                }],
-                imgName: '',
-                info: {
-                    address: [],
-                    ali: '',
-                    birthday: new Date(),
-                    email: '10507822722@qq.com',
-                    imgsrc: '',
-                    realName: 'ibenchu',
-                    sex: '男',
-                    qq: '1050782272',
-                },
-                uploadList: [],
-                status: 1,
-                value1: [],
-                visible: false,
-            };
-        },
-        methods: {
-            qiehuan1() {
-                this.status = 1;
-            },
-            qiehuan2() {
-                this.status = 2;
-            },
-            qiehuan3() {
-                this.status = 3;
-            },
-            handleSuccess() {},
-        },
-    };
-</script>

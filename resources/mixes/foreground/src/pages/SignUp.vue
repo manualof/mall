@@ -1,3 +1,12 @@
+<script>
+    import FooterBar from '../layouts/FooterBar.vue';
+
+    export default {
+        components: {
+            FooterBar,
+        },
+    };
+</script>
 <template>
     <div class="signup">
         <div class="header-bar-logo">
@@ -51,13 +60,3 @@
         <footer-bar></footer-bar>
     </div>
 </template>
-
-<script>
-    import FooterBar from '../layouts/FooterBar.vue';
-
-    export default {
-        components: {
-            FooterBar,
-        },
-    };
-</script>

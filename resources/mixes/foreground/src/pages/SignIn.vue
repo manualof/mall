@@ -1,3 +1,14 @@
+<script>
+    import FooterBar from '../layouts/FooterBar.vue';
+    import FooterContent from '../layouts/FooterContent.vue';
+
+    export default {
+        components: {
+            FooterBar,
+            FooterContent,
+        },
+    };
+</script>
 <template>
     <div class="signin ">
         <div class="header-bar-logo">
@@ -49,15 +60,3 @@
         <footer-bar></footer-bar>
     </div>
 </template>
-
-<script>
-    import FooterBar from '../layouts/FooterBar.vue';
-    import FooterContent from '../layouts/FooterContent.vue';
-
-    export default {
-        components: {
-            FooterBar,
-            FooterContent,
-        },
-    };
-</script>

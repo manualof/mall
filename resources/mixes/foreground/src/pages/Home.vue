@@ -5,11 +5,9 @@
     import image3 from '../assets/images/img_06-1.png';
     import image4 from '../assets/images/kitty.png';
     import slideImg from '../assets/images/slide-img.png';
-
     import picture1 from '../assets/images/img_02-1.png';
     import picture2 from '../assets/images/img_02-2.png';
     import picture3 from '../assets/images/offer_img_01.png';
-
     import RightSide from '../layouts/RightSide.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
 

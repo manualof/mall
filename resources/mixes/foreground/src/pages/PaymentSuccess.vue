@@ -237,4 +237,3 @@
         <footer-bar></footer-bar>
     </div>
 </template>
-

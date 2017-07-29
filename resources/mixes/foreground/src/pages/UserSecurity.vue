@@ -1,3 +1,24 @@
+<script>
+    export default{
+        data() {
+            return {
+                temp: 1,
+                isAccountExit: 0,
+            };
+        },
+        methods: {
+            editPassword() {
+                this.isAccountExit += 1;
+            },
+            submitResult1() {
+                this.temp += 1;
+            },
+            submitResult2() {
+                this.temp += 1;
+            },
+        },
+    };
+</script>
 <template>
     <div class="account-security">
         <div class="address-title">
@@ -122,25 +143,3 @@
         </div>
     </div>
 </template>
-
-<script>
-    export default{
-        data() {
-            return {
-                temp: 1,
-                isAccountExit: 0,
-            };
-        },
-        methods: {
-            editPassword() {
-                this.isAccountExit += 1;
-            },
-            submitResult1() {
-                this.temp += 1;
-            },
-            submitResult2() {
-                this.temp += 1;
-            },
-        },
-    };
-</script>

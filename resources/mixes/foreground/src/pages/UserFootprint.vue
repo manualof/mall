@@ -1,34 +1,3 @@
-<template>
-    <div class="footprint">
-        <div class="saases-title">
-            <span>我的足迹</span>
-        </div>
-        <div class="clearfix"></div>
-        <div class="goods-list" v-for="(goods, index) in goods">
-            <div class="data">
-                <div class="data-main">{{ goods.name }}</div>
-                <div class="delete" @click="deleteItem(index)">删除</div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="row" >
-                <router-link to="/mall/search/product-details"  v-for="(item,ind) in goods.childern"  class="col-sm-3" :key="ind">
-                    <div>
-                        <img :src="item.imgsrc" alt="">
-                        <div class="goods-msg">
-                            <div class="price">
-                                <i>￥</i><span>{{ item.pricle }}</span>
-                            </div>
-                            <div class="goods-name">
-                                {{ item.name }}
-                            </div>
-                        </div>
-                    </div>
-                </router-link>
-            </div>
-        </div>
-
-    </div>
-</template>
 <script>
     import image1 from '../assets/images/img_07.png';
 
@@ -96,3 +65,34 @@
         },
     };
 </script>
+<template>
+    <div class="footprint">
+        <div class="saases-title">
+            <span>我的足迹</span>
+        </div>
+        <div class="clearfix"></div>
+        <div class="goods-list" v-for="(goods, index) in goods">
+            <div class="data">
+                <div class="data-main">{{ goods.name }}</div>
+                <div class="delete" @click="deleteItem(index)">删除</div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row" >
+                <router-link to="/mall/search/product-details"  v-for="(item,ind) in goods.childern"  class="col-sm-3" :key="ind">
+                    <div>
+                        <img :src="item.imgsrc" alt="">
+                        <div class="goods-msg">
+                            <div class="price">
+                                <i>￥</i><span>{{ item.pricle }}</span>
+                            </div>
+                            <div class="goods-name">
+                                {{ item.name }}
+                            </div>
+                        </div>
+                    </div>
+                </router-link>
+            </div>
+        </div>
+
+    </div>
+</template>

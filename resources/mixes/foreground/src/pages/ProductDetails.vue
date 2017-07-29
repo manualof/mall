@@ -1,6 +1,5 @@
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
-    import Cascader from 'iview/src/components/cascader';
     import SplinLine from '../components/SplinLine.vue';
     import RightSide from '../layouts/RightSide.vue';
     import NeedBrowse from '../components/NeedBrowse.vue';
@@ -314,7 +313,6 @@
             };
         },
         components: {
-            Cascader,
             Magnifier,
             NeedBrowse,
             RightSide,
@@ -440,7 +438,7 @@
                 </ul>
                 <div class="distribution">
                     <p>配送<span class="origin-adress">西安</span>至
-                        <Cascader class="destination" :data="data" v-model="distribution_address"></Cascader>
+                        <cascader class="destination" :data="data" v-model="distribution_address"></cascader>
                         运费：<span class="freigh">&nbsp;￥ {{ product_intro.transport_price }}</span></p>
                     <!--<p class="stock">{{ product_intro.status }}</p>-->
                 </div>
@@ -682,4 +680,3 @@
         <right-side></right-side>
     </div>
 </template>
-

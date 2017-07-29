@@ -1,3 +1,7 @@
+<script>
+    export default {
+    };
+</script>
 <template>
     <div class="tab-item" id="shop-process">
         <div class="item-title"><span>购物流程</span></div>

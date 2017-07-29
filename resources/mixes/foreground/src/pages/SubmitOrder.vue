@@ -1,277 +1,5 @@
-<template>
-    <div class="submit-order padding-attribute">
-        <div class="container">
-            <div class="select-address">
-                <div>
-                    <p class="select-title">确认订单</p>
-                    <p>请仔细核对填写收货，发票等信息，以确保物流快递及时准确投递</p>
-                </div>
-                <div class="address-selected">
-                    <h5>收货人信息</h5>
-                    <div class="address-list" v-if="addStatus === 1" v-for="(item, index) in addressSelect">
-                        <label class="form-control-radio">
-                            <input type="radio" name="address" :checked="index == 0">
-                            <div class="address clearfix">
-                                <p>
-                                    <span>{{ item.name }}</span>
-                                    <span>{{ item.phone }}</span>
-                                    <span class="address-detail">{{ item.address }}</span>
-                                    <i v-if="item.isdefault">默认地址</i>
-                                    <span class="pull-right" v-if="item.isdefault === false">
-                                        <span @click="editDefault(item)" >设为默认地址</span>
-                                        <span>编辑</span>
-                                        <span>删除</span>
-                                    </span>
-                                </p>
-                            </div>
-                        </label>
-                    </div>
-                    <a
-                        class="select-btn"
-                        @click="addAddress"
-                        v-if="addStatus === 1">新增收货地址</a>
-                    <div class="add-address" v-if="addStatus === 2">
-                        <div class="clearfix">
-                            <span class="text-right pull-left">收货人姓名</span>
-                            <input
-                                class="form-control pull-left"
-                                type="text"
-                                placeholder="请输入收货人姓名"
-                                v-model="address.name">
-                        </div>
-                        <div class="clearfix">
-                            <span class="text-right pull-left">手机号码</span>
-                            <input
-                                class="form-control pull-left"
-                                type="number"
-                                placeholder="手机号码为必填项"
-                                v-model.number="address.phone">
-                        </div>
-                        <div class="clearfix">
-                            <span class="text-right pull-left">所在地区</span>
-                            <Cascader class="destination pull-left"
-                                      :data="data"
-                                      v-model="address.area">
-                            </Cascader>
-                        </div>
-                        <div class="clearfix">
-                            <span class="text-right pull-left">详细地址</span>
-                            <textarea
-                                class="form-control pull-left"
-                                placeholder="无需重复填写省市区，小于50个字"
-                                v-model="address.detail">
-                            </textarea>
-                        </div>
-                        <label class="clearfix">
-                            <div class="pull-left">
-                                <input type="checkbox" v-model="address.isdefault">
-                                <span></span>
-                            </div>
-                            <span class="pull-left">设为默认地址</span>
-                        </label>
-                        <div class="btn-div">
-                            <a class="order-btn submit-btn pull-left" @click="saveAddress">保存地址</a>
-                            <a @click="cancelAdd">取消</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="address-selected self-take-select">
-                <h5>使用自提门店</h5>
-                <div>
-                    <label class="form-control-radio" v-for="take in selfTake">
-                        <input type="radio" name="address">
-                        <div class="address clearfix">
-                            <p>
-                                <span>{{ take.name }}</span>
-                                <span>{{ take.phone }}</span>
-                                <span class="address-detail">{{ take.address }}</span>
-                                <a class="self-take pull-right">修改自提信息</a>
-                            </p>
-                        </div>
-                    </label>
-                </div>
-                <a class="select-btn add-self-take"
-                    @click="addSelfTake"
-                    v-if="selfTake.length === 0">+添加自提点</a>
-                <modal ref="modal">
-                    <div slot="title">
-                        <h4 class="modal-title" v-text="modalTitle"></h4>
-                    </div>
-                    <div slot="body">
-                        <form class="signup-form">
-                            <div class="signup-form-group clearfix">
-                                <label class="form-title">收货人姓名</label>
-                                <input type="text"
-                                       class="signup-form-control"
-                                       name="username"
-                                       placeholder="请输入收货人姓名"
-                                       v-model="newSelfTake.name">
-                            </div>
-                            <div class="signup-form-group clearfix">
-                                <label class="form-title">手机号码</label>
-                                <input type="number"
-                                       class="signup-form-control"
-                                       name="telphone"
-                                       placeholder="手机号码为必填项"
-                                       v-model.number="newSelfTake.phone">
-                            </div>
-                            <div class="signup-form-group clearfix">
-                                <label class="form-title">门店</label>
-                                <Cascader class="destination pull-left"
-                                          :data="data"
-                                          v-model="newSelfTake.address">
-                                </Cascader>
-                                <Select v-model="newSelfTake.city"  style="width:200px">
-                                    <Option v-for="item in cityList"
-                                            :value="item.value"
-                                            :key="item">
-                                        {{ item.label }}
-                                    </Option>
-                                </Select>
-                            </div>
-                        </form>
-                    </div>
-                    <button type="button"
-                            class="order-btn"
-                            @click="selfTakeAdd"
-                            slot="save_address">保存门店</button>
-                </modal>
-            </div>
-            <div class="pay-method">
-                <h5 class="select-title">支付方式</h5>
-                <div class="methods">
-                    <label class="form-control-radio" v-for="method in methods">
-                        <input type="radio" name="method">
-                        <span>{{ method.name }}</span>
-                    </label>
-                </div>
-            </div>
-            <div class="pay-method invoice-info">
-                <h5 class="select-title">发票信息</h5>
-                <p>{{ invoice }} <a @click="modifyInvoice">修改</a></p>
-                <modal ref="invoice">
-                    <div slot="title">
-                        <h4 class="modal-title">发票信息</h4>
-                    </div>
-                    <div slot="body">
-                        <form class="signup-form">
-                            <div class="signup-form-group clearfix">
-                                <label class="form-title">收货人姓名</label>
-                                <label class="form-control-radio">
-                                    <input type="radio" name="invoice" value="普通发票" v-model="invoice">
-                                    <span>普通发票</span>
-                                </label>
-                                <label class="form-control-radio">
-                                    <input type="radio" name="invoice" value="不需要发票" v-model="invoice">
-                                    <span>不需要发票</span>
-                                </label>
-                            </div>
-                            <div class="signup-form-group clearfix">
-                                <label class="form-title">发票抬头</label>
-                                <Select v-model="invoice.title" class="invoice-select" style="width:200px">
-                                    <Option v-for="item in cityList"
-                                            :value="item.value"
-                                            :key="item">
-                                        {{ item.label }}
-                                    </Option>
-                                </Select>
-                            </div>
-                            <div class="signup-form-group clearfix">
-                                <label class="form-title">发票内容</label>
-                                <input class="form-control invoice-content" type="text" v-model="invoice.info">
-                            </div>
-                        </form>
-                    </div>
-                    <button type="button"
-                            @click="closeInvoice"
-                            class="order-btn"
-                            slot="save_address">保存发票信息</button>
-                    <button type="button"
-                            @click="notNeedInvoice"
-                            class="order-btn notNeed"
-                            slot="save_address">不需要发票</button>
-                </modal>
-            </div>
-            <div class="ensure-information">
-                <p class="select-title">商品清单</p>
-                <ul class="product-head clearfix">
-                    <li class="pull-left">商品信息</li>
-                    <li class="pull-left text-center">单价(元)</li>
-                    <li class="pull-left text-center">数量</li>
-                    <li class="pull-left text-center">金额</li>
-                </ul>
-                <ul class="product-list">
-                    <li v-for="order in submitOrder.productList">
-                        <h5>店铺{{ order.shop }}</h5>
-                        <ul class="order-detail clearfix">
-                            <li class="pull-left clearfix">
-                                <img class="pull-left" :src="order.img" alt="">
-                                <div class="pull-left">
-                                    <p>{{ order.name }}</p>
-                                    <p>颜色: {{ order.color }} 尺码: {{ order.size }}</p>
-                                </div>
-                            </li>
-                            <li class="pull-left text-center">￥{{ order.price }}</li>
-                            <li class="pull-left text-center">{{ order.num }}</li>
-                            <li class="pull-left text-center">￥{{ order.price * order.num }}</li>
-                        </ul>
-                        <div>
-                            买家留言： <input class="form-control"
-                                         type="text"
-                                         placeholder="限50字（对本次交易的说明，建议填写已经和商家达成一致的说明）">
-                        </div>
-                    </li>
-                </ul>
-                <p class="select-title">使用优惠/积分</p>
-                <ul class="select-offer clearfix">
-                    <li class="pull-left">
-                        <label class="form-control-radio">
-                            <input type="radio" name="method">
-                            <span>优惠券</span>
-                        </label>
-                    </li>
-                    <li class="pull-left">
-                        <label class="form-control-radio">
-                            <input type="radio" name="method">
-                            <span>积分</span>
-                        </label>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <ul class="tab-pane fade in active clearfix" :class="{used:used}" >
-                        <li class="pull-left pane pull-left" v-for="coupon in coupons">
-                            <div class="coupons">
-                                <p class="text-center"><span class="symbol">￥</span>{{ coupon.money }}&nbsp;<span>{{ coupon.use }}</span></p>
-                            </div>
-                            <div class="coupons-info text-center">
-                                <ul class="text-left">
-                                    <li>品类限制：{{ coupon.type }}</li>
-                                    <li>使用时间：{{ coupon.startTime }}-{{ coupon.endTime }}</li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="order-submit submit-btn">
-                    <div class="order-submit-content clearfix">
-                        <span class="order-price">-&yen;{{ submitOrder.freight }}</span>
-                        <span class="name">运费：</span>
-                    </div>
-                    <div class="order-submit-content clearfix">
-                        <span class="order-price price">&yen;{{ total_price}}</span>
-                        <span class="name">金额(不含运费)：</span>
-                    </div>
-                    <router-link to="/mall/order-success" class="order-btn submit-btn">提交订单</router-link>
-                </div>
-            </div>
-        </div>
-        <right-side></right-side>
-    </div>
-</template>
 
 <script>
-    import Cascader from 'iview/src/components/cascader';
     import { Select, Option, OptionGroup } from 'iview/src/components/select';
     import Modal from '../components/Modal.vue';
     import order from '../assets/images/details/order.png';
@@ -279,7 +7,6 @@
 
     export default {
         components: {
-            Cascader,
             Modal,
             Option,
             OptionGroup,
@@ -510,3 +237,273 @@
         },
     };
 </script>
+<template>
+    <div class="submit-order padding-attribute">
+        <div class="container">
+            <div class="select-address">
+                <div>
+                    <p class="select-title">确认订单</p>
+                    <p>请仔细核对填写收货，发票等信息，以确保物流快递及时准确投递</p>
+                </div>
+                <div class="address-selected">
+                    <h5>收货人信息</h5>
+                    <div class="address-list" v-if="addStatus === 1" v-for="(item, index) in addressSelect">
+                        <label class="form-control-radio">
+                            <input type="radio" name="address" :checked="index == 0">
+                            <div class="address clearfix">
+                                <p>
+                                    <span>{{ item.name }}</span>
+                                    <span>{{ item.phone }}</span>
+                                    <span class="address-detail">{{ item.address }}</span>
+                                    <i v-if="item.isdefault">默认地址</i>
+                                    <span class="pull-right" v-if="item.isdefault === false">
+                                        <span @click="editDefault(item)" >设为默认地址</span>
+                                        <span>编辑</span>
+                                        <span>删除</span>
+                                    </span>
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <a class="select-btn"
+                       @click="addAddress"
+                       v-if="addStatus === 1">新增收货地址</a>
+                    <div class="add-address" v-if="addStatus === 2">
+                        <div class="clearfix">
+                            <span class="text-right pull-left">收货人姓名</span>
+                            <input
+                                class="form-control pull-left"
+                                type="text"
+                                placeholder="请输入收货人姓名"
+                                v-model="address.name">
+                        </div>
+                        <div class="clearfix">
+                            <span class="text-right pull-left">手机号码</span>
+                            <input
+                                class="form-control pull-left"
+                                type="number"
+                                placeholder="手机号码为必填项"
+                                v-model.number="address.phone">
+                        </div>
+                        <div class="clearfix">
+                            <span class="text-right pull-left">所在地区</span>
+                            <cascader class="destination pull-left"
+                                      :data="data"
+                                      v-model="address.area">
+                            </cascader>
+                        </div>
+                        <div class="clearfix">
+                            <span class="text-right pull-left">详细地址</span>
+                            <textarea
+                                class="form-control pull-left"
+                                placeholder="无需重复填写省市区，小于50个字"
+                                v-model="address.detail">
+                            </textarea>
+                        </div>
+                        <label class="clearfix">
+                            <div class="pull-left">
+                                <input type="checkbox" v-model="address.isdefault">
+                                <span></span>
+                            </div>
+                            <span class="pull-left">设为默认地址</span>
+                        </label>
+                        <div class="btn-div">
+                            <a class="order-btn submit-btn pull-left" @click="saveAddress">保存地址</a>
+                            <a @click="cancelAdd">取消</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="address-selected self-take-select">
+                <h5>使用自提门店</h5>
+                <div>
+                    <label class="form-control-radio" v-for="take in selfTake">
+                        <input type="radio" name="address">
+                        <div class="address clearfix">
+                            <p>
+                                <span>{{ take.name }}</span>
+                                <span>{{ take.phone }}</span>
+                                <span class="address-detail">{{ take.address }}</span>
+                                <a class="self-take pull-right">修改自提信息</a>
+                            </p>
+                        </div>
+                    </label>
+                </div>
+                <a class="select-btn add-self-take"
+                    @click="addSelfTake"
+                    v-if="selfTake.length === 0">+添加自提点</a>
+                <modal ref="modal">
+                    <div slot="title">
+                        <h4 class="modal-title" v-text="modalTitle"></h4>
+                    </div>
+                    <div slot="body">
+                        <form class="signup-form">
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">收货人姓名</label>
+                                <input type="text"
+                                       class="signup-form-control"
+                                       name="username"
+                                       placeholder="请输入收货人姓名"
+                                       v-model="newSelfTake.name">
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">手机号码</label>
+                                <input type="number"
+                                       class="signup-form-control"
+                                       name="telphone"
+                                       placeholder="手机号码为必填项"
+                                       v-model.number="newSelfTake.phone">
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">门店</label>
+                                <cascader class="destination pull-left"
+                                          :data="data"
+                                          v-model="newSelfTake.address">
+                                </cascader>
+                                <Select v-model="newSelfTake.city"  style="width:200px">
+                                    <Option v-for="item in cityList"
+                                            :value="item.value"
+                                            :key="item">
+                                        {{ item.label }}
+                                    </Option>
+                                </Select>
+                            </div>
+                        </form>
+                    </div>
+                    <button type="button"
+                            class="order-btn"
+                            @click="selfTakeAdd"
+                            slot="save_address">保存门店</button>
+                </modal>
+            </div>
+            <div class="pay-method">
+                <h5 class="select-title">支付方式</h5>
+                <div class="methods">
+                    <label class="form-control-radio" v-for="method in methods">
+                        <input type="radio" name="method">
+                        <span>{{ method.name }}</span>
+                    </label>
+                </div>
+            </div>
+            <div class="pay-method invoice-info">
+                <h5 class="select-title">发票信息</h5>
+                <p>{{ invoice }} <a @click="modifyInvoice">修改</a></p>
+                <modal ref="invoice">
+                    <div slot="title">
+                        <h4 class="modal-title">发票信息</h4>
+                    </div>
+                    <div slot="body">
+                        <form class="signup-form">
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">收货人姓名</label>
+                                <label class="form-control-radio">
+                                    <input type="radio" name="invoice" value="普通发票" v-model="invoice">
+                                    <span>普通发票</span>
+                                </label>
+                                <label class="form-control-radio">
+                                    <input type="radio" name="invoice" value="不需要发票" v-model="invoice">
+                                    <span>不需要发票</span>
+                                </label>
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">发票抬头</label>
+                                <Select v-model="invoice.title" class="invoice-select" style="width:200px">
+                                    <Option v-for="item in cityList"
+                                            :value="item.value"
+                                            :key="item">
+                                        {{ item.label }}
+                                    </Option>
+                                </Select>
+                            </div>
+                            <div class="signup-form-group clearfix">
+                                <label class="form-title">发票内容</label>
+                                <input class="form-control invoice-content" type="text" v-model="invoice.info">
+                            </div>
+                        </form>
+                    </div>
+                    <button type="button"
+                            @click="closeInvoice"
+                            class="order-btn"
+                            slot="save_address">保存发票信息</button>
+                    <button type="button"
+                            @click="notNeedInvoice"
+                            class="order-btn notNeed"
+                            slot="save_address">不需要发票</button>
+                </modal>
+            </div>
+            <div class="ensure-information">
+                <p class="select-title">商品清单</p>
+                <ul class="product-head clearfix">
+                    <li class="pull-left">商品信息</li>
+                    <li class="pull-left text-center">单价(元)</li>
+                    <li class="pull-left text-center">数量</li>
+                    <li class="pull-left text-center">金额</li>
+                </ul>
+                <ul class="product-list">
+                    <li v-for="order in submitOrder.productList">
+                        <h5>店铺{{ order.shop }}</h5>
+                        <ul class="order-detail clearfix">
+                            <li class="pull-left clearfix">
+                                <img class="pull-left" :src="order.img" alt="">
+                                <div class="pull-left">
+                                    <p>{{ order.name }}</p>
+                                    <p>颜色: {{ order.color }} 尺码: {{ order.size }}</p>
+                                </div>
+                            </li>
+                            <li class="pull-left text-center">￥{{ order.price }}</li>
+                            <li class="pull-left text-center">{{ order.num }}</li>
+                            <li class="pull-left text-center">￥{{ order.price * order.num }}</li>
+                        </ul>
+                        <div>
+                            买家留言： <input class="form-control"
+                                         type="text"
+                                         placeholder="限50字（对本次交易的说明，建议填写已经和商家达成一致的说明）">
+                        </div>
+                    </li>
+                </ul>
+                <p class="select-title">使用优惠/积分</p>
+                <ul class="select-offer clearfix">
+                    <li class="pull-left">
+                        <label class="form-control-radio">
+                            <input type="radio" name="method">
+                            <span>优惠券</span>
+                        </label>
+                    </li>
+                    <li class="pull-left">
+                        <label class="form-control-radio">
+                            <input type="radio" name="method">
+                            <span>积分</span>
+                        </label>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <ul class="tab-pane fade in active clearfix" :class="{used:used}" >
+                        <li class="pull-left pane pull-left" v-for="coupon in coupons">
+                            <div class="coupons">
+                                <p class="text-center"><span class="symbol">￥</span>{{ coupon.money }}&nbsp;<span>{{ coupon.use }}</span></p>
+                            </div>
+                            <div class="coupons-info text-center">
+                                <ul class="text-left">
+                                    <li>品类限制：{{ coupon.type }}</li>
+                                    <li>使用时间：{{ coupon.startTime }}-{{ coupon.endTime }}</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="order-submit submit-btn">
+                    <div class="order-submit-content clearfix">
+                        <span class="order-price">-&yen;{{ submitOrder.freight }}</span>
+                        <span class="name">运费：</span>
+                    </div>
+                    <div class="order-submit-content clearfix">
+                        <span class="order-price price">&yen;{{ total_price}}</span>
+                        <span class="name">金额(不含运费)：</span>
+                    </div>
+                    <router-link to="/mall/order-success" class="order-btn submit-btn">提交订单</router-link>
+                </div>
+            </div>
+        </div>
+        <right-side></right-side>
+    </div>
+</template>

@@ -83,8 +83,7 @@
         },
         methods: {
             progress(product) {
-                const percentage = ((product.saled / product.stoke) * 100).toFixed(0);
-                return percentage;
+                return ((product.saled / product.stoke) * 100).toFixed(0);
             },
             saledWidth(item) {
                 const progressWidth = (item.saled / item.stoke) * 128;

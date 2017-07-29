@@ -1,32 +1,3 @@
-<template>
-    <div class="shopping-process padding-attribute">
-        <div class="container clearfix">
-            <div class="side-bar">
-                <div class="item-group" id="accordion">
-                    <div class="item-content" v-for="side in sides">
-                        <div class="item-heading">
-                            <h4 class="item-title" @click="showSub(side)">
-                                <a>{{ side.title }}</a>
-                            </h4>
-                        </div>
-                        <transition name="slide">
-                            <div class="item-collapse collapse in" v-show="side.show">
-                                <ul class="item-body" id="myTab1">
-                                    <li v-for="sub in side.children">
-                                        <router-link :to='sub.router'>{{ sub.name }}</router-link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </transition>
-                    </div>
-                </div>
-            </div>
-            <div class="list-content">
-                <router-view></router-view>
-            </div>
-        </div>
-    </div>
-</template>
 <script>
     export default {
         mounted() {
@@ -136,3 +107,32 @@
         },
     };
 </script>
+<template>
+    <div class="shopping-process padding-attribute">
+        <div class="container clearfix">
+            <div class="side-bar">
+                <div class="item-group" id="accordion">
+                    <div class="item-content" v-for="side in sides">
+                        <div class="item-heading">
+                            <h4 class="item-title" @click="showSub(side)">
+                                <a>{{ side.title }}</a>
+                            </h4>
+                        </div>
+                        <transition name="slide">
+                            <div class="item-collapse collapse in" v-show="side.show">
+                                <ul class="item-body" id="myTab1">
+                                    <li v-for="sub in side.children">
+                                        <router-link :to='sub.router'>{{ sub.name }}</router-link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </transition>
+                    </div>
+                </div>
+            </div>
+            <div class="list-content">
+                <router-view></router-view>
+            </div>
+        </div>
+    </div>
+</template>

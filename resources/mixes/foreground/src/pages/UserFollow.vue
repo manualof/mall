@@ -1,37 +1,3 @@
-<template>
-    <div class="collect-store">
-        <div class="store-title">
-            <h4>我关注的店铺</h4>
-        </div>
-        <div class="attention-store clearfix" v-for="(store, index) in attentionStore" ref="store">
-            <div class="left-store text-center">
-                <router-link to="/mall/store/shop-home">
-                    <dl class="store">
-                        <dt><img :src="store.store_img"></dt>
-                        <dd>
-                            <p class="name">{{ store.store_name }} <span>自营</span></p>
-                        </dd>
-                    </dl>
-                </router-link>
-                <div class="store-btn clearfix">
-                    <button class="customer-service">联系客服</button>
-                    <button class="unsubscribe" @click="cancelAttention(store)">取消关注</button>
-                </div>
-            </div>
-            <div class="store-product clearfix">
-                <router-link to="/mall/search/product-details">
-                    <dl class="store-product-model " v-for="item in store.storeList">
-                        <dt><img :src="item.img"></dt>
-                        <dd>
-                            <p class="name">{{ item.name }}</p>
-                            <p class="new-price">￥{{ item.price }}</p>
-                        </dd>
-                    </dl>
-                </router-link>
-            </div>
-        </div>
-    </div>
-</template>
 <script>
     import image1 from '../assets/images/img_07.png';
 
@@ -115,3 +81,37 @@
         },
     };
 </script>
+<template>
+    <div class="collect-store">
+        <div class="store-title">
+            <h4>我关注的店铺</h4>
+        </div>
+        <div class="attention-store clearfix" v-for="(store, index) in attentionStore" ref="store">
+            <div class="left-store text-center">
+                <router-link to="/mall/store/shop-home">
+                    <dl class="store">
+                        <dt><img :src="store.store_img"></dt>
+                        <dd>
+                            <p class="name">{{ store.store_name }} <span>自营</span></p>
+                        </dd>
+                    </dl>
+                </router-link>
+                <div class="store-btn clearfix">
+                    <button class="customer-service">联系客服</button>
+                    <button class="unsubscribe" @click="cancelAttention(store)">取消关注</button>
+                </div>
+            </div>
+            <div class="store-product clearfix">
+                <router-link to="/mall/search/product-details">
+                    <dl class="store-product-model " v-for="item in store.storeList">
+                        <dt><img :src="item.img"></dt>
+                        <dd>
+                            <p class="name">{{ item.name }}</p>
+                            <p class="new-price">￥{{ item.price }}</p>
+                        </dd>
+                    </dl>
+                </router-link>
+            </div>
+        </div>
+    </div>
+</template>
