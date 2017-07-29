@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">公司所在地</label>
                             <div class="col-sm-10">
-                                <Cascader :data="data" v-model="lincenseInfo.company_address"></Cascader>
+                                <cascader :data="data" v-model="lincenseInfo.company_address"></cascader>
                             </div>
                         </div>
                         <div class="form-group">
@@ -277,13 +277,10 @@
 </template>
 <script>
     import Datepicker from 'vuejs-datepicker';
-    import Cascader from 'iview/src/components/cascader';
-
-//    import img from '../assets/images/alipay.png';
+    import cities from '../data/cities';
 
     export default {
         components: {
-            Cascader,
             Datepicker,
         },
         data() {
@@ -291,53 +288,7 @@
                 agree: false,
                 temps: ['入驻须知', '公司信息', '店铺信息', '入驻审核'],
                 temp: 1,
-                data: [{
-                    value: 'beijing',
-                    label: '北京',
-                    children: [
-                        {
-                            value: 'gugong',
-                            label: '故宫',
-                        },
-                        {
-                            value: 'tiantan',
-                            label: '天坛',
-                        },
-                        {
-                            value: 'wangfujing',
-                            label: '王府井',
-                        },
-                    ],
-                }, {
-                    value: 'jiangsu',
-                    label: '江苏',
-                    children: [
-                        {
-                            value: 'nanjing',
-                            label: '南京',
-                            children: [
-                                {
-                                    value: 'fuzimiao',
-                                    label: '夫子庙',
-                                },
-                            ],
-                        },
-                        {
-                            value: 'suzhou',
-                            label: '苏州',
-                            children: [
-                                {
-                                    value: 'zhuozhengyuan',
-                                    label: '拙政园',
-                                },
-                                {
-                                    value: 'shizilin',
-                                    label: '狮子林',
-                                },
-                            ],
-                        },
-                    ],
-                }],
+                data: cities,
                 connect: {
                     name: '',
                     phone: '',
