@@ -6,7 +6,7 @@
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name="keywords" content="{{ seo('keywords') }}">
     <meta name="description" content="{{ seo('description') }}">
-    <link href="{{ asset('assets/mall/mall/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/mall/foreground/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app"></div>
@@ -15,8 +15,8 @@
     window.StoreLink = 'http://localhost:8081/';
     window.foregroundLink = 'http://localhost:8082/';
 </script>
-<script type="text/javascript" src="{{ asset('assets/mall/mall/js/manifest.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/mall/mall/js/vendor.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/mall/mall/js/app.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/mall/foreground/js/manifest.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/mall/foreground/js/vendor.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/mall/foreground/js/app.js') }}"></script>
 </body>
 </html>
