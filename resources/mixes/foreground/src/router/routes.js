@@ -135,23 +135,20 @@ export default [
                 path: 'classification',
             },
             {
-                children: [
-                    {
-                        children: [
-                            {
-                                component: SubmitOrder,
-                                name: 'submit-order',
-                                path: 'submit-order',
-                            },
-                        ],
-                        component: ProductDetails,
-                        name: 'product-details',
-                        path: 'product-details',
-                    },
-                ],
                 component: Search,
                 name: 'search',
                 path: 'search',
+            },
+            {
+                component: ProductDetails,
+                name: 'product-details',
+                path: 'search/product-details',
+            },
+
+            {
+                component: SubmitOrder,
+                name: 'submit-order',
+                path: 'search/product-details/submit-order',
             },
             {
                 component: CartSettlement,
@@ -252,17 +249,17 @@ export default [
                         name: 'businessmen',
                         path: 'businessmen',
                     },
-                    {
-                        component: Store,
-                        name: 'shop-home',
-                        path: 'shop-home',
-                    },
                 ],
                 component: StoreLayout,
                 path: 'store',
                 redirect: {
                     name: 'businessmen',
                 },
+            },
+            {
+                component: Store,
+                name: 'shop-home',
+                path: 'store/shop-home',
             },
             {
                 children: [
