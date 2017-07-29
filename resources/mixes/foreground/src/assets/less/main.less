@@ -18,36 +18,57 @@
 @font-size-small: ceil((@font-size-base * 0.85)); // ~12px
 @gray-dark: lighten(@gray-base, 20%); // #333
 @text-color: @gray-dark;
+@zindex-transfer: 1060;
 @transition-time: .2s;
 @ease-in-out: ease-in-out;
 @form-prefix-cls: ~"@{css-prefix}form";
 @form-item-prefix-cls: ~"@{form-prefix-cls}-item";
-@import "../../../../user/node_modules/iview/src/styles/mixins/common.less";
-@import "../../../../user/node_modules/iview/src/styles/mixins/select.less";
-@import "../../../../user/node_modules/iview/src/styles/components/cascader.less";
-@import "./library/bootstrap";
+@import "../../../node_modules/iview/src/styles/mixins/common.less";
+@import "../../../node_modules/iview/src/styles/mixins/select.less";
+@import "../../..//node_modules/iview/src/styles/components/cascader.less";
+@import "dashboard/bootstrap-muying";
+@import "dashboard/layout";
 // Custom
-@import "./library/iconfont.less";
-@import "./library/content-nav.less";
-@import "./library/footer-bar.less";
-@import "./library/header-bar.less";
-@import "./library/logo-modal.less";
-@import "./library/footer-content.less";
-@import "./library/need-browse.less";
-@import "./library/right-side.less";
-@import "./input-group.less";
-@import "./library/menu-bar.less";
-@import "./library/layout.less";
+@import "dashboard/iconfont.less";
+@import "./dashboard/content-nav.less";
+@import "./dashboard/footer-bar.less";
+@import "./dashboard/header-bar.less";
+@import "./dashboard/logo-modal.less";
+@import "./dashboard/footer-content.less";
+@import "./dashboard/right-side.less";
+@import "./dashboard/menu-bar.less";
+@import "input-group.less";
+
+@import "./dashboard/need-browse.less";
+
+@import "./businessmen";
+@import "./shop-home";
+
+//personnal
+@import "./personnal-center.less";
+@import "./personnal-center/all-order.less";
+@import "./personnal-center/integral.less";
+@import "./personnal-center/coupon.less";
+@import "./personnal-center/shipping-address.less";
+@import "./personnal-center/account-security.less";
+@import "./personnal-center/collect-store.less";
+@import "./personnal-center/selases-return.less";
+@import "./personnal-center/footprint.less";
+@import "./personnal-center/my-account.less";
+@import "./personnal-center/my-collect.less";
+@import "./personnal-center/notice.less";
+
+//商城
+
 @import "./spike.less";
 
 @import "./signin.less";
 @import "./signup.less";
 @import "./home.less";
 //search
-@import "search.less";
-//@import "./library/search-list.less";
+@import "./search.less";
 //product-details
-@import "product-details.less";
+@import "./product-details.less";
 //shop-home
 @import "./evaluation.less";
 //order

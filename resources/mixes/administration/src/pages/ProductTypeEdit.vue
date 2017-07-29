@@ -15,6 +15,7 @@
                             message: '属性名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     sort: [
@@ -22,6 +23,7 @@
                             message: '排序不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
@@ -67,6 +69,7 @@
                             message: '名称名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

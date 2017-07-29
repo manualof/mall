@@ -97,6 +97,7 @@
                             message: '秒杀时段名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

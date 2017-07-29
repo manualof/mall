@@ -11,7 +11,6 @@
                         item.loading = false;
                         return item;
                     });
-                    vm.pagination = response.data.pagination;
                     injection.loading.finish();
                     injection.sidebar.active('mall');
                 });
@@ -35,32 +34,34 @@
                     },
                     {
                         align: 'center',
-                        key: 'levelName',
+                        key: 'name',
                         title: '等级名称',
                     },
                     {
                         align: 'center',
-                        key: 'goodsNum',
+                        key: 'publish_limit',
                         title: '可发布商品数',
                     },
                     {
                         align: 'center',
-                        key: 'pictureNum',
-                        title: '可上传图片数',
+                        key: 'upload_limit',
+                        title: '可上传商品数',
                     },
                     {
                         align: 'center',
-                        key: 'charges',
+                        key: 'price',
+                        render(h, data) {
+                            return `${parseInt(data.row.price, 10)} 元/年`;
+                        },
                         title: '收费标准',
                     },
                     {
-                        align: 'center',
                         key: 'action',
                         render(h, data) {
                             return h('div', [
                                 h('router-link', {
                                     props: {
-                                        to: '/mall/store/level/edit',
+                                        to: `/mall/store/grade/${data.row.id}/edit`,
                                     },
                                 }, [
                                     h('i-button', {
@@ -73,10 +74,40 @@
                                 h('i-button', {
                                     on: {
                                         click() {
-                                            self.remove(data.index);
+                                            self.list[data.index].loading = true;
+                                            self.$http.post(`${window.api}/mall/admin/store/grade/remove`, {
+                                                id: data.row.id,
+                                            }).then(() => {
+                                                self.$notice.open({
+                                                    title: '删除店铺等级信息成功！',
+                                                });
+                                                self.$notice.open({
+                                                    title: '正在刷新数据...',
+                                                });
+                                                self.$loading.start();
+                                                self.$http.post(`${window.api}/mall/admin/store/grade/list`).then(response => {
+                                                    self.list = response.data.data.map(item => {
+                                                        item.loading = false;
+                                                        return item;
+                                                    });
+                                                    self.$loading.finish();
+                                                    self.$notice.open({
+                                                        title: '刷新数据成功！',
+                                                    });
+                                                }).catch(() => {
+                                                    self.$loading.fail();
+                                                });
+                                            }).catch(() => {
+                                                self.$notice.error({
+                                                    title: '删除店铺等级信息失败！',
+                                                });
+                                            }).finally(() => {
+                                                self.list[data.index].loading = false;
+                                            });
                                         },
                                     },
                                     props: {
+                                        loading: self.list[data.index].loading,
                                         size: 'small',
                                         type: 'ghost',
                                     },
@@ -87,47 +118,61 @@
                             ]);
                         },
                         title: '操作',
-                        width: 180,
+                        width: 230,
                     },
                 ],
-                list: [
-                    {
-                        charges: 6666,
-                        goodsNum: 166,
-                        level: 1,
-                        levelName: '系统默认',
-                        pictureNum: 56,
-                    },
-                    {
-                        charges: 6666,
-                        goodsNum: 166,
-                        level: 1,
-                        levelName: '白金店铺',
-                        pictureNum: 56,
-                    },
-                    {
-                        charges: 6666,
-                        goodsNum: 166,
-                        level: 1,
-                        levelName: '黄金店铺',
-                        pictureNum: 56,
-                    },
-                    {
-                        charges: 6666,
-                        goodsNum: 166,
-                        level: 2,
-                        levelName: '系统默认',
-                        pictureNum: 56,
-                    },
-                ],
+                list: [],
+                loading: false,
                 managementSearch: '',
-                pagination: {},
+                selection: [],
             };
         },
         methods: {
-            deleteData() {},
-            remove(index) {
-                this.list.splice(index, 1);
+            batchRemove() {
+                const self = this;
+                const query = [];
+                if (self.selection.length > 0) {
+                    self.selection.forEach(item => {
+                        query.push(self.$http.post(`${window.api}/mall/admin/store/grade/remove`, {
+                            id: item.id,
+                        }));
+                    });
+                    self.loading = true;
+                    self.$http.all(query).then(() => {
+                        self.$notice.open({
+                            title: '批量删除店铺等级信息成功！',
+                        });
+                        self.$notice.open({
+                            title: '正在刷新数据...',
+                        });
+                        self.$loading.start();
+                        self.$http.post(`${window.api}/mall/admin/store/grade/list`).then(response => {
+                            self.list = response.data.data.map(item => {
+                                item.loading = false;
+                                return item;
+                            });
+                            self.$loading.finish();
+                            self.$notice.open({
+                                title: '刷新数据成功！',
+                            });
+                        }).catch(() => {
+                            self.$loading.fail();
+                        });
+                    }).catch(() => {
+                        self.$notice.error({
+                            title: '批量删除店铺等级信息失败！',
+                        });
+                    }).finally(() => {
+                        self.loading = false;
+                    });
+                } else {
+                    self.$notice.error({
+                        title: '请选择一个店铺等级！',
+                    });
+                }
+            },
+            selectionChange(val) {
+                this.selection = val;
             },
         },
     };
@@ -139,10 +184,10 @@
                 <tab-pane label="店铺等级" name="name1">
                     <card :bordered="false">
                         <div class="advertisement-action">
-                            <router-link to="/mall/store/level/create">
+                            <router-link to="/mall/store/grade/create">
                                 <i-button class="add-data" type="ghost">+新增数据</i-button>
                             </router-link>
-                            <i-button type="ghost" @click.native="deleteData">批量删除</i-button>
+                            <i-button :loading="loading" type="ghost" @click.native="batchRemove">批量删除</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                             <div class="goods-body-header-right">
                                 <i-input v-model="managementWord" placeholder="等级名称">
@@ -150,7 +195,7 @@
                                 </i-input>
                             </div>
                         </div>
-                        <i-table highlight-row :columns="columns" :data="list"></i-table>
+                        <i-table :columns="columns" :data="list" highlight-row @on-selection-change="selectionChange"></i-table>
                     </card>
                 </tab-pane>
             </tabs>

@@ -3,8 +3,35 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/product/category/list`).then(response => {
+                const structures = response.data.structure;
+                next(vm => {
+                    vm.data.categories = Object.keys(structures).map(index => {
+                        const item = structures[index];
+                        item.label = item.name;
+                        item.value = item.id;
+                        const children = item.children;
+                        item.children = Object.keys(children).map(i => {
+                            const sub = children[i];
+                            sub.label = sub.name;
+                            sub.value = sub.id;
+                            const down = sub.children;
+                            sub.children = Object.keys(down).map(n => {
+                                const son = down[n];
+                                son.label = son.name;
+                                son.value = son.id;
+                                return son;
+                            });
+                            return sub;
+                        });
+                        return item;
+                    });
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
@@ -63,113 +90,12 @@
                             value: '2',
                         },
                     ],
-                    categories: [
-                        {
-                            children: [
-                                {
-                                    value: '童车童床',
-                                    label: '童车童床',
-                                    children: [
-                                        {
-                                            label: '婴儿推车',
-                                            value: '婴儿推车',
-                                        },
-                                        {
-                                            label: '自行车',
-                                            value: '自行车',
-                                        },
-                                        {
-                                            label: '婴儿推车',
-                                            value: '婴儿推车',
-                                        },
-                                        {
-                                            label: '电动车',
-                                            value: '电动车',
-                                        },
-                                        {
-                                            label: '安全座椅',
-                                            value: '安全座椅',
-                                        },
-                                    ],
-                                },
-                                {
-                                    label: '营养辅食',
-                                    value: '营养辅食',
-                                },
-                                {
-                                    label: '尿裤湿巾',
-                                    value: '尿裤湿巾',
-                                },
-                            ],
-                            label: '个护化妆',
-                            value: '个护化妆',
-                        },
-                        {
-                            children: [
-                                {
-                                    children: [
-                                        {
-                                            label: '婴儿推车1',
-                                            value: '婴儿推车1',
-                                        },
-                                        {
-                                            label: '自行车2',
-                                            value: '自行车2',
-                                        },
-                                        {
-                                            label: '婴儿推车3',
-                                            value: '婴儿推车3',
-                                        },
-                                        {
-                                            label: '电动车',
-                                            value: '电动车',
-                                        },
-                                        {
-                                            label: '安全座椅4',
-                                            value: '安全座椅4',
-                                        },
-                                    ],
-                                    label: '服饰寝居',
-                                    value: '服饰寝居',
-                                },
-                                {
-                                    children: [
-                                        {
-                                            label: '婴儿推车1',
-                                            value: '婴儿推车1',
-                                        },
-                                        {
-                                            label: '自行车2',
-                                            value: '自行车2',
-                                        },
-                                    ],
-                                    label: '营养辅食',
-                                    value: '营养辅食',
-                                },
-                                {
-                                    children: [
-                                        {
-                                            label: '车1',
-                                            value: '车1',
-                                        },
-                                        {
-                                            label: '自行车2',
-                                            value: '自行车2',
-                                        },
-                                    ],
-                                    label: '尿裤湿巾',
-                                    value: '尿裤湿巾',
-                                },
-                            ],
-                            label: '家用电器',
-                            value: '家用电器',
-                        },
-                    ],
+                    categories: [],
                 },
                 form: {
                     barcode: '',
                     brand_id: 0,
-                    category_id: 0,
+                    category: [],
                     delivery_area: '',
                     image: '',
                     name: '',
@@ -192,6 +118,7 @@
                             message: '商品图片不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     name: [
@@ -199,6 +126,7 @@
                             message: '商品名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
@@ -243,12 +171,16 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        self.$http.post(`${window.api}/mall/admin/product/library/create`, self.form).then(response => {
+                        const form = self.form;
+                        if (form.category.length) {
+                            form.category_id = form.category[form.category.length - 1];
+                        }
+                        self.$http.post(`${window.api}/mall/admin/product/library/create`, form).then(response => {
                             window.console.log(response);
                             self.$notice.open({
                                 title: '添加产品库数据成功！',
                             });
-                            self.$router.push('/mall/goods/public');
+                            self.$router.push('/mall/product/library');
                         }).catch(() => {
                             self.loading = false;
                         });
@@ -329,8 +261,9 @@
                                     <row>
                                         <i-col span="12">
                                             <form-item label="商品分类">
-                                                <cascader :data="data.categories" trigger="hover"
-                                                          v-model="form.category_id"></Cascader>
+                                                <cascader :data="data.categories"
+                                                          trigger="click"
+                                                          v-model="form.category"></Cascader>
                                             </form-item>
                                         </i-col>
                                     </row>

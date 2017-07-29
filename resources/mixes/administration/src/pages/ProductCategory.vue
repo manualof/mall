@@ -12,7 +12,7 @@
             injection.http.post(`${window.api}/mall/admin/product/category/list`, data).then(response => {
                 window.console.log(response);
                 next(vm => {
-                    vm.category = response.data.category;
+                    vm.category = response.data.current;
                     vm.level = response.data.level;
                     vm.list = response.data.data.map(item => {
                         item.loading = false;
@@ -68,7 +68,7 @@
                                 return h('div', [
                                     h('router-link', {
                                         props: {
-                                            to: `/mall/goods/category/edit/${data.row.id}`,
+                                            to: `/mall/product/category/edit/${data.row.id}`,
                                         },
                                     }, [
                                         h('i-button', {
@@ -113,7 +113,7 @@
                                                     nativeOn: {
                                                         click() {
                                                             self.$router.push({
-                                                                path: '/mall/goods/category/add',
+                                                                path: '/mall/product/category/add',
                                                                 query: {
                                                                     parent: data.row.id,
                                                                 },
@@ -125,7 +125,7 @@
                                                     nativeOn: {
                                                         click() {
                                                             self.$router.push({
-                                                                path: '/mall/goods/category',
+                                                                path: '/mall/product/category',
                                                                 query: {
                                                                     parent: data.row.id,
                                                                 },
@@ -212,7 +212,7 @@
                         parent_id: self.$route.query.parent,
                     }).then(response => {
                         window.console.log(response);
-                        self.category = response.data.category;
+                        self.category = response.data.current;
                         self.level = response.data.level;
                         self.list = response.data.data.map(item => {
                             item.loading = false;
@@ -259,7 +259,7 @@
                         parent_id: self.$route.query.parent,
                     }).then(response => {
                         window.console.log(response);
-                        self.category = response.data.category;
+                        self.category = response.data.current;
                         self.level = response.data.level;
                         self.list = response.data.data.map(item => {
                             item.loading = false;
@@ -297,7 +297,7 @@
                         parent_id: route.query.parent,
                     }).then(response => {
                         window.console.log(response);
-                        self.category = response.data.category;
+                        self.category = response.data.current;
                         self.level = response.data.level;
                         self.list = response.data.data.map(item => {
                             item.loading = false;
@@ -323,7 +323,7 @@
                 <span style="margin-left: 20px">分类管理</span>
             </div>
             <div class="edit-link-title" v-if="level === 2">
-                <router-link to="/mall/goods/category">
+                <router-link to="/mall/product/category">
                     <i-button type="text">
                         <icon type="chevron-left"></icon>
                     </i-button>
@@ -335,7 +335,7 @@
                     query: {
                         parent: category.parent_id
                     },
-                    to: '/mall/goods/category'
+                    to: '/mall/product/category'
                 }">
                     <i-button type="text">
                         <icon type="chevron-left"></icon>
@@ -352,14 +352,14 @@
                 <div class="store-body">
                     <div class="store-body-header">
                         <router-link :to="{
-                            path: '/mall/goods/category/add',
+                            path: '/mall/product/category/add',
                             query: {
                                 parent: category.id
                             }
                         }" v-if="category.id">
                             <i-button type="ghost">+新增数据</i-button>
                         </router-link>
-                        <router-link :to="'/mall/goods/category/add'" v-else>
+                        <router-link :to="'/mall/product/category/add'" v-else>
                             <i-button type="ghost">+新增数据</i-button>
                         </router-link>
                         <i-button @click="exportData" type="ghost">导出数据</i-button>

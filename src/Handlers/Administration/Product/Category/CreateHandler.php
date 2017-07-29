@@ -24,7 +24,6 @@ class CreateHandler extends Handler
      */
     public function execute()
     {
-        $this->formats();
         $this->validate($this->request, [
             'deposit'   => [
                 Rule::numeric(),
@@ -53,22 +52,6 @@ class CreateHandler extends Handler
         } else {
             $this->rollBackTransaction();
             $this->withCode(500)->withError('创建分类失败！');
-        }
-    }
-
-    /**
-     * Format data.
-     */
-    protected function formats()
-    {
-        $parent = $this->request->input('parent');
-        if ($parent) {
-            $category = ProductCategory::query()->find($parent);
-            if ($category instanceof ProductCategory) {
-                $this->request->offsetSet('parent_id', $category->getAttribute('id'));
-            } else {
-                throw new \Exception('没有对应的父级分类信息！');
-            }
         }
     }
 }

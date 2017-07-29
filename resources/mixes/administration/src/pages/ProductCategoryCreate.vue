@@ -3,56 +3,46 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(vm => {
-                if (to.query.parent) {
-                    vm.form.parent = to.query.parent;
-                }
-                window.console.log(vm.form);
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.post(`${window.api}/mall/admin/product/category/list`, {
+                parent_id: to.query.parent,
+            }).then(response => {
+                const structures = response.data.structure;
+                next(vm => {
+                    vm.current = response.data.current;
+                    vm.form.parent = response.data.current.path;
+                    vm.level = response.data.level;
+                    vm.parents = Object.keys(structures).map(index => {
+                        const item = structures[index];
+                        item.label = item.name;
+                        item.value = item.id;
+                        const children = item.children;
+                        item.children = Object.keys(children).map(i => {
+                            const sub = children[i];
+                            sub.label = sub.name;
+                            sub.value = sub.id;
+                            return sub;
+                        });
+                        return item;
+                    });
+                    injection.loading.finish();
+                    injection.sidebar.active('mall');
+                });
+            }).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
             return {
-                goodsList: [
-                    {
-                        children: [
-                            {
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
-                            },
-                        ],
-                        label: '个护化妆',
-                        value: '个护化妆',
-                    },
-                    {
-                        children: [
-                            {
-                                label: '服饰寝居',
-                                value: '服饰寝居',
-                            },
-                            {
-                                label: '营养辅食',
-                                value: '营养辅食',
-                            },
-                            {
-                                label: '尿裤湿巾',
-                                value: '尿裤湿巾',
-                            },
-                        ],
-                        label: '家用电器',
-                        value: '家用电器',
-                    },
-                ],
+                current: {},
                 form: {
                     deposit: 10,
                     name: '',
                     order: 0,
-                    parent: '',
+                    parent: [],
+                    show: 'SPU',
                 },
+                level: 0,
                 loading: false,
                 rules: {
                     deposit: [
@@ -60,6 +50,7 @@
                             message: '分佣比例不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'number',
                         },
                     ],
                     name: [
@@ -67,50 +58,52 @@
                             message: '名称名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
-                parents: [
+                parents: [],
+                ways: [
                     {
-                        label: '颜色',
-                        value: '1',
+                        value: 'SPU',
+                        label: 'SPU',
                     },
                     {
-                        label: '类型',
-                        value: '2',
+                        value: 'SKU',
+                        label: 'SKU',
                     },
                 ],
             };
         },
         methods: {
-            goBack() {
-                const self = this;
-                self.$router.go(-1);
-            },
             submit() {
                 const self = this;
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
+                        const form = self.form;
+                        if (form.parent.length > 0) {
+                            form.parent_id = form.parent[form.parent.length - 1];
+                        }
+                        window.console.log(form);
                         self.$http.post(`${window.api}/mall/admin/product/category/create`, self.form).then(() => {
                             self.$notice.open({
                                 title: '创建商品分类信息成功！',
                             });
-                            window.console.log(self.form.parent);
                             if (self.form.parent) {
                                 self.$router.push({
-                                    path: '/mall/goods/category',
+                                    path: '/mall/product/category',
                                     query: {
-                                        parent: self.form.parent,
+                                        parent: form.parent_id,
                                     },
                                 });
                             } else {
-                                self.$router.push('/mall/goods/category');
+                                self.$router.push('/mall/product/category');
                             }
-                        }).catch(() => {}).finally(() => {
+                        }).catch(() => {
+                        }).finally(() => {
                             self.loading = false;
                         });
-                        window.console.log(valid);
                     } else {
                         self.loading = false;
                         self.$notice.error({
@@ -120,15 +113,25 @@
                 });
             },
         },
+        watch: {
+            form: {
+                deep: true,
+                handler(val) {
+                    window.console.log(val);
+                },
+            },
+        },
     };
 </script>
 <template>
     <div class="mall-wrap">
         <div class="goods-category-add">
             <div class="edit-link-title">
-                <i-button type="text" @click.native="goBack">
-                    <icon type="chevron-left"></icon>
-                </i-button>
+                <router-link to="/mall/product/category">
+                    <i-button type="text">
+                        <icon type="chevron-left"></icon>
+                    </i-button>
+                </router-link>
                 <span>分类管理—新增</span>
             </div>
             <card :bordered="false">
@@ -137,10 +140,23 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="分类名称" prop="name">
-                                    <i-input v-model="form.name"></i-input>
+                                    <i-input number v-model="form.name"></i-input>
                                 </form-item>
                             </i-col>
                         </row>
+                        <template v-if="level === 3">
+                            <row>
+                                <i-col span="12">
+                                    <form-item label="展示方式" prop="show">
+                                        <i-select placeholder="请选择" v-model="form.show">
+                                            <i-option :value="way.value"
+                                                      :key="way"
+                                                      v-for="way in ways">{{ way.label }}</i-option>
+                                        </i-select>
+                                    </form-item>
+                                </i-col>
+                            </row>
+                        </template>
                         <row>
                             <i-col span="12">
                                 <form-item label="分佣比例" prop="deposit">
@@ -155,7 +171,8 @@
                         <row>
                             <i-col span="12">
                                 <form-item label="上级分类">
-                                    <cascader change-on-select :data="goodsList" trigger="hover"></Cascader>
+                                    <cascader change-on-select :data="parents" v-model="form.parent"
+                                              @on-change="selectChange"></Cascader>
                                     <p class="tip">如果选择上级分类,那么新的分类则为被选择上级分类的子分类</p>
                                 </form-item>
                             </i-col>

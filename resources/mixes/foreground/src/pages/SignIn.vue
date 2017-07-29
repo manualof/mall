@@ -1,0 +1,63 @@
+<template>
+    <div class="signin ">
+        <div class="header-bar-logo">
+            <div class="container">
+                <router-link to="/mall">
+                    <img src="../assets/images/logo.png" alt="">
+                </router-link>
+            </div>
+        </div>
+        <div class="signup-content container clearfix">
+            <div class="signin-content">
+                <div class="signup-title clearfix">
+                    <span>密码登录</span>
+                    <router-link to="/mall/signup">没有账号？立即注册</router-link>
+                </div>
+                <form class="signup-form">
+                    <div class="signup-form-group form-icon">
+                        <i class="icon iconfont icon-denglu"></i>
+                        <input type="text" class="form-control signup-form-control" placeholder="邮箱账号" name="username">
+                    </div>
+                    <div class="signup-form-group form-icon">
+                        <i class="icon iconfont icon-mima"></i>
+                        <input type="password" class="form-control signup-form-control" placeholder="登录密码" name="password">
+                    </div>
+                    <div class="signup-form-group protocol-kinds">
+                        <div class="check-box signup-form-protocol">
+                            <span>
+                                <input type="checkbox" class="form-control input_check" id="check24">
+                                <label for="check24"> </label></span>
+                        </div>
+                        <!--<input type="radio" class="signup-form-protocol" name="protocol">-->
+                        <span>记住密码</span> <span><a href=""> 忘记密码</a></span>
+                    </div>
+                    <div class="signup-form-group signin-login">
+                        <button class="register">登录</button>
+                    </div>
+                    <div class="signup-form-group third-party">
+                        <span>第三方账号登录
+                            <a href="">
+                                <i class="icon iconfont icon-weixin"></i>
+                            </a>
+                            <a href=""><i class="icon iconfont icon-qq"></i></a>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer-content></footer-content>
+        <footer-bar></footer-bar>
+    </div>
+</template>
+
+<script>
+    import FooterBar from '../layouts/FooterBar.vue';
+    import FooterContent from '../layouts/FooterContent.vue';
+
+    export default {
+        components: {
+            FooterBar,
+            FooterContent,
+        },
+    };
+</script>

@@ -42,6 +42,7 @@ use Notadd\Mall\Controllers\Api\Administration\StatisticsAnalysisController as S
 use Notadd\Mall\Controllers\Api\Administration\StatisticsController as StatisticsControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StatisticsMemberController as StatisticsMemberControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\StatisticsStoreController as StatisticsStoreControllerForAdministration;
+use Notadd\Mall\Controllers\Api\Administration\StoreTypeController as StoreTypeControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Administration\UploadController as UploadControllerForAdministration;
 use Notadd\Mall\Controllers\Api\Seller\OrderController as OrderControllerForSeller;
 use Notadd\Mall\Controllers\Api\Seller\OrderExpressController as OrderExpressControllerForSeller;
@@ -175,6 +176,11 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('product/library/list', ProductLibraryController::class . '@list');
             $this->router->post('product/library/remove', ProductLibraryController::class . '@remove');
             $this->router->post('product/library/restore', ProductLibraryController::class . '@restore');
+            $this->router->post('product/specification', ProductSpecificationControllerForAdministration::class . '@specification');
+            $this->router->post('product/specification/create', ProductSpecificationControllerForAdministration::class . '@create');
+            $this->router->post('product/specification/edit', ProductSpecificationControllerForAdministration::class . '@edit');
+            $this->router->post('product/specification/list', ProductSpecificationControllerForAdministration::class . '@list');
+            $this->router->post('product/specification/remove', ProductSpecificationControllerForAdministration::class . '@remove');
             $this->router->post('store/create', StoreControllerForAdministration::class . '@create');
             $this->router->post('store/edit', StoreControllerForAdministration::class . '@edit');
             $this->router->post('store/list', StoreControllerForAdministration::class . '@list');
@@ -198,11 +204,11 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/rate', StoreRateControllerForAdministration::class . '@rate');
             $this->router->post('store/rate/edit', StoreRateControllerForAdministration::class . '@edit');
             $this->router->post('store/rate/list', StoreRateControllerForAdministration::class . '@list');
-            $this->router->post('specification', ProductSpecificationControllerForAdministration::class . '@specification');
-            $this->router->post('specification/create', ProductSpecificationControllerForAdministration::class . '@create');
-            $this->router->post('specification/edit', ProductSpecificationControllerForAdministration::class . '@edit');
-            $this->router->post('specification/list', ProductSpecificationControllerForAdministration::class . '@list');
-            $this->router->post('specification/remove', ProductSpecificationControllerForAdministration::class . '@remove');
+            $this->router->post('store/type', StoreTypeControllerForAdministration::class . '@type');
+            $this->router->post('store/type/create', StoreTypeControllerForAdministration::class . '@create');
+            $this->router->post('store/type/edit', StoreTypeControllerForAdministration::class . '@edit');
+            $this->router->post('store/type/list', StoreTypeControllerForAdministration::class . '@list');
+            $this->router->post('store/type/remove', StoreTypeControllerForAdministration::class . '@remove');
             $this->router->post('statistics', StatisticsControllerForAdministration::class . '@get');
             $this->router->post('statistics/analysis', StatisticsAnalysisControllerForAdministration::class . '@dashboard');
             $this->router->post('statistics/analysis', StatisticsAnalysisControllerForAdministration::class . '@dashboard');
@@ -296,8 +302,8 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('product/rate', ProductRateControllerForStore::class . '@rate');
             $this->router->post('product/rate/list', ProductRateControllerForStore::class . '@list');
         });
-        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/user'], function () {
-            $this->router->post('/', UserControllerForUser::class . '@user');
+        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/foreground'], function () {
+            $this->router->post('/', UserControllerForUser::class . '@foreground');
             $this->router->post('/login', UserControllerForUser::class . '@login');
             $this->router->post('/register', UserControllerForUser::class . '@register');
             $this->router->post('card', CardControllerForUser::class . '@card');
@@ -335,14 +341,6 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('vip', VipControllerForUser::class . '@vip');
         });
         $this->router->group(['middleware' => ['web'], 'prefix' => 'mall'], function () {
-            $this->router->get('store/{one}/{two}/{three}', StoreControllerForForeground::class . '@handle');
-            $this->router->get('store/{one}/{two}', StoreControllerForForeground::class . '@handle');
-            $this->router->get('store/{one}', StoreControllerForForeground::class . '@handle');
-            $this->router->get('store', StoreControllerForForeground::class . '@handle');
-            $this->router->get('user/{one}/{two}/{three}', UserControllerForForeground::class . '@handle');
-            $this->router->get('user/{one}/{two}', UserControllerForForeground::class . '@handle');
-            $this->router->get('user/{one}', UserControllerForForeground::class . '@handle');
-            $this->router->get('user', UserControllerForForeground::class . '@handle');
             $this->router->get('{one}/{two}/{three}/{four}', MallControllerForForeground::class . '@handle');
             $this->router->get('{one}/{two}/{three}', MallControllerForForeground::class . '@handle');
             $this->router->get('{one}/{two}', MallControllerForForeground::class . '@handle');

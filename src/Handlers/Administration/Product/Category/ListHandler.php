@@ -44,20 +44,11 @@ class ListHandler extends Handler
         $builder->where('parent_id', $parent_id);
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
-        if ($parent_id == 0) {
-            $category = new \stdClass();
-            $level = 1;
-        } else {
-            $category = ProductCategory::query()->withCount('parent')->find($parent_id);
-            if ($category->getAttribute('parent_count')) {
-                $level = 3;
-            } else {
-                $level = 2;
-            }
-        }
+        list($current, $level) = $this->restructureCurrent($parent_id);
         $this->withCode(200)->withData($this->reformatData($builder->items()))->withExtra([
-            'category'   => $category,
-            'level'      => $level,
+            'all'        => ProductCategory::all(),
+            'current'    => $current,
+            'level'      => $level + 1,
             'pagination' => [
                 'total'         => $builder->total(),
                 'per_page'      => $builder->perPage(),
@@ -88,6 +79,30 @@ class ListHandler extends Handler
     }
 
     /**
+     * @param int $id
+     *
+     * @return array
+     */
+    protected function restructureCurrent(int $id)
+    {
+        if ($id == 0) {
+            $current = new \stdClass();
+            $level = 0;
+            $path = [];
+        } else {
+            $current = ProductCategory::query()->withCount('parent')->find($id);
+            $level = $current->getAttribute('level');
+            $path = $current->getAttribute('path');
+        }
+
+        return [
+            $current,
+            $level,
+            $path,
+        ];
+    }
+
+    /**
      * @param array $items
      *
      * @return array
@@ -95,7 +110,7 @@ class ListHandler extends Handler
     protected function restructureData(array $items)
     {
         $data = new Collection();
-        $items = collect($items);
+        $items = ProductCategory::all();
         $items->where('parent_id', 0)->each(function (ProductCategory $category) use ($data, $items) {
             $children = new Collection();
             $items->where('parent_id', $category->getAttribute('id'))->each(function (ProductCategory $category) use ($children, $items) {

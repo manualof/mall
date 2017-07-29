@@ -22,6 +22,7 @@
                             message: '主导航名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

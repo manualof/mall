@@ -1,8 +1,7 @@
 import mixinAxios from './axios';
-
-const what = {};
+import mixinComponent from './component';
 
 export {
     mixinAxios,
-    what,
+    mixinComponent,
 };

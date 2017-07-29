@@ -28,11 +28,11 @@ class EditHandler extends Handler
         $this->validate($this->request, [
             'barcode'           => Rule::numeric(),
             'brand_id'          => [
-                Rule::exists('mall_product_brands'),
+                Rule::exists('mall_product_brands', 'id'),
                 Rule::numeric(),
             ],
             'category_id'       => [
-                Rule::exists('mall_product_categories'),
+                Rule::exists('mall_product_categories', 'id'),
                 Rule::numeric(),
             ],
             'name'              => Rule::required(),

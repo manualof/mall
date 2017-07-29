@@ -24,7 +24,6 @@ class StoreCategory extends Model
      * @var array
      */
     protected $fillable = [
-        'amount_of_deposit',
         'flow_marketing',
         'order',
         'parent_id',

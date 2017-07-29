@@ -139,6 +139,7 @@
                             message: '推荐品牌不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     positionType: [
@@ -146,6 +147,7 @@
                             message: '推荐分类不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },

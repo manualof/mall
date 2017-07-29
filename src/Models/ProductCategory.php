@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Models;
 
+use Illuminate\Support\Collection;
 use Notadd\Foundation\Database\Model;
 use Notadd\Foundation\Database\Traits\HasFlow;
 use Symfony\Component\Workflow\Event\GuardEvent;
@@ -23,12 +24,22 @@ class ProductCategory extends Model
     /**
      * @var array
      */
+    protected $appends = [
+        'breadcrumb',
+        'level',
+        'path',
+    ];
+
+    /**
+     * @var array
+     */
     protected $fillable = [
         'deposit',
         'flow_marketing',
         'name',
         'order',
         'parent_id',
+        'show',
     ];
 
     /**
@@ -38,12 +49,55 @@ class ProductCategory extends Model
         'deposit'   => 'null|0',
         'order'     => 'null|0',
         'parent_id' => 'null|0',
+        'show'      => 'null|spu',
     ];
 
     /**
      * @var string
      */
     protected $table = 'mall_product_categories';
+
+    /**
+     * @param $value
+     *
+     * @return string
+     */
+    public function getBreadcrumbAttribute($value)
+    {
+        $paths = new Collection([$this]);
+        if ($this->attributes['parent_id']) {
+            $one = static::query()->find($this->attributes['parent_id']);
+            $paths->prepend($one);
+            if ($one->getAttribute('parent_id')) {
+                $two = static::query()->find($one->getAttribute('parent_id'));
+                $paths->prepend($two);
+            }
+        }
+        $paths->transform(function (ProductCategory $category) {
+            return $category->getAttribute('name');
+        });
+
+        return $paths->implode(' / ');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return int
+     */
+    public function getLevelAttribute($value)
+    {
+        if (static::query()->where('id', $this->attributes['parent_id'])->count()) {
+            $parent = static::query()->find($this->attributes['parent_id']);
+            if (static::query()->where('id', $parent->getAttribute('parent_id'))->count()) {
+                return 3;
+            } else {
+                return 2;
+            }
+        } else {
+            return 1;
+        }
+    }
 
     /**
      * @param $value
@@ -57,6 +111,26 @@ class ProductCategory extends Model
         }
 
         return $value;
+    }
+
+    /**
+     * @param $value
+     *
+     * @return array
+     */
+    public function getPathAttribute($value)
+    {
+        $paths = new Collection();
+        if ($this->attributes['parent_id']) {
+            $one = static::query()->find($this->attributes['parent_id']);
+            $paths->prepend($one->getAttribute('id'));
+            if ($one->getAttribute('parent_id')) {
+                $two = static::query()->find($one->getAttribute('parent_id'));
+                $paths->prepend($two->getAttribute('id'));
+            }
+        }
+
+        return $paths->toArray();
     }
 
     /**

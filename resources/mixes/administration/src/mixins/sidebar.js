@@ -3,27 +3,27 @@ export default function (injection) {
         {
             children: [
                 {
-                    path: '/mall/goods',
+                    path: '/mall/product',
                     title: '商品管理',
                 },
                 {
-                    path: '/mall/goods/public',
+                    path: '/mall/product/library',
                     title: '商品库管理',
                 },
                 {
-                    path: '/mall/goods/category',
+                    path: '/mall/product/category',
                     title: '分类管理',
                 },
                 {
-                    path: '/mall/goods/brand',
+                    path: '/mall/product/brand',
                     title: '品牌管理',
                 },
                 {
-                    path: '/mall/goods/standard',
+                    path: '/mall/product/specification',
                     title: '规格管理',
                 },
                 {
-                    path: '/mall/goods/picture',
+                    path: '/mall/product/picture',
                     title: '图片空间',
                 },
             ],
@@ -37,17 +37,17 @@ export default function (injection) {
                     title: '店铺管理',
                 },
                 {
-                    path: '/mall/store/level',
+                    path: '/mall/store/grade',
                     title: '店铺等级',
                 },
                 {
-                    path: '/mall/store/category',
-                    title: '店铺分类',
+                    path: '/mall/store/type',
+                    title: '店铺类型',
                 },
-                // {
-                //     path: '/mall/store/dynamics',
-                //     title: '店铺动态',
-                // },
+                {
+                    path: '/mall/store/dynamics',
+                    title: '店铺动态',
+                },
             ],
             icon: 'ios-analytics',
             title: '店铺',

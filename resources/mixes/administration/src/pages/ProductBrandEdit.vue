@@ -40,6 +40,7 @@
                             message: '名称首字母不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     logo: [
@@ -47,6 +48,7 @@
                             message: '必须上传商品品牌 Logo',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     name: [
@@ -54,6 +56,7 @@
                             message: '名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
@@ -291,7 +294,7 @@
                             self.$notice.open({
                                 title: '编辑商品品牌信息成功！',
                             });
-                            self.$router.push('/mall/goods/brand');
+                            self.$router.push('/mall/product/brand');
                         }).catch(() => {
                             self.$notice.error({
                                 title: '编辑商品品牌信息失败！',

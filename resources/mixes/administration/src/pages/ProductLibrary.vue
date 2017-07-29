@@ -90,7 +90,7 @@
                         align: 'center',
                         render(h, data) {
                             if (data.row.category) {
-                                return data.row.category.path;
+                                return data.row.category.name;
                             }
                             return '';
                         },
@@ -230,7 +230,7 @@
                         </div>
                         <div class="store-body">
                             <div class="store-body-header">
-                                <router-link to="/mall/goods/library/add">
+                                <router-link to="/mall/product/library/add">
                                     <i-button class="export-btn" type="ghost">+新增数据</i-button>
                                 </router-link>
                                 <div class="store-body-header-right">
