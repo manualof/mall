@@ -65,11 +65,9 @@ class ProductCategory extends Model
     public function getBreadcrumbAttribute($value)
     {
         $paths = new Collection([$this]);
-        if ($this->attributes['parent_id']) {
-            $one = static::query()->find($this->attributes['parent_id']);
+        if ($this->attributes['parent_id'] && ($one = static::query()->find($this->attributes['parent_id'])) instanceof ProductCategory) {
             $paths->prepend($one);
-            if ($one->getAttribute('parent_id')) {
-                $two = static::query()->find($one->getAttribute('parent_id'));
+            if ($one->getAttribute('parent_id') && ($two = static::query()->find($one->getAttribute('parent_id'))) instanceof ProductCategory) {
                 $paths->prepend($two);
             }
         }
