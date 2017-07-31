@@ -270,7 +270,7 @@
         },
         watch: {
             $route: {
-                handler(route) {
+                handler() {
                     this.refresh();
                 },
             },
