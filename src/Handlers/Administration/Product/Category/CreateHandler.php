@@ -42,6 +42,7 @@ class CreateHandler extends Handler
         $this->beginTransaction();
         $data = $this->request->only([
             'deposit',
+            'logo',
             'name',
             'parent_id',
             'order',

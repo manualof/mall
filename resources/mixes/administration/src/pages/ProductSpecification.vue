@@ -93,22 +93,7 @@
                                                 self.$notice.open({
                                                     title: '删除规格信息成功！',
                                                 });
-                                                self.$notice.open({
-                                                    title: '正在刷新数据...',
-                                                });
-                                                self.$http.post(`${window.api}/mall/admin/product/specification/list`).then(response => {
-                                                    self.list = response.data.data.map(item => {
-                                                        item.loading = false;
-                                                        return item;
-                                                    });
-                                                    self.pagination = response.data.pagination;
-                                                    self.$loading.finish();
-                                                    self.$notice.open({
-                                                        title: '刷新数据成功！',
-                                                    });
-                                                }).catch(() => {
-                                                    self.$loading.fail();
-                                                });
+                                                self.refresh();
                                             }).catch(() => {
                                                 self.$notice.error({
                                                     title: '删除规格信息失败！',
@@ -139,6 +124,28 @@
                 },
             };
         },
+        methods: {
+            refresh() {
+                const self = this;
+                self.$loading.start();
+                self.$notice.open({
+                    title: '正在刷新数据...',
+                });
+                self.$http.post(`${window.api}/mall/admin/product/specification/list`).then(response => {
+                    self.list = response.data.data.map(item => {
+                        item.loading = false;
+                        return item;
+                    });
+                    self.pagination = response.data.pagination;
+                    self.$loading.finish();
+                    self.$notice.open({
+                        title: '刷新数据成功！',
+                    });
+                }).catch(() => {
+                    self.$loading.fail();
+                });
+            },
+        },
     };
 </script>
 <template>
@@ -156,7 +163,7 @@
                             <router-link to="/mall/product/specification/add">
                                 <i-button class="add-data" type="ghost">+新增数据</i-button>
                             </router-link>
-                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                            <i-button class="refresh" icon="android-sync" type="text" @click="refresh">刷新</i-button>
                             <div class="goods-body-header-right">
                                 <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
                                     <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">

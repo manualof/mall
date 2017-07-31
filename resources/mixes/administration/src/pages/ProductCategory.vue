@@ -204,31 +204,10 @@
                     self.$notice.open({
                         title: '批量删除商品分类信息成功！',
                     });
-                    self.$notice.open({
-                        title: '正在刷新数据...',
-                    });
-                    self.$loading.start();
-                    self.$http.post(`${window.api}/mall/admin/product/category/list`, {
-                        parent_id: self.$route.query.parent,
-                    }).then(response => {
-                        window.console.log(response);
-                        self.category = response.data.current;
-                        self.level = response.data.level;
-                        self.list = response.data.data.map(item => {
-                            item.loading = false;
-                            return item;
-                        });
-                        self.pagination = response.data.pagination;
-                        self.$loading.finish();
-                        self.$notice.open({
-                            title: '刷新数据成功！',
-                        });
-                    }).catch(() => {
-                        self.$loading.fail();
-                    }).finally(() => {
-                        self.loading = false;
-                    });
-                }));
+                    self.refresh();
+                })).finally(() => {
+                    self.loading = false;
+                });
             },
             editTypeNav() {
                 const self = this;
@@ -241,6 +220,31 @@
                     filename: '商品分类数据',
                 });
             },
+            refresh() {
+                const self = this;
+                self.$notice.open({
+                    title: '正在刷新数据...',
+                });
+                self.$loading.start();
+                self.$http.post(`${window.api}/mall/admin/product/category/list`, {
+                    parent_id: self.$route.query.parent,
+                }).then(response => {
+                    window.console.log(response);
+                    self.category = response.data.current;
+                    self.level = response.data.level;
+                    self.list = response.data.data.map(item => {
+                        item.loading = false;
+                        return item;
+                    });
+                    self.pagination = response.data.pagination;
+                    self.$loading.finish();
+                    self.$notice.open({
+                        title: '刷新数据成功！',
+                    });
+                }).catch(() => {
+                    self.$loading.fail();
+                });
+            },
             remove(index) {
                 const self = this;
                 self.list[index].loading = true;
@@ -251,28 +255,7 @@
                     self.$notice.open({
                         title: '删除分类信息成功！',
                     });
-                    self.$notice.open({
-                        title: '正在刷新数据...',
-                    });
-                    self.$loading.start();
-                    self.$http.post(`${window.api}/mall/admin/product/category/list`, {
-                        parent_id: self.$route.query.parent,
-                    }).then(response => {
-                        window.console.log(response);
-                        self.category = response.data.current;
-                        self.level = response.data.level;
-                        self.list = response.data.data.map(item => {
-                            item.loading = false;
-                            return item;
-                        });
-                        self.pagination = response.data.pagination;
-                        self.$loading.finish();
-                        self.$notice.open({
-                            title: '刷新数据成功！',
-                        });
-                    }).catch(() => {
-                        self.$loading.fail();
-                    });
+                    self.refresh();
                 }).catch(() => {
                     self.$notice.error({
                         title: '删除分类信息失败！',
@@ -288,29 +271,7 @@
         watch: {
             $route: {
                 handler(route) {
-                    const self = this;
-                    self.$notice.open({
-                        title: '正在刷新数据...',
-                    });
-                    self.$loading.start();
-                    self.$http.post(`${window.api}/mall/admin/product/category/list`, {
-                        parent_id: route.query.parent,
-                    }).then(response => {
-                        window.console.log(response);
-                        self.category = response.data.current;
-                        self.level = response.data.level;
-                        self.list = response.data.data.map(item => {
-                            item.loading = false;
-                            return item;
-                        });
-                        self.pagination = response.data.pagination;
-                        self.$loading.finish();
-                        self.$notice.open({
-                            title: '刷新数据成功！',
-                        });
-                    }).catch(() => {
-                        self.loading.fail();
-                    });
+                    this.refresh();
                 },
             },
         },
@@ -364,7 +325,7 @@
                         </router-link>
                         <i-button @click="exportData" type="ghost">导出数据</i-button>
                         <i-button :loading="loading" @click="batchRemove" type="ghost">批量删除</i-button>
-                        <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                        <i-button class="refresh" icon="android-sync" type="text" @click.native="refresh">刷新</i-button>
                     </div>
                     <i-table class="shop-table"
                              :columns="columns"

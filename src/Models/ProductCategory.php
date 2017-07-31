@@ -36,6 +36,7 @@ class ProductCategory extends Model
     protected $fillable = [
         'deposit',
         'flow_marketing',
+        'logo',
         'name',
         'order',
         'parent_id',
