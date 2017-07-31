@@ -31,12 +31,20 @@ class ListHandler extends Handler
             ]),
             'page'     => Rule::numeric(),
             'paginate' => Rule::numeric(),
+            'status'   => Rule::in([
+                'review',
+                'opening',
+                'closed',
+                'banned',
+            ]),
         ], [
             'order.in'         => '排序规则错误',
             'page.numeric'     => '当前页面必须为数值',
             'paginate.numeric' => '分页数必须为数值',
+            'status.in'        => '店铺状态参数错误，必须为：review, opening, closed, banned',
         ]);
         $builder = Store::query();
+        $this->request->has('status') && $builder->where('status', $this->request->input('status'));
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)

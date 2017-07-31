@@ -4,343 +4,275 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            next(() => {
-                injection.sidebar.active('mall');
+            injection.loading.start();
+            injection.http.all([
+                injection.http.post(`${window.api}/mall/admin/store/list`, {
+                    status: 'opening',
+                }),
+                injection.http.post(`${window.api}/mall/admin/store/list`, {
+                    status: 'review',
+                }),
+            ]).then(injection.http.spread((opening, review) => {
+                next(vm => {
+                    vm.data.opening = Object.keys(opening.data.data).map(index => {
+                        const item = opening.data.data[index];
+                        item.loading = false;
+                        return item;
+                    });
+                    vm.data.review = Object.keys(review.data.data).map(index => {
+                        const item = review.data.data[index];
+                        item.loading = false;
+                        return item;
+                    });
+                    injection.sidebar.active('mall');
+                });
+            })).catch(() => {
+                injection.loading.fail();
             });
         },
         data() {
             const self = this;
             return {
-                applicationColumns: [
-                    {
-                        align: 'center',
-                        fixed: 'left',
-                        type: 'selection',
-                        width: 60,
-                    },
-                    {
-                        align: 'center',
-                        key: 'memberID',
-                        title: '会员ID',
-                        width: 190,
-                    },
-                    {
-                        align: 'center',
-                        key: 'memberAccount',
-                        title: '会员账号',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'applicationStatus',
-                        title: '申请状态',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopLength',
-                        title: '开店时长',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'contactName',
-                        title: '联系人姓名',
-                        width: 120,
-                    },
-                    {
-                        align: 'center',
-                        key: 'contactPhone',
-                        title: '联系人电话',
-                        width: 120,
-                    },
-                    {
-                        align: 'center',
-                        key: 'contactEmail',
-                        title: '联系邮箱',
-                        width: 120,
-                    },
-                    {
-                        align: 'center',
-                        key: 'companyName',
-                        title: '公司名称',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'companyAddress',
-                        title: '公司地址',
-                        width: 170,
-                    },
-                    {
-                        align: 'left',
-                        key: 'companyPhone',
-                        title: '公司电话',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        fixed: 'right',
-                        key: 'action',
-                        render(h) {
-                            return h('i-button', {
-                                on: {
-                                    click() {
-                                        self.look();
-                                    },
-                                },
-                                props: {
-                                    size: 'small',
-                                    type: 'ghost',
-                                },
-                            }, '查看');
+                column: {
+                    opening: [
+                        {
+                            align: 'center',
+                            fixed: 'left',
+                            type: 'selection',
+                            width: 60,
                         },
-                        title: '操作',
-                        width: 90,
-                    },
-                ],
-                applicationData: [
-                    {
-                        applicationStatus: '等待审核',
-                        companyAddress: '陕西西安',
-                        companyName: '本初网络',
-                        companyPhone: '029-5554544',
-                        contactEmail: '105454354@qq.com',
-                        contactName: '王',
-                        contactPhone: '15434354534',
-                        memberAccount: '465465445',
-                        memberID: '65454654546',
-                        shopLength: '3年',
-                    },
-                    {
-                        applicationStatus: '等待审核',
-                        companyAddress: '陕西西安',
-                        companyName: '本初网络',
-                        companyPhone: '029-5554544',
-                        contactEmail: '105454354@qq.com',
-                        contactName: '王',
-                        contactPhone: '15434354534',
-                        memberAccount: '465465445',
-                        memberID: '65454654546',
-                        shopLength: '3年',
-                    },
-                    {
-                        applicationStatus: '等待审核',
-                        companyAddress: '陕西西安',
-                        companyName: '本初网络',
-                        companyPhone: '029-5554544',
-                        contactEmail: '105454354@qq.com',
-                        contactName: '王',
-                        contactPhone: '15434354534',
-                        memberAccount: '465465445',
-                        memberID: '65454654546',
-                        shopLength: '3年',
-                    },
-                    {
-                        applicationStatus: '等待审核',
-                        companyAddress: '陕西西安',
-                        companyName: '本初网络',
-                        companyPhone: '029-5554544',
-                        contactEmail: '105454354@qq.com',
-                        contactName: '王',
-                        contactPhone: '15434354534',
-                        memberAccount: '465465445',
-                        memberID: '65454654546',
-                        shopLength: '3年',
-                    },
-                ],
+                        {
+                            align: 'center',
+                            key: 'shopID',
+                            title: '店铺ID',
+                            width: 190,
+                        },
+                        {
+                            align: 'center',
+                            key: 'shopName',
+                            title: '店铺名称',
+                            width: 170,
+                        },
+                        {
+                            align: 'center',
+                            key: 'ownerId',
+                            title: '店主账号',
+                            width: 170,
+                        },
+                        {
+                            align: 'center',
+                            key: 'businessNumber',
+                            title: '商家账号',
+                            width: 170,
+                        },
+                        {
+                            align: 'center',
+                            key: 'shopImg',
+                            render(h, data) {
+                                return h('tooltip', {
+                                    props: {
+                                        placement: 'right-end',
+                                    },
+                                    scopedSlots: {
+                                        content() {
+                                            return h('img', {
+                                                domProps: {
+                                                    src: data.row.shopImg,
+                                                },
+                                            });
+                                        },
+                                        default() {
+                                            return h('icon', {
+                                                props: {
+                                                    type: 'image',
+                                                },
+                                            });
+                                        },
+                                    },
+                                });
+                            },
+                            title: '店铺头像',
+                            width: 100,
+                        },
+                        {
+                            align: 'center',
+                            key: 'shopLogo',
+                            render(h, data) {
+                                return h('tooltip', {
+                                    props: {
+                                        placement: 'right-end',
+                                    },
+                                    scopedSlots: {
+                                        content() {
+                                            return h('img', {
+                                                domProps: {
+                                                    src: data.row.shopLogo,
+                                                },
+                                            });
+                                        },
+                                        default() {
+                                            return h('icon', {
+                                                props: {
+                                                    type: 'image',
+                                                },
+                                            });
+                                        },
+                                    },
+                                });
+                            },
+                            title: '店铺LOGO',
+                            width: 100,
+                        },
+                        {
+                            align: 'center',
+                            key: 'shopLevel',
+                            title: '店铺等级',
+                            width: 170,
+                        },
+                        {
+                            align: 'center',
+                            key: 'shopTime',
+                            title: '开店时间',
+                            width: 170,
+                        },
+                        {
+                            align: 'left',
+                            key: 'endTime',
+                            title: '到期时间',
+                            width: 170,
+                        },
+                        {
+                            align: 'center',
+                            fixed: 'right',
+                            key: 'action',
+                            render(h) {
+                                return h('div', [
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.lookShop();
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '查看'),
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.toEdit();
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                        style: {
+                                            marginLeft: '10px',
+                                        },
+                                    }, '编辑'),
+                                ]);
+                            },
+                            title: '操作',
+                            width: 180,
+                        },
+                    ],
+                    review: [
+                        {
+                            align: 'center',
+                            fixed: 'left',
+                            type: 'selection',
+                            width: 60,
+                        },
+                        {
+                            align: 'center',
+                            key: 'memberID',
+                            title: '会员ID',
+                            width: 190,
+                        },
+                        {
+                            align: 'center',
+                            key: 'memberAccount',
+                            title: '会员账号',
+                            width: 170,
+                        },
+                        {
+                            align: 'center',
+                            key: 'applicationStatus',
+                            title: '申请状态',
+                            width: 170,
+                        },
+                        {
+                            align: 'center',
+                            key: 'shopLength',
+                            title: '开店时长',
+                            width: 170,
+                        },
+                        {
+                            align: 'center',
+                            key: 'contactName',
+                            title: '联系人姓名',
+                            width: 120,
+                        },
+                        {
+                            align: 'center',
+                            key: 'contactPhone',
+                            title: '联系人电话',
+                            width: 120,
+                        },
+                        {
+                            align: 'center',
+                            key: 'contactEmail',
+                            title: '联系邮箱',
+                            width: 120,
+                        },
+                        {
+                            align: 'center',
+                            key: 'companyName',
+                            title: '公司名称',
+                            width: 170,
+                        },
+                        {
+                            align: 'center',
+                            key: 'companyAddress',
+                            title: '公司地址',
+                            width: 170,
+                        },
+                        {
+                            align: 'left',
+                            key: 'companyPhone',
+                            title: '公司电话',
+                            width: 170,
+                        },
+                        {
+                            align: 'center',
+                            fixed: 'right',
+                            key: 'action',
+                            render(h) {
+                                return h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.look();
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '查看');
+                            },
+                            title: '操作',
+                            width: 90,
+                        },
+                    ],
+                },
+                data: {
+                    opening: [],
+                    review: [],
+                },
                 applicationSearch: '',
                 applicationWord: '',
-                managementColumns: [
-                    {
-                        align: 'center',
-                        fixed: 'left',
-                        type: 'selection',
-                        width: 60,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopID',
-                        title: '店铺ID',
-                        width: 190,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopName',
-                        title: '店铺名称',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'ownerId',
-                        title: '店主账号',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'businessNumber',
-                        title: '商家账号',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopImg',
-                        render(h, data) {
-                            return h('tooltip', {
-                                props: {
-                                    placement: 'right-end',
-                                },
-                                scopedSlots: {
-                                    content() {
-                                        return h('img', {
-                                            domProps: {
-                                                src: data.row.shopImg,
-                                            },
-                                        });
-                                    },
-                                    default() {
-                                        return h('icon', {
-                                            props: {
-                                                type: 'image',
-                                            },
-                                        });
-                                    },
-                                },
-                            });
-                        },
-                        title: '店铺头像',
-                        width: 100,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopLogo',
-                        render(h, data) {
-                            return h('tooltip', {
-                                props: {
-                                    placement: 'right-end',
-                                },
-                                scopedSlots: {
-                                    content() {
-                                        return h('img', {
-                                            domProps: {
-                                                src: data.row.shopLogo,
-                                            },
-                                        });
-                                    },
-                                    default() {
-                                        return h('icon', {
-                                            props: {
-                                                type: 'image',
-                                            },
-                                        });
-                                    },
-                                },
-                            });
-                        },
-                        title: '店铺LOGO',
-                        width: 100,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopLevel',
-                        title: '店铺等级',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        key: 'shopTime',
-                        title: '开店时间',
-                        width: 170,
-                    },
-                    {
-                        align: 'left',
-                        key: 'endTime',
-                        title: '到期时间',
-                        width: 170,
-                    },
-                    {
-                        align: 'center',
-                        fixed: 'right',
-                        key: 'action',
-                        render(h) {
-                            return h('div', [
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.lookShop();
-                                        },
-                                    },
-                                    props: {
-                                        size: 'small',
-                                        type: 'ghost',
-                                    },
-                                }, '查看'),
-                                h('i-button', {
-                                    on: {
-                                        click() {
-                                            self.toEdit();
-                                        },
-                                    },
-                                    props: {
-                                        size: 'small',
-                                        type: 'ghost',
-                                    },
-                                    style: {
-                                        marginLeft: '10px',
-                                    },
-                                }, '编辑'),
-                            ]);
-                        },
-                        title: '操作',
-                        width: 180,
-                    },
-                ],
-                managementData: [
-                    {
-                        businessNumber: '爱拍数码',
-                        endTime: '2017-12-5',
-                        ownerId: '545464554',
-                        shopID: '65454654546',
-                        shopImg: image1,
-                        shopLevel: '钻石店铺',
-                        shopLogo: image1,
-                        shopName: '默认',
-                        shopTime: '2017-12-5',
-                    },
-                    {
-                        businessNumber: '爱拍数码',
-                        endTime: '2017-12-5',
-                        ownerId: '545464554',
-                        shopID: '65454654546',
-                        shopImg: image1,
-                        shopLevel: '钻石店铺',
-                        shopLogo: image1,
-                        shopName: '默认',
-                        shopTime: '2017-12-5',
-                    },
-                    {
-                        businessNumber: '爱拍数码',
-                        endTime: '2017-12-5',
-                        ownerId: '545464554',
-                        shopID: '65454654546',
-                        shopImg: image1,
-                        shopLevel: '钻石店铺',
-                        shopLogo: image1,
-                        shopName: '默认',
-                        shopTime: '2017-12-5',
-                    },
-                    {
-                        businessNumber: '爱拍数码',
-                        endTime: '2017-12-5',
-                        ownerId: '545464554',
-                        shopID: '65454654546',
-                        shopImg: image1,
-                        shopLevel: '钻石店铺',
-                        shopLogo: image1,
-                        shopName: '默认',
-                        shopTime: '2017-12-5',
-                    },
-                ],
                 managementWord: '',
                 managementSearch: '',
                 searchApplicationList: [
@@ -423,9 +355,8 @@
                             </div>
                             <i-table ref="managementTable"
                                      class="shop-table"
-                                     :context="self"
-                                     :columns="managementColumns"
-                                     :data="managementData"></i-table>
+                                     :columns="column.opening"
+                                     :data="data.opening"></i-table>
                         </div>
                         <div class="page">
                             <page :total="100" show-elevator></page>
@@ -454,9 +385,8 @@
                                 </div>
                             </div>
                             <i-table highlight-row class="shop-table"
-                                     :columns="applicationColumns"
-                                     :context="self"
-                                     :data="applicationData"
+                                     :columns="column.review"
+                                     :data="data.review"
                                      ref="applicationTable" >
                             </i-table>
                         </div>
