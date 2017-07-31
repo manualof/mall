@@ -292,6 +292,7 @@ class RouteRegister extends AbstractRouteRegister
         });
         $this->router->group(['middleware' => ['cross', 'web'], 'prefix' => 'api/mall/store'], function () {
             $this->router->post('/', StoreControllerForStore::class . '@store');
+            $this->router->post('apply', StoreControllerForStore::class . '@apply');
             $this->router->post('list', StoreControllerForStore::class . '@list');
             $this->router->post('type', StoreControllerForStore::class . '@type');
             $this->router->post('category', CategoryControllerForStore::class . '@category');

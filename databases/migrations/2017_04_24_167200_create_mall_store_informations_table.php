@@ -32,9 +32,9 @@ class CreateMallStoreInformationsTable extends Migration
             $table->string('email')->comment('电子邮箱');
             $table->string('licence_number')->comment('营业执照号');
             $table->string('licence_location')->comment('营业执照所在地');
-            $table->string('licence_validity')->comment('营业执照有效期');
+            $table->string('licence_validity')->nullable()->comment('营业执照有效期');
             $table->string('licence_sphere')->comment('法定经营范围');
-            $table->string('licence_image')->comment('营业执照电子版');
+            $table->string('licence_image')->nullable()->comment('营业执照电子版');
             $table->timestamps();
             $table->softDeletes();
         });

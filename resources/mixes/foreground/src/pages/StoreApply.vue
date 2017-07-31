@@ -19,13 +19,13 @@
                     company_address: '',
                     company_capital: '',
                     company_employees: '',
-                    company_location: '',
+                    company_locations: [],
                     company_name: '',
                     company_telephone: '',
                     contact_email: '',
                     contact_name: '',
                     contact_telephone: '',
-                    license_address: '',
+                    license_addresses: [],
                     license_deadline: '',
                     license_begins: '',
                     license_images: [],
@@ -39,11 +39,19 @@
         },
         methods: {
             next() {
-                if (this.temp < 7) {
-                    this.temp += 1;
+                const self = this;
+                if (self.temp < 4) {
+                    self.temp += 1;
                 }
-                if (this.temp === 4) {
-
+                if (self.temp === 4) {
+                    const form = self.form;
+                    form.category_id
+                        = form.category.length ? form.category[form.category.length - 1] : 0;
+                    form.license_address = form.license_addresses.join('/');
+                    form.company_location = form.company_locations.join('/');
+                    self.$http.post(`${window.api}/mall/store/apply`, form).then(() => {}).catch(() => {
+                        window.console.log('提交申请失败！');
+                    });
                 }
             },
             prev() {
@@ -88,14 +96,6 @@
             })).catch(() => {
                 window.console.log('执行错误！');
             });
-        },
-        watch: {
-            form: {
-                deep: true,
-                handler(val) {
-                    window.console.log(val);
-                },
-            },
         },
     };
 </script>
@@ -162,7 +162,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">公司所在地</label>
                             <div class="col-sm-10">
-                                <cascader :data="data" v-model="form.company_location"></cascader>
+                                <cascader :data="data" v-model="form.company_locations"></cascader>
                             </div>
                         </div>
                         <div class="form-group">
@@ -215,14 +215,13 @@
                         <div class="form-group">
                             <label for="registration_num" class="col-sm-2 control-label">营业执照号</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="form.business_no" id="registration_num">
+                                <input type="text" class="form-control" v-model="form.license_number" id="registration_num">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">营业执照所在地</label>
                             <div class="col-sm-10">
-                                <Cascader :data="data"
-                                          v-model="form.license_address"></Cascader>
+                                <cascader :data="data" v-model="form.license_addresses"></cascader>
                             </div>
                         </div>
                         <div class="form-group">
@@ -296,7 +295,7 @@
                             <label class="col-sm-2 control-label">所属分类</label>
                             <div class="col-sm-10">
                                 <select class="form-control address_select" v-model="form.type">
-                                    <option value="type.id" v-for="type in types">{{ type.name }}</option>
+                                    <option :value="type.id" v-for="type in types">{{ type.name }}</option>
                                 </select>
                             </div>
                         </div>

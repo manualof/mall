@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Controllers\Api\Store;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\Store\ApplyHandler;
 use Notadd\Mall\Handlers\Store\ListHandler;
 use Notadd\Mall\Handlers\Store\StoreHandler;
 use Notadd\Mall\Handlers\Store\TypeHandler;
@@ -18,6 +19,16 @@ use Notadd\Mall\Handlers\Store\TypeHandler;
  */
 class StoreController extends Controller
 {
+    /**
+     * @param \Notadd\Mall\Handlers\Store\ApplyHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     */
+    public function apply(ApplyHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
     /**
      * @param \Notadd\Mall\Handlers\Store\ListHandler $handler
      *
