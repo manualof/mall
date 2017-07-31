@@ -22,9 +22,9 @@
 @ease-in-out: ease-in-out;
 @form-prefix-cls: ~"@{css-prefix}form";
 @form-item-prefix-cls: ~"@{form-prefix-cls}-item";
-@import "../../..//node_modules/iview/src/styles/mixins/common.less";
-@import "../../..//node_modules/iview/src/styles/mixins/select.less";
-@import "../../..//node_modules/iview/src/styles/components/cascader.less";
+@import "../../../node_modules/iview/src/styles/mixins/common.less";
+@import "../../../node_modules/iview/src/styles/mixins/select.less";
+@import "../../../node_modules/iview/src/styles/components/cascader.less";
 .businessmen-box {
     .shop_banner {
         position: relative;
@@ -429,4 +429,86 @@
     .vdp-datepicker input {
         padding-left: 50px;
     }
+
+    .ivu-cascader-arrow {
+        position: absolute;
+        top: 64%;
+        right: 8px;
+        line-height: 1;
+        margin-top: -7px;
+        font-size: 14px;
+        color: #80848f;
+        transition: all .2s ease-in-out;
+    }
+}
+.ivu-cascader .ivu-select-dropdown {
+    width: auto;
+    padding: 0;
+    white-space: nowrap;
+    overflow: visible;
+}
+.ivu-select-dropdown {
+    width: inherit;
+    max-height: 200px;
+    overflow: auto;
+    margin: 5px 0;
+    padding: 5px 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    position: absolute;
+    z-index: 900;
+}
+.ivu-cascader-menu:last-child {
+    border-right-color: transparent;
+    margin-right: -1px;
+}
+.ivu-cascader-menu {
+    display: inline-block;
+    min-width: 100px;
+    height: 180px;
+    margin: 0;
+    padding: 5px 0!important;
+    vertical-align: top;
+    list-style: none;
+    border-right: 1px solid #e9eaec;
+    overflow: auto;
+}
+.ivu-cascader .ivu-cascader-menu-item {
+    margin: 0;
+    line-height: normal;
+    padding: 7px 16px;
+    clear: both;
+    color: #495060;
+    font-size: 12px!important;
+    white-space: nowrap;
+    list-style: none;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+.ivu-cascader-menu .ivu-cascader-menu-item {
+    position: relative;
+    padding-right: 24px;
+    transition: all .2s ease-in-out;
+}
+.ivu-icon {
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.ivu-cascader-menu .ivu-cascader-menu-item i {
+    font-size: 12px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -6px;
+}
+.ivu-icon-ios-arrow-right:before {
+    content: "\e619";
+}
+.ivu-icon-ios-close:before {
+    content: "\e6ca";
 }
