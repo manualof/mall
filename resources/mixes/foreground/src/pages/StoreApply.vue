@@ -11,9 +11,11 @@
                 agree: false,
                 temps: ['入驻须知', '公司信息', '店铺信息', '入驻审核'],
                 temp: 1,
+                categories: [],
                 data: cities,
                 form: {
                     business_scope: '',
+                    category: [],
                     company_address: '',
                     company_capital: '',
                     company_employees: '',
@@ -28,47 +30,20 @@
                     license_begins: '',
                     license_images: [],
                     license_number: '',
-
-                    registration_num: '',
-                    legal_person_name: '',
-                    business_license_address: [],
-                    license_type: true,
-                    setDate: new Date(),
-                    emergency_contact: '',
-                    certificate_type: '',
-                    legal_id: '',
-                    id_card_imgs: [],
-                    account_images: [],
+                    store_account: '',
+                    store_name: '',
+                    type: 0,
                 },
-                shopInfo: {
-                    shop_type: {
-                        name: '',
-                        options: ['请选择', '有限公司', '国营企业', '私营企业'],
-                    },
-                    main_categories: [
-                        {
-                            name: '',
-                            options: ['请选择', '1', '2', '3'],
-                        },
-                        {
-                            name: '',
-                            options: ['请选择', '1', '2', '3'],
-                        },
-                        {
-                            name: '',
-                            options: ['请选择', '1', '2', '3'],
-                        },
-                    ],
-                    shop_name: '',
-                    business_firm: '',
-                    shop_account: '',
-                },
+                types: [],
             };
         },
         methods: {
             next() {
                 if (this.temp < 7) {
                     this.temp += 1;
+                }
+                if (this.temp === 4) {
+
                 }
             },
             prev() {
@@ -90,6 +65,29 @@
             deleteImg(arr, item) {
                 arr.splice(arr.indexOf(item));
             },
+        },
+        mounted() {
+            const self = this;
+            self.$http.all([
+                self.$http.post(`${window.api}/mall/store/product/category/list`),
+                self.$http.post(`${window.api}/mall/store/type`),
+            ]).then(self.$http.spread((category, type) => {
+                self.categories = category.data.data.map(item => {
+                    item.label = item.name;
+                    item.value = item.id;
+                    const children = item.children;
+                    item.children = Object.keys(children).map(i => {
+                        const sub = children[i];
+                        sub.label = sub.name;
+                        sub.value = sub.id;
+                        return sub;
+                    });
+                    return item;
+                });
+                self.types = type.data.data;
+            })).catch(() => {
+                window.console.log('执行错误！');
+            });
         },
         watch: {
             form: {
@@ -297,8 +295,8 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">所属分类</label>
                             <div class="col-sm-10">
-                                <select class="form-control address_select" v-model="shopInfo.shop_type.name">
-                                    <option value="" v-for="option in shopInfo.shop_type.options">{{ option }}</option>
+                                <select class="form-control address_select" v-model="form.type">
+                                    <option value="type.id" v-for="type in types">{{ type.name }}</option>
                                 </select>
                             </div>
                         </div>
@@ -307,23 +305,19 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">主营类目</label>
                             <div class="col-sm-10">
-                                <select class="form-control address_select pull-left main_categories"
-                                        v-model="item.name"
-                                        v-for="item in shopInfo.main_categories">
-                                    <option value="" v-for="option in item.options">{{ option }}</option>
-                                </select>
+                                <cascader :data="categories" v-model="form.category"></cascader>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="company_name" class="col-sm-2 control-label">店铺名称</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="shopInfo.shop_name">
+                                <input type="text" class="form-control" v-model="form.store_name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="company_name" class="col-sm-2 control-label">店铺账号</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="shopInfo.business_firm">
+                                <input type="text" class="form-control" v-model="form.store_account">
                             </div>
                         </div>
                         <div class="form-group btn_div">
@@ -332,7 +326,7 @@
                             </div>
                             <div class="col-md-1">
                                 <button type="submit" class="col-md-offset-11 btn btn-info next-btn" @click="next">
-                                    下一步，完善公司信息
+                                    提交申请
                                 </button>
                             </div>
                         </div>

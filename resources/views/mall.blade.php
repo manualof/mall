@@ -11,9 +11,7 @@
 <body>
 <div id="app"></div>
 <script>
-    window.userLink = 'http://localhost:8080/';
-    window.StoreLink = 'http://localhost:8081/';
-    window.foregroundLink = 'http://localhost:8082/';
+    window.api = "{{ url('api') }}";
 </script>
 <script type="text/javascript" src="{{ asset('assets/mall/foreground/js/manifest.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/mall/foreground/js/vendor.js') }}"></script>
