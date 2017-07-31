@@ -1,6 +1,6 @@
 import Layout from '../layouts/Layout.vue';
 import Store from '../pages/Store.vue';
-import StoreBusinessmen from '../pages/StoreBusinessmen.vue';
+import StoreApply from '../pages/StoreApply.vue';
 import StoreLayout from '../layouts/Store.vue';
 import UserLayout from '../layouts/UserLayout.vue';
 import UserOrder from '../pages/UserOrder.vue';
@@ -245,9 +245,9 @@ export default [
             {
                 children: [
                     {
-                        component: StoreBusinessmen,
+                        component: StoreApply,
                         name: 'businessmen',
-                        path: 'businessmen',
+                        path: 'apply',
                     },
                 ],
                 component: StoreLayout,

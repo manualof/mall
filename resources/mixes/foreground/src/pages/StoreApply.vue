@@ -12,65 +12,33 @@
                 temps: ['入驻须知', '公司信息', '店铺信息', '入驻审核'],
                 temp: 1,
                 data: cities,
-                connect: {
-                    name: '',
-                    phone: '',
-                    email: '',
-                },
-                lincenseInfo: {
+                form: {
+                    business_scope: '',
+                    company_address: '',
+                    company_capital: '',
+                    company_employees: '',
+                    company_location: '',
                     company_name: '',
+                    company_telephone: '',
+                    contact_email: '',
+                    contact_name: '',
+                    contact_telephone: '',
+                    license_address: '',
+                    license_deadline: '',
+                    license_begins: '',
+                    license_images: [],
+                    license_number: '',
+
                     registration_num: '',
                     legal_person_name: '',
                     business_license_address: [],
                     license_type: true,
-                    detial_adress: '',
                     setDate: new Date(),
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    redistered_capital: '',
-                    company_detial_address: '',
-                    business_scope: '',
-                    company_address: [],
-                    company_tel: '',
                     emergency_contact: '',
                     certificate_type: '',
                     legal_id: '',
                     id_card_imgs: [],
-                    license_imgs: [],
-                    account_imgs: [],
-                },
-                organizationInfo: {
-                    code: '',
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    certificate_imgs: [],
-                },
-                taxationInfo: {
-                    taxpayer_type: '',
-                    code: '',
-                    certificate_imgs: [],
-                    tax_paymentCode: '',
-                },
-                bankInfo: {
-                    public_account: '',
-                    branch_num: '',
-                    branch_name: '',
-                    address: '',
-                },
-                operatingInfo: {
-                    company_type: '',
-                    web_address: '',
-                    year_sales: '',
-                    shop_address: '',
-                    person_num: '',
-                    similar_experience: '',
-                    available_num: '',
-                    average_price: '',
-                    warehouse_situation: '',
-                    warehouse_address: '',
-                    used_logistics: '',
-                    erp_type: '',
-                    behalf_company_name: '',
+                    account_images: [],
                 },
                 shopInfo: {
                     shop_type: {
@@ -121,6 +89,14 @@
             },
             deleteImg(arr, item) {
                 arr.splice(arr.indexOf(item));
+            },
+        },
+        watch: {
+            form: {
+                deep: true,
+                handler(val) {
+                    window.console.log(val);
+                },
             },
         },
     };
@@ -182,70 +158,56 @@
                         <div class="form-group">
                             <label for="company_name" class="col-sm-2 control-label">公司名称</label>
                             <div class="col-sm-10">
-                                <input type="text"
-                                       class="form-control"
-                                       v-model="lincenseInfo.company_name"
-                                       id="company_name"
-                                       placeholder="">
+                                <input type="text" class="form-control" v-model="form.company_name" id="company_name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">公司所在地</label>
                             <div class="col-sm-10">
-                                <cascader :data="data" v-model="lincenseInfo.company_address"></cascader>
+                                <cascader :data="data" v-model="form.company_location"></cascader>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">公司详细地址</label>
                             <div class="col-sm-10">
-                                <textarea type="text" v-model="lincenseInfo.company_detial_adress"
-                                       class="form-control pull-left"
-                                       placeholder="">
+                                <textarea type="text" v-model="form.company_address" class="form-control pull-left">
                                 </textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">公司电话</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="lincenseInfo.company_tel"
-                                       placeholder="">
+                                <input type="text" class="form-control" v-model="form.company_telephone">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">员工总数</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="lincenseInfo.company_tel"
-                                       placeholder="">
-                                人
+                                <input type="text" class="form-control" v-model="form.company_employees">人
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">注册资金</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="lincenseInfo.company_tel"
-                                       placeholder="">
-                                万元
+                                <input type="text" class="form-control" v-model="form.company_capital">万元
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputName" class="col-md-2 col-sm-2 col-xs-2 control-label text-right">联系人姓名</label>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <input type="email" class="form-control" id="inputName" placeholder=""
-                                       v-model="connect.name">
+                                <input type="email" class="form-control" id="inputName" v-model="form.contact_name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPhone" class="col-md-2 col-sm-2 col-xs-2 control-label text-right">联系人电话</label>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <input type="tel" class="form-control" id="inputPhone" placeholder=""
-                                       v-model="connect.phone">
+                                <input type="tel" class="form-control" id="inputPhone" v-model="form.contact_telephone">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail" class="col-md-2 col-sm-2 col-xs-2 control-label text-right">电子邮箱</label>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <input type="email" class="form-control" id="inputEmail" placeholder=""
-                                       v-model="connect.email">
+                                <input type="email" class="form-control" id="inputEmail" v-model="form.contact_email">
                             </div>
                         </div>
                     </div>
@@ -255,31 +217,28 @@
                         <div class="form-group">
                             <label for="registration_num" class="col-sm-2 control-label">营业执照号</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="lincenseInfo.registration_num"
-                                       id="registration_num"
-                                       placeholder="">
+                                <input type="text" class="form-control" v-model="form.business_no" id="registration_num">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">营业执照所在地</label>
                             <div class="col-sm-10">
                                 <Cascader :data="data"
-                                          v-model="lincenseInfo.business_license_address"></Cascader>
+                                          v-model="form.license_address"></Cascader>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">营业期限</label>
                             <div class="col-sm-10">
                                 <div class="date_div pull-left">
-                                    <datepicker language="zh" v-model="organizationInfo.startDate" name="startDate"
+                                    <datepicker language="zh" v-model="form.license_begins"
                                                 format="yyyy MMM dd">
                                     </datepicker>
                                     <span class="date_icon icon iconfont icon-rili"></span>
                                 </div>
                                 <span class="pull-left connect"></span>
                                 <div class="date_div pull-left">
-                                    <datepicker language="zh" v-model="organizationInfo.endDate" name="endDate"
-                                                format="yyyy MMM dd">
+                                    <datepicker language="zh" v-model="form.license_deadline" format="yyyy MMM dd">
                                     </datepicker>
                                     <span class="date_icon icon iconfont icon-rili"></span>
                                 </div>
@@ -292,8 +251,8 @@
                         <div class="form-group">
                             <label for="company_name" class="col-sm-2 control-label">法定经营范围</label>
                             <div class="col-sm-10">
-                                    <textarea type="text" class="form-control business_scope" v-model="lincenseInfo.business_scope"
-                                              placeholder=""></textarea>
+                                    <textarea type="text" class="form-control business_scope" v-model="form.business_scope">
+                                    </textarea>
                                 <p class="p_first">请与营业执照或企业信息公示网的经营范围保持一致</p>
                             </div>
                         </div>
@@ -301,18 +260,18 @@
                             <label class="col-sm-2 control-label">营业执照电子版</label>
                             <div class="col-sm-10">
                                 <ul class="real-imgs clearfix">
-                                    <li v-for="img in lincenseInfo.license_imgs">
+                                    <li v-for="img in form.license_images">
                                         <img :src="img.content"/>
                                         <div class="cover">
                                             <i class="icon iconfont icon-icon_shanchu"
-                                               @click="deleteImg(lincenseInfo.license_imgs,img)"> </i>
+                                               @click="deleteImg(form.license_images,img)"> </i>
                                         </div>
                                     </li>
-                                    <li v-if="lincenseInfo.license_imgs.length<2">
+                                    <li v-if="form.license_images.length<2">
                                         <div class="diamond-upload-file">
                                             <div class="icon iconfont icon-tupian"></div>
                                             <input type="file" accept="image/*"
-                                                   @change="imageSelected($event,lincenseInfo.license_imgs)">
+                                                   @change="imageSelected($event,form.license_images)">
                                         </div>
                                     </li>
                                 </ul>
@@ -358,13 +317,13 @@
                         <div class="form-group">
                             <label for="company_name" class="col-sm-2 control-label">店铺名称</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="shopInfo.shop_name" placeholder="">
+                                <input type="text" class="form-control" v-model="shopInfo.shop_name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="company_name" class="col-sm-2 control-label">店铺账号</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="shopInfo.business_firm" placeholder="">
+                                <input type="text" class="form-control" v-model="shopInfo.business_firm">
                             </div>
                         </div>
                         <div class="form-group btn_div">

@@ -35,8 +35,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li :class="{ 'active': $route.path === '/mall/store/businessmen' }">
-                        <router-link to="/mall/store/businessmen" target="_blank">商家入驻</router-link>
+                    <li :class="{ 'active': $route.path === '/mall/store/apply' }">
+                        <router-link to="/mall/store/apply" target="_blank">商家入驻</router-link>
                         <span>|</span>
                     </li>
                 </ul>
