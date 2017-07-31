@@ -64,6 +64,7 @@ use Notadd\Mall\Controllers\Api\Seller\StoreSupplierController as StoreSupplierC
 use Notadd\Mall\Controllers\Api\Store\CategoryController as CategoryControllerForStore;
 use Notadd\Mall\Controllers\Api\Store\NavigationController as NavigationControllerForStore;
 use Notadd\Mall\Controllers\Api\Store\ProductController as ProductControllerForStore;
+use Notadd\Mall\Controllers\Api\Store\ProductCategoryController as ProductCategoryControllerForStore;
 use Notadd\Mall\Controllers\Api\Store\ProductRateController as ProductRateControllerForStore;
 use Notadd\Mall\Controllers\Api\Store\StoreController as StoreControllerForStore;
 use Notadd\Mall\Controllers\Api\User\CardController as CardControllerForUser;
@@ -298,6 +299,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('navigation/list', NavigationControllerForStore::class . '@product');
             $this->router->post('product', ProductControllerForStore::class . '@product');
             $this->router->post('product/list', ProductControllerForStore::class . '@list');
+            $this->router->post('product/category/list', ProductCategoryControllerForStore::class . '@list');
             $this->router->post('product/rate', ProductRateControllerForStore::class . '@rate');
             $this->router->post('product/rate/list', ProductRateControllerForStore::class . '@list');
         });

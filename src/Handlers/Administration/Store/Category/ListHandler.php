@@ -34,6 +34,7 @@ class ListHandler extends Handler
             'store_id.numeric'  => '店铺 ID 必须为数值',
         ]);
         $builder = StoreCategory::query();
+        $builder->with('children.children.children');
         $builder->where('store_id', $this->request->input('store_id'));
         $this->withCode(200)->withData($builder->get())->withMessage('获取商品列表成功！');
     }
