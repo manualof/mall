@@ -49,6 +49,7 @@ class EditHandler extends Handler
         $category = ProductCategory::query()->find($this->request->input('id'));
         $data = $this->request->only([
             'deposit',
+            'logo',
             'name',
             'parent_id',
             'order',
