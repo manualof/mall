@@ -78,8 +78,6 @@ use Notadd\Mall\Controllers\Api\User\SubscribeController as SubscribeControllerF
 use Notadd\Mall\Controllers\Api\User\UserController as UserControllerForUser;
 use Notadd\Mall\Controllers\Api\User\VipController as VipControllerForUser;
 use Notadd\Mall\Controllers\MallController as MallControllerForForeground;
-use Notadd\Mall\Controllers\StoreController as StoreControllerForForeground;
-use Notadd\Mall\Controllers\UserController as UserControllerForForeground;
 
 /**
  * Class RouteRegister.
@@ -291,9 +289,10 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('store/supplier/list', StoreSupplierControllerForSeller::class . '@list');
             $this->router->post('store/supplier/remove', StoreSupplierControllerForSeller::class . '@remove');
         });
-        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/store'], function () {
+        $this->router->group(['middleware' => ['cross', 'web'], 'prefix' => 'api/mall/store'], function () {
             $this->router->post('/', StoreControllerForStore::class . '@store');
             $this->router->post('list', StoreControllerForStore::class . '@list');
+            $this->router->post('type', StoreControllerForStore::class . '@type');
             $this->router->post('category', CategoryControllerForStore::class . '@category');
             $this->router->post('category/list', CategoryControllerForStore::class . '@list');
             $this->router->post('navigation/list', NavigationControllerForStore::class . '@product');
@@ -302,7 +301,7 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('product/rate', ProductRateControllerForStore::class . '@rate');
             $this->router->post('product/rate/list', ProductRateControllerForStore::class . '@list');
         });
-        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/mall/foreground'], function () {
+        $this->router->group(['middleware' => ['cross', 'web'], 'prefix' => 'api/mall/foreground'], function () {
             $this->router->post('/', UserControllerForUser::class . '@foreground');
             $this->router->post('/login', UserControllerForUser::class . '@login');
             $this->router->post('/register', UserControllerForUser::class . '@register');

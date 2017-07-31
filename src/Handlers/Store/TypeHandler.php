@@ -4,18 +4,19 @@
  *
  * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime 2017-07-27 18:16
+ * @datetime 2017-07-31 21:02
  */
-namespace Notadd\Mall\Handlers\Administration\Store\Type;
+
+namespace Notadd\Mall\Handlers\Store;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
 use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreType;
 
 /**
- * Class ListHandler.
+ * Class TypeHandler.
  */
-class ListHandler extends Handler
+class TypeHandler extends Handler
 {
     /**
      * Execute Handler.

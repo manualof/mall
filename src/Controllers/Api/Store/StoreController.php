@@ -11,6 +11,7 @@ namespace Notadd\Mall\Controllers\Api\Store;
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Store\ListHandler;
 use Notadd\Mall\Handlers\Store\StoreHandler;
+use Notadd\Mall\Handlers\Store\TypeHandler;
 
 /**
  * Class StoreController.
@@ -35,6 +36,16 @@ class StoreController extends Controller
      * @throws \Exception
      */
     public function store(StoreHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\Store\TypeHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     */
+    public function type(TypeHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
