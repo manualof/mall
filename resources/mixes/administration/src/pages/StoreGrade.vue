@@ -142,22 +142,6 @@
                         self.$notice.open({
                             title: '批量删除店铺等级信息成功！',
                         });
-                        self.$notice.open({
-                            title: '正在刷新数据...',
-                        });
-                        self.$loading.start();
-                        self.$http.post(`${window.api}/mall/admin/store/grade/list`).then(response => {
-                            self.list = response.data.data.map(item => {
-                                item.loading = false;
-                                return item;
-                            });
-                            self.$loading.finish();
-                            self.$notice.open({
-                                title: '刷新数据成功！',
-                            });
-                        }).catch(() => {
-                            self.$loading.fail();
-                        });
                     }).catch(() => {
                         self.$notice.error({
                             title: '批量删除店铺等级信息失败！',
@@ -170,6 +154,25 @@
                         title: '请选择一个店铺等级！',
                     });
                 }
+            },
+            refresh() {
+                const self = this;
+                self.$notice.open({
+                    title: '正在刷新数据...',
+                });
+                self.$loading.start();
+                self.$http.post(`${window.api}/mall/admin/store/grade/list`).then(response => {
+                    self.list = response.data.data.map(item => {
+                        item.loading = false;
+                        return item;
+                    });
+                    self.$loading.finish();
+                    self.$notice.open({
+                        title: '刷新数据成功！',
+                    });
+                }).catch(() => {
+                    self.$loading.fail();
+                });
             },
             selectionChange(val) {
                 this.selection = val;
@@ -188,7 +191,7 @@
                                 <i-button class="add-data" type="ghost">+新增数据</i-button>
                             </router-link>
                             <i-button :loading="loading" type="ghost" @click.native="batchRemove">批量删除</i-button>
-                            <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
+                            <i-button class="refresh" icon="android-sync" type="text" @click="refresh">刷新</i-button>
                             <div class="goods-body-header-right">
                                 <i-input v-model="managementWord" placeholder="等级名称">
                                     <i-button slot="append" type="primary">搜索</i-button>
