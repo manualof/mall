@@ -22,11 +22,13 @@
 @ease-in-out: ease-in-out;
 @form-prefix-cls: ~"@{css-prefix}form";
 @form-item-prefix-cls: ~"@{form-prefix-cls}-item";
-@import "../../..//node_modules/iview/src/styles/mixins/common.less";
-@import "../../..//node_modules/iview/src/styles/mixins/select.less";
-@import "../../..//node_modules/iview/src/styles/components/cascader.less";
+@import "../../../node_modules/iview/src/styles/mixins/common.less";
+@import "../../../node_modules/iview/src/styles/mixins/select.less";
+@import "../../../node_modules/iview/src/styles/components/cascader.less";
 .businessmen-box {
     .shop_banner {
+        background: #ffffff url("../images/shop-banner.png") center no-repeat;
+        height: 480px;
         position: relative;
         .shop_icon {
             background-color: rgba(255, 35, 66, 0.3);
@@ -39,6 +41,7 @@
         }
         .shop_icon1 {
             background-color: rgba(255, 35, 66, 0.4);
+            cursor: pointer;
             display: inline-block;
             height: 220px;
             left: 50%;
