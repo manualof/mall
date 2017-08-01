@@ -27,6 +27,7 @@ class PermissionRegister extends AbstractPermissionRegister
 
     protected function extendAdministrationPermission()
     {
+        $this->extendGlobalPermissionForAdministration();
         $this->extendOrderPermissionForAdministration();
         $this->extendOrderExchangePermissionForAdministration();
         $this->extendOrderExpressPermissionForAdministration();
@@ -41,6 +42,17 @@ class PermissionRegister extends AbstractPermissionRegister
         $this->extendStoreCategoryPermissionForAdministration();
         $this->extendStoreDynamicPermissionForAdministration();
         $this->extendStoreRatePermissionForAdministration();
+    }
+
+    protected function extendGlobalPermissionForAdministration()
+    {
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '商城后台权限',
+            'group'          => 'global',
+            'identification' => 'global',
+            'module'         => 'mall-administration',
+        ]);
     }
 
     protected function extendOrderPermissionForAdministration()
@@ -542,6 +554,7 @@ class PermissionRegister extends AbstractPermissionRegister
 
     protected function extendSellerPermission()
     {
+        $this->extendGlobalPermissionForSeller();
         $this->extendOrderPermissionForSeller();
         $this->extendProductPermissionForSeller();
         $this->extendProductCategoryPermissionForSeller();
@@ -552,6 +565,17 @@ class PermissionRegister extends AbstractPermissionRegister
         $this->extendStoreCategoryPermissionForSeller();
         $this->extendStoreDynamicPermissionForSeller();
         $this->extendStoreNavigationPermissionForSeller();
+    }
+
+    protected function extendGlobalPermissionForSeller()
+    {
+        $this->manager->extend([
+            'default'        => false,
+            'description'    => '商家后台权限',
+            'group'          => 'global',
+            'identification' => 'global',
+            'module'         => 'mall-seller',
+        ]);
     }
 
     protected function extendOrderPermissionForSeller()

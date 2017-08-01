@@ -36,12 +36,12 @@ class Definition extends AbstractDefinition
         return [
             'administration' => [
                 'notadd/mall'   => [
-                    'permissions' => '',
+                    'permissions' => 'global::mall-administration::global::global',
                     'scripts'     => asset('assets/mall/administration/js/module.min.js'),
                     'stylesheets' => asset('assets/mall/administration/css/module.min.css'),
                 ],
                 'notadd/seller' => [
-                    'permissions' => '',
+                    'permissions' => 'global::mall-seller::global::global',
                     'scripts'     => asset('assets/mall/seller/js/module.min.js'),
                     'stylesheets' => asset('assets/mall/seller/css/module.min.css'),
                 ],
