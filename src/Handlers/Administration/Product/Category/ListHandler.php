@@ -42,7 +42,7 @@ class ListHandler extends Handler
         $parent_id = $this->request->input('parent_id', 0);
         $builder = ProductCategory::query();
         $builder->where('parent_id', $parent_id);
-        $builder->orderBy('created_at', $this->request->input('order', 'desc'));
+        $builder->orderBy($this->request->input('sort', 'order'), $this->request->input('order', 'asc'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
         list($current, $level) = $this->restructureCurrent($parent_id);
         $this->withCode(200)->withData($this->reformatData($builder->items()))->withExtra([
@@ -61,21 +61,6 @@ class ListHandler extends Handler
             ],
             'structure'  => $this->restructureData($builder->items()),
         ])->withMessage('获取商品列表成功！');
-    }
-
-    /**
-     * @param array $items
-     *
-     * @return array
-     */
-    protected function reformatData(array $items)
-    {
-        $data = new Collection();
-        collect($items)->each(function (ProductCategory $category) use ($data) {
-            $data->put($category->getAttribute('id'), $category);
-        });
-
-        return $data->toArray();
     }
 
     /**
@@ -100,6 +85,21 @@ class ListHandler extends Handler
             $level,
             $path,
         ];
+    }
+
+    /**
+     * @param array $items
+     *
+     * @return array
+     */
+    protected function reformatData(array $items)
+    {
+        $data = new Collection();
+        collect($items)->each(function (ProductCategory $category) use ($data) {
+            $data->put($category->getAttribute('id'), $category);
+        });
+
+        return $data->toArray();
     }
 
     /**
