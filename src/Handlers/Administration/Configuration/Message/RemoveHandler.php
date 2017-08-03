@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Configuration\Message;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\Message;
 
 /**
@@ -23,11 +24,24 @@ class RemoveHandler extends Handler
      */
     public function execute()
     {
-        $id = $this->request->input('id');
-        $message = Message::query()->find($id);
+        $this->validate($this->request, [
+            'id' => [
+                Rule::exists(''),
+                Rule::numeric(),
+                Rule::required(),
+            ],
+        ], [
+            'id.exists'   => '',
+            'id.numeric'  => '',
+            'id.required' => '',
+        ]);
+        $this->beginTransaction();
+        $message = Message::query()->find($this->request->input('id'));
         if ($message && $message->delete()) {
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('');
         } else {
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('');
         }
     }

@@ -23,9 +23,14 @@ class CreateHandler extends Handler
      */
     public function execute()
     {
-        if (Message::query()->create($this->request->all())) {
+        $this->validate($this->request, [], []);
+        $this->beginTransaction();
+        $data = $this->request->only([]);
+        if (Message::query()->create($data)) {
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('');
         } else {
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('');
         }
     }
