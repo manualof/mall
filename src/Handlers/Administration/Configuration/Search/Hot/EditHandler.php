@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Configuration\Search\Hot;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 
 /**
  * Class EditHandler.
@@ -22,6 +23,16 @@ class EditHandler extends Handler
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'id' => [
+                Rule::exists(''),
+                Rule::numeric(),
+                Rule::required(),
+            ],
+        ], [
+            'id.exists'   => '',
+            'id.numeric'  => '',
+            'id.required' => '',
+        ]);
     }
 }

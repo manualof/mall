@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Configuration\Search\Hot;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 
 /**
  * Class ListHandler.
@@ -22,6 +23,17 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
-        // TODO: Implement execute() method.
+        $this->validate($this->request, [
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
+        ], [
+            'order.in'         => '排序规则错误',
+            'page.numeric'     => '当前页面必须为数值',
+            'paginate.numeric' => '分页数必须为数值',
+        ]);
     }
 }
