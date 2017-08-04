@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Order\Exchange;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\OrderExchange;
 
 /**
@@ -23,11 +24,24 @@ class ConfirmHandler extends Handler
      */
     public function execute()
     {
-        $id = $this->request->input('id');
-        $exchange = OrderExchange::query()->find($id);
-        if ($exchange) {
+        $this->validate($this->request, [
+            'id' => [
+                Rule::exists('mall_order_exchanges'),
+                Rule::numeric(),
+                Rule::required(),
+            ],
+        ], [
+            'id.exists'   => '',
+            'id.numeric'  => '',
+            'id.required' => '',
+        ]);
+        $this->beginTransaction();
+        $exchange = OrderExchange::query()->find($this->request->input('id'));
+        if ($exchange instanceof OrderExchange && $exchange->update([])) {
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('');
         } else {
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('');
         }
     }
