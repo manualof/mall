@@ -570,6 +570,20 @@
         .pane {
             background: url("../images/semicircle.png") repeat-x;
         }
+        .used {
+            background-color: #f7f7f7;
+            border: 1px solid #de2634;
+            border-radius: 18px;
+            color: #de2634;
+            display: inline-block;
+            line-height: 30px;
+            width: 94px;
+            > li {
+                i {
+                    display: block;
+                }
+            }
+        }
         & > .pane {
             margin-bottom: 20px;
             margin-right: 20px;
@@ -611,21 +625,6 @@
                     font-size: 46px;
                     position: absolute;
                     right: 1px;
-                }
-                .use {
-                    background-color: #f7f7f7;
-                    border: 1px solid #de2634;
-                    border-radius: 18px;
-                    color: #de2634;
-                    display: inline-block;
-                    height: 32px;
-                    line-height: 30px;
-                    width: 94px;
-                    > li {
-                        i {
-                            display: block;
-                        }
-                    }
                 }
             }
         }

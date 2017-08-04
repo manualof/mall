@@ -477,8 +477,8 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <ul class="tab-pane fade in active clearfix" :class="{ used:true }" >
-                        <li class="pull-left pane pull-left" v-for="(coupon, index) in coupons" :key="index">
+                    <ul class="tab-pane fade in active clearfix">
+                        <li class="pull-left pane pull-left" :class="{ used:true }" v-for="(coupon, index) in coupons" :key="index">
                             <div class="coupons">
                                 <p class="text-center"><span class="symbol">￥</span>{{ coupon.money }}&nbsp;<span>{{ coupon.use }}</span></p>
                             </div>
