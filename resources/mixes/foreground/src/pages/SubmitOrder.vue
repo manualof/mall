@@ -477,8 +477,8 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <ul class="tab-pane fade in active clearfix" :class="{ used:used }" >
-                        <li class="pull-left pane pull-left" v-for="coupon in coupons">
+                    <ul class="tab-pane fade in active clearfix" :class="{ used:true }" >
+                        <li class="pull-left pane pull-left" v-for="(coupon, index) in coupons" :key="index">
                             <div class="coupons">
                                 <p class="text-center"><span class="symbol">￥</span>{{ coupon.money }}&nbsp;<span>{{ coupon.use }}</span></p>
                             </div>
@@ -487,8 +487,8 @@
                                     <li>品类限制：{{ coupon.type }}</li>
                                     <li>使用时间：{{ coupon.startTime }}-{{ coupon.endTime }}</li>
                                 </ul>
+                                <i class="iconfont icon icon-used-copy"></i>
                             </div>
-                            icon-finish
                         </li>
                     </ul>
                 </div>
