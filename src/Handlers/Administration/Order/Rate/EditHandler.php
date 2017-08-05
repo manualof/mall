@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Order\Rate;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductRate;
 
 /**
@@ -23,12 +24,30 @@ class EditHandler extends Handler
      */
     public function execute()
     {
-        $id = $this->request->input('id');
-        $rate = ProductRate::query()->find($id);
-        if ($rate && $rate->update($this->request->all())) {
-            $this->withCode(200)->withMessage('');
+        $this->validate($this->request, [
+            'comment' => Rule::required(),
+            'id'      => [
+                Rule::exists('mall_order_rates'),
+                Rule::numeric(),
+                Rule::required(),
+            ],
+        ], [
+            'comment.required' => '商品评价信息必须填写',
+            'id.exists'        => '没有对应的商品评价信息',
+            'id.numeric'       => '商品 ID 必须为数值',
+            'id.required'      => '商品 ID 必须填写',
+        ]);
+        $this->beginTransaction();
+        $rate = ProductRate::query()->find($this->request->input('id'));
+        $data = $this->request->only([
+            'comment',
+        ]);
+        if ($rate instanceof ProductRate && $rate->update($data)) {
+            $this->commitTransaction();
+            $this->withCode(200)->withMessage('更新商品评价信息成功！');
         } else {
-            $this->withCode(500)->withMessage('');
+            $this->rollBackTransaction();
+            $this->withCode(500)->withMessage('更新商品评价信息失败！');
         }
     }
 }
