@@ -35,10 +35,13 @@ class RemoveHandler extends Handler
             'id.numeric'  => '分类 ID 必须为数值',
             'id.required' => '分类 ID 必须填写',
         ]);
+        $this->beginTransaction();
         $product = ProductCategory::query()->find($this->request->input('id'));
         if ($product instanceof ProductCategory && $product->delete()) {
+            $this->commitTransaction();
             $this->withCode(200)->withMessage('删除商品成功！');
         } else {
+            $this->rollBackTransaction();
             $this->withCode(500)->withError('没有对应的商品信息！');
         }
     }
