@@ -102,7 +102,7 @@ class EditHandler extends Handler
             'user_id',
         ]);
         $store = Store::query()->find($this->request->input('id'));
-        if ($store instanceof Store && $store->update($data) && $store->information()->update($company)) {
+        if ($store instanceof Store && $store->update($data) && $store->getRelation('information')->update($company)) {
             $this->commitTransaction();
             $this->withCode(200)->withMessage('编辑店铺信息成功！');
         } else {

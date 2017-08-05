@@ -95,7 +95,7 @@ class CreateHandler extends Handler
             'status',
             'user_id',
         ]);
-        if (Store::query()->create($data)->information()->create($company)) {
+        if (Store::query()->create($data)->getRelation('information')->create($company)) {
             $this->commitTransaction();
             $this->withCode(200)->withMessage('创建店铺成功！');
         } else {

@@ -47,20 +47,17 @@ class ListHandler extends Handler
         $this->request->has('status') && $builder->where('status', $this->request->input('status'));
         $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
-        $this->withCode(200)
-            ->withData($builder->items())
-            ->withMessage('获取店铺列表成功！')
-            ->withExtra([
-                'pagination' => [
-                    'total'         => $builder->total(),
-                    'per_page'      => $builder->perPage(),
-                    'current_page'  => $builder->currentPage(),
-                    'last_page'     => $builder->lastPage(),
-                    'next_page_url' => $builder->nextPageUrl(),
-                    'prev_page_url' => $builder->previousPageUrl(),
-                    'from'          => $builder->firstItem(),
-                    'to'            => $builder->lastItem(),
-                ],
-            ]);
+        $this->withCode(200)->withData($builder->items())->withExtra([
+            'pagination' => [
+                'total'         => $builder->total(),
+                'per_page'      => $builder->perPage(),
+                'current_page'  => $builder->currentPage(),
+                'last_page'     => $builder->lastPage(),
+                'next_page_url' => $builder->nextPageUrl(),
+                'prev_page_url' => $builder->previousPageUrl(),
+                'from'          => $builder->firstItem(),
+                'to'            => $builder->lastItem(),
+            ],
+        ])->withMessage('获取店铺列表成功！');
     }
 }
