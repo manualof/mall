@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Dynamic;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreDynamic;
 
 /**
