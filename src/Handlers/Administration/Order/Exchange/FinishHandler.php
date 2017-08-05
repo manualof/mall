@@ -39,10 +39,10 @@ class FinishHandler extends Handler
         $exchange = OrderExchange::query()->find($this->request->input('id'));
         if ($exchange instanceof OrderExchange && $exchange->update([])) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('');
+            $this->withCode(200)->withMessage('商品换货订单结束成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('');
+            $this->withCode(500)->withError('商品换货订单结束失败！');
         }
     }
 }
