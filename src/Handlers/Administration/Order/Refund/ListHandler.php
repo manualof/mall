@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Administration\Order\Refund;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\OrderRefund;
 
 /**
@@ -23,7 +24,32 @@ class ListHandler extends Handler
      */
     protected function execute()
     {
+        $this->validate($this->request, [
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
+        ], [
+            'order.in'         => '排序规则错误',
+            'page.numeric'     => '当前页面必须为数值',
+            'paginate.numeric' => '分页数必须为数值',
+        ]);
         $builder = OrderRefund::query();
-        $this->withCode(200)->withData($builder->get())->withMessage('');
+        $builder->orderBy('created_at', $this->request->input('order', 'desc'));
+        $builder = $builder->paginate($this->request->input('paginate', 20));
+        $this->withCode(200)->withData($builder->items())->withExtra([
+            'pagination' => [
+                'total'         => $builder->total(),
+                'per_page'      => $builder->perPage(),
+                'current_page'  => $builder->currentPage(),
+                'last_page'     => $builder->lastPage(),
+                'next_page_url' => $builder->nextPageUrl(),
+                'prev_page_url' => $builder->previousPageUrl(),
+                'from'          => $builder->firstItem(),
+                'to'            => $builder->lastItem(),
+            ],
+        ])->withMessage('获取订单退货列表成功！');
     }
 }
