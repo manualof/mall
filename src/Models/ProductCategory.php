@@ -27,7 +27,7 @@ class ProductCategory extends Model
     protected $appends = [
         'breadcrumb',
         'level',
-        'path',
+//        'path',
     ];
 
     /**
