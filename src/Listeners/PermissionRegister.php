@@ -318,6 +318,13 @@ class PermissionRegister extends AbstractPermissionRegister
         ]);
         $this->manager->extend([
             'default'        => false,
+            'description'    => '列表权限',
+            'group'          => 'product-brand',
+            'identification' => 'list',
+            'module'         => 'mall-administration',
+        ]);
+        $this->manager->extend([
+            'default'        => false,
             'description'    => '删除权限',
             'group'          => 'product-brand',
             'identification' => 'remove',
