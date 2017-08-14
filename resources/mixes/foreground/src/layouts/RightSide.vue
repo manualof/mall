@@ -16,7 +16,7 @@
             </router-link>
         </li>
         <li @click="toTop" class="toTop" v-if="show">
-            <a class="text-center" href="javascript:void (0)">
+            <a class="text-center">
                 <p>TOP</p>
                 <i class="icon iconfont icon-top"> </i>
             </a>

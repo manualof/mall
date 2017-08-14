@@ -534,254 +534,110 @@
         padding-left: 20px;
         li {
             line-height: 30px;
+            text-align: center;
             width: 96px;
-            label {
-                height: 100%;
-                width: 100%;
-                input {
-                    display: none;
-                    &:checked {
-                        & + span {
-                            height: 100%;
-                            color: #de2634;
-                            position: relative;
-                            &:after {
-                                background: #de2634;
-                                bottom: 0;
-                                content: '';
-                                height: 2px;
-                                left: 0;
-                                position: absolute;
-                                width: 100%;
-                            }
-                        }
-                    }
-                    & + span {
-                        display: block;
-                        text-align: center;
-                        width: 100%;
-                    }
+            &.active {
+                color: #de2634;
+                position: relative;
+                &:after {
+                    background: #de2634;
+                    bottom: 0;
+                    content: '';
+                    height: 2px;
+                    left: 0;
+                    position: absolute;
+                    width: 100%;
                 }
             }
         }
     }
     .tab-pane {
         padding-top: 20px;
-        .pane {
-            background: url("../images/semicircle.png") repeat-x;
-        }
-        .used {
-            background-color: #f7f7f7;
-            border: 1px solid #de2634;
-            color: #de2634;
-            display: inline-block;
-            line-height: 30px;
-            width: 94px;
-            > li {
-                i {
-                    display: block;
-                }
-            }
-        }
-        & > .pane {
+        > .pane {
             margin-bottom: 20px;
             margin-right: 20px;
             width: 282px;
-            &:nth-child(3n+0) {
-                margin-right: 0;
-            }
-            .coupons {
-                color: #ffffff;
-                height: 66px;
-                position: relative;
-                p {
-                    &:first-child {
-                        font-size: 30px;
-                        padding-top: 10px;
+            > label {
+                width: 100%;
+                > input {
+                    display: none;
+                    &:checked + div {
+                        border: 1px solid #de2634;
+                        .coupons{
+                            > a {
+                                display: block;
+                            }
+                        }
+                        .coupons-info {
+                            > i {
+                                display: block;
+                            }
+                        }
                     }
+                }
+                .coupons {
+                    background: url("../images/semicircle1.png") repeat-x;
+                    background-position: left bottom;
+                    color: #ffffff;
+                    font-size: 30px;
+                    font-weight: bold;
+                    height: 70px;
+                    line-height: 70px;
+                    padding-left: 39px;
+                    position: relative;
                     .symbol {
                         font-size: 18px;
                     }
                     span {
                         font-size: 14px;
+                        font-weight: normal;
+                    }
+                    > a {
+                        color: #fff;
+                        display: none;
+                        font-size: 12px;
+                        font-weight: normal;
+                        line-height: 1;
+                        position: absolute;
+                        right: 11px;
+                        top: 10px;
                     }
                 }
-                > a {
-                    color: #fff;
-                    font-size: 12px;
-                    position: absolute;
-                    right: 11px;
-                    top: 11px;
+                .coupons-info {
+                    background-color: #f7f7f7;
+                    color: #999999;
+                    padding-bottom: 20px;
+                    padding-left: 21px;
+                    padding-top: 18px;
+                    position: relative;
+                    ul {
+                        li {
+                            padding-bottom: 16px;
+                        }
+                    }
+                    > i {
+                        bottom: -11px;
+                        color: #de2634;
+                        display: none;
+                        font-size: 46px;
+                        position: absolute;
+                        right: 0;
+                    }
                 }
             }
-            .coupons-info {
-                background-color: #f7f7f7;
-                padding-bottom: 20px;
-                padding-left: 21px;
-                padding-top: 18px;
-                position: relative;
-                ul {
-                    li {
-                        padding-bottom: 16px;
-                    }
+            &:nth-child(4n) {
+                margin-right: 0;
+            }
+            &.canuse {
+                .coupons {
+                    background: url("../images/semicircle.png") repeat-x;
+                    background-position: left bottom;
+                    box-sizing: border-box;
                 }
-                > i {
-                    bottom: 7px;
-                    color: #de2634;
-                    display: block;
-                    font-size: 46px;
-                    position: absolute;
-                    right: -1px;
+                .coupons-info {
+                    color: #666666;
                 }
             }
         }
     }
-}
-
-.order-btn {
-    background-color: #de2634;
-    border: 0 none;
-    color: #fff;
-    font-size: 14px;
-    height: 42px;
-    line-height: 42px;
-    text-align: center;
-    outline: none;
-    width: 140px;
-    &:hover {
-        color: #fff;
-    }
-}
-
-.ivu-select-arrow {
-    position: absolute;
-    top: 61%;
-    right: 20px;
-    line-height: 1;
-    margin-top: -7px;
-    font-size: 14px;
-    color: #9ea7b4;
-    transition: all 0.2s ease-in-out;
-}
-
-.ivu-select-selection .ivu-select-arrow:first-of-type {
-    display: none;
-    cursor: pointer;
-}
-
-.ivu-icon-arrow-down-b:before {
-    content: "\F104";
-}
-
-.ivu-cascader-arrow {
-    position: absolute;
-    top: 50%;
-    right: 8px;
-    line-height: 1;
-    margin-top: -7px;
-    font-size: 14px;
-    color: #9ea7b4;
-    transition: all 0.2s ease-in-out;
-    width: 12px;
-    height: 12px;
-}
-
-.ivu-select-selection {
-    display: block;
-    box-sizing: border-box;
-    outline: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    position: relative;
-    background-color: #fff;
-    border-radius: 4px;
-    border: 1px solid #dddee1;
-    transition: all .2s ease-in-out;
-}
-
-.ivu-select-visible .ivu-select-selection {
-    border-color: #57a3f3;
-    outline: 0;
-    box-shadow: 0 0 0 2px rgba(45, 140, 240, .2);
-}
-
-.ivu-select-dropdown {
-    width: inherit;
-    max-height: 200px;
-    overflow: auto;
-    margin: 5px 0;
-    padding: 5px 0;
-    background-color: #fff;
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
-    position: absolute;
-    z-index: 900;
-}
-
-.ivu-article .ivu-select ul {
-    padding-left: 0 !important;
-    list-style-type: none;
-}
-
-.ivu-article li:not([class^=ivu-]) {
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-.ivu-select-not-found li:not([class^=ivu-]) {
-    margin-bottom: 0;
-}
-
-.ivu-article .ivu-select ul {
-    padding-left: 0 !important;
-    list-style-type: none;
-}
-
-.ivu-select-item-focus, .ivu-select-item:hover {
-    background: #f3f3f3;
-}
-
-.ivu-select-item {
-    margin: 0;
-    line-height: normal;
-    padding: 7px 16px;
-    clear: both;
-    color: #495060;
-    font-size: 12px !important;
-    white-space: nowrap;
-    list-style: none;
-    cursor: pointer;
-    transition: background .2s ease-in-out;
-}
-
-.ivu-icon-arrow-down-b:before {
-    content: '';
-    border-width: 6px;
-    border-style: solid dashed dashed dashed;
-    border-color: #444444 transparent transparent transparent;
-    height: 0;
-    left: 4%;
-    position: absolute;
-    top: 36%;
-    width: 0
-}
-
-.notNeed {
-    background: none;
-    border: 1px solid #e5e5e5;
-    color: #444444;
-    font-size: 14px;
-    margin-left: 10px;
-    &:hover {
-        color: #444444;
-    }
-}
-
-.submit-btn {
-    float: right;
-    margin-top: 20px;
 }

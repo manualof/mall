@@ -1,4 +1,3 @@
-
 <script>
     import { Select, Option, OptionGroup } from 'iview/src/components/select';
     import Modal from '../components/Modal.vue';
@@ -24,6 +23,7 @@
         },
         data() {
             return {
+                activeTab: 1,
                 address: {
                     name: '',
                     phone: '',
@@ -74,6 +74,7 @@
                 ],
                 coupons: [
                     {
+                        canuse: true,
                         endTime: '2017.12.1',
                         money: 50.00,
                         other: '无',
@@ -82,6 +83,16 @@
                         use: '满399元可用',
                     },
                     {
+                        canuse: true,
+                        endTime: '2017.12.1',
+                        money: 50.00,
+                        other: '无',
+                        startTime: '5016.12.12',
+                        type: '户外运动',
+                        use: '满399元可用',
+                    },
+                    {
+                        canuse: false,
                         endTime: '2017.12.1',
                         money: 50.00,
                         other: '无',
@@ -234,6 +245,9 @@
                 this.addressSelect.push(this.address);
                 this.addStatus = 1;
             },
+            switchUseOffer(index) {
+                this.activeTab = index;
+            },
         },
     };
 </script>
@@ -247,7 +261,8 @@
                 </div>
                 <div class="address-selected">
                     <h5>收货人信息</h5>
-                    <div class="address-list" v-if="addStatus === 1" v-for="(item, index) in addressSelect">
+                    <div class="address-list" v-if="addStatus === 1" v-for="(item, index) in addressSelect"
+                         :key="index">
                         <label class="form-control-radio">
                             <input type="radio" name="address" :checked="index == 0">
                             <div class="address clearfix">
@@ -257,7 +272,7 @@
                                     <span class="address-detail">{{ item.address }}</span>
                                     <i v-if="item.isdefault">默认地址</i>
                                     <span class="pull-right" v-if="item.isdefault === false">
-                                        <span @click="editDefault(item)" >设为默认地址</span>
+                                        <span @click="editDefault(item)">设为默认地址</span>
                                         <span>编辑</span>
                                         <span>删除</span>
                                     </span>
@@ -317,7 +332,7 @@
             <div class="address-selected self-take-select">
                 <h5>使用自提门店</h5>
                 <div>
-                    <label class="form-control-radio" v-for="take in selfTake">
+                    <label class="form-control-radio" v-for="(take, index) in selfTake" :key="index">
                         <input type="radio" name="address">
                         <div class="address clearfix">
                             <p>
@@ -330,8 +345,8 @@
                     </label>
                 </div>
                 <a class="select-btn add-self-take"
-                    @click="addSelfTake"
-                    v-if="selfTake.length === 0">+添加自提点</a>
+                   @click="addSelfTake"
+                   v-if="selfTake.length === 0">+添加自提点</a>
                 <modal ref="modal">
                     <div slot="title">
                         <h4 class="modal-title" v-text="modalTitle"></h4>
@@ -360,10 +375,10 @@
                                           :data="data"
                                           v-model="newSelfTake.address">
                                 </cascader>
-                                <Select v-model="newSelfTake.city"  style="width:200px">
-                                    <Option v-for="item in cityList"
+                                <Select v-model="newSelfTake.city" style="width:200px">
+                                    <Option v-for="(item, index) in cityList"
                                             :value="item.value"
-                                            :key="item">
+                                            :key="index">
                                         {{ item.label }}
                                     </Option>
                                 </Select>
@@ -373,13 +388,14 @@
                     <button type="button"
                             class="order-btn"
                             @click="selfTakeAdd"
-                            slot="save_address">保存门店</button>
+                            slot="save_address">保存门店
+                    </button>
                 </modal>
             </div>
             <div class="pay-method">
                 <h5 class="select-title">支付方式</h5>
                 <div class="methods">
-                    <label class="form-control-radio" v-for="method in methods">
+                    <label class="form-control-radio" v-for="(method, index) in methods" :key="index">
                         <input type="radio" name="method">
                         <span>{{ method.name }}</span>
                     </label>
@@ -408,9 +424,9 @@
                             <div class="signup-form-group clearfix">
                                 <label class="form-title">发票抬头</label>
                                 <Select v-model="invoice.title" class="invoice-select" style="width:200px">
-                                    <Option v-for="item in cityList"
+                                    <Option v-for="(item, index) in cityList"
                                             :value="item.value"
-                                            :key="item">
+                                            :key="index">
                                         {{ item.label }}
                                     </Option>
                                 </Select>
@@ -424,11 +440,13 @@
                     <button type="button"
                             @click="closeInvoice"
                             class="order-btn"
-                            slot="save_address">保存发票信息</button>
+                            slot="save_address">保存发票信息
+                    </button>
                     <button type="button"
                             @click="notNeedInvoice"
                             class="order-btn notNeed"
-                            slot="save_address">不需要发票</button>
+                            slot="save_address">不需要发票
+                    </button>
                 </modal>
             </div>
             <div class="ensure-information">
@@ -440,7 +458,7 @@
                     <li class="pull-left text-center">金额</li>
                 </ul>
                 <ul class="product-list">
-                    <li v-for="order in submitOrder.productList">
+                    <li v-for="(order, index) in submitOrder.productList" :key="index">
                         <h5>店铺{{ order.shop }}</h5>
                         <ul class="order-detail clearfix">
                             <li class="pull-left clearfix">
@@ -455,42 +473,44 @@
                             <li class="pull-left text-center">￥{{ order.price * order.num }}</li>
                         </ul>
                         <div>
-                            买家留言： <input class="form-control"
-                                         type="text"
-                                         placeholder="限50字（对本次交易的说明，建议填写已经和商家达成一致的说明）">
+                            买家留言：
+                            <input class="form-control"
+                                   type="text"
+                                   placeholder="限50字（对本次交易的说明，建议填写已经和商家达成一致的说明）">
                         </div>
                     </li>
                 </ul>
                 <p class="select-title">使用优惠/积分</p>
                 <ul class="select-offer clearfix">
-                    <li class="pull-left">
-                        <label class="form-control-radio">
-                            <input type="radio" name="method">
-                            <span>优惠券</span>
-                        </label>
+                    <li class="pull-left" :class="{active:activeTab===1}" @click="switchUseOffer(1)">
+                        优惠券
                     </li>
-                    <li class="pull-left">
-                        <label class="form-control-radio">
-                            <input type="radio" name="method">
-                            <span>积分</span>
-                        </label>
+                    <li class="pull-left" :class="{active:activeTab===2}" @click="switchUseOffer(2)">
+                        积分
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <ul class="tab-pane fade in active clearfix">
-                        <li class="pull-left pane pull-left" :class="{ used:true }" v-for="(coupon, index) in coupons" :key="index">
+                    <ul class="tab-pane fade in active clearfix" v-if="activeTab === 1">
+                        <li class="pull-left pane pull-left"
+                            :class="{canuse:coupon.canuse}"
+                            v-for="(coupon, index) in coupons"
+                            :key="index">
                             <label>
-                                <input type="radio">
-                                <div class="coupons">
-                                    <p class="text-center"><span class="symbol">￥</span>{{ coupon.money }}&nbsp;<span>{{ coupon.use }}</span></p>
-                                    <a>取消使用</a>
-                                </div>
-                                <div class="coupons-info text-center">
-                                    <ul class="text-left">
-                                        <li>品类限制：{{ coupon.type }}</li>
-                                        <li>使用时间：{{ coupon.startTime }}-{{ coupon.endTime }}</li>
-                                    </ul>
-                                    <i class="iconfont icon icon-used-copy"></i>
+                                <input type="radio" :disabled="coupon.canuse === false" name="offer">
+                                <div>
+                                    <div class="coupons">
+                                        <span class="symbol">￥</span>
+                                        {{ coupon.money }}&nbsp;
+                                        <span>{{ coupon.use }}</span>
+                                        <a>取消使用</a>
+                                    </div>
+                                    <div class="coupons-info text-center">
+                                        <ul class="text-left">
+                                            <li>品类限制：{{ coupon.type }}</li>
+                                            <li>使用时间：{{ coupon.startTime }}-{{ coupon.endTime }}</li>
+                                        </ul>
+                                        <i class="iconfont icon icon-used-copy"></i>
+                                    </div>
                                 </div>
                             </label>
                         </li>
