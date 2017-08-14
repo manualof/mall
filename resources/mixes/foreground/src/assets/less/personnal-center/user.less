@@ -53,7 +53,6 @@
         }
     }
     > .content {
-        margin-top: 20px;
         .content-left {
             width: 602px;
         }
@@ -61,6 +60,7 @@
             width: 384px;
         }
         .content-block {
+            margin-top: 20px;
             .block-head {
                 border-bottom: 1px solid #e5e5e5;
                 line-height: 32px;
@@ -117,6 +117,27 @@
                         line-height: 48px;
                         width: 66px;
                         .text-center();
+                    }
+                }
+            }
+            .collects {
+                margin-top: 10px;
+                li {
+                    margin-right: 22px;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    img {
+                        height: 134px;
+                        width: 134px;
+                    }
+                    p {
+                        margin-top: 9px;
+                        &:last-child {
+                            color: #de2634;
+                            margin-top: 5px;
+                            .text-center();
+                        }
                     }
                 }
             }

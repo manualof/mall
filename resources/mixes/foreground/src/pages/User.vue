@@ -6,8 +6,30 @@
         data() {
             return {
                 user: {
-                    integral: 3264,
+                    collects: [
+                        {
+                            img: computer,
+                            name: 'Purrfect diary 咕噜日',
+                            price: 6533.00,
+                        },
+                        {
+                            img: computer,
+                            name: 'Purrfect diary 咕噜日',
+                            price: 6533.00,
+                        },
+                        {
+                            img: computer,
+                            name: 'Purrfect diary 咕噜日',
+                            price: 6533.00,
+                        },
+                        {
+                            img: computer,
+                            name: 'Purrfect diary 咕噜日',
+                            price: 6533.00,
+                        },
+                    ],
                     headImg: head,
+                    integral: 3264,
                     name: 'yonghuming',
                     level: '金牌会员',
                     order: {
@@ -90,6 +112,21 @@
                             </div>
                             <div class="price pull-left">￥{{ transaction.price }}</div>
                             <router-link class="pull-left" to="">查看</router-link>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <div class="block-head clearfix">
+                        <h5 class="pull-left">我的收藏</h5>
+                        <router-link class="pull-right" to="/mall/user/my-collect">
+                            查看更多>
+                        </router-link>
+                    </div>
+                    <ul class="collects clearfix">
+                        <li class="pull-left" v-for="(collect, index) in user.collects" :key="index">
+                            <img :src="collect.img" alt="">
+                            <p>{{ collect.name }}</p>
+                            <p>￥{{ collect.price.toFixed(2) }}</p>
                         </li>
                     </ul>
                 </div>
