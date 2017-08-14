@@ -1,11 +1,9 @@
 <script>
     import SplinLine from '../components/SplinLine.vue';
-    import NeedBrowse from '../components/NeedBrowse.vue';
     import productImg from '../assets/images/img_06.png';
 
     export default {
         components: {
-            NeedBrowse,
             SplinLine,
         },
         computed: {
@@ -57,7 +55,7 @@
             return {
                 isAllChecked: false,
                 loading: true,
-                login: false,
+                login: true,
                 productList: [
                     {
                         name: '母婴',
@@ -183,16 +181,19 @@
             },
             deleteSelected() {
                 const self = this;
-                for (const a in self.productList) {
+                Object.keys(self.productList).forEach(a => {
                     if (self.productList[a].selected) {
+                        window.console.log(self.productList[a]);
                         self.productList.splice(a, 1);
+                    } else {
+                        Object.keys(self.productList[a].products).forEach(i => {
+                            window.console.log(self.productList[a]);
+                            if (self.productList[a].products[i].selected) {
+                                self.productList[a].products.splice(i, 1);
+                            }
+                        });
                     }
-                    for (const i in self.productList[a].products) {
-                        if (self.productList[a].products[i].selected) {
-                            self.productList[a].products.splice(i, 1);
-                        }
-                    }
-                }
+                });
             },
             plus(item) {
                 item.num += 1;
@@ -238,7 +239,7 @@
                 <div class="icon iconfont icon-gouwuche pull-left"></div>
                 <div class="pull-left no-product-text">
                     <p>购物车里什么都没有哦~</p>
-                    <router-link to="/mall/signin" v-if="login === false">登录</router-link>
+                    <router-link class="login" to="/mall/signin" v-if="login === false">登录</router-link>
                     <router-link to="/mall/search">去逛逛>></router-link>
                 </div>
             </div>
@@ -326,7 +327,7 @@
                                     </div>
                                 </td>
                                 <td class="td-img">
-                                    <router-link to="/product-details">
+                                    <router-link to="/mall/search/product-details">
                                         <img :src="product.img" alt="">
                                     </router-link>
                                 </td>
@@ -400,7 +401,6 @@
                     </table>
                 </div>
             </div>
-            <need-browse></need-browse>
         </div>
         <splin-line v-if="loading"></splin-line>
     </div>
