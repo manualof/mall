@@ -573,7 +573,6 @@
         .used {
             background-color: #f7f7f7;
             border: 1px solid #de2634;
-            border-radius: 18px;
             color: #de2634;
             display: inline-block;
             line-height: 30px;
@@ -594,6 +593,7 @@
             .coupons {
                 color: #ffffff;
                 height: 66px;
+                position: relative;
                 p {
                     &:first-child {
                         font-size: 30px;
@@ -605,6 +605,13 @@
                     span {
                         font-size: 14px;
                     }
+                }
+                > a {
+                    color: #fff;
+                    font-size: 12px;
+                    position: absolute;
+                    right: 11px;
+                    top: 11px;
                 }
             }
             .coupons-info {
@@ -619,12 +626,12 @@
                     }
                 }
                 > i {
-                    bottom: -10px;
+                    bottom: 7px;
                     color: #de2634;
                     display: block;
                     font-size: 46px;
                     position: absolute;
-                    right: 1px;
+                    right: -1px;
                 }
             }
         }

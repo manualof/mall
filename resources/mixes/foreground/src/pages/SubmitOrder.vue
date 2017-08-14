@@ -479,16 +479,20 @@
                 <div class="tab-content">
                     <ul class="tab-pane fade in active clearfix">
                         <li class="pull-left pane pull-left" :class="{ used:true }" v-for="(coupon, index) in coupons" :key="index">
-                            <div class="coupons">
-                                <p class="text-center"><span class="symbol">￥</span>{{ coupon.money }}&nbsp;<span>{{ coupon.use }}</span></p>
-                            </div>
-                            <div class="coupons-info text-center">
-                                <ul class="text-left">
-                                    <li>品类限制：{{ coupon.type }}</li>
-                                    <li>使用时间：{{ coupon.startTime }}-{{ coupon.endTime }}</li>
-                                </ul>
-                                <i class="iconfont icon icon-used-copy"></i>
-                            </div>
+                            <label>
+                                <input type="radio">
+                                <div class="coupons">
+                                    <p class="text-center"><span class="symbol">￥</span>{{ coupon.money }}&nbsp;<span>{{ coupon.use }}</span></p>
+                                    <a>取消使用</a>
+                                </div>
+                                <div class="coupons-info text-center">
+                                    <ul class="text-left">
+                                        <li>品类限制：{{ coupon.type }}</li>
+                                        <li>使用时间：{{ coupon.startTime }}-{{ coupon.endTime }}</li>
+                                    </ul>
+                                    <i class="iconfont icon icon-used-copy"></i>
+                                </div>
+                            </label>
                         </li>
                     </ul>
                 </div>
