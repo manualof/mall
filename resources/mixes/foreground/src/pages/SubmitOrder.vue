@@ -231,6 +231,11 @@
 //                        phone: 12345676543,
 //                    },
                 ],
+                selfIntegral: {
+                    deductibleAmount: 6.00,
+                    integral: 3014,
+                    useIntegral: '',
+                },
                 submitOrder: {
                     integral_num: 1660,
                     integral_price: 16.6,
@@ -537,8 +542,8 @@
                         积分
                     </li>
                 </ul>
-                <div class="tab-content">
-                    <ul class="tab-pane fade in active clearfix" v-if="activeTab === 1">
+                <div class="tab-content" v-if="activeTab === 1">
+                    <ul class="tab-pane fade in active clearfix">
                         <li class="pull-left pane pull-left"
                             :class="{canuse:coupon.canuse}"
                             v-for="(coupon, index) in coupons"
@@ -569,6 +574,16 @@
                     <div class="totalCoupon">
                         使用优惠券{{ selectedOfferNum }}张
                         <span>优惠金额 <b>￥{{ selectedOfferPrice }}</b></span>
+                    </div>
+                </div>
+                <div class="tab-content integral" v-if="activeTab === 2">
+                    <span>账户共&nbsp;<b>{{ selfIntegral.integral }}</b>&nbsp;积分</span>
+                    本次使用 &nbsp;
+                    <input class="form-control" type="number" v-model.number="selfIntegral.useIntegral">
+                    &nbsp;抵扣 <i>￥{{ selfIntegral.deductibleAmount }}</i>
+                    <div class="totalCoupon totalIntegral">
+                        使用{{ selfIntegral.useIntegral }}积分
+                        <span>抵扣金额 <b>￥{{ selfIntegral.deductibleAmount }}</b></span>
                     </div>
                 </div>
                 <div class="order-submit submit-btn">
