@@ -28,6 +28,44 @@
                             price: 6533.00,
                         },
                     ],
+                    cart: [
+                        {
+                            color: '白色',
+                            img: computer,
+                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱',
+                            price: 39.9,
+                        },
+                        {
+                            color: '白色',
+                            img: computer,
+                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱',
+                            price: 39.9,
+                        },
+                        {
+                            color: '白色',
+                            img: computer,
+                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱',
+                            price: 39.9,
+                        },
+                    ],
+                    footprint: [
+                        {
+                            img: computer,
+                            price: 39.9,
+                        },
+                        {
+                            img: computer,
+                            price: 39.9,
+                        },
+                        {
+                            img: computer,
+                            price: 39.9,
+                        },
+                        {
+                            img: computer,
+                            price: 39.9,
+                        },
+                    ],
                     headImg: head,
                     integral: 3264,
                     name: 'yonghuming',
@@ -133,9 +171,34 @@
             </div>
             <div class="content-right pull-right">
                 <div class="content-block">
-                    <div class="block-head">
-
+                    <div class="block-head clearfix">
+                        <h5 class="pull-left">购物车</h5>
+                        <router-link class="pull-right" to="/mall/cart-settlement">
+                            查看更多>
+                        </router-link>
                     </div>
+                    <ul class="shopping-cart">
+                        <li class="clearfix" v-for="(item, index) in user.cart" :key="index">
+                            <img class="pull-left" :src="item.img" alt="">
+                            <div class="pull-left">
+                                <p>{{ item.name }}&nbsp;颜色：{{ item.color }}</p>
+                                <p>价格 <i class="price"> ￥{{ item.price }}</i></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <div class="block-head clearfix">
+                        <h5 class="pull-left">我的足迹</h5>
+                        <router-link class="pull-right" to="/mall/user/footprint">
+                            查看更多>
+                        </router-link>
+                    </div>
+                    <ul class="clearfix footprint">
+                        <li class="pull-left" v-for="(item,index) in footprint">
+
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
