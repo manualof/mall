@@ -1,5 +1,5 @@
 <script>
-    import image1 from '../assets/images/img_07.png';
+    import image1 from '../assets/images/head.png';
 
     export default {
         data() {
