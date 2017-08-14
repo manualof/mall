@@ -309,8 +309,8 @@
                     border: solid 1px #e5e5e5;
                     padding: 16px 20px;
                     li {
-                        color: #999999;
-                        font-size: 12px;
+                        color: #666;
+                        font-size: 14px;
                         line-height: 38px;
                         &:first-child {
                             width: 608px;
@@ -340,6 +340,10 @@
                         &:nth-child(n+2) {
                             line-height: 1;
                             padding-top: 4px;
+                        }
+                        &.price {
+                            color: #de2634;
+                            font-weight: 500;
                         }
                     }
                 }
@@ -533,6 +537,7 @@
         margin-top: 10px;
         padding-left: 20px;
         li {
+            box-sizing: border-box;
             line-height: 30px;
             text-align: center;
             width: 96px;
@@ -552,8 +557,9 @@
         }
     }
     .tab-pane {
-        padding-top: 20px;
+        padding-top: 10px;
         > .pane {
+            height: 174px;
             margin-bottom: 20px;
             margin-right: 20px;
             width: 282px;
@@ -636,6 +642,20 @@
                 }
                 .coupons-info {
                     color: #666666;
+                }
+            }
+        }
+        & + .totalCoupon {
+            background: #f7f7f7;
+            height: 40px;
+            font-size: 12px;
+            line-height: 40px;
+            padding-left: 20px;
+            span {
+                margin-left: 20px;
+                b {
+                    color: #de2634;
+                    margin-left: 10px;
                 }
             }
         }

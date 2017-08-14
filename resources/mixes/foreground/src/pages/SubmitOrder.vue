@@ -20,6 +20,31 @@
                 });
                 return totalPrice.toFixed(2);
             },
+            selectedOfferNum() {
+                let num = 0;
+                this.coupons.forEach(item => {
+                    if (item.selected) {
+                        num += 1;
+                    }
+                });
+                return num;
+            },
+            selectedOfferPrice() {
+                let money = 0;
+                this.coupons.forEach(item => {
+                    if (item.selected) {
+                        money += item.money;
+                    }
+                });
+                return money.toFixed(2);
+            },
+            productNum() {
+                let num = 0;
+                this.submitOrder.productList.forEach(item => {
+                    num += item.num;
+                });
+                return num;
+            },
         },
         data() {
             return {
@@ -78,6 +103,7 @@
                         endTime: '2017.12.1',
                         money: 50.00,
                         other: '无',
+                        selected: false,
                         startTime: '5016.12.12',
                         type: '户外运动',
                         use: '满399元可用',
@@ -87,6 +113,17 @@
                         endTime: '2017.12.1',
                         money: 50.00,
                         other: '无',
+                        selected: false,
+                        startTime: '5016.12.12',
+                        type: '户外运动',
+                        use: '满399元可用',
+                    },
+                    {
+                        canuse: true,
+                        endTime: '2017.12.1',
+                        money: 50.00,
+                        other: '无',
+                        selected: false,
                         startTime: '5016.12.12',
                         type: '户外运动',
                         use: '满399元可用',
@@ -96,6 +133,17 @@
                         endTime: '2017.12.1',
                         money: 50.00,
                         other: '无',
+                        selected: false,
+                        startTime: '5016.12.12',
+                        type: '户外运动',
+                        use: '满399元可用',
+                    },
+                    {
+                        canuse: false,
+                        endTime: '2017.12.1',
+                        money: 50.00,
+                        other: '无',
+                        selected: false,
                         startTime: '5016.12.12',
                         type: '户外运动',
                         use: '满399元可用',
@@ -470,7 +518,7 @@
                             </li>
                             <li class="pull-left text-center">￥{{ order.price }}</li>
                             <li class="pull-left text-center">{{ order.num }}</li>
-                            <li class="pull-left text-center">￥{{ order.price * order.num }}</li>
+                            <li class="pull-left text-center price">￥{{ order.price * order.num }}</li>
                         </ul>
                         <div>
                             买家留言：
@@ -496,7 +544,10 @@
                             v-for="(coupon, index) in coupons"
                             :key="index">
                             <label>
-                                <input type="radio" :disabled="coupon.canuse === false" name="offer">
+                                <input type="checkbox"
+                                       :disabled="coupon.canuse === false"
+                                       v-model="coupon.selected"
+                                       name="offer">
                                 <div>
                                     <div class="coupons">
                                         <span class="symbol">￥</span>
@@ -515,15 +566,23 @@
                             </label>
                         </li>
                     </ul>
+                    <div class="totalCoupon">
+                        使用优惠券{{ selectedOfferNum }}张
+                        <span>优惠金额 <b>￥{{ selectedOfferPrice }}</b></span>
+                    </div>
                 </div>
                 <div class="order-submit submit-btn">
+                    <div class="order-submit-content clearfix">
+                        <span class="order-price price">&yen;{{ total_price}}</span>
+                        <span class="name">{{ productNum }}件商品&nbsp;(不含运费)：</span>
+                    </div>
                     <div class="order-submit-content clearfix">
                         <span class="order-price">-&yen;{{ submitOrder.freight }}</span>
                         <span class="name">运费：</span>
                     </div>
                     <div class="order-submit-content clearfix">
-                        <span class="order-price price">&yen;{{ total_price}}</span>
-                        <span class="name">金额(不含运费)：</span>
+                        <span class="order-price">-&yen;{{ selectedOfferPrice }}</span>
+                        <span class="name">商品优惠：</span>
                     </div>
                     <router-link to="/mall/order-success" class="order-btn submit-btn">提交订单</router-link>
                 </div>
