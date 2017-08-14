@@ -162,9 +162,11 @@
                     </div>
                     <ul class="collects clearfix">
                         <li class="pull-left" v-for="(collect, index) in user.collects" :key="index">
-                            <img :src="collect.img" alt="">
-                            <p>{{ collect.name }}</p>
-                            <p>￥{{ collect.price.toFixed(2) }}</p>
+                            <router-link to="/mall/search/product-details">
+                                <img :src="collect.img" alt="">
+                                <p>{{ collect.name }}</p>
+                                <p>￥{{ collect.price.toFixed(2) }}</p>
+                            </router-link>
                         </li>
                     </ul>
                 </div>
@@ -179,11 +181,13 @@
                     </div>
                     <ul class="shopping-cart">
                         <li class="clearfix" v-for="(item, index) in user.cart" :key="index">
-                            <img class="pull-left" :src="item.img" alt="">
-                            <div class="pull-left">
-                                <p>{{ item.name }}&nbsp;颜色：{{ item.color }}</p>
-                                <p>价格 <i class="price"> ￥{{ item.price }}</i></p>
-                            </div>
+                            <router-link to="/mall/search/product-details">
+                                <img class="pull-left" :src="item.img" alt="">
+                                <div class="pull-left">
+                                    <p>{{ item.name }}&nbsp;颜色：{{ item.color }}</p>
+                                    <p>价格 <i class="price"> ￥{{ item.price }}</i></p>
+                                </div>
+                            </router-link>
                         </li>
                     </ul>
                 </div>
@@ -196,8 +200,10 @@
                     </div>
                     <ul class="clearfix footprint">
                         <li class="pull-left" v-for="(item,index) in user.footprint">
-                            <img :src="item.img" alt="">
-                            <p>￥{{ item.price }}</p>
+                            <router-link to="/mall/search/product-details">
+                                <img :src="item.img" alt="">
+                                <p>￥{{ item.price }}</p>
+                            </router-link>
                         </li>
                     </ul>
                 </div>
