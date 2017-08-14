@@ -195,8 +195,9 @@
                         </router-link>
                     </div>
                     <ul class="clearfix footprint">
-                        <li class="pull-left" v-for="(item,index) in footprint">
-
+                        <li class="pull-left" v-for="(item,index) in user.footprint">
+                            <img :src="item.img" alt="">
+                            <p>￥{{ item.price }}</p>
                         </li>
                     </ul>
                 </div>
