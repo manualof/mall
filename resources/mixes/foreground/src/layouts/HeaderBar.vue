@@ -13,7 +13,7 @@
                         <router-link to="/mall/user/all-order" target="_blank">我的订单</router-link>
                         <span>|</span>
                     </li>
-                    <li :class="{ 'active': $route.path === '/mall/user/personnal-center' }">
+                    <li :class="{ 'active': $route.path === '/mall/user' }">
                         <router-link to="/mall/user/personnal-center" target="_blank">个人中心</router-link>
                         <span>|</span>
                     </li>
