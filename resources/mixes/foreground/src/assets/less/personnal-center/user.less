@@ -52,4 +52,74 @@
             }
         }
     }
+    > .content {
+        margin-top: 20px;
+        .content-left {
+            width: 602px;
+        }
+        .content-right {
+            width: 384px;
+        }
+        .content-block {
+            .block-head {
+                border-bottom: 1px solid #e5e5e5;
+                line-height: 32px;
+                h5 {
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 32px;
+                    padding-left: 12px;
+                    position: relative;
+                    &:before {
+                        background: #de2634;
+                        content: '';
+                        height: 16px;
+                        left: 0;
+                        margin-top: -8px;
+                        position: absolute;
+                        top: 50%;
+                        width: 2px;
+                    }
+                }
+            }
+            .transactions {
+                li {
+                    border: 1px solid #e5e5e5;
+                    margin-top: 10px;
+                    padding: 16px 20px;
+                    img {
+                        height: 48px;
+                        width: 48px;
+                        & + div {
+                            width: 275px;
+                            margin-left: 10px;
+                            p {
+                                &:first-child {
+                                    margin-top: 5px;
+                                }
+                                &:last-child {
+                                    margin-top: 8px;
+                                }
+                            }
+                        }
+                    }
+                    > .price {
+                        color: #666666;
+                        font-weight: normal;
+                        font-size: 12px;
+                        line-height: 48px;
+                        width: 160px;
+                        .text-center();
+                    }
+                    > a {
+                        color: #55b7ea;
+                        display: block;
+                        line-height: 48px;
+                        width: 66px;
+                        .text-center();
+                    }
+                }
+            }
+        }
+    }
 }

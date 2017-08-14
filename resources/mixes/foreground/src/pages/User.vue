@@ -1,5 +1,6 @@
 <script>
     import head from '../assets/images/head.png';
+    import computer from '../assets/images/computer.png';
 
     export default {
         data() {
@@ -15,6 +16,29 @@
                         unReceipt: 4,
                         unEvaluate: 10,
                     },
+                    transactions: [
+                        {
+                            color: '白色',
+                            created_at: '2017.06.11 12:30:51',
+                            img: computer,
+                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱',
+                            price: 39.9,
+                        },
+                        {
+                            color: '白色',
+                            created_at: '2017.06.11 12:30:51',
+                            img: computer,
+                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱',
+                            price: 39.9,
+                        },
+                        {
+                            color: '白色',
+                            created_at: '2017.06.11 12:30:51',
+                            img: computer,
+                            name: 'Purrfect diary 咕噜日记1-7岁儿童可爱',
+                            price: 39.9,
+                        },
+                    ],
                 },
             };
         },
@@ -47,6 +71,36 @@
                     <p>{{ user.order.unEvaluate }}</p>
                 </li>
             </ul>
+        </div>
+        <div class="content clearfix">
+            <div class="content-left pull-left">
+                <div class="content-block">
+                    <div class="block-head clearfix">
+                        <h5 class="pull-left">交易提醒</h5>
+                        <router-link class="pull-right" to="">
+                            查看更多>
+                        </router-link>
+                    </div>
+                    <ul class="transactions">
+                        <li class="clearfix" v-for="(transaction,index) in user.transactions" :key="index">
+                            <img class="pull-left" :src="transaction.img" alt="">
+                            <div class="pull-left">
+                                <p>{{ transaction.name }}&nbsp;颜色：{{ transaction.color }}</p>
+                                <p>{{ transaction.created_at }}</p>
+                            </div>
+                            <div class="price pull-left">￥{{ transaction.price }}</div>
+                            <router-link class="pull-left" to="">查看</router-link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-right pull-right">
+                <div class="content-block">
+                    <div class="block-head">
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
