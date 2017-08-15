@@ -6,9 +6,40 @@
             FooterBar,
         },
         data() {
+            const reg = /^1[3|4|5|7|8][0-9]\d{8}$/;
+            const validatorPhone = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('手机号不能为空'));
+                } else if (!reg.test(value)) {
+                    callback(new Error('请输入正确手机号'));
+                } else {
+                    callback();
+                }
+            };
+            const validatePass = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请输入密码'));
+                } else {
+                    if (this.signUpData.passwordAgain !== '') {
+                        // 对第二个密码框单独验证
+                        this.$refs.signUpData.validateField('passwordAgain');
+                    }
+                    callback();
+                }
+            };
+            const validatePassCheck = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请再次输入密码'));
+                } else if (value !== this.signUpData.password) {
+                    callback(new Error('两次输入密码不一致!'));
+                } else {
+                    callback();
+                }
+            };
             return {
                 countdownStart: false,
                 countdown: 60,
+                loading: false,
                 signUpData: {
                     email: '',
                     password: '',
@@ -28,14 +59,38 @@
                     password: [
                         {
                             required: true,
-                            message: '请填写密码',
+                            trigger: 'blur',
+                            validator: validatePass,
+                        },
+                    ],
+                    passwordAgain: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            type: 'number',
+                            validator: validatePassCheck,
+                        },
+                    ],
+                    phone: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            type: 'number',
+                            validator: validatorPhone,
+                        },
+                    ],
+                    code: [
+                        {
+                            required: true,
+                            message: '请填写验证码',
                             trigger: 'blur',
                         },
+                    ],
+                    agree: [
                         {
-                            type: 'string',
-                            min: 6,
-                            message: '密码长度不能小于6位',
-                            trigger: 'blur',
+                            required: true,
+                            message: '您还没有同意协议条款',
+                            trigger: 'change',
                         },
                     ],
                 },
@@ -58,23 +113,23 @@
                 <router-link to="/signin">已有账号？点击登录</router-link>
             </div>
             <i-form class="signup-form" ref="signUpForm" :model="signUpData" :rules="signUpRule">
-                <form-item prop="account" label="邮箱账号">
+                <form-item prop="email" label="邮箱账号">
                     <i-input class="signup-form-group signup-form-control" type="text" v-model="signUpData.email">
                     </i-input>
                 </form-item>
-                <form-item prop="account" label="密码">
-                    <i-input class="signup-form-group signup-form-control" type="text" v-model="signUpData.password">
+                <form-item prop="password" label="密码">
+                    <i-input class="signup-form-group signup-form-control" type="password" v-model="signUpData.password">
                     </i-input>
                 </form-item>
-                <form-item prop="account" label="确认密码">
-                    <i-input class="signup-form-group signup-form-control" type="text" v-model="signUpData.passwordAgain">
+                <form-item prop="passwordAgain" label="确认密码">
+                    <i-input class="signup-form-group signup-form-control" type="password" v-model="signUpData.passwordAgain">
                     </i-input>
                 </form-item>
-                <form-item prop="account" label="手机号">
+                <form-item prop="phone" label="手机号">
                     <i-input class="signup-form-group signup-form-control" type="text" v-model="signUpData.phone">
                     </i-input>
                 </form-item>
-                <form-item prop="account" label="验证码">
+                <form-item prop="code" label="验证码">
                     <i-input  class="signup-form-group signup-form-control signup-form-code" type="text" v-model="signUpData.code">
                     </i-input>
                     <div class="signup-form-control signup-form-obtain-code">
@@ -82,7 +137,7 @@
                         <i v-if="!countdownStart">获取验证码</i>
                     </div>
                 </form-item>
-                <form-item prop="account" label="协议条款">
+                <form-item prop="agree" label="协议条款">
                     <label class="ivu-checkbox-wrapper ivu-checkbox-group-item">
                         <span class="ivu-checkbox">
                             <input
@@ -94,11 +149,14 @@
                         </span>
                         <span class="tip">用户注册即代表同意协议条款
                         </span>
-                        <a class="protocol-content"> 《xx协议条款》</a>
                     </label>
+                    <a class="protocol-content"> 《xx协议条款》</a>
                 </form-item>
                 <form-item label="">
-                    <i-button class="register">注册</i-button>
+                    <i-button :loding="loading" class="register">
+                        <span v-if="!loading">注册</span>
+                        <span v-else>正在提交…</span>
+                    </i-button>
                 </form-item>
             </i-form>
         </div>
