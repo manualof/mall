@@ -2,17 +2,15 @@
     import code from '../assets/images/weixin.png';
 
     export default{
+        computed: {
+            phoneNumber() {
+                const str = '****';
+                const phoneNum = this.userInfo.phone.substring(0, 3) + str +
+                    this.userInfo.phone.substring(7, 11);
+                return phoneNum;
+            },
+        },
         data() {
-            const reg = /^1[3|4|5|7|8][0-9]\d{8}$/;
-            const validatorPhone = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error('手机号不能为空'));
-                } else if (!reg.test(value)) {
-                    callback(new Error('请输入正确手机号'));
-                } else {
-                    callback();
-                }
-            };
             const passwordReg = /(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,16}$/;
             const passwordValidator = (rule, value, callback) => {
                 if (value === '') {
@@ -34,20 +32,14 @@
             };
             return {
                 codeImg: code,
+                resetCodeImg: code,
                 countdown: 60,
                 countdownStart: false,
                 identityData: {
-                    phone: '',
                     phoneCode: '',
                     code: '',
                 },
                 identityRule: {
-                    phone: {
-                        required: true,
-                        trigger: 'blur',
-                        type: 'number',
-                        validator: validatorPhone,
-                    },
                     phoneCode: {
                         required: true,
                         message: '请填写手机验证码',
@@ -63,22 +55,29 @@
                 resetData: {
                     newPassword: '',
                     passwordAgain: '',
+                    code: '',
                 },
                 resetRule: {
                     newPassword: {
                         required: true,
                         trigger: 'blur',
-                        type: 'number',
                         validator: passwordValidator,
                     },
                     passwordAgain: {
                         required: true,
                         trigger: 'blur',
-                        type: 'number',
                         validator: checkPasswordAgain,
+                    },
+                    code: {
+                        required: true,
+                        message: '请填写验证码',
+                        trigger: 'blur',
                     },
                 },
                 temp: 1,
+                userInfo: {
+                    phone: '13429763663',
+                },
                 isAccountExit: 0,
             };
         },
@@ -200,10 +199,8 @@
                 <div class="modify-content1" v-if="temp===1">
                     <i-form class="signup-form" ref="identityForm" :model="identityData" :rules="identityRule">
                         <form-item class="clearfix" prop="phone" label="手机号">
-                            <i-input class="signup-form-control"
-                                     type="text"
-                                     v-model="identityData.phone">
-                            </i-input>
+                            <span class="default-telphone">{{ phoneNumber }}</span>
+                            <span> <a>通过已验证邮箱验证</a> <a>通过支付密码验证</a></span>
                         </form-item>
                         <form-item class="clearfix" prop="phoneCode" label="请填写手机验证码">
                             <i-input class="signup-form-control signup-form-code pull-left"
@@ -223,7 +220,7 @@
                             <div class="signup-form-control verification-code pull-left">
                                 <img :src="codeImg" alt="">
                             </div>
-                            <a class="float-left">看不清?换一张</a>
+                            <a class="pull-left">看不清?换一张</a>
                         </form-item>
                         <form-item>
                             <i-button :loading="loading" class="order-btn" @click.prevent="submitResultIdentity">
@@ -247,6 +244,16 @@
                                      type="text"
                                      v-model="resetData.passwordAgain">
                             </i-input>
+                        </form-item>
+                        <form-item class="clearfix" prop="code" label="验证码">
+                            <i-input class="signup-form-control pull-left signup-form-code"
+                                     type="text"
+                                     v-model="resetData.code">
+                            </i-input>
+                            <div class="signup-form-control verification-code pull-left">
+                                <img :src="resetCodeImg" alt="">
+                            </div>
+                            <a class="pull-left">看不清?换一张</a>
                         </form-item>
                         <form-item>
                             <i-button :loading="loading" class="order-btn" @click.prevent="submitResetData">

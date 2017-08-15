@@ -68,13 +68,11 @@
                     newPassword: {
                         required: true,
                         trigger: 'blur',
-                        type: 'number',
                         validator: passwordValidator,
                     },
                     passwordAgain: {
                         required: true,
                         trigger: 'blur',
-                        type: 'number',
                         validator: checkPasswordAgain,
                     },
                 },
@@ -182,7 +180,7 @@
                             <div class="signup-form-control verification-code pull-left">
                                 <img :src="codeImg" alt="">
                             </div>
-                            <a class="float-left">看不清?换一张</a>
+                            <a class="pull-left">看不清?换一张</a>
                         </form-item>
                         <form-item>
                             <i-button :loading="loading" class="order-btn" @click.prevent="submitResultIdentity">
