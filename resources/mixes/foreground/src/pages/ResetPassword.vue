@@ -18,7 +18,7 @@
                 if (value === '') {
                     callback(new Error('请输入密码'));
                 } else if (!passwordReg.test(value)) {
-                    callback(new Error('由字母加数字符号至少两种以上数字组成的密码，6-20位半角字符，区分大小写'));
+                    callback(new Error('请输入符合规则的密码'));
                 } else {
                     callback();
                 }
@@ -201,7 +201,7 @@
                             </i-input>
                             <p class="tip">由字母加数字符号至少两种以上数字组成的密码，6-20位半角字符，区分大小写</p>
                         </form-item>
-                        <form-item class="clearfix" prop="newPassword" label="再次输入密码">
+                        <form-item class="clearfix" prop="passwordAgain" label="再次输入密码">
                             <i-input class="signup-form-control"
                                      type="text"
                                      v-model="resetData.passwordAgain">
