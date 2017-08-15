@@ -1,7 +1,20 @@
 <script>
+    import code from '../assets/images/weixin.png';
+
     export default {
         data() {
             return {
+                codeImg: code,
+                countdown: 60,
+                countdownStart: false,
+                identityData: {
+                    phone: '',
+                    phoneCode: '',
+                    code: '',
+                },
+                identityRule: {
+
+                },
                 temp: 1,
             };
         },
@@ -50,29 +63,37 @@
                     </div>
                 </div>
                 <div class="modify-content1" v-if="temp===1">
-                    <form class="signup-form">
-                        <div class="signup-form-group">
-                            <label class="form-title">手机号</label>
-                            <span class="default-telphone">136****22</span>
-                            <span> <a href="">通过已验证邮箱验证</a> <a href="">通过支付密码验证</a></span>
-                        </div>
-                        <div class="signup-form-group group-code clearfix">
-                            <label class="form-title float-left">请填写手机验证码</label>
-                            <input type="text" class="form-control signup-form-control signup-form-code float-left" name="verification">
-                            <div class="signup-form-control signup-form-obtain-code float-left">获取短信验证码</div>
-                        </div>
-                        <div class="signup-form-group clearfix">
-                            <label class="form-title float-left">验证码</label>
-                            <input type="text" class=" form-control signup-form-control signup-form-code float-left" name="verification">
-                            <div class="signup-form-control verification-code float-left">1234</div>
+                    <i-form class="signup-form" ref="identityForm" :model="identityData" :rules="identityRule">
+                        <form-item class="clearfix" prop="phone" label="手机号">
+                            <i-input class="signup-form-control"
+                                     type="text"
+                                     v-model="identityData.phone">
+                            </i-input>
+                        </form-item>
+                        <form-item class="clearfix" prop="phoneCode" label="请填写手机验证码">
+                            <i-input class="signup-form-control signup-form-code pull-left"
+                                     type="text"
+                                     v-model="identityData.phoneCode">
+                            </i-input>
+                            <div class="signup-form-control signup-form-obtain-code signup-form-code pull-left" @click="getCode">
+                                <i v-if="countdownStart">{{ countdown }}秒</i>
+                                <i v-if="!countdownStart">获取验证码</i>
+                            </div>
+                        </form-item>
+                        <form-item  class="clearfix" prop="code" label="验证码">
+                            <i-input class="signup-form-control pull-left signup-form-code"
+                                     type="text"
+                                     v-model="identityData.code">
+                            </i-input>
+                            <div class="signup-form-control verification-code pull-left">
+                                <img :src="codeImg" alt="">
+                            </div>
                             <a class="float-left">看不清?换一张</a>
-                        </div>
-                        <div class="signup-form-group clearfix">
-                            <label class="form-title float-left"></label>
-                            <button class="order-btn float-left" @click.prevent="submitResult1">提交</button>
-                        </div>
-                    </form>
-
+                        </form-item>
+                        <form-item>
+                            <button class="order-btn" @click.prevent="submitResultIdentity">提交</button>
+                        </form-item>
+                    </i-form>
                 </div>
                 <div class="modify-content2" v-if="temp===2">
                     <form class="signup-form">

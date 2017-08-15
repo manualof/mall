@@ -72,6 +72,7 @@
     margin: 0 auto;
     width: 560px;
     .modify-heading {
+        padding-bottom: 17px;
         .modify-status {
             & > ul {
                 padding-top: 27px;
@@ -136,7 +137,9 @@
             }
         }
     }
-
+    .order-btn {
+        margin-left: 130px;
+    }
     .modify-content1,
     .modify-content2,
     .modify-content3 {
@@ -150,13 +153,11 @@
             margin-bottom: 170px;
         }
 
-        .signup-form-group {
+        .ivu-form-item {
             margin-top: 20px;
             .signup-form-control {
-                border: solid 1px #d0d0d0;
                 border-radius: 0;
                 height: 42px;
-                padding-left: 14px;
                 width: 324px;
                 &:focus {
                     outline: none;
@@ -179,27 +180,26 @@
                 width: 140px;
             }
             .verification-code {
-                color: #444;
-                background-color: #d0d0d0;
-                font-size: 18px;
-                font-weight: 500;
                 display: inline-block;
                 height: 42px;
                 line-height: 42px;
                 margin-left: 10px;
                 text-align: center;
-                padding: 0;
                 width: 70px;
+                img {
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                }
                 + a {
+                    cursor: pointer;
+                    display: block;
+                    line-height: 42px;
                     margin-left: 18px;
-                    margin-top: 11px;
-                    &:hover {
-                        cursor: pointer;
-                    }
                 }
             }
-            .form-title {
-                font-weight: 500;
+            .ivu-form-item-label {
+                float: left;
                 height: 42px;
                 line-height: 42px;
                 margin-bottom: 0;
