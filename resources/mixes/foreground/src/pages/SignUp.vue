@@ -96,6 +96,31 @@
                 },
             };
         },
+        methods: {
+            getCode() {
+                const self = this;
+                self.$refs.signUpForm.validateField('phone', valid => {
+                    if (valid) {
+                        self.$message.success('提交成功!');
+                    } else {
+                        self.loading = false;
+                        self.$message.error('请输入正确手机号');
+                    }
+                });
+            },
+            submit(name) {
+                const self = this;
+                self.loading = true;
+                this.$refs[name].validate(valid => {
+                    if (valid) {
+                        self.$message.success('提交成功!');
+                    } else {
+                        self.loading = false;
+                        self.$message.error('表单验证失败!');
+                    }
+                });
+            },
+        },
     };
 </script>
 <template>
@@ -132,7 +157,7 @@
                 <form-item prop="code" label="验证码">
                     <i-input  class="signup-form-group signup-form-control signup-form-code" type="text" v-model="signUpData.code">
                     </i-input>
-                    <div class="signup-form-control signup-form-obtain-code">
+                    <div class="signup-form-control signup-form-obtain-code" @click="getCode">
                         <i v-if="countdownStart">{{ countdown }}秒</i>
                         <i v-if="!countdownStart">获取验证码</i>
                     </div>
@@ -153,7 +178,7 @@
                     <a class="protocol-content"> 《xx协议条款》</a>
                 </form-item>
                 <form-item label="">
-                    <i-button :loding="loading" class="register">
+                    <i-button :loding="loading" class="register" @click="submit('signUpForm')">
                         <span v-if="!loading">注册</span>
                         <span v-else>正在提交…</span>
                     </i-button>

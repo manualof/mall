@@ -49,10 +49,10 @@
                 self.loading = true;
                 this.$refs[name].validate(valid => {
                     if (valid) {
-                        this.$message.success('提交成功!');
+                        self.$message.success('提交成功!');
                     } else {
                         self.loading = false;
-                        this.$message.error('表单验证失败!');
+                        self.$message.error('表单验证失败!');
                     }
                 });
             },
