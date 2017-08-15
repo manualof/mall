@@ -3,6 +3,16 @@
 
     export default {
         data() {
+            const reg = /^1[3|4|5|7|8][0-9]\d{8}$/;
+            const validatorPhone = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('手机号不能为空'));
+                } else if (!reg.test(value)) {
+                    callback(new Error('请输入正确手机号'));
+                } else {
+                    callback();
+                }
+            };
             return {
                 codeImg: code,
                 countdown: 60,
@@ -13,14 +23,50 @@
                     code: '',
                 },
                 identityRule: {
-
+                    phone: {
+                        required: true,
+                        trigger: 'blur',
+                        type: 'number',
+                        validator: validatorPhone,
+                    },
+                    phoneCode: {
+                        required: true,
+                        message: '请填写手机验证码',
+                        trigger: 'blur',
+                    },
+                    code: {
+                        required: true,
+                        message: '请填写验证码',
+                        trigger: 'blur',
+                    },
                 },
+                loading: false,
                 temp: 1,
             };
         },
         methods: {
-            submitResult1() {
-                this.temp += 1;
+            getCode() {
+                const self = this;
+                self.$refs.identityForm.validateField('phone', valid => {
+                    if (valid) {
+                        self.$message.success('提交成功!');
+                    } else {
+                        self.loading = false;
+                        self.$message.error('请输入正确手机号');
+                    }
+                });
+            },
+            submitResultIdentity() {
+                const self = this;
+                self.loading = true;
+                this.$refs.identityForm.validate(valid => {
+                    if (valid) {
+                        this.temp += 1;
+                    } else {
+                        self.loading = false;
+                        self.$message.error('表单验证失败!');
+                    }
+                });
             },
             submitResult2() {
                 this.temp += 1;
@@ -91,7 +137,10 @@
                             <a class="float-left">看不清?换一张</a>
                         </form-item>
                         <form-item>
-                            <button class="order-btn" @click.prevent="submitResultIdentity">提交</button>
+                            <i-button :loading="loading" class="order-btn" @click.prevent="submitResultIdentity">
+                                <span v-if="!loading">注册</span>
+                                <span v-else>正在提交…</span>
+                            </i-button>
                         </form-item>
                     </i-form>
                 </div>

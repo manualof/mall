@@ -146,13 +146,24 @@
         .signup-form {
             color: #666;
         }
-
+        .ivu-form-item-error-tip {
+            margin-left: 130px;
+        }
         .modify-success {
             font-size: 18px;
             margin-top: 105px;
             margin-bottom: 170px;
         }
-
+        .ivu-form-item-content {
+            height: 42px;
+            &:before {
+                content: " ";
+                display: table;
+            }
+            &:after {
+                clear: both;
+            }
+        }
         .ivu-form-item {
             margin-top: 20px;
             .signup-form-control {
