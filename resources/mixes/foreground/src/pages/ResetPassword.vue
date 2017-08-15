@@ -13,6 +13,25 @@
                     callback();
                 }
             };
+            const passwordReg = /(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,16}$/;
+            const passwordValidator = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请输入密码'));
+                } else if (!passwordReg.test(value)) {
+                    callback(new Error('由字母加数字符号至少两种以上数字组成的密码，6-20位半角字符，区分大小写'));
+                } else {
+                    callback();
+                }
+            };
+            const checkPasswordAgain = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请再次输入密码'));
+                } else if (value !== this.resetData.newPassword) {
+                    callback(new Error('两次输入密码不一致!'));
+                } else {
+                    callback();
+                }
+            };
             return {
                 codeImg: code,
                 countdown: 60,
@@ -41,6 +60,24 @@
                     },
                 },
                 loading: false,
+                resetData: {
+                    newPassword: '',
+                    passwordAgain: '',
+                },
+                resetRule: {
+                    newPassword: {
+                        required: true,
+                        trigger: 'blur',
+                        type: 'number',
+                        validator: passwordValidator,
+                    },
+                    passwordAgain: {
+                        required: true,
+                        trigger: 'blur',
+                        type: 'number',
+                        validator: checkPasswordAgain,
+                    },
+                },
                 temp: 1,
             };
         },
@@ -62,14 +99,25 @@
                 this.$refs.identityForm.validate(valid => {
                     if (valid) {
                         this.temp += 1;
+                        self.loading = false;
                     } else {
                         self.loading = false;
                         self.$message.error('表单验证失败!');
                     }
                 });
             },
-            submitResult2() {
-                this.temp += 1;
+            submitResetData() {
+                const self = this;
+                self.loading = true;
+                this.$refs.resetPasswordForm.validate(valid => {
+                    if (valid) {
+                        this.temp += 1;
+                        self.loading = false;
+                    } else {
+                        self.loading = false;
+                        self.$message.error('表单验证失败!');
+                    }
+                });
             },
         },
     };
@@ -138,35 +186,34 @@
                         </form-item>
                         <form-item>
                             <i-button :loading="loading" class="order-btn" @click.prevent="submitResultIdentity">
-                                <span v-if="!loading">注册</span>
+                                <span v-if="!loading">提交</span>
                                 <span v-else>正在提交…</span>
                             </i-button>
                         </form-item>
                     </i-form>
                 </div>
                 <div class="modify-content2" v-if="temp===2">
-                    <form class="signup-form">
-                        <div class="signup-form-group new-password-group">
-                            <label class="form-title">新的登录密码</label>
-                            <input type="password" class="signup-form-control">
-                            <span class="tip">由字母加数字符号至少两种以上数字组成的密码，6-20位半角字符，区分大小写</span>
-                        </div>
-                        <div class="signup-form-group">
-                            <label class="form-title">请再输入一次密码</label>
-                            <input type="password" class="signup-form-control">
-                        </div>
-                        <div class="signup-form-group clearfix">
-                            <label class="form-title float-left">验证码</label>
-                            <input type="text" class="signup-form-control signup-form-code float-left verification-input"
-                                   name="verification">
-                            <div class="signup-form-control verification-code float-left">1234</div>
-                            <a href="" class="float-left">看不清?换一张</a>
-                        </div>
-                        <div class="signup-form-group clearfix">
-                            <label class="form-title float-left"></label>
-                            <button class="order-btn float-left" @click.prevent="submitResult2">提交</button>
-                        </div>
-                    </form>
+                    <i-form class="signup-form" ref="resetPasswordForm" :model="resetData" :rules="resetRule">
+                        <form-item class="clearfix" prop="newPassword" label="新的登录密码">
+                            <i-input class="signup-form-control"
+                                     type="text"
+                                     v-model="resetData.newPassword">
+                            </i-input>
+                            <p class="tip">由字母加数字符号至少两种以上数字组成的密码，6-20位半角字符，区分大小写</p>
+                        </form-item>
+                        <form-item class="clearfix" prop="newPassword" label="再次输入密码">
+                            <i-input class="signup-form-control"
+                                     type="text"
+                                     v-model="resetData.passwordAgain">
+                            </i-input>
+                        </form-item>
+                        <form-item>
+                            <i-button :loading="loading" class="order-btn" @click.prevent="submitResetData">
+                                <span v-if="!loading">提交</span>
+                                <span v-else>正在提交…</span>
+                            </i-button>
+                        </form-item>
+                    </i-form>
                 </div>
                 <div class="modify-content3" v-if="temp===3">
                     <div class="modify-success text-center">密码修改成功!</div>
