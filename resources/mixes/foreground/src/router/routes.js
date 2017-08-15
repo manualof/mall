@@ -66,16 +66,6 @@ export default [
                 name: 'home',
             },
             {
-                component: SignUp,
-                name: 'signup',
-                path: 'signup',
-            },
-            {
-                component: SignIn,
-                name: 'signin',
-                path: 'signin',
-            },
-            {
                 component: MyOrder,
                 name: 'order',
                 path: 'order',
@@ -334,5 +324,15 @@ export default [
         ],
         component: Layout,
         path: '/mall',
+    },
+    {
+        component: SignUp,
+        name: 'signup',
+        path: '/signup',
+    },
+    {
+        component: SignIn,
+        name: 'signin',
+        path: '/signin',
     },
 ];
