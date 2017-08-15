@@ -9,7 +9,7 @@
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
-                    <li :class="{ 'active': $route.path === '/mall/user/all-order' }">
+                    <li :class="{ 'active': $route.path === '/mall/user/order' }">
                         <router-link to="/mall/user/all-order" target="_blank">我的订单</router-link>
                         <span>|</span>
                     </li>

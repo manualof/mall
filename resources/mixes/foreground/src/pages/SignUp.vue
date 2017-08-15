@@ -196,7 +196,8 @@
         </div>
         <modal ref="modal">
             <div slot="title">
-                <h4 class="modal-title" v-text="'商城用户注册协议'"></h4>
+                <h4 class="modal-title pull-left" v-text="'商城用户注册协议'"></h4>
+                <a class="pull-right">x</a>
             </div>
             <div slot="body">
                 <div class="content">
