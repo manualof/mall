@@ -13,6 +13,7 @@
                 bannerStyle: {
                     backgroundImage: `url(${bannerImg})`,
                 },
+                loading: false,
                 signData: {
                     account: '',
                     password: '',
@@ -44,10 +45,13 @@
         },
         methods: {
             handleSubmit(name) {
+                const self = this;
+                self.loading = true;
                 this.$refs[name].validate(valid => {
                     if (valid) {
                         this.$message.success('提交成功!');
                     } else {
+                        self.loading = false;
                         this.$message.error('表单验证失败!');
                     }
                 });
@@ -72,7 +76,7 @@
                         <router-link to="/mall/signup">没有账号？立即注册</router-link>
                     </div>
                     <i-form ref="signForm" :model="signData" :rules="signRule">
-                        <form-item prop="user" class="signup-form-group">
+                        <form-item prop="account" class="signup-form-group">
                             <i-input type="text" v-model="signData.account" placeholder="邮箱账号">
                                 <icon class="icon iconfont icon-denglu" type="ios-person-outline" slot="prepend"></icon>
                             </i-input>
@@ -99,7 +103,10 @@
                             </router-link>
                         </form-item>
                         <form-item class="signup-form-group">
-                            <i-button class="register" type="primary" @click="handleSubmit('signForm')">登录</i-button>
+                            <i-button :loading="loading" class="register" type="primary" @click="handleSubmit('signForm')">
+                                <span v-if="!loading">登录</span>
+                                <span v-else>正在提交…</span>
+                            </i-button>
                         </form-item>
                         <form-item class="signup-form-group third-party">
                             第三方账号登录
