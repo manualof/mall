@@ -1,11 +1,57 @@
 <script>
     import FooterBar from '../layouts/FooterBar.vue';
     import FooterContent from '../layouts/FooterContent.vue';
+    import bannerImg from '../assets/images/login_banner.png';
 
     export default {
         components: {
             FooterBar,
             FooterContent,
+        },
+        data() {
+            return {
+                bannerStyle: {
+                    backgroundImage: `url(${bannerImg})`,
+                },
+                signData: {
+                    account: '',
+                    password: '',
+                },
+                signRule: {
+                    account: [
+                        {
+                            required: true,
+                            message: '请填写用户名',
+                            trigger: 'blur',
+                        },
+                    ],
+                    password: [
+                        {
+                            required: true,
+                            message: '请填写密码',
+                            trigger: 'blur',
+                        },
+                        {
+                            type: 'string',
+                            min: 6,
+                            message: '密码长度不能小于6位',
+                            trigger: 'blur',
+                        },
+                    ],
+                },
+                remember: false,
+            };
+        },
+        methods: {
+            handleSubmit(name) {
+                this.$refs[name].validate(valid => {
+                    if (valid) {
+                        this.$message.success('提交成功!');
+                    } else {
+                        this.$message.error('表单验证失败!');
+                    }
+                });
+            },
         },
     };
 </script>
@@ -18,42 +64,52 @@
                 </router-link>
             </div>
         </div>
-        <div class="signup-content container clearfix">
-            <div class="signin-content">
-                <div class="signup-title clearfix">
-                    <span>密码登录</span>
-                    <router-link to="/mall/signup">没有账号？立即注册</router-link>
-                </div>
-                <form class="signup-form">
-                    <div class="signup-form-group form-icon">
-                        <i class="icon iconfont icon-denglu"></i>
-                        <input type="text" class="form-control signup-form-control" placeholder="邮箱账号" name="username">
+        <div class="signup-content" :style="bannerStyle">
+            <div class="container clearfix">
+                <div class="signin-content">
+                    <div class="signup-title clearfix">
+                        <span>密码登录</span>
+                        <router-link to="/mall/signup">没有账号？立即注册</router-link>
                     </div>
-                    <div class="signup-form-group form-icon">
-                        <i class="icon iconfont icon-mima"></i>
-                        <input type="password" class="form-control signup-form-control" placeholder="登录密码" name="password">
-                    </div>
-                    <div class="signup-form-group protocol-kinds">
-                        <div class="check-box signup-form-protocol">
-                            <span>
-                                <input type="checkbox" class="form-control input_check" id="check24">
-                                <label for="check24"> </label></span>
-                        </div>
-                        <!--<input type="radio" class="signup-form-protocol" name="protocol">-->
-                        <span>记住密码</span> <span><a href=""> 忘记密码</a></span>
-                    </div>
-                    <div class="signup-form-group signin-login">
-                        <button class="register">登录</button>
-                    </div>
-                    <div class="signup-form-group third-party">
-                        <span>第三方账号登录
+                    <i-form ref="signForm" :model="signData" :rules="signRule">
+                        <form-item prop="user" class="signup-form-group">
+                            <i-input type="text" v-model="signData.account" placeholder="邮箱账号">
+                                <icon class="icon iconfont icon-denglu" type="ios-person-outline" slot="prepend"></icon>
+                            </i-input>
+                        </form-item>
+                        <form-item prop="password" class="signup-form-group">
+                            <i-input type="password" v-model="signData.password" placeholder="登录密码">
+                                <icon class="icon iconfont icon-mima" type="ios-locked-outline" slot="prepend"></icon>
+                            </i-input>
+                        </form-item>
+                        <form-item class="signup-form-group signup-form-group-password">
+                            <label class="ivu-checkbox-wrapper ivu-checkbox-group-item">
+                                <span class="ivu-checkbox">
+                                    <input
+                                        type="checkbox"
+                                        class="ivu-checkbox-input"
+                                        v-model="remember"
+                                        value="remember">
+                                    <span class="ivu-checkbox-inner"></span>
+                                </span>
+                                <span>记住密码</span>
+                            </label>
+                            <router-link class="pull-right" to="">
+                                忘记密码
+                            </router-link>
+                        </form-item>
+                        <form-item class="signup-form-group">
+                            <i-button class="register" type="primary" @click="handleSubmit('signForm')">登录</i-button>
+                        </form-item>
+                        <form-item class="signup-form-group third-party">
+                            第三方账号登录
                             <a href="">
                                 <i class="icon iconfont icon-weixin"></i>
                             </a>
                             <a href=""><i class="icon iconfont icon-qq"></i></a>
-                        </span>
-                    </div>
-                </form>
+                        </form-item>
+                    </i-form>
+                </div>
             </div>
         </div>
         <footer-content></footer-content>
