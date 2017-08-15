@@ -70,6 +70,16 @@ class Definition extends AbstractDefinition
     }
 
     /**
+     * Setting data definition.
+     *
+     * @return array
+     */
+    public function settings()
+    {
+        return [];
+    }
+
+    /**
      * Version of module.
      *
      * @return string
