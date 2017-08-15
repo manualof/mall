@@ -73,7 +73,7 @@
                 <div class="signin-content">
                     <div class="signup-title clearfix">
                         <span>密码登录</span>
-                        <router-link to="/mall/signup">没有账号？立即注册</router-link>
+                        <router-link to="/signup">没有账号？立即注册</router-link>
                     </div>
                     <i-form ref="signForm" :model="signData" :rules="signRule">
                         <form-item prop="account" class="signup-form-group">

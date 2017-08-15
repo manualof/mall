@@ -5,6 +5,42 @@
         components: {
             FooterBar,
         },
+        data() {
+            return {
+                countdownStart: false,
+                countdown: 60,
+                signUpData: {
+                    email: '',
+                    password: '',
+                    passwordAgain: '',
+                    phone: '',
+                    code: '',
+                    agree: false,
+                },
+                signUpRule: {
+                    email: [
+                        {
+                            required: true,
+                            message: '请填写用户名',
+                            trigger: 'blur',
+                        },
+                    ],
+                    password: [
+                        {
+                            required: true,
+                            message: '请填写密码',
+                            trigger: 'blur',
+                        },
+                        {
+                            type: 'string',
+                            min: 6,
+                            message: '密码长度不能小于6位',
+                            trigger: 'blur',
+                        },
+                    ],
+                },
+            };
+        },
     };
 </script>
 <template>
@@ -19,43 +55,52 @@
         <div class="signup-content">
             <div class="signup-title clearfix">
                 <span>注册</span>
-                <router-link to="/mall/signin">已有账号？点击登录</router-link>
+                <router-link to="/signin">已有账号？点击登录</router-link>
             </div>
-            <form class="signup-form">
-                <div class="signup-form-group">
-                    <label class="form-title">邮箱账户</label>
-                    <input type="text" class="form-control signup-form-control" name="username">
-                </div>
-                <div class="signup-form-group">
-                    <label class="form-title">密码</label>
-                    <input type="password" class="form-control signup-form-control" name="password">
-                </div>
-                <div class="signup-form-group">
-                    <label class="form-title">确认密码</label>
-                    <input type="password" class="form-control signup-form-control" name="password">
-                </div>
-                <div class="signup-form-group">
-                    <label class="form-title">手机号</label>
-                    <input type="text" class="form-control signup-form-control" name="telphone">
-                </div>
-                <div class="signup-form-group">
-                    <label class="form-title">验证码</label>
-                    <input type="text" class="form-control signup-form-control signup-form-code " name="verification">
-                    <div class="signup-form-control signup-form-obtain-code">获取验证码</div>
-                </div>
-                <div class="signup-form-group agreement-clause clearfix">
-                    <label class="form-title">协议条款</label>
-                    <div class="check-box signup-form-protocol">
-                        <span><input type="checkbox" class="form-control input_check" id="check24"><label
-                            for="check24"> </label></span>
+            <i-form class="signup-form" ref="signUpForm" :model="signUpData" :rules="signUpRule">
+                <form-item prop="account" label="邮箱账号">
+                    <i-input class="signup-form-group signup-form-control" type="text" v-model="signUpData.email">
+                    </i-input>
+                </form-item>
+                <form-item prop="account" label="密码">
+                    <i-input class="signup-form-group signup-form-control" type="text" v-model="signUpData.password">
+                    </i-input>
+                </form-item>
+                <form-item prop="account" label="确认密码">
+                    <i-input class="signup-form-group signup-form-control" type="text" v-model="signUpData.passwordAgain">
+                    </i-input>
+                </form-item>
+                <form-item prop="account" label="手机号">
+                    <i-input class="signup-form-group signup-form-control" type="text" v-model="signUpData.phone">
+                    </i-input>
+                </form-item>
+                <form-item prop="account" label="验证码">
+                    <i-input  class="signup-form-group signup-form-control signup-form-code" type="text" v-model="signUpData.code">
+                    </i-input>
+                    <div class="signup-form-control signup-form-obtain-code">
+                        <i v-if="countdownStart">{{ countdown }}秒</i>
+                        <i v-if="!countdownStart">获取验证码</i>
                     </div>
-                    <span class="tip">用户注册即代表同意协议条款   <a href="" class="protocol-content"> 《xx协议条款》</a></span>
-                </div>
-                <div class="signup-form-group">
-                    <label class="form-title"></label>
-                    <button class="register">注册</button>
-                </div>
-            </form>
+                </form-item>
+                <form-item prop="account" label="协议条款">
+                    <label class="ivu-checkbox-wrapper ivu-checkbox-group-item">
+                        <span class="ivu-checkbox">
+                            <input
+                                type="checkbox"
+                                class="ivu-checkbox-input"
+                                v-model="signUpData.agree"
+                                value="remember">
+                            <span class="ivu-checkbox-inner"></span>
+                        </span>
+                        <span class="tip">用户注册即代表同意协议条款
+                        </span>
+                        <a class="protocol-content"> 《xx协议条款》</a>
+                    </label>
+                </form-item>
+                <form-item label="">
+                    <i-button class="register">注册</i-button>
+                </form-item>
+            </i-form>
         </div>
         <footer-bar></footer-bar>
     </div>
