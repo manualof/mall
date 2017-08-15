@@ -1,5 +1,6 @@
 .account-security {
     color: #444;
+    font-size: 14px;
     .address-title {
         border-bottom: 1px solid #e5e5e5;
         height: 79px;
@@ -72,6 +73,7 @@
     margin: 0 auto;
     width: 560px;
     .modify-heading {
+        padding-bottom: 17px;
         .modify-status {
             & > ul {
                 padding-top: 27px;
@@ -136,27 +138,38 @@
             }
         }
     }
-
+    .order-btn {
+        margin-left: 130px;
+    }
     .modify-content1,
     .modify-content2,
     .modify-content3 {
         .signup-form {
             color: #666;
         }
-
+        .ivu-form-item-error-tip {
+            margin-left: 134px;
+        }
         .modify-success {
             font-size: 18px;
             margin-top: 105px;
             margin-bottom: 170px;
         }
-
-        .signup-form-group {
+        .ivu-form-item-content {
+            min-height: 42px;
+            &:before {
+                content: " ";
+                display: table;
+            }
+            &:after {
+                clear: both;
+            }
+        }
+        .ivu-form-item {
             margin-top: 20px;
             .signup-form-control {
-                border: solid 1px #d0d0d0;
                 border-radius: 0;
                 height: 42px;
-                padding-left: 14px;
                 width: 324px;
                 &:focus {
                     outline: none;
@@ -179,27 +192,26 @@
                 width: 140px;
             }
             .verification-code {
-                color: #444;
-                background-color: #d0d0d0;
-                font-size: 18px;
-                font-weight: 500;
                 display: inline-block;
                 height: 42px;
                 line-height: 42px;
                 margin-left: 10px;
                 text-align: center;
-                padding: 0;
                 width: 70px;
+                img {
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                }
                 + a {
+                    cursor: pointer;
+                    display: block;
+                    line-height: 42px;
                     margin-left: 18px;
-                    margin-top: 11px;
-                    &:hover {
-                        cursor: pointer;
-                    }
                 }
             }
-            .form-title {
-                font-weight: 500;
+            .ivu-form-item-label {
+                float: left;
                 height: 42px;
                 line-height: 42px;
                 margin-bottom: 0;
@@ -227,16 +239,9 @@
                 margin-bottom: 39px;
             }
         }
-        .new-password-group {
-            .tip {
-                display: block;
-                margin-bottom: 18px;
-                margin-top: 10px;
-                padding-left: 134px;
-            }
-        }
-        .float-left {
-            float: left;
+        .tip {
+            display: block;
+            padding-left: 134px;
         }
         .verification-input {
             margin-left: 2px;
