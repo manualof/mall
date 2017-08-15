@@ -225,11 +225,11 @@
                     phone: '',
                 },
                 selfTake: [
-//                    {
-//                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
-//                        name: '王茂',
-//                        phone: 12345676543,
-//                    },
+                    {
+                        address: '北京市  北京市  朝阳区 解放路  某贸大厦1604',
+                        name: '王茂',
+                        phone: 12345676543,
+                    },
                 ],
                 selfIntegral: {
                     deductibleAmount: 6.00,
@@ -392,7 +392,7 @@
                                 <span>{{ take.name }}</span>
                                 <span>{{ take.phone }}</span>
                                 <span class="address-detail">{{ take.address }}</span>
-                                <a class="self-take pull-right">修改自提信息</a>
+                                <a class="self-take pull-right" @click="addSelfTake">修改自提信息</a>
                             </p>
                         </div>
                     </label>

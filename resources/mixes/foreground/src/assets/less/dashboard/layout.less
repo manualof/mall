@@ -4,6 +4,9 @@ body {
     font-size: 12px;
     font-family: "Microsoft Yahei";
 }
+* {
+    box-sizing: border-box;
+}
 ul, li {
     list-style: none;
     margin: 0;
@@ -280,7 +283,6 @@ button:focus {
         width: 14px;
     }
 }
-
 .ivu-select-arrow {
     position: absolute;
     top: 61%;
@@ -374,7 +376,7 @@ button:focus {
     transition: background .2s ease-in-out;
 }
 .ivu-icon-arrow-down-b:before {
-    content: '';
+    content: ''!important;
     border-width: 6px;
     border-style: solid dashed dashed dashed;
     border-color: #444444 transparent transparent transparent;
@@ -387,8 +389,6 @@ button:focus {
 .form-control {
     border-radius: 0;
 }
-
-
 .order-btn {
     background-color: #de2634;
     border: 0 none;
@@ -403,7 +403,6 @@ button:focus {
         color: #fff;
     }
 }
-
 .ivu-select-arrow {
     position: absolute;
     top: 61%;
@@ -414,45 +413,36 @@ button:focus {
     color: #9ea7b4;
     transition: all 0.2s ease-in-out;
 }
-
 .ivu-select-selection .ivu-select-arrow:first-of-type {
     display: none;
     cursor: pointer;
 }
-
 .ivu-icon-arrow-down-b:before {
     content: "\F104";
 }
-
 .ivu-select-visible .ivu-select-selection {
     border-color: #57a3f3;
     outline: 0;
     box-shadow: 0 0 0 2px rgba(45, 140, 240, .2);
 }
-
 .ivu-article .ivu-select ul {
     padding-left: 0 !important;
     list-style-type: none;
 }
-
 .ivu-article li:not([class^=ivu-]) {
     margin-bottom: 5px;
     font-size: 14px;
 }
-
 .ivu-select-not-found li:not([class^=ivu-]) {
     margin-bottom: 0;
 }
-
 .ivu-article .ivu-select ul {
     padding-left: 0 !important;
     list-style-type: none;
 }
-
 .ivu-select-item-focus, .ivu-select-item:hover {
     background: #f3f3f3;
 }
-
 .notNeed {
     background: none;
     border: 1px solid #e5e5e5;
@@ -463,8 +453,12 @@ button:focus {
         color: #444444;
     }
 }
-
 .submit-btn {
     float: right;
     margin-top: 20px;
+}
+
+.form-control {
+    border-radius: 0;
+    display: inline-block;
 }

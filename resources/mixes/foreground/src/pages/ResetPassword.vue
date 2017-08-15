@@ -1,15 +1,11 @@
 <script>
-    export default{
+    export default {
         data() {
             return {
                 temp: 1,
-                isAccountExit: 0,
             };
         },
         methods: {
-            editPassword() {
-                this.isAccountExit += 1;
-            },
             submitResult1() {
                 this.temp += 1;
             },
@@ -20,46 +16,9 @@
     };
 </script>
 <template>
-    <div class="account-security">
-        <div class="address-title">
-            <h4>账户安全</h4>
-        </div>
-        <div class="account-content account-list-model" v-if="isAccountExit === 0">
-            <ul class="account-model">
-                <li class="account-item clearfix">
-                    <span class="span-icon"><i class="icon iconfont icon-icon-test"></i></span>
-                    <span class="span-password">登录密码</span>
-                    <span class="span-tip">为了您的账户安全，请您定期变更登录密码</span>
-                    <span class="span-edit" @click="editPassword">编辑</span>
-                </li>
-                <li class="account-item clearfix">
-                    <span class="span-icon"><i class="icon iconfont icon-icon-test"></i></span>
-                    <span class="span-password">邮箱验证</span>
-                    <span class="span-tip">您的验证邮箱为：10****452@qq.com</span>
-                    <span class="span-edit">编辑</span>
-                </li>
-                <li class="account-item clearfix">
-                    <span class="span-icon"><i class="icon iconfont icon-tixing"></i></span>
-                    <span class="span-password">手机验证</span>
-                    <span class="span-tip">您验证的手机：136******545  若已丢失或停用，请立即更换</span>
-                    <span class="span-edit">编辑</span>
-                </li>
-                <li class="account-item clearfix">
-                    <span class="span-icon"><i class="icon iconfont icon-icon-test"></i></span>
-                    <span class="span-password">支付密码</span>
-                    <span class="span-tip">建议您定期更换新的支付密码，提高安全性</span>
-                    <span class="span-edit">编辑</span>
-                </li>
-            </ul>
-            <div class="security-tip">
-                <p>安全服务提示</p>
-                <p>1.确认您登录的是母婴商城网址http:/www.xbmy.com，注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗。</p>
-                <p>2.建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保账户及交易安全。</p>
-            </div>
-        </div>
-        <div class="account-content" v-if="isAccountExit === 1">
-            <p class="modify-title">修改登录密码</p>
-            <div class="modify-password">
+    <div class="reset-password">
+        <div class="container">
+            <div class="account-content modify-password">
                 <div class="modify-heading">
                     <div class="modify-status">
                         <ul class="clearfix">
@@ -113,6 +72,7 @@
                             <button class="order-btn float-left" @click.prevent="submitResult1">提交</button>
                         </div>
                     </form>
+
                 </div>
                 <div class="modify-content2" v-if="temp===2">
                     <form class="signup-form">

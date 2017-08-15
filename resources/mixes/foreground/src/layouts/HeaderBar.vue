@@ -3,9 +3,9 @@
         <div class="container">
             <div class="header-welcome ">
                 西部母婴欢迎您!
-                <router-link to="/mall/signin" class="login">登录</router-link>
+                <router-link to="/signin" class="login">登录</router-link>
                 <span>|</span>
-                <router-link to="/mall/signup" class="register">注册</router-link>
+                <router-link to="/signup" class="register">注册</router-link>
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
@@ -13,8 +13,8 @@
                         <router-link to="/mall/user/all-order" target="_blank">我的订单</router-link>
                         <span>|</span>
                     </li>
-                    <li :class="{ 'active': $route.path === '/mall/user/personnal-center' }">
-                        <router-link to="/mall/user/personnal-center" target="_blank">个人中心</router-link>
+                    <li :class="{ 'active': $route.path === '/mall/user' }">
+                        <router-link to="/mall/user" target="_blank">个人中心</router-link>
                         <span>|</span>
                     </li>
                     <li :class="{ 'active': $route.path === '/mall/customer-serve' }">

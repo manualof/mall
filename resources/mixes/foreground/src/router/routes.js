@@ -10,10 +10,12 @@ import UserSecurity from '../pages/UserSecurity.vue';
 import UserAddress from '../pages/UserAddress.vue';
 import UserFollow from '../pages/UserFollow.vue';
 import SelaesReturn from '../pages/SelaesReturn.vue';
+import User from '../pages/User.vue';
 import UserFootprint from '../pages/UserFootprint.vue';
 import UserAccount from '../pages/UserAccount.vue';
 import UserCollect from '../pages/UserCollect.vue';
 import UserNotice from '../pages/UserNotice.vue';
+import ResetPassword from '../pages/ResetPassword.vue';
 
 import SignUp from '../pages/SignUp.vue';
 import SignIn from '../pages/SignIn.vue';
@@ -65,14 +67,9 @@ export default [
                 name: 'home',
             },
             {
-                component: SignUp,
-                name: 'signup',
-                path: 'signup',
-            },
-            {
-                component: SignIn,
-                name: 'signin',
-                path: 'signin',
+                component: ResetPassword,
+                path: 'reset-password',
+                name: 'reset-password',
             },
             {
                 component: MyOrder,
@@ -144,7 +141,6 @@ export default [
                 name: 'product-details',
                 path: 'search/product-details',
             },
-
             {
                 component: SubmitOrder,
                 name: 'submit-order',
@@ -264,6 +260,11 @@ export default [
             {
                 children: [
                     {
+                        component: User,
+                        name: 'user',
+                        path: '/mall/user',
+                    },
+                    {
                         component: UserOrder,
                         name: 'order',
                         path: 'order',
@@ -323,11 +324,21 @@ export default [
                 name: 'personnal-center',
                 path: 'user',
                 redirect: {
-                    name: 'order',
+                    name: 'user',
                 },
             },
         ],
         component: Layout,
         path: '/mall',
+    },
+    {
+        component: SignUp,
+        name: 'signup',
+        path: '/signup',
+    },
+    {
+        component: SignIn,
+        name: 'signin',
+        path: '/signin',
     },
 ];

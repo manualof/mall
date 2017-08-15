@@ -17,7 +17,7 @@
     import img1 from '../assets/images/details/stool2.png';
     import img2 from '../assets/images/details/stool1.png';
     import user from '../assets/images/details/user-img.png';
-    import img7 from '../assets/images/img_07.png';
+    import img7 from '../assets/images/head.png';
     import logo from '../assets/images/img_lofo.png';
     import talk from '../assets/images/service.png';
 

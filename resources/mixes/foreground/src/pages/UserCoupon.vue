@@ -28,11 +28,6 @@
         methods: {
             tabSwitch(index) {
                 this.activeNav = index;
-                if (index) {
-                    this.used = true;
-                } else {
-                    this.used = false;
-                }
             },
         },
     };
@@ -47,9 +42,9 @@
         </div>
         <div class="clearfix nav-box">
             <ul id="myTab" class="tab-nav clearfix">
-                <li :class="{active:activeNav===index}" v-for="(nav,index) in navs" @click="tabSwitch(index)">
+                <li :class="{active:index===activeNav}" v-for="(nav,index) in navs" @click="tabSwitch(index)">
                     <a>
-                        {{ nav }}
+                        {{ nav }}{{ index }}
                         <span class="product-num"></span>
                     </a>
                     <i></i>
@@ -57,7 +52,7 @@
             </ul>
         </div>
         <div id="myTabContent" class="tab-content">
-            <ul class="tab-pane fade in active clearfix" :class="{used:used}" >
+            <ul class="tab-pane fade in active clearfix" :class="{used:activeNav !== 0}" >
                 <li class="pull-left pane pull-left" v-for="coupon in coupons">
                     <div class="coupons">
                         <p class="text-center"><span class="symbol">￥</span>{{ coupon.money }}</p>

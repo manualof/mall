@@ -1,7 +1,7 @@
 <template>
     <ul class="right-side" :class="{fixed:show}">
         <li>
-            <router-link class="text-center" to="/mall/user/order">
+            <router-link class="text-center" to="/mall/user">
                 <i class="icon iconfont icon-denglu"></i>我的
             </router-link>
         </li>
