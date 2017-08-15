@@ -98,7 +98,7 @@
                                 </span>
                                 <span>记住密码</span>
                             </label>
-                            <router-link class="pull-right" to="">
+                            <router-link class="pull-right" to="/mall/reset-password">
                                 忘记密码
                             </router-link>
                         </form-item>

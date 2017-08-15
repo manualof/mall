@@ -15,6 +15,7 @@ import UserFootprint from '../pages/UserFootprint.vue';
 import UserAccount from '../pages/UserAccount.vue';
 import UserCollect from '../pages/UserCollect.vue';
 import UserNotice from '../pages/UserNotice.vue';
+import ResetPassword from '../pages/ResetPassword.vue';
 
 import SignUp from '../pages/SignUp.vue';
 import SignIn from '../pages/SignIn.vue';
@@ -64,6 +65,11 @@ export default [
                 component: Home,
                 path: '/',
                 name: 'home',
+            },
+            {
+                component: ResetPassword,
+                path: 'reset-password',
+                name: 'reset-password',
             },
             {
                 component: MyOrder,
