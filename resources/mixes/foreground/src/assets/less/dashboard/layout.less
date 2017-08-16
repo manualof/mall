@@ -462,3 +462,48 @@ button:focus {
     border-radius: 0;
     display: inline-block;
 }
+
+//message 提示
+.ivu-message {
+    font-size: 14px;
+    position: fixed;
+    z-index: 1010;
+    width: 100%;
+    top: 25px;
+    left: 0;
+}
+.ivu-message-notice-content-text {
+    display: inline-block;
+}
+.ivu-message-notice-content {
+    position: relative;
+    padding: 0 16px;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    display: block;
+    height: 40px;
+    left: 50%;
+    line-height: 40px;
+    margin-left: -150px;
+    width: 300px;
+    span {
+        display: block;
+        line-height: 40px;
+        float: left;
+    }
+}
+.ivu-modal {
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    outline: 0;
+    top: 100px;
+}
+.ivu-icon-checkmark-circled {
+    color: #42b983;
+    float: left;
+    font-size: 16px;
+    line-height: 40px;
+    margin-right: 10px;
+}
