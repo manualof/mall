@@ -71,20 +71,27 @@
                     color: #62bdff;
                     padding-left: 10px;
                 }
-                .head-img {
-                    background: #f7f7f7;
-                    border: 1px solid #e5e5e5;
-                    height: 120px;
-                    width: 120px;
+            }
+            .head-img {
+                background: #f7f7f7;
+                border: 1px solid #e5e5e5;
+                height: 120px;
+                width: 120px;
+                img {
+                    height: 100%;
+                    width: 100%;
                 }
-                .ivu-upload-list {
-                    display: none;
-                }
-                .prompt {
-                    color: #d0d0d0;
-                    font-size: 12px;
-                    margin-top: -5px;
-                }
+            }
+            .ivu-upload-list {
+                display: none;
+            }
+        }
+        .head-img-form {
+            margin-top: 0;
+            .prompt {
+                color: #d0d0d0;
+                font-size: 12px;
+                margin-top: 5px;
             }
         }
         .account-bind {
@@ -109,7 +116,13 @@
         }
     }
     .ivu-upload {
+        margin-top: 20px;
+    }
+    .ivu-upload-select {
         border: 1px solid #e5e5e5;
+        margin-top: 0;
+    }
+    .ivu-upload {
         font-size: 12px;
         line-height: 24px;
         position: relative;

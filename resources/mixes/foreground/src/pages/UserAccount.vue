@@ -1,6 +1,7 @@
 <script>
     import Message from 'iview/src/components/message';
     import Upload from 'iview/src/components/upload/upload.vue';
+    import head from '../assets/images/head.png';
 
     export default{
         components: {
@@ -58,7 +59,6 @@
                         },
                     ],
                 },
-                headImg: '',
                 data: [{
                     value: 'beijing',
                     label: '北京',
@@ -106,6 +106,16 @@
                         },
                     ],
                 }],
+                headData: {
+                    headImg: head,
+                },
+                headRule: {
+                    head: {
+                        required: false,
+                        message: '请选择头像',
+                        trigger: 'blur',
+                    },
+                },
                 loading: false,
                 reg: /(.{2}).+(.{2}@.+)/g,
                 imgName: '',
@@ -192,19 +202,19 @@
                 </div>
             </div>
             <div v-if="status === 3">
-                <div class="group-input">
-                    <div class="label-l">头像预览</div>
-                    <div class="msg">
-                        <div class="head-img">
-                            <img :src="headImg" alt="">
+                <div class="ivu-form-item">
+                    <div class="ivu-form-item-label">头像预览</div>
+                    <i-form class="pull-left head-img-form" :model="headData" :rules="headRule">
+                        <div class="head-img" >
+                            <img :src="headData.headImg" alt="">
                         </div>
                         <div class="prompt">头像默认尺寸为120*120px，请根据系统操作提示进行裁剪并生效</div>
                         <Upload
-                             :on-success="handleSuccess"
-                             action="//jsonplaceholder.typicode.com/posts/">
+                            :on-success="handleSuccess"
+                            action="//jsonplaceholder.typicode.com/posts/">
                             图片上传
                         </Upload>
-                    </div>
+                    </i-form>
                 </div>
             </div>
         </div>
