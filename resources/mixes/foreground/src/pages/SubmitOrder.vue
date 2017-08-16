@@ -1,5 +1,4 @@
 <script>
-    import { Select, Option, OptionGroup } from 'iview/src/components/select';
     import Modal from '../components/Modal.vue';
     import order from '../assets/images/details/order.png';
     import RightSide from '../layouts/RightSide.vue';
@@ -7,10 +6,7 @@
     export default {
         components: {
             Modal,
-            Option,
-            OptionGroup,
             RightSide,
-            Select,
         },
         computed: {
             total_price() {
@@ -428,13 +424,13 @@
                                           :data="data"
                                           v-model="newSelfTake.address">
                                 </cascader>
-                                <Select v-model="newSelfTake.city" style="width:200px">
-                                    <Option v-for="(item, index) in cityList"
+                                <i-select v-model="newSelfTake.city" style="width:200px">
+                                    <i-option v-for="(item, index) in cityList"
                                             :value="item.value"
                                             :key="index">
                                         {{ item.label }}
-                                    </Option>
-                                </Select>
+                                    </i-option>
+                                </i-select>
                             </div>
                         </form>
                     </div>

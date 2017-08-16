@@ -61,18 +61,8 @@ export default [
     {
         children: [
             {
-                component: SignUp,
-                name: 'signup',
-                path: 'signup',
-            },
-            {
-                component: SignIn,
-                name: 'signin',
-                path: 'signin',
-            },
-            {
                 component: Home,
-                path: '/mall',
+                path: '/',
                 name: 'home',
             },
             {
@@ -225,9 +215,7 @@ export default [
                 ],
                 component: ShoppingProcess,
                 path: 'shop-process',
-                redirect: {
-                    name: 'shop-process',
-                },
+                redirect: { name: 'shop-process' },
             },
             {
                 component: OrderSuccess,
@@ -334,11 +322,17 @@ export default [
                 },
             },
         ],
-        path: '/',
         component: Layout,
-        redirect: {
-            name: 'home',
-        },
+        path: '/mall',
     },
-
+    {
+        component: SignUp,
+        name: 'signup',
+        path: '/signup',
+    },
+    {
+        component: SignIn,
+        name: 'signin',
+        path: '/signin',
+    },
 ];

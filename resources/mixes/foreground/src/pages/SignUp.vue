@@ -1,10 +1,12 @@
 <script>
+    import Message from 'iview/src/components/message';
     import Modal from '../components/Modal.vue';
     import FooterBar from '../layouts/FooterBar.vue';
 
     export default {
         components: {
             FooterBar,
+            Message,
             Modal,
         },
         data() {
@@ -101,16 +103,22 @@
         methods: {
             agree() {
                 this.signUpData.agree = true;
+                this.close();
+            },
+            close() {
                 this.$refs.modal.close();
             },
             getCode() {
                 const self = this;
                 self.$refs.signUpForm.validateField('phone', valid => {
                     if (valid) {
-                        self.$message.success('提交成功!');
-                    } else {
                         self.loading = false;
-                        self.$message.error('请输入正确手机号');
+                    } else {
+                        Message.success(
+                            {
+                                content: '发送成功!',
+                            },
+                        );
                     }
                 });
             },
@@ -122,10 +130,10 @@
                 self.loading = true;
                 this.$refs[name].validate(valid => {
                     if (valid) {
-                        self.$message.success('提交成功!');
+                        Message.success('提交成功!');
                     } else {
                         self.loading = false;
-                        self.$message.error('表单验证失败!');
+                        Message.error('表单验证失败!');
                     }
                 });
             },
@@ -197,7 +205,7 @@
         <modal ref="modal">
             <div slot="title">
                 <h4 class="modal-title pull-left" v-text="'商城用户注册协议'"></h4>
-                <a class="pull-right">x</a>
+                <a class="pull-right" @click="close"><img src="../assets/images/close.png" alt=""></a>
             </div>
             <div slot="body">
                 <div class="content">
