@@ -18,7 +18,14 @@
                     qq: '1050782272',
                 },
                 accountRule: {
-
+                    address: [],
+                    ali: '',
+                    birthday: new Date(),
+                    email: '10507822722@qq.com',
+                    imgsrc: '',
+                    realName: 'ibenchu',
+                    sex: '男',
+                    qq: '1050782272',
                 },
                 data: [{
                     value: 'beijing',
@@ -161,7 +168,7 @@
                         <radio-group v-model="accountData.sex">
                             <radio label="male">男</radio>
                             <radio label="female">女</radio>
-                            <radio label="female">保密</radio>
+                            <radio label="confidentiality">保密</radio>
                         </radio-group>
                     </form-item>
                     <form-item label="生日">
