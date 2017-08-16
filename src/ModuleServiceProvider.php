@@ -10,16 +10,16 @@ namespace Notadd\Mall;
 
 use Illuminate\Events\Dispatcher;
 use Notadd\Foundation\Http\Events\RequestHandled;
+use Notadd\Foundation\Module\Abstracts\Module;
 use Notadd\Mall\Injections\Installer;
 use Notadd\Mall\Injections\Uninstaller;
+use Notadd\Mall\Listeners\CsrfTokenRegister;
 use Notadd\Mall\Listeners\FlowRegister;
 use Notadd\Mall\Listeners\PermissionGroupRegister;
 use Notadd\Mall\Listeners\PermissionModuleRegister;
 use Notadd\Mall\Listeners\PermissionRegister;
 use Notadd\Mall\Listeners\PermissionTypeRegister;
 use Notadd\Mall\Listeners\RouteRegister;
-use Notadd\Mall\Listeners\CsrfTokenRegister;
-use Notadd\Foundation\Module\Abstracts\Module;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -44,8 +44,8 @@ class ModuleServiceProvider extends Module
             'extension' => [
                 'ext-mall' => '0.2.*',
             ],
-            'module' => [
-                'mall' => '2.0.*',
+            'module'    => [
+                'mall'    => '2.0.*',
                 'content' => '3.0.*',
             ],
         ]);
@@ -64,7 +64,7 @@ class ModuleServiceProvider extends Module
             ],
         ]);
         $data->put('events', [
-            'listeners' => [
+            'listeners'  => [
                 RequestHandled::class => RouteRegister::class,
             ],
             'subscribes' => [
@@ -1138,8 +1138,70 @@ class ModuleServiceProvider extends Module
                 'name'           => '商城用户',
             ],
         ]);
+        $data->put('pages', [
+            'configurations' => [
+                'initialization' => [
+                    'tabs'  => true,
+                    'title' => '配置页面',
+                ],
+                'tabs'           => [
+                    'configuration' => [
+                        'default' => true,
+                        'show'    => true,
+                        'title'   => '配置',
+                        'fields'  => [
+                            'title'       => [
+                                'default'   => '',
+                                'label'     => '标题',
+                                'key'       => '',
+                                'required'  => true,
+                                'type'      => 'input',
+                                'validates' => [
+                                    [
+                                        'message'  => '',
+                                        'required' => true,
+                                        'trigger'  => 'change',
+                                        'type'     => 'string',
+                                    ],
+                                ],
+                            ],
+                            'description' => [
+                                'default'   => '',
+                                'label'     => '描述',
+                                'key'       => '',
+                                'required'  => true,
+                                'type'      => 'input',
+                                'validates' => [
+                                    [
+                                        'message'  => '',
+                                        'required' => true,
+                                        'trigger'  => 'change',
+                                        'type'     => 'string',
+                                    ],
+                                ],
+                            ],
+                            'keyword'     => [
+                                'default'   => '',
+                                'label'     => '关键字',
+                                'key'       => '',
+                                'required'  => true,
+                                'type'      => 'input',
+                                'validates' => [
+                                    [
+                                        'message'  => '',
+                                        'required' => true,
+                                        'trigger'  => 'change',
+                                        'type'     => 'string',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
 
-        file_put_contents($this->app->environmentPath() . DIRECTORY_SEPARATOR . 'configuration.yaml', $this->app->make(Yaml::class)->dump($data->toArray(), 8));
+        file_put_contents($this->app->environmentPath() . DIRECTORY_SEPARATOR . 'configuration.yaml', $this->app->make(Yaml::class)->dump($data->toArray(), 10));
         $this->app->make(Dispatcher::class)->subscribe(CsrfTokenRegister::class);
         $this->app->make(Dispatcher::class)->subscribe(FlowRegister::class);
         $this->app->make(Dispatcher::class)->subscribe(PermissionGroupRegister::class);
@@ -1152,7 +1214,7 @@ class ModuleServiceProvider extends Module
         $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'mall');
         $this->publishes([
             realpath(__DIR__ . '/../resources/mixes/administration/dist/assets/mall/administration') => public_path('assets/mall/administration'),
-            realpath(__DIR__ . '/../resources/mixes/foreground/dist/assets/mall/foreground')               => public_path('assets/mall/foreground'),
+            realpath(__DIR__ . '/../resources/mixes/foreground/dist/assets/mall/foreground')         => public_path('assets/mall/foreground'),
             realpath(__DIR__ . '/../resources/mixes/seller/dist/assets/mall/seller')                 => public_path('assets/mall/seller'),
         ], 'public');
     }
