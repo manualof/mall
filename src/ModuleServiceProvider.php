@@ -13,13 +13,6 @@ use Notadd\Foundation\Http\Events\RequestHandled;
 use Notadd\Foundation\Module\Abstracts\Module;
 use Notadd\Mall\Injections\Installer;
 use Notadd\Mall\Injections\Uninstaller;
-use Notadd\Mall\Listeners\CsrfTokenRegister;
-use Notadd\Mall\Listeners\FlowRegister;
-use Notadd\Mall\Listeners\PermissionGroupRegister;
-use Notadd\Mall\Listeners\PermissionModuleRegister;
-use Notadd\Mall\Listeners\PermissionRegister;
-use Notadd\Mall\Listeners\PermissionTypeRegister;
-use Notadd\Mall\Listeners\RouteRegister;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -1202,13 +1195,6 @@ class ModuleServiceProvider extends Module
         ]);
 
         file_put_contents($this->app->environmentPath() . DIRECTORY_SEPARATOR . 'configuration.yaml', $this->app->make(Yaml::class)->dump($data->toArray(), 10));
-        $this->app->make(Dispatcher::class)->subscribe(CsrfTokenRegister::class);
-        $this->app->make(Dispatcher::class)->subscribe(FlowRegister::class);
-        $this->app->make(Dispatcher::class)->subscribe(PermissionGroupRegister::class);
-        $this->app->make(Dispatcher::class)->subscribe(PermissionModuleRegister::class);
-        $this->app->make(Dispatcher::class)->subscribe(PermissionRegister::class);
-        $this->app->make(Dispatcher::class)->subscribe(PermissionTypeRegister::class);
-        $this->app->make(Dispatcher::class)->subscribe(RouteRegister::class);
         $this->loadMigrationsFrom(realpath(__DIR__ . '/../databases/migrations'));
         $this->loadTranslationsFrom(realpath(__DIR__ . '/../resources/translations'), 'mall');
         $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'mall');
