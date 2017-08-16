@@ -8,6 +8,18 @@
         },
         data() {
             return {
+                addressData: {
+                    address: '',
+                    area: '',
+                    city: '',
+                    isdefault: '',
+                    phone: '',
+                    province: '',
+                    username: '',
+                },
+                addressRule: {
+
+                },
                 addressList: [
                     {
                         address: '陕西省  西安市 雁塔区 高新二路 36号 xx大厦',
@@ -49,15 +61,6 @@
                     },
                 ],
                 modalTitle: '',
-                form: {
-                    address: '',
-                    area: '',
-                    city: '',
-                    default: '',
-                    phone: '',
-                    province: '',
-                    username: '',
-                },
                 provinceList: [
                     {
                         id: 1,
@@ -138,33 +141,33 @@
                                class="signup-form-control form-control"
                                name="username"
                                placeholder="请输入收货人姓名"
-                               v-model="form.username">
+                               v-model="addressData.username">
                     </div>
                     <div class="signup-form-group clearfix">
                         <label class="form-title">手机号码</label>
                         <input type="text"
                                class="signup-form-control form-control"
                                placeholder="手机号码为必填项"
-                               v-model="form.phone">
+                               v-model="addressData.phone">
                     </div>
                     <div class="signup-form-group clearfix">
                         <label class="form-title">所在地区</label>
                         <div class="select-province clearfix">
-                            <i-select v-model="form.province"  style="width:150px">
+                            <i-select v-model="addressData.province"  style="width:150px">
                                 <i-option v-for="province in provinceList"
                                         :value="province.name"
                                         :key="province.id">
                                     {{ province.name }}
                                 </i-option>
                             </i-select>
-                            <i-select v-model="form.city"  style="width:150px">
+                            <i-select v-model="addressData.city"  style="width:150px">
                                 <i-option v-for="city in cityList"
                                         :value="city.name"
                                         :key="city.id">
                                     {{ city.name }}
                                 </i-option>
                             </i-select>
-                            <i-select v-model="form.area"  style="width:150px">
+                            <i-select v-model="addressData.area"  style="width:150px">
                                 <i-option v-for="area in areaList"
                                         :value="area.name"
                                         :key="area.id">
@@ -179,16 +182,62 @@
                                   name="address"
                                   placeholder="无需重复填写省市区，小于50个字"
                                   type="text"
-                                  v-model="form.address"></textarea>
+                                  v-model="addressData.address">
+                        </textarea>
                     </div>
                     <div class="signup-form-group default-address clearfix">
                         <label class="form-title"></label>
                         <div class="check-box">
-                            <span><input type="checkbox" class="input_check" v-model="form.default"><label></label></span>
+                            <span><input type="checkbox" class="input_check" v-model="addressData.default"><label></label></span>
                         </div>
                         <span class="default">设为默认地址</span>
                     </div>
                 </form>
+                <i-form :model="addressData" :rules="addressRule">
+                    <form-item label="收货人姓名" prop="username">
+                        <i-input v-model="addressData.username" placeholder="请输入收货人姓名"></i-input>
+                    </form-item>
+                    <form-item label="手机号码" prop="phone">
+                        <i-input v-model="addressData.phone" placeholder="手机号码为必填项"></i-input>
+                    </form-item>
+                    <form-item label="所在地区" prop="username">
+                        <i-row>
+                            <i-col span="7">
+                                <i-select v-model="addressData.province"  style="width:150px">
+                                    <i-option v-for="province in provinceList"
+                                              :value="province.name"
+                                              :key="province.id">
+                                        {{ province.name }}
+                                    </i-option>
+                                </i-select>
+                            </i-col>
+                            <i-col span="7">
+                                <i-select v-model="addressData.province"  style="width:150px">
+                                    <i-select v-model="addressData.city"  style="width:150px">
+                                        <i-option v-for="city in cityList"
+                                                  :value="city.name"
+                                                  :key="city.id">
+                                            {{ city.name }}
+                                        </i-option>
+                                    </i-select>
+                                </i-select>
+                            </i-col>
+                            <i-col span="7">
+                                <i-select v-model="addressData.area"  style="width:150px">
+                                    <i-option v-for="area in areaList"
+                                              :value="area.name"
+                                              :key="area.id">
+                                        {{ area.name }}
+                                    </i-option>
+                                </i-select>
+                            </i-col>
+                        </i-row>
+                        <i-input v-model="addressData.username" placeholder="请输入收货人姓名"></i-input>
+                    </form-item>
+                    <form-item label="手机号码" prop="phone">
+                        <i-input v-model="addressData.phone" placeholder="手机号码为必填项"></i-input>
+                    </form-item>
+                </i-form>
             </div>
             <button type="button" class="order-btn" slot="save_address" @click="submit">保存地址</button>
         </modal>
