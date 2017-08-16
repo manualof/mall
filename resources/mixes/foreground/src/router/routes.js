@@ -21,7 +21,6 @@ import SignUp from '../pages/SignUp.vue';
 import SignIn from '../pages/SignIn.vue';
 
 import Home from '../pages/Home.vue';
-import MyOrder from '../pages/MyOrder.vue';
 import Help from '../pages/Help.vue';
 import AfterSale from '../pages/AfterSale.vue';
 import CustomerServe from '../pages/CustomerServe.vue';
@@ -62,19 +61,24 @@ export default [
     {
         children: [
             {
+                component: SignUp,
+                name: 'signup',
+                path: 'signup',
+            },
+            {
+                component: SignIn,
+                name: 'signin',
+                path: 'signin',
+            },
+            {
                 component: Home,
-                path: '/',
+                path: '/mall',
                 name: 'home',
             },
             {
                 component: ResetPassword,
                 path: 'reset-password',
                 name: 'reset-password',
-            },
-            {
-                component: MyOrder,
-                name: 'order',
-                path: 'order',
             },
             {
                 component: ScanPay,
@@ -221,7 +225,9 @@ export default [
                 ],
                 component: ShoppingProcess,
                 path: 'shop-process',
-                redirect: { name: 'shop-process' },
+                redirect: {
+                    name: 'shop-process',
+                },
             },
             {
                 component: OrderSuccess,
@@ -328,17 +334,11 @@ export default [
                 },
             },
         ],
+        path: '/',
         component: Layout,
-        path: '/mall',
+        redirect: {
+            name: 'home',
+        },
     },
-    {
-        component: SignUp,
-        name: 'signup',
-        path: '/signup',
-    },
-    {
-        component: SignIn,
-        name: 'signin',
-        path: '/signin',
-    },
+
 ];
