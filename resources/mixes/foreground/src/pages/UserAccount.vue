@@ -1,19 +1,25 @@
 <script>
-    import Datepicker from 'vuejs-datepicker';
-    import Ascader from 'iview/src/components/cascader';
     import Upload from 'iview/src/components/upload/upload.vue';
-    import IButton from 'iview/src/components/button';
 
     export default{
         components: {
-            Ascader,
-            Datepicker,
             Upload,
-            IButton,
         },
         data() {
             return {
-                reg: /(.{2}).+(.{2}@.+)/g,
+                accountData: {
+                    address: [],
+                    ali: '',
+                    birthday: new Date(),
+                    email: '10507822722@qq.com',
+                    imgsrc: '',
+                    realName: 'ibenchu',
+                    sex: '男',
+                    qq: '1050782272',
+                },
+                accountRule: {
+
+                },
                 data: [{
                     value: 'beijing',
                     label: '北京',
@@ -61,17 +67,9 @@
                         },
                     ],
                 }],
+                loading: false,
+                reg: /(.{2}).+(.{2}@.+)/g,
                 imgName: '',
-                info: {
-                    address: [],
-                    ali: '',
-                    birthday: new Date(),
-                    email: '10507822722@qq.com',
-                    imgsrc: '',
-                    realName: 'ibenchu',
-                    sex: '男',
-                    qq: '1050782272',
-                },
                 uploadList: [],
                 status: 1,
                 value1: [],
@@ -79,14 +77,8 @@
             };
         },
         methods: {
-            qiehuan1() {
-                this.status = 1;
-            },
-            qiehuan2() {
-                this.status = 2;
-            },
-            qiehuan3() {
-                this.status = 3;
+            switchTab(index) {
+                this.status = index;
             },
             handleSuccess() {},
         },
@@ -95,33 +87,33 @@
 <template>
     <div class="my-account">
         <div class="saases-title">
-            <span @click="qiehuan1" :class="{selected: status === 1}">基本信息</span>
-            <span @click="qiehuan2" :class="{selected: status === 2}">账号绑定</span>
-            <span @click="qiehuan3" :class="{selected: status === 3}">更换头像</span>
+            <span @click="switchTab(1)" :class="{selected: status === 1}">基本信息</span>
+            <span @click="switchTab(2)" :class="{selected: status === 2}">账号绑定</span>
+            <span @click="switchTab(3)" :class="{selected: status === 3}">更换头像</span>
         </div>
         <div class="clearfix"></div>
         <div class="box">
             <div v-if="status === 1">
-                <form action="">
+                <form>
                     <div class="group-input first-group">
                         <div class="label-l">真实姓名</div>
-                        <div class="msg">{{ info.realName }}</div>
+                        <div class="msg">{{ accountData.realName }}</div>
                     </div>
                     <div class="group-input">
                         <div class="label-l">性别</div>
                         <div class="msg">
                             <label class="radio-box">
-                                <input type="radio" name="sex" value="男" v-model="info.sex">
+                                <input type="radio" name="sex" value="男" v-model="accountData.sex">
                                 <span></span>
                                 男
                             </label>
                             <label class="radio-box">
-                                <input type="radio" name="sex" value="女" v-model="info.sex">
+                                <input type="radio" name="sex" value="女" v-model="accountData.sex">
                                 <span></span>
                                 女
                             </label>
                             <label class="radio-box">
-                                <input type="radio" name="sex" value="保密" v-model="info.sex">
+                                <input type="radio" name="sex" value="保密" v-model="accountData.sex">
                                 <span></span>
                                 保密
                             </label>
@@ -130,36 +122,73 @@
                     <div class="group-input">
                         <div class="label-l">生日</div>
                         <div class="msg">
-                            <datepicker language="zh" v-model="info.birthday" name="birthday"
+                            <datepicker language="zh" v-model="accountData.birthday" name="birthday"
                                         format="yyyy MMM dd">
                             </datepicker>
                         </div>
                     </div>
                     <div class="group-input">
                         <div class="label-l">邮箱</div>
-                        <div class="msg">{{ info.email.replace(reg, "$1****$2") }}
+                        <div class="msg">{{ accountData.email.replace(reg, "$1****$2") }}
                         <span class="modify">修改</span>
                         </div>
                     </div>
                     <div class="group-input">
                         <div class="label-l">所在地区</div>
-                        <div class="msg"><Ascader :data="data" v-model="info.address"></Ascader></div>
+                        <div class="msg"><Ascader :data="data" v-model="accountData.address"></Ascader></div>
                     </div>
                     <div class="group-input">
                         <div class="label-l">QQ</div>
-                        <div class="msg"><input type="text" class="form-control" v-model="info.qq"></div>
+                        <div class="msg"><input type="text" class="form-control" v-model="accountData.qq"></div>
                     </div>
                     <div class="group-input">
                         <div class="label-l">阿里旺旺</div>
-                        <div class="msg"><input type="text" class="form-control" v-model="info.ali"></div>
+                        <div class="msg"><input type="text" class="form-control" v-model="accountData.ali"></div>
                     </div>
                     <div class="group-input">
                         <div class="label-l"></div>
                         <div class="msg">
-                                <div class="submit"> 保存修改</div>
+
+                            <div class="submit"> 保存修改</div>
                         </div>
                     </div>
                 </form>
+                <i-form ref="accountForm" :model="accountData" :rules="accountRule">
+                    <form-item label="真实姓名">
+                        <div class="msg">{{ accountData.realName }}</div>
+                    </form-item>
+                    <form-item label="性别" prop="sex">
+                        <radio-group v-model="accountData.sex">
+                            <radio label="male">男</radio>
+                            <radio label="female">女</radio>
+                            <radio label="female">保密</radio>
+                        </radio-group>
+                    </form-item>
+                    <form-item label="生日">
+                        <date-picker type="date" placeholder="选择日期" v-model="accountData.birthday">
+                        </date-picker>
+                    </form-item>
+                    <form-item label="邮箱">
+                        <div class="msg">{{ accountData.email.replace(reg, "$1****$2") }}
+                            <span class="modify">修改</span>
+                        </div>
+                    </form-item>
+                    <form-item label="所在地区">
+                        <cascader :data="data" v-model="accountData.address"></cascader>
+                    </form-item>
+                    <form-item label="QQ" prop="qq">
+                        <i-input v-model="accountData.qq"></i-input>
+                    </form-item>
+                    <form-item label="阿里旺旺" prop="ali">
+                        <i-input v-model="accountData.ali"></i-input>
+                    </form-item>
+                    <form-item>
+                        <i-button :loading="loading" class="submit" type="primary">
+                            <span v-if="!loading">保存修改</span>
+                            <span v-else>正在保存…</span>
+                        </i-button>
+                    </form-item>
+                </i-form>
             </div>
             <div v-if="status === 2" class="account-bind">
                 <div class="bind">
@@ -178,7 +207,7 @@
                     <div class="label-l">头像预览</div>
                     <div class="msg">
                         <div class="head-img">
-                            <img :src="info.imgsrc" alt="">
+                            <img :src="accountData.imgsrc" alt="">
                         </div>
                         <div class="prompt">头像默认尺寸为120*120px，请根据系统操作提示进行裁剪并生效</div>
                         <Upload

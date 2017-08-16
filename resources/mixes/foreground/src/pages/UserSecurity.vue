@@ -119,7 +119,7 @@
             submitResetData() {
                 const self = this;
                 self.loading = true;
-                this.$refs.resetPasswordForm.validate(valid => {
+                this.$refs.resetPassword.validate(valid => {
                     if (valid) {
                         this.temp += 1;
                         self.loading = false;
@@ -238,7 +238,7 @@
                     </i-form>
                 </div>
                 <div class="modify-content2" v-if="temp===2">
-                    <i-form class="signup-form" ref="resetPasswordForm" :model="resetData" :rules="resetRule">
+                    <i-form class="signup-form" ref="resetPassword" :model="resetData" :rules="resetRule">
                         <form-item class="clearfix" prop="newPassword" label="新的登录密码">
                             <i-input class="signup-form-control"
                                      type="text"
