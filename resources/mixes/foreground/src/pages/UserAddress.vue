@@ -1,14 +1,10 @@
 
 <script>
-    import { Select, Option, OptionGroup } from 'iview/src/components/select';
     import Modal from '../components/Modal.vue';
 
     export default {
         components: {
             Modal,
-            Select,
-            Option,
-            OptionGroup,
         },
         data() {
             return {
@@ -154,27 +150,27 @@
                     <div class="signup-form-group clearfix">
                         <label class="form-title">所在地区</label>
                         <div class="select-province clearfix">
-                            <Select v-model="form.province"  style="width:150px">
-                                <Option v-for="province in provinceList"
+                            <i-select v-model="form.province"  style="width:150px">
+                                <i-option v-for="province in provinceList"
                                         :value="province.name"
                                         :key="province.id">
                                     {{ province.name }}
-                                </Option>
-                            </Select>
-                            <Select v-model="form.city"  style="width:150px">
-                                <Option v-for="city in cityList"
+                                </i-option>
+                            </i-select>
+                            <i-select v-model="form.city"  style="width:150px">
+                                <i-option v-for="city in cityList"
                                         :value="city.name"
                                         :key="city.id">
                                     {{ city.name }}
-                                </Option>
-                            </Select>
-                            <Select v-model="form.area"  style="width:150px">
-                                <Option v-for="area in areaList"
+                                </i-option>
+                            </i-select>
+                            <i-select v-model="form.area"  style="width:150px">
+                                <i-option v-for="area in areaList"
                                         :value="area.name"
                                         :key="area.id">
                                     {{ area.name }}
-                                </Option>
-                            </Select>
+                                </i-option>
+                            </i-select>
                         </div>
                     </div>
                     <div class="signup-form-group clearfix group-address">

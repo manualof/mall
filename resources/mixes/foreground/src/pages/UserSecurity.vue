@@ -9,6 +9,12 @@
                     this.userInfo.phone.substring(7, 11);
                 return phoneNum;
             },
+            privateMailbox() {
+                const str = '****';
+                const email = this.userInfo.email.substring(0, 3) + str +
+                    this.userInfo.email.substring(10);
+                return email;
+            },
         },
         data() {
             const passwordReg = /(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,16}$/;
@@ -76,6 +82,7 @@
                 },
                 temp: 1,
                 userInfo: {
+                    email: 'zhhu_123@163.com',
                     phone: '13429763663',
                 },
                 isAccountExit: 0,
@@ -141,13 +148,13 @@
                 <li class="account-item clearfix">
                     <span class="span-icon"><i class="icon iconfont icon-icon-test"></i></span>
                     <span class="span-password">邮箱验证</span>
-                    <span class="span-tip">您的验证邮箱为：10****452@qq.com</span>
+                    <span class="span-tip">您的验证邮箱为：{{ privateMailbox }}</span>
                     <span class="span-edit">编辑</span>
                 </li>
                 <li class="account-item clearfix">
                     <span class="span-icon"><i class="icon iconfont icon-tixing"></i></span>
                     <span class="span-password">手机验证</span>
-                    <span class="span-tip">您验证的手机：136******545  若已丢失或停用，请立即更换</span>
+                    <span class="span-tip">您验证的手机：{{ phoneNumber }} 若已丢失或停用，请立即更换</span>
                     <span class="span-edit">编辑</span>
                 </li>
                 <li class="account-item clearfix">

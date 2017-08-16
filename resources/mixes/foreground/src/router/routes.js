@@ -21,7 +21,6 @@ import SignUp from '../pages/SignUp.vue';
 import SignIn from '../pages/SignIn.vue';
 
 import Home from '../pages/Home.vue';
-import MyOrder from '../pages/MyOrder.vue';
 import Help from '../pages/Help.vue';
 import AfterSale from '../pages/AfterSale.vue';
 import CustomerServe from '../pages/CustomerServe.vue';
@@ -70,11 +69,6 @@ export default [
                 component: ResetPassword,
                 path: 'reset-password',
                 name: 'reset-password',
-            },
-            {
-                component: MyOrder,
-                name: 'order',
-                path: 'order',
             },
             {
                 component: ScanPay,

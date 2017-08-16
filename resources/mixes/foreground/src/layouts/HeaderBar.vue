@@ -9,8 +9,8 @@
             </div>
             <div class="header-bar-user ">
                 <ul class="header-bar-nav">
-                    <li :class="{ 'active': $route.path === '/mall/user/all-order' }">
-                        <router-link to="/mall/user/all-order" target="_blank">我的订单</router-link>
+                    <li :class="{ 'active': $route.path === '/mall/user/order' }">
+                        <router-link to="/mall/user/order" target="_blank">我的订单</router-link>
                         <span>|</span>
                     </li>
                     <li :class="{ 'active': $route.path === '/mall/user' }">

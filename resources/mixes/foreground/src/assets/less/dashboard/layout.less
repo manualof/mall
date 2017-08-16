@@ -462,3 +462,96 @@ button:focus {
     border-radius: 0;
     display: inline-block;
 }
+
+//message 提示
+.ivu-message {
+    font-size: 14px;
+    position: fixed;
+    z-index: 1010;
+    width: 100%;
+    top: 25px;
+    left: 0;
+}
+.ivu-message-notice-content-text {
+    display: inline-block;
+}
+.ivu-message-notice-content {
+    position: relative;
+    padding: 0 16px;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    display: block;
+    height: 40px;
+    left: 50%;
+    line-height: 40px;
+    margin-left: -150px;
+    width: 300px;
+    span {
+        display: block;
+        line-height: 40px;
+        float: left;
+    }
+}
+.ivu-modal {
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    outline: 0;
+    top: 100px;
+}
+.ivu-icon-checkmark-circled {
+    color: #42b983;
+    float: left;
+    font-size: 16px;
+    line-height: 40px;
+    margin-right: 10px;
+}
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    -ms-transition-property: -ms-transform;
+    transition-property: transform;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.swiper-slide {
+    -webkit-flex-shrink: 0;
+    -ms-flex: 0 0 auto;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.swiper-pagination {
+    bottom: 10px;
+    position: absolute;
+    text-align: center;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    -webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    width: 100%;
+    z-index: 10;
+}
