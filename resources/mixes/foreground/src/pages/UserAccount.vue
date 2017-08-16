@@ -18,15 +18,62 @@
                     qq: '1050782272',
                 },
                 accountRule: {
-                    address: [],
-                    ali: '',
-                    birthday: new Date(),
-                    email: '10507822722@qq.com',
-                    imgsrc: '',
-                    realName: 'ibenchu',
-                    sex: '男',
-                    qq: '1050782272',
+                    interest: [
+                        {
+                            required: true,
+                            type: 'array',
+                            trigger: 'change',
+                        },
+                    ],
+                    ali: [
+                        {
+                            required: false,
+                            message: '请填写阿里账号',
+                            trigger: 'blur',
+                        },
+                    ],
+                    birthday: [
+                        {
+                            required: true,
+                            message: '请选择生日',
+                            trigger: 'change',
+                        },
+                    ],
+                    email: [
+                        {
+                            required: true,
+                            message: '邮箱不能为空',
+                            trigger: 'blur',
+                        },
+                        {
+                            type: 'email',
+                            message: '邮箱格式不正确',
+                            trigger: 'blur',
+                        },
+                    ],
+                    realName: [
+                        {
+                            required: true,
+                            message: '姓名不能为空',
+                            trigger: 'blur',
+                        },
+                    ],
+                    sex: [
+                        {
+                            required: true,
+                            message: '请选择性别',
+                            trigger: 'change',
+                        },
+                    ],
+                    qq: [
+                        {
+                            required: false,
+                            message: '请填写qq号',
+                            trigger: 'blur',
+                        },
+                    ],
                 },
+                headImg: '',
                 data: [{
                     value: 'beijing',
                     label: '北京',
@@ -155,7 +202,7 @@
                     <div class="label-l">头像预览</div>
                     <div class="msg">
                         <div class="head-img">
-                            <img :src="accountData.imgsrc" alt="">
+                            <img :src="headImg" alt="">
                         </div>
                         <div class="prompt">头像默认尺寸为120*120px，请根据系统操作提示进行裁剪并生效</div>
                         <Upload
