@@ -7,6 +7,16 @@
             Modal,
         },
         data() {
+            const reg = /^1[3|4|5|7|8][0-9]\d{8}$/;
+            const validatorPhone = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('手机号不能为空'));
+                } else if (!reg.test(value)) {
+                    callback(new Error('请输入正确手机号'));
+                } else {
+                    callback();
+                }
+            };
             return {
                 addressData: {
                     address: '',
@@ -18,7 +28,58 @@
                     username: '',
                 },
                 addressRule: {
-
+                    address: [
+                        {
+                            message: '请选择地区',
+                            required: true,
+                            type: 'array',
+                            trigger: 'change',
+                        },
+                    ],
+                    area: [
+                        {
+                            message: '请选择地区',
+                            required: true,
+                            type: 'array',
+                            trigger: 'change',
+                        },
+                    ],
+                    city: [
+                        {
+                            message: '请选择城市',
+                            required: true,
+                            type: 'array',
+                            trigger: 'change',
+                        },
+                    ],
+                    isdefault: [
+                        {
+                            message: '请选择地区',
+                            required: true,
+                            type: 'bealoon',
+                        },
+                    ],
+                    phone: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            type: 'number',
+                            validator: validatorPhone,
+                        },
+                    ],
+                    province: [
+                        {
+                            required: true,
+                            message: '请选择省',
+                        },
+                    ],
+                    username: [
+                        {
+                            required: true,
+                            message: '请填写收货人',
+                            trigger: 'blur',
+                        },
+                    ],
                 },
                 addressList: [
                     {
