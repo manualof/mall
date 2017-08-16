@@ -1,9 +1,11 @@
 <script>
+    import Message from 'iview/src/components/message';
     import Upload from 'iview/src/components/upload/upload.vue';
 
     export default{
         components: {
             Upload,
+            Message,
         },
         data() {
             return {
@@ -18,8 +20,9 @@
                     qq: '1050782272',
                 },
                 accountRule: {
-                    interest: [
+                    address: [
                         {
+                            message: '请选择地区',
                             required: true,
                             type: 'array',
                             trigger: 'change',
@@ -35,27 +38,9 @@
                     birthday: [
                         {
                             required: true,
-                            message: '请选择生日',
+                            type: 'date',
+                            message: '请选择日期',
                             trigger: 'change',
-                        },
-                    ],
-                    email: [
-                        {
-                            required: true,
-                            message: '邮箱不能为空',
-                            trigger: 'blur',
-                        },
-                        {
-                            type: 'email',
-                            message: '邮箱格式不正确',
-                            trigger: 'blur',
-                        },
-                    ],
-                    realName: [
-                        {
-                            required: true,
-                            message: '姓名不能为空',
-                            trigger: 'blur',
                         },
                     ],
                     sex: [
@@ -134,6 +119,15 @@
             switchTab(index) {
                 this.status = index;
             },
+            saveAccount() {
+                this.$refs.accountForm.validate(valid => {
+                    if (valid) {
+                        Message.success('提交成功!');
+                    } else {
+                        Message.error('表单验证失败!');
+                    }
+                });
+            },
             handleSuccess() {},
         },
     };
@@ -159,7 +153,7 @@
                             <radio label="confidentiality">保密</radio>
                         </radio-group>
                     </form-item>
-                    <form-item class="input-item" label="生日">
+                    <form-item class="input-item" label="生日" prop="birthday">
                         <date-picker type="date" placeholder="选择日期" v-model="accountData.birthday">
                         </date-picker>
                     </form-item>
@@ -168,7 +162,7 @@
                             <span class="modify">修改</span>
                         </div>
                     </form-item>
-                    <form-item class="input-item" label="所在地区">
+                    <form-item class="input-item" label="所在地区" prop="address">
                         <cascader :data="data" v-model="accountData.address"></cascader>
                     </form-item>
                     <form-item class="input-item" label="QQ" prop="qq">
@@ -178,7 +172,7 @@
                         <i-input v-model="accountData.ali"></i-input>
                     </form-item>
                     <form-item>
-                        <i-button :loading="loading" class="submit" type="primary">
+                        <i-button :loading="loading" class="submit" type="primary" @click="saveAccount">
                             <span v-if="!loading">保存修改</span>
                             <span v-else>正在保存…</span>
                         </i-button>
