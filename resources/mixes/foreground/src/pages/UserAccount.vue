@@ -101,65 +101,6 @@
         <div class="clearfix"></div>
         <div class="box">
             <div v-if="status === 1">
-                <form>
-                    <div class="group-input first-group">
-                        <div class="label-l">真实姓名</div>
-                        <div class="msg">{{ accountData.realName }}</div>
-                    </div>
-                    <div class="group-input">
-                        <div class="label-l">性别</div>
-                        <div class="msg">
-                            <label class="radio-box">
-                                <input type="radio" name="sex" value="男" v-model="accountData.sex">
-                                <span></span>
-                                男
-                            </label>
-                            <label class="radio-box">
-                                <input type="radio" name="sex" value="女" v-model="accountData.sex">
-                                <span></span>
-                                女
-                            </label>
-                            <label class="radio-box">
-                                <input type="radio" name="sex" value="保密" v-model="accountData.sex">
-                                <span></span>
-                                保密
-                            </label>
-                        </div>
-                    </div>
-                    <div class="group-input">
-                        <div class="label-l">生日</div>
-                        <div class="msg">
-                            <datepicker language="zh" v-model="accountData.birthday" name="birthday"
-                                        format="yyyy MMM dd">
-                            </datepicker>
-                        </div>
-                    </div>
-                    <div class="group-input">
-                        <div class="label-l">邮箱</div>
-                        <div class="msg">{{ accountData.email.replace(reg, "$1****$2") }}
-                        <span class="modify">修改</span>
-                        </div>
-                    </div>
-                    <div class="group-input">
-                        <div class="label-l">所在地区</div>
-                        <div class="msg"><Ascader :data="data" v-model="accountData.address"></Ascader></div>
-                    </div>
-                    <div class="group-input">
-                        <div class="label-l">QQ</div>
-                        <div class="msg"><input type="text" class="form-control" v-model="accountData.qq"></div>
-                    </div>
-                    <div class="group-input">
-                        <div class="label-l">阿里旺旺</div>
-                        <div class="msg"><input type="text" class="form-control" v-model="accountData.ali"></div>
-                    </div>
-                    <div class="group-input">
-                        <div class="label-l"></div>
-                        <div class="msg">
-
-                            <div class="submit"> 保存修改</div>
-                        </div>
-                    </div>
-                </form>
                 <i-form ref="accountForm" :model="accountData" :rules="accountRule">
                     <form-item label="真实姓名">
                         <div class="msg">{{ accountData.realName }}</div>
@@ -171,7 +112,7 @@
                             <radio label="confidentiality">保密</radio>
                         </radio-group>
                     </form-item>
-                    <form-item label="生日">
+                    <form-item class="input-item" label="生日">
                         <date-picker type="date" placeholder="选择日期" v-model="accountData.birthday">
                         </date-picker>
                     </form-item>
@@ -180,13 +121,13 @@
                             <span class="modify">修改</span>
                         </div>
                     </form-item>
-                    <form-item label="所在地区">
+                    <form-item class="input-item" label="所在地区">
                         <cascader :data="data" v-model="accountData.address"></cascader>
                     </form-item>
-                    <form-item label="QQ" prop="qq">
+                    <form-item class="input-item" label="QQ" prop="qq">
                         <i-input v-model="accountData.qq"></i-input>
                     </form-item>
-                    <form-item label="阿里旺旺" prop="ali">
+                    <form-item class="input-item" label="阿里旺旺" prop="ali">
                         <i-input v-model="accountData.ali"></i-input>
                     </form-item>
                     <form-item>

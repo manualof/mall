@@ -22,29 +22,35 @@
         .first-group {
             height: 30px !important;
         }
+        .ivu-form {
+            margin-top: 30px;
+        }
         .ivu-form-item {
             clear: both;
-            height: 40px;
             margin-top: 20px;
             padding-left: 32px;
+            &.input-item {
+                .ivu-form-item-label {
+                    line-height: 40px
+                }
+            }
+            .clearfix();
             .ivu-form-item-label {
                 color: #444;
                 float: left;
                 font-size: 12px;
                 margin-right: 20px;
-                margin-top: 10px;
                 text-align: right;
                 width: 50px;
             }
             .ivu-form-item-content {
                 float: left;
-                line-height: 36px;
+                line-height: 1;
                 input[type="text"] {
                     border: 1px solid #e5e5e5;
                     border-radius: 0;
                     display: block;
                     font-size: 12px;
-                    height: 40px;
                     padding-left: 13px;
                     width: 180px;
                 }
@@ -56,9 +62,10 @@
                     font-weight: 300;
                     height: 40px;
                     line-height: 40px;
+                    margin-left: 70px;
                     margin-top: 10px;
                     text-align: center;
-                    width: 180px;
+                    width: 140px;
                 }
                 .modify {
                     color: #62bdff;
