@@ -1,5 +1,6 @@
 
 <script>
+    import Message from 'iview/src/components/message';
     import Modal from '../components/Modal.vue';
 
     export default {
@@ -158,7 +159,13 @@
             },
             submit() {
                 const self = this;
-                window.console.log(self.form);
+                self.$refs.addressForm.validate(valid => {
+                    if (valid) {
+                        Message.success('提交成功!');
+                    } else {
+                        Message.error('表单验证失败!');
+                    }
+                });
             },
         },
     };
@@ -195,7 +202,7 @@
                 <h4 class="modal-title" v-text="modalTitle"></h4>
             </div>
             <div slot="body">
-                <i-form class="signup-form" :model="addressData" :rules="addressRule">
+                <i-form class="signup-form" ref="addressForm" :model="addressData" :rules="addressRule">
                     <form-item class="signup-form-group clearfix" label="收货人姓名" prop="username">
                         <i-input v-model="addressData.username"
                                  class="signup-form-control"

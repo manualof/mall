@@ -155,46 +155,46 @@
                             <li>3.以下所需要上传电子版资质仅支持JPG、GIF、PNG格式的图片，大小不超过1M，且必须加盖企业彩色公章。</li>
                         </ol>
                     </div>
-                    <i-form ref="applyForm" :model="form" :rules="formRule">
+                    <i-form class="form-horizontal" ref="applyForm" :model="form" :rules="formRule">
                         <h4>公司及联系人信息</h4>
-                        <form-item prop="company_name" label="公司名称">
+                        <form-item class="form-group clearfix" prop="company_name" label="公司名称">
                             <i-input v-model="form.company_name"></i-input>
                         </form-item>
-                        <form-item prop="company_locations" label="公司所在地">
+                        <form-item class="form-group clearfix" prop="company_locations" label="公司所在地">
                             <cascader :data="data" v-model="form.company_locations"></cascader>
                         </form-item>
-                        <form-item prop="company_address" label="公司详细地址">
+                        <form-item class="form-group clearfix" prop="company_address" label="公司详细地址">
                             <i-input v-model="form.company_address"
                                      type="textarea"
                                      :autosize="{minRows: 3,maxRows: 5}">
                             </i-input>
                         </form-item>
-                        <form-item prop="company_telephone" label="公司电话">
+                        <form-item class="form-group clearfix" prop="company_telephone" label="公司电话">
                             <i-input v-model="form.company_telephone"></i-input>
                         </form-item>
-                        <form-item prop="company_employees" label="员工总数">
+                        <form-item class="form-group clearfix" prop="company_employees" label="员工总数">
                             <i-input v-model="form.company_employees"></i-input>人
                         </form-item>
-                        <form-item prop="company_capital" label="注册资金">
+                        <form-item class="form-group clearfix" prop="company_capital" label="注册资金">
                             <i-input v-model="form.company_capital"></i-input>万元
                         </form-item>
-                        <form-item prop="contact_name" label="联系人姓名">
+                        <form-item class="form-group clearfix" prop="contact_name" label="联系人姓名">
                             <i-input v-model="form.contact_name"></i-input>
                         </form-item>
-                        <form-item prop="contact_telephone" label="联系人电话">
+                        <form-item class="form-group clearfix" prop="contact_telephone" label="联系人电话">
                             <i-input v-model="form.contact_telephone"></i-input>
                         </form-item>
-                        <form-item prop="contact_email" label="电子邮箱">
+                        <form-item class="form-group clearfix" prop="contact_email" label="电子邮箱">
                             <i-input v-model="form.contact_email"></i-input>
                         </form-item>
                         <h4>营业执照信息</h4>
-                        <form-item prop="license_number" label="营业执照号">
+                        <form-item class="form-group clearfix" prop="license_number" label="营业执照号">
                             <i-input v-model="form.license_number"></i-input>
                         </form-item>
-                        <form-item prop="license_addresses" label="营业执照所在地">
+                        <form-item class="form-group clearfix" prop="license_addresses" label="营业执照所在地">
                             <cascader :data="data" v-model="form.license_addresses"></cascader>
                         </form-item>
-                        <form-item label="营业期限">
+                        <form-item class="form-group clearfix" label="营业期限">
                             <form-item prop="license_begins">
                                 <date-picker type="date" placeholder="选择日期" v-model="form.license_begins">
                                 </date-picker>
@@ -217,14 +217,14 @@
                                 </label>
                             </form-item>
                         </form-item>
-                        <form-item prop="business_scope" label="法定经营范围">
+                        <form-item class="form-group clearfix" prop="business_scope" label="法定经营范围">
                             <i-input v-model="form.business_scope"
                                      type="textarea"
                                      :autosize="{minRows: 3,maxRows: 5}">
                             </i-input>
                             <p class="p_first">请与营业执照或企业信息公示网的经营范围保持一致</p>
                         </form-item>
-                        <form-item prop="business_scope" label="营业执照电子版">
+                        <form-item class="form-group clearfix" prop="business_scope" label="营业执照电子版">
                             <ul class="real-imgs clearfix">
                                 <li v-for="img in form.license_images">
                                     <img :src="img"/>
