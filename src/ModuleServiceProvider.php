@@ -8,8 +8,6 @@
  */
 namespace Notadd\Mall;
 
-use Illuminate\Events\Dispatcher;
-use Notadd\Foundation\Http\Events\RequestHandled;
 use Notadd\Foundation\Module\Abstracts\Module;
 use Notadd\Mall\Injections\Installer;
 use Notadd\Mall\Injections\Uninstaller;
@@ -20,6 +18,26 @@ use Symfony\Component\Yaml\Yaml;
  */
 class ModuleServiceProvider extends Module
 {
+    /**
+     * Install for module.
+     *
+     * @return string
+     */
+    public static function install()
+    {
+        return Installer::class;
+    }
+
+    /**
+     * Uninstall for module.
+     *
+     * @return string
+     */
+    public static function uninstall()
+    {
+        return Uninstaller::class;
+    }
+
     /**
      * Boot module.
      */
@@ -54,18 +72,6 @@ class ModuleServiceProvider extends Module
                     'scripts'     => 'assets/mall/seller/js/module.min.js',
                     'stylesheets' => 'assets/mall/seller/css/module.min.css',
                 ],
-            ],
-        ]);
-        $data->put('events', [
-            'listeners'  => [
-                RequestHandled::class => RouteRegister::class,
-            ],
-            'subscribes' => [
-                CsrfTokenRegister::class,
-                FlowRegister::class,
-                PermissionGroupRegister::class,
-                PermissionModuleRegister::class,
-                RouteRegister::class,
             ],
         ]);
         $data->put('settings', [
@@ -1134,54 +1140,33 @@ class ModuleServiceProvider extends Module
         $data->put('pages', [
             'configurations' => [
                 'initialization' => [
-                    'tabs'  => true,
-                    'title' => '配置页面',
+                    'name'  => '全局设置',
+                    'tabs'   => true,
+                    'target' => 'global',
                 ],
                 'tabs'           => [
                     'configuration' => [
                         'default' => true,
                         'show'    => true,
-                        'title'   => '配置',
+                        'title'   => '全局设置',
                         'fields'  => [
-                            'title'       => [
-                                'default'   => '',
-                                'label'     => '标题',
-                                'key'       => '',
-                                'required'  => true,
-                                'type'      => 'input',
-                                'validates' => [
-                                    [
-                                        'message'  => '',
-                                        'required' => true,
-                                        'trigger'  => 'change',
-                                        'type'     => 'string',
-                                    ],
-                                ],
+                            'enabled' => [
+                                'default'  => false,
+                                'label'    => '站点开启',
+                                'key'      => 'site.enabled',
+                                'required' => false,
+                                'type'     => 'switch',
                             ],
-                            'description' => [
-                                'default'   => '',
-                                'label'     => '描述',
-                                'key'       => '',
-                                'required'  => true,
-                                'type'      => 'input',
-                                'validates' => [
+                            'name'    => [
+                                'default'     => '',
+                                'label'       => '网站名称',
+                                'key'         => '',
+                                'placeholder' => '请输入网站名称',
+                                'required'    => true,
+                                'type'        => 'input',
+                                'validates'   => [
                                     [
-                                        'message'  => '',
-                                        'required' => true,
-                                        'trigger'  => 'change',
-                                        'type'     => 'string',
-                                    ],
-                                ],
-                            ],
-                            'keyword'     => [
-                                'default'   => '',
-                                'label'     => '关键字',
-                                'key'       => '',
-                                'required'  => true,
-                                'type'      => 'input',
-                                'validates' => [
-                                    [
-                                        'message'  => '',
+                                        'message'  => '请输入网站名称',
                                         'required' => true,
                                         'trigger'  => 'change',
                                         'type'     => 'string',
@@ -1203,25 +1188,5 @@ class ModuleServiceProvider extends Module
             realpath(__DIR__ . '/../resources/mixes/foreground/dist/assets/mall/foreground')         => public_path('assets/mall/foreground'),
             realpath(__DIR__ . '/../resources/mixes/seller/dist/assets/mall/seller')                 => public_path('assets/mall/seller'),
         ], 'public');
-    }
-
-    /**
-     * Install for module.
-     *
-     * @return string
-     */
-    public static function install()
-    {
-        return Installer::class;
-    }
-
-    /**
-     * Uninstall for module.
-     *
-     * @return string
-     */
-    public static function uninstall()
-    {
-        return Uninstaller::class;
     }
 }
