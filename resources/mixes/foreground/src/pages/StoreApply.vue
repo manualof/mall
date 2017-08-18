@@ -344,7 +344,7 @@
                             <i-input v-model="form.company_employees"></i-input>人
                         </form-item>
                         <form-item class="form-group clearfix" prop="company_capital" label="注册资金">
-                            <i-input v-model="form.company_capital"></i-input>万元
+                            <i-input v-model="form.company_capital"></i-input><span class="after-text">万元</span>
                         </form-item>
                         <form-item class="form-group clearfix" prop="contact_name" label="联系人姓名">
                             <i-input v-model="form.contact_name"></i-input>
@@ -362,7 +362,7 @@
                         <form-item class="form-group clearfix" prop="license_addresses" label="营业执照所在地">
                             <cascader :data="data" v-model="form.license_addresses"></cascader>
                         </form-item>
-                        <form-item class="form-group clearfix" label="营业期限">
+                        <form-item class="form-group clearfix date_div" label="营业期限">
                             <form-item prop="license_begins">
                                 <date-picker type="date" placeholder="选择日期" v-model="form.license_begins">
                                 </date-picker>
@@ -385,14 +385,14 @@
                                 </label>
                             </form-item>
                         </form-item>
-                        <form-item class="form-group clearfix" prop="business_scope" label="法定经营范围">
+                        <form-item class="form-group clearfix col-flex" prop="business_scope" label="法定经营范围">
                             <i-input v-model="form.business_scope"
                                      type="textarea"
                                      :autosize="{minRows: 3,maxRows: 5}">
                             </i-input>
                             <p class="p_first">请与营业执照或企业信息公示网的经营范围保持一致</p>
                         </form-item>
-                        <form-item class="form-group clearfix" prop="business_scope" label="营业执照电子版">
+                        <form-item class="form-group clearfix col-flex" prop="business_scope" label="营业执照电子版">
                             <ul class="real-imgs clearfix">
                                 <li v-for="img in form.license_images">
                                     <img :src="img"/>
@@ -409,138 +409,13 @@
                                         :format="['jpg','jpeg','png']"
                                         :on-success="handleSuccess"
                                         action="//jsonplaceholder.typicode.com/posts/">
-                                        图片上传
                                     </upload>
                                 </li>
                             </ul>
+                            <p class="p_first">营业执照复印件需加盖公司红章扫描上传，若营业执照上未体现注册资本、经营范围，请在营业执照后另行上传企业信息公示网上的截图。</p>
+                            <p class="p_prompt">图片尺寸请确保800px*800px以上，文件大小1MB以内，支持JPG、GIF、PNG格式，最多可上传2张</p>
                         </form-item>
                     </i-form>
-                    <h4>公司及联系人信息</h4>
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            <label for="company_name" class="col-sm-2 control-label">公司名称</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="form.company_name" id="company_name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">公司所在地</label>
-                            <div class="col-sm-10">
-                                <cascader :data="data" v-model="form.company_locations"></cascader>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">公司详细地址</label>
-                            <div class="col-sm-10">
-                                <textarea type="text" v-model="form.company_address" class="form-control pull-left">
-                                </textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">公司电话</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="form.company_telephone">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">员工总数</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="form.company_employees">人
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">注册资金</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="form.company_capital">万元
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName" class="col-md-2 col-sm-2 col-xs-2 control-label text-right">联系人姓名</label>
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <input type="email" class="form-control" id="inputName" v-model="form.contact_name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPhone" class="col-md-2 col-sm-2 col-xs-2 control-label text-right">联系人电话</label>
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <input type="tel" class="form-control" id="inputPhone" v-model="form.contact_telephone">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail" class="col-md-2 col-sm-2 col-xs-2 control-label text-right">电子邮箱</label>
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <input type="email" class="form-control" id="inputEmail" v-model="form.contact_email">
-                            </div>
-                        </div>
-                    </div>
-                    <h4>营业执照信息</h4>
-                    <div class="form-horizontal">
-
-                        <div class="form-group">
-                            <label for="registration_num" class="col-sm-2 control-label">营业执照号</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="form.license_number" id="registration_num">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">营业执照所在地</label>
-                            <div class="col-sm-10">
-                                <cascader :data="data" v-model="form.license_addresses"></cascader>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">营业期限</label>
-                            <div class="col-sm-10">
-                                <div class="date_div pull-left">
-                                    <datepicker language="zh" v-model="form.license_begins"
-                                                format="yyyy MMM dd">
-                                    </datepicker>
-                                    <span class="date_icon icon iconfont icon-rili"></span>
-                                </div>
-                                <span class="pull-left connect"></span>
-                                <div class="date_div pull-left">
-                                    <datepicker language="zh" v-model="form.license_deadline" format="yyyy MMM dd">
-                                    </datepicker>
-                                    <span class="date_icon icon iconfont icon-rili"></span>
-                                </div>
-                                <label class="radio-inline date_long radio-box">
-                                    <input type="checkbox" name="longTime" value="longTime">
-                                    <span></span>长期
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="company_name" class="col-sm-2 control-label">法定经营范围</label>
-                            <div class="col-sm-10">
-                                    <textarea type="text" class="form-control business_scope" v-model="form.business_scope">
-                                    </textarea>
-                                <p class="p_first">请与营业执照或企业信息公示网的经营范围保持一致</p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">营业执照电子版</label>
-                            <div class="col-sm-10">
-                                <ul class="real-imgs clearfix">
-                                    <li v-for="img in form.license_images">
-                                        <img :src="img.content"/>
-                                        <div class="cover">
-                                            <i class="icon iconfont icon-icon_shanchu"
-                                               @click="deleteImg(form.license_images,img)"> </i>
-                                        </div>
-                                    </li>
-                                    <li v-if="form.license_images.length<2">
-                                        <div class="diamond-upload-file">
-                                            <div class="icon iconfont icon-tupian"></div>
-                                            <input type="file" accept="image/*"
-                                                   @change="imageSelected($event,form.license_images)">
-                                        </div>
-                                    </li>
-                                </ul>
-                                <p class="p_first">营业执照复印件需加盖公司红章扫描上传，若营业执照上未体现注册资本、经营范围，请在营业执照后另行上传企业信息公示网上的截图。</p>
-                                <p class="p_prompt">图片尺寸请确保800px*800px以上，文件大小1MB以内，支持JPG、GIF、PNG格式，最多可上传2张</p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group clearfix">
                             <div class="col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-md-1 col-sm-1 col-xs-1">
                                 <button class="btn btn-default prev-btn" @click="prev">上一步</button>

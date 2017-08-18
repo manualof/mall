@@ -231,11 +231,63 @@
                         padding: 36px;
                     }
                 }
+                .after-text {
+                    width: -webkit-fill-available;
+                }
+                .ivu-input {
+                    display: block;
+                }
                 .form-horizontal {
                     margin-top: 20px;
                 }
                 .form-group {
                     margin-bottom: 20px;
+                    &.date_div {
+                        > .ivu-form-item-content {
+                            .ivu-form-item-content {
+                                margin-left: 0;
+                            }
+                        }
+                    }
+                }
+                .diamond-upload-file {
+                    position: relative;
+                    .icon-tupian {
+                        align-items: center;
+                        -webkit-align-items: center;
+                        background-color: #f7f7f7;
+                        border: 1px solid #ccc;
+                        color: #b0b0b0;
+                        display: flex;
+                        display: -webkit-flex;
+                        font-size: 40px;
+                        height: 100%;
+                        justify-content: center;
+                        -webkit-justify-content: center;
+                        width: 100%;
+                    }
+                }
+                .ivu-upload {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    .ivu-upload-input {
+                        visibility: hidden;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                .col-flex {
+                    .ivu-form-item-content {
+                        flex-direction: column;
+                        -webkit-flex-direction: column;
+                    }
+                }
+                .ivu-checkbox-wrapper {
+                    height: 42px;
+                    line-height: 42px;
                 }
                 .ivu-form-item-label {
                     font-size: 14px;
@@ -246,13 +298,18 @@
                     width: 170px;
                 }
                 .ivu-form-item-content {
+                    display: flex;
                     float: left;
                     margin-left: 20px;
                 }
                 p {
                     color: #999999;
                     &.p_first {
-                        margin-top: 9px;
+                    }
+                }
+                .ivu-cascader {
+                    input {
+                        width: 100%;
                     }
                 }
                 input {
@@ -266,32 +323,9 @@
                     height: 94px;
                     resize: none;
                 }
-                .date_div {
-                    position: relative;
-                    .date_icon {
-                        color: #d0d0d0;
-                        display: block;
-                        font-size: 24px;
-                        height: 24px;
-                        left: 10px;
-                        line-height: 24px;
-                        position: absolute;
-                        top: 10px;
-                        text-align: center;
-                        width: 24px;
-                    }
-                }
-                .date_long {
-                    line-height: 41px;
-                    margin-left: 10px;
-                    padding: 0;
-                    width: auto;
-                    input {
-                        display: none;
-                        & + span {
-                            margin-right: 5px;
-                        }
-                    }
+                .p_prompt {
+                    line-height: 1;
+                    margin-top: 0;
                 }
                 .connect {
                     background-color: #444444;
@@ -456,7 +490,7 @@
 
     .ivu-cascader-arrow {
         position: absolute;
-        top: 64%;
+        top: 53%;
         right: 8px;
         line-height: 1;
         margin-top: -7px;
