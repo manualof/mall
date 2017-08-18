@@ -7,6 +7,16 @@
             Datepicker,
         },
         data() {
+            const reg = /^1[3|4|5|7|8][0-9]\d{8}$/;
+            const validatorPhone = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('手机号不能为空'));
+                } else if (!reg.test(value)) {
+                    callback(new Error('请输入正确手机号'));
+                } else {
+                    callback();
+                }
+            };
             return {
                 agree: false,
                 temps: ['入驻须知', '公司信息', '店铺信息', '入驻审核'],
@@ -15,7 +25,6 @@
                 data: cities,
                 form: {
                     business_scope: '',
-                    category: [],
                     company_address: '',
                     company_capital: '',
                     company_employees: '',
@@ -30,12 +39,171 @@
                     license_begins: '',
                     license_images: [],
                     license_number: '',
-                    store_account: '',
-                    store_name: '',
-                    type: 0,
                 },
                 formRule: {
-
+                    business_scope: [
+                        {
+                            required: true,
+                            message: '经营范围不能为空',
+                            trigger: 'blur',
+                        },
+                    ],
+                    company_address: [
+                        {
+                            required: true,
+                            message: '公司地址不能为空',
+                            type: 'string',
+                            trigger: 'blur',
+                        },
+                    ],
+                    company_capital: [
+                        {
+                            required: true,
+                            message: '注册资金不能为空',
+                            trigger: 'blur',
+                        },
+                        {
+                            type: 'number',
+                            message: '注册资金为数字',
+                            trigger: 'blur',
+                        },
+                    ],
+                    company_employees: [
+                        {
+                            required: true,
+                            message: '员工数不能为空',
+                            trigger: 'blur',
+                        },
+                        {
+                            type: 'number',
+                            message: '员工总数为数字',
+                            trigger: 'blur',
+                        },
+                    ],
+                    company_locations: [
+                        {
+                            required: true,
+                            message: '请选择公司所在地',
+                            type: 'array',
+                            trigger: 'change',
+                        },
+                    ],
+                    company_name: [
+                        {
+                            required: true,
+                            message: '公司名不能为空',
+                            trigger: 'blur',
+                        },
+                    ],
+                    company_telephone: [
+                        {
+                            message: '公司电话为数字',
+                            type: 'number',
+                            trigger: 'blur',
+                        },
+                    ],
+                    contact_email: [
+                        {
+                            required: true,
+                            message: '邮箱不能为空',
+                            trigger: 'blur',
+                        },
+                        {
+                            type: 'email',
+                            message: '邮箱格式不正确',
+                            trigger: 'blur',
+                        },
+                    ],
+                    contact_name: [
+                        {
+                            required: true,
+                            message: '联系人不能为空',
+                            trigger: 'blur',
+                        },
+                    ],
+                    contact_telephone: [
+                        {
+                            required: true,
+                            trigger: 'blur',
+                            type: 'number',
+                            validator: validatorPhone,
+                        },
+                    ],
+                    license_addresses: [
+                        {
+                            required: true,
+                            message: '请选择营业执照所在地',
+                            type: 'array',
+                            trigger: 'change',
+                        },
+                    ],
+                    license_deadline: [
+                        {
+                            required: true,
+                            type: 'date',
+                            message: '请选择营业执照结束日期',
+                            trigger: 'change',
+                        },
+                    ],
+                    license_begins: [
+                        {
+                            required: true,
+                            type: 'date',
+                            message: '请选择营业执照开始日期',
+                            trigger: 'change',
+                        },
+                    ],
+                    license_images: [
+                        {
+                            required: true,
+                            type: 'array',
+                            min: 2,
+                            message: '请上传营业执照电子版正反面两张',
+                            trigger: 'change',
+                        },
+                    ],
+                    license_number: [
+                        {
+                            required: true,
+                            message: '营业执照号不能为空',
+                            trigger: 'blur',
+                        },
+                    ],
+                },
+                shopInfo: {
+                    category: [],
+                    store_account: '',
+                    store_name: '',
+                    type: '',
+                },
+                shopInfoRule: {
+                    category: [
+                        {
+                            required: true,
+                            message: '请选择主营类目',
+                            type: 'array',
+                            trigger: 'change',
+                        },
+                    ],
+                    store_account: [
+                        {
+                            required: true,
+                            message: '店铺账号不能为空',
+                            trigger: 'blur',
+                        },
+                    ],
+                    store_name: [
+                        {
+                            required: true,
+                            message: '店铺名称不能为空',
+                            trigger: 'blur',
+                        },
+                    ],
+                    type: {
+                        required: true,
+                        message: '请选择城市',
+                        trigger: 'change',
+                    },
                 },
                 types: [],
             };
@@ -237,6 +405,8 @@
                                     v-if="form.license_images.length<2">
                                     <div class="icon iconfont icon-tupian"></div>
                                     <upload
+                                        ref="upload"
+                                        :format="['jpg','jpeg','png']"
                                         :on-success="handleSuccess"
                                         action="//jsonplaceholder.typicode.com/posts/">
                                         图片上传
@@ -388,7 +558,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">所属分类</label>
                             <div class="col-sm-10">
-                                <select class="form-control address_select" v-model="form.type">
+                                <select class="form-control address_select" v-model="shopInfo.type">
                                     <option :value="type.id" v-for="type in types">{{ type.name }}</option>
                                 </select>
                             </div>
@@ -398,19 +568,19 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">主营类目</label>
                             <div class="col-sm-10">
-                                <cascader :data="categories" v-model="form.category"></cascader>
+                                <cascader :data="categories" v-model="shopInfo.category"></cascader>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="company_name" class="col-sm-2 control-label">店铺名称</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="form.store_name">
+                                <input type="text" class="form-control" v-model="shopInfo.store_name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="company_name" class="col-sm-2 control-label">店铺账号</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="form.store_account">
+                                <input type="text" class="form-control" v-model="shopInfo.store_account">
                             </div>
                         </div>
                         <div class="form-group btn_div">
