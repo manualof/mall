@@ -7,6 +7,7 @@
             Datepicker,
         },
         data() {
+            const self = this;
             const reg = /^1[3|4|5|7|8][0-9]\d{8}$/;
             const validatorPhone = (rule, value, callback) => {
                 if (value === '') {
@@ -20,7 +21,7 @@
             return {
                 agree: false,
                 temps: ['入驻须知', '公司信息', '店铺信息', '入驻审核'],
-                temp: 1,
+                temp: 2,
                 categories: [],
                 data: cities,
                 form: {
@@ -170,6 +171,17 @@
                         },
                     ],
                 },
+                longTime: false,
+                options1: {
+                    disabledDate(date) {
+                        return date && date.valueOf() > Date.now();
+                    },
+                },
+                options2: {
+                    disabledDate(date) {
+                        return date && date.valueOf() < self.getTimeBegin();
+                    },
+                },
                 shopInfo: {
                     category: [],
                     store_account: '',
@@ -209,6 +221,9 @@
             };
         },
         methods: {
+            getTimeBegin() {
+                return Date.parse(this.form.license_begins);
+            },
             handleSuccess() {},
             next() {
                 const self = this;
@@ -283,14 +298,14 @@
         <div class="container businessmen" v-if="temp != 1">
             <div class="step-box" v-if="temp >= 3">
                 <ul class="clearfix row">
-                    <li class="clearfix pull-left col-md-3.5" v-for="(temp, index) in temps"
+                    <li class="clearfix pull-left col-md-3.5" v-for="(item, index) in temps"
                         :class="{ active: temp >= index+2 }">
                         <ul class="clearfix cricle-box pull-left" v-if="index!=0">
                             <li class="cricle pull-left" v-for="i in 17"></li>
                         </ul>
                         <div class="step pull-left">
                             <span class="step-list">{{ index + 1 }}</span>
-                            <p class="modify-margin">{{ temp }}</p>
+                            <p class="modify-margin">{{ item }}</p>
                         </div>
                     </li>
                 </ul>
@@ -364,12 +379,20 @@
                         </form-item>
                         <form-item class="form-group clearfix date_div" label="营业期限">
                             <form-item prop="license_begins">
-                                <date-picker type="date" placeholder="选择日期" v-model="form.license_begins">
+                                <date-picker :disabled="longTime"
+                                             :options="options1"
+                                             placeholder="选择日期"
+                                             type="date"
+                                             v-model="form.license_begins">
                                 </date-picker>
                             </form-item>
                             <span class="pull-left connect"></span>
                             <form-item prop="license_deadline">
-                                <date-picker type="date" placeholder="选择日期" v-model="form.license_deadline">
+                                <date-picker :disabled="longTime"
+                                             :options="options2"
+                                              placeholder="选择日期"
+                                              type="date"
+                                              v-model="form.license_deadline">
                                 </date-picker>
                             </form-item>
                             <form-item>
@@ -378,7 +401,8 @@
                                         <input
                                             type="checkbox"
                                             class="ivu-checkbox-input"
-                                            value="longTime">
+                                            v-model="longTime"
+                                        >
                                         <span class="ivu-checkbox-inner"></span>
                                     </span>
                                     <span>长期</span>
