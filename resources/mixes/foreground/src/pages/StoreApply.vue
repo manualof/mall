@@ -462,7 +462,7 @@
                         <h4>店铺信息</h4>
                         <i-form  class="form-horizontal" ref="shopInfo" :model="shopInfo" :rules="shopInfoRule">
                             <form-item class="form-group clearfix" prop="type" label="所属分类">
-                                <i-select v-model="shopInfo.type"  style="width:150px">
+                                <i-select v-model="shopInfo.type"  style="width:174px">
                                     <i-option v-for="(type,index) in types"
                                               :value="type.name"
                                               :key="index">
@@ -479,47 +479,16 @@
                             <form-item class="form-group clearfix" prop="store_account" label="店铺账号">
                                 <i-input v-model="shopInfo.store_account"></i-input>
                             </form-item>
-                            <form-item class="form-group btn_div">
-                                <div class="col-md-offset-4 col-md-1">
-                                    <button class="btn btn-default prev-btn" @click="prev">上一步</button>
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="submit" class="col-md-offset-11 btn btn-info next-btn" @click="next">
-                                        提交申请
-                                    </button>
-                                </div>
-                            </form-item>
                         </i-form>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">所属分类</label>
-                            <div class="col-sm-10">
-                                <select class="form-control address_select" v-model="shopInfo.type">
-                                    <option :value="type.id" v-for="type in types">{{ type.name }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="info_item form-horizontal operating">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">主营类目</label>
-                            <div class="col-sm-10">
-                                <cascader :data="categories" v-model="shopInfo.category"></cascader>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="company_name" class="col-sm-2 control-label">店铺名称</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="shopInfo.store_name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="company_name" class="col-sm-2 control-label">店铺账号</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" v-model="shopInfo.store_account">
-                            </div>
-                        </div>
                         <div class="form-group btn_div">
-
+                            <div class="col-md-offset-4 col-md-1">
+                                <button class="btn btn-default prev-btn" @click="prev">上一步</button>
+                            </div>
+                            <div class="col-md-1">
+                                <button type="submit" class="col-md-offset-11 btn btn-info next-btn" @click="next">
+                                    提交申请
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
