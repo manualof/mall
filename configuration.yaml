@@ -17,6 +17,7 @@ assets:
             stylesheets: assets/mall/seller/css/module.min.css
 csrf:
     - 'api/mall*'
+entry: '/mall'
 events:
     listeners:
         Notadd\Foundation\Http\Events\RequestHandled: Notadd\Mall\Listeners\RouteRegister
