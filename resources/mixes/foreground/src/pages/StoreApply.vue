@@ -234,7 +234,6 @@
                 if (self.temp < 4) {
                     self.temp += 1;
                 }
-                window.console.log(this.temp);
                 if (self.temp === 4) {
 //                    const form = self.form;
 //                    form.category_id
