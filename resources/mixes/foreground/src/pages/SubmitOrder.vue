@@ -438,7 +438,7 @@
                 <h5>使用自提门店</h5>
                 <div>
                     <label class="form-control-radio" v-for="(take, index) in selfTake" :key="index">
-                        <input type="radio" name="address">
+                        <input type="radio" name="takeAddress">
                         <div class="address clearfix">
                             <p>
                                 <span>{{ take.name }}</span>
