@@ -8,8 +8,9 @@
             });
         },
         data() {
+            const self = this;
             return {
-                advertisement: [
+                columns: [
                     {
                         align: 'center',
                         fixed: 'left',
@@ -53,11 +54,29 @@
                     },
                     {
                         key: 'isshow',
-                        render(row) {
-                            return `<span class="status-check" v-if="${row.status} === true">
-                                    <icon type="checkmark-circled"></icon>开启</span>
-                                    <span v-if="${row.status} === false">
-                                    <icon type="close-circled"></icon>关闭</span>`;
+                        render(h, data) {
+                            if (data.row.status) {
+                                return h('span', {
+                                    props: {
+                                        class: 'status-check',
+                                    },
+                                }, [
+                                    h('icon', {
+                                        props: {
+                                            type: 'checkmark-circled',
+                                        },
+                                    }),
+                                    '开启',
+                                ]);
+                            }
+                            return h('span', [
+                                h('icon', {
+                                    props: {
+                                        type: 'close-circled',
+                                    },
+                                }),
+                                '关闭',
+                            ]);
                         },
                         title: '是否启用',
                         width: 200,
@@ -66,20 +85,50 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<dropdown>
-                                    <i-button type="ghost">设置<icon type="arrow-down-b"></icon></i-button>
-                                    <dropdown-menu slot="list">
-                                    <dropdown-item>设置设置</dropdown-item>
-                                    </dropdown-menu></dropdown>
-                                    <i-button class="delete-ad" click.native="removeAd(${index})"
-                                    type="ghost" >删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('dropdown', {
+                                    scopedSlots: {
+                                        list() {
+                                            return h('dropdown-menu', [
+                                                h('dropdown-item', '设置设置'),
+                                            ]);
+                                        },
+                                    },
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            type: 'ghost',
+                                        },
+                                    }, [
+                                        '设置',
+                                        h('icon', {
+                                            props: {
+                                                type: 'arrow-down-b',
+                                            },
+                                        }),
+                                    ]),
+                                ]),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.removeAd(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 200,
                     },
                 ],
-                advertisementData: [
+                list: [
                     {
                         adverNum: 0,
                         heightNum: 206,
@@ -114,7 +163,6 @@
                         wordNum: 206,
                     },
                 ],
-                self: this,
             };
         },
         methods: {
@@ -125,7 +173,7 @@
                 });
             },
             removeAd(index) {
-                this.advertisementData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -145,8 +193,8 @@
                             <i-button class="delete-data" type="ghost">批量删除</i-button>
                             <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                         </div>
-                        <i-table highlight-row :columns="advertisement" :context="self"
-                                 :data="advertisementData"></i-table>
+                        <i-table highlight-row :columns="columns" :context="self"
+                                 :data="list"></i-table>
                     </card>
                 </tab-pane>
             </tabs>

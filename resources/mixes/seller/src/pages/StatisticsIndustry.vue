@@ -24,8 +24,13 @@
                     },
                     {
                         key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                         title: '操作',
                         width: 120,
@@ -55,46 +60,180 @@
                 ],
                 goodsList: [
                     {
-                        label: '商品1',
-                        value: '1',
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '自行车',
+                                        value: '自行车',
+                                    },
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅',
+                                        value: '安全座椅',
+                                    },
+                                ],
+                                label: '童车童床',
+                                value: '童车童床',
+                            },
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '个护化妆',
+                        value: '个护化妆',
                     },
                     {
-                        label: '商品2',
-                        value: '2',
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                    {
+                                        label: '婴儿推车3',
+                                        value: '婴儿推车3',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅4',
+                                        value: '安全座椅4',
+                                    },
+                                ],
+                                label: '服饰寝居',
+                                value: '服饰寝居',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '车1',
+                                        value: '车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '家用电器',
+                        value: '家用电器',
                     },
                 ],
                 industryGoods: {
-                    color: ['#3398DB'],
                     series: [
                         {
-                            barWidth: '60%',
-                            data: [10, 52, 200, 334, 390, 330, 220],
-                            name: '直接访问',
-                            type: 'bar',
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '下单商品数',
+                            stack: '下单商品数',
+                            type: 'line',
                         },
                     ],
                     tooltip: {
-                        axisPointer: {
-                            type: 'line',
-                        },
                         trigger: 'axis',
                     },
-                    xAxis: [
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['1', '2', '3', '4', '5', '6', '7'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
+                industryGoodsArea: {
+                    series: [
                         {
-                            axisTick: {
-                                alignWithLabel: true,
-                            },
-                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                            type: 'category',
+                            data: [120, 132, 220, 250, 90, 230, 210],
+                            name: '客单价',
+                            stack: '客单价',
+                            type: 'line',
                         },
                     ],
-                    yAxis: [
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    xAxis: {
+                        boundaryGap: false,
+                        data: ['1-100', '100-200', '200-300', '300-400', '400-500', '500-600', '600-700'],
+                        type: 'category',
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                },
+                isPriceArea: false,
+                orderMoneyOptions: {
+                    shortcuts: [
                         {
-                            type: 'value',
+                            text: '最近一周',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 7));
+                                return [start, end];
+                            },
+                        },
+                        {
+                            text: '最近一个月',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 30));
+                                return [start, end];
+                            },
+                        },
+                        {
+                            text: '最近三个月',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 90));
+                                return [start, end];
+                            },
                         },
                     ],
                 },
-                isPriceArea: false,
                 orderNumber: {
                     series: [
                         {
@@ -118,21 +257,17 @@
                 },
                 self: this,
                 style: 'height: 400px;',
-                timeList: [
-                    {
-                        label: '按照月统计',
-                        value: '1',
-                    },
-                    {
-                        label: '按照周统计',
-                        value: '2',
-                    },
-                    {
-                        label: '按照天统计',
-                        value: '3',
-                    },
-                ],
             };
+        },
+        methods: {
+            settingPrice() {
+                const self = this;
+                self.$router.push(
+                    {
+                        path: 'industry/set',
+                    },
+                );
+            },
         },
     };
 </script>
@@ -148,24 +283,19 @@
                         </div>
                         <div class="analysis-content">
                             <div class="order-money-content">
-                                <div class="select-content" style="top: -10px">
+                                <div class="select-content select-content-left" style="top: -10px">
                                     <ul>
                                         <li>
                                             商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
+                                            <cascader :data="goodsList" trigger="hover"></Cascader>
                                         </li>
                                         <li>
                                             时间周期
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in timeList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            <date-picker type="date" placeholder="选择日期"></date-picker>
+                                            <date-picker :options="orderMoneyOptions"
+                                                         placement="bottom-end"
+                                                         placeholder="选择日期"
+                                                         style="width: 200px"
+                                                         type="daterange"></date-picker>
                                         </li>
                                     </ul>
                                 </div>
@@ -193,29 +323,26 @@
                         <div class="analysis-content">
                             <div class="order-money-content">
                                 <div class="select-content" style="top: -10px">
+                                    <i-button type="ghost" class="export-btn"
+                                              @click.native="settingPrice">设置价格区间</i-button>
                                     <ul>
                                         <li>
                                             商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
+                                            <cascader :data="goodsList" trigger="hover"></Cascader>
                                         </li>
                                         <li>
                                             时间周期
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in timeList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            <date-picker type="date" placeholder="选择日期"></date-picker>
+                                            <date-picker :options="orderMoneyOptions"
+                                                         placement="bottom-end"
+                                                         placeholder="选择日期"
+                                                         style="width: 200px"
+                                                         type="daterange"></date-picker>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="echarts">
-                                <i-echarts :option="industryGoods"
+                                <i-echarts :option="industryGoodsArea"
                                            :style="style"
                                            @click="onClick"
                                            @ready="onReady" ></i-echarts>

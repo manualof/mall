@@ -12,20 +12,23 @@
                 managementSearch: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '订单编号',
+                        label: '订单号',
+                        value: '1',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
+                        label: '运单号',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '收货人',
+                        value: '3',
+                    },
+                    {
+                        label: '手机号',
+                        value: '4',
                     },
                 ],
-                self: this,
-                typeColumns: [
+                columns: [
                     {
                         key: 'orderNum',
                         title: '订单号',
@@ -51,7 +54,7 @@
                         title: '状态',
                     },
                 ],
-                typeData: [
+                list: [
                     {
                         orderNum: '56347567',
                         phone: '15623456876',
@@ -123,8 +126,8 @@
                         </i-input>
                     </div>
                 </div>
-                <i-table highlight-row :columns="typeColumns" :context="self"
-                         :data="typeData" ref="orderTable"></i-table>
+                <i-table highlight-row :columns="columns" :context="self"
+                         :data="list" ref="orderTable"></i-table>
                 <div class="page">
                     <page :total="150" show-elevator></page>
                 </div>

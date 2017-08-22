@@ -25,6 +25,7 @@ class ProductBrand extends Model
     protected $fillable = [
         'category_id',
         'flow_marketing',
+        'initial',
         'logo',
         'name',
         'order',
@@ -34,16 +35,25 @@ class ProductBrand extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'order'     => 'null|0',
+        'recommend' => 'null|0',
+        'store_id'  => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_product_brands';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
     {
-        return $this->hasOne(ProductCategory::class, 'id', 'category_id');
+        return $this->belongsTo(ProductCategory::class);
     }
 
     /**

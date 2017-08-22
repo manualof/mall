@@ -9,6 +9,157 @@
         },
         data() {
             return {
+                filter: {
+                    goodsType: [],
+                    goodsTypeList: [
+                        {
+                            children: [
+                                {
+                                    label: '面部护理',
+                                    value: '1',
+                                },
+                                {
+                                    label: '口腔护理',
+                                    value: '2',
+                                },
+                                {
+                                    label: '身体护理',
+                                    value: '3',
+                                },
+                            ],
+                            label: '个护化妆',
+                            value: '1',
+                        },
+                        {
+                            children: [
+                                {
+                                    label: '生活电器',
+                                    value: '1',
+                                },
+                                {
+                                    label: '厨房电器',
+                                    value: '2',
+                                },
+                                {
+                                    label: '大家电',
+                                    value: '3',
+                                },
+                            ],
+                            label: '家用电器',
+                            value: '2',
+                        },
+                    ],
+                    industryGoodsType: [],
+                    industryList: [
+                        {
+                            children: [
+                                {
+                                    label: '面部护理',
+                                    value: '1',
+                                },
+                                {
+                                    label: '口腔护理',
+                                    value: '2',
+                                },
+                                {
+                                    label: '身体护理',
+                                    value: '3',
+                                },
+                            ],
+                            label: '个护化妆',
+                            value: '1',
+                        },
+                        {
+                            children: [
+                                {
+                                    children: [
+                                        {
+                                            label: '冰箱',
+                                            value: '1',
+                                        },
+                                        {
+                                            label: '空调',
+                                            value: '2',
+                                        },
+                                    ],
+                                    label: '生活电器',
+                                    value: '1',
+                                },
+                                {
+                                    children: [
+                                        {
+                                            label: '热水器',
+                                            value: '1',
+                                        },
+                                    ],
+                                    label: '厨房电器',
+                                    value: '2',
+                                },
+                                {
+                                    label: '大家电',
+                                    value: '3',
+                                },
+                            ],
+                            label: '家用电器',
+                            value: '2',
+                        },
+                    ],
+                    priceGoodsType: [],
+                    priceList: [
+                        {
+                            children: [
+                                {
+                                    label: '面部护理',
+                                    value: '1',
+                                },
+                                {
+                                    label: '口腔护理',
+                                    value: '2',
+                                },
+                                {
+                                    label: '身体护理',
+                                    value: '3',
+                                },
+                            ],
+                            label: '个护化妆',
+                            value: '1',
+                        },
+                        {
+                            children: [
+                                {
+                                    children: [
+                                        {
+                                            label: '冰箱',
+                                            value: '1',
+                                        },
+                                        {
+                                            label: '空调',
+                                            value: '2',
+                                        },
+                                    ],
+                                    label: '生活电器',
+                                    value: '1',
+                                },
+                                {
+                                    children: [
+                                        {
+                                            label: '热水器',
+                                            value: '1',
+                                        },
+                                    ],
+                                    label: '厨房电器',
+                                    value: '2',
+                                },
+                                {
+                                    label: '大家电',
+                                    value: '3',
+                                },
+                            ],
+                            label: '家用电器',
+                            value: '2',
+                        },
+                    ],
+                },
                 goodsColumns: [
                     {
                         key: 'num',
@@ -24,8 +175,13 @@
                     },
                     {
                         key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                         title: '操作',
                         width: 120,
@@ -51,16 +207,6 @@
                         amount: 99,
                         goodsName: 'xxx旗舰店',
                         num: 4,
-                    },
-                ],
-                goodsList: [
-                    {
-                        label: '商品1',
-                        value: '1',
-                    },
-                    {
-                        label: '商品2',
-                        value: '2',
                     },
                 ],
                 industryGoods: {
@@ -126,99 +272,6 @@
                     ],
                 },
                 isPriceArea: false,
-                profileOrderGoods: {
-                    legend: {
-                        bottom: 'auto',
-                        data: ['昨天', '今天'],
-                    },
-                    series: [
-                        {
-                            data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '今天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                        {
-                            data: [220, 182, 191, 234, 290, 330, 310],
-                            name: '昨天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                    ],
-                    tooltip: {
-                        trigger: 'axis',
-                    },
-                    xAxis: {
-                        boundaryGap: false,
-                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                        type: 'category',
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
-                },
-                profileOrderMoney: {
-                    legend: {
-                        bottom: 'auto',
-                        data: ['昨天', '今天'],
-                    },
-                    series: [
-                        {
-                            data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '今天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                        {
-                            data: [220, 182, 191, 234, 290, 330, 310],
-                            name: '昨天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                    ],
-                    tooltip: {
-                        trigger: 'axis',
-                    },
-                    xAxis: {
-                        boundaryGap: false,
-                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                        type: 'category',
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
-                },
-                profileOrderNum: {
-                    legend: {
-                        bottom: 'auto',
-                        data: ['昨天', '今天'],
-                    },
-                    series: [
-                        {
-                            data: [120, 132, 220, 250, 90, 230, 210],
-                            name: '今天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                        {
-                            data: [220, 182, 191, 234, 290, 330, 310],
-                            name: '昨天',
-                            stack: '下单金额',
-                            type: 'line',
-                        },
-                    ],
-                    tooltip: {
-                        trigger: 'axis',
-                    },
-                    xAxis: {
-                        boundaryGap: false,
-                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                        type: 'category',
-                    },
-                    yAxis: {
-                        type: 'value',
-                    },
-                },
                 orderAccount: {
                     series: [
                         {
@@ -239,6 +292,37 @@
                     yAxis: {
                         type: 'value',
                     },
+                },
+                orderMoneyOptions: {
+                    shortcuts: [
+                        {
+                            text: '最近一周',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 7));
+                                return [start, end];
+                            },
+                        },
+                        {
+                            text: '最近一个月',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 30));
+                                return [start, end];
+                            },
+                        },
+                        {
+                            text: '最近三个月',
+                            value() {
+                                const end = new Date();
+                                const start = new Date();
+                                start.setTime(start.getTime() - (3600 * 1000 * 24 * 90));
+                                return [start, end];
+                            },
+                        },
+                    ],
                 },
                 orderNumber: {
                     series: [
@@ -261,7 +345,99 @@
                         type: 'value',
                     },
                 },
-                self: this,
+                profileOrderGoods: {
+                    color: ['#3398DB'],
+                    series: [
+                        {
+                            barWidth: '60%',
+                            data: [10, 52, 200, 334, 390, 330, 220],
+                            name: '直接访问',
+                            type: 'bar',
+                        },
+                    ],
+                    tooltip: {
+                        axisPointer: {
+                            type: 'line',
+                        },
+                        trigger: 'axis',
+                    },
+                    xAxis: [
+                        {
+                            axisTick: {
+                                alignWithLabel: true,
+                            },
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            type: 'category',
+                        },
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                        },
+                    ],
+                },
+                profileOrderMoney: {
+                    color: ['#3398DB'],
+                    series: [
+                        {
+                            barWidth: '60%',
+                            data: [10, 52, 200, 334, 390, 330, 220],
+                            name: '直接访问',
+                            type: 'bar',
+                        },
+                    ],
+                    tooltip: {
+                        axisPointer: {
+                            type: 'line',
+                        },
+                        trigger: 'axis',
+                    },
+                    xAxis: [
+                        {
+                            axisTick: {
+                                alignWithLabel: true,
+                            },
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            type: 'category',
+                        },
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                        },
+                    ],
+                },
+                profileOrderNum: {
+                    color: ['#3398DB'],
+                    series: [
+                        {
+                            barWidth: '60%',
+                            data: [10, 52, 200, 334, 390, 330, 220],
+                            name: '直接访问',
+                            type: 'bar',
+                        },
+                    ],
+                    tooltip: {
+                        axisPointer: {
+                            type: 'line',
+                        },
+                        trigger: 'axis',
+                    },
+                    xAxis: [
+                        {
+                            axisTick: {
+                                alignWithLabel: true,
+                            },
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            type: 'category',
+                        },
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                        },
+                    ],
+                },
                 shopsColumns: [
                     {
                         key: 'num',
@@ -279,8 +455,13 @@
                         key: 'action',
                         title: '操作',
                         width: 120,
-                        render() {
-                            return '<i-button type="ghost" size="small">查看</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                     },
                 ],
@@ -307,22 +488,9 @@
                     },
                 ],
                 style: 'height: 400px;',
-                timeList: [
-                    {
-                        label: '按照月统计',
-                        value: '1',
-                    },
-                    {
-                        label: '按照周统计',
-                        value: '2',
-                    },
-                    {
-                        label: '按照天统计',
-                        value: '3',
-                    },
-                ],
             };
         },
+        methods: {},
     };
 </script>
 <template>
@@ -333,7 +501,7 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>在“提示”下可以选择不同的商品分类和时间查询数据</p>
+                            <p>可以选择不同的商品分类和时间查询数据</p>
                             <p>统计某行业子分类在不同时间段的下单金额、下单商品数、下单量，为分析行业销量提供依据</p>
                         </div>
                         <div class="analysis-content">
@@ -344,20 +512,16 @@
                                             <ul>
                                                 <li>
                                                     商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
+                                                    <cascader :data="filter.goodsTypeList" style="width: 148px"
+                                                              trigger="hover" v-model="filter.goodsType"></cascader>
                                                 </li>
                                                 <li>
                                                     时间周期
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in timeList" :value="item.value"
-                                                                :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                    <date-picker :options="orderMoneyOptions"
+                                                                 placement="bottom-end"
+                                                                 placeholder="选择日期"
+                                                                 style="width: 200px"
+                                                                 type="daterange"></date-picker>
                                                 </li>
                                             </ul>
                                         </div>
@@ -375,20 +539,16 @@
                                             <ul>
                                                 <li>
                                                     商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
+                                                    <cascader :data="filter.goodsTypeList" style="width: 148px"
+                                                              trigger="hover" v-model="filter.goodsType"></cascader>
                                                 </li>
                                                 <li>
                                                     时间周期
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in timeList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                    <date-picker :options="orderMoneyOptions"
+                                                                 placement="bottom-end"
+                                                                 placeholder="选择日期"
+                                                                 style="width: 200px"
+                                                                 type="daterange"></date-picker>
                                                 </li>
                                             </ul>
                                         </div>
@@ -406,20 +566,16 @@
                                             <ul>
                                                 <li>
                                                     商品分类
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in goodsList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
+                                                    <cascader :data="filter.goodsTypeList" style="width: 148px"
+                                                              trigger="hover" v-model="filter.goodsType"></cascader>
                                                 </li>
                                                 <li>
                                                     时间周期
-                                                    <i-select v-model="model2" style="width:124px">
-                                                        <i-option v-for="item in timeList" :value="item.value"
-                                                                  :key="item">{{ item.label }}</i-option>
-                                                    </i-select>
-                                                </li>
-                                                <li>
-                                                    <date-picker type="date" placeholder="选择日期"></date-picker>
+                                                    <date-picker :options="orderMoneyOptions"
+                                                                 placement="bottom-end"
+                                                                 placeholder="选择日期"
+                                                                 style="width: 200px"
+                                                                 type="daterange"></date-picker>
                                                 </li>
                                             </ul>
                                         </div>
@@ -439,7 +595,7 @@
                     <card :bordered="false">
                         <div class="prompt-box">
                             <p>提示</p>
-                            <p>在“提示”下可以选择不同的商品分类和时间查询数据</p>
+                            <p>可以选择不同的商品分类和时间查询数据</p>
                             <p>统计某行业在不同时间段下单量前50名商品和前30名店铺</p>
                         </div>
                         <div class="analysis-content">
@@ -449,20 +605,16 @@
                                     <ul>
                                         <li>
                                             商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
+                                            <cascader :data="filter.industryList" style="width: 190px"
+                                                      trigger="hover" v-model="filter.industryGoodsType"></cascader>
                                         </li>
                                         <li>
                                             时间周期
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in timeList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            <date-picker type="date" placeholder="选择日期"></date-picker>
+                                            <date-picker :options="orderMoneyOptions"
+                                                         placement="bottom-end"
+                                                         placeholder="选择日期"
+                                                         style="width: 200px"
+                                                         type="daterange"></date-picker>
                                         </li>
                                     </ul>
                                 </div>
@@ -473,7 +625,7 @@
                                            @click="onClick"
                                            @ready="onReady" ></i-echarts>
                             </div>
-                            <i-table :columns="goodsColumns" :context="self" :data="goodsData"></i-table>
+                            <i-table :columns="goodsColumns" :data="goodsData"></i-table>
                             <div class="page">
                                 <page :total="100" show-elevator></page>
                             </div>
@@ -490,13 +642,11 @@
                                         </li>
                                         <li>
                                             时间周期
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in timeList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            <date-picker type="date" placeholder="选择日期"></date-picker>
+                                            <date-picker :options="orderMoneyOptions"
+                                                         placement="bottom-end"
+                                                         placeholder="选择日期"
+                                                         style="width: 200px"
+                                                         type="daterange"></date-picker>
                                         </li>
                                     </ul>
                                 </div>
@@ -507,7 +657,7 @@
                                            @click="onClick"
                                            @ready="onReady"></i-echarts>
                             </div>
-                            <i-table :columns="shopsColumns" :context="self" :data="shopsData"></i-table>
+                            <i-table :columns="shopsColumns" :data="shopsData"></i-table>
                             <div class="page">
                                 <page :total="100" show-elevator></page>
                             </div>
@@ -532,20 +682,16 @@
                                     <ul>
                                         <li>
                                             商品分类
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in goodsList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
+                                            <cascader :data="filter.priceList" style="width: 190px"
+                                                      trigger="hover" v-model="filter.priceGoodsType"></cascader>
                                         </li>
                                         <li>
                                             时间周期
-                                            <i-select v-model="model2" style="width:124px">
-                                                <i-option v-for="item in timeList" :value="item.value"
-                                                          :key="item">{{ item.label }}</i-option>
-                                            </i-select>
-                                        </li>
-                                        <li>
-                                            <date-picker type="date" placeholder="选择日期"></date-picker>
+                                            <date-picker :options="orderMoneyOptions"
+                                                         placement="bottom-end"
+                                                         placeholder="选择日期"
+                                                         style="width: 200px"
+                                                         type="daterange"></date-picker>
                                         </li>
                                     </ul>
                                 </div>

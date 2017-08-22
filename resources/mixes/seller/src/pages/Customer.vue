@@ -118,7 +118,8 @@
                                             <i-input v-model="item.account"></i-input>
                                         </i-col>
                                         <i-col span="3">
-                                            <i-button type="error" @click.native="deletePreForm(index)">删除</i-button>
+                                            <i-button type="error" @click.native="deletePreForm(index)"
+                                            v-if="index !== 0">删除</i-button>
                                         </i-col>
                                     </row>
                                 </form-item>
@@ -146,7 +147,8 @@
                                             <i-input v-model="item.account"></i-input>
                                         </i-col>
                                         <i-col span="3">
-                                            <i-button type="error" @click.native="deleteAfterForm(index)">删除</i-button>
+                                            <i-button type="error" @click.native="deleteAfterForm(index)"
+                                                      v-if="index !== 0">删除</i-button>
                                         </i-col>
                                     </row>
                                 </form-item>

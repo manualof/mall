@@ -9,7 +9,7 @@
         },
         data() {
             return {
-                payColumns: [
+                columns: [
                     {
                         type: 'selection',
                         width: 150,
@@ -21,25 +21,40 @@
                     },
                     {
                         key: 'status',
-                        render() {
-                            return `<i-switch size="large" v-model="switch1">
-                                        <span slot="open">开启</span>
-                                        <span slot="close">关闭</span>
-                                    </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '当前状态',
                     },
                     {
                         align: 'center',
                         key: 'action',
-                        render() {
-                            return '<i-button type="ghost">编辑</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '编辑');
                         },
                         title: '操作',
                         width: 150,
                     },
                 ],
-                payStyle: [
+                list: [
                     {
                         style: '货到付款',
                     },
@@ -54,7 +69,6 @@
                     },
                 ],
                 plugin: true,
-                self: this,
                 switch1: true,
             };
         },
@@ -81,7 +95,7 @@
                             <p>此处列出了系统支持的支付方式，点击“编辑”按钮可以编辑支付参数及开关状态</p>
                         </div>
                         <div class="store-body">
-                            <i-table :context="self"  :columns="payColumns" :data="payStyle" ref="payStyle"></i-table>
+                            <i-table  :columns="columns" :data="list" ref="payStyle"></i-table>
                         </div>
                     </card>
                     <card :bordered="false" v-if="!plugin">

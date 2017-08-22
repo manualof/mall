@@ -10,15 +10,16 @@
         data() {
             return {
                 loading: false,
-                rejectedDetail: {
+                form: {
                     remarks: '',
                 },
-                ruleValidate: {
+                rules: {
                     remarks: [
                         {
                             message: '信息不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
@@ -67,7 +68,7 @@
                     <p>编辑完成后请清理“商家消息模板”缓存。</p>
                 </div>
                 <div class="refund-process-content store-information">
-                    <i-form ref="rejectedDetail" :model="rejectedDetail" :rules="ruleValidate" :label-width="200">
+                    <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                         <ul>
                             <li>
                                 <div class="refund-application">
@@ -98,7 +99,7 @@
                                                 <form-item label="消息内容">
                                                     <form-item class="remark-input">
                                                         <i-input :autosize="{minRows: 3,maxRows: 5}"
-                                                                 v-model="rejectedDetail.remarks"
+                                                                 v-model="form.remarks"
                                                                  type="textarea"></i-input>
                                                     </form-item>
                                                 </form-item>
@@ -136,7 +137,7 @@
                                                 <form-item label="消息内容">
                                                     <form-item class="remark-input">
                                                         <i-input :autosize="{minRows: 3,maxRows: 5}" type="textarea"
-                                                                 v-model="rejectedDetail.remarks"></i-input>
+                                                                 v-model="form.remarks"></i-input>
                                                     </form-item>
                                                 </form-item>
                                             </i-col>

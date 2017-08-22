@@ -19,6 +19,15 @@ use Notadd\Mall\Handlers\Seller\Order\ProcessHandler;
 class OrderController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-seller::order::list'    => 'list',
+        'global::mall-seller::order::order'   => 'order',
+        'global::mall-seller::order::process' => 'process',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Seller\Order\ListHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response

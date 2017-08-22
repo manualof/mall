@@ -37,9 +37,18 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="removeGoods(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.removeGoods(data.index);
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '删除');
                         },
                         title: '操作',
                         width: 150,

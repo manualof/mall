@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 accountColumns: [
                     {
@@ -39,9 +40,34 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="remove(${index})"
-                                    type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.set(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '设置'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
@@ -75,6 +101,11 @@
                 },
                 loading: false,
                 self: this,
+                setForm: {
+                    account: 'dgwjw',
+                    password: '',
+                },
+                setModal: false,
             };
         },
         methods: {
@@ -84,10 +115,27 @@
             remove(index) {
                 this.accountData.splice(index, 1);
             },
+            set() {
+                this.setModal = true;
+            },
             submit() {
                 const self = this;
                 self.loading = true;
                 self.$refs.form.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            submitSet() {
+                const self = this;
+                self.loading = true;
+                self.$refs.setForm.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -150,6 +198,38 @@
                                         <i-col span="16">
                                             <form-item>
                                                 <i-button :loading="loading" type="primary" @click.native="submit">
+                                                    <span v-if="!loading">确认提交</span>
+                                                    <span v-else>正在提交…</span>
+                                                </i-button>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                </i-form>
+                            </div>
+                        </modal>
+                        <modal
+                                v-model="setModal"
+                                title="接受设置" class="upload-picture-modal">
+                            <div>
+                                <i-form ref="setForm" :model="setForm" :rules="setValidate" :label-width="100">
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="登录账号">
+                                                {{ setForm.account }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item label="密码">
+                                                <i-input v-model="setForm.password"></i-input>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="16">
+                                            <form-item>
+                                                <i-button :loading="loading" type="primary" @click.native="submitSet">
                                                     <span v-if="!loading">确认提交</span>
                                                     <span v-else>正在提交…</span>
                                                 </i-button>

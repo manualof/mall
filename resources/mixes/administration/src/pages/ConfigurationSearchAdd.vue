@@ -14,12 +14,13 @@
                     show: '',
                 },
                 loading: false,
-                ruleValidate: {
+                rules: {
                     search: [
                         {
                             message: '搜索默认词不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     show: [
@@ -27,10 +28,11 @@
                             message: '显示词不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
-                searchData: {
+                form: {
                     search: '',
                     show: '',
                 },
@@ -40,6 +42,7 @@
                             message: '搜索默认词不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     show: [
@@ -47,6 +50,7 @@
                             message: '显示词不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
@@ -60,7 +64,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.activityValidate.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         self.$Message.success('提交成功!');
                     } else {
@@ -84,11 +88,11 @@
                 <span>热门搜索—新增</span>
             </div>
             <card :bordered="false">
-                <i-form :label-width="200" ref="activityValidate" :model="searchData" :rules="validate">
+                <i-form :label-width="200" ref="form" :model="form" :rules="rules">
                     <row>
                         <i-col span="12">
                             <form-item label="搜索默认词" prop="search">
-                                <i-input placeholder="" v-model="searchData.search"></i-input>
+                                <i-input placeholder="" v-model="form.search"></i-input>
                                 <p class="range">搜索词参与搜索，列：童装</p>
                             </form-item>
                         </i-col>
@@ -96,7 +100,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="显示词" prop="show">
-                                <i-input placeholder="" v-model="searchData.show"></i-input>
+                                <i-input placeholder="" v-model="form.show"></i-input>
                                 <p class="range">显示词不参与搜索，只起显示作用，例：61儿童节，童装五折狂欢</p>
                             </form-item>
                         </i-col>

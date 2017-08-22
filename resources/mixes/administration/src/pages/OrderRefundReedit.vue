@@ -10,16 +10,17 @@
         data() {
             return {
                 loading: false,
-                refundEdit: {
+                form: {
                     refundReason: '',
                     refundSort: '',
                 },
-                ruleValidate: {
+                rules: {
                     refundReason: [
                         {
                             message: '原因不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     refundSort: [
@@ -27,6 +28,7 @@
                             message: '排序不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
@@ -40,7 +42,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.refundEdit.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -64,18 +66,18 @@
                 <span>原因设定—编辑</span>
             </div>
             <card :bordered="false">
-                <i-form ref="refundEdit" :model="refundEdit" :rules="ruleValidate" :label-width="200">
+                <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                     <row>
                         <i-col span="12">
                             <form-item label="原因" prop="refundReason">
-                                <i-input v-model="refundEdit.refundReason"></i-input>
+                                <i-input v-model="form.refundReason"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="排序" prop="refundSort">
-                                <i-input v-model="refundEdit.refundSort"></i-input>
+                                <i-input v-model="form.refundSort"></i-input>
                                 <p class="tip">数字范围为0~255，数字越小越靠前</p>
                             </form-item>
                         </i-col>

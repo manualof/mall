@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Product\Subscribe;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductSubscribe;
 
 /**
@@ -24,8 +25,13 @@ class RemoveHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_product_categories'),
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
+            'id.exists'   => '没有对应的商品订阅信息',
             'id.required' => '订阅 ID 必须填写',
             'id.numeric'  => '订阅 ID 必须为数值',
         ]);
@@ -33,10 +39,10 @@ class RemoveHandler extends Handler
         $subscribe = ProductSubscribe::query()->find($this->request->input('id'));
         if ($subscribe instanceof ProductSubscribe && $subscribe->delete()) {
             $this->commitTransaction();
-            $this->withCode(200)->withMessage('删除订阅信息成功！');
+            $this->withCode(200)->withMessage('删除商品订阅信息成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('删除订阅信息失败！');
+            $this->withCode(500)->withError('没有对应的商品订阅信息！');
         }
     }
 }

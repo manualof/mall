@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreCategory;
 
 /**
@@ -24,10 +25,15 @@ class RemoveHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_store_categories'),
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
-            'id.numeric'  => '分类 ID 必须为数值',
-            'id.required' => '分类 ID 必须填写',
+            'id.exists'   => '没有对应的店铺分类信息',
+            'id.numeric'  => '店铺分类 ID 必须为数值',
+            'id.required' => '店铺分类 ID 必须填写',
         ]);
         $this->beginTransaction();
         $category = StoreCategory::query()->find($this->request->input('id'));
@@ -36,7 +42,7 @@ class RemoveHandler extends Handler
             $this->withCode(200)->withMessage('删除店铺分类成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('删除店铺分类失败！');
+            $this->withCode(500)->withError('没有对应的分类信息！');
         }
     }
 }

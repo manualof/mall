@@ -9,19 +9,29 @@
             });
         },
         data() {
+            const self = this;
             return {
                 refundColumns: [
                     {
                         align: 'left',
                         key: 'refundTotal',
-                        render() {
-                            return `<div class="refund-total" v-if="row.isRefund">
-                                        <img :src="row.img">
-                                        <div>
-                                            <p>MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD</p>
-                                            <p>订单编号：3232656564988</p>
-                                            <p>退款编号：3232656564988</p>
-                                        </div>`;
+                        render(h, data) {
+                            return h('div', {
+                                class: {
+                                    'refund-total': true,
+                                },
+                            }, [
+                                h('img', {
+                                    domProps: {
+                                        src: data.row.img,
+                                    },
+                                }),
+                                h('div', [
+                                    h('p', data.row.goodsName),
+                                    h('p', `订单编号：${data.row.orderNum}`),
+                                    h('p', `退款编号：${data.row.refundNum}`),
+                                ]),
+                            ]);
                         },
                         title: '商品/订单号/退款号',
                     },
@@ -58,9 +68,31 @@
                     {
                         align: 'center',
                         key: 'complaintAction',
-                        render(row, column, index) {
-                            return `<i-button @click.native="check(${index})" size="small" type="ghost" v-if="row.isLook">查看</i-button>
-                                     <i-button  @click.native="deal(${index})" size="small" type="ghost" v-if="!row.isLook">处理</i-button>`;
+                        render(h, data) {
+                            if (data.row.refundStatus !== '待审核') {
+                                return h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.check(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '查看');
+                            }
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.deal(data.index);
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '处理');
                         },
                         title: '操作',
                         width: 120,
@@ -68,62 +100,80 @@
                 ],
                 refundData: [
                     {
+                        goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                         img: image,
-                        isLook: true,
-                        isRefund: true,
+                        orderNum: '3232656564988',
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
+                        refundNum: 341236512,
                         refundPlatform: '已完成',
                         refundStatus: '同意',
                         refundTime: '2017-04-01  16:30:31',
                     },
                     {
+                        goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                         img: image,
-                        isLook: false,
-                        isRefund: true,
+                        orderNum: '3232656564988',
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
+                        refundNum: 341236512,
+                        refundPlatform: '已完成',
                         refundStatus: '同意',
                         refundTime: '2017-04-01  16:30:31',
                     },
                     {
+                        goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                         img: image,
-                        isRefund: true,
+                        orderNum: '3232656564988',
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundStatus: '同意',
+                        refundNum: 341236512,
+                        refundPlatform: '已完成',
+                        refundStatus: '不同意',
                         refundTime: '2017-04-01  16:30:31',
                     },
                     {
+                        goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                         img: image,
-                        isRefund: true,
+                        orderNum: '3232656564988',
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundStatus: '同意',
+                        refundNum: 341236512,
+                        refundPlatform: '无',
+                        refundStatus: '待审核',
                         refundTime: '2017-04-01  16:30:31',
                     },
                     {
+                        goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                         img: image,
-                        isRefund: true,
+                        orderNum: '3232656564988',
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundStatus: '同意',
+                        refundNum: 341236512,
+                        refundPlatform: '无',
+                        refundStatus: '待审核',
                         refundTime: '2017-04-01  16:30:31',
                     },
                     {
+                        goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                         img: image,
-                        isRefund: true,
+                        orderNum: '3232656564988',
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundStatus: '同意',
+                        refundNum: 341236512,
+                        refundPlatform: '无',
+                        refundStatus: '待审核',
                         refundTime: '2017-04-01  16:30:31',
                     },
                     {
+                        goodsName: 'MIUI /小米小米手机4小米4代MI4智能4G手机包邮黑色D-LTE（4G）/ TD-SCD',
                         img: image,
-                        isRefund: true,
+                        orderNum: '3232656564988',
                         refundMoney: '300.00',
                         refundName: 'huiyuanming',
-                        refundStatus: '同意',
+                        refundNum: 341236512,
+                        refundPlatform: '无',
+                        refundStatus: '待审核',
                         refundTime: '2017-04-01  16:30:31',
                     },
                 ],

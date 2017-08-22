@@ -9,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 action: `${window.api}/mall/admin/upload`,
                 applyColumns: [
@@ -40,9 +41,28 @@
                     {
                         align: 'center',
                         key: 'voucher',
-                        render() {
-                            return `<icon type="image" class="shop-voucher"></icon>
-                                    <img :src="row.voucher" style="display: none"/>`;
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.voucher,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
                         },
                         title: '付款凭证',
                     },
@@ -54,9 +74,18 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="remove(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.remove(data.index);
+                                    },
+                                },
+                                props: {
+                                    class: 'delete-ad',
+                                    type: 'ghost',
+                                },
+                            }, '删除');
                         },
                         title: '操作',
                     },
@@ -93,6 +122,7 @@
                     businessScope: '服饰',
                     companyAddress: '高新二路220号国土资源大厦公寓楼',
                     companyEmail: '336645564@qq.com',
+                    companyLogo: image,
                     companyName: '本初网络',
                     companyPhone: '029-2222365',
                     companyPlace: '陕西省西安市雁塔区',
@@ -298,7 +328,7 @@
                                     <row>
                                         <i-col  span="12">
                                             <form-item label="营业执照电子版">
-                                                {{ shopMessage.companyPhone }}
+                                                <img :src="shopMessage.companyLogo" alt="">
                                             </form-item>
                                         </i-col>
                                     </row>
@@ -399,7 +429,7 @@
                                 <row>
                                     <i-col span="12">
                                         <form-item label="">
-                                            <i-button @click.native="submitRenewal" type="primary">
+                                            <i-button :loading="loading" @click.native="submitRenewal" type="primary">
                                                 <span v-if="!loading">确认提交</span>
                                                 <span v-else>正在提交…</span>
                                             </i-button>

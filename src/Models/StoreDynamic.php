@@ -34,24 +34,31 @@ class StoreDynamic extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'show' => 'null|0',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_shop_dynamics';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function shop()
+    public function store()
     {
-        return $this->hasOne(Store::class, 'id', 'shop_id');
+        return $this->belongsTo(Store::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->hasOne(Member::class, 'id', 'user_id');
+        return $this->belongsTo(Member::class, 'user_id');
     }
 
     /**
@@ -94,9 +101,15 @@ class StoreDynamic extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
-            new Transition('need_to_publish', ['created', 'edited'], 'publish'),
+            new Transition('need_to_publish', [
+                'created',
+                'edited',
+            ], 'publish'),
             new Transition('publish', 'publish', 'published'),
         ];
     }

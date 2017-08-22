@@ -8,7 +8,17 @@
             });
         },
         data() {
+            const self = this;
             return {
+                addValidate: {
+                    name: [
+                        {
+                            message: '供货商名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 goods: {
                     name: '',
                     person: '',
@@ -41,9 +51,34 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="edit(${index})" type="ghost">编辑</i-button>
-                                    <i-button @click.native="remove(${index})" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
@@ -83,20 +118,15 @@
                 },
                 loading: false,
                 modify: false,
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '店铺名称',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
+                ruleValidate: {
+                    name: [
+                        {
+                            message: '供货商名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 self: this,
             };
         },
@@ -113,7 +143,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.goods.validate(valid => {
+                self.$refs.goodsModify.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -127,7 +157,7 @@
             submitModify() {
                 const self = this;
                 self.loading = true;
-                self.$refs.goodsModify.validate(valid => {
+                self.$refs.goods.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -157,10 +187,7 @@
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                                 <div class="goods-body-header-right">
                                     <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                        <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                            <i-option v-for="item in searchList"
-                                                      :value="item.value">{{ item.label }}</i-option>
-                                        </i-select>
+                                        <span slot="prepend">供货商名称</span>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>
                                 </div>
@@ -181,10 +208,10 @@
                             v-model="goodsApplication"
                             title="新增供货商" class="upload-picture-modal">
                         <div>
-                            <i-form ref="goods" :model="goods" :rules="pictureValidate" :label-width="100">
+                            <i-form ref="goods" :model="goods" :rules="addValidate" :label-width="100">
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="供货商名称">
+                                        <form-item label="供货商名称" prop="name">
                                             <i-input v-model="goods.name"></i-input>
                                         </form-item>
                                     </i-col>
@@ -230,7 +257,7 @@
                             <i-form ref="goodsModify" :model="goodsModify" :rules="ruleValidate" :label-width="100">
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="供货商名称">
+                                        <form-item label="供货商名称" prop="name">
                                             <i-input v-model="goods.name"></i-input>
                                         </form-item>
                                     </i-col>

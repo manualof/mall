@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Controllers\Api\Seller;
 
+use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Mall\Handlers\Seller\Product\Specification\CreateHandler;
 use Notadd\Mall\Handlers\Seller\Product\Specification\EditHandler;
 use Notadd\Mall\Handlers\Seller\Product\Specification\ListHandler;
@@ -17,8 +18,19 @@ use Notadd\Mall\Handlers\Seller\Product\Specification\SpecificationHandler;
 /**
  * Class ProductSpecificationsController.
  */
-class ProductSpecificationController
+class ProductSpecificationController extends Controller
 {
+    /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-seller::product-specification::create'         => 'create',
+        'global::mall-seller::product-specification::edit'           => 'edit',
+        'global::mall-seller::product-specification::list'           => 'list',
+        'global::mall-seller::product-specification::remove'         => 'remove',
+        'global::mall-seller::product-specification::specifications' => 'specifications',
+    ];
+
     /**
      * @param \Notadd\Mall\Handlers\Seller\Product\Specification\CreateHandler $handler
      *

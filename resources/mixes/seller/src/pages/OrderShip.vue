@@ -10,8 +10,15 @@
         },
         data() {
             return {
+                cancelOrder: {
+                    buyer: '第三方',
+                    data: '2017-06-03',
+                    num: 458789990006645,
+                    time: '',
+                },
                 loading: false,
                 managementSearch: '',
+                modal: false,
                 orderReceipt: [
                     {
                         address: '陕西省  西安市  雁塔区  高新四路  36号国土资源大厦2304',
@@ -25,8 +32,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -48,8 +53,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -88,8 +91,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -107,8 +108,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -130,8 +129,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -170,8 +167,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -189,8 +184,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -212,8 +205,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -252,8 +243,6 @@
                                 price: '100.00',
                             },
                         ],
-                        image: image1,
-                        isGifts: true,
                         phone: 123455677,
                         user: 'wang',
                     },
@@ -273,9 +262,32 @@
                     },
                 ],
                 self: this,
+                timeList: [
+                    {
+                        label: '1',
+                        value: '1',
+                    },
+                    {
+                        label: '2',
+                        value: '2',
+                    },
+                    {
+                        label: '3',
+                        value: '3',
+                    },
+                ],
             };
         },
         methods: {
+            delayedReceipt() {
+                this.modal = true;
+            },
+            lookLogistics() {
+                const self = this;
+                self.$router.push({
+                    path: 'ship/look',
+                });
+            },
             settingShip() {
                 const self = this;
                 self.$router.push({
@@ -327,10 +339,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
@@ -427,10 +436,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
@@ -444,10 +450,13 @@
                         <table class="order-table">
                             <tbody v-for="(item, index) in shiping">
                             <tr class="space">
-                                <td colspan="2">
+                                <td colspan="2" class="clearfix">
                                     <span>订单号:{{ item.num }}</span>
                                     <span>下单时间:{{ item.createTime }}</span>
-                                    <button class="print-btn">打印发货单</button>
+                                    <div class="look-shipping">
+                                        <button class="print-btn" @click="lookLogistics">查看物流</button>
+                                        <button class="print-btn">打印发货单</button>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -463,9 +472,6 @@
                                                     <p>&yen;{{ item.price }} X {{ item.amount }}件</p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="goods-gifts" v-if="item.isGifts">
-                                            赠品<img :src="item.image" alt="">
                                         </div>
                                     </div>
                                 </td>
@@ -490,7 +496,7 @@
                                         </row>
                                         <row>
                                             <i-col>
-                                                <i-button type="primary">设置发货</i-button>
+                                                <i-button type="primary" @click.native="delayedReceipt">延迟收货</i-button>
                                             </i-col>
                                         </row>
                                     </i-form>
@@ -501,6 +507,56 @@
                             </tr>
                             </tbody>
                         </table>
+                        <modal
+                                v-model="modal"
+                                title="延迟收货" class="upload-picture-modal delayed-receipt-modal">
+                            <div>
+                                <i-form ref="cancelOrder" :model="cancelOrder" :rules="cancelValidate" :label-width="100">
+                                    <row>
+                                        <i-col span="12">
+                                            <form-item label="订单编号">
+                                                {{ cancelOrder.num }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="12">
+                                            <form-item label="买家">
+                                                {{ cancelOrder.buyer }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <row>
+                                        <i-col span="12">
+                                            <form-item label="最晚收货时间">
+                                                {{ cancelOrder.data }}
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                    <form-item label="延迟">
+                                        <row>
+                                            <i-col span="10">
+                                                <i-select v-model="cancelOrder.time" style="width: 235px;">
+                                                    <i-option v-for="item in timeList"
+                                                              :value="item.value">{{ item.label }}</i-option>
+                                                </i-select>
+                                            </i-col>
+                                            <i-col span="2">天</i-col>
+                                        </row>
+                                    </form-item>
+                                    <row>
+                                        <i-col span="20">
+                                            <form-item>
+                                                <i-button :loading="loading" type="primary" @click.native="submitCancelOrder">
+                                                    <span v-if="!loading">确认提交</span>
+                                                    <span v-else>正在提交…</span>
+                                                </i-button>
+                                            </form-item>
+                                        </i-col>
+                                    </row>
+                                </i-form>
+                            </div>
+                        </modal>
                     </card>
                 </tab-pane>
                 <tab-pane label="已收货" name="name3">
@@ -527,10 +583,7 @@
                                         </li>
                                         <li class="store-body-header-right">
                                             <i-input v-model="applicationWord" placeholder="请输入关键词进行搜索">
-                                                <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                                    <i-option v-for="item in searchList"
-                                                              :value="item.value">{{ item.label }}</i-option>
-                                                </i-select>
+                                                <span slot="prepend">订单编号</span>
                                                 <i-button slot="append" type="primary">搜索</i-button>
                                             </i-input>
                                         </li>
@@ -564,9 +617,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="goods-gifts" v-if="item.isGifts">
-                                            赠品<img :src="item.image" alt="">
-                                        </div>
                                     </div>
                                 </td>
                                 <td>
@@ -589,9 +639,7 @@
                                             </i-col>
                                         </row>
                                         <row>
-                                            <i-col>
-                                                <i-button type="primary">设置发货</i-button>
-                                            </i-col>
+                                            <i-col></i-col>
                                         </row>
                                     </i-form>
                                 </td>

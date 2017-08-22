@@ -8,74 +8,135 @@
             });
         },
         data() {
+            const self = this;
             return {
-                managementColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
                         width: 60,
                     },
                     {
-                        align: 'center',
                         key: 'orderID',
                         title: '订单编号',
-                        width: 200,
                     },
                     {
                         align: 'center',
                         key: 'orderSource',
                         title: '订单来源',
-                        width: 170,
                     },
                     {
-                        align: 'center',
                         key: 'ownerTime',
                         title: '下单时间',
-                        width: 200,
                     },
                     {
-                        align: 'center',
                         key: 'orderAmount',
                         title: '订单金额',
-                        width: 200,
                     },
                     {
                         align: 'center',
                         key: 'orderStatus',
                         title: '订单状态',
-                        width: 150,
                     },
                     {
-                        align: 'center',
                         key: 'payNumber',
                         title: '支付单号',
-                        width: 250,
                     },
                     {
                         align: 'left',
                         key: 'paymentMethod',
                         title: '支付方式',
-                        width: 150,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
-                        render() {
-                            return `<i-button type="ghost" @click.native="toView" class="first-btn"
-                                    size="small">查看</i-button>
-                                    <i-button size="small" type="ghost">设置</i-button>`;
+                        render(h, data) {
+                            const items = [];
+                            items.push(h('i-button', {
+                                on: {
+                                    click() {
+                                        self.toView(data.index);
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看'));
+                            if (data.row.orderStatus === '待付款') {
+                                items.push(h('dropdown', {
+                                    scopedSlots: {
+                                        list() {
+                                            const menus = [];
+                                            menus.push(h('dropdown-item', {
+                                                nativeOn: {
+                                                    click() {
+                                                        self.cancelOrder(data.row);
+                                                    },
+                                                },
+                                            }, '取消订单'));
+                                            if (data.row.status === 1) {
+                                                menus.push(h('dropdown-item', {
+                                                    nativeOn: {
+                                                        click() {
+                                                            self.receiveGoods(data.row);
+                                                        },
+                                                    },
+                                                }, '收到货款'));
+                                            }
+                                            return h('dropdown-menu', menus);
+                                        },
+                                    },
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                        style: {
+                                            marginLeft: '10px',
+                                        },
+                                    }, [
+                                        '设置',
+                                        h('icon', {
+                                            props: {
+                                                type: 'arrow-down-b',
+                                            },
+                                        }),
+                                    ]),
+                                ]));
+                            }
+                            return h('div', items);
                         },
                         title: '操作',
                         width: 180,
                     },
                 ],
-                managementData: [
+                list: [
                     {
                         orderAmount: '899（含运费10.00）',
                         orderID: '65454654546',
                         orderSource: '移动端',
-                        orderStatus: '交易完成',
+                        orderStatus: '待付款',
+                        ownerTime: '2017-03-21 16:45:45',
+                        paymentMethod: '钻石店铺',
+                        payNumber: '45654646',
+                        status: 1,
+                    },
+                    {
+                        orderAmount: '899（含运费10.00）',
+                        orderID: '65454654546',
+                        orderSource: '移动端',
+                        orderStatus: '待发货',
+                        ownerTime: '2017-03-21 16:45:45',
+                        paymentMethod: '钻石店铺',
+                        payNumber: '45654646',
+                    },
+                    {
+                        orderAmount: '899（含运费10.00）',
+                        orderID: '65454654546',
+                        orderSource: '移动端',
+                        orderStatus: '待收货',
                         ownerTime: '2017-03-21 16:45:45',
                         paymentMethod: '钻石店铺',
                         payNumber: '45654646',
@@ -93,7 +154,7 @@
                         orderAmount: '899（含运费10.00）',
                         orderID: '65454654546',
                         orderSource: '移动端',
-                        orderStatus: '交易完成',
+                        orderStatus: '已取消',
                         ownerTime: '2017-03-21 16:45:45',
                         paymentMethod: '钻石店铺',
                         payNumber: '45654646',
@@ -111,28 +172,11 @@
                         orderAmount: '899（含运费10.00）',
                         orderID: '65454654546',
                         orderSource: '移动端',
-                        orderStatus: '交易完成',
+                        orderStatus: '待付款',
                         ownerTime: '2017-03-21 16:45:45',
                         paymentMethod: '钻石店铺',
                         payNumber: '45654646',
-                    },
-                    {
-                        orderAmount: '899（含运费10.00）',
-                        orderID: '65454654546',
-                        orderSource: '移动端',
-                        orderStatus: '交易完成',
-                        ownerTime: '2017-03-21 16:45:45',
-                        paymentMethod: '钻石店铺',
-                        payNumber: '45654646',
-                    },
-                    {
-                        orderAmount: '899（含运费10.00）',
-                        orderID: '65454654546',
-                        orderSource: '移动端',
-                        orderStatus: '交易完成',
-                        ownerTime: '2017-03-21 16:45:45',
-                        paymentMethod: '钻石店铺',
-                        payNumber: '45654646',
+                        status: 2,
                     },
                     {
                         orderAmount: '899（含运费10.00）',
@@ -165,27 +209,36 @@
                 searchCategory: '',
                 searchList: [
                     {
+                        label: '订单编号',
+                        value: '1',
+                    },
+                    {
+                        label: '商家账号',
+                        value: '2',
+                    },
+                    {
                         label: '店铺名称',
-                        value: '订单编号',
+                        value: '3',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '支付单号',
+                        value: '4',
                     },
                 ],
                 searchWord: '',
-                self: this,
             };
         },
         methods: {
+            cancelOrder(row) {
+                row.orderStatus = '已取消';
+            },
             exportData() {
                 this.$refs.orderTable.exportCsv({
                     filename: '商品订单数据',
                 });
+            },
+            receiveGoods(row) {
+                row.orderStatus = '交易完成';
             },
             toView() {
                 const self = this;
@@ -200,7 +253,7 @@
 </script>
 <template>
     <div class="mall-wrap">
-        <div class="store">
+        <div class="order-wrap">
             <tabs value="name1">
                 <tab-pane label="商品订单" name="name1">
                     <card :bordered="false">
@@ -227,8 +280,8 @@
                             </div>
                             <i-table class="shop-table"
                                      :context="self"
-                                     :columns="managementColumns"
-                                     :data="managementData"
+                                     :columns="columns"
+                                     :data="list"
                                      ref="orderTable" highlight-row ></i-table>
                         </div>
                         <div class="page">

@@ -20,6 +20,6 @@ class MallController extends Controller
      */
     public function handle()
     {
-        return $this->view('');
+        return $this->view('mall::mall');
     }
 }

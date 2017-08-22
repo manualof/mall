@@ -24,7 +24,6 @@ class StoreCategory extends Model
      * @var array
      */
     protected $fillable = [
-        'amount_of_deposit',
         'flow_marketing',
         'order',
         'parent_id',
@@ -32,16 +31,41 @@ class StoreCategory extends Model
     ];
 
     /**
-     * @var string
+     * @var array
      */
-    protected $table = 'mall_shop_categories';
+    protected $setters = [
+        'order'     => 'null|0',
+        'parent_id' => 'null|0',
+        'status'    => 'null|0',
+    ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @var string
+     */
+    protected $table = 'mall_store_categories';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function children()
+    {
+        return $this->hasMany(StoreCategory::class, 'parent_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function parent()
     {
-        return $this->hasOne(StoreCategory::class, 'id', 'parent_id');
+        return $this->belongsTo(StoreCategory::class, 'parent_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
     }
 
     /**
@@ -82,7 +106,10 @@ class StoreCategory extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
         ];
     }

@@ -1,6 +1,6 @@
 <script>
     import injection from '../helpers/injection';
-    import image1 from '../assets/images/img_logo.png';
+    import image1 from '../assets/images/img_banner.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -9,6 +9,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 action: `${window.api}/mall/admin/upload`,
                 goods: {
@@ -22,12 +23,28 @@
                     {
                         align: 'center',
                         key: 'goodsLogo',
-                        render() {
-                            return `<tooltip placement="right-end">
-                                    <icon type="image"></icon>
-                                    <div slot="content">
-                                    <img :src="row.goodsLogo">
-                                    </tooltip>`;
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.goodsLogo,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
                         },
                         title: '品牌图标',
                         width: 150,
@@ -40,7 +57,7 @@
                     {
                         align: 'center',
                         key: 'show',
-                        title: '显示',
+                        title: '所属类别',
                     },
                     {
                         align: 'center',
@@ -50,13 +67,52 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<div v-if="row.status === '待审核'">
-                                    <i-button @click.native="edit(${index})" type="ghost">修改</i-button>
-                                    <i-button @click.native="revoked(${index})" class="delete-ad"
-                                     type="ghost">撤销</i-button></div>
-                                    <i-button @click.native="remove(${index})" v-if="row.status === '审核通过'"
-                                    type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            if (data.row.status === '待审核') {
+                                return h('div', [
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.edit(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '修改'),
+                                    h('i-button', {
+                                        class: {
+                                            'delete-ad': true,
+                                        },
+                                        on: {
+                                            click() {
+                                                self.revoked(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '撤销'),
+                                ]);
+                            }
+                            if (data.row.status === '审核通过') {
+                                return h('div', [
+                                    h('i-button', {
+                                        on: {
+                                            click() {
+                                                self.remove(data.index);
+                                            },
+                                        },
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '删除'),
+                                ]);
+                            }
+                            return '';
                         },
                         title: '操作',
                         width: 180,
@@ -90,20 +146,38 @@
                 },
                 loading: false,
                 modify: false,
-                searchList: [
-                    {
-                        label: '店铺名称',
-                        value: '店铺名称',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
-                    },
-                ],
+                modifyValidate: {
+                    initials: [
+                        {
+                            message: '名称首字母不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '品牌名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
+                ruleValidate: {
+                    initials: [
+                        {
+                            message: '名称首字母不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '品牌名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 self: this,
                 styleData: [
                     {
@@ -308,10 +382,7 @@
                                 <i-button type="text" icon="android-sync" class="refresh">刷新</i-button>
                                 <div class="goods-body-header-right">
                                     <i-input v-model="managementWord" placeholder="请输入关键词进行搜索">
-                                        <i-select v-model="managementSearch" slot="prepend" style="width: 100px;">
-                                            <i-option v-for="item in searchList"
-                                                      :value="item.value">{{ item.label }}</i-option>
-                                        </i-select>
+                                        <span slot="prepend">品牌名称</span>
                                         <i-button slot="append" type="primary">搜索</i-button>
                                     </i-input>
                                 </div>
@@ -332,17 +403,17 @@
                             v-model="goodsApplication"
                             title="品牌申请" class="upload-picture-modal">
                         <div>
-                            <i-form ref="goods" :model="goods" :rules="pictureValidate" :label-width="100">
+                            <i-form ref="goods" :model="goods" :rules="ruleValidate" :label-width="100">
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="品牌名称">
+                                        <form-item label="品牌名称" prop="name">
                                             <i-input v-model="goods.name"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="名称首字母">
+                                        <form-item label="名称首字母" prop="initials">
                                             <i-input v-model="goods.initials"></i-input>
                                         </form-item>
                                     </i-col>
@@ -355,7 +426,7 @@
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="20">
+                                    <i-col span="24">
                                         <form-item label="品牌LOGO" prop="logo">
                                             <div class="image-preview" v-if="goods.logo">
                                                 <img :src="goods.logo">
@@ -399,17 +470,17 @@
                             v-model="modify"
                             title="品牌修改" class="upload-picture-modal">
                         <div>
-                            <i-form ref="goodsModify" :model="goodsModify" :rules="ruleValidate" :label-width="100">
+                            <i-form ref="goodsModify" :model="goodsModify" :rules="modifyValidate" :label-width="100">
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="品牌名称">
+                                        <form-item label="品牌名称" prop="name">
                                             <i-input v-model="goodsModify.name"></i-input>
                                         </form-item>
                                     </i-col>
                                 </row>
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="名称首字母">
+                                        <form-item label="名称首字母" prop="initials">
                                             <i-input v-model="goodsModify.initials"></i-input>
                                         </form-item>
                                     </i-col>
@@ -422,7 +493,7 @@
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="20">
+                                    <i-col span="24">
                                         <form-item label="品牌LOGO" prop="logo">
                                             <div class="image-preview" v-if="goodsModify.logo">
                                                 <img :src="goodsModify.logo">

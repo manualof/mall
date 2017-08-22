@@ -1,4 +1,7 @@
 import Configuration from '../pages/Configuration.vue';
+import ConfigurationCreate from '../pages/ConfigurationCreate.vue';
+import ConfigurationEdit from '../pages/ConfigurationEdit.vue';
+import ConfigurationCategoryEdit from '../pages/ConfigurationCategoryEdit.vue';
 import ConfigurationAdvertisement from '../pages/ConfigurationAdvertisement.vue';
 import ConfigurationAdvertisementAdd from '../pages/ConfigurationAdvertisementAdd.vue';
 import ConfigurationAdvertisementPosition from '../pages/ConfigurationAdvertisementPosition.vue';
@@ -10,26 +13,6 @@ import ConfigurationSearch from '../pages/ConfigurationSearch.vue';
 import ConfigurationSearchEditor from '../pages/ConfigurationSearchEditor.vue';
 import ConfigurationSearchAdd from '../pages/ConfigurationSearchAdd.vue';
 import Dashboard from '../pages/Dashboard.vue';
-import Goods from '../pages/Goods.vue';
-import GoodsBrand from '../pages/GoodsBrand.vue';
-import GoodsBrandAdd from '../pages/GoodsBrandAdd.vue';
-import GoodsBrandEdit from '../pages/GoodsBrandEdit.vue';
-import GoodsCategory from '../pages/GoodsCategory.vue';
-import GoodsCategoryEdit from '../pages/GoodsCategoryEdit.vue';
-import GoodsCategoryAdd from '../pages/GoodsCategoryAdd.vue';
-import GoodsCategoryEditNav from '../pages/GoodsCategoryEditNav.vue';
-import GoodsLibrary from '../pages/GoodsLibrary.vue';
-import GoodsLibraryEdit from '../pages/GoodsLibraryEdit.vue';
-import GoodsLibraryAdd from '../pages/GoodsLibraryAdd.vue';
-import GoodsLibraryEditCategory from '../pages/GoodsLibraryEditCategory.vue';
-import GoodsPicture from '../pages/GoodsPicture.vue';
-import GoodsPictureLook from '../pages/GoodsPictureLook.vue';
-import GoodsStandard from '../pages/GoodsStandard.vue';
-import GoodsStandardAdd from '../pages/GoodsStandardAdd.vue';
-import GoodsStandardEdit from '../pages/GoodsStandardEdit.vue';
-import GoodsType from '../pages/GoodsType.vue';
-import GoodsTypeAdd from '../pages/GoodsTypeAdd.vue';
-import GoodsTypeEdit from '../pages/GoodsTypeEdit.vue';
 import Layout from '../layouts/Layout.vue';
 import Operation from '../pages/Operation.vue';
 import OperationDelivery from '../pages/OperationDelivery.vue';
@@ -42,12 +25,36 @@ import OrderView from '../pages/OrderView.vue';
 import OrderComplain from '../pages/OrderComplain.vue';
 import OrderEvaluation from '../pages/OrderEvaluation.vue';
 import OrderRefund from '../pages/OrderRefund.vue';
+import OrderRefundAllLook from '../pages/OrderRefundAllLook.vue';
+import OrderRefundAllHandel from '../pages/OrderRefundAllHandel.vue';
 import OrderRefundProcess from '../pages/OrderRefundProcess.vue';
 import OrderRefundReedit from '../pages/OrderRefundReedit.vue';
-import OrderRefundAdd from '../pages/OrderRefundAdd.vue';
+import OrderRefundCreate from '../pages/OrderRefundCreate.vue';
 import OrderRejected from '../pages/OrderRejected.vue';
 import OrderRejectedLook from '../pages/OrderRejectedLook.vue';
+import OrderRejectedLookReject from '../pages/OrderRejectedLookReject.vue';
 import OrderRejectedHandel from '../pages/OrderRejectedHandel.vue';
+import OrderRejectedAllHandel from '../pages/OrderRejectedAllHandel.vue';
+import Product from '../pages/Product.vue';
+import ProductBrand from '../pages/ProductBrand.vue';
+import ProductBrandCreate from '../pages/ProductBrandCreate.vue';
+import ProductBrandEdit from '../pages/ProductBrandEdit.vue';
+import ProductCategory from '../pages/ProductCategory.vue';
+import ProductCategoryEdit from '../pages/ProductCategoryEdit.vue';
+import ProductCategoryCreate from '../pages/ProductCategoryCreate.vue';
+import ProductCategoryLookUnderEdit from '../pages/ProductCategoryLookUnderEdit.vue';
+import ProductLibrary from '../pages/ProductLibrary.vue';
+import ProductLibraryEdit from '../pages/ProductLibraryEdit.vue';
+import ProductLibraryCreate from '../pages/ProductLibraryCreate.vue';
+import ProductPicture from '../pages/ProductPicture.vue';
+import ProductPictureLook from '../pages/ProductPictureLook.vue';
+import ProductPictureLookAll from '../pages/ProductPictureLookAll.vue';
+import ProductSpecification from '../pages/ProductSpecification.vue';
+import ProductSpecificationCreate from '../pages/ProductSpecificationCreate.vue';
+import ProductSpecificationEdit from '../pages/ProductSpecificationEdit.vue';
+import ProductType from '../pages/ProductType.vue';
+import ProductTypeCreate from '../pages/ProductTypeCreate.vue';
+import ProductTypeEdit from '../pages/ProductTypeEdit.vue';
 import Statistics from '../pages/Statistics.vue';
 import StatisticsAftersales from '../pages/StatisticsAftersales.vue';
 import StatisticsAnalysis from '../pages/StatisticsAnalysis.vue';
@@ -56,23 +63,25 @@ import StatisticsMember from '../pages/StatisticsMember.vue';
 import StatisticsSales from '../pages/StatisticsSales.vue';
 import StatisticsStore from '../pages/StatisticsStore.vue';
 import Store from '../pages/Store.vue';
-import StoreCategory from '../pages/StoreCategory.vue';
-import StoreCategorySet from '../pages/StoreCategorySet.vue';
-import StoreCategoryAdd from '../pages/StoreCategoryAdd.vue';
 import StoreEdit from '../pages/StoreEdit.vue';
+import StoreLook from '../pages/StoreLook.vue';
+import StoreLookApplication from '../pages/StoreLookApplication.vue';
 import StoreDynamics from '../pages/StoreDynamics.vue';
 import SalesFullDown from '../pages/SalesFullDown.vue';
-import StoreLevel from '../pages/StoreLevel.vue';
-import StoreLevelAdd from '../pages/StoreLevelAdd.vue';
-import StorePostal from '../pages/StorePostal.vue';
+import SalesIntegral from '../pages/SalesIntegral.vue';
+import SalesActive from '../pages/SalesActive.vue';
+import StoreGrade from '../pages/StoreGrade.vue';
+import StoreLevelCreate from '../pages/StoreGradeCreate.vue';
+import StoreLevelEdit from '../pages/StoreGradeEdit.vue';
 import SalesSpikes from '../pages/SalesSpikes.vue';
-import SalesSpikesLook from '../pages/SalesSpikesLook.vue';
-import SalesSpike from '../pages/SalesSpike.vue';
-import SalesSpikeAdjunction from '../pages/SalesSpikeAdjunction.vue';
-import SalesSpikeSetAdd from '../pages/SalesSpikeSetAdd.vue';
-import SalesSpikeSet from '../pages/SalesSpikeSet.vue';
-import SalesSpikeTime from '../pages/SalesSpikeTime.vue';
-import SalesSpikeTimeAddtime from '../pages/SalesSpikeTimeAddtime.vue';
+import SalesSpikesEdit from '../pages/SalesSpikesEdit.vue';
+import SalesSpikesCreate from '../pages/SalesSpikesCreate.vue';
+import SalesSpikesTime from '../pages/SalesSpikesTime.vue';
+import SalesSpikesTimeEdit from '../pages/SalesSpikesTimeEdit.vue';
+import SalesSpikesTimeCreate from '../pages/SalesSpikesTimeCreate.vue';
+import StoreType from '../pages/StoreType.vue';
+import StoreTypeCreate from '../pages/StoreTypeCreate.vue';
+import StoreTypeEdit from '../pages/StoreTypeEdit.vue';
 
 export default function (injection) {
     injection.useModuleRoute([
@@ -87,6 +96,21 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: Configuration,
                     path: 'configuration',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ConfigurationCreate,
+                    path: 'configuration/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ConfigurationEdit,
+                    path: 'configuration/edit/main',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: ConfigurationCategoryEdit,
+                    path: 'configuration/category/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -140,103 +164,103 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: Goods,
-                    path: 'goods',
+                    component: Product,
+                    path: 'product',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsLibrary,
-                    path: 'goods/library',
+                    component: ProductLibrary,
+                    path: 'product/library',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsLibraryEdit,
-                    path: 'goods/library/edit',
+                    component: ProductLibraryCreate,
+                    path: 'product/library/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsLibraryAdd,
-                    path: 'goods/library/add',
+                    component: ProductLibraryEdit,
+                    path: 'product/library/edit/:id',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsLibraryEditCategory,
-                    path: 'goods/library/edit/category',
+                    component: ProductCategory,
+                    path: 'product/category',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategory,
-                    path: 'goods/category',
+                    component: ProductCategoryEdit,
+                    path: 'product/category/edit/:id',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsBrand,
-                    path: 'goods/brand',
+                    component: ProductCategoryCreate,
+                    path: 'product/category/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsBrandAdd,
-                    path: 'goods/brand/add',
+                    component: ProductCategoryLookUnderEdit,
+                    path: 'product/category/look/under/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsBrandEdit,
-                    path: 'goods/brand/edit',
+                    component: ProductBrand,
+                    path: 'product/brand',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryEdit,
-                    path: 'goods/category/edit',
+                    component: ProductBrandCreate,
+                    path: 'product/brand/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryAdd,
-                    path: 'goods/category/add',
+                    component: ProductBrandEdit,
+                    path: 'product/brand/edit/:id',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsCategoryEditNav,
-                    path: 'goods/category/edit/nav',
+                    component: ProductType,
+                    path: 'product/type',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsType,
-                    path: 'goods/type',
+                    component: ProductTypeEdit,
+                    path: 'product/type/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsTypeEdit,
-                    path: 'goods/type/edit',
+                    component: ProductTypeCreate,
+                    path: 'product/type/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsTypeAdd,
-                    path: 'goods/type/add',
+                    component: ProductSpecification,
+                    path: 'product/specification',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsStandard,
-                    path: 'goods/standard',
+                    component: ProductSpecificationCreate,
+                    path: 'product/specification/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsStandardAdd,
-                    path: 'goods/standard/add',
+                    component: ProductSpecificationEdit,
+                    path: 'product/specification/:id/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsStandardEdit,
-                    path: 'goods/standard/edit',
+                    component: ProductPicture,
+                    path: 'product/picture',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsPicture,
-                    path: 'goods/picture',
+                    component: ProductPictureLook,
+                    path: 'product/picture/look',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: GoodsPictureLook,
-                    path: 'goods/picture/look',
+                    component: ProductPictureLookAll,
+                    path: 'product/picture/look/all',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -265,12 +289,22 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRefundAllLook,
+                    path: 'order/refund/all/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRefundAllHandel,
+                    path: 'order/refund/all/handel',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
                     component: OrderRefundProcess,
                     path: 'order/refund/process',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: OrderRefundAdd,
+                    component: OrderRefundCreate,
                     path: 'order/refund/add',
                 },
                 {
@@ -290,8 +324,18 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRejectedLookReject,
+                    path: 'order/rejected/look/reject',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
                     component: OrderRejectedHandel,
                     path: 'order/rejected/handel',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderRejectedAllHandel,
+                    path: 'order/rejected/all/handel',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -365,23 +409,33 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
+                    component: StoreLook,
+                    path: 'store/look',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StoreLookApplication,
+                    path: 'store/look/application',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
                     component: StoreEdit,
                     path: 'store/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreCategory,
-                    path: 'store/category',
+                    component: StoreType,
+                    path: 'store/type',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreCategorySet,
-                    path: 'store/category/set',
+                    component: StoreTypeEdit,
+                    path: 'store/type/:id/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreCategoryAdd,
-                    path: 'store/category/add',
+                    component: StoreTypeCreate,
+                    path: 'store/type/add',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -390,23 +444,18 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreLevel,
-                    path: 'store/level',
+                    component: StoreGrade,
+                    path: 'store/grade',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StoreLevelAdd,
-                    path: 'store/level/add',
+                    component: StoreLevelCreate,
+                    path: 'store/grade/create',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: StorePostal,
-                    path: 'store/postal',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpike,
-                    path: 'sales/spike',
+                    component: StoreLevelEdit,
+                    path: 'store/grade/:id/edit',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -415,8 +464,33 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikesLook,
-                    path: 'sales/spikes/look',
+                    component: SalesSpikesEdit,
+                    path: 'sales/spikes/edit',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesCreate,
+                    path: 'sales/spikes/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesTime,
+                    path: 'sales/spikes/time',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesTimeEdit,
+                    path: 'sales/spikes/time/edit',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesTimeCreate,
+                    path: 'sales/spikes/time/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesActive,
+                    path: 'sales/active',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -425,28 +499,8 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeAdjunction,
-                    path: 'sales/spike/adjunction',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeSetAdd,
-                    path: 'sales/spike/set/add',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeSet,
-                    path: 'sales/spike/set',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeTime,
-                    path: 'sales/spike/time',
-                },
-                {
-                    beforeEnter: injection.middleware.requireAuth,
-                    component: SalesSpikeTimeAddtime,
-                    path: 'sales/spike/time/addtime',
+                    component: SalesIntegral,
+                    path: 'sales/integral',
                 },
             ],
             component: Layout,

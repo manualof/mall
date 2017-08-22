@@ -16,6 +16,28 @@
             background-color: #f5f7f9;
             padding: 0 20px;
         }
+        .stock-module {
+            .ivu-table {
+                .ivu-table-header {
+                    tr {
+                        th {
+                            &:nth-child(3) span:before,
+                            &:nth-child(4) span:before,
+                            &:nth-child(5) span:before {
+                                content: "*";
+                                display: inline-block;
+                                margin-right: 4px;
+                                line-height: 1;
+                                font-family: SimSun;
+                                font-size: 12px;
+                                color: #ed3f14;
+                                font-weight: 300;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         .ivu-form-item {
             margin-bottom: 0;
             padding: 8px 0;
@@ -54,9 +76,17 @@
                 }
                 .add-type-btn {
                     margin-top: -4px;
-                    background-color: #e3e8ee;
+                    background-color: #c4cbd5;
                     color: #fff;
                 }
+            }
+            .goods-table {
+                .ivu-input {
+                    height: 24px;
+                }
+            }
+            .ivu-form-item-error-tip {
+                position: inherit;
             }
         }
         .good-edit-style {
@@ -223,6 +253,98 @@
             }
             .ivu-tabs-bar {
                 margin-bottom: 0;
+            }
+            .shop-edit-classification {
+                width: 150px;
+                display: inline-block;
+                margin-right: 10px;
+                margin-bottom: 4px;
+            }
+        }
+        .prompt-box {
+            background-color: #f5f7f9;
+            padding: 20px;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+        .picture-group {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #e3e8ee;
+            h5 {
+                border-bottom: 1px solid #e3e8ee;
+                height: 40px;
+                line-height: 40px;
+                font-size: 14px;
+                padding-left: 20px;
+            }
+            > div {
+                padding: 20px;
+                .image-preview {
+                    position: relative;
+                    width: 224px;
+                    height: 224px;
+                    display: inline-block;
+                    margin-right: 20px;
+                    > div {
+                        width: 100%;
+                        height: 100%;
+                        background-color: #f5f7f9;
+                    }
+                    &:hover {
+                        button {
+                            display: block;
+                        }
+                    }
+                    button {
+                        display: none;
+                        position: absolute;
+                        right: 6px;
+                        top: 6px;
+                        padding: 0;
+                        width: 24px;
+                        height: 24px;
+                        border-radius: 50%;
+                        background: rgba(0, 0, 0, .3);
+                        color: #fff;
+                        z-index: 100;
+                        i {
+                            font-size: 18px;
+                        }
+                    }
+                    > img {
+                        display: block;
+                        width: 224px;
+                        height: 224px;
+                    }
+                }
+                .ivu-upload {
+                    display: inline-block;
+                    height: 32px;
+                    width: 80px;
+                    margin-right: 8px;
+                    > .ivu-upload-select {
+                        height: 32px;
+                        width: 80px;
+                    }
+                }
+                .picture-space {
+                    > h5 {
+                        margin: 10px 0;
+                        font-size: 12px;
+                        border-bottom: 0;
+                    }
+                    span {
+                        padding-left: 20px;
+                        img {
+                            width: 172px;
+                            height: 172px;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
             }
         }
     }

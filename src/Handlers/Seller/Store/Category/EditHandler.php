@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Category;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreCategory;
 
 /**
@@ -24,14 +25,19 @@ class EditHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id'       => 'required|numeric',
-            'name'     => 'required',
-            'status'   => 'numeric',
+            'id'     => [
+                Rule::exists('mall_store_categories'),
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'name'   => Rule::required(),
+            'status' => Rule::numeric(),
         ], [
-            'id.numeric'        => '分类 ID 必须为数值',
-            'id.required'       => '分类 ID 必须填写',
-            'name.required'     => '分类名称必须填写',
-            'status.numeric'    => '状态值必须数值',
+            'id.exists'      => '没有对应的店铺分类信息',
+            'id.numeric'     => '分类 ID 必须为数值',
+            'id.required'    => '分类 ID 必须填写',
+            'name.required'  => '分类名称必须填写',
+            'status.numeric' => '状态值必须数值',
         ]);
         $this->beginTransaction();
         $category = StoreCategory::query()->find($this->request->input('id'));
@@ -46,7 +52,7 @@ class EditHandler extends Handler
             $this->withCode(200)->withMessage('编辑分类信息成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('编辑分类信息失败！');
+            $this->withCode(500)->withError('没有对应的分类信息！');
         }
     }
 }

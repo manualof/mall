@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Product\Subscribe;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductSubscribe;
 
 /**
@@ -24,19 +25,30 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'page'     => 'numeric',
-            'paginate' => 'numeric',
-            'store'    => 'required|numeric',
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
+            'store_id' => [
+                Rule::exists('mall_stores'),
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
-            'page.numeric'     => '当前页面必须为数值',
-            'paginate.numeric' => '分页数必须为数值',
-            'store.required'   => '店铺 ID 必须填写',
-            'store.numeric'    => '店铺 ID 必须为数值',
+            'order.in'          => '排序规则错误',
+            'page.numeric'      => '当前页面必须为数值',
+            'paginate.numeric'  => '分页数必须为数值',
+            'store_id.exists'   => '没有对应的店铺分类信息',
+            'store_id.numeric'  => '店铺 ID 必须为数值',
+            'store_id.required' => '店铺 ID 必须填写',
         ]);
         $builder = ProductSubscribe::query();
+        $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder->where('store_id', $this->request->input('store_id'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
-        $this->withCode(200)->withData($builder->items())->withMessage('获取产品列表成功！')->withExtra([
+        $this->withCode(200)->withData($builder->items())->withExtra([
             'pagination' => [
                 'total'         => $builder->total(),
                 'per_page'      => $builder->perPage(),
@@ -47,6 +59,6 @@ class ListHandler extends Handler
                 'from'          => $builder->firstItem(),
                 'to'            => $builder->lastItem(),
             ],
-        ]);
+        ])->withMessage('获取商品列表成功！');
     }
 }

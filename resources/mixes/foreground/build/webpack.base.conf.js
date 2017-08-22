@@ -2,6 +2,7 @@ var path = require('path');
 var utils = require('./utils');
 var config = require('../config');
 var vueLoaderConfig = require('./vue-loader.conf');
+var webpack = require('webpack');
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir);
@@ -19,7 +20,7 @@ module.exports = {
             : config.dev.assetsPublicPath,
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.js', '.json'],
         alias: {
             vue$: 'vue/dist/vue.esm.js',
             '@': resolve('src'),
@@ -27,6 +28,10 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /iview.src.*?js$/,
+                loader: 'babel-loader',
+            },
             {
                 test: /\.(js|vue)$/,
                 loader: 'eslint-loader',
@@ -51,7 +56,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('img/[name].[hash:7].[ext]'),
+                    name: utils.assetsPath('images/[name].[ext]'),
                 },
             },
             {
@@ -59,7 +64,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+                    name: utils.assetsPath('fonts/[name].[ext]')
                 },
             },
         ],

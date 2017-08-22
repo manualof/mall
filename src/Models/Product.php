@@ -30,12 +30,28 @@ class Product extends Model
         'category_id',
         'description',
         'flow_marketing',
+        'inventory',
+        'inventory_warning',
+        'library_id',
         'name',
         'price',
         'price_cost',
         'price_market',
-        'inventory',
-        'inventory_warning',
+        'store_id',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $setters = [
+        'brand_id'          => 'null|0',
+        'inventory'         => 'null|0',
+        'inventory_warning' => 'null|0',
+        'library_id'        => 'null|0',
+        'price'             => 'null|0',
+        'price_cost'        => 'null|0',
+        'price_market'      => 'null|0',
+        'store_id'          => 'null|0',
     ];
 
     /**
@@ -44,19 +60,51 @@ class Product extends Model
     protected $table = 'mall_products';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function brand()
     {
-        return $this->hasOne(ProductBrand::class, 'id', 'brand_id');
+        return $this->belongsTo(ProductBrand::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
     {
-        return $this->hasOne(ProductCategory::class, 'id', 'category_id');
+        return $this->belongsTo(ProductCategory::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pictures()
+    {
+        return $this->hasMany(ProductPicture::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rates()
+    {
+        return $this->hasMany(ProductRate::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function specifications()
+    {
+        return $this->hasMany(ProductSpecification::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function subscribes()
+    {
+        return $this->hasMany(ProductSubscribe::class);
     }
 
     /**
@@ -99,9 +147,15 @@ class Product extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
-            new Transition('need_to_publish', ['created', 'edited'], 'publish'),
+            new Transition('need_to_publish', [
+                'created',
+                'edited',
+            ], 'publish'),
             new Transition('publish', 'publish', 'published'),
         ];
     }

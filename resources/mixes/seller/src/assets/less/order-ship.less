@@ -62,6 +62,15 @@
                             padding-top: 4px;
                             margin-right: 16px;
                         }
+                        .look-shipping {
+                            float: right;
+                            .print-btn {
+                                float: left;
+                                &:nth-child(2) {
+                                    margin-left: 6px;
+                                }
+                            }
+                        }
                         .print-btn {
                             float: right;
                             width: 94px;
@@ -122,16 +131,6 @@
                         }
                     }
                 }
-                .goods-gifts {
-                    text-align: left;
-                    padding: 10px 16px;
-                    img {
-                        width: 32px;
-                        height: 32px;
-                        margin-left: 20px;
-                        vertical-align:middle;
-                    }
-                }
             }
             .ivu-form {
                 .ivu-row:last-child {
@@ -147,5 +146,14 @@
                 }
             }
         }
+    }
+}
+.delayed-receipt-modal {
+    .ivu-form-item {
+        margin-bottom: 10px;
+    }
+    .ivu-btn-primary {
+        margin-top: 20px;
+        margin-bottom: 40px;
     }
 }

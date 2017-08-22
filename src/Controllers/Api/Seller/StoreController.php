@@ -18,6 +18,14 @@ use Notadd\Mall\Handlers\Seller\Store\StoreHandler;
 class StoreController extends Controller
 {
     /**
+     * @var array
+     */
+    protected $permissions = [
+        'global::mall-seller::store::renew' => 'renew',
+        'global::mall-seller::store::store' => 'store',
+    ];
+
+    /**
      * @param \Notadd\Mall\Handlers\Seller\Store\RenewHandler $handler
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response

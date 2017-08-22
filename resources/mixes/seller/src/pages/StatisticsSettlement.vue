@@ -8,17 +8,8 @@
             });
         },
         data() {
+            const self = this;
             return {
-                goodsList: [
-                    {
-                        label: '商品1',
-                        value: '1',
-                    },
-                    {
-                        label: '商品2',
-                        value: '2',
-                    },
-                ],
                 loading: false,
                 salesColumns: [
                     {
@@ -42,9 +33,20 @@
                         title: '付款日期',
                     },
                     {
+                        align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button size="small" type="ghost" @click.native="look(${index})">查看</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.look(data.index);
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                         title: '操作',
                         width: 120,
@@ -91,12 +93,20 @@
                 style: 'height: 400px',
                 timeList: [
                     {
-                        label: '按照月统计',
+                        label: '已出账',
                         value: '1',
                     },
                     {
-                        label: '按照周统计',
+                        label: '商家已确认',
                         value: '2',
+                    },
+                    {
+                        label: '平台已审核',
+                        value: '3',
+                    },
+                    {
+                        label: '结算完成',
+                        value: '4',
                     },
                 ],
             };
@@ -131,8 +141,6 @@
                         <div class="analysis-content">
                             <div class="order-money-content">
                                 <div class="select-content">
-                                    <i-button type="ghost" class="export-btn export-sales-btn"
-                                              @click="exportSalesData">导出数据</i-button>
                                     <ul>
                                         <li>
                                             账单状态

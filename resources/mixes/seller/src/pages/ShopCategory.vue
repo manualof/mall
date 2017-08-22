@@ -12,12 +12,28 @@
             expandRow,
         },
         data() {
+            const self = this;
             return {
                 addCategory: {
+                    category: '',
                     enable: true,
                     name: '',
                     sort: '',
                 },
+                addCategoryList: [
+                    {
+                        label: '海外代购1',
+                        value: '1',
+                    },
+                    {
+                        label: '海外代购2',
+                        value: '2',
+                    },
+                    {
+                        label: '海外代购3',
+                        value: '3',
+                    },
+                ],
                 addModal: false,
                 categoryColumns: [
                     {
@@ -38,9 +54,21 @@
                     },
                     {
                         key: 'categoryName',
-                        render() {
-                            return `<span>{{ row.categoryName }}</span>
-                                    <i-button type="ghost" type="small" @click.native="addSubordinate">新增下级</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('span', data.row.categoryName),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.addSubordinate(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '新增下级'),
+                            ]);
                         },
                         title: '分类名称',
                     },
@@ -51,21 +79,55 @@
                     },
                     {
                         key: 'shelves',
-                        render() {
-                            return `<i-switch size="large" v-model="row.status">
-                                    <span slot="open">开启</span>
-                                    <span slot="close">关闭</span>
-                                    </i-switch>`;
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
                         },
                         title: '上架',
                     },
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="edit(${index})" type="ghost">编辑</i-button>
-                                    <i-button @click.native="remove(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                     },
@@ -300,6 +362,16 @@
                                     <i-col span="12">
                                         <form-item label="分类名称">
                                             <i-input v-model="addCategory.name"></i-input>
+                                        </form-item>
+                                    </i-col>
+                                </row>
+                                <row>
+                                    <i-col span="12">
+                                        <form-item label="上级分类">
+                                            <i-select v-model="addCategory.category">
+                                                <i-option v-for="item in addCategoryList"
+                                                          :value="item.value">{{ item.label }}</i-option>
+                                            </i-select>
                                         </form-item>
                                     </i-col>
                                 </row>

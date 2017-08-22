@@ -17,7 +17,7 @@
                 },
                 imageLoading: false,
                 loading: false,
-                parameter: {
+                form: {
                     imageType: '',
                 },
                 radioList: [
@@ -62,7 +62,7 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.configurationImage.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         self.$Message.success('提交成功!');
                     } else {
@@ -142,11 +142,11 @@
             <tabs value="uploadParameters">
                 <tab-pane label="上传参数" name="uploadParameters">
                     <card :bordered="false">
-                        <i-form :label-width="200" ref="configurationImage" :model="parameter" :rules="validate">
+                        <i-form :label-width="200" ref="form" :model="form" :rules="validate">
                             <row>
                                 <i-col span="24">
                                     <form-item label="图片存放类型：" prop="imageType">
-                                        <radio-group v-model="parameter.imageType">
+                                        <radio-group v-model="form.imageType">
                                             <radio v-for="item in radioList"
                                                    :label="item.label">{{ item.content }}</radio>
                                         </radio-group>

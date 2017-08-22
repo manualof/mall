@@ -9,9 +9,17 @@
         },
         data() {
             return {
-                goods: {
-                    endPrice: '',
-                    startPrice: '',
+                form: {
+                    preForm: [
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                    ],
                 },
                 goodsColumns: [
                     {
@@ -28,8 +36,13 @@
                     },
                     {
                         key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                         title: '操作',
                         width: 120,
@@ -64,65 +77,73 @@
                         title: '下单金额',
                     },
                     {
-                        intro: '有效订单的总金额（元）',
+                        intro: '有效订单的下单会员总数',
                         price: '0',
                         title: '下单会员数',
                     },
                     {
-                        intro: '有效订单的总金额（元）',
+                        intro: '有效订单的总数量',
                         price: '0',
                         title: '下单量',
                     },
                     {
-                        intro: '有效订单的总金额（元）',
+                        intro: '有效订单包含的商品总数量',
                         price: '0',
                         title: '下单商品数',
                     },
                     {
-                        intro: '有效订单的总金额（元）',
+                        intro: '有效订单包含商品的平均单价(元)',
                         price: '0',
                         title: '平均价格',
                     },
                     {
-                        intro: '有效订单的总金额（元）',
+                        intro: '有效订单的平均每单的金额(元)',
                         price: '0',
                         title: '平均客单价',
                     },
                     {
-                        intro: '有效订单的总金额（元）',
+                        intro: '期间内注册会员总数',
                         price: '0',
                         title: '新增会员',
                     },
                     {
-                        intro: '有效订单的总金额（元）',
+                        intro: '平台所有会员的数量',
                         price: '0',
                         title: '会员数量',
                     },
                     {
-                        intro: '有效订单的总金额（元）',
+                        intro: '期间内新注册店铺总数',
                         price: '0',
                         title: '新增店铺',
                     },
                     {
-                        intro: '有效订单的总金额（元）',
+                        intro: '平台所有店铺的数量',
                         price: '0',
                         title: '店铺数量',
                     },
                     {
-                        intro: '有效订单的总金额（元）',
+                        intro: '期间内新增商品总数',
                         price: '0',
                         title: '新增商品',
                     },
                     {
-                        intro: '有效订单的总金额（元）',
+                        intro: '平台所有商品的数量',
                         price: '0',
                         title: '商品数量',
                     },
                 ],
                 loading: false,
                 orders: {
-                    endPrice: '',
-                    startPrice: '',
+                    preForm: [
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                        {
+                            endPrice: '',
+                            startPrice: '',
+                        },
+                    ],
                 },
                 salesTrend: {
                     legend: {
@@ -155,7 +176,6 @@
                         type: 'value',
                     },
                 },
-                self: this,
                 shopColumns: [
                     {
                         key: 'num',
@@ -171,8 +191,13 @@
                     },
                     {
                         key: 'action',
-                        render() {
-                            return '<i-button size="small" type="ghost">查看</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                         title: '操作',
                         width: 120,
@@ -204,8 +229,27 @@
             };
         },
         methods: {
-            deleteArea(e) {
-                console.log(e);
+            addpreArea() {
+                this.form.preForm.push(
+                    {
+                        endPrice: '',
+                        startPrice: '',
+                    },
+                );
+            },
+            addOrderArea() {
+                this.orders.preForm.push(
+                    {
+                        endPrice: '',
+                        startPrice: '',
+                    },
+                );
+            },
+            deleteArea(index) {
+                this.form.preForm.splice(index, 1);
+            },
+            deleteOrderArea(index) {
+                this.orders.preForm.splice(index, 1);
             },
             lookGoods() {},
             lookShop() {},
@@ -226,7 +270,7 @@
             priceSubmit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.goods.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -278,14 +322,14 @@
                             <row :gutter="16">
                                 <i-col span="12">
                                     <h5>7日内店铺销售TOP30</h5>
-                                    <i-table :columns="shopColumns" :context="self" :data="shopData"></i-table>
+                                    <i-table :columns="shopColumns" :data="shopData"></i-table>
                                     <div class="page">
                                         <page :total="100" show-elevator></page>
                                     </div>
                                 </i-col>
                                 <i-col span="12">
                                     <h5>7日内商品销售TOP30</h5>
-                                    <i-table :columns="goodsColumns" :context="self" :data="goodsData"></i-table>
+                                    <i-table :columns="goodsColumns" :data="goodsData"></i-table>
                                     <div class="page">
                                         <page :total="100" show-elevator></page>
                                     </div>
@@ -303,43 +347,27 @@
                                 不要缺少任何一个起始额和结束额：三、价格区间数值应该连贯，例：0~100，101~200</p>
                         </div>
                         <div class="goods-price-area">
-                            <i-form ref="goods" :model="goods" :rules="ruleValidate" :label-width="180">
-                                <form-item>
+                            <i-form ref="form" :model="form" :rules="rules" :label-width="180">
+                                <form-item v-for="(item, index) in form.preForm">
                                     <row>
                                         <i-col span="2" class="price-width">起始额</i-col>
                                         <i-col span="2" class="input-width">
-                                            <i-input v-model="startPrice"></i-input>
+                                            <i-input v-model="item.startPrice"></i-input>
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="2" class="price-width">结束额</i-col>
                                         <i-col span="2" class="input-width">
-                                            <i-input v-model="endPrice"></i-input>
+                                            <i-input v-model="item.endPrice"></i-input>
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="14">
-                                            <i-button @click.native="deleteArea($event)"
-                                                      class="delete-color" type="ghost">刪除</i-button>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="2" class="price-width">起始额</i-col>
-                                        <i-col span="2" class="input-width">
-                                            <i-input v-model="goods.startPrice"></i-input>
-                                        </i-col>
-                                        <i-col span="1">元</i-col>
-                                        <i-col span="2" class="price-width">结束额</i-col>
-                                        <i-col span="2" class="input-width">
-                                            <i-input v-model="goods.endPrice"></i-input>
-                                        </i-col>
-                                        <i-col span="1">元</i-col>
-                                        <i-col span="14">
-                                            <i-button @click.native="deleteArea"
+                                            <i-button @click.native="deleteArea(index)" v-if="index !== 0"
                                                       class="delete-color" type="ghost">刪除</i-button>
                                         </i-col>
                                     </row>
                                 </form-item>
                                 <form-item>
-                                    <i-button @click.native="addArea"  class="button-style"
+                                    <i-button @click.native="addpreArea"  class="button-style"
                                               type="ghost">+添加区间</i-button>
                                 </form-item>
                                 <form-item>
@@ -362,43 +390,27 @@
                                 不要缺少任何一个起始额和结束额：三、价格区间数值应该连贯，例：0~100，101~200</p>
                         </div>
                         <div class="goods-price-area">
-                            <i-form ref="orders" :model="orders" :rules="ruleValidate" :label-width="180">
-                                <form-item>
+                            <i-form ref="orders" :model="orders" :rules="rules" :label-width="180">
+                                <form-item v-for="(item, index) in orders.preForm">
                                     <row>
                                         <i-col span="2" class="price-width">起始额</i-col>
                                         <i-col span="2" class="input-width">
-                                            <i-input v-model="startPrice"></i-input>
+                                            <i-input v-model="item.startPrice"></i-input>
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="2" class="price-width">结束额</i-col>
                                         <i-col span="2" class="input-width">
-                                            <i-input v-model="endPrice"></i-input>
+                                            <i-input v-model="item.endPrice"></i-input>
                                         </i-col>
                                         <i-col span="1">元</i-col>
                                         <i-col span="14">
-                                            <i-button class="delete-color" @click.native="deleteArea"
-                                                      type="ghost">刪除</i-button>
-                                        </i-col>
-                                    </row>
-                                    <row>
-                                        <i-col span="2" class="price-width">起始额</i-col>
-                                        <i-col span="2" class="input-width">
-                                            <i-input v-model="orders.startPrice"></i-input>
-                                        </i-col>
-                                        <i-col span="1">元</i-col>
-                                        <i-col span="2" class="price-width">结束额</i-col>
-                                        <i-col span="2" class="input-width">
-                                            <i-input v-model="orders.endPrice"></i-input>
-                                        </i-col>
-                                        <i-col span="1">元</i-col>
-                                        <i-col span="14">
-                                            <i-button class="delete-color" @click.native="deleteArea"
-                                                      type="ghost">刪除</i-button>
+                                            <i-button class="delete-color" @click.native="deleteOrderArea(index)"
+                                                      type="ghost" v-if="index !== 0">刪除</i-button>
                                         </i-col>
                                     </row>
                                 </form-item>
                                 <form-item>
-                                    <i-button class="button-style" @click.native="addArea"
+                                    <i-button class="button-style" @click.native="addOrderArea"
                                               type="ghost" >+添加区间</i-button>
                                 </form-item>
                                 <form-item>

@@ -8,6 +8,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 addStore: {
                     address: '',
@@ -16,12 +17,58 @@
                     phone: '',
                     province: [],
                 },
+                addValidate: {
+                    address: [
+                        {
+                            message: '详细地址不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '门店名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    province: [
+                        {
+                            message: '所在地区不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                },
                 editStore: {
                     address: '',
                     meassage: '',
                     name: '',
                     phone: '',
                     province: [],
+                },
+                editValidate: {
+                    address: [
+                        {
+                            message: '详细地址不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            message: '门店名称不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
+                    province: [
+                        {
+                            message: '所在地区不能为空',
+                            required: true,
+                            trigger: 'blur',
+                        },
+                    ],
                 },
                 goodsApplication: false,
                 goodsColumns: [
@@ -44,9 +91,34 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="edit(${index})" type="ghost">编辑</i-button>
-                                    <i-button @click.native="remove(${index})" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
+                                    },
+                                }, '删除'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
@@ -263,10 +335,10 @@
                             v-model="goodsApplication"
                             title="新增门店" class="upload-picture-modal">
                         <div>
-                            <i-form ref="addStore" :model="addStore" :rules="pictureValidate" :label-width="100">
+                            <i-form ref="addStore" :model="addStore" :rules="addValidate" :label-width="100">
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="门店名称">
+                                        <form-item label="门店名称" prop="name">
                                             <i-input v-model="addStore.name"></i-input>
                                             <p class="tip">不同地址建议使用不同名称以示区别，如“本初科技（钟楼店）”</p>
                                         </form-item>
@@ -274,7 +346,7 @@
                                 </row>
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="所在地区">
+                                        <form-item label="所在地区" prop="province">
                                             <cascader :data="provinceList" trigger="hover"
                                                       v-model="addStore.province"></Cascader>
                                         </form-item>
@@ -282,7 +354,7 @@
                                 </row>
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="详细地址">
+                                        <form-item label="详细地址" prop="address">
                                             <i-input v-model="addStore.address"></i-input>
                                         </form-item>
                                     </i-col>
@@ -319,10 +391,10 @@
                             v-model="modify"
                             title="编辑门店" class="upload-picture-modal">
                         <div>
-                            <i-form ref="editStore" :model="editStore" :rules="ruleValidate" :label-width="100">
+                            <i-form ref="editStore" :model="editStore" :rules="editValidate" :label-width="100">
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="门店名称">
+                                        <form-item label="门店名称" prop="name">
                                             <i-input v-model="editStore.name"></i-input>
                                             <p class="tip">不同地址建议使用不同名称以示区别，如“本初科技（钟楼店）”</p>
                                         </form-item>
@@ -330,7 +402,7 @@
                                 </row>
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="所在地区">
+                                        <form-item label="所在地区" prop="province">
                                             <cascader :data="provinceList" trigger="hover"
                                                       v-model="editStore.province"></Cascader>
                                         </form-item>
@@ -338,7 +410,7 @@
                                 </row>
                                 <row>
                                     <i-col span="14">
-                                        <form-item label="详细地址">
+                                        <form-item label="详细地址" prop="address">
                                             <i-input v-model="editStore.address"></i-input>
                                         </form-item>
                                     </i-col>

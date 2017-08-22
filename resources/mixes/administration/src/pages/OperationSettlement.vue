@@ -9,29 +9,38 @@
         },
         data() {
             return {
-                billDetail: {
-                    accountData: '2015-02-01',
-                    payMoney: ' 0.00 = 0.00 (订单金额) - 0.00 (佣金金额) - 0.00 (退单金额) + 0.00 (退还佣金) ' +
-                    '- 0.00 (店铺促销费用)',
-                    settlementNum: '75 (原结算单号：20150115)',
-                    settlementStatus: '已出帐',
-                    startData: '2015-01-01  至  2015-01-31',
+                form: {
+                    detail: {
+                        accountData: '2015-02-01',
+                        payMoney: ' 0.00 = 0.00 (订单金额) - 0.00 (佣金金额) - 0.00 (退单金额) + 0.00 (退还佣金) ' +
+                        '- 0.00 (店铺促销费用)',
+                        settlementNum: '75 (原结算单号：20150115)',
+                        settlementStatus: '已出帐',
+                        startData: '2015-01-01  至  2015-01-31',
+                    },
+                    pay: {
+                        billInformation: '',
+                        billNum: '213624925721571',
+                        endDate: '',
+                        startDate: '',
+                    },
                 },
                 loading: false,
                 managementSearch: '',
                 modal: false,
-                payModal: {
-                    billInformation: '',
-                    billNum: '213624925721571',
-                    endDate: '2016-12-22',
-                    startDate: '2016-12-22',
-                },
                 payValidate: {
+                    endDate: [
+                        {
+                            message: '日期不能为空',
+                            required: true,
+                            trigger: 'change',
+                        },
+                    ],
                     startDate: [
                         {
                             message: '日期不能为空',
                             required: true,
-                            trigger: 'blur',
+                            trigger: 'change',
                         },
                     ],
                 },
@@ -160,34 +169,33 @@
                 ],
                 refundDataList: [
                     {
-                        label: '店铺名称',
-                        value: '订单编号',
+                        label: '账单编号',
+                        value: '1',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
+                        label: '原账单编号',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '商家名称',
+                        value: '3',
                     },
                 ],
                 refundSearchData: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '订单编号',
+                        label: '账单编号',
+                        value: '1',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
+                        label: '原账单编号',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '商家名称',
+                        value: '3',
                     },
                 ],
-                self: this,
                 settlementStatus: 1,
                 typeColumns: [
                     {
@@ -335,14 +343,20 @@
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.payModal.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
                         self.loading = false;
-                        self.$notice.error({
-                            title: '请正确填写设置信息！',
-                        });
+                        if (this.payValidate.startDate === '' || this.payValidate.endDate === '') {
+                            self.$notice.error({
+                                title: '请选择日期',
+                            });
+                        } else {
+                            self.$notice.error({
+                                title: '请填写正确信息',
+                            });
+                        }
                     }
                 });
             },
@@ -359,42 +373,42 @@
                 <span>结算管理—账单明细</span>
             </div>
             <card :bordered="false">
-                <i-form ref="billDetail" :model="billDetail" :rules="ruleValidate" :label-width="200">
+                <i-form ref="form" :model="form.detail" :rules="rules" :label-width="200">
                     <div class="bill-information">
                         <h5>店铺 - 官方店铺2（ID：15）结算单</h5>
                         <div class="bill-content">
                             <row>
                                 <i-col span="18">
                                     <form-item label="结算单号">
-                                        {{billDetail.settlementNum}}
+                                        {{form.detail.settlementNum }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="18">
                                     <form-item label="起止日期">
-                                        {{billDetail.startData}}
+                                        {{form.detail.startData }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="18">
                                     <form-item label="出账日期">
-                                        ￥{{billDetail.accountData}}
+                                        ￥{{ form.detail.accountData }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="20">
                                     <form-item label="平台应付金额">
-                                        {{billDetail.payMoney}}
+                                        {{ form.detail.payMoney }}
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="18">
                                     <form-item label="结算状态">
-                                        {{billDetail.settlementStatus}}
+                                        {{ form.detail.settlementStatus }}
                                     </form-item>
                                 </i-col>
                             </row>
@@ -448,35 +462,34 @@
                     </tab-pane>
                 </tabs>
             </card>
-            <modal
-                    v-model="modal"
-                    title="付款信息" class="refund-attribute-modal">
+            <modal v-model="modal" title="付款信息" class="refund-attribute-modal">
                 <div>
-                    <i-form ref="payModal" :model="payModal" :rules="payValidate" :label-width="100">
+                    <i-form ref="form" :model="form.pay" :rules="payValidate" :label-width="100">
                         <row>
                             <i-col span="18">
                                 <form-item label="账单编号" prop="billNum">
-                                    {{ payModal.billNum }}
+                                    {{ form.pay.billNum }}
                                 </form-item>
                             </i-col>
                         </row>
-                        <form-item label="起止日期" prop="startDate">
+                        <form-item label="起止日期">
                             <row>
                                 <i-col span="8">
                                     <date-picker type="date" placeholder="选择日期"
-                                                 v-model="payModal.startDate"></date-picker>
+                                                 v-model="form.pay.startDate"></date-picker>
                                 </i-col>
                                 <i-col span="2" style="text-align: center">-</i-col>
                                 <i-col span="8">
                                     <date-picker type="date" placeholder="选择日期"
-                                                 v-model="payModal.endDate"></date-picker>
+                                                 v-model="form.pay.endDate"></date-picker>
                                 </i-col>
                             </row>
                         </form-item>
                         <row>
                             <i-col span="20">
                                 <form-item label="出账信息" prop="">
-                                    <i-input type="textarea" v-model="payModal.billInformation"></i-input>
+                                    <i-input type="textarea" :autosize="{minRows: 3,maxRows: 5}"
+                                             v-model="form.pay.billInformation"></i-input>
                                     <p class="tip">
                                         请输入汇款单号、支付方式等付款凭证
                                     </p>

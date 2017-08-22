@@ -44,8 +44,12 @@
                     {
                         align: 'center',
                         key: 'number',
-                        render() {
-                            return '<i-input v-model="row.number"></i-input>';
+                        render(h, data) {
+                            return h('i-input', {
+                                props: {
+                                    value: data.row.number,
+                                },
+                            }, '查看');
                         },
                         title: '物流单号',
                         width: 300,
@@ -53,76 +57,30 @@
                     {
                         align: 'center',
                         key: 'message',
-                        render() {
-                            return '<i-input v-model="row.message"></i-input>';
+                        render(h, data) {
+                            return h('i-input', {
+                                props: {
+                                    value: data.row.message,
+                                },
+                            }, '查看');
                         },
                         title: '备忘',
                     },
                     {
                         align: 'center',
-                        render() {
-                            return '<i-button type="ghost">确认</i-button>';
+                        render(h) {
+                            return h('i-button', {
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '确认');
                         },
                         title: '操作',
                         width: 160,
                     },
                 ],
                 logisticsData: [
-                    {
-                        name: '顺丰速运',
-                        number: '4444444',
-                        message: '',
-                    },
-                    {
-                        name: '顺丰速运',
-                        number: '4444444',
-                        message: '',
-                    },
-                    {
-                        name: '顺丰速运',
-                        number: '4444444',
-                        message: '',
-                    },
-                    {
-                        name: '顺丰速运',
-                        number: '4444444',
-                        message: '',
-                    },
-                ],
-                noLogisticsColumns: [
-                    {
-                        align: 'center',
-                        key: 'name',
-                        title: '公司名称',
-                        width: 200,
-                    },
-                    {
-                        align: 'center',
-                        key: 'number',
-                        render() {
-                            return '<i-input v-model="row.number"></i-input>';
-                        },
-                        title: '物流单号',
-                        width: 300,
-                    },
-                    {
-                        align: 'center',
-                        key: 'message',
-                        render() {
-                            return '<i-input v-model="row.message"></i-input>';
-                        },
-                        title: '备忘',
-                    },
-                    {
-                        align: 'center',
-                        render() {
-                            return '<i-button type="ghost">确认</i-button>';
-                        },
-                        title: '操作',
-                        width: 160,
-                    },
-                ],
-                noLogisticsData: [
                     {
                         name: '顺丰速运',
                         number: '4444444',
@@ -445,11 +403,8 @@
                             </i-form>
                         </tab-pane>
                         <tab-pane label="无需物流运输" name="name2">
-                            <i-form ref="logistics" :model="logistics" :rules="ruleValidate" :label-width="120">
-                                <i-table :context="self"
-                                         :columns="noLogisticsColumns"
-                                         :data="noLogisticsData"
-                                         ref="noLogistics"></i-table>
+                            <i-form ref="logistics" :model="logistics" :rules="ruleValidate" class="no-logistics-module">
+                                <p>如果订单中的商品无需物流运送,您可以直接点击确认</p>
                                 <i-button class="submit-btn" type="primary">确认提交</i-button>
                             </i-form>
                         </tab-pane>

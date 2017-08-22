@@ -12,7 +12,7 @@
             return {
                 action: `${window.api}/mall/admin/upload`,
                 album: {
-                    logo: '',
+                    logoList: [],
                     type: '',
                 },
                 albumTYpe: [
@@ -35,6 +35,7 @@
                     sortType: '',
                 },
                 loading: false,
+                modalTitle: '创建相册',
                 pictureList: [
                     {
                         img: image,
@@ -88,6 +89,11 @@
         methods: {
             createAlbumModal() {
                 this.createModal = true;
+                this.modalTitle = '创建相册';
+            },
+            editImage() {
+                this.createModal = true;
+                this.modalTitle = '编辑相册';
             },
             pictureManage() {
                 const self = this;
@@ -98,8 +104,8 @@
             removeImage(index) {
                 this.pictureList.splice(index, 1);
             },
-            removeLogo() {
-                this.album.logo = '';
+            removeLogo(index) {
+                this.album.logoList.splice(index, 1);
             },
             submit() {
                 const self = this;
@@ -162,7 +168,7 @@
                 self.$notice.open({
                     title: data.message,
                 });
-                self.album.logo = data.data.path;
+                self.album.logoList.push(data.data.path);
             },
         },
     };
@@ -190,10 +196,10 @@
                             </div>
                             <div class="picture-group">
                                 <ul class="clearfix">
-                                    <li v-for="item in pictureList">
-                                        <div class="img" @click="pictureManage">
-                                            <img :src="item.img" alt="">
-                                            <i-button type="text" @click.native="removeImage">
+                                    <li v-for="(item, index) in pictureList">
+                                        <div class="img">
+                                            <img :src="item.img" alt="" @click="pictureManage">
+                                            <i-button type="text" @click.native="removeImage(index)">
                                                 <icon type="trash-a"></icon>
                                             </i-button>
                                         </div>
@@ -228,11 +234,14 @@
                                     </i-col>
                                 </row>
                                 <row>
-                                    <i-col span="20">
+                                    <i-col span="22">
                                         <form-item label="选择图片" prop="logo">
-                                            <div class="image-preview" v-if="album.logo">
-                                                <img :src="album.logo">
-                                                <icon type="close" @click.native="removeLogo"></icon>
+                                            <div class="image-preview" v-if="album.logoList"
+                                                 v-for="(item, index) in album.logoList">
+                                                <img :src="item">
+                                                <i-button type="text" @click.native="removeLogo(index)">
+                                                    <icon type="trash-a"></icon>
+                                                </i-button>
                                             </div>
                                             <upload :action="action"
                                                     :before-upload="uploadBefore"
@@ -240,13 +249,13 @@
                                                     :headers="{
                                                         Authorization: `Bearer ${$store.state.token.access_token}`
                                                     }"
+                                                    multiple
                                                     :max-size="2048"
                                                     :on-error="uploadError"
                                                     :on-format-error="uploadFormatError"
                                                     :on-success="uploadSuccess"
                                                     ref="upload"
-                                                    :show-upload-list="false"
-                                                    v-if="album.logo === '' || album.logo === null">
+                                                    :show-upload-list="false">
                                             </upload>
                                             <p class="tip">支持JPG，GIF，PNG格式，大小不超过4096KB的图片上传;
                                                 浏览文件是可以按住CTRL或移位键多选</p>
@@ -268,7 +277,7 @@
                     </modal>
                     <modal
                             v-model="createModal"
-                            title="创建相册" class="upload-picture-modal">
+                            :title="modalTitle" class="upload-picture-modal">
                         <div>
                             <i-form ref="createAlbum" :model="createAlbum" :rules="createValidate" :label-width="100">
                                 <row>

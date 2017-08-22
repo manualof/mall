@@ -8,14 +8,38 @@
  */
 namespace Notadd\Mall\Controllers\Api\User;
 
-use Notadd\Mall\Abstracts\UserController as AbstractUserController;
+use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Mall\Handlers\User\LoginHandler;
+use Notadd\Mall\Handlers\User\RegisterHandler;
 use Notadd\Mall\Handlers\User\UserHandler;
 
 /**
  * Class UserController.
  */
-class UserController extends AbstractUserController
+class UserController extends Controller
 {
+    /**
+     * @param \Notadd\Mall\Handlers\User\LoginHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function login(LoginHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * @param \Notadd\Mall\Handlers\User\RegisterHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function register(RegisterHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+    
     /**
      * @param \Notadd\Mall\Handlers\User\UserHandler $handler
      *

@@ -27,15 +27,41 @@ class ProductSpecification extends Model
         'category_id',
         'flow_marketing',
         'name',
+        'order',
         'store_id',
         'type',
         'value',
     ];
 
     /**
+     * @var array
+     */
+    protected $setters = [
+        'order'    => 'null|0',
+        'store_id' => 'null|0',
+        'type'     => 'null|color',
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'mall_product_specifications';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(ProductCategory::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 
     /**
      * Definition of name for flow.
@@ -75,7 +101,10 @@ class ProductSpecification extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
         ];
     }

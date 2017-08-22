@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -8,8 +9,9 @@
             });
         },
         data() {
+            const self = this;
             return {
-                evaluationListColumns: [
+                columns: [
                     {
                         align: 'center',
                         fixed: 'left',
@@ -24,12 +26,49 @@
                     },
                     {
                         align: 'center',
-                        render() {
-                            return `<icon type="star" style="color:#f7d55f;"></icon>
-                                    <icon type="star" style="color:#f7d55f;"></icon>
-                                    <icon type="star" style="color:#f7d55f;"></icon>
-                                    <icon type="star" style="color:#f7d55f;"></icon>
-                                    <icon type="star" style="color:#f7d55f;"></icon>`;
+                        render(h) {
+                            return h('div', [
+                                h('icon', {
+                                    props: {
+                                        type: 'star',
+                                    },
+                                    style: {
+                                        color: '#f7d55f',
+                                    },
+                                }),
+                                h('icon', {
+                                    props: {
+                                        type: 'star',
+                                    },
+                                    style: {
+                                        color: '#f7d55f',
+                                    },
+                                }),
+                                h('icon', {
+                                    props: {
+                                        type: 'star',
+                                    },
+                                    style: {
+                                        color: '#f7d55f',
+                                    },
+                                }),
+                                h('icon', {
+                                    props: {
+                                        type: 'star',
+                                    },
+                                    style: {
+                                        color: '#f7d55f',
+                                    },
+                                }),
+                                h('icon', {
+                                    props: {
+                                        type: 'star',
+                                    },
+                                    style: {
+                                        color: '#f7d55f',
+                                    },
+                                }),
+                            ]);
                         },
                         title: '评分',
                         width: 150,
@@ -43,8 +82,28 @@
                     {
                         align: 'center',
                         key: 'baskImage',
-                        render() {
-                            return '<icon type="image"></icon>';
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.baskImage,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
                         },
                         title: '晒单图片',
                         width: 300,
@@ -65,73 +124,82 @@
                         align: 'center',
                         fixed: 'right',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="remove(${index})" size="small"
-                                    type="ghost" >删除</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.remove(data.index);
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '删除');
                         },
                         title: '操作',
                         width: 150,
                     },
                 ],
-                evaluationListData: [
+                list: [
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
                         evaluationTime: '2016-12-23',
                     },
                     {
-                        baskImage: '',
+                        baskImage: image1,
                         evaluationContent: '时尚但不易过时，高上大，还配有眼睛盒，发货速度',
                         evaluationPeople: 'pingjia',
                         evaluationProduct: '黎明眼镜GUCCI古驰太阳',
@@ -141,25 +209,20 @@
                 searchCategory: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '店铺名称',
+                        label: '评价人',
+                        value: '1',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '被评商品',
+                        value: '2',
                     },
                 ],
                 searchWord: '',
-                self: this,
             };
         },
         methods: {
             remove(index) {
-                this.evaluationListData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -191,8 +254,8 @@
                             </div>
                             <i-table class="shop-table"
                                      :context="self"
-                                     :data="evaluationListData"
-                                     :columns="evaluationListColumns"
+                                     :data="list"
+                                     :columns="columns"
                                      highlight-row ref="evaluationListTable" ></i-table>
                         </div>
                         <div class="page">

@@ -1,6 +1,13 @@
 <template>
     <div>
-        <row class="expand-row" v-for="item in row.subordinate">
+        <i-table class="expand-row"
+                 :columns="columns"
+                 :context="self"
+                 :data="row.subordinate"
+                 ref="categoryList"
+                 :show-header="false">
+        </i-table>
+        <!--<row class="expand-row" v-for="item in row.subordinate">
             <i-col span="6">
                 <span class="expand-value">{{ item.name }}</span>
             </i-col>
@@ -23,11 +30,87 @@
                               type="ghost">删除</i-button>
                 </span>
             </i-col>
-        </row>
+        </row>-->
     </div>
 </template>
 <script>
     export default {
+        data() {
+            const self = this;
+            return {
+                self: this,
+                columns: [
+                    {
+                        key: 'space',
+                        title: '',
+                        width: 110,
+                    },
+                    {
+                        key: 'name',
+                        title: '分类名称',
+                    },
+                    {
+                        align: 'center',
+                        key: 'sort',
+                        title: '排序',
+                    },
+                    {
+                        key: 'shelves',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.status,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '上架',
+                    },
+                    {
+                        align: 'center',
+                        key: 'action',
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.edit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    class: {
+                                        'delete-ad': true,
+                                    },
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '删除'),
+                            ]);
+                        },
+                        title: '操作',
+                    },
+                ],
+            };
+        },
         props: {
             row: Object,
         },

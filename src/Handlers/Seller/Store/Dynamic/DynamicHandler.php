@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Dynamic;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreDynamic;
 
 /**
@@ -24,16 +25,21 @@ class DynamicHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_shop_dynamics'),
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
-            'id.numeric'  => '动态 ID 必须为数值',
-            'id.required' => '动态 ID 必须填写',
+            'id.exists'   => '没有对应的店铺动态信息',
+            'id.numeric'  => '店铺动态 ID 必须为数值',
+            'id.required' => '店铺动态 ID 必须填写',
         ]);
         $dynamic = StoreDynamic::query()->find($this->request->input('id'));
         if ($dynamic instanceof StoreDynamic) {
             $this->withCode(200)->withData($dynamic)->withMessage('获取店铺动态信息成功！');
         } else {
-            $this->withCode(500)->withError('获取店铺动态信息失败！');
+            $this->withCode(500)->withError('没有对应的店铺动态！');
         }
     }
 }

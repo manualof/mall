@@ -3,6 +3,7 @@ import Dashboard from '../pages/Dashboard.vue';
 import Home from '../pages/Home.vue';
 import Goods from '../pages/Goods.vue';
 import GoodsAdd from '../pages/GoodsAdd.vue';
+import GoodsClaim from '../pages/GoodsClaim.vue';
 import GoodsEdit from '../pages/GoodsEdit.vue';
 import GoodsEditCategory from '../pages/GoodsEditCategory.vue';
 import GoodsNotice from '../pages/GoodsNotice.vue';
@@ -23,14 +24,18 @@ import Statistics from '../pages/Statistics.vue';
 import StatisticsGoods from '../pages/StatisticsGoods.vue';
 import StatisticsGoodsSet from '../pages/StatisticsGoodsSet.vue';
 import StatisticsOperation from '../pages/StatisticsOperation.vue';
+import StatisticsOperationSet from '../pages/StatisticsOperationSet.vue';
 import StatisticsIndustry from '../pages/StatisticsIndustry.vue';
+import StatisticsIndustrySet from '../pages/StatisticsIndustrySet.vue';
 import StatisticsFlow from '../pages/StatisticsFlow.vue';
 import StatisticsSettlement from '../pages/StatisticsSettlement.vue';
 import StatisticsSettlementLook from '../pages/StatisticsSettlementLook.vue';
 import Order from '../pages/Order.vue';
 import OrderLogistics from '../pages/OrderLogistics.vue';
 import OrderDatail from '../pages/OrderDatail.vue';
+import OrderSettingShip from '../pages/OrderSettingShip.vue';
 import OrderShip from '../pages/OrderShip.vue';
+import OrderShipLook from '../pages/OrderShipLook.vue';
 import OrderShipSet from '../pages/OrderShipSet.vue';
 import OrderSetting from '../pages/OrderSetting.vue';
 import OrderWaybill from '../pages/OrderWaybill.vue';
@@ -39,6 +44,14 @@ import OrderWaybillAdd from '../pages/OrderWaybillAdd.vue';
 import OrderWaybillDesign from '../pages/OrderWaybillDesign.vue';
 import OrderWaybillEdit from '../pages/OrderWaybillEdit.vue';
 import OrderEvaluation from '../pages/OrderEvaluation.vue';
+import SalesSpikes from '../pages/SalesSpikes.vue';
+import SalesSpikesCreate from '../pages/SalesSpikesCreate.vue';
+import SalesSpikesMagage from '../pages/SalesSpikesMagage.vue';
+import SalesActive from '../pages/SalesActive.vue';
+import SalesActiveCreate from '../pages/SalesActiveCreate.vue';
+import SalesFulldown from '../pages/SalesFulldown.vue';
+import SalesFulldownCreate from '../pages/SalesFulldownCreate.vue';
+import SalesFulldownDetail from '../pages/SalesFulldownDetail.vue';
 import Customer from '../pages/Customer.vue';
 import CustomerMessage from '../pages/CustomerMessage.vue';
 import Account from '../pages/Account.vue';
@@ -73,6 +86,11 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: GoodsAdd,
                     path: 'goods/add',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: GoodsClaim,
+                    path: 'goods/claim',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -176,8 +194,18 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsOperationSet,
+                    path: 'statistics/operation/set',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
                     component: StatisticsIndustry,
                     path: 'statistics/industry',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: StatisticsIndustrySet,
+                    path: 'statistics/industry/set',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -211,8 +239,18 @@ export default function (injection) {
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
+                    component: OrderSettingShip,
+                    path: 'order/setting/ship',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
                     component: OrderShip,
                     path: 'order/ship',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: OrderShipLook,
+                    path: 'order/ship/look',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,
@@ -253,6 +291,46 @@ export default function (injection) {
                     beforeEnter: injection.middleware.requireAuth,
                     component: OrderEvaluation,
                     path: 'order/evaluation',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikes,
+                    path: 'sales/spikes',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesCreate,
+                    path: 'sales/spikes/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesSpikesMagage,
+                    path: 'sales/spikes/manage',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesActive,
+                    path: 'sales/active',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesActiveCreate,
+                    path: 'sales/active/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesFulldown,
+                    path: 'sales/fulldown',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesFulldownCreate,
+                    path: 'sales/fulldown/create',
+                },
+                {
+                    beforeEnter: injection.middleware.requireAuth,
+                    component: SalesFulldownDetail,
+                    path: 'sales/fulldown/detail',
                 },
                 {
                     beforeEnter: injection.middleware.requireAuth,

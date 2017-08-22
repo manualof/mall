@@ -10,7 +10,7 @@
             ]).then(injection.http.spread((defaultData, searchDate) => {
                 next(vm => {
                     vm.form.defaultSearch = defaultData.data.data.default;
-                    vm.searchData = searchDate.data.data;
+                    vm.list = searchDate.data.data;
                     injection.loading.finish();
                     injection.sidebar.active('mall');
                 });
@@ -34,7 +34,7 @@
                         },
                     ],
                 },
-                searchColumns: [
+                columns: [
                     {
                         align: 'center',
                         type: 'selection',
@@ -54,17 +54,38 @@
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="first-btn" @click.native="searchEdit" size="small" type="ghost">
-                                    编辑</i-button><i-button @click.native="remove(${index})"
-                                    size="small" type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('div', [
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.searchEdit(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        class: 'first-btn',
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.remove(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                            ]);
                         },
                         title: '操作',
                         width: 180,
                     },
                 ],
-                searchData: [],
-                self: this,
+                list: [],
             };
         },
         methods: {
@@ -75,7 +96,7 @@
                 });
             },
             remove(index) {
-                this.searchData.splice(index, 1);
+                this.list.splice(index, 1);
             },
             searchEdit() {
                 const self = this;
@@ -145,9 +166,9 @@
                                           type="ghost" >+新增搜索词</i-button>
                             </div>
                             <i-table class="shop-table"
-                                     :columns="searchColumns"
+                                     :columns="columns"
                                      :context="self"
-                                     :data="searchData"
+                                     :data="list"
                                      highlight-row
                                      ref="searchTable">
                             </i-table>

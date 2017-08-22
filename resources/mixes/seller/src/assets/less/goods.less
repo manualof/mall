@@ -35,15 +35,17 @@
             }
         }
         .goods-table{
-            margin-top: 14px;
+            margin-top: 10px;
             border: 0 none;
             .ivu-table {
                 .ivu-table-header {
                     thead {
                         > tr {
                             th:nth-child(2) {
-                                padding-left: 20px;
                                 min-width: 340px;
+                                .ivu-table-cell {
+                                    padding-left: 0;
+                                }
                             }
                         }
                     }
@@ -53,7 +55,8 @@
                         td:nth-child(2) {
                             min-width: 340px;
                             .ivu-table-cell {
-                                > div .goods-name-row {
+                                padding-left: 0;
+                                > div.goods-name-row {
                                     display: -webkit-box;
                                     display: -moz-box;
                                     display: -ms-flexbox;
@@ -95,8 +98,38 @@
                 border-radius: 4px;
             }
             .delete-ad {
-                margin-left: 6px;
+                margin-left: 10px;
             }
         }
+    }
+    .ivu-table {
+        .ivu-btn-small {
+            padding: 3px 19px;
+            border-radius: 4px;
+        }
+        .ivu-table-tbody {
+            .ivu-dropdown {
+                .ivu-btn-small {
+                    padding: 3px 15px;
+                    border-radius: 4px;
+                }
+            }
+        }
+        .ivu-tooltip-inner {
+            padding: 4px 8px;
+            img {
+                max-width: 200px;
+                max-height: 200px;
+                margin-top: 4px;
+            }
+        }
+    }
+    .ivu-page-options-elevator {
+        input {
+            text-align: center;
+        }
+    }
+    .ivu-table-wrapper {
+        border-top: 1px solid #e3e8ee!important;
     }
 }

@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Store\Dynamic;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\StoreDynamic;
 
 /**
@@ -24,16 +25,24 @@ class CreateHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'content'  => 'required',
-            'show'     => 'required|numeric',
-            'store_id' => 'required|numeric',
-            'title'    => 'required',
+            'content'  => Rule::required(),
+            'show'     => [
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'store_id' => [
+                Rule::exists('mall_stores'),
+                Rule::numeric(),
+                Rule::required(),
+            ],
+            'title'    => Rule::required(),
         ], [
             'content.required'  => '动态内容必须填写',
             'show.numeric'      => '是否显示必须为数值',
             'show.required'     => '是否显示必须填写',
-            'store_id.numeric'  => '店铺 ID 必须是数值',
+            'store_id.exists'   => '没有对应的店铺信息',
             'store_id.required' => '店铺 ID 必须填写',
+            'store_id.numeric'  => '店铺 ID 必须为数值',
             'title.required'    => '动态标题必须填写',
         ]);
         $this->beginTransaction();

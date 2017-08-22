@@ -2,9 +2,9 @@
 /**
  * This file is part of Notadd.
  *
- * @author        TwilRoad <heshudong@ibenchu.com>
+ * @author TwilRoad <269044570@qq.com>
  * @copyright (c) 2017, notadd.com
- * @datetime      2017-05-24 16:52
+ * @datetime 2017-07-05 21:07
  */
 namespace Notadd\Mall\Handlers\User\Follow;
 
@@ -20,7 +20,7 @@ class RemoveHandler extends Handler
      *
      * @throws \Exception
      */
-    public function execute()
+    protected function execute()
     {
         // TODO: Implement execute() method.
     }

@@ -3,35 +3,31 @@ export default function (injection) {
         {
             children: [
                 {
-                    path: '/mall/goods',
+                    path: '/mall/product',
                     title: '商品管理',
                 },
                 {
-                    path: '/mall/goods/library',
+                    path: '/mall/product/library',
                     title: '商品库管理',
                 },
                 {
-                    path: '/mall/goods/category',
+                    path: '/mall/product/category',
                     title: '分类管理',
                 },
                 {
-                    path: '/mall/goods/brand',
+                    path: '/mall/product/brand',
                     title: '品牌管理',
                 },
                 {
-                    path: '/mall/goods/type',
-                    title: '类型管理',
-                },
-                {
-                    path: '/mall/goods/standard',
+                    path: '/mall/product/specification',
                     title: '规格管理',
                 },
                 {
-                    path: '/mall/goods/picture',
+                    path: '/mall/product/picture',
                     title: '图片空间',
                 },
             ],
-            icon: 'plus',
+            icon: 'pricetags',
             title: '商品',
         },
         {
@@ -41,23 +37,19 @@ export default function (injection) {
                     title: '店铺管理',
                 },
                 {
-                    path: '/mall/store/level',
+                    path: '/mall/store/grade',
                     title: '店铺等级',
                 },
                 {
-                    path: '/mall/store/category',
-                    title: '店铺分类',
+                    path: '/mall/store/type',
+                    title: '店铺类型',
                 },
                 {
                     path: '/mall/store/dynamics',
                     title: '店铺动态',
                 },
-                {
-                    path: '/mall/store/postal',
-                    title: '包邮',
-                },
             ],
-            icon: 'plus',
+            icon: 'ios-analytics',
             title: '店铺',
         },
         {
@@ -78,12 +70,8 @@ export default function (injection) {
                     path: '/mall/order/evaluation',
                     title: '评价管理',
                 },
-                {
-                    path: '/mall/order/complain',
-                    title: '投诉管理',
-                },
             ],
-            icon: 'plus',
+            icon: 'ios-paper',
             title: '订单',
         },
         {
@@ -97,7 +85,7 @@ export default function (injection) {
                     title: '自提点',
                 },
             ],
-            icon: 'plus',
+            icon: 'android-playstore',
             title: '运营',
         },
         {
@@ -131,7 +119,7 @@ export default function (injection) {
                     title: '售后分析',
                 },
             ],
-            icon: 'plus',
+            icon: 'stats-bars',
             title: '统计',
         },
         {
@@ -141,11 +129,19 @@ export default function (injection) {
                     title: '秒杀活动',
                 },
                 {
+                    path: '/mall/sales/active',
+                    title: '预售活动',
+                },
+                {
                     path: '/mall/sales/fulldown',
-                    title: '满减（暂空）',
+                    title: '满减活动',
+                },
+                {
+                    path: '/mall/sales/integral',
+                    title: '积分',
                 },
             ],
-            icon: 'plus',
+            icon: 'speakerphone',
             title: '促销',
         },
         {
@@ -157,10 +153,6 @@ export default function (injection) {
                 {
                     path: '/mall/configuration/search',
                     title: '搜索设置',
-                },
-                {
-                    path: '/mall/configuration/advertisement',
-                    title: '广告设置',
                 },
                 {
                     path: '/mall/configuration/image',
@@ -175,7 +167,7 @@ export default function (injection) {
                     title: '支付方式',
                 },
             ],
-            icon: 'plus',
+            icon: 'ios-gear',
             title: '设置',
         },
     ]);

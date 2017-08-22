@@ -8,67 +8,59 @@
             });
         },
         data() {
+            const self = this;
             return {
-                btnStatus: true,
                 managementSearch: '',
                 searchList: [
                     {
-                        label: '店铺名称',
-                        value: '订单编号',
+                        label: '账单编号',
+                        value: '1',
                     },
                     {
-                        label: '商品名称',
-                        value: '商品名称',
+                        label: '原账单编号',
+                        value: '2',
                     },
                     {
-                        label: '商品分类',
-                        value: '商品分类',
+                        label: '商家名称',
+                        value: '3',
                     },
                 ],
-                self: this,
-                typeColumns: [
+                columns: [
                     {
                         align: 'center',
-                        fixed: 'left',
                         key: 'number',
                         title: '账单编号',
-                        width: 150,
+                        width: 100,
                     },
                     {
                         align: 'center',
                         key: 'orderMoney',
                         title: '订单金额（含运费）',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'freight',
                         title: '运费',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'commission',
                         title: '收取佣金',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'refund',
                         title: '退单金额',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'shopCosts',
                         title: '店铺费用',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'distribution',
                         title: '分销佣金',
-                        width: 150,
                     },
                     {
                         align: 'center',
@@ -80,41 +72,59 @@
                         align: 'center',
                         key: 'accountData',
                         title: '出账日期',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'status',
                         title: '帐单状态',
-                        width: 150,
                     },
                     {
                         align: 'center',
                         key: 'businessName',
                         title: '商家名称',
-                        width: 150,
                     },
                     {
                         align: 'center',
-                        fixed: 'right',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button class="delete-ad" @click.native="handel(${index})"
-                                    type="ghost" v-if="btnStatus === true">处理</i-button>
-                                    <i-button class="delete-ad" @click.native="look(${index})"
-                                    type="ghost" v-if="btnStatus === false">查看</i-button>`;
+                        render(h, data) {
+                            if (data.row.params === 1 || data.row.params === 4) {
+                                return h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.handel(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '处理');
+                            }
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.look(data.index);
+                                    },
+                                },
+                                props: {
+                                    class: 'delete-ad',
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '查看');
                         },
                         title: '操作',
-                        width: 150,
+                        width: 120,
                     },
                 ],
-                typeData: [
+                list: [
                     {
                         accountData: '2017-5-9',
                         businessName: 'Rey旗舰店',
                         commission: '37.00',
                         distribution: '10.00',
                         freight: '12.00',
+                        params: 1,
                         refund: '0.00',
                         number: '01',
                         orderMoney: '999.00',
@@ -128,12 +138,13 @@
                         commission: '37.00',
                         distribution: '10.00',
                         freight: '12.00',
+                        params: 2,
                         refund: '0.00',
                         number: '01',
                         orderMoney: '999.00',
                         settlement: '865.00',
                         shopCosts: '30.00',
-                        status: '已出账',
+                        status: '商家已确认',
                     },
                     {
                         accountData: '2017-5-9',
@@ -141,12 +152,13 @@
                         commission: '37.00',
                         distribution: '10.00',
                         freight: '12.00',
+                        params: 3,
                         refund: '0.00',
                         number: '01',
                         orderMoney: '999.00',
                         settlement: '865.00',
                         shopCosts: '30.00',
-                        status: '已出账',
+                        status: '平台已审核',
                     },
                     {
                         accountData: '2017-5-9',
@@ -154,12 +166,13 @@
                         commission: '37.00',
                         distribution: '10.00',
                         freight: '12.00',
+                        params: 4,
                         refund: '0.00',
                         number: '01',
                         orderMoney: '999.00',
                         settlement: '865.00',
                         shopCosts: '30.00',
-                        status: '已出账',
+                        status: '结算完成',
                     },
                 ],
             };
@@ -177,10 +190,13 @@
                 });
             },
             look() {
-
+                const self = this;
+                self.$router.push({
+                    path: 'operation/settlement',
+                });
             },
             remove(index) {
-                this.typeData.splice(index, 1);
+                this.list.splice(index, 1);
             },
         },
     };
@@ -211,8 +227,8 @@
                                 </i-input>
                             </div>
                         </div>
-                        <i-table highlight-row :columns="typeColumns" :context="self"
-                                 :data="typeData" ref="managementTable"></i-table>
+                        <i-table highlight-row :columns="columns" :context="self"
+                                 :data="list" ref="managementTable"></i-table>
                         <div class="page">
                             <page :total="150" show-elevator></page>
                         </div>

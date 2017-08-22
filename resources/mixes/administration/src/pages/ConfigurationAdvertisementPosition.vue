@@ -10,7 +10,7 @@
         data() {
             return {
                 action: `${window.api}/mall/admin/upload`,
-                addAdPosition: {
+                form: {
                     heightNum: '',
                     logo: '',
                     name: '',
@@ -30,12 +30,13 @@
                         value: '2',
                     },
                 ],
-                ruleValidate: {
+                rules: {
                     heightNum: [
                         {
                             message: '高度不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     logo: [
@@ -43,6 +44,7 @@
                             message: '广告位默认图片不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     name: [
@@ -50,6 +52,7 @@
                             message: '名称不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                     widthNum: [
@@ -57,6 +60,7 @@
                             message: '宽度不能为空',
                             required: true,
                             trigger: 'blur',
+                            type: 'string',
                         },
                     ],
                 },
@@ -64,12 +68,12 @@
         },
         methods: {
             removeLogo() {
-                this.addAdPosition.logo = '';
+                this.form.logo = '';
             },
             submit() {
                 const self = this;
                 self.loading = true;
-                self.$refs.addAdPosition.validate(valid => {
+                self.$refs.form.validate(valid => {
                     if (valid) {
                         window.console.log(valid);
                     } else {
@@ -110,7 +114,7 @@
                 self.$notice.open({
                     title: data.message,
                 });
-                self.addAdPosition.logo = data.data.path;
+                self.form.logo = data.data.path;
             },
         },
     };
@@ -125,18 +129,18 @@
                 <span>广告管理—新增广告位</span>
             </div>
             <card :bordered="false">
-                <i-form ref="addAdPosition" :model="addAdPosition" :rules="ruleValidate" :label-width="200">
+                <i-form ref="form" :model="form" :rules="rules" :label-width="200">
                     <row>
                         <i-col span="12">
                             <form-item label="名称" prop="name">
-                                <i-input v-model="addAdPosition.name"></i-input>
+                                <i-input v-model="form.name"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="类别">
-                                <i-select v-model="addAdPosition.province" placeholder="请选择">
+                                <i-select v-model="form.province" placeholder="请选择">
                                     <i-option :key="item"
                                               :value="item.value"
                                               v-for="item in province">
@@ -149,7 +153,7 @@
                     <row>
                         <i-col span="18">
                             <form-item label="展示方式">
-                                <radio-group v-model="addAdPosition.showStyle">
+                                <radio-group v-model="form.showStyle">
                                     <radio label="style1">
                                         <span>可以发布多条广告并随机展示</span>
                                     </radio>
@@ -163,29 +167,29 @@
                     <row>
                         <i-col span="12">
                             <form-item label="宽度" prop="widthNum">
-                                <i-input v-model="addAdPosition.widthNum"></i-input>
+                                <i-input v-model="form.widthNum"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="高度" prop="heightNum">
-                                <i-input v-model="addAdPosition.heightNum"></i-input>
+                                <i-input v-model="form.heightNum"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="高度" prop="heightNum">
-                                <i-input v-model="addAdPosition.heightNum"></i-input>
+                                <i-input v-model="form.heightNum"></i-input>
                             </form-item>
                         </i-col>
                     </row>
                     <row>
                         <i-col span="12">
                             <form-item label="广告位默认图片上传" prop="logo">
-                                <div class="image-preview" v-if="addAdPosition.logo">
-                                    <img :src="addAdPosition.logo">
+                                <div class="image-preview" v-if="form.logo">
+                                    <img :src="form.logo">
                                     <icon type="close" @click.native="removeLogo"></icon>
                                 </div>
                                 <upload :action="action"
@@ -200,7 +204,7 @@
                                         :on-success="uploadSuccess"
                                         ref="upload"
                                         :show-upload-list="false"
-                                        v-if="addAdPosition.logo === '' || addAdPosition.logo === null">
+                                        v-if="form.logo === '' || form.logo === null">
                                 </upload>
                                 <p>系统支持的图片格式为：gif、jpg、jpeg、png</p>
                             </form-item>
@@ -209,7 +213,7 @@
                     <row>
                         <i-col span="12">
                             <form-item label="状态">
-                                <i-switch size="large" v-model="addAdPosition.switchStatus">
+                                <i-switch size="large" v-model="form.switchStatus">
                                     <span slot="open">开启</span>
                                     <span slot="close">关闭</span>
                                 </i-switch>

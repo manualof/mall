@@ -7,7 +7,7 @@ export default function (injection) {
                     title: '首页',
                 },
             ],
-            icon: 'plus',
+            icon: 'ios-home',
             title: '首页',
         },
         {
@@ -29,7 +29,7 @@ export default function (injection) {
                     title: '图片空间',
                 },
             ],
-            icon: 'plus',
+            icon: 'pricetags',
             title: '商品',
         },
         {
@@ -59,8 +59,26 @@ export default function (injection) {
                     title: '物流工具',
                 },
             ],
-            icon: 'plus',
+            icon: 'ios-paper',
             title: '订单物流',
+        },
+        {
+            children: [
+                {
+                    path: '/seller/sales/spikes',
+                    title: '限时秒杀',
+                },
+                {
+                    path: '/seller/sales/active',
+                    title: '预售活动',
+                },
+                {
+                    path: '/seller/sales/fulldown',
+                    title: '满减活动',
+                },
+            ],
+            icon: 'speakerphone',
+            title: '促销',
         },
         {
             children: [
@@ -97,7 +115,7 @@ export default function (injection) {
                     title: '门店',
                 },
             ],
-            icon: 'plus',
+            icon: 'ios-analytics',
             title: '店铺',
         },
         {
@@ -127,7 +145,7 @@ export default function (injection) {
                     title: '商品结算',
                 },
             ],
-            icon: 'plus',
+            icon: 'stats-bars',
             title: '统计结算',
         },
         {
@@ -145,7 +163,7 @@ export default function (injection) {
                     title: '聊天记录查询',
                 },
             ],
-            icon: 'plus',
+            icon: 'android-contacts',
             title: '客服消息',
         },
         {
@@ -155,7 +173,7 @@ export default function (injection) {
                     title: '账号管理',
                 },
             ],
-            icon: 'plus',
+            icon: 'android-person',
             title: '账号',
         },
         {
@@ -173,7 +191,7 @@ export default function (injection) {
                     title: '退货记录',
                 },
             ],
-            icon: 'plus',
+            icon: 'android-chat',
             title: '售后服务',
         },
     ]);

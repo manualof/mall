@@ -1,4 +1,5 @@
 <script>
+//    import ColorPicker from './colorPicker.vue';
     import injection from '../helpers/injection';
 
     export default {
@@ -7,54 +8,185 @@
                 injection.sidebar.active('seller');
             });
         },
+        components: {
+//            ColorPicker,
+        },
         data() {
+            const self = this;
             return {
+                color: '',
                 firstType: [
                     {
-                        label: '店铺名称',
-                        value: '电子数码1',
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '自行车',
+                                        value: '自行车',
+                                    },
+                                    {
+                                        label: '婴儿推车',
+                                        value: '婴儿推车',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅',
+                                        value: '安全座椅',
+                                    },
+                                ],
+                                label: '童车童床',
+                                value: '童车童床',
+                            },
+                            {
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '个护化妆',
+                        value: '个护化妆',
                     },
                     {
-                        label: '商品名称',
-                        value: '电子数码2',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '电子数码3',
+                        children: [
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                    {
+                                        label: '婴儿推车3',
+                                        value: '婴儿推车3',
+                                    },
+                                    {
+                                        label: '电动车',
+                                        value: '电动车',
+                                    },
+                                    {
+                                        label: '安全座椅4',
+                                        value: '安全座椅4',
+                                    },
+                                ],
+                                label: '服饰寝居',
+                                value: '服饰寝居',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '婴儿推车1',
+                                        value: '婴儿推车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '营养辅食',
+                                value: '营养辅食',
+                            },
+                            {
+                                children: [
+                                    {
+                                        label: '车1',
+                                        value: '车1',
+                                    },
+                                    {
+                                        label: '自行车2',
+                                        value: '自行车2',
+                                    },
+                                ],
+                                label: '尿裤湿巾',
+                                value: '尿裤湿巾',
+                            },
+                        ],
+                        label: '家用电器',
+                        value: '家用电器',
                     },
                 ],
                 goodsColorColumns: [
                     {
                         align: 'center',
                         key: 'sort',
-                        render() {
-                            return `<input-number :max="10" :min="1" v-model="row.sortNum"
-                                    style="width: 64px"></input-number> `;
+                        render(h, data) {
+                            return h('input-number', {
+                                props: {
+                                    max: 10,
+                                    min: 1,
+                                    value: data.index + 1,
+                                },
+                                style: {
+                                    width: '64px',
+                                },
+                            });
                         },
                         title: '排序',
                         width: 150,
                     },
                     {
                         key: 'standardName',
-                        render() {
-                            return '<i-input style="width: 268px"></i-input> ';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '269px',
+                                },
+                            });
                         },
                         title: '规格值名称',
                         width: 400,
                     },
                     {
                         key: 'color',
-                        render() {
-                            return '<i-input style="width: 124px"></i-input> ';
+//                        render(h) {
+//                            return h('i-input', {
+//                                props: {
+//                                    type: 'ghost',
+//                                },
+//                                style: {
+//                                    width: '124px',
+//                                },
+//                            });
+//                        },
+                        render(h) {
+                            return h('color-picker', {
+                                props: {
+                                    value: self.color,
+                                },
+                            });
                         },
                         title: '颜色色块',
                     },
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="removeColorGoods(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.removeColorGoods(data.index);
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '删除');
                         },
                         title: '操作',
                         width: 150,
@@ -62,41 +194,72 @@
                 ],
                 goodsColorData: [
                     {
-                        sortNum: 1,
+                        sortNum: '',
                     },
                 ],
                 goodsSizeColumns: [
                     {
                         align: 'center',
                         key: 'sort',
-                        render() {
-                            return `<input-number :max="10" :min="1" v-model="row.sortNum"
-                                    style="width: 64px"></input-number> `;
+                        render(h, data) {
+                            return h('input-number', {
+                                props: {
+                                    max: 10,
+                                    min: 1,
+                                    value: data.index + 1,
+                                },
+                                style: {
+                                    width: '64px',
+                                },
+                            });
                         },
                         title: '排序',
                         width: 150,
                     },
                     {
                         key: 'standardName',
-                        render() {
-                            return '<i-input style="width: 268px"></i-input> ';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '268px',
+                                },
+                            });
                         },
                         title: '规格值名称',
                         width: 400,
                     },
                     {
                         key: 'size',
-                        render() {
-                            return '<i-input style="width: 124px"></i-input> ';
+                        render(h) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                },
+                                style: {
+                                    width: '124px',
+                                },
+                            });
                         },
                         title: '尺码大小',
                     },
                     {
                         align: 'center',
                         key: 'action',
-                        render(row, column, index) {
-                            return `<i-button @click.native="removeSizeGoods(${index})" class="delete-ad"
-                                     type="ghost">删除</i-button>`;
+                        render(h, data) {
+                            return h('i-button', {
+                                on: {
+                                    click() {
+                                        self.removeSizeGoods(data.index);
+                                    },
+                                },
+                                props: {
+                                    size: 'small',
+                                    type: 'ghost',
+                                },
+                            }, '删除');
                         },
                         title: '操作',
                         width: 150,
@@ -104,54 +267,64 @@
                 ],
                 goodsSizeData: [
                     {
-                        sortNum: 1,
+                        sortNum: '',
                     },
                 ],
                 goodsStyle: {
-                    firstType: '',
-                    secondType: '',
-                    thirdType: '',
+                    firstType: [],
                 },
-                secondType: [
-                    {
-                        label: '店铺名称',
-                        value: '电子数码1',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '电子数码2',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '电子数码3',
-                    },
-                ],
+                loading: false,
                 self: this,
-                thirdType: [
-                    {
-                        label: '店铺名称',
-                        value: '电子数码1',
-                    },
-                    {
-                        label: '商品名称',
-                        value: '电子数码2',
-                    },
-                    {
-                        label: '商品分类',
-                        value: '电子数码3',
-                    },
-                ],
             };
         },
         methods: {
             addColorStandard() {
-                this.goodsColorData.push();
+                this.goodsColorData.push(
+                    {
+                        sortNum: '',
+                    },
+                );
+            },
+            addSizeStandard() {
+                this.goodsSizeData.push(
+                    {
+                        sortNum: '',
+                    },
+                );
             },
             removeColorGoods(index) {
                 this.goodsColorData.splice(index, 1);
             },
             removeSizeGoods(index) {
                 this.goodsSizeData.splice(index, 1);
+            },
+            submitColor() {
+                const self = this;
+                self.loading = true;
+                self.$refs.colorForm.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
+            },
+            submitSize() {
+                const self = this;
+                self.loading = true;
+                self.$refs.sizeForm.validate(valid => {
+                    if (valid) {
+                        window.console.log(valid);
+                    } else {
+                        self.loading = false;
+                        self.$notice.error({
+                            title: '请正确填写设置信息！',
+                        });
+                    }
+                });
             },
         },
     };
@@ -173,57 +346,65 @@
                         </div>
                         <div class="goods-list">
                             <row>
-                                <i-col span="3">选择经营的商品分类</i-col>
-                                <i-col span="4">
-                                    <i-select v-model="goodsStyle.firstType">
-                                        <i-option v-for="item in firstType"
-                                                  :value="item.value">{{ item.label }}</i-option>
-                                    </i-select>
-                                </i-col>
-                                <i-col span="4">
-                                    <i-select v-model="goodsStyle.secondType">
-                                        <i-option v-for="item in secondType"
-                                                  :value="item.value">{{ item.label }}</i-option>
-                                    </i-select>
-                                </i-col>
-                                <i-col span="4">
-                                    <i-select v-model="goodsStyle.thirdType">
-                                        <i-option v-for="item in thirdType"
-                                                  :value="item.value">{{ item.label }}</i-option>
-                                    </i-select>
+                                <i-col span="3">选择商品分类</i-col>
+                                <i-col span="6">
+                                    <cascader :data="firstType"
+                                              trigger="hover"
+                                              v-model="goodsStyle.firstType"></cascader>
                                 </i-col>
                             </row>
-                            <tabs type="card">
+                            <tabs type="card" class="goods-standard-module">
                                 <tab-pane label="编辑颜色规格">
-                                    <div class="btn-group">
-                                        <i-button type="ghost" class="float-right"
-                                                  @click="addColorStandard">添加规格值</i-button>
-                                    </div>
-                                    <i-table class="goods-table"
-                                             :columns="goodsColorColumns"
-                                             :context="self"
-                                             :data="goodsColorData"
-                                             ref="goodsColorList"
-                                             highlight-row>
-                                    </i-table>
+                                    <i-form :label-width="45" ref="colorForm" :model="colorForm">
+                                        <div class="btn-group">
+                                            <i-button type="ghost" class="float-right"
+                                                      @click="addColorStandard">添加规格值</i-button>
+                                        </div>
+                                        <i-table class="goods-table"
+                                                 :columns="goodsColorColumns"
+                                                 :context="self"
+                                                 :data="goodsColorData"
+                                                 ref="goodsColorList"
+                                                 highlight-row>
+                                        </i-table>
+                                        <row>
+                                            <i-col span="20">
+                                                <form-item>
+                                                    <i-button :loading="loading" type="primary" @click.native="submitColor">
+                                                        <span v-if="!loading">确认提交</span>
+                                                        <span v-else>正在提交…</span>
+                                                    </i-button>
+                                                </form-item>
+                                            </i-col>
+                                        </row>
+                                    </i-form>
                                 </tab-pane>
                                 <tab-pane label="编辑尺码规格">
-                                    <div class="btn-group">
-                                        <i-button type="ghost" class="float-right"
-                                                  @click="addSizeStandard">添加规格值</i-button>
-                                    </div>
-                                    <i-table class="goods-table"
-                                             :columns="goodsSizeColumns"
-                                             :context="self"
-                                             :data="goodsSizeData"
-                                             ref="goodsSizeList"
-                                             highlight-row>
-                                    </i-table>
+                                    <i-form :label-width="45" ref="sizeForm" :model="sizeForm">
+                                        <div class="btn-group">
+                                            <i-button type="ghost" class="float-right"
+                                                      @click="addSizeStandard">添加规格值</i-button>
+                                        </div>
+                                        <i-table class="goods-table"
+                                                 :columns="goodsSizeColumns"
+                                                 :context="self"
+                                                 :data="goodsSizeData"
+                                                 ref="goodsSizeList"
+                                                 highlight-row>
+                                        </i-table>
+                                        <row>
+                                            <i-col span="20">
+                                                <form-item>
+                                                    <i-button :loading="loading" type="primary" @click.native="submitSize">
+                                                        <span v-if="!loading">确认提交</span>
+                                                        <span v-else>正在提交…</span>
+                                                    </i-button>
+                                                </form-item>
+                                            </i-col>
+                                        </row>
+                                    </i-form>
                                 </tab-pane>
                             </tabs>
-                        </div>
-                        <div class="page">
-                            <page :total="100" show-elevator></page>
                         </div>
                     </card>
                 </tab-pane>

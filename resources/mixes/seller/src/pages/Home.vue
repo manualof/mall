@@ -267,7 +267,7 @@
                                     <div class="statistics-information">
                                         <div>
                                             <h5>销售情况统计</h5>
-                                            <span class="tip distance"> 需要处理的交易订单</span>
+                                            <span class="tip distance"> 昨日店铺销售概况</span>
                                         </div>
                                         <ul class="clearfix">
                                             <li>

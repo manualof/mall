@@ -29,4 +29,12 @@ class ProductSubscribe extends Model
      * @var string
      */
     protected $table = 'mall_product_subscribes';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

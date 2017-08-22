@@ -25,31 +25,71 @@ class Store extends Model
      */
     protected $fillable = [
         'address',
-        'avatar',
         'category_id',
         'company',
         'end_at',
         'flow_marketing',
-        'identification',
-        'level',
+        'grade',
         'location',
-        'logo',
         'name',
         'open_at',
         'status',
+        'user_id',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $setters = [
+        'category_id' => 'null|0',
+        'level'       => 'null|0',
+        'status'      => 'null|review',
+        'user_id'     => 'null|0',
     ];
 
     /**
      * @var string
      */
-    protected $table = 'mall_shops';
+    protected $table = 'mall_stores';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
     {
-        return $this->hasOne(StoreCategory::class, 'id', 'category_id');
+        return $this->belongsTo(StoreCategory::class, 'category_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function information()
+    {
+        return $this->belongsTo(StoreInformation::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function navigations()
+    {
+        return $this->hasMany(StoreNavigation::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function outlets()
+    {
+        return $this->hasMany(StoreOutlet::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function suppliers()
+    {
+        return $this->hasMany(StoreSupplier::class);
     }
 
     /**
@@ -88,7 +128,10 @@ class Store extends Model
     {
         return [
             new Transition('register', 'register', 'registered'),
-            new Transition('need_to_close', ['opened', 'registered'], 'close'),
+            new Transition('need_to_close', [
+                'opened',
+                'registered',
+            ], 'close'),
             new Transition('close', 'close', 'closed'),
             new Transition('need_to_open', 'registered', 'open'),
             new Transition('open', 'open', 'opened'),

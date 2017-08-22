@@ -8,6 +8,7 @@
  */
 namespace Notadd\Mall\Models;
 
+use Illuminate\Support\Collection;
 use Notadd\Foundation\Database\Model;
 use Notadd\Foundation\Database\Traits\HasFlow;
 use Symfony\Component\Workflow\Event\GuardEvent;
@@ -23,12 +24,33 @@ class ProductCategory extends Model
     /**
      * @var array
      */
+    protected $appends = [
+        'breadcrumb',
+        'level',
+//        'path',
+    ];
+
+    /**
+     * @var array
+     */
     protected $fillable = [
         'deposit',
         'flow_marketing',
+        'logo',
         'name',
         'order',
         'parent_id',
+        'show',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $setters = [
+        'deposit'   => 'null|0',
+        'order'     => 'null|0',
+        'parent_id' => 'null|0',
+        'show'      => 'null|spu',
     ];
 
     /**
@@ -37,11 +59,93 @@ class ProductCategory extends Model
     protected $table = 'mall_product_categories';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @param $value
+     *
+     * @return string
+     */
+    public function getBreadcrumbAttribute($value)
+    {
+        $paths = new Collection([$this]);
+        if ($this->attributes['parent_id'] && ($one = static::query()->find($this->attributes['parent_id'])) instanceof ProductCategory) {
+            $paths->prepend($one);
+            if ($one->getAttribute('parent_id') && ($two = static::query()->find($one->getAttribute('parent_id'))) instanceof ProductCategory) {
+                $paths->prepend($two);
+            }
+        }
+        $paths->transform(function (ProductCategory $category) {
+            return $category->getAttribute('name');
+        });
+
+        return $paths->implode(' / ');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return int
+     */
+    public function getLevelAttribute($value)
+    {
+        if (static::query()->where('id', $this->attributes['parent_id'])->count()) {
+            $parent = static::query()->find($this->attributes['parent_id']);
+            if (static::query()->where('id', $parent->getAttribute('parent_id'))->count()) {
+                return 3;
+            } else {
+                return 2;
+            }
+        } else {
+            return 1;
+        }
+    }
+
+    /**
+     * @param $value
+     *
+     * @return mixed
+     */
+    public function getOrderAttribute($value)
+    {
+        if (is_null($value)) {
+            return 0;
+        }
+
+        return $value;
+    }
+
+    /**
+     * @param $value
+     *
+     * @return array
+     */
+    public function getPathAttribute($value)
+    {
+        $paths = new Collection();
+        if ($this->attributes['parent_id']) {
+            $one = static::query()->find($this->attributes['parent_id']);
+            $paths->prepend($one->getAttribute('id'));
+            if ($one->getAttribute('parent_id')) {
+                $two = static::query()->find($one->getAttribute('parent_id'));
+                $paths->prepend($two->getAttribute('id'));
+            }
+        }
+
+        return $paths->toArray();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function children()
+    {
+        return $this->hasMany(ProductCategory::class, 'parent_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function parent()
     {
-        return $this->hasOne(ProductCategory::class, 'id', 'category_id');
+        return $this->belongsTo(ProductCategory::class, 'parent_id');
     }
 
     /**
@@ -82,7 +186,10 @@ class ProductCategory extends Model
             new Transition('create', 'create', 'created'),
             new Transition('need_to_edit', 'created', 'edit'),
             new Transition('edit', 'edit', 'edited'),
-            new Transition('need_to_remove', ['created', 'edited'], 'remove'),
+            new Transition('need_to_remove', [
+                'created',
+                'edited',
+            ], 'remove'),
             new Transition('remove', 'remove', 'removed'),
         ];
     }

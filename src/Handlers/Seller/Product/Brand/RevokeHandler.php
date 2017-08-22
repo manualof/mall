@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Product\Brand;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\ProductBrand;
 
 /**
@@ -24,8 +25,13 @@ class RevokeHandler extends Handler
     public function execute()
     {
         $this->validate($this->request, [
-            'id' => 'required|numeric',
+            'id' => [
+                Rule::exists('mall_product_brands'),
+                Rule::numeric(),
+                Rule::required(),
+            ],
         ], [
+            'id.exists'   => '没有对应的品牌信息',
             'id.numeric'  => '品牌 ID 必须为数值',
             'id.required' => '品牌 ID 必须填写',
         ]);
@@ -36,7 +42,7 @@ class RevokeHandler extends Handler
             $this->withCode(200)->withMessage('撤销品牌成功！');
         } else {
             $this->rollBackTransaction();
-            $this->withCode(500)->withError('撤销品牌失败！');
+            $this->withCode(500)->withError('没有对应的品牌信息！');
         }
     }
 }

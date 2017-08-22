@@ -9,6 +9,7 @@
 namespace Notadd\Mall\Handlers\Seller\Order;
 
 use Notadd\Foundation\Routing\Abstracts\Handler;
+use Notadd\Foundation\Validation\Rule;
 use Notadd\Mall\Models\Order;
 
 /**
@@ -24,18 +25,24 @@ class ListHandler extends Handler
     protected function execute()
     {
         $this->validate($this->request, [
-            'page'     => 'numeric',
-            'paginate' => 'numeric',
+            'order'    => Rule::in([
+                'asc',
+                'desc',
+            ]),
+            'page'     => Rule::numeric(),
+            'paginate' => Rule::numeric(),
         ], [
+            'order.in'         => '排序规则错误',
             'page.numeric'     => '当前页面必须为数值',
             'paginate.numeric' => '分页数必须为数值',
         ]);
         $builder = Order::query();
         $builder->where('store_id', '');
+        $builder->orderBy('created_at', $this->request->input('order', 'desc'));
         $builder = $builder->paginate($this->request->input('paginate', 20));
         $this->withCode(200)
             ->withData($builder->items())
-            ->withMessage('获取产品列表成功！')
+            ->withMessage('获取商品列表成功！')
             ->withExtra([
                 'pagination' => [
                     'total'         => $builder->total(),

@@ -1,5 +1,6 @@
 <script>
     import injection from '../helpers/injection';
+    import image1 from '../assets/images/img_logo.png';
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -18,6 +19,7 @@
             });
         },
         data() {
+            const self = this;
             return {
                 action: `${window.api}/mall/admin/upload`,
                 form: {
@@ -26,6 +28,266 @@
                     phone: '',
                 },
                 loading: false,
+                mainNavColumns: [
+                    {
+                        align: 'center',
+                        key: 'index',
+                        render(h, data) {
+                            return h('i-input', {
+                                props: {
+                                    type: 'ghost',
+                                    value: data.index + 1,
+                                },
+                            });
+                        },
+                        title: '排序',
+                        width: 160,
+                    },
+                    {
+                        align: 'center',
+                        key: 'name',
+                        title: '导航名称',
+                        width: 300,
+
+                    },
+                    {
+                        key: 'enabled',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.enabled,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '是否显示',
+                    },
+                    {
+                        align: 'center',
+                        key: 'action',
+                        render(h, data) {
+                            return h('div', [
+                                h('router-link', {
+                                    props: {
+                                        to: '/mall/configuration/edit/main',
+                                    },
+                                }, [
+                                    h('i-button', {
+                                        props: {
+                                            size: 'small',
+                                            type: 'ghost',
+                                        },
+                                    }, '编辑'),
+                                ]),
+                                h('i-button', {
+                                    on: {
+                                        click() {
+                                            self.delete(data.index);
+                                        },
+                                    },
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
+                                    },
+                                }, '删除'),
+                            ]);
+                        },
+                        title: '操作',
+                        width: '180',
+                    },
+                ],
+                mainNavData: [
+                    {
+                        enabled: true,
+                        name: '数码办公',
+                    },
+                    {
+                        enabled: true,
+                        name: '数码办公',
+                    },
+                    {
+                        enabled: true,
+                        name: '数码办公',
+                    },
+                    {
+                        enabled: true,
+                        name: '数码办公',
+                    },
+                ],
+                navColumns: [
+                    {
+                        align: 'center',
+                        type: 'selection',
+                        width: 60,
+                    },
+                    {
+                        align: 'center',
+                        key: 'name',
+                        title: '分类名称',
+                        width: 200,
+
+                    },
+                    {
+                        align: 'center',
+                        key: 'goodsImg',
+                        render(h, data) {
+                            return h('tooltip', {
+                                props: {
+                                    placement: 'right-end',
+                                },
+                                scopedSlots: {
+                                    content() {
+                                        return h('img', {
+                                            domProps: {
+                                                src: data.row.goodsImg,
+                                            },
+                                        });
+                                    },
+                                    default() {
+                                        return h('icon', {
+                                            props: {
+                                                type: 'image',
+                                            },
+                                        });
+                                    },
+                                },
+                            });
+                        },
+                        title: '分类图标',
+                        width: 180,
+                    },
+                    {
+                        align: 'center',
+                        key: 'category',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.category,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '推荐分类',
+                        width: 180,
+                    },
+                    {
+                        align: 'center',
+                        key: 'type',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.type,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '推荐品牌',
+                    },
+                    {
+                        key: 'ad',
+                        render(h, data) {
+                            return h('i-switch', {
+                                props: {
+                                    size: 'large',
+                                    value: data.row.ad,
+                                },
+                                scopedSlots: {
+                                    close() {
+                                        return h('span', '关闭');
+                                    },
+                                    open() {
+                                        return h('span', '开启');
+                                    },
+                                },
+                            });
+                        },
+                        title: '广告',
+                    },
+                    {
+                        align: 'center',
+                        key: 'action',
+                        render(h) {
+                            return h('router-link', {
+                                props: {
+                                    to: '/mall/configuration/category/edit',
+                                },
+                            }, [
+                                h('i-button', {
+                                    props: {
+                                        size: 'small',
+                                        type: 'ghost',
+                                    },
+                                }, '编辑'),
+                            ]);
+                        },
+                        title: '操作',
+                        width: '140',
+                    },
+                ],
+                navData: [
+                    {
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '数码办公',
+                        type: true,
+                    },
+                    {
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '礼品箱包',
+                        type: true,
+                    },
+                    {
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '家用电器',
+                        type: true,
+                    },
+                    {
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '珠宝手表',
+                        type: true,
+                    },
+                    {
+                        ad: true,
+                        category: true,
+                        goodsImg: image1,
+                        name: '运动健康',
+                        type: true,
+                    },
+                ],
                 rules: {
                     email: [
                         {
@@ -55,6 +317,9 @@
             };
         },
         methods: {
+            delete(index) {
+                this.mainNavData.splice(index, 1);
+            },
             removeLogo() {
                 const self = this;
                 self.form.logo = '';
@@ -80,6 +345,7 @@
                     }
                 });
             },
+            toEdit() {},
             uploadBefore() {
                 injection.loading.start();
             },
@@ -144,20 +410,23 @@
                                                 :show-upload-list="false"
                                                 v-if="form.logo === '' || form.logo === null">
                                         </upload>
+                                        <p class="tip">默认网站LOGO，通用头部显示，最佳显示尺寸为240*60像素</p>
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="平台客服联系电话" prop="phone">
-                                        <i-input placeholder="请输入平台客服联系电话" v-model="form.phone"></i-input>
+                                        <i-input v-model="form.phone"></i-input>
+                                        <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询，多个请用半角逗号“，”隔开</p>
                                     </form-item>
                                 </i-col>
                             </row>
                             <row>
                                 <i-col span="12">
                                     <form-item label="平台客服电子邮件" prop="email">
-                                        <i-input placeholder="请输入平台客服电子邮件" v-model="form.email"></i-input>
+                                        <i-input v-model="form.email"></i-input>
+                                        <p class="tip">商城中心右下侧显示，方便客户遇到问题时咨询</p>
                                     </form-item>
                                 </i-col>
                             </row>
@@ -172,6 +441,37 @@
                                 </i-col>
                             </row>
                         </i-form>
+                    </card>
+                </tab-pane>
+                <tab-pane label="分类导航" name="nav">
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>"编辑分类导航"功能可以设置前台左上侧商品分类导航的相关信息，可以设置一级分类前图标，推荐分类，
+                                推荐品牌以及两张广告图片</p>
+                            <p>分类导航设置完成后，需要清除缓存</p>
+                        </div>
+                        <i-table class="goods-table"
+                                 :context="self"
+                                 :columns="navColumns"
+                                 :data="navData"
+                                 highlight-row></i-table>
+                    </card>
+                </tab-pane>
+                <tab-pane label="主导航" name="mainNav">
+                    <card :bordered="false">
+                        <div class="prompt-box">
+                            <p>提示</p>
+                            <p>商城前台主导航默认商品分类与首页为最前列，其余按照数字大小排序</p>
+                        </div>
+                        <router-link to="configuration/create">
+                            <i-button type="ghost" class="add-data">新增数据</i-button>
+                        </router-link>
+                        <i-table class="goods-table"
+                                 :context="self"
+                                 :columns="mainNavColumns"
+                                 :data="mainNavData"
+                                 highlight-row></i-table>
                     </card>
                 </tab-pane>
             </tabs>
