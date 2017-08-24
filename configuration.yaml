@@ -23,6 +23,8 @@ events:
         Notadd\Foundation\Http\Events\RequestHandled: Notadd\Mall\Listeners\RouteRegister
     subscribes:
         - Notadd\Mall\Listeners\RouteRegister
+migrations:
+    - databases/migrations
 permissions:
     -
         description: 商城后台权限
