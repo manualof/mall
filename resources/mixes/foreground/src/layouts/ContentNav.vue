@@ -30,7 +30,7 @@
                     },
                     {
                         to: '/mall/spike',
-                        text: '秒杀',
+                        text: '产品',
                     },
                 ],
             };
